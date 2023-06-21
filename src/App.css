@@ -1,0 +1,328 @@
+body{
+  background-color: #C3D5DD;
+  
+}
+*{
+  margin:0px;
+  padding:0px;
+}
+
+.h1Teste{ 
+  text-align: center;
+}
+.h1Login{
+  text-align: center;
+  color: white;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  opacity: 0.7;
+  color: #52C7A6;
+}
+
+.logo {
+  font-size: 24px;
+  letter-spacing: 4px;
+}
+
+.logoFooter{  
+    font-size: 24px;
+    letter-spacing: 2px;
+
+}
+
+.logoFooter:hover{
+  color: #52c7a6;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+nav {
+
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    background: #23232e;
+    width: 100%;
+    height: 8vh;
+    z-index: 2;
+
+
+}
+
+
+main {
+  background-color: aliceblue;
+  background-size: cover;
+  
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+}
+
+.nav-list li {
+  letter-spacing: 3px;
+  margin-left: 32px;
+}
+
+.mobile-menu {
+  display: none;
+  cursor: pointer;
+}
+
+.mobile-menu .divMenu {
+  width: 32px;
+  height: 2px;
+  background: #fff;
+  margin: 8px;
+  transition: 0.3s;
+}
+
+@media (max-width: 999px) {
+  body {
+    overflow-x: hidden;
+  }
+  .nav-list {
+    position: absolute;
+    top: 8vh;
+    right: 0;
+    width: 50vw;
+    height: 92vh;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in;
+  }
+  .nav-list li {
+    margin-left: 0;
+    opacity: 0;
+  }
+  .mobile-menu {
+    display: block;
+  }
+}
+
+.nav-list.active {
+  transform: translateX(0);
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-menu.active .line1 {
+  transform: rotate(-45deg) translate(-8px, 8px);
+}
+
+.mobile-menu.active .line2 {
+  opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+  transform: rotate(45deg) translate(-5px, -7px);
+}
+
+article{
+  display: flex;
+  flex-direction:  column;
+  padding: 50px;  
+  border-radius: 10px;
+  background-color: #ffffff;
+   width: 390vh;
+  font-size: 1.2vh;
+  height: 400px;
+}
+
+article h1{
+  color: rgb(66, 66, 66);
+  text-align: center;
+  font-size: 34px;
+  font-family: Constantia;
+}
+
+.articleProvisorio{
+  width: 500px;
+  height: 550px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.textoProvisorio{
+  margin: 200px;
+}
+
+.artiDenuncia {
+  height: 90vh;
+  width: 85vh;
+  position: relative;
+  top: 70px;
+
+  
+}
+
+.artiFiltro {
+  width:70vh;
+  height: 48vh;
+  background-color: rgb(255, 255, 255); 
+  white-space: nowrap;
+}
+
+.divArticles{
+  display: flex;
+  flex-direction: column-reverse;
+  float: right;
+  position: relative;
+  top:-747px;
+  right: -40px;
+
+}
+
+.artiOrg {
+  height:fit-content;
+  margin-top: 20PX;
+  width:70vh;
+  height: 34vh;
+  display: block;
+  background-color: rgb(255, 255, 255);
+}
+
+
+.h1Org{
+  font-size: 4.0vh;
+}
+
+
+
+.imgArt{
+  width: 15vh;
+  height: 15vh;
+  border-radius: 15px;
+  position: absolute;  
+  top: 225px;
+}
+
+label{
+  display: flex;
+}
+
+.btnDenuncia {
+  width: 120px;
+  position: absolute;
+  top: 350px;
+}
+
+.btnDenuncia:hover {
+  color: #000000;
+  background-color: #9E9D9D;
+  transition: 0.4s;
+} 
+
+.denunciasTrending{
+    margin: 15px;
+    white-space: nowrap;
+    text-align: center;
+    color: black; /*PRETO temporariamente, mudar pra branco depois */
+}
+
+.tituloDenuncia{
+  font-size: 24px;
+}
+
+.subtituloDenuncia{
+  margin: 15px;
+  font-size: 24px;
+  position: relative;
+  text-align: center;
+  color: #84CDEC;
+}
+
+.textoDenuncia{
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    word-break: keep-all;
+}
+
+.tituloInst{
+  white-space: nowrap;
+}
+
+.container{
+  display: flex; 
+  width: 100%;
+  background-color: black;
+  color: aliceblue;
+  font-size: 20px;
+  
+}
+
+ul{
+  list-style: none;
+  padding: 50px;
+}
+
+
+ul li a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  color: #52C7A6;
+}
+
+.xd {
+  color: #717171;
+}
+
+.item4 img {
+  width: 40px;
+}
+
+.item4 ul li {
+  display: inline-block;
+  margin: 2px;
+}
+
+#btnCadastro{
+  background-color: #434343;
+  border: black;
+  border-radius: 10px;
+  
+}
+
+.inpFiltro{
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 30px;
+  font-size: 2.5vh; 
+  text-align: center;
+  border-radius: 20px;
+  background-color: #52C7A6;
+  color: white;
+  margin-top: -30px;
+}
+.inpFiltro::placeholder{
+  color: white;
+}
