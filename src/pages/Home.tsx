@@ -2,6 +2,7 @@ import '../App.css';
 import img2 from "../img/aguaEstancada.png";
 import instagram from "../img/instagram.png";
 import twitter from "../img/twitter.png";
+import Logo from "../img/logo.png";
 
 
 import  { Link } from 'react-router-dom'
@@ -13,7 +14,8 @@ const Home = () => {
 
       <header>
       <nav>
-        <a className="logo" href="/">BairrOnline</a>
+        <a className='logo' href='/'><img className="imgLogo" src={Logo} alt="LogoBairronline" /> </a>
+
         <div className="mobile-menu">
 
           <div className="line1"></div>
@@ -31,7 +33,7 @@ const Home = () => {
 
           <li>  <Link to="/MinhasDen"> Minhas Denúncias  </Link></li>
 
-          <li>  <Link to="/Cadastro"> <button id='btnCadastro'>  Cadastrar-se </button> </Link></li>
+          <li>  <Link to="/Cadastro"> <button className='btnCadastro'>  Cadastrar-se </button> </Link></li>
 
           <li> <Link to="/Login">Fazer login</Link></li>
         </ul>
@@ -53,12 +55,13 @@ const Home = () => {
   <h2 className="tituloDenuncia">El agua estas estancada</h2>
   <h2 className="textoDenuncia">Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h2>
 
-</article>
+    </article>
 
 <div className="divArticles">
 <article className="artiOrg">
 
 <h1 className="h1Org">Instituições Responsáveis</h1>
+<h2 className="subtituloOrg"> Veja aqui as instituições/órgãos públicos que mais resolveram problemas</h2>
 
 </article>
 
@@ -73,7 +76,7 @@ const Home = () => {
 
         <div className="item1">
           <ul className="texto">
-            <li className="logoFooter">BairrOnline</li>
+            <li className="logoFooter"><a className='bairrOnlineLogo' href='#'>  <img className="imgLogo" src={Logo} alt="LogoBairronline"  /></a></li>
           </ul>
         </div>
 
@@ -82,8 +85,8 @@ const Home = () => {
 
                 <li className="xd">Usuário</li>
                   <li><a href="#">Início</a></li>
-                  <li><a href="#">Cadastre-se</a></li>
-                  <li><a href="#">Entrar</a></li>
+                  <li><Link to="/Cadastro">Cadastre-se</Link></li>
+                  <li><Link to="/Login">Entrar</Link></li>
 
               </ul>
             </div>

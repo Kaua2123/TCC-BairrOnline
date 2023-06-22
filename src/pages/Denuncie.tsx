@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 import instagram from '../img/instagram.png';
 import twitter from '../img/twitter.png'
+import Logo from "../img/logo.png";
 
 const Denuncie = () => {
     return (
         <div>
  <header>
       <nav>
-        <a className="logo" href="/">BairrOnline</a>
+      <a className='logo' href='/'><img className="imgLogo" src={Logo} alt="LogoBairronline"  /> </a>
         <div className="mobile-menu">
 
           <div className="line1"></div>
@@ -26,7 +27,7 @@ const Denuncie = () => {
 
           <li>  <Link to="/MinhasDen"> Minhas Denúncias  </Link></li>
 
-          <li>  <Link to="/Cadastro"> <button id='btnCadastro'>  Cadastrar-se </button> </Link></li>
+          <li>  <Link to="/Cadastro"> <button className='btnCadastro'>  Cadastrar-se </button> </Link></li>
 
           <li> <Link to="/Login">Fazer login</Link></li>
         </ul>
@@ -42,7 +43,7 @@ const Denuncie = () => {
 
 <div className="item1">
   <ul className="texto">
-    <li className="logoFooter">BairrOnline</li>
+    <li className="logoFooter"> <a className='logo' href='/'><img className="imgLogo" src={Logo} alt="LogoBairronline"  /> </a></li>
   </ul>
 </div>
 
