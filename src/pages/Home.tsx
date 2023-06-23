@@ -3,6 +3,8 @@ import img2 from "../img/aguaEstancada.png";
 import instagram from "../img/instagram.png";
 import twitter from "../img/twitter.png";
 import Logo from "../img/logo.png";
+import Lupa from "../img/lupa.png";
+
 
 
 import  { Link } from 'react-router-dom'
@@ -27,11 +29,11 @@ const Home = () => {
         </div>
         <ul className="nav-list">
 
-          <li> <Link to="/Denuncie"> Denuncie aqui </Link> </li>
+          <li className='liMenu'> <Link to="/Denuncie"> Denuncie aqui </Link> </li>
 
-          <li>  <Link to="/VerDenuncia"> Ver Denúncias  </Link></li>
+          <li className='liMenu'>  <Link to="/VerDenuncia"> Ver Denúncias  </Link></li>
 
-          <li>  <Link to="/MinhasDen"> Minhas Denúncias  </Link></li>
+          <li className='liMenu'>  <Link to="/MinhasDen"> Minhas Denúncias  </Link></li>
 
           <li>  <Link to="/Cadastro"> <button className='btnCadastro'>  Cadastrar-se </button> </Link></li>
 
@@ -46,28 +48,31 @@ const Home = () => {
 
 <h1 className="denunciasTrending">Denúncias em destaque</h1>
 <h2 className="subtituloDenuncia">Denúncias em Alta do Bairro de Volta Redonda</h2>
+<div>
+<h2 className="tituloDenuncia">El agua estas estancada</h2>
+<h2 className="textoDenuncia"> Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h2>
 
-<img src={img2}alt="Imagem" className="imgArt"title="agua estancada"/>
+<img src={img2}alt="Imagem" className="imgArt"title="agua estancada"/> 
 
+<label htmlFor="den"><button className="btnDenuncia">Ver denúncia</button></label>
 
- <label htmlFor="den"><button className="btnDenuncia">Ver denúncia</button></label>
-
-  <h2 className="tituloDenuncia">El agua estas estancada</h2>
-  <h2 className="textoDenuncia">Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h2>
-
-    </article>
+</div>
+</article>
 
 <div className="divArticles">
 <article className="artiOrg">
 
 <h1 className="h1Org">Instituições Responsáveis</h1>
 <h2 className="subtituloOrg"> Veja aqui as instituições/órgãos públicos que mais resolveram problemas</h2>
+ <input className="inpOrg" type="text" placeholder='Pesquise por instituições/órgãos públicos aqui...'></input>
+ <img className='lupaOrg' src={Lupa} alt="lupa" />
 
+ 
 </article>
 
 <article className="artiFiltro">
     <input className="inpFiltro" type="text" placeholder='Pesquise por bairros e denúncias aqui...'></input>
-    
+    <img className='lupaFiltro' src={Lupa} alt="lupa" />
 </article>
 </div>
     </body>
@@ -76,7 +81,7 @@ const Home = () => {
 
         <div className="item1">
           <ul className="texto">
-            <li className="logoFooter"><a className='bairrOnlineLogo' href='#'>  <img className="imgLogo" src={Logo} alt="LogoBairronline"  /></a></li>
+            <li className="imglogoFooter"><a className='bairrOnlineLogo' href='#'>  <img className="imgLogofooter" src={Logo} alt="LogoBairronline"  /></a></li>
           </ul>
         </div>
 
@@ -110,7 +115,6 @@ const Home = () => {
                 <li> <img src={twitter} alt='Twitter' title="socialMedia"></img></li>
 
               </ul>
-
             </div>
      </footer>
      </div>
