@@ -1,16 +1,30 @@
 const express = require("express"); //chamando o modulo express
 const app = express(); //executando express
-const banco = require("mysql"); 
+const mysql = require("mysql"); 
 
-app.get('/', (req, res) => {
-    res.send("xd"); // mensagem retornada ao acessar a raíz do servidor /
+const bancoTeste = mysql.createPool({
+    host: "localhost", 
+    user: "root",
+    password: "",
+    database: "bairronline",
+})
+
+
+
+app.get('/', (req, res) => { // teste se está inserindo dados nas tabelas
+    let SQL = "INSERT INTO usuario (usu_nome) VALUES ( 'usuarioTeste' )";
+
+    
+    bancoTeste.query(SQL, (err, result) => {
+        console.log(err);   
+    })    
 }) 
 
 //req tudo que entrará
 //res tudo que sai, resultado
 
 app.listen(3001, () => {
-    console.log("rodando servidor");
+    console.log("servidor online");
 });
 
 //app.get GET - puxar valores, requisições
