@@ -3,8 +3,22 @@ import '../App.css';
 import instagram from '../img/instagram.png';
 import twitter from '../img/twitter.png'
 import Logo from "../img/logo.svg";
+import Camera from "../img/camera.png";
+import {useState} from "react";
+
+
+
 
 const Denuncie = () => {
+
+  const [img, setImg] = useState<File | null>(null);
+
+  const uploadImg = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    console.log('Upload imagem')
+    console.log(img);
+  } 
+
     return (
         <div>
  <header>
@@ -30,7 +44,7 @@ const Denuncie = () => {
         </ul>
 
       <div id='logcad'>
-       <Link to="/Cadastro" > <button className='btnCadastro'>  Cadastrar-se </button> </Link>
+       <Link to="/Cadastro" > <button className='btnCadastro'> Cadastrar-se </button> </Link>
 
        <Link to="/Login">Fazer login</Link>
       </div>
@@ -39,14 +53,25 @@ const Denuncie = () => {
  <body>
    <h1 className='textoProvisorio'> Denuncie aqui  </h1>
     <div>
-      <form method='post' action=''>
-        <fieldset>
+      <form method='post' action='' onSubmit={uploadImg}>
+
           
-        <legend>DADOS</legend>
-        <label className='labelForm' htmlFor="titulo" accessKey='n'> Título da Denúncia </label>
-        <input type='text' name='titulo' maxLength={50} required></input>
-        
-        </fieldset>
+        <legend>Realize sua Denúncia abaixo</legend>
+        <br />  
+        <label className='labelForm' htmlFor="titulo"> Título da Denúncia </label>
+        <input type='text' name='titulo' maxLength={50} required/> 
+        <label className='labelForm' htmlFor="descDen"> Digite aqui o que está lhe incomodando em seu bairro </label>
+        <textarea required/>
+        <label className='labelForm' htmlFor='imgDen'>Enviar imagem</label>
+        <br />
+        <input type="file" name='image' onChange={e => { const file = e.target.files?.[0] || null; setImg(file); }}/>  
+        <br></br>
+        <br></br>
+
+        {img ? <img src={URL.createObjectURL(img)} alt='img' width={150} height={150}></img> : <img src={Camera} alt='img' width={150} height={150}/>} 
+
+        <input className='btnForm' type='submit'/>
+        <input className='btnForm' type='reset' value="Limpar"/>
 
 
       </form>
@@ -65,7 +90,7 @@ const Denuncie = () => {
     <div className="item2">
       <ul className="texto">
 
-        <li className="xd">Usuário</li>
+        <li className="xd">Usuário</li> 
           <li><a href="#">Início</a></li>
           <li><a href="#">Cadastre-se</a></li>
           <li><a href="#">Entrar</a></li>

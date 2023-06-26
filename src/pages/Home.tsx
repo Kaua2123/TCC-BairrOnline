@@ -64,7 +64,7 @@ const Home = () => {
     </article>
   <div className="divArticles">
   <article className="artiFiltro">
-    <input className="inpFiltro" type="text" placeholder='Pesquise por bairros e denúncias aqui...'></input>
+    <input className="inpFiltro" type="search" placeholder='Pesquise por bairros e denúncias aqui...'></input>
     
  </article>
  <article className="artiOrg">
