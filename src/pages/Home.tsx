@@ -2,7 +2,7 @@ import '../App.css';
 import img2 from "../img/aguaEstancada.png";
 import instagram from "../img/instagram.png";
 import twitter from "../img/twitter.png";
-import Logo from "../img/svvv.svg";
+import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
 
 const Home = () => {
@@ -35,7 +35,7 @@ const Home = () => {
        <div id='logcad'>
        <Link to="/Cadastro" > <button className='btnCadastro'>  Cadastrar-se </button> </Link>
 
-<Link to="/Login">Fazer login</Link>
+       <Link to="/Login">Fazer login</Link>
        </div>
         
       </nav>

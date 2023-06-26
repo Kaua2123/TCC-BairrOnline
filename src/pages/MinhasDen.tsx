@@ -2,15 +2,14 @@ import { Link } from 'react-router-dom';
 import instagram from '../img/instagram.png'
 import twitter from '../img/twitter.png'
 import '../App.css';
-import Logo from '../img/logo.png';
-
+import Logo from '../img/logo.svg'
 const MinhasDen = () => {
     return (
         <div>
             
       <header>
       <nav>
-      <a className='logo' href='/'><img className="imgLogo" src={Logo} alt="LogoBairronline" title='Logo' /> </a>
+      <a className='logo' href='/'><img className='imgLogo'  src={Logo} alt="LogoBairronline" title='Logo' /> </a>
         <div className="mobile-menu">
 
          <div className="line1"></div>
@@ -28,11 +27,15 @@ const MinhasDen = () => {
 
             <li>  <Link to="/MinhasDen"> Minhas Denúncias  </Link></li>
 
-            <li>  <Link to="/Cadastro"> <button className='btnCadastro'>  Cadastrar-se </button> </Link></li>
-
-            <li> <Link to="/Login">Fazer login</Link></li>
             </ul>
-        </nav>
+
+      <div id='logcad'>
+       <Link to="/Cadastro" > <button className='btnCadastro'>  Cadastrar-se </button> </Link>
+
+       <Link to="/Login">Fazer login</Link>
+      </div>
+
+        </nav>  
 
 
         </header>

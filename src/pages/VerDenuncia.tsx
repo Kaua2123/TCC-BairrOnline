@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 import instagram from '../img/instagram.png';
 import twitter from '../img/twitter.png'
-import Logo from '../img/logo.png';
+import Logo from '../img/logo.svg';
 
 const VerDenuncia = () => {
     return (
@@ -27,10 +27,15 @@ const VerDenuncia = () => {
 
           <li>  <Link to="/MinhasDen"> Minhas Denúncias  </Link></li>
 
-          <li>  <Link to="/Cadastro"> <button className='btnCadastro'>  Cadastrar-se </button> </Link></li>
-
-          <li> <Link to="/Login">Fazer login</Link></li>
         </ul>
+        
+      <div id='logcad'>
+       <Link to="/Cadastro" > <button className='btnCadastro'>  Cadastrar-se </button> </Link>
+
+       <Link to="/Login">Fazer login</Link>
+      </div>
+
+
       </nav>
 
 

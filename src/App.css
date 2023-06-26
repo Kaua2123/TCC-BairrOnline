@@ -165,6 +165,7 @@ main {
 .mobile-menu.active .line3 {
   transform: rotate(45deg) translate(-5px, -7px);
 }
+
 .imgLogo{
   display: flex;
   min-width: 20vh;
