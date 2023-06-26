@@ -51,19 +51,19 @@ const Denuncie = () => {
       </nav>
  </header>
  <body>
-   <h1 className='textoProvisorio'> Denuncie aqui  </h1>
-    <div>
+
+      <h1 className='h1Denuncie'> Realize sua denúncia </h1>
+    <div className='cadastroDen'>
       <form method='post' action='' onSubmit={uploadImg}>
 
           
-        <legend>Realize sua Denúncia abaixo</legend>
         <br />  
         <label className='labelForm' htmlFor="titulo"> Título da Denúncia </label>
         <input type='text' name='titulo' maxLength={50} required/> 
         <label className='labelForm' htmlFor="descDen"> Digite aqui o que está lhe incomodando em seu bairro </label>
         <textarea required/>
         <label className='labelForm' htmlFor='imgDen'>Enviar imagem</label>
-        <br />
+
         <input type="file" name='image' onChange={e => { const file = e.target.files?.[0] || null; setImg(file); }}/>  
         <br></br>
         <br></br>
@@ -72,10 +72,13 @@ const Denuncie = () => {
 
         <input className='btnForm' type='submit'/>
         <input className='btnForm' type='reset' value="Limpar"/>
+        </form>
+      </div>
+  
+  
 
 
-      </form>
-    </div>
+ 
       
  </body>
 

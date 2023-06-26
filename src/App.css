@@ -227,18 +227,21 @@ article h1{
 
 
 .h1Org{
-    margin: 10px;
-  
-    white-space: nowrap;
-    text-align: center;
-    color: black; /*PRETO temporariamente, mudar pra branco depois */
+    color: white;
+    border-radius: 9px;
+    width: 76vh;
 }
 
 .subtituloOrg {
   font-size: 14px;
   white-space: nowrap;
-
   text-align: center;
+}
+
+.bordinha{
+  background-color: #338BB0;
+  border-radius: 7px;
+  color: white;
 }
 
 
@@ -270,11 +273,11 @@ label{
   transition: 0.4s;
 } 
 
-.denunciasTrending{
-    margin: 15px;
-    white-space: nowrap;
-    text-align: center;
-    color: black; /*PRETO temporariamente, mudar pra branco depois */
+.h1Den{
+  background-color: #338BB0;
+  color: white;
+  border-radius: 9px;
+  width: 70vh;
 }
 
 .tituloDenuncia{
@@ -307,6 +310,9 @@ label{
   padding: 5vh;
   margin: 2vh;
 }
+
+
+
 .tituloden{
   position: relative;
   left: 33vh;
@@ -430,3 +436,29 @@ cursor: pointer;
 }
 
 /*----------------------------------FOOTER FIM--------------------------*/
+
+/*----------------------------------ROTA DENUNCIE AQUI----------------------------*/
+.labelForm{
+  font-size: 2vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.h1Denuncie{ /* outra rota!!! cuidado com o ctrl f ai parcero */
+  margin-top: 17vh;
+  color: #ffffff;
+  width: 50vh;
+  height: 6vh;
+  border: 2px outset #ffffff;
+  border-radius: 16px;
+  background-color: #338BB0;  
+  text-align: center;
+}
+
+.h1Denuncie:hover{
+  color: #c5c9d1;
+  transition: 0.3s;
+}
+
+.cadastroDen{
+  background-color: #ffffff;
+}

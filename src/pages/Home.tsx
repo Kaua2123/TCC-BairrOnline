@@ -46,7 +46,7 @@ const Home = () => {
       <section id='miranhatrem'>
       <article id='arti'>
     
-        <h1>Denúncias em destaque</h1><br></br>
+        <h1 className='h1Den'>Denúncias em destaque</h1><br></br>
         <h2 className='subtituloden'>Denúncias em Alta do Bairro de Volta Redonda</h2>
 
          <img src={img2}alt="Imagem" className="imgArt"title="agua estancada"/>
@@ -68,10 +68,10 @@ const Home = () => {
     
  </article>
  <article className="artiOrg">
-
+<div className='bordinha'>
  <h1 className="h1Org">Instituições Responsáveis</h1>
  <h2 className="subtituloOrg"> Veja aqui as instituições/órgãos públicos que mais resolveram problemas</h2>
-
+</div>
  </article>
 
 
