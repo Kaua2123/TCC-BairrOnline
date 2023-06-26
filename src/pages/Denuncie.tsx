@@ -34,13 +34,24 @@ const Denuncie = () => {
 
        <Link to="/Login">Fazer login</Link>
       </div>
-      
       </nav>
-
-
  </header>
  <body>
-    <article className='articleProvisorio'> <h1 className='textoProvisorio'> Denuncie aqui  </h1></article>
+   <h1 className='textoProvisorio'> Denuncie aqui  </h1>
+    <div>
+      <form method='post' action=''>
+        <fieldset>
+          
+        <legend>DADOS</legend>
+        <label className='labelForm' htmlFor="titulo" accessKey='n'> Título da Denúncia </label>
+        <input type='text' name='titulo' maxLength={50} required></input>
+        
+        </fieldset>
+
+
+      </form>
+    </div>
+      
  </body>
 
  <footer className="container">

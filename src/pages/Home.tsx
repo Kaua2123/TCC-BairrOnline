@@ -46,17 +46,21 @@ const Home = () => {
       <section id='miranhatrem'>
       <article id='arti'>
     
-        <h1>Denúncias em destaque</h1>
-        <h2>Denúncias em Alta do Bairro de Volta Redonda</h2>
+        <h1>Denúncias em destaque</h1><br></br>
+        <h2 className='subtituloden'>Denúncias em Alta do Bairro de Volta Redonda</h2>
 
          <img src={img2}alt="Imagem" className="imgArt"title="agua estancada"/>
 
 
          <label htmlFor="den"><button className="btnDenuncia">Ver denúncia</button></label>
 
-         <h2>El agua estas estancada</h2>
-         <h2 >Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h2>
-
+         <h2 className='tituloden'>El agua estas estancada</h2>
+         <h2 className='descricaoden'>Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h2>
+        <div className='comentario'>
+          Comentários ()
+        </div>
+        <div className='comentarios'>Bla bla bla bla bla bla bla</div>
+        <input className="inpComentario" type="text" placeholder='Participe da discussão...'></input>
     </article>
   <div className="divArticles">
   <article className="artiFiltro">
