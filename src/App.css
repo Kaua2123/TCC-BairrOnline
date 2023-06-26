@@ -6,12 +6,12 @@ body{
 *{
   margin:0px;
   padding:0px;
+  box-sizing: border-box;
 }
 
-.h1Teste{ 
-  text-align: center;
-}
 
+/*Por hora pra poder pelo menos organizar*/
+/*----------------------------------MENU HEADER COMEÇO-------------------------*/
 .h1Login{
   text-align: center;
   color: white;
@@ -33,34 +33,45 @@ a:hover {
   letter-spacing: 4px;
 }
 
-.logoFooter{  
-    font-size: 24px;
-    letter-spacing: 2px;
 
-}
-
-.logoFooter:hover{
-  color: #52c7a6;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-nav {
+nav:not(#logcad) {
 
     position: fixed;
     display: flex;
-    justify-content: space-around;
+    justify-content: baseline;
     align-items: center;
     font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
     background: #23232e;
     width: 100%;
     height: 10vh;
     z-index: 2;
+    top: 0vh;
 
 
 }
 
+.btnCadastro{
+  width: 100px;
+  height: 19px;
+  margin-right: 20px;
+  color: #ffffff;
+  background-color: #434343;
+  border: black;
+  border-radius: 8px;
+  left: 100px;
 
+}
+
+.btnCadastro:hover{
+
+color: #52C7A6;
+transition: 0.4s;
+cursor: pointer;
+}
+#logcad{
+position:absolute;
+right: 30px;
+}
 main {
   background-color: aliceblue;
   background-size: cover;
@@ -70,15 +81,14 @@ main {
 .nav-list {
   list-style: none;
   display: flex;
+  
+  
+  
 }
 
 .nav-list li {
-  margin-left: 38px;
-}
-
-.liMenu {
-  position: relative;
-  left: -250px;
+  display: flex;
+  margin-right: 20px;
 }
 
 .mobile-menu {
@@ -98,6 +108,14 @@ main {
   body {
     overflow-x: hidden;
   }
+ #miranhatrem{
+  flex-direction: column;
+  align-items: center;
+  
+ }
+ article:not(#arti){
+  margin: 10px;
+ }
   .nav-list {
     position: absolute;
     top: 8vh;
@@ -111,6 +129,7 @@ main {
     transform: translateX(100%);
     transition: transform 0.3s ease-in;
   }
+
   .nav-list li {
     margin-left: 0;
     opacity: 0;
@@ -146,18 +165,26 @@ main {
 .mobile-menu.active .line3 {
   transform: rotate(45deg) translate(-5px, -7px);
 }
+.imgLogo{
+  display: flex;
+  min-width: 20vh;
+  min-height: 20vh;
+  padding: 20px;
+}
 
-article{
+/*----------------------------------MENU HEADER FIM----------------------------*/
+
+/*---------------------------------CORPO COMEÇO-------------------------------*/
+article:not(#arti){
   display: flex;
   flex-direction:  column;
-  padding: 50px;  
   border-radius: 10px;
   background-color: #ffffff;
-  max-width: auto;
-  max-height: auto;
+   width: 80vh;
   font-size: 1.2vh;
-  height: 400px;
+  margin: 2vh ;
 }
+
 
 article h1{
   color: rgb(66, 66, 66);
@@ -166,75 +193,41 @@ article h1{
   font-family: Constantia;
 }
 
-.articleProvisorio{
-  width: 500px;
-  height: 550px;
-  background-color: #ffffff;
-  text-align: center;
-  
-}
 
 .textoProvisorio{
   margin: 200px;
 }
 
-.artiDenuncia {
-  height: 100vh;
-  width: 85vh;
-  position: relative;
-  top: 110px;
-  left: 20px;
 
-  
+#miranhatrem{
+ display: flex;
+ margin:  15vh 5vh 10vh 5vh;
 }
 
 .artiFiltro {
-  width: 70vh;
-  height: 50.8vh;
-  margin-top: -5.7vh;
+  width:70vh;
+  height: 48vh;
   background-color: rgb(255, 255, 255); 
   white-space: nowrap;
-  max-width: auto;
-  max-height: auto;
-}
-.lupaFiltro {
-  width: 10vh;
-  position: relative;
-  right: -60vh;
-  top: -7.2vh;
-}
-
-.lupaOrg {
-  width: 10vh;
-  position: relative;
-  right: -4vh;
-  top: -8.3vh;
-}
-
-.divArticles{
-  display: flex;
-  flex-direction: column-reverse;
-  float: right;
-  position: relative;
-  top:-740px;
-  right: -8vh;
-
 }
 
 .artiOrg {
   height:fit-content;
-  margin-top: 17px;
-  width:70vh;
-  height: 34vh;
+  margin-top: 20PX;
+  width:fit-content;
+  min-height: 34vh;
   display: block;
   background-color: rgb(255, 255, 255);
+  padding: 2vh;
+  position: relative;
+  right: 0vh;
+
 }
 
 
 .h1Org{
     margin: 10px;
-    position: relative;
-    top: -50px;
+
     white-space: nowrap;
     text-align: center;
     color: black; /*PRETO temporariamente, mudar pra branco depois */
@@ -243,8 +236,7 @@ article h1{
 .subtituloOrg {
   font-size: 14px;
   white-space: nowrap;
-  position: relative;
-  top: -50px;
+
   text-align: center;
 }
 
@@ -253,43 +245,19 @@ article h1{
   width: 15vh;
   height: 15vh;
   border-radius: 15px;
-  position: absolute;  
-  top: 255px;
+ 
 }
 
 
-.imgLogo{
-  position: relative;
-  top: 8px;
-  width: 30vh;
-  height: 15vh;
-  left: -125px;
-}
 
-.imgLogofooter{
-  position: relative;
-  top: 8px;
-  width: 50vh;
-  height: 30vh;
-
-}
 
 .logo:hover{
   color: #52C7A6;
 }
 
-
 label{
   display: flex;
 }
-
-.btnDenuncia {
-  width: 120px;
-  top: 370px; 
-  border-radius: 15px;
-  position: absolute;
-}
-
 .btnDenuncia:hover {
   color: #000000;
   background-color: #9E9D9D;
@@ -310,14 +278,12 @@ label{
 .subtituloDenuncia{
   margin: 15px;
   font-size: 24px;
-  position: relative;
   text-align: center;
   color: #84CDEC;
 }
 
-
 .textoDenuncia{
-    margin-top: 20px;
+
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
     word-break: keep-all;
@@ -326,7 +292,19 @@ label{
 .tituloInst{
   white-space: nowrap;
 }
+#arti{
+  border-radius: 10px;
+  background-color: #ffffff;
+  width: 80vh;
+  font-size: 1.2vh;
+  min-height: max-content;
+  padding: 5vh;
+  margin: 2vh;
+}
 
+/*-------------------------------------CORPO FIM------------------------------*/
+
+/*----------------------------------FOOTER COMEÇO--------------------------*/
 .container{
   display: flex; 
   width: 100%;
@@ -336,7 +314,7 @@ label{
   
 }
 
-ul{
+ul:not(.nav-list){
   list-style: none;
   padding: 50px;
 }
@@ -349,7 +327,7 @@ ul li a {
 }
 
 ul li a:hover {
-  color: #84CDEC;
+  color: #52C7A6;
 }
 
 .xd {
@@ -359,62 +337,38 @@ ul li a:hover {
 .item4 img {
   width: 40px;
 }
-.item4 img:hover{
-  color: #84CDEC;
-  background-color: white;
-  cursor: pointer;
-}
 
 .item4 ul li {
   display: inline-block;
   margin: 2px;
 }
 
-.btnCadastro{
-    width: 120px;
-    height: 19px;
-    color: #ffffff;
-    background-color: #434343;
-    border: black;
-    border-radius: 8px;
-    font-size: 15px;
-    letter-spacing: 1px;
+.logoFooter{  
+  font-size: 24px;
+  letter-spacing: 2px;
+
 }
 
-.btnCadastro:hover{
-  color: #84CDEC;
-  transition: 0.4s;
-  cursor: pointer;
+.logoFooter:hover{
+color: #52c7a6;
+transition: 0.3s;
+cursor: pointer;
 }
 
-.inpFiltro{ 
+.inpFiltro{
+  justify-content: center;
+  align-items: center;
   width: 450px;
   height: 30px;
   font-size: 2.5vh; 
-  padding: 0 0 0 15px;
+  text-align: center;
   border-radius: 20px;
   background-color: #52C7A6;
   color: white;
-  margin-top: -30px;
+
 }
 .inpFiltro::placeholder{
   color: white;
 }
 
-.inpOrg{ 
-  position: relative;
-  top: -98px;
-  width: 450px;
-  height: 30px;
-  right: -40px;
-  font-size: 2.5vh; 
-  padding: 0 0 0 15px;
-  border-radius: 20px;
-  background-color: #52C7A6;
-  color: white;
-  margin-top: -30px;
-  
-}
-.inpOrg::placeholder{
-  color: white;
-}
+/*----------------------------------FOOTER FIM--------------------------*/
