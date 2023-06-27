@@ -477,6 +477,7 @@ cursor: pointer;
   align-items: center;
   justify-content: center;
   margin-top: 15vh;
+  font-size: 3vh;
 }
 
 .h1acompanhar:hover{
@@ -499,14 +500,14 @@ cursor: pointer;
 
 .btnFiltrar{
   position: relative;
-  border-radius: 10px;
+  border-radius: 1vh;
   font-size: 2.5vh;
   width: 15vh;
   height: 5vh;
-  top: 18vh;
+  top: 15vh;
   left: 42vh;
   text-align: center;
-  border: solid 1px black;
+  border: solid 0.2vh black;
 }
 
 .btnFiltrar:hover {
@@ -522,6 +523,7 @@ cursor: pointer;
 
 .h2filtro{
   text-align: center;
+  font-size: 3vh;
 }
 
 .labelFiltro{
@@ -530,12 +532,43 @@ cursor: pointer;
   left: 1vh;
 
 }
-select{
+.slctFiltro{
+  
   font-size: 1.5vh;
   position: relative;
   left: 1vh;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  width: 200px;
+  font-family: Arial, sans-serif;
+  font-size: 1.5vh;
+  color: #333;
+}
+.slctFiltro option{
+  background-color: #fff;
+  color: #333;
+  padding: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+.slct1{
+    padding: 1vh;
+    font-size: 1.7vh;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    margin-left: 3vh;
+}
+.slct1 option {
+  padding: 1vh;
+  background-color: #e7e6e6;
+  
 }
 
+.organizar{
+  margin-left: 3vh;
+}
 
 /*----------------------------------FOOTER FIM--------------------------*/
 
@@ -564,13 +597,6 @@ select{
   color: red; /*sapoha so ta indo no texto */
 }
 
-.inpForm {
-
-}
-
-.inpForm{
-  
-}
 
 
 .centralizafdp{

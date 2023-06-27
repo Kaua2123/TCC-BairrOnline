@@ -4,7 +4,7 @@ import instagram from '../img/instagram.png';
 import twitter from '../img/twitter.png'
 import Logo from '../img/logo.svg';
 
-const bairros = ['Aterrado', 'Vila', 'Amaral Peixoto'];
+const bairros = ['Todos', 'Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte', 'Brasilândia', 'Caieira', 'Casa de Pedra', 'Conforto', 'Coqueiros', 'Cruzeiro', 'Dom Bosco', 'Eucaliptal', 'Jardim Amália', 'Jardim Belvedere', 'Jardim Cidade do Aço', 'Jardim Cordoeira', 'Jardim Europa', 'Jardim Normândia', 'Jardim Ponte Alta', 'Jardim Primavera', 'Jardim Vila Rica', 'Laranjal', 'Monte Castelo', 'Niterói', 'Nova Primavera', 'Parque das Garças', 'Ponte Alta', 'Ponte Alta de Baixo', 'Retiro', 'Roma', 'Santa Cruz', 'Santa Inês', 'Santa Rita do Zarur', 'Santo Agostinho', 'São Cristóvão', 'São Geraldo', 'São João', 'São Luiz', 'Sessenta', 'Siderópolis', 'Três Poços', 'Vila Americana', 'Vila Mury', 'Vila Rica', 'Vila Santa Cecília', 'Voldac'];
 const problemas = ['Buraco', 'Lixo', 'Luz'];
 
 
@@ -52,7 +52,8 @@ const VerDenuncia = () => {
       <div className='filtrar'>
       <h2 className='h2filtro'>Filtro de denúncias</h2>
       <label className='labelFiltro' htmlFor="Filtro"> Bairro: </label>
-      <select>
+      <select className='slctFiltro'>
+      <option disabled selected>Selecione um bairro</option>
 {bairros.map((bairro, index) => (
   <option key={index} value={bairro}>
     {bairro}
@@ -62,14 +63,14 @@ const VerDenuncia = () => {
  <br></br><br></br>
 
   <label className='labelFiltro' htmlFor="Filtro"> Problema específico: </label>
-  <select>
+  <select className='slctFiltro'>
 {problemas.map((problema, index) => (
   <option key={index} value={problema}>
     {problema}
   </option>
 ))}
 </select>
-
+  
 
 
 
@@ -78,6 +79,13 @@ const VerDenuncia = () => {
   <button className='btnFiltrar'>Filtrar</button>
   </div>
     </div>
+    <h2 className='organizar'>Organizar por:</h2>
+    <select className='slct1'>
+      <option>Mais populares</option>
+      <option>Mais recentes</option>
+    </select>
+ 
+ 
  </body>
 
  <footer className="container">
