@@ -574,7 +574,16 @@ cursor: pointer;
 
 /*----------------------------------ROTA DENUNCIE AQUI----------------------------*/
 .labelForm{
-  font-size: 2.1vh;
+  font-size: 2.3vh;
+  width: 70vh;
+  height: 4vh;
+  
+}
+
+.labelForm:hover{
+  font-size: 2.48vh;
+  color: #9E9D9D;
+  transition: 0.1s;
 }
 
 .btnForm{
@@ -597,6 +606,16 @@ cursor: pointer;
   color: red; /*sapoha so ta indo no texto */
 }
 
+.inpForm {
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.inpForm:hover{
+  transition: 0.2s;
+  background-color: #52C7A6;
+  color: white;
+}
 
 
 .centralizafdp{
