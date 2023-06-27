@@ -541,9 +541,37 @@ select{
 
 /*----------------------------------ROTA DENUNCIE AQUI----------------------------*/
 .labelForm{
-  font-size: 2vh;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.1vh;
 }
+
+.btnForm{
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 7vh;
+  height: 3vh;
+}
+
+.btnForm:hover{
+  transition: 0.1s;
+  border: 1px solid white;
+  color: white;
+  background-color: #52C7A6;
+  width: 9vh;
+  height: 4vh;
+  cursor: pointer;
+}
+.btnImg{
+  color: red; /*sapoha so ta indo no texto */
+}
+
+.inpForm {
+
+}
+
+.inpForm{
+  
+}
+
 
 .centralizafdp{
   display: flex;
@@ -556,10 +584,10 @@ select{
   background-color: #338BB0;
   border-radius: 7px;
   color: white;
-  justify-content: center;
+  justify-content: center;  
   height: 5vh;
 
-}
+} 
 
 
 .h1Denuncie{ /* outra rota!!! cuidado com o ctrl f ai parcero */

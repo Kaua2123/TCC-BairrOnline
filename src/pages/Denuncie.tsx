@@ -63,12 +63,12 @@ const Denuncie = () => {
           
         <br />  
         <label className='labelForm' htmlFor="titulo"> Título da Denúncia </label>
-        <input type='text' name='titulo' maxLength={50} required/> 
+        <input type='text' className='inpForm' name='titulo' maxLength={50} required/> 
         <label className='labelForm' htmlFor="descDen"> Digite aqui o que está lhe incomodando em seu bairro </label>
-        <textarea required/>
+        <textarea required className='inpForm'/>
         <label className='labelForm' htmlFor='imgDen'>Enviar imagem</label>
 
-        <input type="file" name='image' onChange={e => { const file = e.target.files?.[0] || null; setImg(file); }}/>  
+        <input type="file" className='btnImg' name='image' onChange={e => { const file = e.target.files?.[0] || null; setImg(file); }}/>  
         <br></br>
         <br></br>
 
