@@ -4,6 +4,11 @@ import instagram from '../img/instagram.png';
 import twitter from '../img/twitter.png'
 import Logo from '../img/logo.svg';
 
+const bairros = ['Aterrado', 'Vila', 'Amaral Peixoto'];
+const problemas = ['Buraco', 'Lixo', 'Luz'];
+
+
+
 const VerDenuncia = () => {
     return (
         <div>
@@ -23,9 +28,9 @@ const VerDenuncia = () => {
 
           <li> <Link to="/Denuncie"> Denuncie aqui </Link> </li>
 
-          <li>  <Link to="/VerDenuncia"> Ver Denúncias  </Link></li>
+          <li>  <Link to="/VerDenuncia"> Acompanhar denúncias  </Link></li>
 
-          <li>  <Link to="/MinhasDen"> Minhas Denúncias  </Link></li>
+          <li>  <Link to="/MinhasDen"> Minhas denúncias  </Link></li>
 
         </ul>
         
@@ -41,7 +46,38 @@ const VerDenuncia = () => {
 
  </header>
  <body>
-    <article className='articleProvisorio'> <h1 className='textoProvisorio'> Ver denuncias </h1></article>
+      <div className='acompanhar'>
+    <h1 className='h1acompanhar'> Veja aqui as denúncias já enviadas </h1>
+      </div>
+      <div className='filtrar'>
+      <h2 className='h2filtro'>Filtro de denúncias</h2>
+      <label className='labelFiltro' htmlFor="Filtro"> Bairro: </label>
+      <select>
+{bairros.map((bairro, index) => (
+  <option key={index} value={bairro}>
+    {bairro}
+  </option>
+))}
+</select>
+ <br></br><br></br>
+
+  <label className='labelFiltro' htmlFor="Filtro"> Problema específico: </label>
+  <select>
+{problemas.map((problema, index) => (
+  <option key={index} value={problema}>
+    {problema}
+  </option>
+))}
+</select>
+
+
+
+
+
+<div>
+  <button className='btnFiltrar'>Filtrar</button>
+  </div>
+    </div>
  </body>
 
  <footer className="container">

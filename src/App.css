@@ -434,6 +434,76 @@ cursor: pointer;
 .inpFiltro::placeholder{
   color: white;
 }
+.acompanhar{
+  display: flex;
+  justify-content: center;
+ 
+}
+.h1acompanhar{
+  text-align: center;
+  color: white;
+  width: 60vh;
+  height: 5vh;
+  border-radius: 10px;
+  margin: 200px;
+  background-color: #338BB0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15vh;
+}
+.filtrar{
+  color: black;
+  width: 100vh;
+  height: 40vh;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: white;
+  position: relative;
+  top: -15vh;
+  margin: 0 auto;
+  
+}
+
+.btnFiltrar{
+  position: relative;
+  border-radius: 10px;
+  font-size: 2.5vh;
+  width: 15vh;
+  height: 5vh;
+  top: 18vh;
+  left: 42vh;
+  text-align: center;
+  border: solid 1px black;
+}
+
+.btnFiltrar:hover {
+  color: #ffffff;
+  background-color: #52C7A6;
+  transition: 0.2s;
+  width: 20vh;
+  height: 6vh;
+  left: 40vh;
+  font-size: 3vh;
+  cursor: pointer;
+} 
+
+.h2filtro{
+  text-align: center;
+}
+
+.labelFiltro{
+  font-size: 2vh;
+  position: relative;
+  left: 1vh;
+
+}
+select{
+  font-size: 1.5vh;
+  position: relative;
+  left: 1vh;
+}
+
 
 /*----------------------------------FOOTER FIM--------------------------*/
 
