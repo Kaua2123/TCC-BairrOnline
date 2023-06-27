@@ -72,6 +72,7 @@ const Home = () => {
  <h1 className="h1Org">Instituições Responsáveis</h1>
  <h2 className="subtituloOrg"> Veja aqui as instituições/órgãos públicos que mais resolveram problemas</h2>
 </div>
+<input className="inpOrg" type="search" placeholder='Pesquise por instituições/orgãos publicos aqui'></input>
  </article>
 
 

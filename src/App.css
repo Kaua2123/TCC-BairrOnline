@@ -427,15 +427,35 @@ cursor: pointer;
 .inpFiltro{
   justify-content: center;
   align-items: center;
-  width: 450px;
+  width: 80vh;
   height: 30px;
   font-size: 2.5vh; 
   text-align: center;
-  border-radius: 20px;
+  border-radius: 10px;
+  border: 2px solid #ffffff;
   background-color: #52C7A6;
   color: white;
 
 }
+
+.inpOrg{
+  justify-content: center;
+  align-items: center;
+  width: 76vh;
+  height: 30px;
+  font-size: 2.5vh; 
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #ffffff;
+  background-color: #52C7A6;
+  color: white;
+
+}
+
+.inpOrg::placeholder{
+  color: #ffffff;
+}
+
 .inpFiltro::placeholder{
   color: white;
 }
@@ -457,6 +477,12 @@ cursor: pointer;
   justify-content: center;
   margin-top: 15vh;
 }
+
+.h1acompanhar:hover{
+  color: #c5c9d1;
+  transition: 0.2s;
+}
+
 .filtrar{
   color: black;
   width: 100vh;
@@ -543,7 +569,7 @@ select{
 
 .h1Denuncie:hover{
   color: #c5c9d1;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .cadastroDen{
