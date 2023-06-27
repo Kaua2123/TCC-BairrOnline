@@ -280,8 +280,13 @@ label{
   width: 70vh;
 }
 
-.tituloDenuncia{
-  font-size: 24px;
+.tituloden{
+  background-color: #338BB0;
+  color: #ffffff;
+  width: 25vh;
+  height: 3vh;
+  border-radius: 6px;
+  text-align: center;
 }
 
 .subtituloDenuncia{
@@ -513,15 +518,27 @@ select{
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.centralizafdp{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bordinhaDen{
+  margin-top: 15vh;
+  background-color: #338BB0;
+  border-radius: 7px;
+  color: white;
+  justify-content: center;
+  height: 5vh;
+
+}
+
+
 .h1Denuncie{ /* outra rota!!! cuidado com o ctrl f ai parcero */
-  margin-top: 17vh;
-  color: #ffffff;
-  width: 50vh;
-  height: 6vh;
-  border: 2px outset #ffffff;
-  border-radius: 16px;
-  background-color: #338BB0;  
+  color: #ffffff; 
   text-align: center;
+  justify-content: center;
 }
 
 .h1Denuncie:hover{
@@ -531,4 +548,19 @@ select{
 
 .cadastroDen{
   background-color: #ffffff;
+  width: 130vh;
+  height: 45vh;
+  margin: 0 auto;
+  margin-top: 5vh;
+  border: 1px solid black;
+  border-radius: 10px;  
+}
+
+.cadastroDen img {
+  width: 10vh;
+  height: 10vh;
+}
+
+.btnForm {
+  font-size: 1.5vh;
 }

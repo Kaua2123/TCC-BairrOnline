@@ -51,8 +51,12 @@ const Denuncie = () => {
       </nav>
  </header>
  <body>
-
+      <div className='centralizafdp'> 
+      <div className='bordinhaDen'>
+  
       <h1 className='h1Denuncie'> Realize sua denúncia </h1>
+      </div>
+      </div>
     <div className='cadastroDen'>
       <form method='post' action='' onSubmit={uploadImg}>
 
