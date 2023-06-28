@@ -267,11 +267,14 @@ label{
   margin-top: 1vh;
 }
 
-.btnDenuncia:hover {
-  color: #000000;
-  background-color: #9E9D9D;
-  transition: 0.4s;
-} 
+.btnDenuncia:hover{
+  width: 16vh;
+  height: 4vh;
+  transition: 0.1s;
+  background-color: #52C7A6;
+  color: white;
+  border: none;
+}
 
 .h1Den{
   background-color: #338BB0;
@@ -356,7 +359,7 @@ label{
   left: 22.9vh;
 }
 .inpComentario{
-  background-color: #9E9D9D;
+  background-color: #ffffff;
   border: transparent;
   width: 15vh;
   position: relative;
@@ -365,10 +368,10 @@ label{
   top: -20vh;
   left: 23.5vh;
   border-radius: 10px;
-  color: white;
+  color: #9E9D9D;
 }
 .inpComentario::placeholder{
-  color: white;
+  color: #9E9D9D;
 }
 /*-------------------------------------CORPO FIM------------------------------*/
 
@@ -664,4 +667,83 @@ cursor: pointer;
 
 .btnForm {
   font-size: 1.5vh;
+}
+
+
+.bodi{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #C3D5DD;
+ 
+}
+.log1{
+  background:#23232e;
+
+  border-radius: 10px;
+  width: 400px;
+  padding: 40px;
+}
+.log1 h2{
+  margin-bottom: 30px;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+}
+.log1 .box-user{
+  position: relative;
+}
+.log1 .box-user input{
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+  border: 0;
+  background: transparent;
+  border-bottom: 1px solid #338BB0;
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+.log1 .box-user label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  color: #2f00ff;
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+}
+.log1 .box-user input:valid~label
+{
+  top: -20px;
+  left: 0;
+  color: whitesmoke;
+  font-size: 12px;
+}
+.for1{
+  font-size: 12px;
+  color: #52C7A6;
+  float: right;
+}
+.butao1{
+  position: relative;
+  display: inline-block;
+  padding: 12px 20px;
+  color: white;
+  background: rgb(26, 25, 25);
+  text-decoration: none;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 700;
+  margin-top: 20px;
+  transition: .5s;
+  overflow: hidden;
+}
+.butao1:hover{
+  background: #338BB0;
+  border-radius: 5px;
+  color: #172031;
 }
