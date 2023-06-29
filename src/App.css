@@ -702,7 +702,7 @@ cursor: pointer;
   padding: 10vh;
 }
 .log1 h2{
-  margin-bottom: 30px;
+  margin-bottom: 10vh;
   font-size: 5vh;
   color: #000000;
   text-align: center;
@@ -731,6 +731,7 @@ cursor: pointer;
   pointer-events: none;
   transition: .5s;
 }
+.log1 .box-user input:focus~label,
 .log1 .box-user input:valid~label
 {
   top: -20px;
@@ -754,7 +755,7 @@ cursor: pointer;
   border: 1px solid black;
   background: rgb(255, 255, 255);
   text-decoration: none;
-  font-size: 2vh;
+  font-size: 1,5vh;
   text-transform: uppercase;
   letter-spacing: 4px;
   margin-top: 5vh;
