@@ -63,7 +63,7 @@ const Denuncie = () => {
           
         <br />  
         <label className='labelForm' htmlFor="titulo"> Título da Denúncia </label>
-        <input type='text' className='inpForm' name='titulo' maxLength={50} required/> 
+        <input type='text' className='inpForm' name='titulo' maxLength={50} required/>  
         <label className='labelForm' htmlFor="descDen"> Digite aqui o que está lhe incomodando em seu bairro </label>
         <textarea required className='inpForm'/>
         <label className='labelForm' htmlFor='imgDen'>Enviar imagem</label>
@@ -72,7 +72,7 @@ const Denuncie = () => {
         <br></br>
         <br></br>
 
-        {img ? <img src={URL.createObjectURL(img)} alt='img' width={150} height={150}></img> : <img src={Camera} alt='img' width={150} height={150}/>} 
+        {img ? <img src={URL.createObjectURL(img)} alt='img' width={150} height={150} color='green'></img> : <img src={Camera} alt='img' width={150} height={150}/>} 
 
         <input className='btnForm' type='submit'/>
         <input className='btnForm' type='reset' value="Limpar"/>

@@ -262,9 +262,11 @@ label{
 }
 .btnDenuncia{
   border-radius: 5px;
+  border: 1px solid black;
   width: 15vh;
   height: 2.5vh;
   margin-top: 1vh;
+  font-size: 2vh;
 }
 
 .btnDenuncia:hover{
@@ -274,6 +276,7 @@ label{
   background-color: #52C7A6;
   color: white;
   border: none;
+  cursor: pointer;
 }
 
 .h1Den{
@@ -361,17 +364,27 @@ label{
 .inpComentario{
   background-color: #ffffff;
   border: transparent;
-  width: 15vh;
+
   position: relative;
   width: 40vh;
   height: 2vh;
   top: -20vh;
   left: 23.5vh;
-  border-radius: 10px;
+  border-radius: 5px;
   color: #9E9D9D;
 }
+
+.inpComentario:hover{ 
+  transition: 0.1s;
+  width: 40.46vh;
+  height: 2.46vh;
+}
+
+
 .inpComentario::placeholder{
   color: #9E9D9D;
+  font-size: 1.6vh;
+
 }
 /*-------------------------------------CORPO FIM------------------------------*/
 
@@ -583,11 +596,6 @@ cursor: pointer;
   
 }
 
-.labelForm:hover{
-  font-size: 2.48vh;
-  color: #9E9D9D;
-  transition: 0.1s;
-}
 
 .btnForm{
   border-radius: 5px;
@@ -605,19 +613,23 @@ cursor: pointer;
   height: 4vh;
   cursor: pointer;
 }
+
 .btnImg{
   color: red; /*sapoha so ta indo no texto */
 }
 
+
 .inpForm {
   border: 1px solid black;
   border-radius: 3px;
+  width: 20vh;
+  height: 2.5vh;
 }
 
 .inpForm:hover{
-  transition: 0.2s;
-  background-color: #52C7A6;
-  color: white;
+  transition: 0.1s;
+  width: 20.4vh;
+  height: 2.8vh;
 }
 
 
@@ -625,6 +637,7 @@ cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .bordinhaDen{
@@ -670,6 +683,9 @@ cursor: pointer;
 }
 
 
+
+
+/*--------------------------------------------------------ROTA LOGIN-------------------------------------------*/
 .bodi{
   display: flex;
   align-items: center;
@@ -679,16 +695,16 @@ cursor: pointer;
  
 }
 .log1{
-  background:#23232e;
-
+  background:#ffffff;
+  color: black;
   border-radius: 10px;
-  width: 400px;
-  padding: 40px;
+  width: 65vh;
+  padding: 10vh;
 }
 .log1 h2{
   margin-bottom: 30px;
-  font-size: 30px;
-  color: #fff;
+  font-size: 5vh;
+  color: #000000;
   text-align: center;
 }
 .log1 .box-user{
@@ -700,8 +716,8 @@ cursor: pointer;
   outline: none;
   border: 0;
   background: transparent;
-  border-bottom: 1px solid #338BB0;
-  color: #ffffff;
+  border-bottom: 1px solid #000000;
+  color: #000000;
   font-size: 16px;
   margin-bottom: 30px;
 }
@@ -719,31 +735,57 @@ cursor: pointer;
 {
   top: -20px;
   left: 0;
-  color: whitesmoke;
+  color: rgb(0, 0, 0);
   font-size: 12px;
 }
+
 .for1{
-  font-size: 12px;
-  color: #52C7A6;
+  font-size: 2vh;
   float: right;
 }
 .butao1{
-  position: relative;
+  padding: 1.5vh;
+  text-align: center;
   display: inline-block;
-  padding: 12px 20px;
-  color: white;
-  background: rgb(26, 25, 25);
+  width: 15vh;
+  height: 6vh;
+  border-radius: 5px;
+  color: black;
+  border: 1px solid black;
+  background: rgb(255, 255, 255);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 2vh;
   text-transform: uppercase;
   letter-spacing: 4px;
-  font-weight: 700;
-  margin-top: 20px;
-  transition: .5s;
+  margin-top: 5vh;
   overflow: hidden;
+
 }
+
 .butao1:hover{
-  background: #338BB0;
+  background: #52C7A6;
   border-radius: 5px;
-  color: #172031;
+  color: #ffffff;
+  width: 16.7vh;
+  height: 7vh;
+  transition: 0.18s;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  
+}
+
+.linkCadastro{
+  color: black;
+  float: right;
+  transition: 0.1s;
+  font-size: 2.5vh;
+}
+
+.linkCadastro:hover{
+  color: #338BB0;
+  font-size: 2.65vh;
+
 }
