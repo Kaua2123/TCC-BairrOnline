@@ -458,6 +458,12 @@ cursor: pointer;
   margin-top: 1.5vh;
 }
 
+.inpFiltro:hover{
+  transition: 0.1s;
+  height: 4.3vh;
+  width: 75.7vh;
+}
+
 .inpOrg{
   justify-content: center;
   align-items: center;
@@ -470,6 +476,12 @@ cursor: pointer;
   background-color: #52C7A6;
   color: white;
 
+}
+
+.inpOrg:hover{
+  transition: 0.1s;
+  height: 4.3vh;
+  width: 75.7vh;
 }
 
 .inpOrg::placeholder{
@@ -778,6 +790,37 @@ cursor: pointer;
   display: flex;
   cursor: pointer;
   
+}
+
+.butao2{
+  padding: 1.5vh;
+  text-align: center;
+  display: inline-block;
+  width: 15vh;
+  height: 6vh;
+  border-radius: 5px;
+  color: black;
+  border: 1px solid black;
+  background: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 2vh;
+  text-transform: uppercase;
+  margin-top: 5vh;
+  overflow: hidden;
+}
+
+.butao2:hover{
+  background: #52C7A6;
+  border-radius: 5px;
+  color: #ffffff;
+  width: 16.7vh;
+  height: 7vh;
+  transition: 0.18s;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
 }
 
 .linkCadastro{

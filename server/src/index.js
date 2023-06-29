@@ -10,18 +10,25 @@ const bancoTeste = mysql.createPool({
 })
 
 
-
+/*
 app.get('/', (req, res) => { // teste se está inserindo dados nas tabelas
-    let SQL = "INSERT INTO usuario (usu_nome) VALUES ( 'usuarioTeste' )";
-
+    let SQL = "INSERT INTO usuario (usu_nome) VALUES ('usuarioTeste2')";
+    res.send('Resposta do servidor');
     
     bancoTeste.query(SQL, (err, result) => {
         console.log(err);   
     })    
 }) 
+*/
+
+app.get("/", (req, res) => {
+    res.send("Resposta do servidor")
+})
 
 //req tudo que entrará
 //res tudo que sai, resultado
+
+app.use(express.json());
 
 app.listen(3001, () => {
     console.log("servidor online");
