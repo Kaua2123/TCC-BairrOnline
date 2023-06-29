@@ -1,11 +1,16 @@
 import '../App.css';
 import img2 from "../img/aguaEstancada.png";
-import Instagram from "../img/instagram.png";
+import instagram from "../img/instagram.png";
 import twitter from "../img/twitter.png";
 import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
+import Comentarios from './Comentarios';
+import { useState } from 'react';
 
 const Home = () => {
+
+  const [openCom, setOpenCom] = useState(false);
+
  return (
     <div className="omoço">
 
@@ -26,7 +31,7 @@ const Home = () => {
 
           <li> <Link to="/Denuncie"> Denuncie aqui </Link> </li>
 
-          <li>  <Link to="/VerDenuncia"> Acompanhar denúncias  </Link></li>
+          <li>  <Link to="/VerDenuncia"> Ver Denúncias  </Link></li>
 
           <li>  <Link to="/MinhasDen"> Minhas Denúncias  </Link></li>
           
@@ -56,12 +61,11 @@ const Home = () => {
 
          <h2 className='tituloden'>El agua estas estancada</h2>
          <h2 className='descricaoden'>Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h2>
-        <div className='comentario'>
-          Comentários ()
-        </div>
-        <div className='comentarios'>Bla bla bla bla bla bla bla</div>
-        <input className="inpComentario" type="text" placeholder='Participe da discussão...'></input>
+        <button onClick={() => {setOpenCom(true)}} className='btnOpen'>Abrir comentários</button>
+        <Comentarios isOpen={openCom} setCloseCom = {() => {setOpenCom(!openCom)}}>
+        </Comentarios>
     </article>
+
   <div className="divArticles">
   <article className="artiFiltro">
     <input className="inpFiltro" type="search" placeholder='Pesquise por bairros e denúncias aqui...'></input>
@@ -115,7 +119,7 @@ const Home = () => {
             <div className="item4">
               <ul>
 
-              <li><a className='InstaLogo' href='https://www.instagram.com/BairrOnline'>  <img className="imgInsta" src={Instagram} alt="LogoInsta"  /></a></li>     
+                <li> <img src={instagram} alt='Instagram' title="socialMedia"></img> </li>    
                 <li> <img src={twitter} alt='Twitter' title="socialMedia"></img></li>
 
               </ul>
