@@ -2,12 +2,6 @@ const express = require("express"); //chamando o modulo express
 const app = express(); //executando express
 const mysql = require("mysql"); 
 
-const bancoTeste = mysql.createPool({
-    host: "localhost", 
-    user: "root",
-    password: "",
-    database: "bairronline",
-})
 
 
 /*
