@@ -1,8 +1,20 @@
 const express = require("express"); //chamando o modulo express
-const app = express(); //executando express
-const mysql = require("mysql"); 
+const routes = require('../routes');
+//const mysql = require("mysql"); 
 
 
+const app = express();
+app.use(express.json());
+app.use(routes);
+
+app.listen(3001, () => {
+    console.log("servidor online");
+});
+
+//app.get GET - puxar valores, requisições
+// app.post POST - enviar, fazer solicitações
+//app.delete DELETE - deletar
+//app.put PUT - editar 
 
 /*
 app.get('/', (req, res) => { // teste se está inserindo dados nas tabelas
@@ -14,21 +26,3 @@ app.get('/', (req, res) => { // teste se está inserindo dados nas tabelas
     })    
 }) 
 */
-
-app.get("/", (req, res) => {
-    res.send("Resposta do servidor")
-})
-
-//req tudo que entrará
-//res tudo que sai, resultado
-
-app.use(express.json());
-
-app.listen(3001, () => {
-    console.log("servidor online");
-});
-
-//app.get GET - puxar valores, requisições
-// app.post POST - enviar, fazer solicitações
-//app.delete DELETE - deletar
-//app.put PUT - editar 

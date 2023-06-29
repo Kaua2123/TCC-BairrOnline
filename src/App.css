@@ -897,6 +897,7 @@ cursor: pointer;
 }
 
 .btnOpen:hover{
+  border: none;
   color: #ffffff;
   background-color: #52C7A6;
   transition: 0.1s;

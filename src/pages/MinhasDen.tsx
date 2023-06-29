@@ -25,7 +25,7 @@ const MinhasDen = () => {
 
             <li>  <Link to="/VerDenuncia"> Acompanhar denúncias   </Link></li>
 
-            <li>  <Link to="/MinhasDen"> Minhas Denúncias  </Link></li>
+            <li>  <Link to="/MinhasDen"> Minhas denúncias  </Link></li>
 
             </ul>
 
