@@ -41,7 +41,7 @@ nav:not(#logcad) {
     justify-content: baseline;
     align-items: center;
     font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
-    background: #23232e;
+    background: #252525;
     width: 100%;
     height: 10vh;
     z-index: 2;
@@ -171,7 +171,6 @@ main {
   min-height: 20vh;
   padding: 20px;
 }
-
 /*----------------------------------MENU HEADER FIM----------------------------*/
 
 /*---------------------------------CORPO COMEÇO-------------------------------*/
@@ -394,13 +393,13 @@ label{
 .container{
   display: flex; 
   width: 100%;
-  background-color: black;
+  background-color: #252525;
   color: aliceblue;
   font-size: 2.1vh;
   
 }
 
-ul:not(.nav-list){
+.container ul{
   list-style: none;
   padding: 50px;
 }
@@ -681,7 +680,7 @@ cursor: pointer;
 .cadastroDen{
   background-color: #ffffff;
   width: 130vh;
-  height: 45vh;
+  height: 63vh;
   margin: 0 auto;
   margin-top: 5vh;
   border: 1px solid black;
@@ -697,6 +696,17 @@ cursor: pointer;
   font-size: 1.5vh;
 }
 
+.slctDenuncia {
+  margin-top: 1vh;
+  width: 24vh;
+  height: 3vh;
+}
+
+.slctDenuncia:hover {
+  width: 24.4vh;
+  height: 3.4vh;
+  transition: 0.1s;
+}
 
 
 
@@ -717,7 +727,7 @@ cursor: pointer;
   padding: 10vh;
 }
 .log1 h2{
-  margin-bottom: 30px;
+  margin-bottom: 12vh;
   font-size: 5vh;
   color: #000000;
   text-align: center;
@@ -741,17 +751,15 @@ cursor: pointer;
   top: 0;
   left: 0;
   padding: 10px 0;
-  color: #2f00ff;
-  font-size: 16px;
-  pointer-events: none;
-  transition: .5s;
+  font-size: 30px;
 }
+
 .log1 .box-user input:valid~label
 {
   top: -20px;
   left: 0;
   color: rgb(0, 0, 0);
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .for1{
@@ -762,19 +770,17 @@ cursor: pointer;
   padding: 1.5vh;
   text-align: center;
   display: inline-block;
-  width: 15vh;
-  height: 6vh;
+  width: 13vh;
+  height: 5vh;
   border-radius: 5px;
   color: black;
   border: 1px solid black;
   background: rgb(255, 255, 255);
   text-decoration: none;
   font-size: 2vh;
-  text-transform: uppercase;
   letter-spacing: 4px;
   margin-top: 5vh;
-  overflow: hidden;
-
+  
 }
 
 .butao1:hover{
@@ -906,4 +912,16 @@ cursor: pointer;
   left: 22.5vh;
   font-size: 1.7vh;
   cursor: pointer;
+}
+/* ROTA ADM*/
+
+
+.listaADM{
+  display: flex;
+  flex-direction: row;
+  
+  }
+.listaADM li {
+  cursor:pointer;
+  list-style: none;
 }

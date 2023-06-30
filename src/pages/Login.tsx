@@ -9,7 +9,7 @@ const Login = () => {
         <h2>Login</h2>
         <div className='box-user'>
             <input className='usuario1' type="text"></input>
-            <label>Usuário ou Email:</label>
+            <label className='labe2'>Usuário ou Email:</label>
         </div>
         <div className='box-user'>
             <input className='usus1' type="password"></input>

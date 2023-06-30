@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import './App.css'
 
 import Home from './pages/Home.tsx'
-
+import HomeADM from './pages/HomeAdm.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './pages/Login.tsx'
 import Denuncie from './pages/Denuncie.tsx'
@@ -43,6 +43,11 @@ const router = createBrowserRouter([
     path: "/MinhasDen",
     element: <MinhasDen/>,
   },
+
+  {
+    path:"/homeADM",
+    element: <HomeADM/>
+  }
 ]);
 
 

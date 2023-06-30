@@ -4,9 +4,9 @@ import Instagram from '../img/instagram.svg';
 import twitter from '../img/twitter.png'
 import Logo from "../img/logo.svg";
 import Camera from "../img/camera.png";
-import {useState} from "react";
+import { useState } from "react";
 
-
+const bairros = ['Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte', 'Brasilândia', 'Caieira', 'Casa de Pedra', 'Conforto', 'Coqueiros', 'Cruzeiro', 'Dom Bosco', 'Eucaliptal', 'Jardim Amália', 'Jardim Belvedere', 'Jardim Cidade do Aço', 'Jardim Cordoeira', 'Jardim Europa', 'Jardim Normândia', 'Jardim Ponte Alta', 'Jardim Primavera', 'Jardim Vila Rica', 'Laranjal', 'Monte Castelo', 'Niterói', 'Nova Primavera', 'Parque das Garças', 'Ponte Alta', 'Ponte Alta de Baixo', 'Retiro', 'Roma', 'Santa Cruz', 'Santa Inês', 'Santa Rita do Zarur', 'Santo Agostinho', 'São Cristóvão', 'São Geraldo', 'São João', 'São Luiz', 'Sessenta', 'Siderópolis', 'Três Poços', 'Vila Americana', 'Vila Mury', 'Vila Rica', 'Vila Santa Cecília', 'Voldac'];
 
 
 const Denuncie = () => {
@@ -58,14 +58,26 @@ const Denuncie = () => {
       </div>
       </div>
     <div className='cadastroDen'>
+      
       <form method='post' action='' onSubmit={uploadImg}>
 
           
         <br />  
-        <label className='labelForm' htmlFor="titulo"> Título da Denúncia </label>
+        <label className='labelForm' htmlFor="titulo"> Título da denúncia </label>
         <input type='text' className='inpForm' name='titulo' maxLength={50} required/>  
         <label className='labelForm' htmlFor="descDen"> Digite aqui o que está lhe incomodando em seu bairro </label>
         <textarea required className='inpForm'/>
+        <br />
+        Selecione o bairro que deseja denunciar
+        <br />
+        <select className='slctDenuncia'>
+      <option disabled selected>Selecione um bairro</option>
+       {bairros.map((bairro, index) => (
+      <option key={index} value={bairro}>
+       {bairro}
+      </option>
+    ))}
+</select>
         <label className='labelForm' htmlFor='imgDen'>Enviar imagem</label>
 
         <input type="file" className='btnImg' name='image' onChange={e => { const file = e.target.files?.[0] || null; setImg(file); }}/>  
