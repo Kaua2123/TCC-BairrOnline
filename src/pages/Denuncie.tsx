@@ -62,14 +62,13 @@ const Denuncie = () => {
       <form method='post' action='' onSubmit={uploadImg}>
 
           
-        <br />  
-        <label className='labelForm' htmlFor="titulo"> Título da denúncia </label>
+ 
+        <label className='labelForm' htmlFor="titulo"> <h3> Título da denúncia: </h3> </label>
         <input type='text' className='inpForm' name='titulo' maxLength={50} required/>  
-        <label className='labelForm' htmlFor="descDen"> Digite aqui o que está lhe incomodando em seu bairro </label>
+        <label className='labelForm' htmlFor="descDen"> <h3> Digite aqui o que está lhe incomodando em seu bairro: </h3> </label>
         <textarea required className='inpForm'/>
-        <br />
-        Selecione o bairro que deseja denunciar
-        <br />
+ 
+       <label className='labelForm' htmlFor="selectBairro"> <h3> Selecione o bairro que deseja denunciar: </h3> </label>
         <select className='slctDenuncia'>
       <option disabled selected>Selecione um bairro</option>
        {bairros.map((bairro, index) => (
@@ -78,14 +77,12 @@ const Denuncie = () => {
       </option>
     ))}
 </select>
-        <label className='labelForm' htmlFor='imgDen'>Enviar imagem</label>
-
+        
+        <label className='labelForm' htmlFor='imgDen'><h3> Enviar imagem </h3></label>
         <input type="file" className='btnImg' name='image' onChange={e => { const file = e.target.files?.[0] || null; setImg(file); }}/>  
-        <br></br>
-        <br></br>
-
+        <br />
         {img ? <img src={URL.createObjectURL(img)} alt='img' width={150} height={150} color='green'></img> : <img src={Camera} alt='img' width={150} height={150}/>} 
-
+        <br />
         <input className='btnForm' type='submit'/>
         <input className='btnForm' type='reset' value="Limpar"/>
         </form>

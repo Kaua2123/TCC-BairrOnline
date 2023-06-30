@@ -14,7 +14,8 @@ const controllersUsu = require('./src/controllers/usuario/index');
 const routes = express.Router();
 
 routes.get("/", controllersUsu.raiz);   
+routes.post("/teste", controllersUsu.testeCriarUsuario);
 
-
+ 
 
 module.exports = routes;

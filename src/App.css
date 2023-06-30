@@ -606,8 +606,10 @@ cursor: pointer;
 .labelForm{
   font-size: 2.3vh;
   width: 70vh;
-  height: 4vh;
-  
+  height: 4vh; 
+  margin-top: 1.5vh;
+  position: relative;
+  right: -0.7vh;
 }
 
 
@@ -616,7 +618,10 @@ cursor: pointer;
   border: 1px solid black;
   width: 7vh;
   height: 3vh;
-}
+  margin-left: 1vh;
+  position: relative;
+  background-color: white;
+} 
 
 .btnForm:hover{
   transition: 0.1s;
@@ -638,6 +643,8 @@ cursor: pointer;
   border-radius: 3px;
   width: 20vh;
   height: 2.5vh;
+  position: relative;
+  right: -0.5vh;
 }
 
 .inpForm:hover{
@@ -661,6 +668,7 @@ cursor: pointer;
   color: white;
   justify-content: center;  
   height: 5vh;
+  width: 65vh;
 
 } 
 
@@ -692,14 +700,45 @@ cursor: pointer;
   height: 10vh;
 }
 
+.cadastroDen .inpForm {
+  background: transparent;
+  outline: none;
+  margin-bottom: 1.1vh;
+  border: 0px;
+  border-bottom: 1px solid black;
+  font-size: 1.9vh;
+}
+
+.cadastroDen h3{
+  font-size: 2.5vh;
+  font-weight: normal;
+}
+
+
+/*
+.log1 .box-user input{
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+  border: 0;
+  background: transparent;
+  border-bottom: 1px solid #000000;
+  color: #000000;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+*/
+
 .btnForm {
   font-size: 1.5vh;
 }
 
 .slctDenuncia {
-  margin-top: 1vh;
+
   width: 24vh;
   height: 3vh;
+  position: relative;
+  right: -0.5vh;
 }
 
 .slctDenuncia:hover {
@@ -866,7 +905,7 @@ cursor: pointer;
 
 .ComH1 {
   position:relative;
-  align: center;
+  align-items: center;
   font-size: 5vh;
   bottom: 40vh;
 }

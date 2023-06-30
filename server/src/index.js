@@ -1,4 +1,4 @@
-const express = require("express"); //chamando o modulo express
+const express = require('express');
 const routes = require('../routes');
 //const mysql = require("mysql"); 
 
