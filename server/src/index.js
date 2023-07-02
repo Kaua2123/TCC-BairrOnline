@@ -7,9 +7,32 @@ const app = express();
 app.use(express.json());
 app.use(routes);
 
-app.listen(3001, () => {
+app.listen(3301, () => {
     console.log("servidor online");
 });
+
+
+const knex = require('../src/database/banco');
+const select = knex('usuario').select('*');
+
+
+
+knex.select().from('usuario')
+  .then(data => {
+    if (data.length > 0) {
+      console.log(data);
+    } else {
+      console.log('Nenhum registro encontrado.');
+    }
+  })
+  .catch(e => {
+    console.log(e);
+  })
+  .finally(() => {
+    knex.destroy();
+  });
+
+console.log(select.toString());
 
 //app.get GET - puxar valores, requisições
 // app.post POST - enviar, fazer solicitações
