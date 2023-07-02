@@ -25,7 +25,7 @@ a {
 
 a:hover {
   opacity: 0.7;
-  color: #338BB0;
+  fill: #338BB0;
 }
 
 .logo {
@@ -517,51 +517,70 @@ cursor: pointer;
 
 .filtrar{
   color: black;
-  width: 100vh;
-  height: 40vh;
+  width: 145vh;
+  height: 8vh;
   border-radius: 10px;
   border: 1px solid black;
   background-color: white;
   position: relative;
   top: -15vh;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
   
+}
+
+.filtrar label{
+  background-color: transparent;
+  border: solid 1px black;
+  border-radius: 10px;
+  padding: 6px;
+  font-size: 1.7vh;
+  color: #464646;
+  display: flex;
+  margin-right: 20px;
+}
+
+.filtrar label:hover{
+  background-color: #52C7A6;
+  border: transparent;
+  border-radius: 10px;
+  padding: 6px;
+  font-size: 1.7vh;
+  color: white;
+  transition: 0.1s;
+  opacity: 2;
+  cursor: pointer;
+  
+}
+
+.labelBairro{
+  margin-left: 5vh;
 }
 
 .btnFiltrar{
   border-radius: 1vh;
-  font-size: 2.5vh;
-  width: 15vh;
-  height: 5vh;
-  margin-top: 15vh;
-  margin-left: 42vh;
+  font-size: 1.7vh;
+  width: 10vh;
+  height: 3.5vh;
   text-align: center;
-  border: solid 0.2vh black;
-  display: inline-block;
+  border: solid 1px black;
+  margin-left: 95vh;
+  color: #464646;
+  background-color: transparent;
 }
 
 .btnFiltrar:hover {
   color: #ffffff;
   background-color: #52C7A6;
   transition: 0.2s;
-  width: 20vh;
-  height: 6vh;
-  left: 40vh;
-  font-size: 3vh;
+  border: transparent;
+ 
+  
   cursor: pointer;
 } 
 
-.h2filtro{
-  text-align: center;
-  font-size: 3vh;
-}
 
-.labelFiltro{
-  font-size: 2vh;
-  position: relative;
-  left: 1vh;
-
-}
 .slctFiltro{
   
   font-size: 1.5vh;
@@ -597,9 +616,15 @@ cursor: pointer;
 }
 
 .organizar{
+  margin-top: -8vh;
   margin-left: 3vh;
 }
 
+
+.organizarpor{
+  margin-left: 26vh;
+
+}
 /*----------------------------------FOOTER FIM--------------------------*/
 
 /*----------------------------------ROTA DENUNCIE AQUI----------------------------*/

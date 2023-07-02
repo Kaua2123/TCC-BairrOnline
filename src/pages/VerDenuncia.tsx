@@ -50,41 +50,20 @@ const VerDenuncia = () => {
     <h1 className='h1acompanhar'> Veja aqui as denúncias já enviadas </h1>
       </div>
       <div className='filtrar'>
-      <h2 className='h2filtro'>Filtro de denúncias</h2>
-      <label className='labelFiltro' htmlFor="Filtro"> Bairro: </label>
-      <select className='slctFiltro'>
-      <option disabled selected>Selecione um bairro</option>
-{bairros.map((bairro, index) => (
-  <option key={index} value={bairro}>
-    {bairro}
-  </option>
-))}
-</select>
- <br></br><br></br>
-
-  <label className='labelFiltro' htmlFor="Filtro"> Problema específico: </label>
-  <select className='slctFiltro'>
-{problemas.map((problema, index) => (
-  <option key={index} value={problema}>
-    {problema}
-  </option>
-))}
-</select>
+      <label className='labelBairro' htmlFor="Filtro"> Bairros </label>
+  <label className='labelFiltro' htmlFor="Filtro"> Problemas específicos </label>
+  
+  <button className='btnFiltrar'>Aplicar</button>
   
 
-
-
-
-<div>
-  <button className='btnFiltrar'>Filtrar</button>
-  </div>
     </div>
+    <div className='organizarpor'>
     <h2 className='organizar'>Organizar por:</h2>
     <select className='slct1'>
       <option>Mais populares</option>
       <option>Mais recentes</option>
     </select>
- 
+    </div>
  
  </body>
 
