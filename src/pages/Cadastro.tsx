@@ -17,7 +17,7 @@ const Cadastro = () => {
         <div>
             
         </div>
-    <button className='butao2'>Cadastrar</button>     
+    <button className='butao1'>Cadastrar</button>     
  
         
     </form>

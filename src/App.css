@@ -842,7 +842,6 @@ cursor: pointer;
   background: rgb(255, 255, 255);
   text-decoration: none;
   font-size: 2vh;
-  letter-spacing: 4px;
   margin-top: 5vh;
   
 }
@@ -860,37 +859,6 @@ cursor: pointer;
   display: flex;
   cursor: pointer;
   
-}
-
-.butao2{
-  padding: 1.5vh;
-  text-align: center;
-  display: inline-block;
-  width: 15vh;
-  height: 6vh;
-  border-radius: 5px;
-  color: black;
-  border: 1px solid black;
-  background: rgb(255, 255, 255);
-  text-decoration: none;
-  font-size: 2vh;
-  text-transform: uppercase;
-  margin-top: 5vh;
-  overflow: hidden;
-}
-
-.butao2:hover{
-  background: #52C7A6;
-  border-radius: 5px;
-  color: #ffffff;
-  width: 16.7vh;
-  height: 7vh;
-  transition: 0.18s;
-  border: none;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  cursor: pointer;
 }
 
 .linkCadastro{
@@ -988,4 +956,125 @@ cursor: pointer;
 .listaADM li {
   cursor:pointer;
   list-style: none;
+}
+
+/* Acompanhar denúncias */
+
+.btnTarefa{
+  background-color: white;
+  border: solid 1px black;
+  border-radius: 10px;
+  padding: 6px;
+  font-size: 1.7vh;
+  color: #464646;
+  display: flex;
+
+}
+
+.btnTarefa:hover{
+  background-color: #52C7A6;
+  border: transparent;
+  border-radius: 10px;
+  padding: 6px;
+  font-size: 1.7vh;
+  color: white;
+  transition: 0.1s;
+  cursor: pointer;
+  
+}
+
+.Tarefa{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0 ;
+  right: 0;
+  background: rgb(0, 0, 0, 0.7);
+  z-index: 2;
+
+}
+
+.Tarefa1{
+  
+  margin-top: 50vh;
+  margin-left: 100vh;
+  transform: translate(-50%, -50%);
+  height: 12vh;
+  width: 56vh;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.h1Tarefa {
+  margin-top: 40px;
+  margin-left: 10px;
+  font-size: 2.5vh; 
+  font-style: italic;
+}
+
+.btnSair{
+  background-color: transparent;
+  font-size: 1.9vh;
+  transition: 0.4s;
+  border: solid 1px black;
+  border-radius: 5px;
+  width: 2.5vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  margin-left: 52.8vh;
+  margin-top: -2.6vh;
+}
+
+.btnSair:hover{
+  border: transparent;
+  background-color: #52C7A6;
+  color: white;
+}
+
+.btnSim{
+  background-color: transparent;
+  font-size: 1.9vh;
+  transition: 0.4s;
+  border: solid 1px black;
+  border-radius: 5px;
+  width: 2.5vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  margin-top: 6vh;
+  margin-left: 5vh;
+  width: 20vh;
+  color: black;
+}
+
+.btnSim:hover{
+  
+  background-color: #2eb64d;
+  
+}
+
+.btnNao{
+  background-color: transparent;
+  font-size: 1.9vh;
+  transition: 0.4s;
+  border: solid 1px black;
+  border-radius: 5px;
+  width: 2.5vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  margin-top: -2.5vh;
+  margin-left: 30vh;
+  width: 20vh;
+  color: black;
+}
+
+.btnNao:hover{
+  
+  background-color: #c12626;
+  
 }
