@@ -22,16 +22,10 @@ module.exports = routes;
 
 const axios = require('axios');
 
-const dados = {
-    usu_cod: '4',
-    usu_nome: 'testePOST',
-    usu_email: 'testePOST@gmail.com',
-    usu_senha: 'post123',
-    usu_tel: '2324-9233'
 
-};
 
-axios.post('http://localhost:3344/teste', dados).then((response) => {
+axios.post('http://localhost:3344/teste').then((response) => {
+    console.log(response);
     console.log('REGISTRO ENVIADO ');
 }).catch((error) => {
     console.error(error);

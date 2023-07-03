@@ -25,7 +25,7 @@ module.exports = {
                 usu_tel
             });
             console.log(usu_cod, usu_nome, usu_email, usu_senha, usu_tel);
-            return res.status(201).send("REGISTRO CRIADO VÊ LÁ CARAI")
+            return res.status(201).send("REGISTRO CRIADO xd")
 
         } catch (error) {
             console.log(error);
