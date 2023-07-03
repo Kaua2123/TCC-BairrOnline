@@ -773,191 +773,6 @@ cursor: pointer;
 }
 
 
-
-/*--------------------------------------------------------ROTA LOGIN-------------------------------------------*/
-.bodi{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: #C3D5DD;
- 
-}
-.log1{
-  background:#ffffff;
-  color: black;
-  border-radius: 10px;
-  width: 65vh;
-  padding: 10vh;
-}
-.log1 h2{
-  margin-bottom: 12vh;
-  font-size: 5vh;
-  color: #000000;
-  text-align: center;
-}
-.log1 .box-user{
-  position: relative;
-}
-.log1 .box-user input{
-  width: 100%;
-  padding: 10px 0;
-  outline: none;
-  border: 0;
-  background: transparent;
-  border-bottom: 1px solid #000000;
-  color: #000000;
-  font-size: 16px;
-  margin-bottom: 30px;
-}
-.log1 .box-user label{
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 30px;
-}
-
-.log1 .box-user input:valid~label
-{
-  top: -20px;
-  left: 0;
-  color: rgb(0, 0, 0);
-  font-size: 18px;
-}
-
-.for1{
-  font-size: 2vh;
-  float: right;
-}
-.butao1{
-  padding: 1.5vh;
-  text-align: center;
-  display: inline-block;
-  width: 13vh;
-  height: 5vh;
-  border-radius: 5px;
-  color: black;
-  border: 1px solid black;
-  background: rgb(255, 255, 255);
-  text-decoration: none;
-  font-size: 2vh;
-  margin-top: 5vh;
-  
-}
-
-.butao1:hover{
-  background: #52C7A6;
-  border-radius: 5px;
-  color: #ffffff;
-  width: 16.7vh;
-  height: 7vh;
-  transition: 0.18s;
-  border: none;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  cursor: pointer;
-  
-}
-
-.linkCadastro{
-  color: black;
-  float: right;
-  transition: 0.1s;
-  font-size: 2.5vh;
-}
-
-.linkCadastro:hover{
-  color: #338BB0;
-  font-size: 2.65vh;
-
-}
-
-/*------------------------------COMENTARIOS------------------------ */
-
-.Coment{
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0 ;
-  right: 0;
-  background: rgb(0, 0, 0, 0.7);
-  z-index: 1000 ;
-}
-
-.Coment1{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 60vh;
-  background: #fff;
-  border-radius: 25vh;
-}
-
-.ComH1 {
-  position:relative;
-  align-items: center;
-  font-size: 5vh;
-  bottom: 40vh;
-}
-
-
-.btnCom {
-  background: #52C7A6;
-  border-radius: 5px;
-  color: #ffffff;
-  width: 5vh;
-  height: 5vh;
-  transition: 0.18s;
-  border: none;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  cursor: pointer;
-  bottom: 45vh;
-  left: 80vh;
-  position: relative;
-}
-
-.btnOpen {
-  position: relative;
-  border-radius: 1vh;
-  font-size: 1.5vh;
-  width: 15vh;
-  height: 5vh;
-  bottom: 15vh;
-  left: 22vh;
-  text-align: center;
-  border: solid 0.2vh black;
-  margin-top: 6vh;
-}
-
-.btnOpen:hover{
-  border: none;
-  color: #ffffff;
-  background-color: #52C7A6;
-  transition: 0.1s;
-  width: 16vh;
-  height: 6vh;
-  left: 22.5vh;
-  font-size: 1.7vh;
-  cursor: pointer;
-}
-/* ROTA ADM*/
-
-
-.listaADM{
-  display: flex;
-  flex-direction: row;
-  
-  }
-.listaADM li {
-  cursor:pointer;
-  list-style: none;
-}
-
 /* Acompanhar denúncias */
 
 .btnTarefa{
@@ -1077,4 +892,193 @@ cursor: pointer;
   
   background-color: #c12626;
   
+}
+
+
+
+/*--------------------------------------------------------ROTA LOGIN-------------------------------------------*/
+.bodi{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #C3D5DD;
+ 
+}
+.log1{
+  background:#ffffff;
+  color: black;
+  border-radius: 10px;
+  width: 65vh;
+  padding: 10vh;
+}
+.log1 h2{
+  margin-bottom: 12vh;
+  font-size: 5vh;
+  color: #000000;
+  text-align: center;
+}
+.log1 .box-user{
+  position: relative;
+}
+.log1 .box-user input{
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+  border: 0;
+  background: transparent;
+  border-bottom: 1px solid #000000;
+  color: #000000;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+.log1 .box-user label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 30px;
+}
+
+.log1 .box-user input:valid~label
+{
+  top: -20px;
+  left: 0;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+}
+
+.for1{
+  font-size: 2vh;
+  float: right;
+}
+.butao1{
+  padding: 1.5vh;
+  text-align: center;
+  display: inline-block;
+  width: 13vh;
+  height: 5vh;
+  border-radius: 5px;
+  color: black;
+  border: 1px solid black;
+  background: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 2vh;
+
+  margin-top: 5vh;
+  
+}
+
+.butao1:hover{
+  background: #52C7A6;
+  border-radius: 5px;
+  color: #ffffff;
+  width: 16.7vh;
+  height: 7vh;
+  transition: 0.18s;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  
+}
+
+
+
+.linkCadastro{
+  color: black;
+  float: right;
+  transition: 0.1s;
+  font-size: 2.5vh;
+}
+
+.linkCadastro:hover{
+  color: #338BB0;
+  font-size: 2.65vh;
+
+}
+
+/*------------------------------COMENTARIOS------------------------ */
+
+.Coment{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0 ;
+  right: 0;
+  background: rgb(0, 0, 0, 0.7);
+  z-index: 1000 ;
+}
+
+.Coment1{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 60vh;
+  background: #fff;
+  border-radius: 25vh;
+}
+
+.ComH1 {
+  position:relative;
+  align-items: center;
+  font-size: 5vh;
+  bottom: 40vh;
+}
+
+
+.btnCom {
+  background: #52C7A6;
+  border-radius: 5px;
+  color: #ffffff;
+  width: 5vh;
+  height: 5vh;
+  transition: 0.18s;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  bottom: 45vh;
+  left: 80vh;
+  position: relative;
+}
+
+.btnOpen {
+  position: relative;
+  border-radius: 1vh;
+  font-size: 1.5vh;
+  width: 15vh;
+  height: 5vh;
+  bottom: 15vh;
+  left: 22vh;
+  text-align: center;
+  border: solid 0.2vh black;
+  margin-top: 6vh;
+}
+
+.btnOpen:hover{
+  border: none;
+  color: #ffffff;
+  background-color: #52C7A6;
+  transition: 0.1s;
+  width: 16vh;
+  height: 6vh;
+  left: 22.5vh;
+  font-size: 1.7vh;
+  cursor: pointer;
+}
+/* ROTA ADM*/
+
+
+.listaADM{
+  display: flex;
+  flex-direction: row;
+  
+  }
+.listaADM li {
+  cursor:pointer;
+  list-style: none;
 }
