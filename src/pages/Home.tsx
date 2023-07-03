@@ -50,7 +50,7 @@ const Home = () => {
     <body>
       <section id='miranhatrem'>
       <article id='arti'>
-    
+         <h2>alterações</h2>
         <h1 className='h1Den'>Denúncias em destaque</h1><br></br>
         <h2 className='subtituloden'>Denúncias em Alta do Bairro de Volta Redonda</h2>
 
