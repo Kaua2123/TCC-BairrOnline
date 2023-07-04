@@ -13,20 +13,32 @@ const controllersOrgInst = require('./src/controllers/orgaoInstituiçao/index');
 const controllersUsu = require('./src/controllers/usuario/index');
 const routes = express.Router();
 
-routes.get("/", controllersUsu.raiz);   
-routes.post("/teste", controllersUsu.testeCriarUsuario);
 
+//usuario
+routes.get("/", controllersUsu.raiz);   
+routes.post("/criarUsuario", controllersUsu.CriarUsuario);
+
+//denuncia
+routes.post("/criarDenuncia", controllersDenuncias.criarDenuncia);
+ 
+//bairro
+routes.post("/buscarBairro", controllersBairro.buscarBairro);
+
+
+module.exports = routes;
  
 
 module.exports = routes;
 
+/*
 const axios = require('axios');
 
 
 
-axios.post('http://localhost:3344/teste').then((response) => {
+axios.post('http://localhost:3344/criarUsu').then((response) => {
     console.log(response);
-    console.log('REGISTRO ENVIADO ');
+    console.log('REGISTRO ENVIADO');
 }).catch((error) => {
     console.error(error);
 });
+*/

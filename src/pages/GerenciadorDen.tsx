@@ -8,7 +8,7 @@ import Comentarios from './Comentarios';
 import { useState } from 'react';
 import { Reportar } from './reportar';
 
-const Home = () => {
+const Gerenciador = () => {
   const [rep , setrep] = useState(false)
   const [openCom, setOpenCom] = useState(false);
 
@@ -137,4 +137,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default Gerenciador;

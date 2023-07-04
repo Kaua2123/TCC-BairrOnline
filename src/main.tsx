@@ -1,22 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './App.css'
 
 import Home from './pages/Home.tsx'
 import HomeADM from './pages/HomeAdm.tsx'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './pages/Login.tsx'
 import Denuncie from './pages/Denuncie.tsx'
 import Cadastro from './pages/Cadastro.tsx';
 import VerDenuncia from './pages/VerDenuncia.tsx';
 import MinhasDen from './pages/MinhasDen.tsx';
-
+import Gerenciador from './pages/GerenciadorDen.tsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home/>,
+  },
+  
+  {
+    path: "/Gerenciar",
+    element: <Gerenciador/>,
   },
 
   {

@@ -1,4 +1,5 @@
 const knex = require('../../database/banco');
+const axios = require('axios');
 
 module.exports = {
     async raiz(req, res){
@@ -9,7 +10,7 @@ module.exports = {
         }   
     },
 
-    async testeCriarUsuario(req, res){
+    async CriarUsuario(req, res){
         try {
             const { usu_cod } = req.body;
             const { usu_nome } = req.body;
@@ -24,9 +25,20 @@ module.exports = {
                 usu_senha,
                 usu_tel
             });
-            console.log(usu_cod, usu_nome, usu_email, usu_senha, usu_tel);
-            return res.status(201).send("REGISTRO CRIADO xd");
-
+            axios.post('http://localhost:3344/criarUsu', {
+                usu_cod,
+                usu_nome,
+                usu_email,
+                usu_senha,
+                usu_tel
+        }).then((response) => {
+                console.log(response.data);
+                return res.status(201).send("USUARIO CRIADO");
+        }).catch((error) => {
+                console.error(error);
+                return res.status(500).json({error: error.message});
+        });
+        
         } catch (error) {
             console.log(error);
             return res.status(400).json({error: error.message});
