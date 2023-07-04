@@ -17,6 +17,13 @@ module.exports = {
             const { den_nome } = req.body;
             const { den_prazo } = req.body;
             const { den_desc } = req.body; 
+            const { bairro_bai_cod } = req.body;
+
+            const bairroExists = await knex('bairro').where('bai_cod', bairro_bai_cod).first();
+
+            if(!bairroExists){
+                return res.status(400).json({error: 'Valor inválido para bairro_bai_cod'});
+            }
 
             await knex('denuncias').insert({
 
@@ -24,6 +31,7 @@ module.exports = {
                 den_nome,
                 den_prazo,
                 den_desc,
+                bairro_bai_cod
         
 
 

@@ -12,8 +12,8 @@ module.exports = {
 
     async buscarBairro(req, res){
         try {
-            const { bai_cod } = req.params;
-            const { bai_nome } = req.params;
+            const { bai_cod } = req.body;
+            const { bai_nome } = req.body;
             await knex('bairro').insert({
 
                 bai_cod,
