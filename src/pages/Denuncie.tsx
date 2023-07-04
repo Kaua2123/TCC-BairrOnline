@@ -59,7 +59,7 @@ const Denuncie = () => {
       </div>
     <div className='cadastroDen'>
       
-      <form method='post' action='' onSubmit={uploadImg}>
+      <form method='post' action='http://localhost:3344/criarUsu' onSubmit={uploadImg}>
 
           
  

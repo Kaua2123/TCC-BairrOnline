@@ -16,19 +16,20 @@ const routes = express.Router();
 
 //usuario
 routes.get("/", controllersUsu.raiz);   
-routes.post("/criarUsuario", controllersUsu.CriarUsuario);
+routes.post("/criarUsu", controllersUsu.CriarUsuario);
 
 //denuncia
+routes.get("/", controllersDenuncias.raiz);
 routes.post("/criarDenuncia", controllersDenuncias.criarDenuncia);
  
 //bairro
+routes.get("/", controllersBairro.raiz);
 routes.post("/buscarBairro", controllersBairro.buscarBairro);
 
 
 module.exports = routes;
  
 
-module.exports = routes;
 
 /*
 const axios = require('axios');
