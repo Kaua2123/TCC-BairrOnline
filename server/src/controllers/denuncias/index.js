@@ -18,6 +18,7 @@ module.exports = {
             const { den_prazo } = req.body;
             const { den_desc } = req.body; 
             const { bairro_bai_cod } = req.body;
+            const { denunciante_usuario_usu_cod } = req.body;
 
             const bairroExists = await knex('bairro').where('bai_cod', bairro_bai_cod).first();
 
@@ -31,7 +32,8 @@ module.exports = {
                 den_nome,
                 den_prazo,
                 den_desc,
-                bairro_bai_cod
+                bairro_bai_cod,
+                denunciante_usuario_usu_cod
         
 
 

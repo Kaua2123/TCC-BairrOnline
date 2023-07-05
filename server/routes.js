@@ -26,6 +26,9 @@ routes.post("/criarDenuncia", controllersDenuncias.criarDenuncia);
 routes.get("/", controllersBairro.raiz);
 routes.post("/buscarBairro", controllersBairro.buscarBairro);
 
+//usuario denunciante
+routes.get("/", controllersDenunciante.raiz);
+routes.post("/criarDenunciante", controllersDenunciante.usuDenunciante);
 
 module.exports = routes;
  
