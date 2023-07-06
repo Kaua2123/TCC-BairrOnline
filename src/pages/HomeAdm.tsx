@@ -26,22 +26,27 @@ const HomeADM = () => {
 
           <div className="line3"></div>
 
+        
         </div>
-        <ul className="ListaADM">
-          <Link to="/VerDenuncia"> denúncias </Link>
 
-           <ul id="ULSEP"><Link to="/"> Tarefas </Link>
-           <li><a>Comentários Reportado</a></li>
-           <li><a>Denúncias Reportado</a></li>
-           <li><a>usuários?</a></li>
-           </ul>
+ <ul className="nav-listADM">
+
+          <li> <Link to="/VerDenuncia"> Denuncias </Link> </li>
+
+          <li>  <Link to="/VerDenuncia"> Tarefas  </Link></li>
+
+          <li>  <Link to="/MinhasDen"> Usuários </Link></li>
           
+          <li> <Link to=""> Comentários Reportados </Link> </li>
+
+          <li> <Link to=""> Denúncias Reportadas </Link> </li>
          
           </ul>
+
        <div id='logcad'>
        
        
-       <Link to="/Cadastro" > <button className='btnCadastro'>  Cadastrar-se </button> </Link>
+       <Link to="/Cadastro" > <button className='btnCadastroADM'>  Cadastrar-se </button> </Link>
 
        <Link to="/Login">Fazer login</Link>
 

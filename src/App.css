@@ -417,6 +417,7 @@ ul li a:hover {
   color: #338BB0;
 }
 
+
 .xd {
   color: #717171;
 }
@@ -1216,12 +1217,36 @@ cursor: pointer;
 /* ROTA ADM*/
 
 
-.listaADM{
-  display: flex;
-  flex-direction: row;
-  
-  }
-.listaADM li {
-  cursor:pointer;
+.nav-listADM {
   list-style: none;
+  display: flex;
 }
+
+.nav-listADM li {
+  display: flex;
+  margin-right: 20px;
+}
+
+.nav-listADM li a:hover{
+  color: #a19d9d;
+}
+
+.btnCadastroADM{
+  width: 20vh;
+  height: 5vh;
+  margin-right: 20px;
+  color: #ffffff;
+  background-color: #434343;
+  border: black;
+  border-radius: 8px;
+  font-size: 2vh;
+  
+}
+
+.btnCadastroADM:hover{
+
+color: #717171;
+transition: 0.4s;
+cursor: pointer;
+}
+
