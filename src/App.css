@@ -1216,37 +1216,57 @@ cursor: pointer;
 
 /* ROTA ADM*/
 
-
+#logcad P {
+  color: #338BB0;
+}
 .nav-listADM {
   list-style: none;
   display: flex;
+  flex-direction: row;
+  
 }
 
 .nav-listADM li {
   display: flex;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .nav-listADM li a:hover{
   color: #a19d9d;
 }
 
-.btnCadastroADM{
-  width: 20vh;
+/* GerenciadorDen */
+.Gerbodi{
+  min-width: 20vh;
+  min-height: 80vh;
+}
+.GerCoisas{
+  margin: 20vh 10vh 10vh 10vh;
+  background: white;
+  min-height: inherit;
+  flex-wrap: nowrap;
+
+}
+
+.GerPesquis:not(input){
+  background: #252525;
+  display: flex;
+  align-items: center;
+  justify-content:end;
   height: 5vh;
-  margin-right: 20px;
-  color: #ffffff;
-  background-color: #434343;
-  border: black;
-  border-radius: 8px;
-  font-size: 2vh;
   
 }
-
-.btnCadastroADM:hover{
-
-color: #717171;
-transition: 0.4s;
-cursor: pointer;
+.GerPesquis input{
+  width: 75%;
+  padding: 5px;
+  margin-right: 5vh;
+}
+.GerConteud{
+  /*onde fica a filtração e as denuncias/comentarios reportados*/
 }
 
+
+/*Arrumar alguma forma de colocar o footer ali embaixo independendo do tamanho do corpo da pagina*/
+
+/*comando pra deletar o token */

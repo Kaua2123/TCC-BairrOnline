@@ -6,16 +6,16 @@ import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
 import Comentarios from './Comentarios';
 import { useState } from 'react';
-
+import { Reportar } from './reportar';
 const HomeADM = () => {
-
+  const [rep , setrep] = useState(false)
   const [openCom, setOpenCom] = useState(false);
 
  return (
     <div className="omoço">
 
       <header>
-      <nav>
+      <nav className='navAdm'>
        <a className='logo' href='/'><img className='imgLogo' src={Logo} alt="LogoBairronline" /> </a>
 
         <div className="mobile-menu">
@@ -33,25 +33,22 @@ const HomeADM = () => {
 
           <li> <Link to="/VerDenuncia"> Denuncias </Link> </li>
 
-          <li>  <Link to="/VerDenuncia"> Tarefas  </Link></li>
-
-          <li>  <Link to="/MinhasDen"> Usuários </Link></li>
-          
+          <li>  <Link to="/Gerenciar"> Tarefas  </Link></li>
+           {/*
           <li> <Link to=""> Comentários Reportados </Link> </li>
 
-          <li> <Link to=""> Denúncias Reportadas </Link> </li>
-         
+          <li> <Link to=""> Denúncias Reportadas </Link> </li> Eu fiz uma pagina pros dois ficarem*/}
+          <li>  <Link to=""> Usuários </Link></li>
+          <li> <Link to=""> Bairros </Link></li>
+           
           </ul>
 
+       
        <div id='logcad'>
-       
-       
-       <Link to="/Cadastro" > <button className='btnCadastroADM'>  Cadastrar-se </button> </Link>
+        <p>Pagina De Adminstração</p>{/*Fazer isso piscar depois, achei melhor colocar isso já que a Adm é uma Pagina restrita, ai eu tirei os botões de cadastro */}
+        {/*adicionar um botão pra deslogar depois*/}
+        </div>
 
-       <Link to="/Login">Fazer login</Link>
-
-       
-       </div>
         
       </nav>
 
@@ -74,6 +71,10 @@ const HomeADM = () => {
         <button onClick={() => {setOpenCom(true)}} className='btnOpen'>Abrir comentários</button>
         <Comentarios isOpen={openCom} setCloseCom = {() => {setOpenCom(!openCom)}}>
         </Comentarios>
+        <div id='reportar'>
+           <button id="btnrep" onClick={()=>{setrep(true)}}>reportar</button>
+           <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
+          </div>
     </article>
 
   <div className="divArticles">
