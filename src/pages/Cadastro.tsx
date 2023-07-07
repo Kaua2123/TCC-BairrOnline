@@ -3,23 +3,18 @@ import '../App.css';
 const Cadastro = () => {
     return (
         <div>
-        <body className='bodi'>
+       <body className='bodi'>
           <form className='log1'>
-        <h2>Cadastrar-se</h2>
+        <h2>Cadastro</h2>
         <div className='box-user'>
-            <input className='usuario1' type="text"></input>
+            <input className='usuario1' type="email"></input>
             <label>Email:</label>
         </div>
         <div className='box-user'>
             <input className='usus1' type="password"></input>
             <label>Senha:</label>
         </div>
-        <div>
-            
-        </div>
-    <button className='butao1'>Cadastrar</button>     
- 
-        
+    <button className='butao1'>Entrar</button>
     </form>
     </body>
         </div>

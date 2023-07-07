@@ -8,9 +8,7 @@ import Comentarios from './Comentarios';
 import { useState } from 'react';
 import { Reportar } from './reportar';
 
-
-//ALTERAR A HOME TLGD O DESIGN TLGD PQ ELA TA COMO USUARIO MAS É PRA SER DESLOGADA OU SEJA MUDAR AS OPSOES
-const Home = () => {
+const HomeUsuario = () => { 
   const [rep , setrep] = useState(false)
   const [openCom, setOpenCom] = useState(false);
 
@@ -40,10 +38,11 @@ const Home = () => {
           
          
           </ul>
-       <div id='logcad'>
-       <Link to="/Cadastro" > <button className='btnCadastro'>  Cadastrar-se </button> </Link>
-
-       <Link to="/Login">Fazer login</Link>
+       <div id='LogUsu'>
+           
+           <label htmlFor="UsuNav"><img/></label>
+           <nav className='UsuNav'>
+           </nav>
        </div>
         
       </nav>
@@ -139,4 +138,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default HomeUsuario;

@@ -12,7 +12,7 @@ const Gerenciador = () => {
     <div>
 
       <header>
-      <nav>
+      <nav className=''>
        <a className='logo' href='/'><img className='imgLogo' src={Logo} alt="LogoBairronline" /> </a>
 
         <div className="mobile-menu">
@@ -31,7 +31,8 @@ const Gerenciador = () => {
           <li>  <Link to="/VerDenuncia"> Usuários </Link></li>
           
           <li> <Link to="">Bairros</Link></li>
-          </ul>
+
+        </ul>
        <div id='logcad'>
        <p>Pagina De Adminstração </p>
        </div>

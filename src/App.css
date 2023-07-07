@@ -34,7 +34,7 @@ a:hover {
 }
 
 
-nav:not(#logcad) {
+nav:not(#logcad,.UsuNav) {
 
     position: fixed;
     display: flex;
@@ -827,7 +827,7 @@ cursor: pointer;
   margin-top: 40px;
   margin-left: 10px;
   font-size: 2.5vh; 
-  font-style: italic;
+  
 }
 
 .btnSair{
@@ -852,51 +852,33 @@ cursor: pointer;
 }
 
 .btnSim{
+  border: transparent;
   background-color: transparent;
-  font-size: 1.9vh;
-  transition: 0.4s;
-  border: solid 1px black;
-  border-radius: 5px;
-  width: 2.5vh;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+  color: #1a73e8;
   cursor: pointer;
-  margin-top: 6vh;
-  margin-left: 5vh;
-  width: 20vh;
-  color: black;
+  font-size: 2.2vh;
+  margin-top: 5.2vh;
+  margin-left: 1.8vh;
 }
 
 .btnSim:hover{
-  
-  background-color: #2eb64d;
-  
+  background-color: #1a73e841;
+  transition: 0.1s;
 }
 
 .btnNao{
+  border: transparent;
   background-color: transparent;
-  font-size: 1.9vh;
-  transition: 0.4s;
-  border: solid 1px black;
-  border-radius: 5px;
-  width: 2.5vh;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+  color: #1a73e8;
   cursor: pointer;
-  margin-top: -2.5vh;
-  margin-left: 30vh;
-  width: 20vh;
-  color: black;
+  font-size: 2.2vh;
+  margin-left: 31vh;
 }
 
 .btnNao:hover{
-  
-  background-color: #c12626;
-  
+  background-color: #1a73e841;
+  transition: 0.1s;
 }
-
 
 
 
@@ -938,10 +920,11 @@ cursor: pointer;
 }
 .log1 .box-user label{
   position: absolute;
-  top: 0;
+  top: -4.5vh;
+  transition: 0.5s;
   left: 0;
   padding: 10px 0;
-  font-size: 30px;
+  font-size: 2.5vh;
 }
 
 .log1 .box-user input:valid~label
@@ -1270,3 +1253,14 @@ cursor: pointer;
 /*Arrumar alguma forma de colocar o footer ali embaixo independendo do tamanho do corpo da pagina*/
 
 /*comando pra deletar o token */
+
+/*rota Usuarios Home*/
+
+.UsuNav{
+  position:absolute;
+  right: 15vh;
+  background-color: #c5c9d1;
+  width: 200px;
+  height: 40px;
+ 
+}

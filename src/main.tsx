@@ -12,11 +12,18 @@ import Cadastro from './pages/Cadastro.tsx';
 import VerDenuncia from './pages/VerDenuncia.tsx';
 import MinhasDen from './pages/MinhasDen.tsx';
 import Gerenciador from './pages/GerenciadorDen.tsx'
+import HomeUsuario from './pages/HomeUsuario.tsx';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home/>,
+  },
+  
+  {
+    path:"/HomeUsuario",
+    element: <HomeUsuario/>,
   },
   
   {
@@ -52,7 +59,7 @@ const router = createBrowserRouter([
   {
     path:"/homeADM",
     element: <HomeADM/>
-  }
+  },
 ]);
 
 

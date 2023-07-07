@@ -13,10 +13,10 @@ const AssumirTarefa = ({isOpen, children, setCloseCom}) => {
                     <h1 className='h1Tarefa'>Quer mesmo assumir a resolução do caso?</h1>
                     <div>{children}</div>
                     <button onClick={setCloseCom} className='btnSair'>X</button>
-                 <button onClick={() => {setOpenCom(true)}} className='btnSim'>Sim</button>
+                    <button onClick={setCloseCom} className='btnNao'>Cancelar</button>
+                    <button onClick={() => {setOpenCom(true)}} className='btnSim'>Sim, assumir</button>
         <PlanejarSolução isOpen={openCom} setCloseCom = {() => {setOpenCom(!openCom)}}>
         </PlanejarSolução>
-                    <button onClick={setCloseCom} className='btnNao'>Não</button>
                 </div>
             </div>
         )
