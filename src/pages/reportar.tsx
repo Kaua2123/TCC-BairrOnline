@@ -14,7 +14,7 @@ export function Reportar({taAberto, tafechado }){
     
       <button onClick={tafechado}>x</button>
     <div className='conteudo'>
-      <h2>Porque deseja reportar esta denúncia?</h2>
+      <h2>Por que deseja reportar esta denúncia?</h2>
       <select name="tipos" placeholder='selecione um tipo'>
           <option value="1">Conteúdo impróprio</option>
           <option value="2">Conteúdo repetido</option>

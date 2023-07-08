@@ -62,6 +62,7 @@ const Denuncie = () => {
       </nav>
  </header>
  <body>
+      <section className='responsivoDenuncie'>
       <div className='centralizafdp'> 
       <div className='bordinhaDen'>
   
@@ -109,6 +110,7 @@ const Denuncie = () => {
         <input className='btnForm' type='reset' value="Limpar"/>
         </form>
       </div>
+      </section>
   
   
 

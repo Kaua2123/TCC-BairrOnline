@@ -6,7 +6,7 @@ import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
 import Comentarios from './Comentarios';
 import { useState } from 'react';
-import { Reportar } from './reportar';
+import { Reportar } from './Reportar';
 const HomeADM = () => {
   const [rep , setrep] = useState(false)
   const [openCom, setOpenCom] = useState(false);
@@ -63,8 +63,9 @@ const HomeADM = () => {
 
          <img src={img2}alt="Imagem" className="imgArt"title="agua estancada"/>
 
-
+         <div className='verDen'>
          <label htmlFor="den"><button className="btnDenuncia">Ver denúncia</button></label>
+        </div>
 
          <h2 className='tituloden'>El agua estas estancada</h2>
          <h2 className='descricaoden'>Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h2>

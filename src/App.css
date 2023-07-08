@@ -111,6 +111,10 @@ main {
   align-items: center;
   
  }
+ .responsivoDenuncie{
+  flex-direction: column;
+  align-items: center;
+ }
  article:not(#arti){
   margin: 10px;
  }
@@ -179,9 +183,10 @@ article:not(#arti){
   flex-direction:  column;
   border-radius: 10px;
   background-color: #ffffff;
-   width: 80vh;
+  width: 80vh;
   font-size: 1.2vh;
-  margin: 2vh ;
+  margin: 2vh;
+  
 }
 
 
@@ -256,9 +261,11 @@ article h1{
   color: #52C7A6;
 }
 
-label{
-  display: flex;
+
+.verDen{
+
 }
+
 .btnDenuncia{
   border-radius: 5px;
   border: 1px solid black;
@@ -266,10 +273,12 @@ label{
   height: 2.5vh;
   margin-top: 1vh;
   font-size: 2vh;
+
 }
 
 .btnDenuncia:hover{
-  width: 16vh;
+
+  width: 14vh;
   height: 4vh;
   transition: 0.1s;
   background-color: #52C7A6;
@@ -282,7 +291,7 @@ label{
   background-color: #338BB0;
   color: white;
   border-radius: 9px;
-  width: 70vh;
+
   font-size: 4.5vh;
 }
 
@@ -633,9 +642,10 @@ cursor: pointer;
   font-size: 2.3vh;
   width: 70vh;
   height: 4vh; 
-  margin-top: 1.5vh;
+  padding: 0.3vh;  
   position: relative;
   right: -0.7vh;
+  display: flex;
 }
 
 
@@ -739,6 +749,7 @@ cursor: pointer;
   font-size: 2.5vh;
   font-weight: normal;
 }
+
 
 
 /*
@@ -1264,3 +1275,38 @@ cursor: pointer;
   height: 40px;
  
 }
+
+
+/*------------------------------------ROTA USUARIOOOOOOO-------------------------------------------------------*/
+.artiUsuario{
+  background-color: white;
+  height: 90vh;
+  
+}
+
+.h1Usu{
+  white-space: nowrap;
+  color: white;
+  border-radius: 9px;
+  font-size: 3vh;
+  height: 6vh;
+  padding: 1vh;
+
+}
+
+.h2Usu{
+  text-align: center;
+  font-size: 2.3vh;
+  margin: 2vh;
+}
+
+.bordinhaUsu{
+  background-color: #338BB0;
+  border-radius: 7px;
+
+}
+
+
+
+
+
