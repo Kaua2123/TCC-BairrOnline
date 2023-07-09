@@ -85,6 +85,7 @@ const Home = () => {
  <h2 className="subtituloOrg"> Veja aqui as instituições/órgãos públicos que mais resolveram problemas</h2>
 </div>
 <input className="inpOrg" type="search" placeholder='Pesquise por instituições/orgãos publicos aqui'></input>
+<div className='rolagemInst'> <h1>@VRsaneamento</h1>  <h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1>  <h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1></div> 
  </article>
 
 

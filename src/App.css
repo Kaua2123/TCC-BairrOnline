@@ -233,6 +233,10 @@ article h1{
   right: 0vh;
 
 }
+.rolagemInst{
+  overflow: auto;
+  max-height: 400px;
+}
 
 
 .h1Org{
