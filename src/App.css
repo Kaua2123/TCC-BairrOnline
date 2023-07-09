@@ -104,11 +104,12 @@ main {
 
 /*responsividade aqui*/
 
-@media (max-width: 999px) {
+@media (max-width: 120vh) /*coloquei em vh já que é essa a metrica que a gente ta usando*/ {
   body {
     overflow-x: hidden;
 
   }
+
 
  #miranhatrem{
   flex-direction: column;
@@ -144,6 +145,7 @@ main {
   .mobile-menu {
     display: block;
   }
+
 }
 
 .nav-list.active {
@@ -1234,32 +1236,39 @@ cursor: pointer;
   color: #a19d9d;
 }
 
-/* GerenciadorDen */
+/* ----------------------------------ROTA GERENCIADOR------------------------------------ */
 
 .Gerbodi{
-
+  display: block;
+  
 }
+
+
 #Gerenciador{
-
-  margin: 10vh;
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 20vh auto 10vh auto;  /*colocando display block e margin auto centraliza o elemento automaticamente*/
   background: white;
-  height: 60vh;
-  min-width: 90vh;/*limite de tamanho da tela, se diminuir menor que isso não adapta, */
+  border: solid #252525 1px ;
+  height: 80vh;
+  /*limite de tamanho da tela, se diminuir menor que isso não adapta, */
+  max-width: 150vh;
   
 }
 
-.GerPesquis:not(input){
+.GerPesquis{
+  display: flex; /*só ta responsivo por causa desse carinha e do justify content pra alinhar o conteudo pro final dele*/
+  justify-content: end;
   background: #252525;
-  display: flex;
-  align-items: center;
-  justify-content:end;
-  height: 5vh;
-  
+  width: 100%;
+
+ 
 }
 .GerPesquis input{
-  width: 75%;
-  padding: 5px;
-  margin-right: 5vh;
+  width: 115vh;
+  height: 4vh;
+  margin: 1vh;
+
 }
 #GerConteud{
   /*onde fica a filtração e as denuncias/comentarios reportados*/
@@ -1267,16 +1276,20 @@ cursor: pointer;
   
   
 }
-#menulateral{
-  border: solid 2px #000000;
-  width: fit-content;
-  background-color: #e8e8e8;
-  height: 55vh;
-  font-family: system-ui ;
-  font-style: normal;
-  
+@media (max-width: 140vh){
+  #Gerenciador{
+    width: 65vh;
 
+  }
+  #menulateral{
+    width: 20vh;
+   }
+
+   .Filtrar select{
+    width: 15vh;
+   }
 }
+
 
 #menulateral h3{
   background-color:#909090;
@@ -1287,13 +1300,25 @@ cursor: pointer;
   padding: 1vh;
   
 }
-.denuncias{
+#menulateral{
+  background-color: #e8e8e8;
+  height: inherit;
+  font-family: system-ui ;
+  font-style: normal;
+  max-width: 35vh;
+  
+
+}
+.Filtrar{
   font-family: system-ui ;
   font-style: normal;
   margin: 1vh;
-}
-.denuncias {
   
+}
+
+.Filtrar select{
+  max-width: 40vh;
+  font-size: auto;
 }
 
 /*Arrumar alguma forma de colocar o footer ali embaixo independendo do tamanho do corpo da pagina*/

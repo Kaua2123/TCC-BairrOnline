@@ -43,16 +43,12 @@ const Gerenciador = () => {
     </header>
     <body className='Gerbodi'>
       
-      <label htmlFor="Gerenciador"><p>Denuncias e Comentarios Reportados</p></label>
-      <section id='Gerenciador'>
       
-        <div className="GerPesquis">
-          <input type="search" placeholder="Pesquisar" />
-        </div>
-         <section id='GerConteudo'>
-           <aside id='menulateral'>{/*talvez eu mude dps(nao ta pronto pronto ainda)*/}
+      
+      <section id='Gerenciador'>
+        <aside id='menulateral'>{/*talvez eu mude dps(nao ta pronto pronto ainda)*/}
            <h3>Denuncias Reportadas</h3>
-             <div className='denuncias'>
+             <div className='Filtrar'>
 
               <p>Filtrar por</p>
               <select name="filtra" id="">
@@ -68,10 +64,16 @@ const Gerenciador = () => {
              </div>     
              <h3>Comentarios</h3>
            </aside>
+
+        <div className="GerPesquis">
+          <input type="search" placeholder="Pesquisar" />
+        </div>
+    
+           
             <div id='ConteudoReportado'>
 
             </div>
-         </section>
+        
       </section>
 
     </body>
