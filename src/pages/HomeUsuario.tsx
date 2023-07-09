@@ -4,9 +4,10 @@ import instagram from "../img/instagram.png";
 import twitter from "../img/twitter.png";
 import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
+import Sinin from './../img/notification-bell-svgrepo-com.svg'
 
 import { useState } from 'react';
-import { Reportar } from './Reportar';
+
 
 const HomeUsuario = () => { 
   const [rep , setrep] = useState(false)
@@ -38,11 +39,9 @@ const HomeUsuario = () => {
           
          
           </ul>
-       <div id='LogUsu'>
-           
-           <label htmlFor="UsuNav"><img/></label>
-           <nav className='UsuNav'>
-           </nav>
+          <img src={Sinin} className='sininho'/>
+       <div id='LogUsu'>     
+           <p>U</p>{/*Fazer um modal tipo do github aqui*/}
        </div>
         
       </nav>

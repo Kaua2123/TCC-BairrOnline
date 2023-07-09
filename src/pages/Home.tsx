@@ -6,7 +6,7 @@ import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
 import Comentarios from './Comentarios';
 import { useState } from 'react';
-import { Reportar } from './Reportar';
+import { Reportar } from './reportar';
 
 
 //ALTERAR A HOME TLGD O DESIGN TLGD PQ ELA TA COMO USUARIO MAS É PRA SER DESLOGADA OU SEJA MUDAR AS OPSOES

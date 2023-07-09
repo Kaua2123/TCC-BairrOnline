@@ -52,10 +52,11 @@ const Gerenciador = () => {
 
               <p>Filtrar por</p>
               <select name="filtra" id="">
-                <option value="tipo1">Descrição impropria</option>{/*discurso de ódio, racismo,ameaças sla*/}
-                <option value="tipo2">Imagem Impropria</option> {/*pornografia, Conteudo explicito(Ferimentos, lesoes sla), localização que pode revelar a casa dos outros */}
-                <option value="tipo3">Informação pessoal demais</option>{/* Envolveu a vida pessoal demais na denuncia, coisa que nois nao precisa saber */}
-                <option value="tipo4">Conteúdo fora das regras</option>{/*Bora fazer regras dps*/}
+              <option value="tipo1">Descrição falsa</option>
+               <option value="tipo2">Descrição Ofensiva</option>{/*discurso de ódio, racismo,ameaças sla*/}
+                <option value="tipo3">Imagem Imprópria</option> {/*pornografia, Conteudo explicito(Ferimentos, lesoes sla), localização que pode revelar a casa dos outros */}
+               <option value="tipo4">Informação pessoal demais</option>{/* Envolveu a vida pessoal demais na denuncia, coisa que nois nao precisa saber */}
+              <option value="tipo5">Denuncia repetida</option>{/*Bora fazer regras dps*/} 
               </select>
               <br />
                 <input type="submit" value="Filtrar" />
@@ -71,7 +72,7 @@ const Gerenciador = () => {
     
            
             <div id='ConteudoReportado'>
-
+              {/* CONECTAR COM O BACKEND PRA AS DENUNCIAS VIREM PRA CA */} 
             </div>
         
       </section>

@@ -1333,13 +1333,25 @@ cursor: pointer;
 
 /*rota Usuarios Home-----------------------------------------------*/
 
-.UsuNav{ /**/
-  position:absolute;
-  right: 15vh;
-  background-color: #c5c9d1;
-  width: 200px;
-  height: 40px;
-
+#LogUsu{ 
+  position:fixed;
+  top: 2vh;
+  right: 2vh;
+  border-radius: 20vh;
+  border: solid grey 2px;
+  width: 6vh;
+  height: 6vh;
+  background: #84CDEC;
+  font-size: 3.5vh;
+  text-align: center;
+ 
+}
+.sininho{
+  width: 6vh;
+  height: 6vh;
+  position: fixed;
+  top: 2vh ;
+  right: 10vh;
 }
 
 .artiUsuario{
