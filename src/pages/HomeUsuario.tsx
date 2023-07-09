@@ -37,7 +37,11 @@ const HomeUsuario = () => {
          
           </ul>
        <div id='LogUsu'>
+           
+            
+           <nav className='UsuNav'>
           
+           </nav>
        </div>
         
       </nav>
