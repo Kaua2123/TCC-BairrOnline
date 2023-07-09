@@ -51,15 +51,39 @@ const HomeUsuario = () => {
     </header>
     <body>
       <section id='miranhatrem'>
-      <article id='arti'>
-        <h1 className='h1Den'>Suas denúncias</h1><br></br>
+      <article className='artiUsuario' id='barraRolagem'>
+        <h1 className='h1Den'>Suas denúncias</h1><br></br>  
+        <div className='containerUsu'>
+
+          <div className='denunciasUsu'>
+            <img src={img2} alt="imagem" className='imgUsu' />
+            <br />
+            <h2>sei n tlgd</h2>
+            <h2>14:23 </h2>
+            <h2>19/02/2002</h2>
+          </div>
+
+          <div className='denunciasUsu'>
+            <img src={img2} alt="imagem" className='imgUsu' />
+            <br />
+            <h2>TITULO</h2>
+            <h2>00:00 HORA</h2>
+            <h2>04/04/2009 DATA</h2>
+         </div>
+
+    
+         
+        </div>
+        <h3 className='h3Den'> <Link className='linkVermais' to="/MinhasDen"> Ver mais </Link> </h3>
     </article>
 
   <article id='arti'>
     <div className='bordinhaUsu'>
   <h1 className='h1Usu'>Nenhuma denúncia foi assumida para resolução.</h1>
     </div>
+    <div className='containerUsu2'> </div>
   <h2 className='h2Usu'>Denúncias escolhidas pelas instituições aparecerão abaixo. </h2>
+  <nav className='UsuNav'></nav>
  </article>
 
 

@@ -1327,7 +1327,7 @@ cursor: pointer;
 
 
 
-/*rota Usuarios Home*/
+/*rota Usuarios Home-----------------------------------------------*/
 
 .UsuNav{ /**/
   position:absolute;
@@ -1335,15 +1335,34 @@ cursor: pointer;
   background-color: #c5c9d1;
   width: 200px;
   height: 40px;
- 
+
 }
 
-
-/*------------------------------------ROTA USUARIOOOOOOO-------------------------------------------------------*/
 .artiUsuario{
-  background-color: white;
-  height: 90vh;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 80vh;
+    font-size: 1.2vh;
+    min-height: max-content;
+    padding: 5vh;
+    margin: 2vh;  
+    overflow: auto;
+    max-height: 400px;
+
+} 
+
+/* webkit scrollbar para estilizar a barra de roalgem */
+#barraRolagem::-webkit-scrollbar {
   
+}
+/* webkit scrollbar thumb para estilizar o ponteiro da barra de rolagem */
+#barraRolagem::-webkit-scrollbar-thumb {
+
+}
+/* webkit scrollbar hover para estilizar a barra de roalgem quando o mouse passar por cima */
+
+#barraRolagem::-webkit-scrollbar-thumb:hover {
+
 }
 
 .h1Usu{
@@ -1368,7 +1387,40 @@ cursor: pointer;
 
 }
 
+.h3Den{
+  font-size: 2.4vh;
+  text-align: right;
+  
+}
 
+.linkVermais{
+  color: black;
+}
 
+.linkVermais:hover{
+  transition: 0.1s;
+  color: #52C7A6;
+  font-size: 2.5vh;
+}
+
+.containerUsu{
+  display: flex;
+  flex-direction: row; /*como ficará os elementos, em linha, coluna, etc */
+  flex-wrap: wrap; /* quebrar a linha quando não couber */
+  justify-content: space-evenly;
+}
+
+.denunciasUsu{
+
+  margin: 2vh;
+}
+
+.imgUsu{
+  width: 15vh;
+  height: 15vh;
+  border-radius: 15px;
+  margin-top: 5vh;
+  
+}
 
 
