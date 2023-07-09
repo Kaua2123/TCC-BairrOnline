@@ -43,17 +43,34 @@ const Gerenciador = () => {
     </header>
     <body className='Gerbodi'>
       
-      <label htmlFor="GerCoisas"><p>Denuncias e Comentarios Reportados</p></label>
-      <section className='GerCoisas'>
+      <label htmlFor="Gerenciador"><p>Denuncias e Comentarios Reportados</p></label>
+      <section id='Gerenciador'>
       
         <div className="GerPesquis">
           <input type="search" placeholder="Pesquisar" />
         </div>
          <section id='GerConteudo'>
-        <div className=''>
-           <h1>Denuncias e comentarios reportados ficam aqui</h1>
-           
-        </div>
+           <aside id='menulateral'>{/*talvez eu mude dps(nao ta pronto pronto ainda)*/}
+           <h3>Denuncias Reportadas</h3>
+             <div className='denuncias'>
+
+              <p>Filtrar por</p>
+              <select name="filtra" id="">
+                <option value="tipo1">Descrição impropria</option>{/*discurso de ódio, racismo,ameaças sla*/}
+                <option value="tipo2">Imagem Impropria</option> {/*pornografia, Conteudo explicito(Ferimentos, lesoes sla), localização que pode revelar a casa dos outros */}
+                <option value="tipo3">Informação pessoal demais</option>{/* Envolveu a vida pessoal demais na denuncia, coisa que nois nao precisa saber */}
+                <option value="tipo4">Conteúdo fora das regras</option>{/*Bora fazer regras dps*/}
+              </select>
+              <br />
+                <input type="submit" value="Filtrar" />
+                <input type="reset" value="Limpar" />
+                
+             </div>     
+             <h3>Comentarios</h3>
+           </aside>
+            <div id='ConteudoReportado'>
+
+            </div>
          </section>
       </section>
 

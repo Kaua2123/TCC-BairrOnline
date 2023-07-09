@@ -102,10 +102,14 @@ main {
   transition: 0.3s;
 }
 
+/*responsividade aqui*/
+
 @media (max-width: 999px) {
   body {
     overflow-x: hidden;
+
   }
+
  #miranhatrem{
   flex-direction: column;
   align-items: center;
@@ -1231,16 +1235,17 @@ cursor: pointer;
 }
 
 /* GerenciadorDen */
-.Gerbodi{
-  min-width: 20vh;
-  min-height: 80vh;
-}
-.GerCoisas{
-  margin: 20vh 10vh 10vh 10vh;
-  background: white;
-  min-height: inherit;
-  flex-wrap: nowrap;
 
+.Gerbodi{
+
+}
+#Gerenciador{
+
+  margin: 10vh;
+  background: white;
+  height: 60vh;
+  min-width: 90vh;/*limite de tamanho da tela, se diminuir menor que isso não adapta, */
+  
 }
 
 .GerPesquis:not(input){
@@ -1256,18 +1261,50 @@ cursor: pointer;
   padding: 5px;
   margin-right: 5vh;
 }
-.GerConteud{
+#GerConteud{
   /*onde fica a filtração e as denuncias/comentarios reportados*/
+  padding: 10px; 
+  
+  
+}
+#menulateral{
+  border: solid 2px #000000;
+  width: fit-content;
+  background-color: #e8e8e8;
+  height: 55vh;
+  font-family: system-ui ;
+  font-style: normal;
+  
+
 }
 
+#menulateral h3{
+  background-color:#909090;
+  font-size: 2.2vh;
+  color: #252525;
+  margin-bottom: 1vh;
+  font-family: system-ui ;
+  padding: 1vh;
+  
+}
+.denuncias{
+  font-family: system-ui ;
+  font-style: normal;
+  margin: 1vh;
+}
+.denuncias {
+  
+}
 
 /*Arrumar alguma forma de colocar o footer ali embaixo independendo do tamanho do corpo da pagina*/
-
 /*comando pra deletar o token */
+
+
+
 
 /*rota Usuarios Home*/
 
-.UsuNav{
+.UsuNav{ /**/
   position:absolute;
   right: 15vh;
   background-color: #c5c9d1;
