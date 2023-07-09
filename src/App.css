@@ -1168,7 +1168,6 @@ cursor: pointer;
   max-width: fit-content;
   border: double 3px rgb(255, 186, 13);
   font-family: system-ui;
-  height: max-content;
 }
 
 .Report select {
@@ -1176,10 +1175,8 @@ cursor: pointer;
  
 }
 
-.Report br{
 
-}
-.Report input[type=submit] {
+.Report input {
   padding: 0px 10px 0px 10px;
   margin-top: 10px;
   margin-right: 10px;
@@ -1188,12 +1185,7 @@ cursor: pointer;
   border: 2px white solid;
   cursor: pointer;
 }
-.Report input[type=text] {
-  padding: 0px 10px 0px 10px;
-  margin-right: 10px;
-  color:black;
-  cursor: pointer;
-}
+
 .Report button{
   height: max-content;
   width: 20px;
@@ -1337,16 +1329,14 @@ cursor: pointer;
 
 /*rota Usuarios Home*/
 
-.UsuNav:not(.imgusu){ /**/
-  position: fixed;
-  border: solid 2px rgb(255, 255, 255);
-  border-radius:  20vh;
-  width: 6vh;
-  height: 6vh;
-  top: 2vh;
-  right: 2vh;
-}
+.UsuNav{ /**/
+  position:absolute;
+  right: 15vh;
+  background-color: #c5c9d1;
+  width: 200px;
+  height: 40px;
  
+}
 
 
 /*------------------------------------ROTA USUARIOOOOOOO-------------------------------------------------------*/

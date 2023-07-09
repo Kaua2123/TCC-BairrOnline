@@ -1,10 +1,12 @@
 import '../App.css';
+import img2 from "../img/aguaEstancada.png";
 import instagram from "../img/instagram.png";
 import twitter from "../img/twitter.png";
 import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
+
 import { useState } from 'react';
-import imgdefault from "./../img/ImgDefault.png"
+import { Reportar } from './Reportar';
 
 const HomeUsuario = () => { 
   const [rep , setrep] = useState(false)
@@ -38,9 +40,8 @@ const HomeUsuario = () => {
           </ul>
        <div id='LogUsu'>
            
-            
+           <label htmlFor="UsuNav"><img/></label>
            <nav className='UsuNav'>
-          
            </nav>
        </div>
         

@@ -6,7 +6,7 @@ import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
 import Comentarios from './Comentarios';
 import { useState } from 'react';
-import { Reportar } from './reportar';
+import { Reportar } from './Reportar';
 
 
 //ALTERAR A HOME TLGD O DESIGN TLGD PQ ELA TA COMO USUARIO MAS É PRA SER DESLOGADA OU SEJA MUDAR AS OPSOES
@@ -69,7 +69,7 @@ const Home = () => {
         </Comentarios>
 
         <div id='reportar'>
-           <button id="btnrep" onClick={()=>{setrep(true)}}>Reportar</button>
+           <button id="btnrep" onClick={()=>{setrep(true)}}>reportar</button>
            <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
           </div>
     </article>
