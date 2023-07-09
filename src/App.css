@@ -1337,7 +1337,7 @@ cursor: pointer;
 
 /*rota Usuarios Home*/
 
-.UsuNav:not(.imgusu){ /**/
+.Logusu{ /**/
   position: fixed;
   border: solid 2px rgb(255, 255, 255);
   border-radius:  20vh;
