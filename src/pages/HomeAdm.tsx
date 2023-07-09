@@ -6,7 +6,7 @@ import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
 import Comentarios from './Comentarios';
 import { useState } from 'react';
-import { Reportar } from './Reportar';
+import { Reportar } from './reportar';
 const HomeADM = () => {
   const [rep , setrep] = useState(false)
   const [openCom, setOpenCom] = useState(false);
@@ -45,7 +45,7 @@ const HomeADM = () => {
 
        
        <div id='logcad'>
-        <p>Pagina De Adminstração</p>{/*Fazer isso piscar depois, achei melhor colocar isso já que a Adm é uma Pagina restrita, ai eu tirei os botões de cadastro */}
+        <p>Pagina De Adminstração</p>{/*Fazer isso piscar depois*/}
         {/*adicionar um botão pra deslogar depois*/}
         </div>
 
