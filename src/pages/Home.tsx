@@ -36,8 +36,6 @@ const Home = () => {
 
           <li>  <Link to="/VerDenuncia"> Ver denúncias  </Link></li>
 
-       
-          
          
           </ul>
        <div id='logcad'>
@@ -57,17 +55,29 @@ const Home = () => {
         <h1 className='h1Den'>Denúncias em destaque</h1><br></br>
         <h2 className='subtituloden'>Denúncias em Alta do Bairro de Volta Redonda</h2>
 
-         <img src={img2}alt="Imagem" className="imgArt"title="agua estancada"/>
+        <div className='denuncias'> 
+        <img src={img2}alt="Imagem" className="imgArt"title="agua estancada"/>  
 
         <div className='verDen'>
-         <label htmlFor="den"><button className="btnDenuncia">Ver denúncia</button></label>
+        <button className="btnDenuncia">Ver denúncia</button>
         </div>
+
+        </div>
+        
+
+        
+
+        <div className='textos'>
+
          <h2 className='tituloden'>El agua estas estancada</h2>
-         <h2 className='descricaoden'>Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h2>
+         <h3 className='descricaoden'>Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h3>
+         </div>
+
+        <div className='comentarios'>
         <button onClick={() => {setOpenCom(true)}} className='btnOpen'>Abrir comentários</button>
         <Comentarios isOpen={openCom} setCloseCom = {() => {setOpenCom(!openCom)}}>
         </Comentarios>
-
+        </div>
         <div id='reportar'>
            <button id="btnrep" onClick={()=>{setrep(true)}}>reportar</button>
            <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>

@@ -262,7 +262,7 @@ article h1{
 .imgArt{
   width: 15vh;
   height: 15vh;
-  border-radius: 15px;
+  border-radius: 11px;
   margin-top: 5vh;
  
 }
@@ -272,24 +272,29 @@ article h1{
 }
 
 
-.verDen{
-
+.denuncias{
+  display: flex;
+  flex-direction: column;
 }
+
 
 .btnDenuncia{
-  border-radius: 5px;
+
+  background-color: #cfcfcf;
   border: 1px solid black;
+  border-radius: 3px;
   width: 15vh;
-  height: 2.5vh;
+  height: 3.4vh;
   margin-top: 1vh;
   font-size: 2vh;
-
 }
+
+
 
 .btnDenuncia:hover{
 
-  width: 14vh;
-  height: 4vh;
+  width: 15.4vh;
+  height: 3.9vh;
   transition: 0.1s;
   background-color: #52C7A6;
   color: white;
@@ -301,7 +306,6 @@ article h1{
   background-color: #338BB0;
   color: white;
   border-radius: 9px;
-
   font-size: 4.5vh;
 }
 
@@ -355,13 +359,14 @@ article h1{
   position: relative;
   margin-left: 23vh;
   top: -18vh;
-  font-size: 1.6vh;
+  font-size: 2.05vh;
 }
 
 .subtituloden{
-  position: relative;
-  left: 17vh;
+  text-align: center;
+  font-size: 2.5vh;
 }
+
 .comentario{
   color: white;
   font-size: 1.5vh;
@@ -373,14 +378,11 @@ article h1{
   left: 22.9vh;
 }
 .comentarios{
-  background-color: #52C7A6;
-  font-size: 1.2vh;
-  position: relative;
-  width: 44.2vh;
-  height: 9.4vh;
-  top: -17vh;
-  left: 22.9vh;
+  width: 10vw;
+  height: 10vh;
+
 }
+
 .inpComentario{
   background-color: #ffffff;
   border: transparent;
@@ -551,12 +553,12 @@ cursor: pointer;
 }
 
 .filtrar label{
-  background-color: transparent;
+  background-color: #cfcfcf;
   border: solid 1px black;
-  border-radius: 10px;
+  border-radius: 3px;
   padding: 6px;
   font-size: 1.7vh;
-  color: #464646;
+ 
   display: flex;
   margin-right: 20px;
 }
@@ -564,7 +566,6 @@ cursor: pointer;
 .filtrar label:hover{
   background-color: #52C7A6;
   border: transparent;
-  border-radius: 10px;
   padding: 6px;
   font-size: 1.7vh;
   color: white;
@@ -579,15 +580,16 @@ cursor: pointer;
 }
 
 .btnFiltrar{
-  border-radius: 1vh;
+  border-radius: 3px;
+  background-color: #cfcfcf;
   font-size: 1.7vh;
-  width: 10vh;
+  width: 10vh;  
   height: 3.5vh;
   text-align: center;
   border: solid 1px black;
   margin-left: 95vh;
-  color: #464646;
-  background-color: transparent;
+
+  
 }
 
 .btnFiltrar:hover {
@@ -660,13 +662,14 @@ cursor: pointer;
 
 
 .btnForm{
-  border-radius: 5px;
+  background-color: #cfcfcf;
+  border-radius: 3px;
   border: 1px solid black;
-  width: 7vh;
+  width: 9vh;
   height: 3vh;
   margin-left: 1vh;
-  position: relative;
-  background-color: white;
+
+ 
 } 
 
 .btnForm:hover{
@@ -674,8 +677,8 @@ cursor: pointer;
   border: 1px solid white;
   color: white;
   background-color: #52C7A6;
-  width: 9vh;
-  height: 4vh;
+  width: 9.2vh;
+  height: 3.3vh;
   cursor: pointer;
 }
 
@@ -961,28 +964,26 @@ cursor: pointer;
   float: right;
 }
 .butao1{
-  padding: 1.5vh;
+
   text-align: center;
-  display: inline-block;
-  width: 13vh;
-  height: 5vh;
-  border-radius: 5px;
+  width: 14vh;
+  height: 3.8vh;
+  border-radius: 3px;
   color: black;
   border: 1px solid black;
-  background: rgb(255, 255, 255);
+  background-color: #cfcfcf;
   text-decoration: none;
   font-size: 2vh;
-
-  margin-top: 5vh;
+  margin-top: 3vh;
   
 }
 
 .butao1:hover{
   background: #52C7A6;
-  border-radius: 5px;
+  
   color: #ffffff;
-  width: 16.7vh;
-  height: 7vh;
+  width: 14.4vh;
+  height: 4.3vh;
   transition: 0.18s;
   border: none;
   justify-content: center;
@@ -1055,25 +1056,25 @@ cursor: pointer;
 }
 
 .btnOpen {
-  position: relative;
-  border-radius: 1vh;
-  font-size: 1.5vh;
+  
+  background-color: #cfcfcf;
+  font-size: 1.8vh;
   width: 15vh;
-  height: 5vh;
-  bottom: 15vh;
-  left: 22vh;
+  height: 3.4vh;
+  border-radius: 3px;
   text-align: center;
   border: solid 0.2vh black;
-  margin-top: 6vh;
 }
 
 .btnOpen:hover{
+  
+  width: 15.4vh;
+  height: 3.9vh;
   border: none;
   color: #ffffff;
   background-color: #52C7A6;
   transition: 0.1s;
-  width: 16vh;
-  height: 6vh;
+
   left: 22.5vh;
   font-size: 1.7vh;
   cursor: pointer;

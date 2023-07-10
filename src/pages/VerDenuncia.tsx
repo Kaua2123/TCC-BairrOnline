@@ -12,7 +12,7 @@ const problemas = ['Buraco', 'Lixo', 'Luz'];
 
 
 const VerDenuncia = () => {
-  const [OpenTaf , setOpenTaf] = useState(false);
+
   const [openCom, setOpenCom] = useState(false);
 
     return (
@@ -35,7 +35,6 @@ const VerDenuncia = () => {
 
           <li>  <Link to="/VerDenuncia"> Ver denúncias  </Link></li>
 
-        
 
         </ul>
         
@@ -70,9 +69,7 @@ const VerDenuncia = () => {
     </select>
     </div>
       <div className='denuncias'>
-      <button onClick={() => {setOpenTaf(true)}} className='btnTarefa'>Assumir denúncia</button>
-        <AssumirTarefa Aberto={OpenTaf} setOpenTaf = {() => {setOpenTaf(!OpenTaf)}}>
-        </AssumirTarefa>
+      
       </div>
  </body>
 

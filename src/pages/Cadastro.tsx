@@ -14,7 +14,7 @@ const Cadastro = () => {
             <input className='usus1' type="password"></input>
             <label>Senha:</label>
         </div>
-    <button className='butao1'>Entrar</button>
+    <button className='butao1'>Criar conta</button>
     </form>
     </body>
         </div>
