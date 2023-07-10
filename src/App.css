@@ -64,10 +64,13 @@ nav:not(#logcad,.UsuNav) {
 
 .btnCadastro:hover{
 
-color: #338BB0;
+color: #54c3f3;
 transition: 0.4s;
 cursor: pointer;
 }
+
+
+
 #logcad{
 position:absolute;
 right: 15vh;
@@ -435,7 +438,7 @@ ul li a {
 }
 
 ul li a:hover {
-  color: #338BB0;
+  color: #54c3f3;
 }
 
 
@@ -1347,6 +1350,11 @@ cursor: pointer;
   text-align: center;
  
 }
+
+.xdUsu{
+  text-align: center;
+}
+
 .sininho{
   width: 6vh;
   height: 6vh;
@@ -1425,6 +1433,16 @@ cursor: pointer;
   flex-direction: row; /*como ficará os elementos, em linha, coluna, etc */
   flex-wrap: wrap; /* quebrar a linha quando não couber */
   justify-content: space-evenly;
+}
+
+.containerH1{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.xdUsu{
+  
 }
 
 .denunciasUsu{

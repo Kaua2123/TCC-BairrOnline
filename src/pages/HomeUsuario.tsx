@@ -50,6 +50,11 @@ const HomeUsuario = () => {
     </header>
     <body>
       <section id='miranhatrem'>
+        <div className='containerH1'>
+          <div>
+        <h1 className='xdUsu'>Olá, denunciante!</h1> {/* tentar centralizar certinho dps */}
+          </div>
+        </div>
       <article className='artiUsuario' id='barraRolagem'>
         <h1 className='h1Den'>Suas denúncias</h1><br></br>  
         <div className='containerUsu'>
