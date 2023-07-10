@@ -33,9 +33,9 @@ const HomeUsuario = () => {
 
           <li> <Link to="/Denuncie"> Denuncie aqui </Link> </li>
 
-          <li>  <Link to="/VerDenuncia"> Acompanhar denúncias  </Link></li>
+          <li>  <Link to="/VerDenuncia"> Ver denúncias </Link></li>
 
-          <li>  <Link to="/MinhasDen"> Minhas denúncias  </Link></li>
+          <li>  <Link to="/AcompDenuncia"> Acompanhar denúncias  </Link></li>
           
          
           </ul>

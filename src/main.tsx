@@ -10,9 +10,10 @@ import Login from './pages/Login.tsx'
 import Denuncie from './pages/Denuncie.tsx'
 import Cadastro from './pages/Cadastro.tsx';
 import VerDenuncia from './pages/VerDenuncia.tsx';
-import MinhasDen from './pages/MinhasDen.tsx';
+// import MinhasDen from './pages/MinhasDen.tsx';
 import Gerenciador from './pages/GerenciadorDen.tsx'
 import HomeUsuario from './pages/HomeUsuario.tsx';
+import HomeInst from './pages/HomeInst.tsx';
 
 
 const router = createBrowserRouter([
@@ -51,14 +52,18 @@ const router = createBrowserRouter([
     element: <VerDenuncia/>,
   },
 
-  {
+ /* {
     path: "/MinhasDen",
     element: <MinhasDen/>,
   },
-
+*/
   {
     path:"/homeADM",
     element: <HomeADM/>
+  },
+  {
+    path:"/homeInst",
+    element: <HomeInst/>
   },
 ]);
 

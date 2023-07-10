@@ -7,12 +7,13 @@ import  { Link } from 'react-router-dom'
 import Comentarios from './Comentarios';
 import { useState } from 'react';
 import { Reportar } from './reportar';
-
+import AssumirTarefa from './AssumirTarefa';
 
 //ALTERAR A HOME TLGD O DESIGN TLGD PQ ELA TA COMO USUARIO MAS É PRA SER DESLOGADA OU SEJA MUDAR AS OPSOES
 const Home = () => {
   const [rep , setrep] = useState(false)
   const [openCom, setOpenCom] = useState(false);
+  const [OpenTaf , setOpenTaf] = useState(false);
 
  return (
     <div>
@@ -32,12 +33,12 @@ const Home = () => {
         </div>
         <ul className="nav-list">
 
-          <li> <Link to="/Denuncie"> Denuncie aqui </Link> </li>
-
+         
           <li>  <Link to="/VerDenuncia"> Ver denúncias  </Link></li>
 
-       
-          
+          <li><Link to="/VerDenuncia"> Denuncias Avaliadas</Link></li>
+           
+           <li><Link to="/VerDenuncia">Denuncias Assumidas</Link></li>
          
           </ul>
        <div id='logcad'>
@@ -67,6 +68,9 @@ const Home = () => {
         <button onClick={() => {setOpenCom(true)}} className='btnOpen'>Abrir comentários</button>
         <Comentarios isOpen={openCom} setCloseCom = {() => {setOpenCom(!openCom)}}>
         </Comentarios>
+        <button onClick={() => {setOpenTaf(true)}} className='btnTarefa'>Assumir denúncia</button>
+        <AssumirTarefa Aberto={OpenTaf} setOpenTaf = {() => {setOpenTaf(!OpenTaf)}}>
+        </AssumirTarefa>
 
         <div id='reportar'>
            <button id="btnrep" onClick={()=>{setrep(true)}}>reportar</button>
@@ -81,11 +85,11 @@ const Home = () => {
  </article>
  <article className="artiOrg">
 <div className='bordinha'>
- <h1 className="h1Org">Instituições Responsáveis</h1>
- <h2 className="subtituloOrg"> Veja aqui as instituições/órgãos públicos que mais resolveram problemas</h2>
+ <h1 className="h1Org">Denúncias assumidas</h1>
+ <h2 className="subtituloOrg"> Veja aqui as denúncias assumidas por você, orgão ou instituição</h2>
 </div>
-<input className="inpOrg" type="search" placeholder='Pesquise por instituições/orgãos publicos aqui'></input>
-<div className='rolagemInst'> <h1>@VRsaneamento</h1>  <h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1>  <h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1></div> 
+
+<div className='rolagemInst'> <h1>OI</h1></div> 
  </article>
 
 
