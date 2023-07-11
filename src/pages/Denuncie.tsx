@@ -57,7 +57,7 @@ const Denuncie = () => {
       <div id='logcad'>
        <Link to="/Cadastro" > <button className='btnCadastro'> Cadastrar-se </button> </Link>
 
-       <Link to="/Login">Fazer login</Link>
+       <Link to="/Login" className='loginHome'> Fazer login</Link>
       </div>
       </nav>
  </header>

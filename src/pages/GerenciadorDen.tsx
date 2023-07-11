@@ -93,7 +93,7 @@ const Gerenciador = () => {
                 <li className="xd">Usuário</li>
                   <li><a href="#">Início</a></li>
                   <li><Link to="/Cadastro">Cadastre-se</Link></li>
-                  <li><Link to="/Login">Entrar</Link></li>
+                  <Link to="/Login" className='loginHome'> Fazer login</Link>
 
               </ul>
             </div>

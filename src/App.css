@@ -193,7 +193,15 @@ main {
   min-width: 20vh;
   min-height: 20vh;
   padding: 20px;
+ 
 }
+.imgLogo:hover{
+  transition: 0.1s;
+  fill: #338BB0;
+}
+
+
+
 /*----------------------------------MENU HEADER FIM----------------------------*/
 
 /*---------------------------------CORPO COMEÇO-------------------------------*/
@@ -301,9 +309,7 @@ article{
  
 }
 
-.logo:hover{
-  color: #52C7A6;
-}
+
 
 
 .denuncias{
@@ -488,6 +494,11 @@ article{
   font-weight: lighter;
 }
 
+.h1Inst{
+  font-family: 'BreeSerif-Regular';
+  font-size: 4.5vh;
+}
+
 /*-------------------------------------CORPO FIM------------------------------*/
 
 /*----------------------------------FOOTER COMEÇO--------------------------*/
@@ -497,6 +508,7 @@ article{
   background-color: #252525;
   color: aliceblue;
   font-size: 2.1vh;
+  font-family: 'BreeSerif-Regular';
   margin-top: 10vh;
 }
 

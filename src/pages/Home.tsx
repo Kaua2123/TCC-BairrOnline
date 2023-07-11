@@ -19,7 +19,7 @@ const Home = () => {
 
       <header>
       <nav>
-       <a className='logo' href='/'><img className='imgLogo' src={Logo} alt="LogoBairronline" /> </a>
+        <Link to="/"> <img className='imgLogo' src={Logo} alt="LogoBairronline" style={{fill: 'blue'}} /> </Link> 
 
         <div className="mobile-menu">
 
@@ -97,7 +97,19 @@ const Home = () => {
  
 </div>
 <input className="inpOrg" type="search" placeholder='Pesquise por instituições/orgãos publicos aqui'></input>
-<div className='rolagemInst'> <h1>@VRsaneamento</h1>  <h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1>  <h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1><h1>@VRsaneamento</h1></div> 
+<div className='rolagemInst'> 
+<h1 className='h1Inst'>@VRsaneamento</h1> 
+ <h1 className='h1Inst'>@VRsaneamento</h1> 
+ <h1 className='h1Inst'>@VRsaneamento</h1>
+ <h1 className='h1Inst'>@VRsaneamento</h1>
+ <h1 className='h1Inst'>@VRsaneamento</h1>
+ <h1 className='h1Inst'>@VRsaneamento</h1>
+ <h1 className='h1Inst'>@VRsaneamento</h1>
+ <h1 className='h1Inst'>@VRsaneamento</h1>
+ <h1 className='h1Inst'>@VRsaneamento</h1>
+ <h1 className='h1Inst'>@VRsaneamento</h1>
+
+</div>
  </article>
 
 
