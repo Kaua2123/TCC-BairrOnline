@@ -1,10 +1,16 @@
 body{
-  background-color: #dde7ff;
+  background-color: #e7ecf7;
   
 }
 
 @font-face {
-  font-family: 'Acme-Regular';
+
+  font-family: 'BreeSerif-Regular';
+  src: url('./fontes/Bree_Serif/BreeSerif-Regular.ttf') format('truetype'); 
+}
+
+@font-face {
+  font-family:'Acme-Regular';
   src: url('./fontes/Acme/Acme-Regular.ttf') format('truetype');
 }
 
@@ -33,15 +39,11 @@ a:hover {
   fill: #338BB0;
 }
 
-.logo {
-  font-size: 24px;
-  letter-spacing: 4px;
-}
 
 
 nav:not(#logcad,.UsuNav) {
 
-    position: fixed;
+
     display: flex;
     justify-content: baseline;
     align-items: center;
@@ -50,7 +52,7 @@ nav:not(#logcad,.UsuNav) {
     width: 100%;
     height: 10vh;
     z-index: 2;
-    top: 0vh;
+
 
 
 }
@@ -231,6 +233,13 @@ article{
   height: 48vh;
   background-color: rgb(255, 255, 255); 
   white-space: nowrap;
+
+  box-shadow: 0px 0px 7px;
+}
+
+.artiFiltro:hover{
+  transition: 0.2s;
+  box-shadow: 0px 0px 7px #52C7A6;
 }
 
 .artiOrg {
@@ -243,8 +252,17 @@ article{
   padding: 2vh;
   position: relative;
   right: 0vh;
+  box-shadow: 0px 0px 7px;
 
 }
+
+.artiOrg:hover{
+  transition: 0.2s;
+  box-shadow: 0px 0px 7px #52C7A6;
+}
+
+
+
 .rolagemInst{
   overflow: auto;
   max-height: 400px;
@@ -256,6 +274,7 @@ article{
     border-radius: 9px;
     width: 76vh;
     font-size: 4.5vh;
+    font-family: 'BreeSerif-Regular';
 }
 
 .subtituloOrg {
@@ -319,6 +338,8 @@ article{
   color: white;
   border-radius: 9px;
   font-size: 4.5vh;
+  font-family: 'BreeSerif-Regular';
+
 }
 
 .tituloden{
@@ -357,6 +378,12 @@ article{
   min-height: max-content;
   padding: 5vh;
   margin: 2vh;
+  box-shadow: 0px 0px 7px;
+}
+
+#arti:hover{
+  transition: 0.2s;
+  box-shadow: 0px 0px 7px #52C7A6;
 }
 
 
@@ -421,18 +448,36 @@ article{
 
 }
 
+.containerSobre{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .sobreNos{
   border: 1px solid rgb(163, 163, 163);
-  border-radius: 4px;
-  width: 100vh;
-
+  border-radius: 7px;
+  width: 95%;
+  background-color: white;  
 }
 
 
 
 .tituloSobre{
-  font-size: 3vh;
-  font-family: 'Acme-Regular';
+
+  font-size: 4vh;
+  font-family: 'BreeSerif-Regular'; 
+  font-weight: 400;
+  margin-top: 3vh;
+  padding: 3vh;
+    
+}
+
+.textoSobre{
+  padding: 3vh;
+  font-family: 'BreeSerif-Regular';
+  font-size: 2.3vh;
+  font-weight: lighter;
 }
 
 /*-------------------------------------CORPO FIM------------------------------*/
@@ -444,7 +489,7 @@ article{
   background-color: #252525;
   color: aliceblue;
   font-size: 2.1vh;
-  
+  margin-top: 10vh;
 }
 
 .container ul{
