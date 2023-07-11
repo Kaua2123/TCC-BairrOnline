@@ -1,6 +1,11 @@
 body{
-  background-color: #C3D5DD;
+  background-color: #dde7ff;
   
+}
+
+@font-face {
+  font-family: 'Acme-Regular';
+  src: url('./fontes/Acme/Acme-Regular.ttf') format('truetype');
 }
 
 *{
@@ -217,6 +222,10 @@ article h1{
  margin:  15vh 5vh 10vh 5vh;
 }
 
+article{
+  border: 1px solid rgb(163, 163, 163);
+}
+
 .artiFiltro {
   width:70vh;
   height: 48vh;
@@ -411,6 +420,21 @@ article h1{
   font-size: 1.6vh;
 
 }
+
+.sobreNos{
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 4px;
+  width: 100vh;
+
+}
+
+
+
+.tituloSobre{
+  font-size: 3vh;
+  font-family: 'Acme-Regular';
+}
+
 /*-------------------------------------CORPO FIM------------------------------*/
 
 /*----------------------------------FOOTER COMEÇO--------------------------*/
@@ -1353,6 +1377,7 @@ cursor: pointer;
 
 .xdUsu{
   text-align: center;
+
 }
 
 .sininho{

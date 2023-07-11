@@ -99,8 +99,14 @@ const Home = () => {
  </article>
 
 
+
  </div>
 </section>
+<div className='sobreNos'>
+  
+  <h1 className='tituloSobre'>O que o BairrOnline tem a oferecer?</h1>
+
+ </div>
 
     </body>
         
