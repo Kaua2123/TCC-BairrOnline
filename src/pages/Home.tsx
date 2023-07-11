@@ -38,10 +38,12 @@ const Home = () => {
 
          
           </ul>
+      
        <div id='logcad'>
        <Link to="/Cadastro" > <button className='btnCadastro'>  Cadastrar-se </button> </Link>
+      
+       <Link to="/Login" className='loginHome'> Fazer login</Link>
 
-       <Link to="/Login"> Fazer login</Link>
        </div>
         
       </nav>
@@ -74,7 +76,7 @@ const Home = () => {
          </div>
 
         <div className='comentarios'>
-        <button onClick={() => {setOpenCom(true)}} className='btnOpen'>Abrir comentários</button>
+        <button onClick={() => {setOpenCom(true)}} className='btnOpen'>Comentários</button>
         <Comentarios isOpen={openCom} setCloseCom = {() => {setOpenCom(!openCom)}}>
         </Comentarios>
         </div>

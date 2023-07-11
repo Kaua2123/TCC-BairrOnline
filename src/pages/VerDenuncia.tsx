@@ -55,7 +55,7 @@ const VerDenuncia = () => {
       </div>
       <div className='filtrar'>
       <label className='labelBairro' htmlFor="Filtro"> Bairros </label>
-  <label className='labelFiltro' htmlFor="Filtro"> Problemas específicos </label>
+  <label className='labelFiltro' htmlFor="Filtro"> Problemas </label>
   
   <button className='btnFiltrar'>Aplicar</button>
   

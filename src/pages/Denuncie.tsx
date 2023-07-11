@@ -107,7 +107,7 @@ const Denuncie = () => {
         {img ? <img src={URL.createObjectURL(img)} alt='img' width={150} height={150} color='green'></img> : <img src={Camera} alt='img' width={150} height={150}/>} 
         <br />
         <input className='btnForm' type='submit' />
-        <input className='btnForm' type='reset' value="Limpar"/>
+  
         </form>
       </div>
       </section>

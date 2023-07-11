@@ -1,5 +1,5 @@
 body{
-  background-color: #e7ecf7;
+  background-color: #e3f3fa;
   
 }
 
@@ -28,33 +28,33 @@ body{
   color: white;
 }
 
-a {
+a { 
   color: #fff;
   text-decoration: none;
-  transition: 0.3s;
-}
 
-a:hover {
-  opacity: 0.7;
-  fill: #338BB0;
 }
 
 
 
-nav:not(#logcad,.UsuNav) {
+
+nav:not(.UsuNav) {
 
 
     display: flex;
     justify-content: baseline;
     align-items: center;
-    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    font-family: 'BreeSerif-Regular';
     background: #252525;
     width: 100%;
     height: 10vh;
     z-index: 2;
+    
 
 
+}
 
+.loginHome:hover{
+  color: #338BB0;
 }
 
 .btnCadastro{
@@ -66,14 +66,15 @@ nav:not(#logcad,.UsuNav) {
   border: black;
   border-radius: 8px;
   font-size: 2vh;
-  
+  font-family: 'BreeSerif-Regular';
 }
 
 .btnCadastro:hover{
 
-color: #54c3f3;
-transition: 0.4s;
-cursor: pointer;
+  color: #338BB0;
+  transition: 0.1s;
+  cursor: pointer;
+  background-color: #ffffff;
 }
 
 
@@ -83,6 +84,8 @@ position:absolute;
 right: 15vh;
 font-size: 2vh;
 }
+
+
 main {
   background-color: aliceblue;
   background-size: cover;
@@ -197,7 +200,7 @@ main {
 article:not(#arti){
   display: flex;
   flex-direction:  column;
-  border-radius: 10px;
+  border-radius: 7px;
   background-color: #ffffff;
   width: 80vh;
   font-size: 1.2vh;
@@ -238,7 +241,7 @@ article{
 }
 
 .artiFiltro:hover{
-  transition: 0.2s;
+  transition: 0.1s;
   box-shadow: 0px 0px 7px #52C7A6;
 }
 
@@ -253,12 +256,12 @@ article{
   position: relative;
   right: 0vh;
   box-shadow: 0px 0px 7px;
-
+  
 }
 
 .artiOrg:hover{
-  transition: 0.2s;
-  box-shadow: 0px 0px 7px #52C7A6;
+  transition: 0.1s;
+  box-shadow: 0px 0px 7px #338BB0;
 }
 
 
@@ -271,7 +274,7 @@ article{
 
 .h1Org{
     color: white;
-    border-radius: 9px;
+    border-radius: 6px;
     width: 76vh;
     font-size: 4.5vh;
     font-family: 'BreeSerif-Regular';
@@ -311,32 +314,31 @@ article{
 
 .btnDenuncia{
 
-  background-color: #cfcfcf;
-  border: 1px solid black;
-  border-radius: 3px;
-  width: 15vh;
-  height: 3.4vh;
-  margin-top: 1vh;
-  font-size: 2vh;
+    width: 15vh;
+    height: 5vh;
+    margin-right: 20px;
+    color: #ffffff;
+    background-color: #338BB0;
+    border: black;
+    border-radius: 8px;
+    font-size: 2vh;
+    font-family: 'BreeSerif-Regular';
+    margin-top: 2vh;
+  
 }
 
 
 
 .btnDenuncia:hover{
-
-  width: 15.4vh;
-  height: 3.9vh;
   transition: 0.1s;
   background-color: #52C7A6;
-  color: white;
-  border: none;
   cursor: pointer;
 }
 
 .h1Den{
   background-color: #338BB0;
   color: white;
-  border-radius: 9px;
+  border-radius: 6px;
   font-size: 4.5vh;
   font-family: 'BreeSerif-Regular';
 
@@ -345,10 +347,12 @@ article{
 .tituloden{
   background-color: #338BB0;
   color: #ffffff;
-  width: 25vh;
+  width: 30vh;
   height: 3vh;
   border-radius: 6px;
   text-align: center;
+  font-family: 'BreeSerif-Regular';
+
 }
 
 .subtituloDenuncia{
@@ -356,6 +360,7 @@ article{
   font-size: 24px;
   text-align: center;
   color: #84CDEC;
+  font-family: 'BreeSerif-Regular';
 }
 
 .textoDenuncia{
@@ -371,7 +376,7 @@ article{
 
 
 #arti{
-  border-radius: 10px;
+  border-radius: 7px;
   background-color: #ffffff;
   width: 80vh;
   font-size: 1.2vh;
@@ -382,8 +387,8 @@ article{
 }
 
 #arti:hover{
-  transition: 0.2s;
-  box-shadow: 0px 0px 7px #52C7A6;
+  transition: 0.1s;
+  box-shadow: 0px 0px 7px #338BB0;
 }
 
 
@@ -399,11 +404,14 @@ article{
   margin-left: 23vh;
   top: -18vh;
   font-size: 2.05vh;
+  font-family: 'BreeSerif-Regular';
+  font-weight: lighter;
 }
 
 .subtituloden{
   text-align: center;
   font-size: 2.5vh;
+  font-family: 'BreeSerif-Regular';
 }
 
 .comentario{
@@ -507,7 +515,8 @@ ul li a {
 }
 
 ul li a:hover {
-  color: #54c3f3;
+  color: #338BB0;
+  transition: 0.1s;
 }
 
 
@@ -602,6 +611,7 @@ cursor: pointer;
   justify-content: center;
   margin-top: 15vh;
   font-size: 3vh;
+  font-family: 'BreeSerif-Regular';
 }
 
 .h1acompanhar:hover{
@@ -625,26 +635,23 @@ cursor: pointer;
 }
 
 .filtrar label{
-  background-color: #cfcfcf;
-  border: solid 1px black;
-  border-radius: 3px;
-  padding: 6px;
-  font-size: 1.7vh;
- 
-  display: flex;
+  width: 15vh;
+  height: 5vh;
   margin-right: 20px;
+  color: #ffffff;
+  background-color: #338BB0;
+  border: black;
+  border-radius: 8px;
+  font-size: 2vh;
+  font-family: 'BreeSerif-Regular';
+  text-align: center;
+  
 }
 
 .filtrar label:hover{
-  background-color: #52C7A6;
-  border: transparent;
-  padding: 6px;
-  font-size: 1.7vh;
-  color: white;
-  transition: 0.1s;
-  opacity: 2;
   cursor: pointer;
-  
+  background-color: #52C7A6;
+  transition: 0.1s;
 }
 
 .labelBairro{
@@ -652,13 +659,16 @@ cursor: pointer;
 }
 
 .btnFiltrar{
-  border-radius: 3px;
-  background-color: #cfcfcf;
-  font-size: 1.7vh;
-  width: 10vh;  
-  height: 3.5vh;
-  text-align: center;
-  border: solid 1px black;
+  width: 15vh;
+  height: 5vh;
+  margin-right: 20px;
+  color: #ffffff;
+  background-color: #338BB0;
+  border: black;
+  border-radius: 8px;
+  font-size: 2vh;
+  font-family: 'BreeSerif-Regular';
+
   margin-left: 95vh;
 
   
@@ -667,10 +677,7 @@ cursor: pointer;
 .btnFiltrar:hover {
   color: #ffffff;
   background-color: #52C7A6;
-  transition: 0.2s;
-  border: transparent;
- 
-  
+  transition: 0.1s;
   cursor: pointer;
 } 
 
@@ -734,23 +741,24 @@ cursor: pointer;
 
 
 .btnForm{
-  background-color: #cfcfcf;
-  border-radius: 3px;
-  border: 1px solid black;
-  width: 9vh;
-  height: 3vh;
-  margin-left: 1vh;
+  width: 12vh;
+  height: 5vh;
+  margin-right: 20px;
+  color: #ffffff;
+  background-color: #338BB0;
+  border: black;
+  border-radius: 8px;
+  font-size: 2vh;
+  font-family: 'BreeSerif-Regular';
+  margin-top: 2vh;
+  margin: 1vh;
 
  
 } 
 
 .btnForm:hover{
   transition: 0.1s;
-  border: 1px solid white;
-  color: white;
   background-color: #52C7A6;
-  width: 9.2vh;
-  height: 3.3vh;
   cursor: pointer;
 }
 
@@ -785,10 +793,10 @@ cursor: pointer;
 .bordinhaDen{
   margin-top: 15vh;
   background-color: #338BB0;
-  border-radius: 7px;
+  border-radius: 6px;
   color: white;
   justify-content: center;  
-  height: 5vh;
+  height: 6vh;
   width: 65vh;
 
 } 
@@ -799,12 +807,10 @@ cursor: pointer;
   text-align: center;
   justify-content: center;
   font-size: 4vh;
+  font-family: 'BreeSerif-Regular';
+  text-align: center;
 }
 
-.h1Denuncie:hover{
-  color: #c5c9d1;
-  transition: 0.2s;
-}
 
 .cadastroDen{
   background-color: #ffffff;
@@ -814,6 +820,7 @@ cursor: pointer;
   margin-top: 5vh;
   border: 1px solid black;
   border-radius: 10px;  
+  font-family: 'BreeSerif-Regular';
 }
 
 .cadastroDen img {
@@ -984,7 +991,7 @@ cursor: pointer;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #C3D5DD;
+
  
 }
 .log1{
@@ -993,12 +1000,24 @@ cursor: pointer;
   border-radius: 10px;
   width: 65vh;
   padding: 10vh;
+  box-shadow: 0px 0px 7px;
+  font-family: 'BreeSerif-Regular';
 }
+
+.log1:hover{
+  box-shadow: 0px 0px 7px #338BB0;
+  transition: 0.1s;
+}
+
+
 .log1 h2{
   margin-bottom: 12vh;
   font-size: 5vh;
   color: #000000;
   text-align: center;
+  background-color: #338BB0;
+  border-radius: 6px;
+  color: white;
 }
 .log1 .box-user{
   position: relative;
@@ -1037,31 +1056,24 @@ cursor: pointer;
 }
 .butao1{
 
-  text-align: center;
-  width: 14vh;
-  height: 3.8vh;
-  border-radius: 3px;
-  color: black;
-  border: 1px solid black;
-  background-color: #cfcfcf;
-  text-decoration: none;
+  width: 15vh;
+  height: 5vh;
+  margin-right: 20px;
+  color: #ffffff;
+  background-color: #338BB0;
+  border: black;
+  border-radius: 8px;
   font-size: 2vh;
-  margin-top: 3vh;
+  font-family: 'BreeSerif-Regular';
+  margin-top: 2vh;
+  text-align: center;
   
 }
 
 .butao1:hover{
   background: #52C7A6;
-  
-  color: #ffffff;
-  width: 14.4vh;
-  height: 4.3vh;
-  transition: 0.18s;
-  border: none;
-  justify-content: center;
-  align-items: center;
-  display: flex;
   cursor: pointer;
+  transition: 0.1s;
   
 }
 
@@ -1090,6 +1102,7 @@ cursor: pointer;
   right: 0;
   background: rgb(0, 0, 0, 0.7);
   z-index: 1000 ;
+  font-family: 'BreeSerif-Regular';
 }
 
 .Coment1{
@@ -1107,6 +1120,9 @@ cursor: pointer;
   position:relative;
   align-items: center;
   font-size: 5vh;
+  font-family: 'BreeSerif-Regular';
+  background-color: #338BB0;
+  color: white;
 }
 
 
@@ -1129,27 +1145,22 @@ cursor: pointer;
 
 .btnOpen {
   
-  background-color: #cfcfcf;
-  font-size: 1.8vh;
   width: 15vh;
-  height: 3.4vh;
-  border-radius: 3px;
-  text-align: center;
-  border: solid 0.2vh black;
+  height: 5vh;
+  margin-right: 20px;
+  color: #ffffff;
+  background-color: #338BB0;
+  border: black;
+  border-radius: 8px;
+  font-size: 2vh;
+  font-family: 'BreeSerif-Regular';
+  margin-top: 2vh;
 }
 
 .btnOpen:hover{
-  
-  width: 15.4vh;
-  height: 3.9vh;
-  border: none;
-  color: #ffffff;
-  background-color: #52C7A6;
   transition: 0.1s;
-
-  left: 22.5vh;
-  font-size: 1.7vh;
   cursor: pointer;
+  background-color: #52C7A6;
 }
 
 /* ---------------------------------- PLANEJAR SOLUÇÃO ------------------------------------------------------------------------- */
@@ -1434,7 +1445,7 @@ cursor: pointer;
 }
 
 .artiUsuario{
-    border-radius: 10px;
+    border-radius: 7px;
     background-color: #ffffff;
     width: 80vh;
     font-size: 1.2vh;
