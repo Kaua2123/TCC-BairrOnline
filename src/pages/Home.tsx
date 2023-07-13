@@ -51,11 +51,42 @@ const Home = () => {
 
     </header>
     <body>
+      <div className='quadradoazul'>
+        <div className='container-fullscreen'>
+
+      <div className='fullscreen'>
+        <img src={Logo} className='logoFullscreen'/>
+        <h1 className='h1Fullscreen'>Seu portal de denúncias</h1>
+      </div>
+
+        </div>
+
+        <div className='container-textoEsquerda'>
+          <div className='fullscreen2'>
+            <h1 className='h1Fullscreen2'>Com problemas no bairro?</h1>
+            <h2 className='h2Fullscreen'> Relate suas denúncias aqui, e tenha o <br /> retorno das instituições 
+            responsáveis pela <br /> resolução dos problemas  </h2>
+          </div>
+        </div>
+
+
+        <div className='container-textoDireita'> 
+        <div className='fullscreen3'>
+         <h1 className='h1Fullscreen3'>Veja outras denúncias</h1>
+    <div className='container-texto'>
+         <h2 className='h2Fullscreen2'> Se mantenha informado quanto aos <br />  problemas de seu bairro ou  
+        de outros <br /> bairros de Volta Redonda </h2>
+      
+      </div>
+        </div>
+        </div>
+      </div>
+      
       <section id='miranhatrem'>
       <article id='arti'>
     
         <h1 className='h1Den'>Denúncias em destaque</h1><br></br>
-        <h2 className='subtituloden'>Denúncias em Alta do Bairro de Volta Redonda</h2>
+
 
         <div className='denuncias'> 
         <img src={img2}alt="Imagem" className="imgArt"title="agua estancada"/>  

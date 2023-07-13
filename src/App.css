@@ -1,5 +1,5 @@
 body{
-  background-color: #e3f3fa;
+  background-color: #C3D5DD;
   
 }
 
@@ -204,6 +204,100 @@ main {
 
 /*----------------------------------MENU HEADER FIM----------------------------*/
 
+/*--------------------------------FULLSCREEN HOME-------------------------*/
+
+.container-fullscreen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  flex-direction: row;
+}
+
+.quadradoazul{
+  background-color: #338BB0;
+  width: 100%;
+}
+
+.fullscreen{
+  margin-top: -4vh;
+  width: 100%;
+  text-align: center;
+
+
+}
+
+.fullscreen2{
+  margin-top: -43vh;
+  margin-left: 9vh;
+}
+
+.h1Fullscreen2{
+  color: white;
+  font-family: 'BreeSerif-Regular';
+  font-size: 4vh;
+  text-decoration: underline white;
+}
+
+
+.fullscreen3{
+
+  margin-top: -43vh;
+  margin-right: 13vh;
+}
+
+.h2Fullscreen{
+ 
+  color: white;
+  font-family: 'BreeSerif-Regular';
+  font-size: 2.4vh;
+  font-weight: 500;
+  
+
+
+}
+
+.h2Fullscreen2{
+  color: white;
+  font-family: 'BreeSerif-Regular';
+  font-size: 2.4vh;
+  font-weight: 500;
+  
+}
+
+
+.h1Fullscreen{
+  text-align: center;
+  color: white;
+  font-family: 'BreeSerif-Regular';
+  font-size: 4vh;
+}
+
+.h1Fullscreen3{
+  color: white;
+  font-family: 'BreeSerif-Regular';
+  font-size: 4vh;
+  text-decoration: underline white;
+}
+
+
+
+.container-textoDireita{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container-textoEsquerda{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logoFullscreen{
+  height: 50vh;
+  width: 50vh;
+}
+
+
 /*---------------------------------CORPO COMEÇO-------------------------------*/
 article:not(#arti){
   display: flex;
@@ -248,10 +342,6 @@ article{
   box-shadow: 0px 0px 7px;
 }
 
-.artiFiltro:hover{
-  transition: 0.1s;
-  box-shadow: 0px 0px 7px #52C7A6;
-}
 
 .artiOrg {
   height:fit-content;
@@ -267,10 +357,6 @@ article{
   
 }
 
-.artiOrg:hover{
-  transition: 0.1s;
-  box-shadow: 0px 0px 7px #338BB0;
-}
 
 
 
@@ -392,10 +478,7 @@ article{
   box-shadow: 0px 0px 7px;
 }
 
-#arti:hover{
-  transition: 0.1s;
-  box-shadow: 0px 0px 7px #338BB0;
-}
+
 
 
 
@@ -414,11 +497,13 @@ article{
   font-weight: lighter;
 }
 
+/*
 .subtituloden{
   text-align: center;
   font-size: 2.5vh;
   font-family: 'BreeSerif-Regular';
 }
+*/
 
 .comentario{
   color: white;
@@ -472,7 +557,7 @@ article{
   border: 1px solid rgb(163, 163, 163);
   border-radius: 7px;
   width: 95%;
-  background-color: white;  
+  background-color: #ffffff;  
 }
 
 
@@ -528,7 +613,7 @@ ul li a {
 
 ul li a:hover {
   color: #338BB0;
-  transition: 0.1s;
+
 }
 
 
