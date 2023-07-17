@@ -6,7 +6,7 @@ import Logo from "../img/logo.svg";
 import Comentarios from './Comentarios';
 import { useState } from 'react';
 import { Reportar } from './reportar';
-import { ChakraProvider, Center, Box, Flex, Image } from '@chakra-ui/react';
+import { ChakraProvider, Center, Box, Flex, Image, Text, Container } from '@chakra-ui/react';
 
 //componentes
 import Header from '../components/Header';
@@ -19,14 +19,34 @@ const Home = () => {
   const [openCom, setOpenCom] = useState(false);
 
  return (
+
+  // 
   <ChakraProvider>
       <Header/>
-          <Flex>
-              <Box bgColor='#338BB0' h='1xl' w='100%'>
-                <Center>
-                    <Image src={Logo} boxSize='480px' />
-               </Center>
-              </Box>
+          <Flex >
+                <Box bgColor='#338BB0' h='xl' w='100%'>
+                  <Center>
+                      <Image src={Logo} boxSize='480px' />
+                  </Center>
+                    <Container centerContent ml='-3' w='100' mt='-80' >
+                      <Text  color='white' textDecoration='underline' fontFamily='BreeSerif-Regular' fontSize='28pt'>Com problemas no bairro?</Text>
+                      <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize='14pt'  fontWeight='normal'>Relate suas denúncias aqui,
+                      e tenha o retorno das instituições 
+                      responsáveis pela resolução dos problemas
+                      </Text>
+                   </Container>
+
+                    <Container centerContent mt='52'>
+                      <Text color='white' fontSize='30pt' fontFamily='BreeSerif-Regular'>Seu portal de denúncias</Text>
+                    </Container>
+
+                     <Container centerContent mr='20px' w='100' mt='-374px  ' >
+                      <Text  color='white' textDecoration='underline' fontFamily='BreeSerif-Regular' fontSize='28pt'>Veja outras denúncias</Text>
+                      <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize='14pt'  fontWeight='normal'>Se mantenha informado quanto aos problemas
+                      de seu bairro ou de outros bairros de Volta Redonda
+                      </Text>
+                   </Container>
+                </Box>
          </Flex>
 
 
