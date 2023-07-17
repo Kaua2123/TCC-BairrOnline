@@ -6,7 +6,11 @@ import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
 import Sinin from './../img/notification-bell-svgrepo-com.svg'
 
+import Footer from '../components/Footer';
+import {Button, Center, ChakraProvider, Flex, HStack, IconButton, Menu, MenuButton, MenuItem, MenuList, Spacer, Image } from '@chakra-ui/react'
+
 import { useState } from 'react';
+import { MenuOutlined } from '@ant-design/icons';
 
 
 const HomeUsuario = () => { 
@@ -14,40 +18,59 @@ const HomeUsuario = () => {
   const [openCom, setOpenCom] = useState(false);
 
  return (
+  <ChakraProvider>
     <div>
 
-      <header>
-      <nav>
-       <a className='logo' href='/'><img className='imgLogo' src={Logo} alt="LogoBairronline" /> </a>
+      <Flex w='100%'  bg='#322F2F' boxShadow='xl' > 
 
-        <div className="mobile-menu">
+          <Center>
+          <Menu>
+            <MenuButton bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
+            <MenuList>
+            <MenuItem  >BairrOnline</MenuItem>
+            <MenuItem  as='a' href="#">Sobre nós</MenuItem>
+            <MenuItem as='a' href="#">Contate-nos</MenuItem>
+            </MenuList>
+          </Menu>
+          </Center>
 
-          <div className="line1"></div>
+          <Link to='/'> <Image src={Logo} alt='logo' boxSize='20' ></Image> </Link>
 
-          <div className="line2"></div>
-
-          <div className="line3"></div>
-
-        </div>
-        <ul className="nav-list">
-
-          <li> <Link to="/Denuncie"> Denuncie aqui </Link> </li>
-
-          <li>  <Link to="/VerDenuncia"> Ver denúncias </Link></li>
-
-          <li>  <Link to="/AcompDenuncia"> Acompanhar denúncias  </Link></li>
+          <Spacer/>
           
-         
-          </ul>
-          <img src={Sinin} className='sininho'/>
-       <div id='LogUsu'>     
-           <p>U</p>{/*Fazer um modal tipo do github aqui*/}
-       </div>
-        
-      </nav>
+            <HStack w='25%' spacing='20' >
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'>
+                  <Link to='/Denuncie'> Denuncie aqui</Link>
+              </Button>
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'>
+                 <Link to='/VerDenuncia'> Ver denúncias </Link>
+              </Button>
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'
+              mr='-10'>
+                 <Link to='/'> Acompanhar denúncias</Link>
+              </Button> 
+            </HStack>
+            <Spacer/>
 
+            <HStack spacing='4'>
+              <Button colorScheme='blackAlpha' _hover={{backgroundColor: 'white', color: '#338bb0'}}> <Link to='/Cadastro'> Cadastre-se </Link> </Button>
+              <Button colorScheme='blackAlpha' _hover={{backgroundColor: 'white', color: '#338bb0'}} mr='4' >  <Link to='/Login'> Login </Link></Button>
+            </HStack>
+          
 
-    </header>
+      </Flex>
     <body>
       <section id='miranhatrem'>
         <div className='containerH1'>
@@ -96,48 +119,11 @@ const HomeUsuario = () => {
 
     </body>
         
-        <footer className="container">
-
-        <div className="item1">
-          <ul className="texto">
-            <li className="logoFooter"><a className='bairrOnlineLogo' href='#'>  <img className="imgLogo" src={Logo} alt="LogoBairronline"  /></a></li>
-          </ul>
-        </div>
-
-            <div className="item2">
-              <ul className="texto">
-
-                <li className="xd">Usuário</li>
-                  <li><a href="#">Início</a></li>
-                  <li><Link to="/Cadastro">Cadastre-se</Link></li>
-                  <li><Link to="/Login">Entrar</Link></li>
-
-              </ul>
-            </div>
-
-            <div className="item3">
-               <ul className="texto">
-
-                <li className="xd">Saiba mais</li>
-
-                <li><a href="#">Sobre nós</a></li>
-                  <li><a href="#">Perguntas frequentes</a></li>
-                  <li><a href="#">Regras gerais</a></li>
-
-              </ul>
-            </div>
-
-            <div className="item4">
-              <ul>
-
-                <li> <img src={instagram} alt='Instagram' title="socialMedia"></img> </li>    
-                <li> <img src={twitter} alt='Twitter' title="socialMedia"></img></li>
-
-              </ul>
-
-            </div>
-     </footer>
+  
+ 
      </div>
+     <Footer/>
+     </ChakraProvider>
 
   );
 }

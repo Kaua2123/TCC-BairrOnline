@@ -8,6 +8,9 @@ import Comentarios from './Comentarios';
 import { useState } from 'react';
 import { Reportar } from './reportar';
 import AssumirTarefa from './AssumirTarefa';
+import { MenuOutlined } from '@ant-design/icons';
+import { Flex, Center, Menu, MenuButton, IconButton, MenuList, MenuItem, Spacer, HStack, Button, Image, ChakraProvider} from '@chakra-ui/react';
+import Footer from '../components/Footer';
 
 //ALTERAR A HOME TLGD O DESIGN TLGD PQ ELA TA COMO USUARIO MAS É PRA SER DESLOGADA OU SEJA MUDAR AS OPSOES
 const Home = () => {
@@ -16,41 +19,58 @@ const Home = () => {
   const [OpenTaf , setOpenTaf] = useState(false);
 
  return (
-    <div>
+    <ChakraProvider>
 
-      <header>
-      <nav>
-       <a className='logo' href='/'><img className='imgLogo' src={Logo} alt="LogoBairronline" /> </a>
+      <Flex w='100%'  bg='#322F2F' boxShadow='xl' > 
 
-        <div className="mobile-menu">
+          <Center>
+          <Menu>
+            <MenuButton bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
+            <MenuList>
+            <MenuItem  >BairrOnline</MenuItem>
+            <MenuItem  as='a' href="#">Sobre nós</MenuItem>
+            <MenuItem as='a' href="#">Contate-nos</MenuItem>
+            </MenuList>
+          </Menu>
+          </Center>
 
-          <div className="line1"></div>
+          <Link to='/'> <Image src={Logo} alt='logo' boxSize='20' ></Image> </Link>
 
-          <div className="line2"></div>
+          <Spacer/>
+          
+            <HStack w='25%' spacing='20' >
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'>
+                  <Link to='/Denuncie'> Ver denúncias </Link>
+              </Button>
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'>
+                 <Link to='/VerDenuncia'> Denúncias avaliadas </Link>
+              </Button>
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'
+              ml='20px'>
+                 <Link to='/'> Denúncias assumidas </Link>
+              </Button> 
+            </HStack>
+            <Spacer/>
 
-          <div className="line3"></div>
+            <HStack spacing='4'>
+              <Button colorScheme='blackAlpha' _hover={{backgroundColor: 'white', color: '#338bb0'}}> <Link to='/Cadastro'> Cadastre-se </Link> </Button>
+              <Button colorScheme='blackAlpha' _hover={{backgroundColor: 'white', color: '#338bb0'}} mr='4' >  <Link to='/Login'> Login </Link></Button>
+            </HStack>
+          
 
-        </div>
-        <ul className="nav-list">
-
-         
-          <li>  <Link to="/VerDenuncia"> Ver denúncias  </Link></li>
-
-          <li><Link to="/VerDenuncia"> Denuncias Avaliadas</Link></li>
-           
-           <li><Link to="/VerDenuncia">Denuncias Assumidas</Link></li>
-         
-          </ul>
-       <div id='logcad'>
-       <Link to="/Cadastro" > <button className='btnCadastro'>  Cadastrar-se </button> </Link>
-
-       <Link to="/Login">Fazer login</Link>
-       </div>
-        
-      </nav>
-
-
-    </header>
+      </Flex>
     <body>
       <section id='miranhatrem'>
       <article id='arti'>
@@ -98,48 +118,8 @@ const Home = () => {
 
     </body>
         
-        <footer className="container">
-
-        <div className="item1">
-          <ul className="texto">
-            <li className="logoFooter"><a className='bairrOnlineLogo' href='#'>  <img className="imgLogo" src={Logo} alt="LogoBairronline"  /></a></li>
-          </ul>
-        </div>
-
-            <div className="item2">
-              <ul className="texto">
-
-                <li className="xd">Usuário</li>
-                  <li><a href="#">Início</a></li>
-                  <li><Link to="/Cadastro">Cadastre-se</Link></li>
-                  <li><Link to="/Login">Entrar</Link></li>
-
-              </ul>
-            </div>
-
-            <div className="item3">
-               <ul className="texto">
-
-                <li className="xd">Saiba mais</li>
-
-                <li><a href="#">Sobre nós</a></li>
-                  <li><a href="#">Perguntas frequentes</a></li>
-                  <li><a href="#">Regras gerais</a></li>
-
-              </ul>
-            </div>
-
-            <div className="item4">
-              <ul>
-
-                <li> <img src={instagram} alt='Instagram' title="socialMedia"></img> </li>    
-                <li> <img src={twitter} alt='Twitter' title="socialMedia"></img></li>
-
-              </ul>
-
-            </div>
-     </footer>
-     </div>
+      <Footer/>
+    </ChakraProvider>
 
   );
 }
