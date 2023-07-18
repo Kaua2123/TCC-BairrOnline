@@ -22,7 +22,7 @@ const Header = () => {
           <Menu>
             <MenuButton bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
             <MenuList>
-            <MenuItem  >BairrOnline</MenuItem>
+            <MenuItem >BairrOnline</MenuItem>
             <MenuItem  as='a' href="#">Sobre nós</MenuItem>
             <MenuItem as='a' href="#">Contate-nos</MenuItem>
             </MenuList>

@@ -5,7 +5,7 @@ import twitter from '../img/twitter.png'
 import Logo from "../img/logo.svg";
 import Camera from "../img/camera.png";
 import { useState } from "react";
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
 //componentes
 import Header from '../components/Header';
@@ -35,12 +35,20 @@ const Denuncie = () => {
     console.log(img);
   } 
 
+  const theme = extendTheme({
+    styles: {
+      global: () => ({
+        body: {
+          background: "",
+        },
+      }),
+    },
+  });
+
 
     return (
-
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
           <Header/>
-      
 
         
  <body>

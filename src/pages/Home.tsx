@@ -4,7 +4,7 @@ import '../App.css';
 //imgs
 import img2 from "../img/aguaEstancada.png";
 import Logo from "../img/logo.svg";
-import inst from "../img/inst.png"
+
 
 //react
 import { useState } from 'react';
@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 //chakra 
 import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
-, Heading, Wrap, WrapItem, Button, Divider, Spacer, Input, InputGroup, InputLeftElement} from '@chakra-ui/react';
+, Heading, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme} from '@chakra-ui/react';
 
 //componentes
 import Header from '../components/Header';
@@ -28,6 +28,17 @@ import { MdOutlineReportProblem } from 'react-icons/md';
 import { FiSearch } from 'react-icons/fi'
 
 
+//remove o background color padrao do chakra
+const theme = extendTheme({
+    styles: {
+      global: () => ({
+        body: {
+          background: "",
+        },
+      }),
+    },
+  });
+
 
 const Home = () => {
   const [rep , setrep] = useState(false)
@@ -36,7 +47,11 @@ const Home = () => {
  return (
 
   // BAIRRONLINE GRANDAO TLG (usando os componentes de estilo do chakra)
-  <ChakraProvider>
+  
+  <ChakraProvider theme={theme}>
+    
+        
+   
       <Header/>
           <Flex >
                 <Box bgColor='#338BB0' h='xl' w='100%'>
@@ -213,7 +228,6 @@ const Home = () => {
         
 
 
-    
    
 
      <Footer/>

@@ -12,14 +12,25 @@ const problemas = ['Buraco', 'Lixo', 'Luz'];
 //componentes
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
 const VerDenuncia = () => {
 
   const [openCom, setOpenCom] = useState(false);
 
+  const theme = extendTheme({
+    styles: {
+      global: () => ({
+        body: {
+          background: "",
+        },
+      }),
+    },
+  });
+
+
     return (
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
           <Header/>
 
  <body>

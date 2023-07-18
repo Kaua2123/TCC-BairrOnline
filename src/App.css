@@ -1,7 +1,4 @@
-body{
-  background-color: #C3D5DD;
-  
-}
+
 
 @font-face {
 
@@ -9,15 +6,16 @@ body{
   src: url('./fontes/Bree_Serif/BreeSerif-Regular.ttf') format('truetype'); 
 }
 
-@font-face {
-  font-family:'Acme-Regular';
-  src: url('./fontes/Acme/Acme-Regular.ttf') format('truetype');
-}
+
 
 *{
   margin:0px;
   padding:0px;
   box-sizing: border-box;
+}
+
+body{
+  background-color: #C3D5DD;
 }
 
 
@@ -334,138 +332,12 @@ article{
   border: 1px solid rgb(163, 163, 163);
 }
 
-.artiFiltro {
-  width:70vh;
-  height: 48vh;
-  background-color: rgb(255, 255, 255); 
-  white-space: nowrap;
-
-  box-shadow: 0px 0px 7px;
-}
-
-
-.artiOrg {
-  height:fit-content;
-  margin-top: 20PX;
-  width:fit-content;
-  min-height: 34vh;
-  display: block;
-  background-color: rgb(255, 255, 255);
-  padding: 2vh;
-  position: relative;
-  right: 0vh;
-  box-shadow: 0px 0px 7px;
-  
-}
 
 
 
 
-.rolagemInst{
-  overflow: auto;
-  max-height: 400px;
-}
 
 
-.h1Org{
-    color: white;
-    border-radius: 6px;
-    width: 76vh;
-    font-size: 4.5vh;
-    font-family: 'BreeSerif-Regular';
-}
-
-.subtituloOrg {
-  font-size: 2vh;
-  white-space: nowrap;
-  text-align: center;
-}
-
-.bordinha{
-  background-color: #338BB0;
-  border-radius: 7px;
-  color: white;
-}
-
-
-.imgArt{
-  width: 15vh;
-  height: 15vh;
-  border-radius: 11px;
-  margin-top: 5vh;
- 
-}
-
-
-
-
-.denuncias{
-  display: flex;
-  flex-direction: column;
-}
-
-
-.btnDenuncia{
-
-    width: 15vh;
-    height: 5vh;
-    margin-right: 20px;
-    color: #ffffff;
-    background-color: #338BB0;
-    border: black;
-    border-radius: 8px;
-    font-size: 2vh;
-    font-family: 'BreeSerif-Regular';
-    margin-top: 2vh;
-  
-}
-
-
-
-.btnDenuncia:hover{
-  transition: 0.1s;
-  background-color: #52C7A6;
-  cursor: pointer;
-}
-
-.h1Den{
-  background-color: #338BB0;
-  color: white;
-  border-radius: 6px;
-  font-size: 4.5vh;
-  font-family: 'BreeSerif-Regular';
-
-}
-
-.tituloden{
-  background-color: #338BB0;
-  color: #ffffff;
-  width: 30vh;
-  height: 3vh;
-  border-radius: 6px;
-  text-align: center;
-  font-family: 'BreeSerif-Regular';
-
-}
-
-.subtituloDenuncia{
-  margin: 15px;
-  font-size: 24px;
-  text-align: center;
-  color: #84CDEC;
-  font-family: 'BreeSerif-Regular';
-}
-
-.textoDenuncia{
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
-    word-break: keep-all;
-}
-
-.tituloInst{
-  white-space: nowrap;
-}
 
 
 #arti{
@@ -481,30 +353,6 @@ article{
 
 
 
-
-
-.tituloden{
-  position: relative;
-  left: 33vh;
-  top: -19vh;
-  font-size: 2.4vh;
-}
-.descricaoden{
-  position: relative;
-  margin-left: 23vh;
-  top: -18vh;
-  font-size: 2.05vh;
-  font-family: 'BreeSerif-Regular';
-  font-weight: lighter;
-}
-
-/*
-.subtituloden{
-  text-align: center;
-  font-size: 2.5vh;
-  font-family: 'BreeSerif-Regular';
-}
-*/
 
 .comentario{
   color: white;
@@ -1555,19 +1403,6 @@ cursor: pointer;
 
 } 
 
-/* webkit scrollbar para estilizar a barra de roalgem */
-#barraRolagem::-webkit-scrollbar {
-  
-}
-/* webkit scrollbar thumb para estilizar o ponteiro da barra de rolagem */
-#barraRolagem::-webkit-scrollbar-thumb {
-
-}
-/* webkit scrollbar hover para estilizar a barra de roalgem quando o mouse passar por cima */
-
-#barraRolagem::-webkit-scrollbar-thumb:hover {
-
-}
 
 .h1Usu{
   white-space: nowrap;
@@ -1620,9 +1455,6 @@ cursor: pointer;
 
 }
 
-.xdUsu{
-  
-}
 
 .denunciasUsu{
 
