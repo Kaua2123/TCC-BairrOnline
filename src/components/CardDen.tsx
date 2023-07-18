@@ -1,11 +1,14 @@
 import {Card, CardBody, Center, Stack, Heading, Divider, CardFooter, Button, Image, Text } from "@chakra-ui/react";
 import Comentarios from "../pages/Comentarios";
+import { Reportar } from "../pages/reportar";
 import img2 from '../img/aguaEstancada.png';
 import {useState} from 'react';
 
 import { BsChatSquareText } from 'react-icons/bs'
+import { MdOutlineReportProblem} from 'react-icons/md'
 
 const CardDen = () => {
+    const [rep , setrep] = useState(false)
     const [openCom, setOpenCom] = useState(false);
 
 return(
@@ -25,8 +28,10 @@ return(
                     o usuario que define o titulo, texto, imagem da denuncia */}
             </CardBody>
         <Divider/>
+        
             <CardFooter>
                 <Button
+                w='168px'
                 leftIcon={<BsChatSquareText/>}
                  bgColor='#338BB0'
                 color='white'
@@ -37,6 +42,9 @@ return(
             setCloseCom = {() => {setOpenCom(!openCom)}}>
             </Comentarios>
             Abrir comentários
+        </Button>
+        <Button color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
+            <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
         </Button>
             
         </CardFooter>

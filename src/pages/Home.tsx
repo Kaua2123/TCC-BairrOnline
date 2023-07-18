@@ -18,6 +18,7 @@ import CardDen from '../components/CardDen';
 
 //icones
 import { BsChatSquareText } from 'react-icons/bs'
+import { MdOutlineReportProblem } from 'react-icons/md';
 
 
 
@@ -95,6 +96,10 @@ const Home = () => {
                                     </Comentarios>
                                         Abrir comentários
                                     </Button>
+                                    <Button color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
+                                        <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
+                                    </Button>
+            
                                 </CardFooter>
                         </Card>
                     </Flex>
