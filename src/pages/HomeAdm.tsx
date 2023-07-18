@@ -75,9 +75,10 @@ const HomeADM = () => {
 
          <h2 className='tituloden'>El agua estas estancada</h2>
          <h2 className='descricaoden'>Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h2>
-        <button onClick={() => {setOpenCom(true)}} className='btnOpen'>Abrir comentários</button>
+        <button onClick={() => {setOpenCom(true)}} className='btnOpen'>Abrir comentários
         <Comentarios isOpen={openCom} setCloseCom = {() => {setOpenCom(!openCom)}}>
         </Comentarios>
+        </button>
         <div id='reportar'>
            <button id="btnrep" onClick={()=>{setrep(true)}}>reportar</button>
            <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>

@@ -14,6 +14,8 @@ import VerDenuncia from './pages/VerDenuncia.tsx';
 import Gerenciador from './pages/GerenciadorDen.tsx'
 import HomeUsuario from './pages/HomeUsuario.tsx';
 import HomeInst from './pages/HomeInst.tsx';
+import SaibaMais from './pages/saibaMais.tsx';
+
 
 
 const router = createBrowserRouter([
@@ -64,6 +66,10 @@ const router = createBrowserRouter([
   {
     path:"/homeInst",
     element: <HomeInst/>
+  },
+  {
+    path: "/SaibaMais",
+    element: <SaibaMais/>
   },
 ]);
 

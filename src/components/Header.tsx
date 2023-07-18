@@ -5,6 +5,10 @@ from "@chakra-ui/react";
 import {Link} from 'react-router-dom';
 
 
+//icones
+import { AiOutlineUser } from 'react-icons/ai'
+import { CgLogIn } from 'react-icons/cg'
+
 import Logo from '../img/logo.svg';
 
 
@@ -12,9 +16,9 @@ import Logo from '../img/logo.svg';
 
 const Header = () => {
   return(
-      <Flex w='100%'  bg='#322F2F' boxShadow='xl' > 
+      <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' > 
 
-          <Center>
+          <Center>  
           <Menu>
             <MenuButton bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
             <MenuList>
@@ -49,14 +53,14 @@ const Header = () => {
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'>
-                 <Link to='/'> Saiba mais</Link>
+                 <Link to='/SaibaMais'> Saiba mais</Link>
               </Button> 
             </HStack>
             <Spacer/>
 
             <HStack spacing='4'>
-              <Button colorScheme='blackAlpha' _hover={{backgroundColor: 'white', color: '#338bb0'}}> <Link to='/Cadastro'> Cadastre-se </Link> </Button>
-              <Button colorScheme='blackAlpha' _hover={{backgroundColor: 'white', color: '#338bb0'}} mr='4' >  <Link to='/Login'> Login </Link></Button>
+              <Button colorScheme='blackAlpha' leftIcon={<AiOutlineUser/>} _hover={{backgroundColor: 'white', color: '#338bb0'}}> <Link to='/Cadastro'> Cadastre-se </Link> </Button>
+              <Button colorScheme='blackAlpha' leftIcon={<CgLogIn/>} _hover={{backgroundColor: 'white', color: '#338bb0'}} mr='4' >  <Link to='/Login'> Login </Link></Button>
             </HStack>
           
 

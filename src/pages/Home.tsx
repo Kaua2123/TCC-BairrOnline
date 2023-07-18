@@ -2,15 +2,22 @@ import '../App.css';
 import img2 from "../img/aguaEstancada.png";
 
 import Logo from "../img/logo.svg";
-
 import Comentarios from './Comentarios';
 import { useState } from 'react';
 import { Reportar } from './reportar';
-import { ChakraProvider, Center, Box, Flex, Image, Text, Container } from '@chakra-ui/react';
+
+//chakra 
+import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
+, Heading, Wrap, WrapItem, Button, Divider} from '@chakra-ui/react';
+
 
 //componentes
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import CardDen from '../components/CardDen';
+
+//icones
+import { BsChatSquareText } from 'react-icons/bs'
 
 
 
@@ -20,14 +27,16 @@ const Home = () => {
 
  return (
 
-  // 
+  // BAIRRONLINE GRANDAO TLG (usando os componentes de estilo do chakra)
   <ChakraProvider>
       <Header/>
           <Flex >
                 <Box bgColor='#338BB0' h='xl' w='100%'>
+
                   <Center>
                       <Image src={Logo} boxSize='480px' />
                   </Center>
+
                     <Container centerContent ml='-3' w='100' mt='-80' >
                       <Text  color='white' textDecoration='underline' fontFamily='BreeSerif-Regular' fontSize='28pt'>Com problemas no bairro?</Text>
                       <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize='14pt'  fontWeight='normal'>Relate suas denúncias aqui,
@@ -45,140 +54,102 @@ const Home = () => {
                       <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize='14pt'  fontWeight='normal'>Se mantenha informado quanto aos problemas
                       de seu bairro ou de outros bairros de Volta Redonda
                       </Text>
-                   </Container>
+                   </Container> 
                 </Box>
          </Flex>
+         
+            <Center>
+                
+              <Box mt={[2, 4, 6, 8]} w="87em" bg='white' h='100em'  borderRadius='4px' border='1px solid black'>
+                  <Flex p='30px'>
+                     <Text color='#338BB0' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
+                  </Flex>
 
+                 <Wrap>
+                    <Flex p='30px'>
+                        <Image src={img2} boxSize='320px' h='420px' boxShadow='lg'></Image>
+                    </Flex>
+                    <Flex mt='20px'>
+                        <Card mr='50px' bgColor='gray.100' mt='10px'  h={[100, 290, 420]} w={[100, 200, 320]} boxShadow='lg' border='1px solid gray' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
+                          <CardHeader>
+                              <Heading size='md' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
+                          </CardHeader>
+                              <CardBody>
+                                  <Box>
+                                      <Heading size='xs'> @usuário </Heading>
+                                        <Text> “Agua estancada en el barrio Jd Cidade do <br /> Aço y nadie hace nada” </Text>
+                                  </Box>
+                              </CardBody>
 
+                              <Divider/>
+                                <CardFooter>
+                                    <Button 
+                                leftIcon={<BsChatSquareText/>}
+                                bgColor='#338BB0'
+                                color='white'
+                                _hover={{background: '#fff', color:'#338BB0'}}
+                                onClick={() => {setOpenCom(true)}}>
+                                    <Comentarios 
+                                        isOpen={openCom} 
+                                        setCloseCom = {() => {setOpenCom(!openCom)}}>
+                                    </Comentarios>
+                                        Abrir comentários
+                                    </Button>
+                                </CardFooter>
+                        </Card>
+                    </Flex>
+                        <Flex>
+                          <Wrap p='30px' spacing='20px' ml='44px'>
+                              <WrapItem>
+                                  <CardDen/>                  
+                              </WrapItem>
+
+                              <WrapItem>
+                                  <CardDen/>                              
+                              </WrapItem>
+
+                          </Wrap>
+                         </Flex>
+                        <Flex p='30px' mt='-20px'>
+                          <Wrap spacing='20px'>
+                              <WrapItem>
+                          
+                                  <CardDen/> 
+                                {/* ESSES CARDS TÃO COM CONTEÚDO SÓ DE EXEMPLO, MAS NA REAL ELES TEM Q SER
+                                VAZIOS, POIS É O USUARIO QUE PÕE O CONTEUDO, TITULO, TEXTO, IMAGEM, ETCC
+                                 */}
+                              </WrapItem>
+
+                              <WrapItem>  
+                                  <CardDen/> 
+                              </WrapItem>
+
+                              <WrapItem>
+                                  <CardDen/> 
+                              </WrapItem>
+                              
+                              <WrapItem>
+                                  <CardDen/> 
+                              </WrapItem>
+
+                              <WrapItem>
+                                  <CardDen/>
+                              </WrapItem>
+                          </Wrap>
+                        
+                       </Flex>
+                       
+                </Wrap>
+                <Flex justifyContent='end' mr='20px'>
+                      <Button variant='link' color='black'>Ver mais</Button>
+               </Flex>
+              </Box>
+            </Center>
+        
 
 
     
-    <body>
-     
-      
-      
-      <section id='miranhatrem'>
-      <article id='arti'>
-    
-        <h1 className='h1Den'>Denúncias em destaque</h1><br></br>
-
-
-        <div className='denuncias'> 
-        <img src={img2}alt="Imagem" className="imgArt"title="agua estancada"/>  
-
-        <div className='verDen'>
-        <button className="btnDenuncia">Ver denúncia</button>
-        </div>
-
-        </div>
-        
-
-        
-
-        <div className='textos'>
-
-         <h2 className='tituloden'>El agua estas estancada</h2>
-         <h3 className='descricaoden'>Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h3>
-         </div>
-
-        <div className='comentarios'>
-        <button onClick={() => {setOpenCom(true)}} className='btnOpen'>Comentários</button>
-        <Comentarios isOpen={openCom} setCloseCom = {() => {setOpenCom(!openCom)}}>
-        </Comentarios>
-        </div>
-        <div id='reportar'>
-           <button id="btnrep" onClick={()=>{setrep(true)}}>reportar</button>
-           <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
-          </div>
-    </article>
-
-  <div className="divArticles">
-      <article className="artiFiltro">
-          <input className="inpFiltro" type="search" placeholder='Pesquise por bairros e denúncias aqui...'></input>
-    
-      </article>
-      <article className="artiOrg">
-          <div className='bordinha'>
-              <h1 className="h1Org">Instituições/Órgãos Públicos</h1>
- 
-          </div>
-  <input className="inpOrg" type="search" placeholder='Pesquise por instituições/orgãos publicos aqui'></input>
-      <div className='rolagemInst'> 
-          <h1 className='h1Inst'>@VRsaneamento</h1> 
-          <h1 className='h1Inst'>@VRsaneamento</h1> 
-          <h1 className='h1Inst'>@VRsaneamento</h1>
-          <h1 className='h1Inst'>@VRsaneamento</h1>
-          <h1 className='h1Inst'>@VRsaneamento</h1>
-          <h1 className='h1Inst'>@VRsaneamento</h1>
-          <h1 className='h1Inst'>@VRsaneamento</h1>
-          <h1 className='h1Inst'>@VRsaneamento</h1>
-          <h1 className='h1Inst'>@VRsaneamento</h1>
-          <h1 className='h1Inst'>@VRsaneamento</h1>
-
-    </div>
-    </article>
-
-
-
- </div>
-</section>  
-     <div className='containerSobre'>
-<div className='sobreNos'>
-
-  <h2 className='tituloSobre'>O que é o Bairronline?</h2>
-  
-  <div className='textoSobre'>
-
-  BairrOnline é uma aplicação com o foco de facilitar a realização das denúncias referentes a 
-  estrutura de bairros de Volta Redonda, e relatar os mesmos para as instituições relacionadas, dando visibilidade e
-  por conseguinte uma maior chance de resolução dos problemas relatados. Em outras palavras, um portal de denúncias.
-
-  </div>
-  
-  <h2 className='tituloSobre'>Que funções o BairrOnline tem a oferecer?</h2>
-  <div className='textoSobre'>
-
-  O usuário, como denunciante, poderá efetuar as denúncias e visualizar as denúncias de outros usuários. Estas, serão 
-  encaminhadas para as instituições, que decidirão se irão assumir a denúncia para resolver, ou não. Caso assumam alguma 
-  denúncia, esta será exibida para o usuário, que poderá acompanhar a resolução.
-
-  </div>
-
-  <h2 className='tituloSobre'>Por que escolher o BairrOnline?</h2>
-  <div className='textoSobre'>
-
-  Nossa proposta com o BairrOnline, é fazer com que as denúncias tenham visibilidade e sejam de realmente notadas pelas instituições.
-  Faremos o nosso melhor para que de fato, seja uma aplicação eficiente e que satisfaça às expectativas dos usuários da mesma.
-  
-  </div>
-
-  <h2 className='tituloSobre'>Quem somos</h2>
-  <div className='textoSobre'>
-  {/*se botar em quadradinhos com algum texto fica mais legal, tipo os quadradinhos da decolar*/}
-  Gabriel
-  <br />
-  Kauã
-  <br />
-  Lucas
-  <br />
-  Nattan
-  <br />
-  Rayan
-  <br />
-  Thales
-  <br />
-  
-
-  </div>
-
-
-
-  
- </div>
-     </div>
-    </body>
-        
-       
+   
 
      <Footer/>
      </ChakraProvider>
