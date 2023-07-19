@@ -54,7 +54,7 @@ const Home = () => {
    
       <Header/>
           <Flex >
-                {/*------------Fullscreen?------------*/}
+                {/*------------FULLSCREEN AQUI------------*/}
                 <Box bgColor='#338BB0' h='xl' w='100%'>
             
                   <Center>
@@ -82,13 +82,13 @@ const Home = () => {
                 </Box>
               
             </Flex>
-              {/*------------Fullscreen Cabou aqui?------------*/}
+              {/*------------FIM FULLSCREEN?------------*/}
 
               
             <Center>
 
 
-                {/* ------------Denuncias?------------*/}
+                {/* ------------SEÇÃO DENUNCIAS E INSTITUIÇOES AQUI------------*/}
               <Box mt={[2, 4, 6, 8]} w="87em" bg='white' h='120em'  borderRadius='4px' border='1px solid black'>
                   <Flex p='30px'>
                      <Text color='#338BB0' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
@@ -167,10 +167,10 @@ const Home = () => {
                 <Flex justifyContent='end' mr='20px'>
                       <Button variant='link' color='black'>Ver mais</Button>
                </Flex>
-      {/* ------------Denuncias Acabam aqui?------------*/}
+      {/* ------------AQUI ACABAM DENUNCIAS------------*/}
 
 
-      {/* ------------Instituições?------------*/}
+    
                 <Flex p='30px'>
                     <Text color='#338BB0' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Instituições</Text>
                 </Flex>
@@ -219,7 +219,7 @@ const Home = () => {
             </Flex>
 
               </Box>
-      {/* ------------Instituições acaba aqui?------------*/}
+      {/* ------------E AQUI INSTITUIÇOES------------*/}
             
     </Center>
     <Footer/>
