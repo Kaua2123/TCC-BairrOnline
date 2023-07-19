@@ -137,7 +137,7 @@ const Home = () => {
                         </Card>
                     </Flex>
                         <Flex>
-                          <Wrap p='30px' spacing='20px' ml='44px'>            
+                          <Wrap p='30px' spacing='20px'>            
                                 
                                  {/* ESSES CARDS TÃO COM CONTEÚDO SÓ DE EXEMPLO, MAS NA REAL ELES TEM Q SER
                                 VAZIOS, POIS É O USUARIO QUE PÕE O CONTEUDO, TITULO, TEXTO, IMAGEM, ETCC
@@ -211,9 +211,7 @@ const Home = () => {
                         <CardInst/>
                     </WrapItem>
 
-                    <WrapItem>
-                        <CardInst/>
-                    </WrapItem>
+                
 
                 </Wrap>        
             </Flex>
