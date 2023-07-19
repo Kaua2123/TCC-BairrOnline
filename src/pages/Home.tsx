@@ -54,8 +54,9 @@ const Home = () => {
    
       <Header/>
           <Flex >
+                {/*------------Fullscreen?------------*/}
                 <Box bgColor='#338BB0' h='xl' w='100%'>
-
+            
                   <Center>
                       <Image src={Logo} boxSize='480px' />
                   </Center>
@@ -79,20 +80,27 @@ const Home = () => {
                       </Text>
                    </Container> 
                 </Box>
-         </Flex>
-         
+              
+            </Flex>
+              {/*------------Fullscreen Cabou aqui?------------*/}
+
+              
             <Center>
-                
+
+
+                {/* ------------Denuncias?------------*/}
               <Box mt={[2, 4, 6, 8]} w="87em" bg='white' h='120em'  borderRadius='4px' border='1px solid black'>
                   <Flex p='30px'>
                      <Text color='#338BB0' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
                   </Flex>
 
                  <Wrap>
+                  
                     <Flex p='30px'>
                         <Image src={img2} boxSize='320px' h='420px' boxShadow='lg'></Image>
                     </Flex>
                     <Flex mt='20px'>
+                        
                         <Card mr='50px' fontFamily='BreeSerif-Regular' bgColor='gray.100' mt='10px'  h={[100, 290, 420]} w={[100, 200, 320]} boxShadow='lg' border='1px solid gray' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
                           <CardHeader>
                               <Heading size='md' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
@@ -102,9 +110,12 @@ const Home = () => {
                                       <Heading size='xs' fontWeight='bold'> @usuário </Heading>
                                         <Text fontWeight='light'> “Agua estancada en el barrio Jd Cidade do <br /> Aço y nadie hace nada” </Text>
                                   </Box>
+                                
+                        
                               </CardBody>
-
+                              
                               <Divider/>
+                              
                                 <CardFooter>
                                     <Button 
                                 leftIcon={<BsChatSquareText/>}
@@ -112,7 +123,7 @@ const Home = () => {
                                 color='white'
                                 _hover={{background: '#fff', color:'#338BB0'}}
                                 onClick={() => {setOpenCom(true)}}>
-                                    <Comentarios 
+                                    <Comentarios
                                         isOpen={openCom} 
                                         setCloseCom = {() => {setOpenCom(!openCom)}}>
                                     </Comentarios>
@@ -126,42 +137,28 @@ const Home = () => {
                         </Card>
                     </Flex>
                         <Flex>
-                          <Wrap p='30px' spacing='20px' ml='44px'>
+                          <Wrap p='30px' spacing='20px' ml='44px'>            
+                                
+                                 {/* ESSES CARDS TÃO COM CONTEÚDO SÓ DE EXEMPLO, MAS NA REAL ELES TEM Q SER
+                                VAZIOS, POIS É O USUARIO QUE PÕE O CONTEUDO, TITULO, TEXTO, IMAGEM, ETCC
+                                 */}
+
                               <WrapItem>
-                                  <CardDen/>                  
+                                 <CardDen/>  
                               </WrapItem>
 
                               <WrapItem>
                                   <CardDen/>                              
-                              </WrapItem>
-
-                          </Wrap>
-                         </Flex>
-                        <Flex p='30px' mt='-20px'>
-                          <Wrap spacing='20px'>
-                              <WrapItem>
-                          
-                                  <CardDen/> 
-                                {/* ESSES CARDS TÃO COM CONTEÚDO SÓ DE EXEMPLO, MAS NA REAL ELES TEM Q SER
-                                VAZIOS, POIS É O USUARIO QUE PÕE O CONTEUDO, TITULO, TEXTO, IMAGEM, ETCC
-                                 */}
-                              </WrapItem>
-
-                              <WrapItem>  
-                                  <CardDen/> 
-                              </WrapItem>
-
-                              <WrapItem>
-                                  <CardDen/> 
                               </WrapItem>
                               
                               <WrapItem>
                                   <CardDen/> 
                               </WrapItem>
 
-                              <WrapItem>
-                                  <CardDen/>
+                              <WrapItem>  
+                                  <CardDen/> 
                               </WrapItem>
+                              
                           </Wrap>
                         
                        </Flex>
@@ -170,7 +167,10 @@ const Home = () => {
                 <Flex justifyContent='end' mr='20px'>
                       <Button variant='link' color='black'>Ver mais</Button>
                </Flex>
+      {/* ------------Denuncias Acabam aqui?------------*/}
 
+
+      {/* ------------Instituições?------------*/}
                 <Flex p='30px'>
                     <Text color='#338BB0' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Instituições</Text>
                 </Flex>
@@ -180,11 +180,7 @@ const Home = () => {
                         <WrapItem>
                                 <CardInst/>
                         </WrapItem>
-
-                        <WrapItem>
-                                <CardInst/>
-                        </WrapItem>
-
+                        
                         <WrapItem>
                                 <CardInst/>
                         </WrapItem>
@@ -223,15 +219,12 @@ const Home = () => {
             </Flex>
 
               </Box>
-            </Center>
-
-        
-
-
-   
-
-     <Footer/>
+      {/* ------------Instituições acaba aqui?------------*/}
+            
+    </Center>
+    <Footer/>
      </ChakraProvider>
+     
   );
 }
 
