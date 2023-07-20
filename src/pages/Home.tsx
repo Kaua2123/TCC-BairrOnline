@@ -52,17 +52,17 @@ const Home = () => {
     
         
    
-      <Header/>
-          <Flex >
+      <Header/> 
+          <Flex > {/*componente do chakra que renderiza uma div com display:flex */}
                 {/*------------FULLSCREEN AQUI------------*/}
-                <Box bgColor='#338BB0' h='xl' w='100%'>
+                <Box bgColor='#338BB0' h='xl' w='100%'> {/*componente do chakra que renderiza uma div */}
             
-                  <Center>
-                      <Image src={Logo} boxSize='480px' />
+                  <Center> {/*componente do chakra que centraliza oq ta dentro (vishkkkkk) */}
+                      <Image src={Logo} boxSize='480px' /> {/*componente do chakra que simula a tag img */}
                   </Center>
 
-                    <Container centerContent ml='-3' w='100' mt='-80' >
-                      <Text  color='white' textDecoration='underline' fontFamily='BreeSerif-Regular' fontSize='28pt'>Com problemas no bairro?</Text>
+                    <Container centerContent ml='-3' w='100' mt='-80' >  {/*compopnente do chakra que cria um container*/}
+                      <Text  color='white' textDecoration='underline' fontFamily='BreeSerif-Regular' fontSize='28pt'>Com problemas no bairro?</Text> {/*componente do chakra que renderiza um texto, p, h1, h2, etc */}
                       <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize='14pt'  fontWeight='normal'>Relate suas denúncias aqui,
                       e tenha o retorno das instituições 
                       responsáveis pela resolução dos problemas
@@ -94,7 +94,7 @@ const Home = () => {
                      <Text color='#338BB0' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
                   </Flex>
 
-                 <Wrap>
+                 <Wrap> {/*componente do chakra que renderiza tipo uma div que tem quebra de linha */}
                   
                     <Flex p='30px'>
                         <Image src={img2} boxSize='320px' h='420px' boxShadow='lg'></Image>
@@ -102,10 +102,11 @@ const Home = () => {
                     <Flex mt='20px'>
                         
                         <Card mr='50px' fontFamily='BreeSerif-Regular' bgColor='gray.100' mt='10px'  h={[100, 290, 420]} w={[100, 200, 320]} boxShadow='lg' border='1px solid gray' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
-                          <CardHeader>
+                        {/* Card componente do chakra que cria um card  */}
+                          <CardHeader> {/* header do card, usado pra por titulo  */}
                               <Heading size='md' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
                           </CardHeader>
-                              <CardBody>
+                              <CardBody> {/* corpo do card */}
                                   <Box>
                                       <Heading size='xs' fontWeight='bold'> @usuário </Heading>
                                         <Text fontWeight='light'> “Agua estancada en el barrio Jd Cidade do <br /> Aço y nadie hace nada” </Text>
@@ -114,9 +115,9 @@ const Home = () => {
                         
                               </CardBody>
                               
-                              <Divider/>
+                              <Divider/> {/* divisor, geralmente é uma linha */}
                               
-                                <CardFooter>
+                                <CardFooter> {/* rodapé do card  */}
                                     <Button 
                                 leftIcon={<BsChatSquareText/>}
                                 bgColor='#338BB0'
