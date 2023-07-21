@@ -15,7 +15,7 @@ import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHe
 , Heading, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme} from '@chakra-ui/react';
 
 //componentes
-import Header from '../components/Header';
+import  Header  from '../components/Header';
 import Footer from '../components/Footer';
 import CardDen from '../components/CardDen';
 import CardInst from '../components/CardInst';
