@@ -6,6 +6,17 @@
   src: url('./fontes/Bree_Serif/BreeSerif-Regular.ttf') format('truetype'); 
 }
 
+@font-face {
+
+  font-family: 'Lora-Regular.ttf';
+  src: url('./fontes/Lora/static/Lora-Regular.ttf') format('truetype'); 
+}
+
+@font-face {
+
+  font-family: 'Inter-Regular.ttf';
+  src: url('./fontes/Inter/static/Inter-Regular.ttf') format('truetype'); 
+}
 
 
 *{

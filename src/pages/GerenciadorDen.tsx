@@ -15,7 +15,7 @@ import { BsSearch } from 'react-icons/bs';
 
 //Chakra
 import { Center, Square, Circle, Box, InputLeftElement, Input, Divider, Text } from '@chakra-ui/react'
-import { ChakraProvider, theme, input, InputGroup } from '@chakra-ui/react';
+import { ChakraProvider, theme, InputGroup } from '@chakra-ui/react';
 
 
 

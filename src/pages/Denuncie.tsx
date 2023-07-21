@@ -1,117 +1,162 @@
-import { Link } from 'react-router-dom';
-import '../App.css';
-import Instagram from '../img/instagram.svg';
-import twitter from '../img/twitter.png'
-import Logo from "../img/logo.svg";
-import Camera from "../img/camera.png";
-import { useState } from "react";
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
-//componentes
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+  import '../App.css';
 
 
+  //img
+  import Logo from "../img/logo.svg";
+  import Camera from "../img/camera.png";
 
 
-const bairros = ['Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
- 'Brasilândia', 'Caieira', 'Casa de Pedra', 'Conforto', 'Coqueiros', 'Cruzeiro', 'Dom Bosco', 'Eucaliptal',
-  'Jardim Amália', 'Jardim Belvedere', 'Jardim Cidade do Aço', 'Jardim Cordoeira', 'Jardim Europa', 'Jardim Normândia', 
-  'Jardim Ponte Alta', 'Jardim Primavera', 'Jardim Vila Rica', 'Laranjal', 'Monte Castelo', 'Niterói', 'Nova Primavera',
-   'Parque das Garças', 'Ponte Alta', 'Ponte Alta de Baixo', 'Retiro', 'Roma', 'Santa Cruz', 'Santa Inês',
-    'Santa Rita do Zarur', 'Santo Agostinho', 'São Cristóvão', 'São Geraldo', 'São João', 'São Luiz', 'Sessenta', 
-  'Siderópolis', 'Três Poços', 'Vila Americana', 'Vila Mury', 'Vila Rica', 'Vila Santa Cecília', 'Voldac'];
+  //chakra
+  import { ChakraProvider, extendTheme, Flex, Box, Button, Wrap, WrapItem, Text, VStack, Center, FormControl,
+  FormLabel, FormHelperText, FormErrorMessage, Spacer, Container, Input, InputLeftElement, InputGroup, Textarea} from '@chakra-ui/react';
 
 
-const Denuncie = () => {
+  //componentes
+  import Header from '../components/Header';
+  import Footer from '../components/Footer';
 
-  const [img, setImg] = useState<File | null>(null);  
+  //react
+  import { useState } from "react";
+  import { useRef } from "react";
+
+  //react icons
+  import { BsCardText, BsCamera, BsListUl} from "react-icons/bs"
+  import { HiOutlineClipboardDocumentList } from "react-icons/hi2"
+
+
+  const bairros = ['Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
+  'Brasilândia', 'Caieira', 'Casa de Pedra', 'Conforto', 'Coqueiros', 'Cruzeiro', 'Dom Bosco', 'Eucaliptal',
+    'Jardim Amália', 'Jardim Belvedere', 'Jardim Cidade do Aço', 'Jardim Cordoeira', 'Jardim Europa', 'Jardim Normândia', 
+    'Jardim Ponte Alta', 'Jardim Primavera', 'Jardim Vila Rica', 'Laranjal', 'Monte Castelo', 'Niterói', 'Nova Primavera',
+    'Parque das Garças', 'Ponte Alta', 'Ponte Alta de Baixo', 'Retiro', 'Roma', 'Santa Cruz', 'Santa Inês',
+      'Santa Rita do Zarur', 'Santo Agostinho', 'São Cristóvão', 'São Geraldo', 'São João', 'São Luiz', 'Sessenta', 
+    'Siderópolis', 'Três Poços', 'Vila Americana', 'Vila Mury', 'Vila Rica', 'Vila Santa Cecília', 'Voldac'];
+
+
+  const Denuncie = () => {
+
+    const [imgPreview, setImgPreview] = useState("");  
+
+    const fileInputRef = useRef(null);
 
   
+    //pra upar a imagem com click no iconezinho da camera
+    const handleImageUpload = () => {
+      const fileInput = document.getElementById("file-input");
+      if(fileInput){
+        fileInput.click();
+      }
+    }
 
-  (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    console.log('Upload imagem')
-    console.log(img);
-  } 
-
-  const theme = extendTheme({
-    styles: {
-      global: () => ({
-        body: {
-          background: "",
-        },
-      }),
-    },
-  });
-
-
-    return (
-      <ChakraProvider theme={theme}>
-          <Header/>
-
-        
- <body>
-      <section className='responsivoDenuncie'>
-      <div className='centralizafdp'> 
-      <div className='bordinhaDen'>
-  
-      <h1 className='h1Denuncie'> Realize sua denúncia </h1>
-      </div>
-      </div>
-    <div className='cadastroDen'>
-      
-      <form method='post' action='http://localhost:3344/criarDenuncia' >
-
-        
-        <label className='labelForm' htmlFor='protocolo/id' > <h3>Protocolo da denúncia: </h3> </label>
-        <label className='labelForm' htmlFor="titulo"> <h3> Título da denúncia: </h3> </label>
-      <input 
-         type='text'  
-         className='inpForm'
-         name='den_nome' 
-         maxLength={50} 
-         required 
-      
-      />  
-        <label className='labelForm' htmlFor="descDen"> <h3> Digite aqui o que está lhe incomodando em seu bairro: </h3> </label>
-      <textarea  
-        className='inpForm' 
-        required 
-        name='den_desc'
-      />
- 
-       <label className='labelForm' htmlFor="selectBairro"> <h3> Selecione o bairro que deseja denunciar: </h3> </label>
-        <select className='slctDenuncia'>
-      <option disabled ></option>
-       {bairros.map((bairro, index) => (
-      <option key={index} value={bairro}>
-       {bairro}
-      </option>
-    ))}
-      </select>
-        
-        <label className='labelForm' htmlFor='imgDen'><h3> Enviar imagem </h3></label>
-        <input type="file" className='btnImg' name='image' onChange={e => { const file = e.target.files?.[0] || null; setImg(file); }}/>  
-        <br />
-        {img ? <img src={URL.createObjectURL(img)} alt='img' width={150} height={150} color='green'></img> : <img src={Camera} alt='img' width={150} height={150}/>} 
-        <br />
-        <input className='btnForm' type='submit' />
-  
-        </form>
-      </div>
-      </section>
-        
-  
-
+    //pra pegar a imagem enviada e mostrar
+    const handleFileChange = (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setImgPreview(reader.result);
+        }
+        reader.readAsDataURL(file);
+      }
+    }
 
  
-      
- </body>
+    const theme = extendTheme({
+      styles: {
+        global: () => ({
+          body: {
+            background: "",
+          },
+        }),
+      },
+    });
 
-         <Footer/>
-      </ChakraProvider>
-    );
-};  
 
-export default Denuncie;
+      return (
+        <ChakraProvider theme={theme}>
+            <Header/>
+
+    <Flex justify='center'>
+
+            <Box bg='white' mt='50px' borderRadius='4px' h='850px' w='1370px'>
+                    
+              <Flex justifyContent='space-between'>
+                  <Flex  flexDirection='column' p='100px' maxW='700px'>
+                    <Text color='#338BB0'  textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Realize sua denúncia</Text>
+                    <Text w='410px' mt='40px' fontSize='28px' fontFamily='Inter-Regular'>Seu lugar de denunciar é aqui. Esteja ciente de que suas denúncias poderão ser visualizadas por outros usuários e/ou instituições.</Text>
+                 
+                 
+                    <Text color='#338BB0' mt='30px' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Acompanhamento </Text>
+                    <Text w='450px' mt='40px' fontSize='28px' fontFamily='Inter-Regular'>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução das mesmas. Você pode acompanhar as soluções na página Acompanhar Denúncias</Text>     
+                  </Flex>
+            
+
+                  <Flex flexDirection='column' p='100px' w='600px'>
+
+                      <FormControl>
+                          <FormLabel fontSize='28px' fontFamily='Inter-Regular' >Protocolo da denúncia:</FormLabel>
+                       
+                          <FormLabel mt='30px' fontSize='28px' fontFamily='Inter-Regular' >Título da denúncia:</FormLabel>
+                          
+                          <InputGroup>
+                            <InputLeftElement>
+                                <HiOutlineClipboardDocumentList size='3.5vh'/>
+                            </InputLeftElement>
+                              <Input border='1px solid black' w='340px' _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
+                          </InputGroup>  
+
+                        <FormLabel mt='30px' fontSize='28px' fontFamily='Inter-Regular' >Digite o bairro a ser denunciado</FormLabel>
+
+                         <InputGroup>
+                            <InputLeftElement>
+                                <BsListUl size='3.5vh'/>
+                            </InputLeftElement>
+                            <Input border='1px solid black' w='340px' _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
+                          </InputGroup>  
+
+                        <FormLabel mt='30px' whiteSpace='nowrap'  fontSize='28px' fontFamily='Inter-Regular' >Digite o que está lhe incomodando: </FormLabel>
+
+                         <InputGroup>
+                            <InputLeftElement>
+                                <BsCardText size='3.5vh'/>
+                            </InputLeftElement>
+                           <Textarea border='1px solid black' w='340px' resize='vertical' pl='3.5rem' _hover={{border: '1px solid #A9A9A9	'}}></Textarea>
+                        </InputGroup>  
+
+                        <FormLabel mt='30px' whiteSpace='nowrap'  fontSize='28px' fontFamily='Inter-Regular' >Enviar imagem </FormLabel>
+                        <InputGroup>
+                            <InputLeftElement onClick={handleImageUpload} cursor='pointer' border='1px solid white' _hover={{color: 'blue.500', borderColor: 'black', transition: '0.1s', borderRadius: '60%'}}>
+                                <BsCamera size='3.5vh'/>
+                            </InputLeftElement>
+                            
+                          <Input id='file-input' type='file' display='none' onChange={handleFileChange}></Input>
+
+                        <Spacer/> 
+                          
+                          <Button type='submit' ml='20px' mt='120px' bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: '#DCDCDC'}}>Criar denúncia</Button>
+                    
+                        </InputGroup>  
+                      
+                        {/*essa linha de baixo que mostra as imagens dps de enviar */}
+                        {imgPreview && <img src={imgPreview} alt="Imagem selecionada" style={{ marginTop: "40px", width: "300px", height: "150px" }} />}
+
+                      </FormControl>
+
+                  
+
+                  
+                  </Flex>
+              </Flex>
+              
+            </Box>
+
+    </Flex>
+  
+
+          <Footer/>  
+        </ChakraProvider>
+      );
+  };  
+
+  export default Denuncie;

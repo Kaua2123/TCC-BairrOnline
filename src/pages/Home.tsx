@@ -58,14 +58,14 @@ const Home = () => {
                 <Box bgColor='#338BB0' h='xl' w='100%'> {/*componente do chakra que renderiza uma div */}
             
                   <Center> {/*componente do chakra que centraliza oq ta dentro (vishkkkkk) */}
-                      <Image src={Logo} boxSize='480px' /> {/*componente do chakra que simula a tag img */}
+                        <Image src={Logo} boxSize={'480px'}></Image> {/*componente do chakra que simula a tag img */}
                   </Center>
 
                     <Container centerContent ml='-3' w='100' mt='-80' >  {/*compopnente do chakra que cria um container*/}
                       <Text  color='white' textDecoration='underline' fontFamily='BreeSerif-Regular' fontSize='28pt'>Com problemas no bairro?</Text> {/*componente do chakra que renderiza um texto, p, h1, h2, etc */}
                       <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize='14pt'  fontWeight='normal'>Relate suas denúncias aqui,
                       e tenha o retorno das instituições 
-                      responsáveis pela resolução dos problemas
+                      responsáveis pela resolução dos problemas 
                       </Text>
                    </Container>
 
@@ -82,14 +82,14 @@ const Home = () => {
                 </Box>
               
             </Flex>
-              {/*------------FIM FULLSCREEN?------------*/}
+              {/*------------FIM FULLSCREEN------------*/}
 
               
             <Center>
 
 
                 {/* ------------SEÇÃO DENUNCIAS E INSTITUIÇOES AQUI------------*/}
-              <Box mt={[2, 4, 6, 8]} w="87em" bg='white' h='120em'  borderRadius='4px' border='1px solid black'>
+              <Box mt={[2, 4, 6, 8]} w="87em" bg='white' h='120em'  borderRadius='4px'>
                   <Flex p='30px'>
                      <Text color='#338BB0' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
                   </Flex>
@@ -138,6 +138,7 @@ const Home = () => {
                         </Card>
                     </Flex>
                         <Flex>
+                        
                           <Wrap p='30px' spacing='20px'>            
                                 
                                  {/* ESSES CARDS TÃO COM CONTEÚDO SÓ DE EXEMPLO, MAS NA REAL ELES TEM Q SER
