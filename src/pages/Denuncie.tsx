@@ -121,7 +121,7 @@
                             <InputLeftElement>
                                 <BsCardText size='3.5vh'/>
                             </InputLeftElement>
-                           <Textarea border='1px solid black' w='340px' resize='vertical' pl='3.5rem' _hover={{border: '1px solid #A9A9A9	'}}></Textarea>
+                           <Textarea border='1px solid black' w='220ch' resize='vertical' maxLength={220} pl='3.5rem' _hover={{border: '1px solid #A9A9A9	'}}></Textarea>
                         </InputGroup>  
 
                         <FormLabel mt='30px' whiteSpace='nowrap'  fontSize='28px' fontFamily='Inter-Regular' >Enviar imagem </FormLabel>
