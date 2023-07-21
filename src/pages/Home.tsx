@@ -50,9 +50,9 @@ const Home = () => {
   
   <ChakraProvider theme={theme}>
     
-        
+        <Header></Header>
    
-      <Header/> 
+
           <Flex > {/*componente do chakra que renderiza uma div com display:flex */}
                 {/*------------FULLSCREEN AQUI------------*/}
                 <Box bgColor='#338BB0' h='xl' w='100%'> {/*componente do chakra que renderiza uma div */}

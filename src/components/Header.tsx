@@ -16,7 +16,7 @@ import Logo from '../img/logo.svg';
 
 const Header = () => {
   return(
-      <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' > 
+      <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' position={"sticky"} top={0} zIndex={2}> 
 
           <Center>  
           <Menu>

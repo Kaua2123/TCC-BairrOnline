@@ -1,16 +1,30 @@
+
+//Estilo
 import '../App.css';
-import instagram from "../img/instagram.png";
-import twitter from "../img/twitter.png";
-import Logo from "../img/logo.svg";
+
+//Componentes
+import Footer from '../components/Footer';
+
+//React
 import  { Link } from 'react-router-dom'
+
+
+//Ícones
+import Logo from "../img/logo.svg";
+import { BsSearch } from 'react-icons/bs';
+
+//Chakra
+import { Center, Square, Circle, Box, InputLeftElement, Input, Divider, Text } from '@chakra-ui/react'
+import { ChakraProvider, theme, input, InputGroup } from '@chakra-ui/react';
 
 
 
 const Gerenciador = () => {
 
  return (
-    <div>
-
+   
+  <ChakraProvider theme={theme}>
+     <Box bg={'#C3D5DD'}>
       <header>
       <nav className=''>
        <a className='logo' href='/'><img className='imgLogo' src={Logo} alt="LogoBairronline" /> </a>
@@ -41,11 +55,13 @@ const Gerenciador = () => {
 
 
     </header>
-    <body className='Gerbodi'>
+   
+    
       
       
-      
+    
       <section id='Gerenciador'>
+     
         <aside id='menulateral'>{/*talvez eu mude dps(nao ta pronto pronto ainda)*/}
            <h3>Denuncias Reportadas</h3>
              <div className='Filtrar'>
@@ -67,61 +83,31 @@ const Gerenciador = () => {
            </aside>
 
         <div className="GerPesquis">
-          <input type="search" placeholder="Pesquisar" />
+          
         </div>
     
            
-            <div id='ConteudoReportado'>
+           <Box padding={'10px'} w={'100%'} display={'flex'} h={'60px'} background={'#252525'}>
+              <Text color={'white'} >Gerenciador De conteudo Reportado</Text>
               {/* CONECTAR COM O BACKEND PRA AS DENUNCIAS VIREM PRA CA */} 
-            </div>
-        
+              
+              <InputGroup w={'75%'}  bg={'white'} justifyContent={'center'}>
+                 <InputLeftElement>
+                  <BsSearch></BsSearch>
+                 </InputLeftElement>
+                <Input type='text' placeholder='Pesquisar'></Input>
+              </InputGroup>
+            </Box>
+          
       </section>
-
-    </body>
-        
-        <footer className="container">
-
-        <div className="item1">
-          <ul className="texto">
-            <li className="logoFooter"><a className='bairrOnlineLogo' href='#'>  <img className="imgLogo" src={Logo} alt="LogoBairronline"  /></a></li>
-          </ul>
-        </div>
-
-            <div className="item2">
-              <ul className="texto">
-
-                <li className="xd">Usuário</li>
-                  <li><a href="#">Início</a></li>
-                  <li><Link to="/Cadastro">Cadastre-se</Link></li>
-                  <Link to="/Login" className='loginHome'> Fazer login</Link>
-
-              </ul>
-            </div>
-
-            <div className="item3">
-               <ul className="texto">
-
-                <li className="xd">Saiba mais</li>
-
-                <li><a href="#">Sobre nós</a></li>
-                  <li><a href="#">Perguntas frequentes</a></li>
-                  <li><a href="#">Regras gerais</a></li>
-
-              </ul>
-            </div>
-
-            <div className="item4">
-              <ul>
-
-                <li> <img src={instagram} alt='Instagram' title="socialMedia"></img> </li>    
-                <li> <img src={twitter} alt='Twitter' title="socialMedia"></img></li>
-
-              </ul>
-
-            </div>
-     </footer>
-     </div>
-
+ 
+ 
+      
+    
+        <Footer/>  
+     </Box>
+    </ChakraProvider>
+  
   );
 }
 

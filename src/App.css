@@ -1281,17 +1281,17 @@ cursor: pointer;
 #Gerenciador{
   display: flex;
   flex-direction: column-reverse;
-  margin: 20vh auto 10vh auto;  /*colocando display block e margin auto centraliza o elemento automaticamente*/
+  margin: 10vh auto 10vh auto;  /*colocando display block e margin auto centraliza o elemento automaticamente*/
   background: white;
   border: solid #252525 1px ;
   height: 80vh;
   /*limite de tamanho da tela, se diminuir menor que isso não adapta, */
-  max-width: 150vh;
+  max-width:80%;
   
 }
 
-.GerPesquis{
-  display: flex; /*só ta responsivo por causa desse carinha e do justify content pra alinhar o conteudo pro final dele*/
+.GerPesquis{/*só ta responsivo por causa desse carinha e do justify content pra alinhar o conteudo pro final dele*/
+  display: flex; 
   justify-content: end;
   background: #252525;
   width: 100%;
@@ -1310,17 +1310,17 @@ cursor: pointer;
   
   
 }
-@media (max-width: 140vh){
+@media (max-width: 150vh){
   #Gerenciador{
-    width: 65vh;
+    width: 100%;
 
   }
   #menulateral{
-    width: 20vh;
+    width: 40%;
    }
 
    .Filtrar select{
-    width: 15vh;
+    width: 80%;
    }
 }
 

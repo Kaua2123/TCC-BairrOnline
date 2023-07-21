@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+// import MinhasDen from './pages/MinhasDen.tsx';
 import './App.css'
 
 import Home from './pages/Home.tsx'
@@ -10,7 +10,6 @@ import Login from './pages/Login.tsx'
 import Denuncie from './pages/Denuncie.tsx'
 import Cadastro from './pages/Cadastro.tsx';
 import VerDenuncia from './pages/VerDenuncia.tsx';
-// import MinhasDen from './pages/MinhasDen.tsx';
 import Gerenciador from './pages/GerenciadorDen.tsx'
 import HomeUsuario from './pages/HomeUsuario.tsx';
 import HomeInst from './pages/HomeInst.tsx';
