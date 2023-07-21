@@ -1,18 +1,21 @@
 
-import { MenuOutlined } from "@ant-design/icons";
+
+
+//chakra
 import { Menu, MenuButton, Button, IconButton, MenuList, MenuItem,  Center, Flex, HStack, Spacer, Image} 
 from "@chakra-ui/react";
-import {Link} from 'react-router-dom';
 import { Avatar, Box } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
+
+//react
+import {Link} from 'react-router-dom';
 
 //icones
 import { AiOutlineUser } from 'react-icons/ai'
 import { CgLogIn } from 'react-icons/cg'
 import { FaUserAlt } from "react-icons/fa";
 import Logo from '../img/logo.svg';
-
-
+import { MenuOutlined } from "@ant-design/icons";
 
 
 

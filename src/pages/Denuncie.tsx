@@ -101,7 +101,7 @@
                           
                           <InputGroup>
                             <InputLeftElement>
-                                <HiOutlineClipboardDocumentList size='3.5vh'/>
+                                <HiOutlineClipboardDocumentList size='25px'/>
                             </InputLeftElement>
                               <Input border='1px solid black' w='340px' _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
                           </InputGroup>  
@@ -110,7 +110,7 @@
 
                          <InputGroup>
                             <InputLeftElement>
-                                <BsListUl size='3.5vh'/>
+                                <BsListUl size='25px  '/>
                             </InputLeftElement>
                             <Input border='1px solid black' w='340px' _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
                           </InputGroup>  
@@ -119,7 +119,7 @@
 
                          <InputGroup>
                             <InputLeftElement>
-                                <BsCardText size='3.5vh'/>
+                                <BsCardText size='25px'/>
                             </InputLeftElement>
                            <Textarea border='1px solid black' w='220ch' resize='vertical' maxLength={220} pl='3.5rem' _hover={{border: '1px solid #A9A9A9	'}}></Textarea>
                         </InputGroup>  
@@ -127,7 +127,7 @@
                         <FormLabel mt='30px' whiteSpace='nowrap'  fontSize='28px' fontFamily='Inter-Regular' >Enviar imagem </FormLabel>
                         <InputGroup>
                             <InputLeftElement onClick={handleImageUpload} cursor='pointer' border='1px solid white' _hover={{color: 'blue.500', borderColor: 'black', transition: '0.1s', borderRadius: '60%'}}>
-                                <BsCamera size='3.5vh'/>
+                                <BsCamera size='25px'/>
                             </InputLeftElement>
                             
                           <Input id='file-input' type='file' display='none' onChange={handleFileChange}></Input>
