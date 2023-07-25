@@ -29,15 +29,15 @@ const saibaMais = () => {
     <Header/>
 
         <Flex justify='center'>
-            <Box w='100%' h='110em' mt='50px' borderRadius='4px'   bg='white'>
+            <Box w='100%' h='110em' borderRadius='4px'   bg='white'>
                 <Flex justifyContent='space-between'>
                     <Flex direction='column'>
-                        <Image src={ilustDen} w='650px' h='500px' m='60px'></Image>
+                        <Image src={ilustDen} w='700px' h='500px' m='60px'></Image>
                      {/*o foda é q a imagem n é svg, ent ta perdendo a qualidade. arrumar uma forma de 
                      converter, sla*/}
                     </Flex> 
                     <Flex flexDirection='column'>
-                        <Box m='200px'>
+                        <Box m='200px' ml='20px '>
                             <Text color='#338BB0'  textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='70px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >BairrOnline </Text>
                             <Text color='#338BB0'  textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' whiteSpace='nowrap' >Seu portal de denúncias</Text>
                         </Box>
