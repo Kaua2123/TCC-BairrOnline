@@ -189,6 +189,65 @@ export const HeaderUsu = () => {
       
   )
 }
+
+export const HeaderInst = () => {
+  return(
+      <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' position={"sticky"} top={0} zIndex={2}> 
+
+          <Center>  
+          <Menu>
+            <MenuButton bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
+            <MenuList>
+            <MenuItem >BairrOnline</MenuItem>
+            <MenuItem  as='a' href="#">Sobre nós</MenuItem>
+            <MenuItem as='a' href="#">Contate-nos</MenuItem>
+            </MenuList>
+          </Menu>
+          </Center>
+
+          <Link to='/'> <Image src={Logo} alt='logo' boxSize='20' ></Image> </Link>
+
+          <Spacer/>
+          
+            <HStack w='25%' spacing='20' >
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'
+              mr='45px'>
+                  <Link to='/Denuncie'>Ver denúncias </Link>
+              </Button>
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'
+              mr='20px'>
+                 <Link to='/VerDenuncia'>Denúncias avaliadas </Link>
+              </Button>
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'
+              ml='45px'>
+                 <Link to='/SaibaMais'>Denúncias assumidas</Link>
+              </Button> 
+            </HStack>
+            <Spacer/>
+
+            <HStack spacing='4'>
+              <Button colorScheme='blackAlpha' leftIcon={<AiOutlineUser/>} _hover={{backgroundColor: 'white', color: '#338bb0'}}> <Link to='/Cadastro'> Cadastre-se </Link> </Button>
+              <Button colorScheme='blackAlpha' leftIcon={<CgLogIn/>} _hover={{backgroundColor: 'white', color: '#338bb0'}} mr='4' >  <Link to='/Login'> Login </Link></Button>
+            </HStack>
+          
+
+      </Flex>
+  )
+}
+         
+
  
 export default Header;
 
