@@ -1,14 +1,16 @@
 
-
-
 //chakra
-import { Menu, MenuButton, Button, IconButton, MenuList, MenuItem,  Center, Flex, HStack, Spacer, Image} 
-from "@chakra-ui/react";
+import { Menu,Image,Text, MenuButton, Button, IconButton, MenuList, MenuItem,
+  Center, Flex, HStack, Spacer, Image,Popover,PopoverTrigger,
+  PopoverContent,PopoverHeader,PopoverBody, 
+  PopoverArrow, PopoverCloseButton, Divider,VStack} from "@chakra-ui/react";
 import { Avatar, Box } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 
+
 //react
 import {Link} from 'react-router-dom';
+import notimg from './../img/buraco.jpg'
 
 //icones
 import { AiOutlineUser } from 'react-icons/ai'
@@ -16,7 +18,7 @@ import { CgLogIn } from 'react-icons/cg'
 import { FaUserAlt } from "react-icons/fa";
 import Logo from '../img/logo.svg';
 import { MenuOutlined } from "@ant-design/icons";
-
+import { AiOutlineBell } from "react-icons/ai";
 
 
 const Header = () => {
@@ -72,12 +74,19 @@ const Header = () => {
       </Flex>
   )
 }
+         
+
+ /*o Header do usuario só pode aparecer depois de um teste 
+          de validação depois de logar, aí ele tem que ficar pra sempre
+          até o usuario querer deslogar*/
 
 export const HeaderUsu = () => {
   return(
     <ChakraProvider>
-      <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' position={"sticky"} top={0} zIndex={2}> 
+      <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' > 
 
+
+{/*COMEÇA HEADERUSU NAV*/}
           <Center>  
           <Menu>
             <MenuButton bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
@@ -90,6 +99,8 @@ export const HeaderUsu = () => {
           </Center>
 
           <Link to='/'> <Image src={Logo} alt='logo' boxSize='20' ></Image> </Link>
+
+
 
           <Spacer/>
           
@@ -116,16 +127,111 @@ export const HeaderUsu = () => {
                  <Link to='/SaibaMais'> Saiba mais</Link>
               </Button> 
             </HStack>
-             
+
             <Spacer/>
-           
-            <Box position={"fixed"} top={"3"} right={8} fontSize={"50pt"}>
+
+
+{/*TERMINA HEADERUSU NAV*/}
+
+
+
+  {/* COMEÇA NOTIFICAÇÃO */}
+
+
+            <Box display={'inherit'} alignSelf={'center'} paddingRight={'2vh'}>
+              <HStack spacing={'20px'}>
+             
+               
+                <Popover>
+                  <PopoverTrigger>
+                  <Button variant={'ghost'} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
+                  <AiOutlineBell  fill='white' size='2.6em' />
+                  </Button>
+                  </PopoverTrigger>
+                  <PopoverContent w={'max-content'} height={'400px'} overflowY={'auto'}>
+                  <PopoverArrow/>
+                  <PopoverCloseButton/>
+                    <PopoverHeader textAlign={'center'} 
+                   background={'blue.500'} //<-- FAZER CORES PERSONALIZADAS DEPOIS PQ O CHAKRA NAO ACEITA RGB >:(
+                  color={'white'} 
+                  fontFamily='BreeSerif-Regular'>
+                    <p>NOTIFICAÇÕES</p>
+                   </PopoverHeader>
+                  <PopoverBody display={'flex'} h={'800px'} w={'400px'}maxW={'400px'} maxHeight={'maxcontent'} overflowY={'auto'} flexDirection={'column'}>
+                  {/*(EXEMPLO) tem que ficar vazio pq backend*/}  
+                  <VStack spacing={'20px'}>
+                  <Box id="futuro Componente">
+                  <p>Uma instituição Assumiu a sua denuncia!!</p>{/*aqui  */}
+                  <HStack>
+                  <Image src={notimg} w={'150px'} height={'100px'}/>
+                    <Box w={'200px'}>
+                    <Text>Data entra aqui</Text>
+                    <Text> Titulo entra aqui </Text>
+                      {/*<Text> Descrição vem aqui </Text> <----- deu erro, que teve como solucionar, 
+                      mas vai ter descrições grandes demais pro tamanho do PopOver então melhor nao */ } 
+                     <Button>Ver Denuncia</Button>
+                    </Box>
+                  </HStack>
+                  </Box>
+                
+
+
+                  <Box id="futuro Componente">
+                  <p>Uma instituição Assumiu a sua denuncia!!</p>{/*aqui  */}
+                  <HStack>
+                  <Image src={notimg} w={'150px'} height={'100px'}/>
+                    <Box w={'200px'}>
+                    <Text>TESTE DATA</Text>
+                    <Text> TESTE TITULO</Text>
+                     <Button>Ver Denuncia</Button>
+                    </Box>
+                  </HStack>
+                  </Box>
+                  
+                  
+
+                  <Box id="futuro Componente">
+                  <p>Uma instituição Assumiu a sua denuncia!!</p>{/*aqui  */}
+                  <HStack>
+                  <Image src={notimg} w={'150px'} height={'100px'}/>
+                    <Box w={'200px'}>
+                    <Text>TESTE DATA</Text>
+                    <Text> TESTE TITULO</Text>
+                     <Button>Ver Denuncia</Button>
+                    </Box>
+                  </HStack>
+                  </Box>
+
+
+                  <Box id="futuro Componente">
+                  <p>Uma instituição Assumiu a sua denuncia!!</p>{/*aqui  */}
+                  <HStack>
+                  <Image src={notimg} w={'150px'} height={'100px'}/>
+                    <Box w={'200px'}>
+                    <Text>TESTE DATA</Text>
+                    <Text> TESTE TITULO</Text>
+                     <Button>Ver Denuncia</Button>
+                    </Box>
+                  </HStack>
+                  </Box>
+                  </VStack>
+                  
+                  
+                  </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+               
               <Avatar icon={ <FaUserAlt/> }/>
+            </HStack>
            </Box>
 
+
+  {/* TERMINA NOTIFICAÇÃO */}
       </Flex>
       </ChakraProvider>
+      
   )
 }
  
 export default Header;
+
