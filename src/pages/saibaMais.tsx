@@ -50,7 +50,7 @@ const saibaMais = () => {
                              <Text color='#338BB0' m='18px'  textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' whiteSpace='nowrap' >
                                 O que é o BairrOnline?
                              </Text>
-                             <Text  m='18px'  fontSize='2.5vh' fontFamily='Inter-Regular'  whiteSpace='nowrap' >
+                             <Text  m='18px'  fontSize='20px' fontFamily='Inter-Regular'  whiteSpace='nowrap' >
                                 BairrOnline é uma aplicação com o foco de facilitar a realização das 
                                 <br />denúncias referentes  a estrutura de bairros de Volta Redonda, e 
                                 relatar<br /> os mesmos para as instituições relacionadas,  dando visibilidade 
@@ -62,7 +62,7 @@ const saibaMais = () => {
                              <Text color='#338BB0' m='18px'  textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' whiteSpace='nowrap' >
                                 Que funções o BairrOnline oferece?
                              </Text>
-                             <Text  m='18px'  fontSize='2.5vh' fontFamily='Inter-Regular'  whiteSpace='nowrap' >O usuário, como denunciante, poderá efetuar as denúncias e visualizar as 
+                             <Text  m='18px'  fontSize='20px' fontFamily='Inter-Regular'  whiteSpace='nowrap' >O usuário, como denunciante, poderá efetuar as denúncias e visualizar as 
                                 <br /> denúncias de outros usuários. Estas, serão encaminhadas para as instituições, que 
                                 <br /> decidirão se irão assumir a denúncia para resolver, ou não. Caso assumam 
                                 <br /> alguma denúncia, esta será exibida para o usuário, que poderá acompanhar a resolução.
@@ -71,7 +71,7 @@ const saibaMais = () => {
                              <Text color='#338BB0' m='18px'  textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' whiteSpace='nowrap' >
                                 Por que escolher o BairrOnline?
                              </Text>
-                             <Text  m='18px'  fontSize='2.5vh' fontFamily='Inter-Regular'  whiteSpace='nowrap' >
+                             <Text  m='18px'  fontSize='20px' fontFamily='Inter-Regular'  whiteSpace='nowrap' >
                                 Nossa proposta com o BairrOnline, é fazer com que as denúncias tenham <br /> visibilidade
                                 e sejam realmente notadas pelas instituições. Faremos o nosso   <br />  melhor para que de fato, 
                                 seja uma aplicação eficiente e que satisfaça <br />  às expectativas dos usuários da mesma.
