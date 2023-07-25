@@ -11,7 +11,6 @@ import AssumirTarefa from './AssumirTarefa';
 import { MenuOutlined } from '@ant-design/icons';
 import { Flex, Center, Menu, MenuButton, IconButton, MenuList, MenuItem, Spacer, HStack, Button, Image, ChakraProvider} from '@chakra-ui/react';
 import Footer from '../components/Footer';
-import { HeaderInst } from '../components/Header';
 
 //ALTERAR A HOME TLGD O DESIGN TLGD PQ ELA TA COMO USUARIO MAS É PRA SER DESLOGADA OU SEJA MUDAR AS OPSOES
 const Home = () => {
@@ -22,7 +21,56 @@ const Home = () => {
  return (
     <ChakraProvider>
 
-      <HeaderInst/>
+      <Flex w='100%'  bg='#322F2F' boxShadow='xl' > 
+
+          <Center>
+          <Menu>
+            <MenuButton bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
+            <MenuList>
+            <MenuItem  >BairrOnline</MenuItem>
+            <MenuItem  as='a' href="#">Sobre nós</MenuItem>
+            <MenuItem as='a' href="#">Contate-nos</MenuItem>
+            </MenuList>
+          </Menu>
+          </Center>
+
+          <Link to='/'> <Image src={Logo} alt='logo' boxSize='20' ></Image> </Link>
+
+          <Spacer/>
+          
+            <HStack w='25%' spacing='20' >
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'>
+                  <Link to='/Denuncie'> Ver denúncias </Link>
+              </Button>
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'>
+                 <Link to='/VerDenuncia'> Denúncias avaliadas </Link>
+              </Button>
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'
+              ml='20px'>
+                 <Link to='/'> Denúncias assumidas </Link>
+              </Button> 
+            </HStack>
+            <Spacer/>
+
+            <HStack spacing='4'>
+              <Button colorScheme='blackAlpha' _hover={{backgroundColor: 'white', color: '#338bb0'}}> <Link to='/Cadastro'> Cadastre-se </Link> </Button>
+              <Button colorScheme='blackAlpha' _hover={{backgroundColor: 'white', color: '#338bb0'}} mr='4' >  <Link to='/Login'> Login </Link></Button>
+            </HStack>
+          
+
+      </Flex>
     <body>
       <section id='miranhatrem'>
       <article id='arti'>
