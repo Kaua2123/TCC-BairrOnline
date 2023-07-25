@@ -89,7 +89,7 @@ const Home = () => {
 
 
                 {/* ------------SEÇÃO DENUNCIAS E INSTITUIÇOES AQUI------------*/}
-              <Box mt={[2, 4, 6, 8]} w="87em" bg='white' h='120em'  borderRadius='4px'>
+              <Box mt={[2, 4, 6, 8]} w="100em" bg='white' h='120em'  borderRadius='4px'>
                   <Flex p='30px'>
                      <Text color='#338BB0' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
                   </Flex>

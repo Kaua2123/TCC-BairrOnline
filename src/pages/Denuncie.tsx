@@ -79,7 +79,7 @@
 
     <Flex justify='center'>
 
-            <Box bg='white' mt='50px' borderRadius='4px' h='850px' w='1370px'>
+            <Box bg='white' mt='50px' borderRadius='4px' h='850px' w='100%'>
                     
               <Flex justifyContent='space-between'>
                   <Flex  flexDirection='column' p='100px' maxW='700px'>
