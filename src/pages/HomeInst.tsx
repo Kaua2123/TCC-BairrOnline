@@ -6,7 +6,7 @@ import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
 import Comentarios from './Comentarios';
 import { useState } from 'react';
-import { Reportar } from './reportar';
+import { Reportar } from '../components/reportar';
 import AssumirTarefa from './AssumirTarefa';
 import { MenuOutlined } from '@ant-design/icons';
 import { Flex, Center, Menu, MenuButton, IconButton, MenuList, MenuItem, Spacer, HStack, Button, Image, ChakraProvider} from '@chakra-ui/react';

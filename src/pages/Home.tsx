@@ -19,7 +19,7 @@ import  Header  from '../components/Header';
 import Footer from '../components/Footer';
 import CardDen from '../components/CardDen';
 import CardInst from '../components/CardInst';
-import { Reportar } from './reportar';
+import { Reportar } from '../components/reportar';
 import Comentarios from './Comentarios';
 
 //icones

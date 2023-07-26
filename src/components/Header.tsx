@@ -164,14 +164,12 @@ export const HeaderUsu = () => {
                      
                     <p>Notificações</p>
                    </PopoverHeader>
-                  <PopoverBody display={'flex'} h={'800px'} w={'400px'}maxW={'400px'} maxHeight={'maxcontent'} overflowY={'auto'} flexDirection={'column'}>
+                   <PopoverBody display={'flex'} h={'800px'} maxW={'600px'} maxHeight={'maxcontent'} overflowY={'auto'} flexDirection={'column'} padding={'0'} alignItems={'flex-start'}>
                    
-                  <VStack spacing={'20px'}>
-                  <NotfiInst/>
-                  <NotfiInst/>
-                  <NotfiInst/>
-                  <NotfiInst/>
-                  </VStack>
+                    <NotfiInst/>
+                    <NotfiInst/>
+                    <NotfiInst/>
+                    <NotfiInst/>
                   
                   
                   </PopoverBody>

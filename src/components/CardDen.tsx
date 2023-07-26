@@ -1,6 +1,6 @@
 import {Card, CardBody, Center, Stack, Heading, Divider, CardFooter, Button, Image, Text } from "@chakra-ui/react";
 import Comentarios from "../pages/Comentarios";
-import { Reportar } from "../pages/reportar";
+import { Reportar } from "./reportar";
 import img2 from '../img/aguaEstancada.png';
 import {useState} from 'react';
 
