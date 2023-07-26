@@ -86,7 +86,7 @@ export const HeaderUsu = () => {
 
 
   return(
-    <ChakraProvider>
+  
       <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' > 
 
 
@@ -183,7 +183,7 @@ export const HeaderUsu = () => {
 
   {/* TERMINA NOTIFICAÇÃO */}
       </Flex>
-      </ChakraProvider>
+    
       
   )
 }
