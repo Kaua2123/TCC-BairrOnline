@@ -25,7 +25,7 @@ import { AiOutlineBell } from "react-icons/ai";
 
 const Header = () => {
   return(
-      <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' position={"sticky"} top={0} zIndex={2}> 
+      <Flex w='100%'  bg='#322F2F' boxShadow='lg' position={"sticky"} top={0} zIndex={2}> 
 
           <Center>  
           <Menu>
@@ -214,7 +214,7 @@ export const HeaderInst = () => {
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
               mr='45px'>
-                  <Link to='/Denuncie'>Ver denúncias </Link>
+                  <Link to='/VerDenuncia'>Ver denúncias </Link>
               </Button>
               <Button variant='link'
               color='white' 
@@ -222,7 +222,7 @@ export const HeaderInst = () => {
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
               mr='20px'>
-                 <Link to='/VerDenuncia'>Denúncias avaliadas </Link>
+                 <Link to=''>Denúncias avaliadas </Link>
               </Button>
               <Button variant='link'
               color='white' 
@@ -230,7 +230,7 @@ export const HeaderInst = () => {
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
               ml='45px'>
-                 <Link to='/SaibaMais'>Denúncias assumidas</Link>
+                 <Link to=''>Denúncias assumidas</Link>
               </Button> 
             </HStack>
             <Spacer/>

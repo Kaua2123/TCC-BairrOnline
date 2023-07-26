@@ -20,7 +20,7 @@ import Footer from '../components/Footer';
 import CardDen from '../components/CardDen';
 import CardInst from '../components/CardInst';
 import { Reportar } from '../components/reportar';
-import Comentarios from './Comentarios';
+import Comentarios from '../components/Comentarios';
 
 //icones
 import { BsChatSquareText } from 'react-icons/bs'
@@ -72,7 +72,8 @@ const Home = () => {
                     <Container centerContent mt='52'>
                       <Text color='white' fontSize='30pt' fontFamily='BreeSerif-Regular'>Seu portal de denúncias</Text>
                     </Container>
-
+                    
+                  
                      <Container centerContent mr='20px' w='100' mt='-374px  ' >
                       <Text  color='white' textDecoration='underline' fontFamily='BreeSerif-Regular' fontSize='28pt'>Veja outras denúncias</Text>
                       <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize='14pt'  fontWeight='normal'>Se mantenha informado quanto aos problemas
@@ -80,16 +81,17 @@ const Home = () => {
                       </Text>
                    </Container> 
                 </Box>
+               
               
             </Flex>
               {/*------------FIM FULLSCREEN------------*/}
+              <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
 
-              
             <Center>
 
 
                 {/* ------------SEÇÃO DENUNCIAS E INSTITUIÇOES AQUI------------*/}
-              <Box mt={[2, 4, 6, 8]} w="100em" bg='white' h='120em'  borderRadius='4px'>
+              <Box  w="100em" bg='white' h='120em'  borderRadius='4px'>
                   <Flex p='30px'>
                      <Text color='#338BB0' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
                   </Flex>

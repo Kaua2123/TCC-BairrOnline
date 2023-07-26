@@ -1,6 +1,6 @@
 import '../App.css'
 import { useState } from 'react';
-import PlanejarSolução from './PlanejarSolução';
+import PlanejarSolução from '../pages/PlanejarSolução';
 
 
 const AssumirTarefa = ({Aberto, children, setOpenTaf}) => {

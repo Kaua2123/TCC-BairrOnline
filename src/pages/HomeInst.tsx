@@ -1,17 +1,30 @@
 import '../App.css';
+
+
+
+//chakra
+
+import { Flex, Center, Menu, MenuButton, IconButton, MenuList,
+MenuItem, Spacer, HStack, 
+Button, Image, ChakraProvider,
+extendTheme} from '@chakra-ui/react';
+
+//imgs
 import img2 from "../img/aguaEstancada.png";
 import instagram from "../img/instagram.png";
 import twitter from "../img/twitter.png";
 import Logo from "../img/logo.svg";
-import  { Link } from 'react-router-dom'
-import Comentarios from './Comentarios';
+
+//react
 import { useState } from 'react';
-import { Reportar } from '../components/reportar';
-import AssumirTarefa from './AssumirTarefa';
-import { MenuOutlined } from '@ant-design/icons';
-import { Flex, Center, Menu, MenuButton, IconButton, MenuList, MenuItem, Spacer, HStack, Button, Image, ChakraProvider} from '@chakra-ui/react';
+import  { Link } from 'react-router-dom'
+
+//componentes
 import Footer from '../components/Footer';
 import { HeaderInst } from '../components/Header';
+import Comentarios from '../components/Comentarios';
+import { Reportar } from '../components/reportar';
+import AssumirTarefa from '../components/AssumirTarefa';
 
 //ALTERAR A HOME TLGD O DESIGN TLGD PQ ELA TA COMO USUARIO MAS É PRA SER DESLOGADA OU SEJA MUDAR AS OPSOES
 const Home = () => {

@@ -4,7 +4,7 @@ import instagram from "../img/instagram.png";
 import twitter from "../img/twitter.png";
 import Logo from "../img/logo.svg";
 import  { Link } from 'react-router-dom'
-import Comentarios from './Comentarios';
+import Comentarios from '../components/Comentarios';
 import { useState } from 'react';
 import { Reportar } from '../components/reportar';
 

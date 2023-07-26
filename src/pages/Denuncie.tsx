@@ -78,10 +78,10 @@
       return (
         <ChakraProvider theme={theme}>
             <Header/>
-
-    <Flex justify='center'>
-
-      <Box bg='white' mt='50px' borderRadius='4px' h='1800px' w='100%'>
+      <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+    <Flex align='center'>
+   
+      <Box bg='white'  borderRadius='4px' h='1800px' w='100%'>
                     
         <Flex justifyContent='space-between'>
 
