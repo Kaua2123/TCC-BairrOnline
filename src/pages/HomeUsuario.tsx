@@ -44,18 +44,18 @@ const HomeUsuario = () => {
  return (
   <ChakraProvider theme={theme}>
     <HeaderUsu/>
-
+    <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
     <Flex align='center'>
-      <Box bg='white' mt='50px' borderRadius='4px' h='250em' w='100%'>
+      <Box bg='white' borderRadius='4px' h='250em' w='100%'>
         
         <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Denunciante!</Text>
 
         <Flex justifyContent='space-between'>
-          <Flex direction='column'>
-            <Image src={sectionOla} boxSize='50em'></Image>
+          <Flex direction='column' mt='-200px'>
+            <Image src={sectionOla} boxSize='50em' ></Image>
           </Flex>
 
-          <Flex direction='column' p='180px' mt='50px'>
+          <Flex direction='column' p='180px' mt='-150px'>
             <Box>
             <Text fontSize='44px' color='#338BB0'   fontFamily='BreeSerif-Regular' whiteSpace='nowrap' align='center'>Seção do Usuário</Text>
             </Box>  
