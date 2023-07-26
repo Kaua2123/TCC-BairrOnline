@@ -208,31 +208,30 @@ const Home = () => {
               </Flex>
            </Flex>
                 
-           <Flex p='30px'>
-               <Wrap spacing='50px'> 
-                   <WrapItem>
-                           <CardInst/>
-                   </WrapItem>
-                        
-                   <WrapItem>
-                           <CardInst/>
-                   </WrapItem>
-               </Wrap>         
-                    
-               <Wrap ml='100px'>        
-                     <WrapItem>
+           <Flex p='30px' justify='space-between'>
+              <Flex flexDirection='column'>
+                  <Wrap spacing='50px'> 
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                            
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                  </Wrap>         
+               </Flex>
+          
+                <Flex flexDirection='column'>
                        <InputGroup> 
-
                            <InputLeftElement pointerEvents='none'>
                                <FiSearch color='white' />
                            </InputLeftElement>
-
                            <Input /* onSubmit= */ w='280px' color='white' placeholder='Busque por instituições' _placeholder={{color: "white"}} bg='#338BB0'/>
                        </InputGroup>
-                   </WrapItem>
-               </Wrap>
+                </Flex>
+            </Flex>
                     
-         </Flex>
+         
 
          <Flex p='30px'> 
            <Wrap spacing='50px'> 
