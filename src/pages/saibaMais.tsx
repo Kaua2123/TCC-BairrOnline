@@ -38,7 +38,7 @@ const saibaMais = () => {
                     </Flex> 
                     <Flex flexDirection='column'>
                         <Box m='200px' ml='20px '>
-                            <Text color='#338BB0'  textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='70px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >BairrOnline </Text>
+                            <Text color='#338BB0'   fontSize='64px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >BairrOnline </Text>
                             <Text color='#338BB0'  textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' whiteSpace='nowrap' >Seu portal de denúncias</Text>
                         </Box>
                     </Flex>

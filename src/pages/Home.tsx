@@ -174,7 +174,7 @@ const Home = () => {
 
     
                 <Flex p='30px'>
-                    <Text color='#338BB0' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Instituições</Text>
+                    <Text color='#338BB0' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Instituições</Text>
                 </Flex>
                 
                 <Flex p='30px'>

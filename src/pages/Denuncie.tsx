@@ -91,11 +91,11 @@
             
 
           <Flex flexDirection='column' m='100px' mt='230px'  w='610px'>
-          <Text color='#338BB0'  textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Realize sua denúncia</Text>
+          <Text color='#338BB0'   fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Realize sua denúncia</Text>
             <Text w='410px' mt='40px' fontSize='28px' fontFamily='Inter-Regular'>Seu lugar de denunciar é aqui. Esteja ciente de que suas denúncias poderão ser visualizadas por outros usuários e/ou instituições.</Text>
                  
                  
-            <Text color='#338BB0' mt='30px' textShadow='0px 2.6px 2px rgb(172, 172, 172);' fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Acompanhamento </Text>
+            <Text color='#338BB0' mt='30px'  fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Acompanhamento </Text>
             <Text w='450px' mt='40px' fontSize='28px' fontFamily='Inter-Regular'>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução das mesmas. Você pode acompanhar as soluções na página Acompanhar Denúncias</Text>     
           
           </Flex>
