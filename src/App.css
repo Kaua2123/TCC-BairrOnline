@@ -18,6 +18,11 @@
   src: url('./fontes/Inter/static/Inter-Regular.ttf') format('truetype'); 
 }
 
+@font-face {
+  font-family: 'Asap-Regular';
+  src: url('./fontes/Asap/Asap-Regular.ttf') format('truetype'); 
+}
+
 
 *{
   margin:0px;
