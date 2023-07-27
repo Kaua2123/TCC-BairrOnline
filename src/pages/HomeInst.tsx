@@ -1,92 +1,98 @@
 import '../App.css';
 
-
-
-//chakra
-
-import { Flex, Center, Menu, MenuButton, IconButton, MenuList,
-MenuItem, Spacer, HStack, 
-Button, Image, ChakraProvider,
-extendTheme} from '@chakra-ui/react';
+//reação (reactkkkkkkkkkomgggmgmgmggm)
+import  { Link } from 'react-router-dom'
+import { useState } from 'react';
 
 //imgs
 import img2 from "../img/aguaEstancada.png";
 import instagram from "../img/instagram.png";
-import twitter from "../img/twitter.png";
-import Logo from "../img/logo.svg";
+import sectionOlaInst from "../img/sectionOlaInst.png";
+import sectionDenAssumidas from "../img/sectionDenAssumidas.png";
 
-//react
-import { useState } from 'react';
-import  { Link } from 'react-router-dom'
+import Sinin from './../img/notification-bell-svgrepo-com.svg'
+
+
+//chakra
+import {Button, Center, Box, 
+ChakraProvider, Flex, HStack, IconButton, Menu, MenuButton, MenuItem, MenuList, Spacer, 
+Image, extendTheme, Text, Wrap, WrapItem } from '@chakra-ui/react'
 
 //componentes
 import Footer from '../components/Footer';
-import { HeaderInst } from '../components/Header';
-import Comentarios from '../components/Comentarios';
-import { Reportar } from '../components/reportar';
-import AssumirTarefa from '../components/AssumirTarefa';
+import { HeaderUsu } from '../components/Header';
+import CardDen from '../components/CardDen';
 
-//ALTERAR A HOME TLGD O DESIGN TLGD PQ ELA TA COMO USUARIO MAS É PRA SER DESLOGADA OU SEJA MUDAR AS OPSOES
-const Home = () => {
-  const [rep , setrep] = useState(false)
-  const [openCom, setOpenCom] = useState(false);
-  const [OpenTaf , setOpenTaf] = useState(false);
+
+const theme = extendTheme({
+  styles: {
+    global: () => ({
+      body: {
+        background: "",
+      },
+    }),
+  },
+});
+
+
+const HomeUsuario = () => { 
+
 
  return (
-    <ChakraProvider>
-
-      <HeaderInst/>
-    <body>
-      <section id='miranhatrem'>
-      <article id='arti'>
-    
-        <h1 className='h1Den'>Denúncias em destaque</h1><br></br>
-        <h2 className='subtituloden'>Denúncias em Alta do Bairro de Volta Redonda</h2>
-
-         <img src={img2}alt="Imagem" className="imgArt"title="agua estancada"/>
-
-        <div className='verDen'>
-         <label htmlFor="den"><button className="btnDenuncia">Ver denúncia</button></label>
-        </div>
-         <h2 className='tituloden'>El agua estas estancada</h2>
-         <h2 className='descricaoden'>Agua estancada en el barrio Jd Cidade do Aço y nadie hace nada  </h2>
-        <button onClick={() => {setOpenCom(true)}} className='btnOpen'>Abrir comentários</button>
-        <Comentarios isOpen={openCom} setCloseCom = {() => {setOpenCom(!openCom)}}>
-        </Comentarios>
-        <button onClick={() => {setOpenTaf(true)}} className='btnTarefa'>Assumir denúncia</button>
-        <AssumirTarefa Aberto={OpenTaf} setOpenTaf = {() => {setOpenTaf(!OpenTaf)}}>
-        </AssumirTarefa>
-
-        <div id='reportar'>
-           <button id="btnrep" onClick={()=>{setrep(true)}}>reportar</button>
-           <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
-          </div>
-    </article>
-
-  <div className="divArticles">
-  <article className="artiFiltro">
-    <input className="inpFiltro" type="search" placeholder='Pesquise por bairros e denúncias aqui...'></input>
-    
- </article>
- <article className="artiOrg">
-<div className='bordinha'>
- <h1 className="h1Org">Denúncias assumidas</h1>
- <h2 className="subtituloOrg"> Veja aqui as denúncias assumidas por você, orgão ou instituição</h2>
-</div>
-
-<div className='rolagemInst'> <h1>OI</h1></div> 
- </article>
-
-
- </div>
-</section>
-
-    </body>
+  <ChakraProvider theme={theme}>
+    <HeaderUsu/>
+    <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+    <Flex align='center'>
+      <Box bg='white' borderRadius='4px' h='250em' w='100%'>
         
-      <Footer/>
-    </ChakraProvider>
+        <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Instituição!</Text>
+
+        <Flex justifyContent='space-between'>
+          <Flex direction='column' mt='-200px'>
+            <Image src={sectionOlaInst} boxSize='50em' ></Image>
+          </Flex>
+
+          <Flex direction='column' mr='140px' mt='50px'>
+            <Box>
+            <Text fontSize='44px' color='#338BB0'   fontFamily='BreeSerif-Regular' whiteSpace='nowrap' align='center'>Seção do Usuário</Text>
+            </Box>  
+            <Box mt='70px'>
+            <Text fontSize='30px' whiteSpace='nowrap'>Veja as <b> reclamações </b> <br /> dos denunciantes<br /></Text>
+            </Box>
+          </Flex>
+        </Flex>
+
+        <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+
+        <Flex justifyContent='space-between'> 
+
+          <Flex direction='column'>
+          <Box p='100px' mr='40px' mt='40px'>
+              <Text fontSize='44px' fontFamily='BreeSerif-Regular' color='#338BB0' whiteSpace='nowrap'>Denúncias assumidas</Text>
+            </Box>
+            <Flex>
+   
+            </Flex>
+          </Flex>
+          <Flex direction='column'>
+          <Image src={sectionDenAssumidas} boxSize='40em' w='2000px' mt='200px'></Image>
+            
+          </Flex>
+    
+        </Flex>
+        <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+
+      </Box>
+      
+    </Flex>
+
+
+
+
+     <Footer/>
+     </ChakraProvider>
 
   );
-}
+};
 
-export default Home;
+export default HomeUsuario;
