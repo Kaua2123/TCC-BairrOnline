@@ -85,18 +85,18 @@
                     
         <Flex justifyContent='space-between'>
 
-          <Flex  flexDirection='column' p='100px'>
-              <Image src={realizarDen}  h='600px' boxSize='700px'></Image>
+          <Flex  flexDirection='column' >
+              <Image src={realizarDen} boxSize='54em'></Image>
           </Flex>
             
 
-          <Flex flexDirection='column' m='100px' mt='230px'  w='610px'>
+          <Flex flexDirection='column' m='20px' mt='100px'  w='610px'>
           <Text color='#338BB0'   fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Realize sua denúncia</Text>
-            <Text w='410px' mt='40px' fontSize='28px' fontFamily='Inter-Regular'>Seu lugar de denunciar é aqui. Esteja ciente de que suas denúncias poderão ser visualizadas por outros usuários e/ou instituições.</Text>
+            <Text w='410px' mt='40px' fontSize='25px'>Seu lugar de denunciar é aqui. Esteja ciente de que suas denúncias poderão ser visualizadas por outros usuários e/ou instituições.</Text>
                  
                  
             <Text color='#338BB0' mt='30px'  fontSize='40px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Acompanhamento </Text>
-            <Text w='450px' mt='40px' fontSize='28px' fontFamily='Inter-Regular'>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução das mesmas. Você pode acompanhar as soluções na página Acompanhar Denúncias</Text>     
+            <Text w='450px' mt='40px' fontSize='25px'>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução das mesmas. Você pode acompanhar as soluções na página Acompanhar Denúncias</Text>     
           
           </Flex>
         
@@ -110,9 +110,9 @@
       
             <Flex flexDirection='column'>
                 <FormControl p='100px'>
-                  <FormLabel fontSize='28px' fontFamily='Inter-Regular' >Protocolo da denúncia:</FormLabel>
+                  <FormLabel fontSize='28px' fontWeight='normal' >Protocolo da denúncia:</FormLabel>
                         
-                  <FormLabel mt='30px' fontSize='28px' fontFamily='Inter-Regular' >Título da denúncia:</FormLabel>
+                  <FormLabel mt='30px' fontSize='28px' fontWeight='normal' >Título da denúncia:</FormLabel>
                             
                   <InputGroup>
                     <InputLeftElement>
@@ -121,7 +121,7 @@
                       <Input border='1px solid black' w='340px' _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
                   </InputGroup>  
 
-                    <FormLabel mt='30px' fontSize='28px' fontFamily='Inter-Regular' >Digite o bairro a ser denunciado</FormLabel>
+                    <FormLabel mt='30px' fontSize='28px' fontWeight='normal' >Digite o bairro a ser denunciado</FormLabel>
 
                       <InputGroup>
                         <InputLeftElement>
@@ -130,16 +130,16 @@
                         <Input border='1px solid black' w='340px' _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
                       </InputGroup>  
 
-                    <FormLabel mt='30px' whiteSpace='nowrap'  fontSize='28px' fontFamily='Inter-Regular' >Digite o que está lhe incomodando: </FormLabel>
+                    <FormLabel mt='30px' whiteSpace='nowrap'  fontSize='28px' fontWeight='normal' >Digite o que está lhe incomodando: </FormLabel>
 
                       <InputGroup>
                         <InputLeftElement>
                             <BsCardText size='25px'/>
                         </InputLeftElement>
-                        <Textarea border='1px solid black' w='45ch' resize='vertical' maxLength={220} pl='3.5rem' _hover={{border: '1px solid #A9A9A9	'}}></Textarea>
+                        <Textarea border='1px solid black' w='45ch' resize='vertical' maxLength={220} pl='2.5rem' _hover={{border: '1px solid #A9A9A9	'}}></Textarea>
                     </InputGroup>  
 
-                    <FormLabel mt='30px' whiteSpace='nowrap'  fontSize='28px' fontFamily='Inter-Regular' >Enviar imagem </FormLabel>
+                    <FormLabel mt='30px' whiteSpace='nowrap'  fontSize='28px' fontWeight='normal' >Enviar imagem </FormLabel>
                     <InputGroup>
                         <InputLeftElement onClick={handleImageUpload} cursor='pointer' border='1px solid white' _hover={{color: 'blue.500', borderColor: 'black', transition: '0.1s', borderRadius: '60%'}}>
                             <BsCamera size='25px'/>
