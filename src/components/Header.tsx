@@ -120,15 +120,17 @@ export const HeaderUsu = () => {
               color='white' 
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
-              fontWeight='normal'>
+              fontWeight='normal'
+              ml='20px'>
                  <Link to='/VerDenuncia'> Ver denúncias </Link>
               </Button>
               <Button variant='link'
               color='white' 
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
-              fontWeight='normal'>
-                 <Link to='/SaibaMais'> Saiba mais</Link>
+              fontWeight='normal'
+              ml='40px'>
+                 <Link to='/SaibaMais'> Acompanhar denúncias </Link>
               </Button> 
             </HStack>
 
