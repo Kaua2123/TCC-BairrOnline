@@ -232,7 +232,7 @@ export const HeaderInst = () => {
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
               ml='45px'>
-                 <Link to=''>Denúncias assumidas</Link>
+                 <Link to=''>Tarefas</Link>
               </Button> 
             </HStack>
             <Spacer/>

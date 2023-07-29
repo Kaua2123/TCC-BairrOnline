@@ -9,6 +9,7 @@ import img2 from "../img/aguaEstancada.png";
 import instagram from "../img/instagram.png";
 import sectionOlaInst from "../img/sectionOlaInst.png";
 import sectionDenAssumidas from "../img/sectionDenAssumidas.png";
+import tarefasInst from "../img/tarefasInst.png";
 
 import Sinin from './../img/notification-bell-svgrepo-com.svg'
 
@@ -20,7 +21,7 @@ Image, extendTheme, Text, Wrap, WrapItem } from '@chakra-ui/react'
 
 //componentes
 import Footer from '../components/Footer';
-import { HeaderUsu } from '../components/Header';
+import { HeaderInst, HeaderUsu } from '../components/Header';
 import CardDen from '../components/CardDen';
 
 
@@ -40,10 +41,10 @@ const HomeUsuario = () => {
 
  return (
   <ChakraProvider theme={theme}>
-    <HeaderUsu/>
+    <HeaderInst/>
     <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
     <Flex align='center'>
-      <Box bg='white' borderRadius='4px' h='250em' w='100%'>
+      <Box bg='white' borderRadius='4px' h='auto' w='100%'>
         
         <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Instituição!</Text>
 
@@ -74,7 +75,7 @@ const HomeUsuario = () => {
    
             </Flex>
           </Flex>
-          <Flex direction='column'>
+          <Flex direction='column'> 
           <Image src={sectionDenAssumidas} boxSize='40em' w='2000px' mt='200px'></Image>
             
           </Flex>
@@ -82,9 +83,29 @@ const HomeUsuario = () => {
         </Flex>
         <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
 
+          <Flex justifyContent='space-between'> 
+
+          <Flex direction='column'> 
+          <Image src={tarefasInst} boxSize='44em'></Image>
+            
+          </Flex>
+
+          <Flex direction='column'>
+          <Box p='100px' mr='40px' mt='40px'>
+              <Text fontSize='44px' fontFamily='BreeSerif-Regular' color='#338BB0' whiteSpace='nowrap'>Gerenciar tarefas</Text>
+            </Box>
+            <Flex>
+   
+            </Flex>
+          </Flex>
+          
+    
+        </Flex>
       </Box>
       
     </Flex>
+    <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+
 
 
 

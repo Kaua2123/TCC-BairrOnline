@@ -89,7 +89,7 @@ const Home = () => {
          {/*------------FIM FULLSCREEN------------*/}
          <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
            {/* ------------SEÇÃO DENUNCIAS E INSTITUIÇOES AQUI------------*/}
-         <Box  w="100%" bg='white' h='250em'  borderRadius='4px'>
+         <Box  w="100%" bg='white' h='auto'  borderRadius='4px'>
 
              <Flex justifyContent='space-between'>
                  <Flex flexDirection='column' p='120px' mt='150px'>
