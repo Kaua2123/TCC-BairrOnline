@@ -137,6 +137,7 @@ const Home = () => {
                            bgColor='#338BB0'
                            color='white'
                            _hover={{background: '#fff', color:'#338BB0'}}
+                           fontWeight='normal'
                            onClick={() => {setOpenCom(true)}}>
                                <Comentarios
                                    isOpen={openCom} 
@@ -147,9 +148,9 @@ const Home = () => {
                                <Button color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
                                    <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
                                </Button>
-                               <Box ml='140px' whiteSpace='nowrap'>
-                        Água parada em cidade do aço
-                        </Box>
+                               <Box ml='140px' fontWeight='normal' whiteSpace='nowrap'>
+                                 Água parada em cidade do aço
+                              </Box>
                            </CardFooter>
                    </Card>
                  </Flex>
@@ -161,35 +162,31 @@ const Home = () => {
       {/* ------------AQUI ACABAM DENUNCIAS------------*/}
       <Box h='auto' bg='#F2F2F2' boxShadow='lg'>
 
-             <Flex ml='210px'>
-                        
-                     <Wrap p='30px' spacing='20px'>            
+                  <Center>
+                      <Flex>
+                          
+                      <Wrap p='30px' spacing='20px'>                                          
+                              {/* ESSES CARDS TÃO COM CONTEÚDO SÓ DE EXEMPLO, MAS NA REAL ELES TEM Q SER
+                            VAZIOS, POIS É O USUARIO QUE PÕE O CONTEUDO, TITULO, TEXTO, IMAGEM, ETCC
+                              */}
+                          <WrapItem>
+                              <CardDen/>  
+                          </WrapItem>
+
+                          <WrapItem>
+                              <CardDen/>                              
+                          </WrapItem>
                                 
-                             {/* ESSES CARDS TÃO COM CONTEÚDO SÓ DE EXEMPLO, MAS NA REAL ELES TEM Q SER
-                           VAZIOS, POIS É O USUARIO QUE PÕE O CONTEUDO, TITULO, TEXTO, IMAGEM, ETCC
-                             */}
+                          <WrapItem>
+                              <CardDen/> 
+                          </WrapItem>
 
-                         <WrapItem>
-                             <CardDen/>  
-                         </WrapItem>
-
-                         <WrapItem>
-                             <CardDen/>                              
-                         </WrapItem>
-                              
-                         <WrapItem>
-                             <CardDen/> 
-                         </WrapItem>
-
-                         <WrapItem>  
-                             <CardDen/> 
-                         </WrapItem>
-                              
-                     </Wrap>
-                        
-                   </Flex>
-                       
-
+                          <WrapItem>  
+                              <CardDen/> 
+                          </WrapItem>                      
+                      </Wrap>                    
+                    </Flex>     
+                   </Center>
 
       </Box>
 
