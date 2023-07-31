@@ -119,7 +119,7 @@ const Home = () => {
                  <Card m='20px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' w='700px' border='1px solid gray' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
                    {/* Card componente do chakra que cria um card  */}
                      <CardHeader> {/* header do card, usado pra por titulo  */}
-                         <Heading size='md' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
+                         <Heading borderRadius='7px' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
                      </CardHeader>
                          <CardBody> {/* corpo do card */}
                              <Box>
@@ -149,7 +149,7 @@ const Home = () => {
                                    <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
                                </Button>
                                <Box ml='140px' fontWeight='normal' whiteSpace='nowrap'>
-                                 Água parada em cidade do aço
+                                 Água estancada en el jd cidade do aco
                               </Box>
                            </CardFooter>
                    </Card>
