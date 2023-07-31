@@ -57,10 +57,10 @@ const Home = () => {
 
      <Flex > {/*componente do chakra que renderiza uma div com display:flex */}
            {/*------------FULLSCREEN AQUI------------*/}
-           <Box bgColor='#338BB0' h='544px' w='100%'> {/*componente do chakra que renderiza uma div */}
+           <Box bgColor='#338BB0' h='420px' w='100%'> {/*componente do chakra que renderiza uma div */}
             
              <Center> {/*componente do chakra que centraliza oq ta dentro (vishkkkkk) */}
-                   <Image src={Logo} boxSize={'480px'}></Image> {/*componente do chakra que simula a tag img */}
+                   <Image mt='-60px' src={Logo} boxSize={'480px'}></Image> {/*componente do chakra que simula a tag img */}
              </Center>
 
                <Container centerContent ml='-3' w='100' mt='-80' >  {/*compopnente do chakra que cria um container*/}
@@ -71,28 +71,31 @@ const Home = () => {
                  </Text>
                </Container>
 
-               <Container centerContent mt='52'>
-                 <Text color='white' fontSize='30pt' fontFamily='BreeSerif-Regular'>Seu portal de denúncias</Text>
-               </Container>
-                    
-                  
-                 <Container centerContent mr='20px' w='100' mt='-374px  ' >
+               <Container centerContent mr='20px' mt='-114px' w='100'>
                  <Text  color='white' textDecoration='underline' fontFamily='BreeSerif-Regular' fontSize='28pt'>Veja outras denúncias</Text>
                  <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize='14pt'  fontWeight='normal'>Se mantenha informado quanto aos problemas
                  de seu bairro ou de outros bairros de Volta Redonda
                  </Text>
                </Container> 
+
+               <Container centerContent mt='120px'>
+                 <Text color='white' fontSize='30pt' fontFamily='BreeSerif-Regular'>Seu portal de denúncias</Text>
+               </Container>
+                    
+                  
+                 
+
                 </Box>
                
               
        </Flex>
          {/*------------FIM FULLSCREEN------------*/}
-         <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+
            {/* ------------SEÇÃO DENUNCIAS E INSTITUIÇOES AQUI------------*/}
-         <Box  w="100%" bg='white' h='auto'  borderRadius='4px'>
+         <Box  w="100%" bgColor='gray.200' h='auto'  borderRadius='4px'>
 
              <Flex justifyContent='space-between'>
-                 <Flex flexDirection='column' p='120px' mt='150px'>
+                 <Flex flexDirection='column' p='120px' >
 
                    <Box>
                  <Text color='#338BB0' fontSize='45px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
@@ -104,26 +107,23 @@ const Home = () => {
                  </Flex>
 
                  <Flex flexDirection='column'>
-                 <Image src={sectionDenAlta} boxSize='50em'></Image>
-                 </Flex>
-             </Flex>
-
-             <Wrap> {/*componente do chakra que renderiza tipo uma div que tem quebra de linha */}
-                  
-               <Flex p='30px'>
-                   <Image src={img2} boxSize='320px' h='420px' boxShadow='lg'></Image>
+                 <Flex p='30px'>
+                 
                </Flex>
                <Flex mt='20px'>
                         
-                   <Card mr='50px' fontFamily='BreeSerif-Regular' bgColor='gray.100' mt='10px'  h={[100, 290, 420]} w={[100, 200, 320]} boxShadow='lg' border='1px solid gray' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
+                 
+               </Flex>
+                 </Flex>
+                 <Flex flexDirection='column'>
+                 <Card mr='250px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px'  h={[100, 290, 420]} w={[100, 200, 640]} boxShadow='lg' border='1px solid gray' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
                    {/* Card componente do chakra que cria um card  */}
                      <CardHeader> {/* header do card, usado pra por titulo  */}
                          <Heading size='md' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
                      </CardHeader>
                          <CardBody> {/* corpo do card */}
                              <Box>
-                                 <Heading size='xs' fontWeight='bold'> @usuário </Heading>
-                                   <Text fontWeight='light'> “Agua estancada en el barrio Jd Cidade do <br /> Aço y nadie hace nada” </Text>
+                                <Image src={img2}  w='800px' h='250px'  boxShadow='lg'></Image>
                              </Box>
                                 
                         
@@ -147,11 +147,21 @@ const Home = () => {
                                <Button color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
                                    <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
                                </Button>
-            
+                               <Box ml='140px' whiteSpace='nowrap'>
+                        Água parada em cidade do aço
+                        </Box>
                            </CardFooter>
                    </Card>
-               </Flex>
-                   <Flex>
+                 </Flex>
+             </Flex>
+
+        
+       
+               
+      {/* ------------AQUI ACABAM DENUNCIAS------------*/}
+      <Box h='auto' bg='#F2F2F2' boxShadow='lg'>
+
+             <Flex ml='210px'>
                         
                      <Wrap p='30px' spacing='20px'>            
                                 
@@ -179,13 +189,9 @@ const Home = () => {
                         
                    </Flex>
                        
-           </Wrap>
-           <Flex justifyContent='end' mr='20px'>
-                 <Button variant='link' color='black'>Ver mais</Button>
-           </Flex>
-               
-      {/* ------------AQUI ACABAM DENUNCIAS------------*/}
-      <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+
+
+      </Box>
 
     
            <Flex justifyContent='space-between'>
