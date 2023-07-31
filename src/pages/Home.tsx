@@ -116,7 +116,7 @@ const Home = () => {
                </Flex>
                  </Flex>
                  <Flex flexDirection='column'>
-                 <Card mr='250px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px'  h={[100, 290, 420]} w={[100, 200, 640]} boxShadow='lg' border='1px solid gray' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
+                 <Card m='20px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' w='700px' border='1px solid gray' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
                    {/* Card componente do chakra que cria um card  */}
                      <CardHeader> {/* header do card, usado pra por titulo  */}
                          <Heading size='md' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
