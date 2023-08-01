@@ -6,7 +6,7 @@ import logoInst from "../img/logoInst.png"
 
 const CardInst = () => {
     return(
-        <Card   maxW='sm' w='250px' h='auto' bgColor='gray.100' align='center' border='1px solid gray' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
+        <Card   maxW='sm' w='150px' h='150px' bgColor='gray.100' align='center' border='1px solid gray' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
         <CardBody>
           <Image src={logoInst}></Image>
         </CardBody>

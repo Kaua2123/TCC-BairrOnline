@@ -6,6 +6,7 @@ import img2 from "../img/aguaEstancada.png";
 import Logo from "../img/logo.svg";
 import sectionDenAlta from "../img/sectionDenAlta.png";
 import sectionInstHome from "../img/sectionInstHome.png"
+import logoInst from "../img/logoInst.png"
 
 
 //react
@@ -98,11 +99,11 @@ const Home = () => {
                  <Flex flexDirection='column' p='120px' >
 
                    <Box>
-                 <Text color='#338BB0' fontSize='45px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
+                 <Text color='#338BB0' fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
                  </Box>
 
                    <Box mt='40px'>
-                     <Text fontSize='30px'>Denúncias em alta dos <br /> bairros de  <b>Volta Redonda</b></Text>
+                     <Text fontSize='25px'>Denúncias em alta dos <br /> bairros de  <b>Volta Redonda</b></Text>
                    </Box>
                  </Flex>
 
@@ -194,26 +195,8 @@ const Home = () => {
            <Flex justifyContent='space-between'>
 
               <Flex flexDirection='column'>
-                <Image src={sectionInstHome} boxSize='50em'></Image>
-              </Flex>
 
-              <Flex flexDirection='column' p='120px'>
-                <Box  mt='150px' textAlign='center'>
-                  <Text color='#338BB0' fontSize='45px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Instituições</Text>
-                </Box>
-
-                <Box mt='50px'>
-                  <Text fontSize='30px'>
-                    Conheça as <b>instituições</b> que <br />poderão resolver os <br /> problemas de seu <b>bairro</b>
-                  </Text>
-                </Box>  
-
-              </Flex>
-           </Flex>
-                
-           <Flex p='30px' justify='space-between'>
-              <Flex flexDirection='column'>
-                  <Wrap spacing='50px'> 
+              <Wrap spacing='50px' m='80px'> 
                       <WrapItem>
                               <CardInst/>
                       </WrapItem>
@@ -221,8 +204,57 @@ const Home = () => {
                       <WrapItem>
                               <CardInst/>
                       </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                            
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                 
                   </Wrap>         
-               </Flex>
+              </Flex>
+
+              <Flex flexDirection='column' p='120px'>
+                <Box  mt='150px' textAlign='center'>
+                  <Text color='#338BB0' fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Instituições</Text>
+                </Box>
+
+                <Box mt='50px'>
+                  <Text fontSize='25px'>
+                    Conheça as <b>instituições</b> que poderão resolver os problemas de seu <b>bairro</b>
+                  </Text>
+                </Box>  
+
+              </Flex>
+           </Flex>
+                
+          
           
                 <Flex flexDirection='column'>
                        <InputGroup> 
@@ -232,24 +264,7 @@ const Home = () => {
                            <Input /* onSubmit= */ w='280px' color='white' placeholder='Busque por instituições' _placeholder={{color: "white"}} bg='#338BB0'/>
                        </InputGroup>
                 </Flex>
-            </Flex>
-                    
          
-
-         <Flex p='30px'> 
-           <Wrap spacing='50px'> 
-               <WrapItem>
-                   <CardInst/>
-               </WrapItem>
-
-               <WrapItem>
-                   <CardInst/>
-               </WrapItem>
-
-                
-
-           </Wrap>        
-       </Flex>
 
          </Box>
       {/* ------------E AQUI INSTITUIÇOES------------*/}

@@ -19,7 +19,7 @@ return(
                     <Image src={img2} borderRadius='lg' width='200px'/>
                 </Center>
                     <Stack mt='6' spacing='3'>  
-                        <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='bold'>Muinto lixo.</Heading>
+                        <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>Muinto lixo.</Heading>
                             <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
                             “muito lixo kkkkkk mdsssss so jogar na latinha mano tlgddddd”
                             </Text>
