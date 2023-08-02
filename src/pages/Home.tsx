@@ -134,13 +134,16 @@ const Home = () => {
                               
                          <Divider/> {/* divisor, geralmente é uma linha */}
                               
-                           <CardFooter w={{base: '640px', md: '3000px', lg: '3800px'}}> {/* rodapé do card  */}
+                           <CardFooter w={{base: '640px', md: '3000px', lg: '3800px'}} h={{base: '200px', md: '140px', lg: '80px'}}> {/* rodapé do card  */}
                                <Button 
                            leftIcon={<BsChatSquareText/>}
                            bgColor='#338BB0'
                            color='white'
                            _hover={{background: '#fff', color:'#338BB0'}}
                            fontWeight='normal'
+                           w={{base: '108px', md: '125px', lg: '180px'}}
+                           fontSize={{base: '11px', md: '12px', lg: '16px'}}
+                           mt={{base: '20px', md: '60px', lg: '0px'}}
                            onClick={() => {setOpenCom(true)}}>
                                <Comentarios
                                    isOpen={openCom} 
@@ -148,10 +151,10 @@ const Home = () => {
                                </Comentarios>
                                    Abrir comentários
                                </Button>
-                               <Button variant='ghost' w={{base: '10px', md: '30px', lg: '55px'}}  mt={{}} color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
+                               <Button variant='ghost' mt={{base: '20px', md: '60px', lg: '0px'}} w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
                                    <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
                                </Button>
-                               <Box ml={{base: '20px', md: '80px', lg: '140px'}} fontWeight='normal' whiteSpace='nowrap'>
+                               <Box ml={{base: '20px', md: '10px', lg: '80px'}} fontSize={{base: '8px', md: '14px', lg: '18px'}} mr={{base: '', md: '2600px', lg: '0px'}}  fontWeight='normal'>
                                  Água estancada en el jd cidade do aco
                               </Box>
                            </CardFooter>
