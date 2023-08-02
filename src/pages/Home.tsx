@@ -15,7 +15,7 @@ import { useState } from 'react';
 
 //chakra 
 import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
-, Heading, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme} from '@chakra-ui/react';
+, Heading, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem} from '@chakra-ui/react';
 
 //componentes
 import  Header  from '../components/Header';
@@ -56,42 +56,56 @@ const Home = () => {
     <Header/>
    
 
-     <Flex > {/*componente do chakra que renderiza uma div com display:flex */}
-           {/*------------FULLSCREEN AQUI------------*/}
-           <Box bgColor='#338BB0' h={{base: '400px', md: '400px', lg:'auto'}} w='100%'> {/*componente do chakra que renderiza uma div */}
-            
-             <Center> {/*componente do chakra que centraliza oq ta dentro (vishkkkkk) */}
-                <Box >
-                   <Image mt='-60px' src={Logo} boxSize={{base: '360px', md: '420px', lg: '480px'}} ></Image> {/*componente do chakra que simula a tag img */}
-                </Box>
-             </Center>
+    <Grid templateColumns="1fr 2fr 1fr" gap={4} bgColor="#338BB0">
+        {/* container da esquerda */}
+        <GridItem colSpan={{ base: 1, md: 1, lg: 1 }}>
 
-               <Container centerContent ml='-3' w='100' mt='-80' >  {/*compopnente do chakra que cria um container*/}
-                 <Text  color='white' textDecoration='underline' fontFamily='BreeSerif-Regular' fontSize='28pt'>Com problemas no bairro?</Text> {/*componente do chakra que renderiza um texto, p, h1, h2, etc */}
-                 <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize={{base: '20px', md: '25px', lg:'18px'}}  fontWeight='normal'>Relate suas denúncias aqui,
-                 e tenha o retorno das instituições 
-                 responsáveis pela resolução dos problemas 
-                 </Text>
-               </Container>
+          <Container centerContent mt={{base: '55px', md: '90px', lg:'120px'}}>
+            <Text color="white" textDecoration="underline" fontFamily="BreeSerif-Regular" whiteSpace="nowrap"fontSize={{ base: "15px", md: "24px", lg: "35px" }}>
+              Com problemas no bairro?
+            </Text>
+            <Text textAlign="center"color="white" fontFamily="BreeSerif-Regular" fontSize={{ base: "13px", md: "15px", lg: "18px" }} fontWeight="normal">
+              Relate suas denúncias aqui, e tenha o retorno das instituições responsáveis pela resolução dos problemas
+            </Text>
+          </Container>
 
-               <Container centerContent mr='20px' mt='-114px' w='100'>
-                 <Text  color='white' textDecoration='underline' fontFamily='BreeSerif-Regular' fontSize='28pt'>Veja outras denúncias</Text>
-                 <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize='14pt'  fontWeight='normal'>Se mantenha informado quanto aos problemas
-                 de seu bairro ou de outros bairros de Volta Redonda
-                 </Text>
-               </Container> 
+        </GridItem>
 
-               <Container centerContent mt='120px'>
-                 <Text color='white' fontSize='30pt' fontFamily='BreeSerif-Regular'>Seu portal de denúncias</Text>
-               </Container>
-                    
-                  
-                 
+        {/* logo no meiozin */}
+        <GridItem colSpan={{ base: 1, md: 1, lg: 1 }}>
+          <Center>
+            <Image
+              mt="-60px"
+              src={Logo}
+              boxSize={{ base: "360px", md: "420px", lg: "480px" }}
+            />
+          </Center>
+        </GridItem>
 
-                </Box>
-               
-              
-       </Flex>
+        {/* container com os textos na direita */}
+        <GridItem colSpan={{ base: 1, md: 1, lg: 1 }}>
+          <Container centerContent mt={{base: '55px', md: '90px', lg:'120px'}}>
+            <Text
+              color="white"
+              textDecoration="underline"
+              fontFamily="BreeSerif-Regular"
+              whiteSpace="nowrap"
+              fontSize={{ base: "15px", md: "25px", lg: "35px" }}
+            >
+              Veja outras denúncias
+            </Text>
+            <Text
+              textAlign="center"
+              color="white"
+              fontFamily="BreeSerif-Regular"
+              fontSize={{ base: "13px", md: "15px", lg: "18px" }}
+              fontWeight="normal"
+            >
+              Se mantenha informado quanto aos problemas de seu bairro ou de outros bairros de Volta Redonda
+            </Text>
+          </Container>
+        </GridItem>
+      </Grid>
          {/*------------FIM FULLSCREEN------------*/}
 
            {/* ------------SEÇÃO DENUNCIAS E INSTITUIÇOES AQUI------------*/}
