@@ -119,7 +119,7 @@ const Home = () => {
                </Flex>
                  </Flex>
                  <Flex flexDirection='column'>
-                 <Card m='20px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' w={{base: '220px', md: '380px', lg: '700px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
+                 <Card m='20px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '700px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
                    {/* Card componente do chakra que cria um card  */}
                      <CardHeader> {/* header do card, usado pra por titulo  */}
                          <Heading borderRadius='7px' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
@@ -134,27 +134,27 @@ const Home = () => {
                               
                          <Divider/> {/* divisor, geralmente é uma linha */}
                               
-                           <CardFooter w={{base: '640px', md: '3000px', lg: '3800px'}} h={{base: '200px', md: '140px', lg: '80px'}}> {/* rodapé do card  */}
+                           <CardFooter w={{base: '640px', md: '3000px', lg: '3800px'}} h={{base: '200px', md: '90px', lg: '80px'}}> {/* rodapé do card  */}
                                <Button 
                            leftIcon={<BsChatSquareText/>}
                            bgColor='#338BB0'
                            color='white'
                            _hover={{background: '#fff', color:'#338BB0'}}
                            fontWeight='normal'
-                           w={{base: '108px', md: '125px', lg: '180px'}}
+                           w={{base: '240px', md: '125px', lg: '180px'}}
                            fontSize={{base: '11px', md: '12px', lg: '16px'}}
-                           mt={{base: '20px', md: '60px', lg: '0px'}}
+                           
                            onClick={() => {setOpenCom(true)}}>
                                <Comentarios
                                    isOpen={openCom} 
                                    setCloseCom = {() => {setOpenCom(!openCom)}}>
                                </Comentarios>
-                                   Abrir comentários
+                                 Abrir comentários
                                </Button>
-                               <Button variant='ghost' mt={{base: '20px', md: '60px', lg: '0px'}} w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
+                               <Button variant='ghost'   w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
                                    <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
                                </Button>
-                               <Box ml={{base: '20px', md: '10px', lg: '80px'}} fontSize={{base: '8px', md: '14px', lg: '18px'}} mr={{base: '', md: '2600px', lg: '0px'}}  fontWeight='normal'>
+                               <Box ml={{ lg: '80px'}} fontSize={{base: '12px', md: '14px', lg: '18px'}} mr={{base: '400px', md: '2600px', lg: '0px'}}  fontWeight='normal'>
                                  Água estancada en el jd cidade do aco
                               </Box>
                            </CardFooter>
