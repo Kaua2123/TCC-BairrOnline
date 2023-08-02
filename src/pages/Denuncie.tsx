@@ -159,7 +159,7 @@
     
             </Flex>
             <Flex direction='column'>
-              <Image src={enviandoDen} boxSize={{ base:'17em', md:'38em', lg: '48em'}}></Image>
+              <Image src={enviandoDen} boxSize={{ base:'38em', md:'42em', lg: '48em'}}></Image>
             </Flex>
           </Flex>
               
