@@ -119,7 +119,7 @@ const Home = () => {
                </Flex>
                  </Flex>
                  <Flex flexDirection='column'>
-                 <Card m='20px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' w='700px' border='1px solid gray' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
+                 <Card m='20px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' w={{base: '220px', md: '380px', lg: '700px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
                    {/* Card componente do chakra que cria um card  */}
                      <CardHeader> {/* header do card, usado pra por titulo  */}
                          <Heading borderRadius='7px' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
@@ -134,7 +134,7 @@ const Home = () => {
                               
                          <Divider/> {/* divisor, geralmente é uma linha */}
                               
-                           <CardFooter> {/* rodapé do card  */}
+                           <CardFooter w={{base: '640px', md: '3000px', lg: '3800px'}}> {/* rodapé do card  */}
                                <Button 
                            leftIcon={<BsChatSquareText/>}
                            bgColor='#338BB0'
@@ -148,10 +148,10 @@ const Home = () => {
                                </Comentarios>
                                    Abrir comentários
                                </Button>
-                               <Button color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
+                               <Button variant='ghost' w={{base: '10px', md: '30px', lg: '55px'}}  mt={{}} color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
                                    <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
                                </Button>
-                               <Box ml='140px' fontWeight='normal' whiteSpace='nowrap'>
+                               <Box ml={{base: '20px', md: '80px', lg: '140px'}} fontWeight='normal' whiteSpace='nowrap'>
                                  Água estancada en el jd cidade do aco
                               </Box>
                            </CardFooter>

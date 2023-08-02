@@ -13,7 +13,7 @@ const CardDen = () => {
 
 return(
 
-        <Card  maxW='sm' w='250px' bgColor='gray.100' align='center' border='1px solid gray' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
+        <Card  maxW='sm' w='250px' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
             <CardBody>
                 <Center>
                     <Image src={img2} borderRadius='lg' width='200px'/>
