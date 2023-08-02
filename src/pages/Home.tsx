@@ -53,20 +53,22 @@ const Home = () => {
   
   <ChakraProvider theme={theme}>
     
-    <Header></Header>
+    <Header/>
    
 
      <Flex > {/*componente do chakra que renderiza uma div com display:flex */}
            {/*------------FULLSCREEN AQUI------------*/}
-           <Box bgColor='#338BB0' h='420px' w='100%'> {/*componente do chakra que renderiza uma div */}
+           <Box bgColor='#338BB0' h={{base: '400px', md: '400px', lg:'auto'}} w='100%'> {/*componente do chakra que renderiza uma div */}
             
              <Center> {/*componente do chakra que centraliza oq ta dentro (vishkkkkk) */}
-                   <Image mt='-60px' src={Logo} boxSize={'480px'}></Image> {/*componente do chakra que simula a tag img */}
+                <Box >
+                   <Image mt='-60px' src={Logo} boxSize={{base: '360px', md: '420px', lg: '480px'}} ></Image> {/*componente do chakra que simula a tag img */}
+                </Box>
              </Center>
 
                <Container centerContent ml='-3' w='100' mt='-80' >  {/*compopnente do chakra que cria um container*/}
                  <Text  color='white' textDecoration='underline' fontFamily='BreeSerif-Regular' fontSize='28pt'>Com problemas no bairro?</Text> {/*componente do chakra que renderiza um texto, p, h1, h2, etc */}
-                 <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize='14pt'  fontWeight='normal'>Relate suas denúncias aqui,
+                 <Text textAlign='center'  color='white'  fontFamily='BreeSerif-Regular' fontSize={{base: '20px', md: '25px', lg:'18px'}}  fontWeight='normal'>Relate suas denúncias aqui,
                  e tenha o retorno das instituições 
                  responsáveis pela resolução dos problemas 
                  </Text>
@@ -99,11 +101,11 @@ const Home = () => {
                  <Flex flexDirection='column' p='120px' >
 
                    <Box>
-                 <Text color='#338BB0' fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
+                 <Text color='#338BB0' fontSize={{base: '28px', md: '35px', lg:'36px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
                  </Box>
 
                    <Box mt='40px'>
-                     <Text fontSize='25px'>Denúncias em alta dos <br /> bairros de  <b>Volta Redonda</b></Text>
+                     <Text fontSize={{base: '24px', md: '25px', lg:'25px'}}>Denúncias em alta dos <br /> bairros de  <b>Volta Redonda</b></Text>
                    </Box>
                  </Flex>
 
@@ -124,7 +126,7 @@ const Home = () => {
                      </CardHeader>
                          <CardBody> {/* corpo do card */}
                              <Box>
-                                <Image src={img2}  w='800px' h='250px'  boxShadow='lg'></Image>
+                                <Image src={img2}  w={[200, 400, 800]} h='250px'  boxShadow='lg'></Image>
                              </Box>
                                 
                         
@@ -191,11 +193,11 @@ const Home = () => {
 
       </Box>
 
-    
+            
            <Flex justifyContent='space-between'>
 
               <Flex flexDirection='column'>
-
+      
               <Wrap spacing='50px' m='80px'> 
                       <WrapItem>
                               <CardInst/>
@@ -241,15 +243,25 @@ const Home = () => {
               </Flex>
 
               <Flex flexDirection='column' p='120px'>
-                <Box  mt='150px' textAlign='center'>
-                  <Text color='#338BB0' fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Instituições</Text>
+
+                <Box  textAlign='center'>
+                  <Text color='#338BB0' fontSize={{base: '28px', md: '35px', lg:'36px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Instituições</Text>
                 </Box>
 
                 <Box mt='50px'>
-                  <Text fontSize='25px'>
+                  <Text fontSize={{base: '21px', md: '25px', lg:'25px'}}>
                     Conheça as <b>instituições</b> que poderão resolver os problemas de seu <b>bairro</b>
                   </Text>
                 </Box>  
+
+                <Box mt='100px' w={{base: '5%', md: '40%', xl: '100%'}}>   
+                      <InputGroup> 
+                           <InputLeftElement pointerEvents='none'>
+                               <FiSearch color='white' />
+                           </InputLeftElement>
+                           <Input /* onSubmit= */ w='280px' color='white' placeholder='Busque por instituições' _placeholder={{color: "white"}} bg='#338BB0'/>
+                       </InputGroup>
+              </Box>
 
               </Flex>
            </Flex>
@@ -257,12 +269,7 @@ const Home = () => {
           
           
                 <Flex flexDirection='column'>
-                       <InputGroup> 
-                           <InputLeftElement pointerEvents='none'>
-                               <FiSearch color='white' />
-                           </InputLeftElement>
-                           <Input /* onSubmit= */ w='280px' color='white' placeholder='Busque por instituições' _placeholder={{color: "white"}} bg='#338BB0'/>
-                       </InputGroup>
+              
                 </Flex>
          
 
