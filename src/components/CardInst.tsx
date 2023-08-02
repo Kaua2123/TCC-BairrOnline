@@ -12,7 +12,7 @@ const CardInst = () => {
         </CardBody>
 
         <CardFooter>
-          <Text align='center' fontFamily='BreeSerif-Regular'> @xxxx</Text>
+          <Text align='center' fontFamily='BreeSerif-Regular'> @instituição </Text>
         </CardFooter>
      </Card>
     )

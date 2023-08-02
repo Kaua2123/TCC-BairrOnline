@@ -255,11 +255,29 @@ const Home = () => {
                       <WrapItem>
                               <CardInst/>
                       </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
+                      <WrapItem>
+                              <CardInst/>
+                      </WrapItem>
                  
                   </Wrap>         
               </Flex>
 
-              <Flex flexDirection='column' p='120px'>
+              <Flex flexDirection='column' p='120px' mt={{base: '240px', md: '200px', lg:'180px'}}>
 
                 <Box  textAlign='center'>
                   <Text color='#338BB0' fontSize={{base: '28px', md: '35px', lg:'36px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Instituições</Text>

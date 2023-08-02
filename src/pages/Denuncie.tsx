@@ -81,22 +81,22 @@
       <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
     <Flex align='center'>
    
-      <Box bg='white'  borderRadius='4px' h='1800px' w='100%'>
+      <Box bg='white'  borderRadius='4px' h='auto' w='100%'>
                     
         <Flex justifyContent='space-between'>
 
-          <Flex  flexDirection='column' >
-              <Image src={realizarDen} boxSize='54em'></Image>
+          <Flex  flexDirection='column' flexWrap='wrap' >
+              <Image src={realizarDen} boxSize={{base: '25em', md: '34em', lg: '54em'}}></Image>
           </Flex>
             
 
           <Flex flexDirection='column' m='20px' mt='100px'  w='610px'>
-          <Text color='#338BB0'   fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Realize sua denúncia</Text>
-            <Text w='410px' mt='40px' fontSize='25px'>Seu lugar de denunciar é aqui. Esteja ciente de que suas denúncias poderão ser visualizadas por outros usuários e/ou instituições.</Text>
+          <Text color='#338BB0'   fontSize={{ base:'12px', md:'20px', lg: '35px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Realize sua denúncia</Text>
+            <Text w='410px' mt='40px' fontSize={{ base:'12px', md:'18px', lg: '25px'}}>Seu lugar de denunciar é aqui. Esteja ciente de que suas denúncias poderão ser visualizadas por outros usuários e/ou instituições.</Text>
                  
-                 
-            <Text color='#338BB0' mt='30px'  fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Acompanhamento </Text>
-            <Text w='450px' mt='40px' fontSize='25px'>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução das mesmas. Você pode acompanhar as soluções na página Acompanhar Denúncias</Text>     
+                  
+            <Text color='#338BB0' mt='30px'  fontSize={{ base:'12px', md:'20px', lg: '35px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Acompanhamento </Text>
+            <Text w='450px' mt='40px' fontSize={{ base:'12px', md:'18px', lg: '25px'}}>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução destas. Você pode acompanhar as soluções na página Acompanhar Denúncias</Text>     
           
           </Flex>
         
@@ -110,38 +110,38 @@
       
             <Flex flexDirection='column'>
                 <FormControl p='100px'>
-                  <FormLabel fontSize='28px' fontWeight='normal' >Protocolo da denúncia:</FormLabel>
+                  <FormLabel fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Protocolo da denúncia:</FormLabel>
                         
-                  <FormLabel mt='30px' fontSize='28px' fontWeight='normal' >Título da denúncia:</FormLabel>
+                  <FormLabel mt='30px' fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Título da denúncia:</FormLabel>
                             
                   <InputGroup>
                     <InputLeftElement>
                         <HiOutlineClipboardDocumentList size='25px'/>
                     </InputLeftElement>
-                      <Input border='1px solid black' w='340px' _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
+                      <Input border='1px solid black' w={{base:'220px', md:'280px', lg: '340px'}} _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
                   </InputGroup>  
 
-                    <FormLabel mt='30px' fontSize='28px' fontWeight='normal' >Digite o bairro a ser denunciado</FormLabel>
+                    <FormLabel mt='30px' fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Digite o bairro a ser denunciado</FormLabel>
 
                       <InputGroup>
                         <InputLeftElement>
-                            <BsListUl size='25px  '/>
+                            <BsListUl size='25px'/>
                         </InputLeftElement>
-                        <Input border='1px solid black' w='340px' _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
+                        <Input border='1px solid black' w={{base:'220px', md:'280px', lg: '340px'}} _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
                       </InputGroup>  
 
-                    <FormLabel mt='30px' whiteSpace='nowrap'  fontSize='28px' fontWeight='normal' >Digite o que está lhe incomodando: </FormLabel>
+                    <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Digite o que está lhe incomodando: </FormLabel>
 
                       <InputGroup>
                         <InputLeftElement>
                             <BsCardText size='25px'/>
                         </InputLeftElement>
-                        <Textarea border='1px solid black' w='45ch' resize='vertical' maxLength={220} pl='2.5rem' _hover={{border: '1px solid #A9A9A9	'}}></Textarea>
+                        <Textarea border='1px solid black' w={{ base:'29ch', md:'37ch', lg: '45ch'}} resize='vertical' maxLength={220} pl='2.5rem' _hover={{border: '1px solid #A9A9A9	'}}></Textarea>
                     </InputGroup>  
 
-                    <FormLabel mt='30px' whiteSpace='nowrap'  fontSize='28px' fontWeight='normal' >Enviar imagem </FormLabel>
+                    <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Enviar imagem </FormLabel>
                     <InputGroup>
-                        <InputLeftElement onClick={handleImageUpload} cursor='pointer' border='1px solid white' _hover={{color: 'blue.500', borderColor: 'black', transition: '0.1s', borderRadius: '60%'}}>
+                        <InputLeftElement onClick={handleImageUpload} cursor='pointer' border='1px solid white' _hover={{color: 'blue.500', borderColor: 'black', transition: '0.1s', borderRadius: '70%'}}>
                             <BsCamera size='25px'/>
                         </InputLeftElement>
                               
@@ -159,7 +159,7 @@
     
             </Flex>
             <Flex direction='column'>
-              <Image src={enviandoDen}></Image>
+              <Image src={enviandoDen} boxSize={{ base:'17em', md:'38em', lg: '48em'}}></Image>
             </Flex>
           </Flex>
               

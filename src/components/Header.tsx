@@ -42,7 +42,7 @@ const Header = () => {
 
           <Spacer/>
           
-            <HStack w={{base: '24px', md:'35px', lg: '25%'}} spacing='20' >
+            <HStack w={{base: '24px', sm:'200px'}} spacing='24' >
               <Button variant='link'
               color='white' 
               _hover={{color: '#338BB0'}}
