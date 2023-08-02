@@ -123,24 +123,17 @@ const Home = () => {
                    </Box>
                  </Flex>
 
-                 <Flex flexDirection='column'>
-                 <Flex p='30px'>
+                
                  
-               </Flex>
-               <Flex mt='20px'>
-                        
-                 
-               </Flex>
-                 </Flex>
                  <Flex flexDirection='column'>
-                 <Card m='20px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '700px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
+                 <Card m='20px'  fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '700px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
                    {/* Card componente do chakra que cria um card  */}
                      <CardHeader> {/* header do card, usado pra por titulo  */}
                          <Heading borderRadius='7px' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
                      </CardHeader>
                          <CardBody> {/* corpo do card */}
                              <Box>
-                                <Image src={img2}  w={[200, 400, 800]} h='250px'  boxShadow='lg'></Image>
+                                <Image src={img2}  w='100%' h='250px'  boxShadow='lg'></Image>
                              </Box>
                                 
                         
@@ -148,7 +141,7 @@ const Home = () => {
                               
                          <Divider/> {/* divisor, geralmente é uma linha */}
                               
-                           <CardFooter w={{base: '640px', md: '3000px', lg: '3800px'}} h={{base: '200px', md: '90px', lg: '80px'}}> {/* rodapé do card  */}
+                           <CardFooter w={{base: '640px', md: '3000px', lg: '700px'}} h={{base: '200px', md: '90px', lg: '80px'}}> {/* rodapé do card  */}
                                <Button 
                            leftIcon={<BsChatSquareText/>}
                            bgColor='#338BB0'
