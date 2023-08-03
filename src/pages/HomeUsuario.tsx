@@ -5,15 +5,11 @@ import  { Link } from 'react-router-dom'
 import { useState } from 'react';
 
 //imgs
-import img2 from "../img/aguaEstancada.png";
-import instagram from "../img/instagram.png";
 import sectionOla from "../img/sectionOlaDenunciante.png";
 import sectionDen from "../img/sectionDen.png";
 import sectionInst from "../img/sectionInst.png";
 import denunciaNaoAssumida from "../img/denunciaNaoassumida.png";
-import twitter from "../img/twitter.png";
-import Logo from "../img/logo.svg";
-import Sinin from './../img/notification-bell-svgrepo-com.svg'
+
 
 
 //chakra
@@ -24,7 +20,7 @@ Image, extendTheme, Text, Wrap, WrapItem } from '@chakra-ui/react'
 //componentes
 import Footer from '../components/Footer';
 import { HeaderUsu } from '../components/Header';
-import CardDen from '../components/CardDen';
+import CardDenH from '../components/CardDenH';
 
 
 const theme = extendTheme({
@@ -70,28 +66,30 @@ const HomeUsuario = () => {
         <Flex justifyContent='space-between'> 
 
           <Flex direction='column'>
-            <Image src={sectionDen} boxSize='50em' mt='200px'></Image>
+            <Image src={sectionDen} boxSize='45em' mt='200px'></Image>
           </Flex>
 
           <Flex direction='column'>
             <Box p='100px' mr='40px' mt='40px'>
               <Text fontSize='44px' fontFamily='BreeSerif-Regular' color='#338BB0' whiteSpace='nowrap'>Suas denúncias</Text>
             </Box>
-            <Flex>
+          
          
-              <Wrap spacing='20px'>
+            <Wrap spacing='20px'>
                 <WrapItem>
-                  <CardDen/>
+                  <CardDenH/>
                 </WrapItem>
 
                 <WrapItem>
-                  <CardDen/>
+                  <CardDenH/>
                 </WrapItem>
+                
+                
                 
             </Wrap>
           
          
-            </Flex>
+           
           </Flex>
     
         </Flex>
