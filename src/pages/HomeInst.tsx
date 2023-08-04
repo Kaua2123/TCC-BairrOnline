@@ -5,24 +5,20 @@ import  { Link } from 'react-router-dom'
 import { useState } from 'react';
 
 //imgs
-import img2 from "../img/aguaEstancada.png";
-import instagram from "../img/instagram.png";
 import sectionOlaInst from "../img/sectionOlaInst.png";
 import sectionDenAssumidas from "../img/sectionDenAssumidas.png";
 import tarefasInst from "../img/tarefasInst.png";
 
-import Sinin from './../img/notification-bell-svgrepo-com.svg'
 
 
 //chakra
-import {Button, Center, Box, 
-ChakraProvider, Flex, HStack, IconButton, Menu, MenuButton, MenuItem, MenuList, Spacer, 
-Image, extendTheme, Text, Wrap, WrapItem } from '@chakra-ui/react'
+import {Box, ChakraProvider, Flex, Image, extendTheme, Text, Card, CardBody, CardFooter } from '@chakra-ui/react'
 
 //componentes
 import Footer from '../components/Footer';
-import { HeaderInst, HeaderUsu } from '../components/Header';
-import CardDen from '../components/CardDen';
+import { HeaderInst } from '../components/Header';
+import CardTarefa from '../components/CardTarefa';
+
 
 
 const theme = extendTheme({
@@ -36,7 +32,7 @@ const theme = extendTheme({
 });
 
 
-const HomeUsuario = () => { 
+const HomeInst = () => { 
 
 
  return (
@@ -65,24 +61,6 @@ const HomeUsuario = () => {
 
         <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
 
-        <Flex justifyContent='space-between'> 
-
-          <Flex direction='column'>
-          <Box p='100px' mr='40px' mt='40px'>
-              <Text fontSize='44px' fontFamily='BreeSerif-Regular' color='#338BB0' whiteSpace='nowrap'>Denúncias assumidas</Text>
-            </Box>
-            <Flex>
-   
-            </Flex>
-          </Flex>
-          <Flex direction='column'> 
-          <Image src={sectionDenAssumidas} boxSize='40em' w='2000px' mt='200px'></Image>
-            
-          </Flex>
-    
-        </Flex>
-        <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
-
           <Flex justifyContent='space-between'> 
 
           <Flex direction='column'> 
@@ -93,7 +71,10 @@ const HomeUsuario = () => {
           <Flex direction='column'>
           <Box p='100px' mr='40px' mt='40px'>
               <Text fontSize='44px' fontFamily='BreeSerif-Regular' color='#338BB0' whiteSpace='nowrap'>Gerenciar tarefas</Text>
-            </Box>
+          </Box>
+          <Flex>
+            <CardTarefa/>
+          </Flex>
             <Flex>
    
             </Flex>
@@ -116,4 +97,4 @@ const HomeUsuario = () => {
   );
 };
 
-export default HomeUsuario;
+export default HomeInst;

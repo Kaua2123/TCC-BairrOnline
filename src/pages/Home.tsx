@@ -2,11 +2,9 @@ import '../App.css';
 
 
 //imgs
-import img2 from "../img/aguaEstancada.png";
+
 import Logo from "../img/logo.svg";
-import sectionDenAlta from "../img/sectionDenAlta.png";
-import sectionInstHome from "../img/sectionInstHome.png"
-import logoInst from "../img/logoInst.png"
+import aguaParada from "../img/aguaParada.jpg";
 
 
 //react
@@ -133,7 +131,7 @@ const Home = () => {
                      </CardHeader>
                          <CardBody> {/* corpo do card */}
                              <Box>
-                                <Image src={img2}  w='100%' h='250px'  boxShadow='lg'></Image>
+                                <Image src={aguaParada}  w='100%' h='250px'  boxShadow='lg'></Image>
                              </Box>
                                 
                         

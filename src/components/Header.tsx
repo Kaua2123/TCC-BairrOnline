@@ -1,16 +1,14 @@
 
 //chakra
-import { Menu,Image,Text, MenuButton, Button, IconButton, MenuList, MenuItem,
+import { Menu,Image, MenuButton, Button, IconButton, MenuList, MenuItem,
   Center, Flex, HStack, Spacer,Popover,PopoverTrigger,
   PopoverContent,PopoverHeader,PopoverBody, 
-  PopoverArrow, PopoverCloseButton, Divider,VStack} from "@chakra-ui/react";
+  PopoverArrow, PopoverCloseButton} from "@chakra-ui/react";
 import { Avatar, Box } from "@chakra-ui/react";
-import { ChakraProvider } from "@chakra-ui/react";
-
 
 //react
 import {Link} from 'react-router-dom';
-import notimg from './../img/buraco.jpg'
+
 
 //icones
 import { AiOutlineUser } from 'react-icons/ai'
@@ -29,11 +27,12 @@ const Header = () => {
 
           <Center>  
           <Menu>
-            <MenuButton bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
+            <MenuButton display={['flex', 'flex', 'none', 'none']} bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
             <MenuList>
-            <MenuItem >BairrOnline</MenuItem>
-            <MenuItem  as='a' href="#">Sobre nós</MenuItem>
-            <MenuItem as='a' href="#">Contate-nos</MenuItem>
+              <MenuItem > <Link to='/'> BairrOnline </Link> </MenuItem>
+              <MenuItem> <Link to='/Denuncie'> Denuncie aqui </Link> </MenuItem>
+              <MenuItem> <Link to='/VerDenuncia'> Ver denúncias </Link></MenuItem>
+              <MenuItem> <Link to='/SaibaMais'> Saiba mais </Link></MenuItem>
             </MenuList>
           </Menu>
           </Center>
@@ -47,21 +46,24 @@ const Header = () => {
               color='white' 
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
-              fontWeight='normal'>
+              fontWeight='normal'
+              display={['none', 'none', 'flex', 'flex']}>
                   <Link to='/Denuncie'> Denuncie aqui</Link>
               </Button>
               <Button variant='link'
               color='white' 
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
-              fontWeight='normal'>
+              fontWeight='normal'
+              display={['none', 'none', 'flex', 'flex']}>
                  <Link to='/VerDenuncia'> Ver denúncias </Link>
               </Button>
               <Button variant='link'
               color='white' 
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
-              fontWeight='normal'>
+              fontWeight='normal'
+              display={['none', 'none', 'flex', 'flex']}>
                  <Link to='/SaibaMais'> Saiba mais</Link>
               </Button> 
             </HStack>
@@ -91,29 +93,32 @@ export const HeaderUsu = () => {
 
 
 {/*COMEÇA HEADERUSU NAV*/}
+        
           <Center>  
           <Menu>
-            <MenuButton bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
+            <MenuButton display={['flex', 'flex', 'none', 'none']} bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
             <MenuList>
-            <MenuItem >BairrOnline</MenuItem>
-            <MenuItem  as='a' href="#">Sobre nós</MenuItem>
-            <MenuItem as='a' href="#">Contate-nos</MenuItem>
+              <MenuItem > <Link to='/'> BairrOnline </Link> </MenuItem>
+              <MenuItem> <Link to='/Denuncie'> Denuncie aqui </Link> </MenuItem>
+              <MenuItem> <Link to='/VerDenuncia'> Ver denúncias </Link></MenuItem>
+              <MenuItem> <Link to='/SaibaMais'> Saiba mais </Link></MenuItem>
             </MenuList>
           </Menu>
           </Center>
-
+          
           <Link to='/'> <Image src={Logo} alt='logo' boxSize='20' ></Image> </Link>
 
 
 
           <Spacer/>
           
-            <HStack w='25%' spacing='20' >
+            <HStack w='25%' spacing='20' mr='50px' >
               <Button variant='link'
               color='white' 
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
-              fontWeight='normal'>
+              fontWeight='normal'
+              display={['none', 'none', 'flex', 'flex']}>
                   <Link to='/Denuncie'> Denuncie aqui</Link>
               </Button>
               <Button variant='link'
@@ -121,7 +126,8 @@ export const HeaderUsu = () => {
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-              ml='20px'>
+              ml='20px'
+              display={['none', 'none', 'flex', 'flex']}>
                  <Link to='/VerDenuncia'> Ver denúncias </Link>
               </Button>
               <Button variant='link'
@@ -129,7 +135,8 @@ export const HeaderUsu = () => {
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-              ml='40px'>
+              ml='40px'
+              display={['none', 'none', 'flex', 'flex']}>
                  <Link to='/SaibaMais'> Acompanhar denúncias </Link>
               </Button> 
             </HStack>
@@ -195,27 +202,30 @@ export const HeaderInst = () => {
       <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' position={"sticky"} top={0} zIndex={2}> 
 
           <Center>  
-          <Menu>
-            <MenuButton bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
-            <MenuList>
-            <MenuItem >BairrOnline</MenuItem>
-            <MenuItem  as='a' href="#">Sobre nós</MenuItem>
-            <MenuItem as='a' href="#">Contate-nos</MenuItem>
-            </MenuList>
-          </Menu>
+            <Menu>
+              <MenuButton display={['flex', 'flex', 'none', 'none']} bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
+              <MenuList>
+                <MenuItem > <Link to='/'> BairrOnline </Link> </MenuItem>
+                <MenuItem> <Link to='/Denuncie'> Denuncie aqui </Link> </MenuItem>
+                <MenuItem> <Link to='/VerDenuncia'> Ver denúncias </Link></MenuItem>
+                <MenuItem> <Link to='/SaibaMais'> Saiba mais </Link></MenuItem>
+              </MenuList>
+            </Menu>
           </Center>
+
 
           <Link to='/'> <Image src={Logo} alt='logo' boxSize='20' ></Image> </Link>
 
           <Spacer/>
-          
-            <HStack w='25%' spacing='20' >
+          <Center>
+            <HStack w='25%' spacing='20' mr='50px' >
               <Button variant='link'
               color='white' 
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-              mr='45px'>
+              mr='45px'
+              display={['none', 'none', 'flex', 'flex']}>
                   <Link to='/VerDenuncia'>Ver denúncias </Link>
               </Button>
               <Button variant='link'
@@ -223,7 +233,8 @@ export const HeaderInst = () => {
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-              mr='20px'>
+              mr='20px'
+              display={['none', 'none', 'flex', 'flex']}>
                  <Link to=''>Denúncias avaliadas </Link>
               </Button>
               <Button variant='link'
@@ -231,10 +242,11 @@ export const HeaderInst = () => {
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-              ml='45px'>
+              display={['none', 'none', 'flex', 'flex']}>
                  <Link to=''>Tarefas</Link>
               </Button> 
             </HStack>
+            </Center>
             <Spacer/>
 
             <HStack spacing='4'>
