@@ -28,7 +28,6 @@ return(
                     o usuario que define o titulo, texto, imagem da denuncia */}
             </CardBody>
         <Divider/>
-        
             <CardFooter>
                 <Button
                 w='168px'

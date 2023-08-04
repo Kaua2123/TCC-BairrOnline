@@ -126,7 +126,7 @@ const Home = () => {
                 
                  
                  <Flex flexDirection='column'>
-                 <Card m='20px'  fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '700px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.2s', cursor: 'pointer'}}> 
+                 <Card m='20px'  fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '700px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> 
                    {/* Card componente do chakra que cria um card  */}
                      <CardHeader> {/* header do card, usado pra por titulo  */}
                          <Heading borderRadius='7px' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
@@ -169,11 +169,7 @@ const Home = () => {
                  </Flex>
              </Flex>
 
-        
-       
-               
-      {/* ------------AQUI ACABAM DENUNCIAS------------*/}
-      <Box h='auto' bg='#F2F2F2' boxShadow='lg'>
+                 <Box h='auto' mt='20px' bg='#F2F2F2' boxShadow='lg'>
 
                   <Center>
                       <Flex>
@@ -201,8 +197,8 @@ const Home = () => {
                     </Flex>     
                    </Center>
 
-      </Box>
-
+                </Box>
+   {/* ------------AQUI ACABAM DENUNCIAS------------*/}
             
            <Flex justifyContent='space-between'>
 

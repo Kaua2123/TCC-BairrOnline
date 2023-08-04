@@ -15,7 +15,7 @@ import denunciaNaoAssumida from "../img/denunciaNaoassumida.png";
 //chakra
 import {Button, Center, Box, 
 ChakraProvider, Flex, HStack, IconButton, Menu, MenuButton, MenuItem, MenuList, Spacer, 
-Image, extendTheme, Text, Wrap, WrapItem } from '@chakra-ui/react'
+Image, extendTheme, Text, Wrap, WrapItem, VStack } from '@chakra-ui/react'
 
 //componentes
 import Footer from '../components/Footer';
@@ -42,7 +42,7 @@ const HomeUsuario = () => {
     <HeaderUsu/>
     <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
     <Flex align='center'>
-      <Box bg='white' borderRadius='4px' h='250em' w='100%'>
+      <Box bgColor='white' borderRadius='4px' h='250em' w='100%'>
         
         <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Denunciante!</Text>
 
@@ -61,39 +61,74 @@ const HomeUsuario = () => {
           </Flex>
         </Flex>
 
-        <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+      
 
-        <Flex justifyContent='space-between'> 
-
-          <Flex direction='column'>
-            <Image src={sectionDen} boxSize='45em' mt='200px'></Image>
-          </Flex>
-
-          <Flex direction='column'>
-            <Box p='100px' mr='40px' mt='40px'>
-              <Text fontSize='44px' fontFamily='BreeSerif-Regular' color='#338BB0' whiteSpace='nowrap'>Suas denúncias</Text>
-            </Box>
-          
-         
-            <Wrap spacing='20px'>
-                <WrapItem>
-                  <CardDenH/>
-                </WrapItem>
-
-                <WrapItem>
-                  <CardDenH/>
-                </WrapItem>
-                
-                
-                
-            </Wrap>
-          
-         
-           
-          </Flex>
-    
+        <Flex justify='center'> 
+          <Box>
+            <Text fontSize='44px' color='#338BB0'  fontFamily='BreeSerif-Regular' whiteSpace='nowrap' >Suas denúncias</Text>
+          </Box>
         </Flex>
-        <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+
+            <Center>
+                <Box maxH='900px' w='1400px' mt='20px' bg='gray.100' boxShadow='lg' overflow='auto'>
+
+                      <Flex>
+                          
+                      <Wrap p='30px' spacing='20px'>                                          
+                              {/* Cards de exemplo, essas denuncias tme q ser as q o usuario tiver feito tlgd,gd,ds
+                              */}
+                          <WrapItem>
+                              <CardDenH/>  
+                          </WrapItem>
+
+                          <WrapItem>
+                              <CardDenH/>                              
+                          </WrapItem>
+                                
+                          <WrapItem>
+                              <CardDenH/> 
+                          </WrapItem>
+
+                          <WrapItem>  
+                              <CardDenH/> 
+                          </WrapItem>             
+
+                          <WrapItem>  
+                              <CardDenH/> 
+                          </WrapItem>               
+                          
+                          <WrapItem>  
+                              <CardDenH/> 
+                          </WrapItem>             
+
+                           <WrapItem>  
+                              <CardDenH/> 
+                          </WrapItem>           
+
+                           <WrapItem>  
+                              <CardDenH/> 
+                          </WrapItem>           
+                                   
+                          <WrapItem>  
+                              <CardDenH/> 
+                          </WrapItem>           
+
+                          <WrapItem>  
+                              <CardDenH/> 
+                          </WrapItem>           
+
+                          <WrapItem>  
+                              <CardDenH/> 
+                          </WrapItem>           
+
+                          <WrapItem>  
+                              <CardDenH/> 
+                          </WrapItem>           
+                      </Wrap>                    
+                    </Flex>     
+                </Box>
+                </Center>
+
         <Flex justify='center'>
           <Image src={sectionInst} boxSize='57em'></Image>
         </Flex>

@@ -7,7 +7,7 @@ import aguaEstanc from "../img/aguaEstancada.png";
 const CardDenH = () => { //card de denúncoa horizontal, pra home do usuário
 
     return(
-        <Card border='1px solid #A9A9A9'  borderRadius='4px' direction={{base: 'column', sm: 'row'}} _hover={{boxShadow: 'dark-lg', transition: '0.2s'}}>
+        <Card border='1px solid #A9A9A9' w='650px'  borderRadius='4px' direction={{base: 'column', sm: 'row'}} _hover={{boxShadow: 'dark-lg', transition: '0.1s'}}>
             <Image border='1px solid #A9A9A9'  borderRadius='4px' objectFit='cover' src={aguaEstanc} maxW={{base: '100%', sm: '200px'}}></Image>
             <Stack>
                 <CardBody>
