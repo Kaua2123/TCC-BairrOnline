@@ -178,11 +178,11 @@ const Home = () => {
                  </Flex>
              </Flex>
 
-                 <Box h='auto' mt='20px' bg='#F2F2F2' boxShadow='lg'>
+                 <Box h='auto' mt='20px' p='20px' bg='#F2F2F2' boxShadow='lg'>
 
           
                 
-                        <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        <Swiper style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
                         spaceBetween={50}
                         slidesPerView={5}
                         navigation
@@ -212,7 +212,9 @@ const Home = () => {
                        </WrapItem>
                        </Wrap>
                         </Swiper>
-              
+              {/* as denuncias da home n tem mais comentarios diretamente nelas agora, tem um botao
+              ver denuncia q vai pra pagina de ver denuncias do gabriel, e lá vai ter a exibição da denuncia
+              que foi clicada e de outras se o cara quiser filtrar. lá vai ter os comentarioszin */}
 
                 </Box>
    {/* ------------AQUI ACABAM DENUNCIAS------------*/}

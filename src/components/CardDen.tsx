@@ -4,8 +4,10 @@ import { Reportar } from "./reportar";
 import img2 from '../img/aguaEstancada.png';
 import {useState} from 'react';
 
-import { BsChatSquareText } from 'react-icons/bs'
+
+import { TbReportSearch } from 'react-icons/tb'
 import { MdOutlineReportProblem} from 'react-icons/md'
+import { Link } from "react-router-dom";
 
 const CardDen = () => {
     const [rep , setrep] = useState(false)
@@ -31,16 +33,12 @@ return(
             <CardFooter>
                 <Button
                 w='168px'
-                leftIcon={<BsChatSquareText/>}
+                leftIcon={<TbReportSearch size='3vh'/>}
                  bgColor='#338BB0'
                 color='white'
-                _hover={{background: '#fff', color:'#338BB0'}}
-                onClick={() => {setOpenCom(true)}}>
-            <Comentarios 
-            isOpen={openCom} 
-            setCloseCom = {() => {setOpenCom(!openCom)}}>
-            </Comentarios>
-            Abrir comentários
+                _hover={{background: '#fff', color:'#338BB0'}}>
+                <Link to='/VerDenuncia'>Ver denúncia</Link>
+        
         </Button>
         <Button color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
             <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
