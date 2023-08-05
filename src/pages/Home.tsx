@@ -28,6 +28,14 @@ import { BsChatSquareText } from 'react-icons/bs'
 import { MdOutlineReportProblem } from 'react-icons/md';
 import { FiSearch } from 'react-icons/fi'
 
+//react-swiper pros slides de denuncia
+import { Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination, Scrollbar, A11y} from "swiper/modules";
+
+import 'swiper/css';
+
+
+
 
 //remove o background color padrao do chakra
 const theme = extendTheme({
@@ -169,31 +177,26 @@ const Home = () => {
 
                  <Box h='auto' mt='20px' bg='#F2F2F2' boxShadow='lg'>
 
-                  <Center>
-                      <Flex>
-                          
-                      <Wrap p='30px' spacing='20px'>                                          
-                              {/* ESSES CARDS TÃO COM CONTEÚDO SÓ DE EXEMPLO, MAS NA REAL ELES TEM Q SER
-                            VAZIOS, POIS É O USUARIO QUE PÕE O CONTEUDO, TITULO, TEXTO, IMAGEM, ETCC
-                              */}
-                          <WrapItem>
-                              <CardDen/>  
-                          </WrapItem>
+          
+                
+                        <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={50}
+                        slidesPerView={4}
+                        navigation
+                        pagination={{clickable: true}}>
+                       
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       <SwiperSlide><CardDen/></SwiperSlide>
 
-                          <WrapItem>
-                              <CardDen/>                              
-                          </WrapItem>
-                                
-                          <WrapItem>
-                              <CardDen/> 
-                          </WrapItem>
-
-                          <WrapItem>  
-                              <CardDen/> 
-                          </WrapItem>                      
-                      </Wrap>                    
-                    </Flex>     
-                   </Center>
+                        </Swiper>
+              
 
                 </Box>
    {/* ------------AQUI ACABAM DENUNCIAS------------*/}
@@ -233,40 +236,14 @@ const Home = () => {
                       <WrapItem>
                               <CardInst/>
                       </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
+                
                  
                   </Wrap>         
               </Flex>
 
-              <Flex flexDirection='column' p='120px' mt={{base: '240px', md: '200px', lg:'180px'}}>
+              <Flex flexDirection='column' p='120px' >
 
-                <Box  textAlign='center'>
+                <Box>
                   <Text color='#338BB0' fontSize={{base: '28px', md: '35px', lg:'36px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Instituições</Text>
                 </Box>
 
