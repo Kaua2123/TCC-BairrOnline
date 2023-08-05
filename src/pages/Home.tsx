@@ -184,20 +184,33 @@ const Home = () => {
                 
                         <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
                         spaceBetween={50}
-                        slidesPerView={4}
+                        slidesPerView={5}
                         navigation
                         pagination={{clickable: true}}>
-                       
-                       <SwiperSlide><CardDen/></SwiperSlide>
-                       <SwiperSlide><CardDen/></SwiperSlide>
-                       <SwiperSlide><CardDen/></SwiperSlide>
-                       <SwiperSlide><CardDen/></SwiperSlide>
-                       <SwiperSlide><CardDen/></SwiperSlide>
-                       <SwiperSlide><CardDen/></SwiperSlide>
-                       <SwiperSlide><CardDen/></SwiperSlide>
-                       <SwiperSlide><CardDen/></SwiperSlide>
-                       <SwiperSlide><CardDen/></SwiperSlide>
 
+                       <Wrap>
+                        <WrapItem>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       </WrapItem>
+                       <WrapItem>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       </WrapItem>
+                       <WrapItem>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       </WrapItem>
+                       <WrapItem>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       </WrapItem>
+                       <WrapItem>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       </WrapItem>
+                       <WrapItem>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       </WrapItem>
+                       <WrapItem>
+                       <SwiperSlide><CardDen/></SwiperSlide>
+                       </WrapItem>
+                       </Wrap>
                         </Swiper>
               
 
