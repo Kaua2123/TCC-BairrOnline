@@ -7,7 +7,8 @@ import { Menu,Image, MenuButton, Button, IconButton, MenuList, MenuItem,
 import { Avatar, Box } from "@chakra-ui/react";
 
 //react
-import {Link} from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
+
 
 
 //icones
@@ -137,7 +138,7 @@ export const HeaderUsu = () => {
               fontWeight='normal'
               ml='40px'
               display={['none', 'none', 'flex', 'flex']}>
-                 <Link to='/SaibaMais'> Acompanhar denúncias </Link>
+                 <Link to='/HomeUsuario#denuncie'> teste </Link>
               </Button> 
             </HStack>
 

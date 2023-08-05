@@ -47,9 +47,10 @@ const HomeUsuario = () => {
         <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Denunciante!</Text>
 
         <Flex justifyContent='space-between'>
-          <Flex direction='column' mt='-200px'>
+          <Flex direction='column' mt='-200px' id='denuncie'>
             <Image src={sectionOla} boxSize='50em' ></Image>
           </Flex>
+
 
           <Flex direction='column' p='180px' mt='-150px'>
             <Box>
@@ -61,7 +62,6 @@ const HomeUsuario = () => {
           </Flex>
         </Flex>
 
-      
 
         <Flex justify='center'> 
           <Box>
@@ -129,7 +129,7 @@ const HomeUsuario = () => {
                 </Box>
                 </Center>
 
-        <Flex justify='center'>
+        <Flex justify='center' id='sexo'>
           <Image src={sectionInst} boxSize='57em'></Image>
         </Flex>
         <Flex justify='center'>
@@ -143,7 +143,7 @@ const HomeUsuario = () => {
         <Flex justify='center'>
         <Text mt='-100px' fontSize='30px'  whiteSpace='nowrap'>Parece que nenhuma instituição assumiu alguma denúncia sua.</Text> 
         </Flex>
-
+  
       </Box>
       
     </Flex>
