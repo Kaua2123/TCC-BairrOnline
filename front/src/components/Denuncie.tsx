@@ -21,10 +21,12 @@
   //react
   import { useState } from "react";
   import { useRef } from "react";
+  import axios from 'axios';
 
   //react icons
   import { BsCardText, BsCamera, BsListUl} from "react-icons/bs"
   import { HiOutlineClipboardDocumentList } from "react-icons/hi2"
+
 
 
   const bairros = ['Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
@@ -39,6 +41,35 @@
   const Denuncie = () => {
 
     const [imgPreview, setImgPreview] = useState("");  
+    const [denCod, setDenCod] = useState('');
+    const [denNome, setDenNome] = useState('');
+    const [denPrazo, setDenPrazo] = useState('');
+    const [denDesc, setDenDesc] = useState('');
+    const [bairroCod, setBairroCod] = useState('');
+    const [usuCod, setUsuCod] = useState('');
+    
+    const fixedUsuCod = 1; //valor fixo para o codigo do usuario, já que o login ainda n ta funcionando.
+                           //tem q ser atribuido pra poder conseguir realizar a denuncia pelo front
+
+    function onSubmit(e) {
+      e.preventDefault();
+
+
+      axios.post('http://localhost:3344/criarDenuncia', { // realizar denuncias ('FUNCIONANDO')
+        den_cod: denCod,                                  // mas primeiro tem q cadastrar o bairro, usuario
+        den_nome: denNome,                                // e codigo do denunciante manualmente
+        den_prazo: denPrazo,
+        den_desc: denDesc,
+        bairro_bai_cod: bairroCod, // fazer os codigos serem correspondentes a posições em uma array, tipo codigo 1
+        denunciante_usuario_usu_cod: fixedUsuCod                                            // santo agostinho, e por ai vai
+    }).then(response => {
+        console.log("Denúncia criada/postada");
+        console.log(response.data);
+    }).catch((error) => {
+        console.error(error);
+    });
+
+    }
 
     const fileInputRef = useRef(null);
 
@@ -52,8 +83,8 @@
     }
 
     //pra pegar a imagem enviada e mostrar
-    const handleFileChange = (event) => {
-      const file = event.target.files[0];
+    const handleFileChange = (e) => {
+      const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -118,7 +149,12 @@
                     <InputLeftElement>
                         <HiOutlineClipboardDocumentList size='25px'/>
                     </InputLeftElement>
-                      <Input border='1px solid black' w={{base:'220px', md:'280px', lg: '340px'}} _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
+                      <Input value={denNome} 
+                      onChange={(e) => setDenNome(e.target.value)}
+                      border='1px solid black' 
+                      w={{base:'220px', md:'280px', lg: '340px'}} 
+                      _hover={{border: '1px solid #A9A9A9	'}} 
+                      type='text'></Input>
                   </InputGroup>  
 
                     <FormLabel mt='30px' fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Digite o bairro a ser denunciado</FormLabel>
@@ -127,7 +163,12 @@
                         <InputLeftElement>
                             <BsListUl size='25px'/>
                         </InputLeftElement>
-                        <Input border='1px solid black' w={{base:'220px', md:'280px', lg: '340px'}} _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
+                        <Input value={bairroCod}
+                        onChange={(e) => setBairroCod(e.target.value)} 
+                        border='1px solid black' 
+                        w={{base:'220px', md:'280px', lg: '340px'}} 
+                        _hover={{border: '1px solid #A9A9A9	'}} 
+                        type='text'></Input>
                       </InputGroup>  
 
                     <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Digite o que está lhe incomodando: </FormLabel>
@@ -136,7 +177,15 @@
                         <InputLeftElement>
                             <BsCardText size='25px'/>
                         </InputLeftElement>
-                        <Textarea border='1px solid black' w={{ base:'29ch', md:'37ch', lg: '45ch'}} resize='vertical' maxLength={220} pl='2.5rem' _hover={{border: '1px solid #A9A9A9	'}}></Textarea>
+                        <Textarea value={denDesc}
+                        onChange={(e) => setDenDesc(e.target.value)}
+                        border='1px solid black' 
+                        w={{ base:'29ch', md:'37ch', lg: '45ch'}} 
+                        resize='vertical' 
+                        maxLength={220} 
+                        pl='2.5rem' 
+                        _hover={{border: '1px solid #A9A9A9	'}}>  
+                        </Textarea>
                     </InputGroup>  
 
                     <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Enviar imagem </FormLabel>
@@ -149,7 +198,7 @@
 
                     <Spacer/> 
                             
-                      <Button type='submit'  bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: '#DCDCDC'}}>Criar denúncia</Button>
+                      <Button type='submit' onClick={onSubmit}  bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: '#DCDCDC'}}>Criar denúncia</Button>
                       
                     </InputGroup>  
                         

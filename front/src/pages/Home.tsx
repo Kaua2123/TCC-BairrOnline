@@ -296,7 +296,7 @@ const Home = () => {
               
                 </Flex>
          
-
+              <Button variant='link' color='black' ml='15px'>Ver mais</Button>
          </Box>
       {/* ------------E AQUI INSTITUIÇOES------------*/}
             
