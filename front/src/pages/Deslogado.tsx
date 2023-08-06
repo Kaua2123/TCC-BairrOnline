@@ -24,8 +24,8 @@ const Deslogado = () => {
                     <Text ml='35px'>Você está deslogado. Para realizar denúncias, por favor, <br /> entre na sua conta. Ainda não tem uma? Cadastre-se</Text>
                     <Box m='100px'>
                         <Stack  spacing={5} direction='row' >
-                            <Button bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: 'white'}}>Entre</Button>
-                            <Button variant='outline'  color='#338bb0' >Cadastre-se</Button>
+                            <Button bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: 'white'}}> <Link to='/Login'> Entre </Link></Button>
+                            <Button variant='outline'  color='#338bb0' > <Link to='/Cadastro'> Cadastre-se </Link></Button>
                         </Stack>
                      
                     <Box mt='80px' ml='40px'>
