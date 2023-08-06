@@ -15,8 +15,8 @@
 
 
   //componentes
-  import Header from '../components/Header';
-  import Footer from '../components/Footer';
+  import Header from './Header';
+  import Footer from './Footer';
 
   //react
   import { useState } from "react";
@@ -77,11 +77,11 @@
 
       return (
         <ChakraProvider theme={theme}>
-            <Header/>
-      <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+    
+    
     <Flex align='center'>
    
-      <Box bg='white'  borderRadius='4px' h='auto' w='100%'>
+      <Box bg='#F8F8FF'  borderRadius='4px' h='auto' w='100%'>
                     
         <Flex justifyContent='space-between'>
 
@@ -103,7 +103,7 @@
 
   
           </Flex>
-          <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+     
         
           <Flex justifyContent='space-between'>
 
@@ -168,7 +168,7 @@
     </Flex>
   
 
-          <Footer/>  
+ 
         </ChakraProvider>
       );
   };  

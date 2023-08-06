@@ -12,6 +12,7 @@ import denunciaNaoAssumida from "../img/denunciaNaoassumida.png";
 
 
 
+
 //chakra
 import {Button, Center, Box, 
 ChakraProvider, Flex, HStack, IconButton, Menu, MenuButton, MenuItem, MenuList, Spacer, 
@@ -21,6 +22,7 @@ Image, extendTheme, Text, Wrap, WrapItem, VStack } from '@chakra-ui/react'
 import Footer from '../components/Footer';
 import { HeaderUsu } from '../components/Header';
 import CardDenH from '../components/CardDenH';
+import Denuncie from '../components/Denuncie';
 
 
 const theme = extendTheme({
@@ -42,7 +44,7 @@ const HomeUsuario = () => {
     <HeaderUsu/>
     <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
     <Flex align='center'>
-      <Box bgColor='white' borderRadius='4px' h='250em' w='100%'>
+      <Box bgColor='white' borderRadius='4px' h='auto' w='100%'>
         
         <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Denunciante!</Text>
 
@@ -57,11 +59,14 @@ const HomeUsuario = () => {
             <Text fontSize='44px' color='#338BB0'   fontFamily='BreeSerif-Regular' whiteSpace='nowrap' align='center'>Seção do Usuário</Text>
             </Box>  
             <Box mt='70px'>
-            <Text fontSize='30px' whiteSpace='nowrap'>Veja suas <b color='green'> denúncias</b> e o <br /> retorno das instituições</Text>
+            <Text fontSize='25px' whiteSpace='nowrap'>Denuncie, veja suas <b color='green'> denúncias</b> <br /> e o retorno das instituições</Text>
             </Box>
           </Flex>
         </Flex>
 
+        <Box id='denuncieAqui'>
+          <Denuncie/>
+        </Box>
 
         <Flex justify='center'> 
           <Box>

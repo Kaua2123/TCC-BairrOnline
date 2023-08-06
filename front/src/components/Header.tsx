@@ -49,7 +49,10 @@ const Header = () => {
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
               display={['none', 'none', 'flex', 'flex']}>
-                  <Link to='/Denuncie'> Denuncie aqui</Link>
+                  <Link to='/Deslogado'> Denuncie aqui</Link>
+                  {/* vai levar pra pagina de deslogado, ver uma forma de autenticar se o usuario 
+                  ta logado ou nao pra qnd ele clicar ir direto pra pagina de denunciar. ou ja usar
+                  o nav do usuario msm */}
               </Button>
               <Button variant='link'
               color='white' 
@@ -120,7 +123,7 @@ export const HeaderUsu = () => {
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
               display={['none', 'none', 'flex', 'flex']}>
-                  <Link to='/Denuncie'> Denuncie aqui</Link>
+                  <Link to='/HomeUsuario#denuncieAqui'> Denuncie aqui</Link>
               </Button>
               <Button variant='link'
               color='white' 
@@ -138,7 +141,7 @@ export const HeaderUsu = () => {
               fontWeight='normal'
               ml='40px'
               display={['none', 'none', 'flex', 'flex']}>
-                 <Link to='/HomeUsuario#denuncie'> teste </Link>
+                 <Link to='/'> Acompanhar denuncias </Link>
               </Button> 
             </HStack>
 

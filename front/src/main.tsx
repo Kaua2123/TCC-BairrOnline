@@ -4,16 +4,18 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // import MinhasDen from './pages/MinhasDen.tsx';
 import './App.css'
 
+//rotas, componentes
 import Home from './pages/Home.tsx'
 import HomeADM from './pages/HomeAdm.tsx'
 import Login from './pages/Login.tsx'
-import Denuncie from './pages/Denuncie.tsx'
+import Denuncie from './components/Denuncie.tsx'
 import Cadastro from './pages/Cadastro.tsx';
 import VerDenuncia from './pages/VerDenuncia.tsx';
 import Gerenciador from './pages/GerenciadorDen.tsx'
 import HomeUsuario from './pages/HomeUsuario.tsx';
 import HomeInst from './pages/HomeInst.tsx';
 import SaibaMais from './pages/saibaMais.tsx';
+import Deslogado from './pages/Deslogado.tsx';
 
 
 
@@ -58,6 +60,11 @@ const router = createBrowserRouter([
     element: <MinhasDen/>,
   },
 */
+  {
+    path: "/Deslogado",
+    element: <Deslogado/>
+  },
+
   {
     path:"/homeADM",
     element: <HomeADM/>
