@@ -3,20 +3,16 @@
 
 
   //img
-  import Logo from "../img/logo.svg";
-  import Camera from "../img/camera.png";
+
   import realizarDen from "../img/realizarDen.png";
   import enviandoDen from "../img/enviandoDen.png";
 
 
   //chakra
-  import { ChakraProvider, extendTheme, Image, Flex, Box, Button, Wrap, WrapItem, Text, VStack, Center, FormControl,
-  FormLabel, FormHelperText, FormErrorMessage, Spacer, Container, Input, InputLeftElement, InputGroup, Textarea, useToast} from '@chakra-ui/react';
+  import { ChakraProvider, extendTheme, Image, Flex, Box, Button, Text,  FormControl,
+  FormLabel, Spacer, Select,  Input, InputLeftElement, InputGroup, Textarea, useToast} from '@chakra-ui/react';
 
 
-  //componentes
-  import Header from './Header';
-  import Footer from './Footer';
 
   //react
   import { useState } from "react";
@@ -24,10 +20,10 @@
   import axios from 'axios';
 
   //react icons
-  import { BsCardText, BsCamera, BsListUl} from "react-icons/bs"
+  import { BsCardText, BsCamera, BsListUl, BsCalendar3} from "react-icons/bs"
   import { HiOutlineClipboardDocumentList } from "react-icons/hi2"
 
-  const bairros = ['Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
+  const bairros = ['Selecione dentre as opções', 'Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
   'Brasilândia', 'Caieira', 'Casa de Pedra', 'Conforto', 'Coqueiros', 'Cruzeiro', 'Dom Bosco', 'Eucaliptal',
     'Jardim Amália', 'Jardim Belvedere', 'Jardim Cidade do Aço', 'Jardim Cordoeira', 'Jardim Europa', 'Jardim Normândia', 
     'Jardim Ponte Alta', 'Jardim Primavera', 'Jardim Vila Rica', 'Laranjal', 'Monte Castelo', 'Niterói', 'Nova Primavera',
@@ -35,6 +31,10 @@
       'Santa Rita do Zarur', 'Santo Agostinho', 'São Cristóvão', 'São Geraldo', 'São João', 'São Luiz', 'Sessenta', 
     'Siderópolis', 'Três Poços', 'Vila Americana', 'Vila Mury', 'Vila Rica', 'Vila Santa Cecília', 'Voldac'];
 
+  const opçoesDeBairros = bairros.map((bairro, index) => ({
+    value: index,
+    label: bairro
+  }))
 
   const Denuncie = () => {
 
@@ -57,8 +57,8 @@
         den_nome: denNome,                                // e codigo do denunciante manualmente
         den_prazo: denPrazo,
         den_desc: denDesc,
-        bairro_bai_cod: bairroCod, // fazer os codigos serem correspondentes a posições em uma array, tipo codigo 1
-        denunciante_usuario_usu_cod: fixedUsuCod                                            // santo agostinho, e por ai vai
+        bairro_bai_cod: bairroCod, 
+        denunciante_usuario_usu_cod: fixedUsuCod                     
     }).then(response => {
         console.log('Denúncia postada');
         console.log(response.data);
@@ -77,7 +77,7 @@
         if(error){
           toast({
             title: 'Erro',
-            description: "Você não pode criar denúncias vazias. Tente novamente",
+            description: "Algum campo parece estar com dados incorretos. Verifique e tente novamente.",
             status: 'error',
             duration: 4000,
             isClosable: true
@@ -181,18 +181,34 @@
                       type='text'></Input>
                   </InputGroup>  
 
-                    <FormLabel mt='30px' fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Digite o bairro a ser denunciado</FormLabel>
+                    <FormLabel mt='30px' fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Selecione o bairro a ser denunciado</FormLabel>
 
                       <InputGroup>
                         <InputLeftElement>
                             <BsListUl size='25px'/>
                         </InputLeftElement>
-                        <Input value={bairroCod}
+                        {/* <Input value={bairroCod}
                         onChange={(e) => setBairroCod(e.target.value)} 
                         border='1px solid black' 
                         w={{base:'220px', md:'280px', lg: '340px'}} 
                         _hover={{border: '1px solid #A9A9A9	'}} 
-                        type='text'></Input>
+                        type='text'></Input> */}
+                           <Select 
+                      
+                        value={bairroCod}
+                        onChange={(e) => setBairroCod(e.target.value)} 
+                        border='1px solid black' 
+                        w={{base:'220px', md:'280px', lg: '340px'}} 
+                        _hover={{border: '1px solid #A9A9A9	'}} 
+                        textAlign='center'
+                        >
+                          <option value=''></option>
+                          {opçoesDeBairros.map((bairro) => (
+                            <option key={bairro.value} value={bairro.value}>
+                              {bairro.label}
+                            </option> // mapeando o array e pegando cada opção como uma posição do array
+                          ))}
+                        </Select>
                       </InputGroup>  
 
                     <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Digite o que está lhe incomodando: </FormLabel>
@@ -212,7 +228,27 @@
                         </Textarea>
                     </InputGroup>  
 
-                    <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Enviar imagem </FormLabel>
+                    <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Prazo: </FormLabel>
+
+                      <InputGroup>
+                        <InputLeftElement>
+                            <BsCalendar3 size='25px'/>
+                        </InputLeftElement>
+                        <Input
+                        type='date' 
+                        value={denPrazo}
+                        onChange={(e) => setDenPrazo(e.target.value)}
+                        border='1px solid black' 
+                        w={{base:'220px', md:'280px', lg: '340px'}} 
+                        resize='vertical' 
+                        maxLength={220} 
+                        pl='2.5rem' 
+                        _hover={{border: '1px solid #A9A9A9	'}}>  
+                        </Input>
+                    </InputGroup>  
+
+
+                    <FormLabel mt='80px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Enviar imagem </FormLabel>
                     <InputGroup>
                         <InputLeftElement onClick={handleImageUpload} cursor='pointer' border='1px solid white' _hover={{color: 'blue.500', borderColor: 'black', transition: '0.1s', borderRadius: '70%'}}>
                             <BsCamera size='25px'/>

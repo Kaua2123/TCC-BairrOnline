@@ -84,7 +84,7 @@ const saibaMais = () => {
                      </Flex>
 
                      <Flex direction='column'>
-                        <Image src={tarefas} w='880px' h='674px' ></Image>
+                        <Image src={tarefas} boxSize='40em' ></Image>
                     </Flex>
                 </Flex>
             </Box>
