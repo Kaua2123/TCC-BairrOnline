@@ -39,12 +39,12 @@
   const Denuncie = () => {
 
     const [imgPreview, setImgPreview] = useState("");  
-    const [denCod, setDenCod] = useState('');
+    const [denCod, setDenCod] = useState();
     const [denNome, setDenNome] = useState('');
     const [denPrazo, setDenPrazo] = useState('');
     const [denDesc, setDenDesc] = useState('');
-    const [bairroCod, setBairroCod] = useState('');
-    const [usuCod, setUsuCod] = useState('');
+    const [bairroCod, setBairroCod] = useState();
+    const [usuCod, setUsuCod] = useState();
     const toast = useToast();
     
     const fixedUsuCod = 1; //valor fixo para o codigo do usuario, já que o login ainda n ta funcionando.
@@ -58,7 +58,7 @@
         den_prazo: denPrazo,
         den_desc: denDesc,
         bairro_bai_cod: bairroCod, 
-        denunciante_usuario_usu_cod: fixedUsuCod                     
+        denunciante_usuario_usu_cod: fixedUsuCod                 
     }).then(response => {
         console.log('Denúncia postada');
         console.log(response.data);
@@ -74,6 +74,7 @@
         }
        
     }).catch((error) => {
+      
         if(error){
           toast({
             title: 'Erro',
@@ -83,20 +84,18 @@
             isClosable: true
           })
         }
-
-
         console.error(error);
     });
     }
 
-    const fileInputRef = useRef(null);
-
-    const handleSubmit = (e) => {
 
 
-      enviaDen();
-    }
+ 
+
+
+
   
+    const fileInputRef = useRef(null);
 
     //pra upar a imagem com click no iconezinho da camera
     const handleImageUpload = () => {
@@ -165,7 +164,7 @@
       
             <Flex flexDirection='column'>
                 <FormControl p='100px'>
-                  <FormLabel fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Protocolo da denúncia:</FormLabel>
+                  <FormLabel fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Protocolo da denúncia: </FormLabel>
                         
                   <FormLabel mt='30px' fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Título da denúncia:</FormLabel>
                             
@@ -258,7 +257,7 @@
 
                     <Spacer/> 
                             
-                      <Button type='submit' onClick={handleSubmit}  bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: '#DCDCDC'}}>Criar denúncia</Button>
+                      <Button type='submit' onClick={enviaDen}  bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: '#DCDCDC'}}>Criar denúncia</Button>
                       
                     </InputGroup>  
                         
