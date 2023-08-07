@@ -11,7 +11,7 @@
 
   //chakra
   import { ChakraProvider, extendTheme, Image, Flex, Box, Button, Wrap, WrapItem, Text, VStack, Center, FormControl,
-  FormLabel, FormHelperText, FormErrorMessage, Spacer, Container, Input, InputLeftElement, InputGroup, Textarea} from '@chakra-ui/react';
+  FormLabel, FormHelperText, FormErrorMessage, Spacer, Container, Input, InputLeftElement, InputGroup, Textarea, useToast} from '@chakra-ui/react';
 
 
   //componentes
@@ -26,8 +26,6 @@
   //react icons
   import { BsCardText, BsCamera, BsListUl} from "react-icons/bs"
   import { HiOutlineClipboardDocumentList } from "react-icons/hi2"
-
-
 
   const bairros = ['Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
   'Brasilândia', 'Caieira', 'Casa de Pedra', 'Conforto', 'Coqueiros', 'Cruzeiro', 'Dom Bosco', 'Eucaliptal',
@@ -47,12 +45,11 @@
     const [denDesc, setDenDesc] = useState('');
     const [bairroCod, setBairroCod] = useState('');
     const [usuCod, setUsuCod] = useState('');
+    const toast = useToast();
     
     const fixedUsuCod = 1; //valor fixo para o codigo do usuario, já que o login ainda n ta funcionando.
                            //tem q ser atribuido pra poder conseguir realizar a denuncia pelo front
-
-    function onSubmit(e) {
-      e.preventDefault();
+    const enviaDen = () => {
 
 
       axios.post('http://localhost:3344/criarDenuncia', { // realizar denuncias ('FUNCIONANDO')
@@ -63,17 +60,44 @@
         bairro_bai_cod: bairroCod, // fazer os codigos serem correspondentes a posições em uma array, tipo codigo 1
         denunciante_usuario_usu_cod: fixedUsuCod                                            // santo agostinho, e por ai vai
     }).then(response => {
-        console.log("Denúncia criada/postada");
+        console.log('Denúncia postada');
         console.log(response.data);
+
+        if(response){ // se for criada, executa o codigo abaixo, responsavel pelo feedback ao usuario
+            toast({
+              title: 'Denúncia criada',
+              description: "Sua denúncia foi realizada e será encaminhada para as instituições.",
+              status: 'success',
+              duration: 4000,
+              isClosable: true,
+            })     
+        }
+       
     }).catch((error) => {
+        if(error){
+          toast({
+            title: 'Erro',
+            description: "Você não pode criar denúncias vazias. Tente novamente",
+            status: 'error',
+            duration: 4000,
+            isClosable: true
+          })
+        }
+
+
         console.error(error);
     });
-
     }
 
     const fileInputRef = useRef(null);
 
+    const handleSubmit = (e) => {
+
+
+      enviaDen();
+    }
   
+
     //pra upar a imagem com click no iconezinho da camera
     const handleImageUpload = () => {
       const fileInput = document.getElementById("file-input");
@@ -198,7 +222,7 @@
 
                     <Spacer/> 
                             
-                      <Button type='submit' onClick={onSubmit}  bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: '#DCDCDC'}}>Criar denúncia</Button>
+                      <Button type='submit' onClick={handleSubmit}  bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: '#DCDCDC'}}>Criar denúncia</Button>
                       
                     </InputGroup>  
                         

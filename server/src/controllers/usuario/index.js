@@ -35,8 +35,11 @@ module.exports = {
                 console.log(response.data);
                 return res.status(201).send("USUARIO CRIADO");
         }).catch((error) => {
-                console.error(error);
-                return res.status(500).json({error: error.message});
+
+            if(error.response) {
+                console.error("Server respondeu com:", error.response.data);
+            }
+            return res.status(500).json({error: error.message});
         });
         
         } catch (error) {
