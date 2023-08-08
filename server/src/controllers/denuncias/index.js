@@ -40,7 +40,7 @@ module.exports = {
             });
 
   
-           return res.status(201).json({message: 'Denúncia enviada'})
+           return res.status(201).json({message: 'Denúncia enviada'});
         } catch (error) {
             console.log(error);
             return res.status(400).json({error: error.message});

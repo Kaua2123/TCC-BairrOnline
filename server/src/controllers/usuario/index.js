@@ -25,6 +25,7 @@ module.exports = {
                 usu_senha,
                 usu_tel
             });
+
             axios.post('http://localhost:3344/criarUsu', {
                 usu_cod,
                 usu_nome,
@@ -41,7 +42,8 @@ module.exports = {
             }
             return res.status(500).json({error: error.message});
         });
-        
+
+        return res.status(201).json({message: 'Usuário criado.'})
         } catch (error) {
             console.log(error);
             return res.status(400).json({error: error.message});
