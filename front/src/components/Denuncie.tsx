@@ -10,7 +10,7 @@
 
   //chakra
   import { ChakraProvider, extendTheme, Image, Flex, Box, Button, Text,  FormControl,
-  FormLabel, Spacer, Select,  Input, InputLeftElement, InputGroup, Textarea, useToast} from '@chakra-ui/react';
+  FormLabel, Spacer, Select,  Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner} from '@chakra-ui/react';
 
 
 
@@ -38,20 +38,18 @@
 
   const Denuncie = () => {
 
-    const [imgPreview, setImgPreview] = useState("");  
-    const [denCod, setDenCod] = useState();
+    const [imgPreview, setImgPreview] = useState('');  
+    const [denCod, setDenCod] = useState('');
     const [denNome, setDenNome] = useState('');
     const [denPrazo, setDenPrazo] = useState('');
     const [denDesc, setDenDesc] = useState('');
-    const [bairroCod, setBairroCod] = useState();
+    const [bairroCod, setBairroCod] = useState('');
     const [usuCod, setUsuCod] = useState();
     const toast = useToast();
     
     const fixedUsuCod = 1; //valor fixo para o codigo do usuario, já que o login ainda n ta funcionando.
                            //tem q ser atribuido pra poder conseguir realizar a denuncia pelo front
     const enviaDen = () => {
-
-
       axios.post('http://localhost:3344/criarDenuncia', { // realizar denuncias ('FUNCIONANDO')
         den_cod: denCod,                                  // mas primeiro tem q cadastrar o bairro, usuario
         den_nome: denNome,                                // e codigo do denunciante manualmente
@@ -78,23 +76,17 @@
         if(error){
           toast({
             title: 'Erro',
-            description: "Algum campo parece estar com dados incorretos. Verifique e tente novamente.",
+            description: "Algum campo parece estar vazio ou com dados incorretos. Verifique e tente novamente.",
             status: 'error',
             duration: 4000,
             isClosable: true
           })
+
         }
         console.error(error);
     });
     }
 
-
-
- 
-
-
-
-  
     const fileInputRef = useRef(null);
 
     //pra upar a imagem com click no iconezinho da camera
@@ -204,7 +196,7 @@
                           <option value=''></option>
                           {opçoesDeBairros.map((bairro) => (
                             <option key={bairro.value} value={bairro.value}>
-                              {bairro.label}
+                              {bairro.label}  
                             </option> // mapeando o array e pegando cada opção como uma posição do array
                           ))}
                         </Select>
