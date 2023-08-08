@@ -12,7 +12,7 @@ import tarefasInst from "../img/tarefasInst.png";
 
 
 //chakra
-import {Box, ChakraProvider, Flex, Image, extendTheme, Text, Card, CardBody, CardFooter } from '@chakra-ui/react'
+import {Box, ChakraProvider, Flex, Image, extendTheme, Text, Card, CardBody, CardFooter, Stack } from '@chakra-ui/react'
 
 //componentes
 import Footer from '../components/Footer';
@@ -72,9 +72,22 @@ const HomeInst = () => {
           <Box p='100px' mr='40px' mt='40px'>
               <Text fontSize='44px' fontFamily='BreeSerif-Regular' color='#338BB0' whiteSpace='nowrap'>Gerenciar tarefas</Text>
           </Box>
-          <Flex>
-            <CardTarefa/>
-          </Flex>
+          
+          
+          <Stack spacing={7} direction='column'>
+          <CardTarefa/>
+          <CardTarefa/>
+          <CardTarefa/>       
+          <CardTarefa/>
+    
+          </Stack>
+         
+
+          
+
+
+          
+      
             <Flex>
    
             </Flex>
