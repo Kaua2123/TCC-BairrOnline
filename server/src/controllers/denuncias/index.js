@@ -13,7 +13,7 @@ module.exports = {
 
     async criarDenuncia(req, res){
         try {
-            const { den_cod }  = req.body;
+            // const { den_cod }  = req.body;
             const { den_nome } = req.body;
             const { den_prazo } = req.body;
             const { den_desc } = req.body; 
@@ -28,7 +28,7 @@ module.exports = {
 
             await knex('denuncias').insert({
 
-                den_cod,
+                // den_cod, n precisa de codigo pq ta com auto increment
                 den_nome,
                 den_prazo,
                 den_desc,

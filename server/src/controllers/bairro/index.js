@@ -12,25 +12,23 @@ module.exports = {
 
     async buscarBairro(req, res){
         try {
-            const { bai_cod } = req.body;
+            // const { bai_cod } = req.body;
             const { bai_nome } = req.body;
+
+            const existingBairro = await knex('bairro').where('bai_nome', bai_nome).first();
+
+            if (existingBairro) {
+                return res.status(200).json({message: 'Bairro existente.'})
+            }
+            
             await knex('bairro').insert({
 
-                bai_cod,
+                // bai_cod, n precisa de codigo pq ta com auto increment agr
                 bai_nome
                 
+                
             });
-            axios.post('http://localhost:3344/buscarBairro', {
-                bai_cod,
-                bai_nome
-            }).then((response) => {
-                console.log(response.data);
-                return res.status(201).send("BAIRRO BUSCADO");
-            }).catch((error) => {
-                console.error(error);
-                return res.status(500).json({error: error.message});
-            });
-            
+         
         return res.status(201).json({message: 'Bairro buscado.'})
         } catch (error) {
             console.log(error);

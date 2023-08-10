@@ -51,11 +51,19 @@ const Denuncie = () => {
   
   const fixedUsuCod = 1; //valor fixo para o codigo do usuario, já que o login ainda n ta funcionando.
                          //tem q ser atribuido pra poder conseguir realizar a denuncia pelo front
-  const enviaDen = () => {
+  const enviaDen = async () => {
     setCarregando(true);
     setErro(false);
-    axios.post('http://localhost:3344/criarDenuncia', { // realizar denuncias ('FUNCIONANDO')
-      den_cod: denCod,                                  // mas primeiro tem q cadastrar o bairro, usuario
+
+    const bairroIndex = opçoesDeBairros.findIndex(bairro => bairro.label === bairroCod);
+
+    if (bairroCod === "" || bairroIndex === -1){ // se n tiver o codigo do bairro no back ele cadastra
+      await axios.post('http://localhost:3344/buscarBairro', {
+      bai_nome: bairros[bairroCod]
+    });
+    }
+
+    axios.post('http://localhost:3344/criarDenuncia', { // realizar denuncias ('FUNCIONANDO')                            // mas primeiro tem q cadastrar o bairro, usuario
       den_nome: denNome,                                // e codigo do denunciante manualmente
       den_prazo: denPrazo,
       den_desc: denDesc,
@@ -188,12 +196,7 @@ const Denuncie = () => {
                       <InputLeftElement>
                           <BsListUl size='25px'/>
                       </InputLeftElement>
-                      {/* <Input value={bairroCod}
-                      onChange={(e) => setBairroCod(e.target.value)} 
-                      border='1px solid black' 
-                      w={{base:'220px', md:'280px', lg: '340px'}} 
-                      _hover={{border: '1px solid #A9A9A9	'}} 
-                      type='text'></Input> */}
+                    
                          <Select 
                     
                       value={bairroCod}
@@ -259,7 +262,7 @@ const Denuncie = () => {
 
                   <Spacer/> 
                   {carregando ? (
-                    <Spinner size='xl'/>
+                    <Spinner size='xl' color='#338BB0'/>
                   ) : (
                     <Button type='submit' onClick={enviaDen}  bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: '#DCDCDC'}}>
                     Criar denúncia

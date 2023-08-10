@@ -22,15 +22,15 @@ module.exports = {
 
             });
 
-            axios.post('http://localhost:3344/criarDenunciante', {
-                usuario_usu_cod
-            }).then((response) => {
-                console.log(response.data);
-                return res.status(201).send('DENUNCIANTE CRIADO');
-            }).catch ((error) => {
-                console.error(error);
-                return res.status(500).json({error: error.message});
-            })
+            // axios.post('http://localhost:3344/criarDenunciante', {
+            //     usuario_usu_cod
+            // }).then((response) => {
+            //     console.log(response.data);
+            //     return res.status(201).send('DENUNCIANTE CRIADO');
+            // }).catch ((error) => {
+            //     console.error(error);
+            //     return res.status(500).json({error: error.message});
+            // })
 
         return res.status(201).json({message: 'Denunciante criado.'})
         } catch (error) {

@@ -76,7 +76,7 @@ ENGINE = InnoDB;
 -- Table `bairronline`.`bairro`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bairronline`.`bairro` (
-  `bai_cod` INT NOT NULL,
+  `bai_cod` INT NOT NULL AUTO_INCREMENT,
   `bai_nome` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`bai_cod`))
 ENGINE = InnoDB;
@@ -86,7 +86,7 @@ ENGINE = InnoDB;
 -- Table `bairronline`.`denuncias`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bairronline`.`denuncias` (
-  `den_cod` INT NOT NULL,
+  `den_cod` INT NOT NULL AUTO_INCREMENT,
   `den_nome` VARCHAR(45) NOT NULL,
   `den_prazo` DATE NOT NULL,
   `den_desc` MEDIUMTEXT NOT NULL,
@@ -112,7 +112,7 @@ ENGINE = InnoDB;
 -- Table `bairronline`.`avaliaçao`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bairronline`.`avaliaçao` (
-  `ava_num` INT NOT NULL,
+  `ava_num` INT NOT NULL AUTO_INCREMENT,
   `ava_nota` INT NULL,
   `administrador_usuario_usu_cod` INT NOT NULL,
   `denuncias_den_cod` INT NOT NULL,
@@ -136,7 +136,7 @@ ENGINE = InnoDB;
 -- Table `bairronline`.`comentarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bairronline`.`comentarios` (
-  `com_id` INT NOT NULL,
+  `com_id` INT NOT NULL AUTO_INCREMENT,
   `com_conteudo` MEDIUMTEXT NOT NULL,
   `com_data` DATE NOT NULL,
   `denunciante_usuario_usu_cod` INT NOT NULL,
@@ -161,7 +161,7 @@ ENGINE = InnoDB;
 -- Table `bairronline`.`acompanhamento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bairronline`.`acompanhamento` (
-  `aco_num` INT NOT NULL,
+  `aco_num` INT NOT NULL AUTO_INCREMENT,
   `aco_data` DATE NOT NULL,
   `aco_progresso` DATE NULL,
   `orgao publico/instituiçao_usuario_usu_cod` INT NOT NULL,
@@ -186,7 +186,7 @@ ENGINE = InnoDB;
 -- Table `bairronline`.`imagem`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bairronline`.`imagem` (
-  `img_id` INT NOT NULL,
+  `img_id` INT NOT NULL AUTO_INCREMENT,
   `denunciante_usuario_usu_cod` INT NOT NULL,
   `denuncias_den_cod` INT NOT NULL,
   PRIMARY KEY (`img_id`),
@@ -203,8 +203,3 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`imagem` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

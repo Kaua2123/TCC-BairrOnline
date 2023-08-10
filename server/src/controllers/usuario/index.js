@@ -12,36 +12,36 @@ module.exports = {
 
     async CriarUsuario(req, res){
         try {
-            const { usu_cod } = req.body;
+            // const { usu_cod } = req.body;
             const { usu_nome } = req.body;
             const { usu_email } = req.body;
             const { usu_senha } = req.body;
             const { usu_tel } = req.body;
             await knex('usuario').insert({
                 
-                usu_cod,
+                // usu_cod, n precisa de coidgo pq ta com auto increment
                 usu_nome,
                 usu_email,
                 usu_senha,
                 usu_tel
             });
 
-            axios.post('http://localhost:3344/criarUsu', {
-                usu_cod,
-                usu_nome,
-                usu_email,
-                usu_senha,
-                usu_tel
-        }).then((response) => {
-                console.log(response.data);
-                return res.status(201).send("USUARIO CRIADO");
-        }).catch((error) => {
+        //     axios.post('http://localhost:3344/criarUsu', { axios é redundante aqui no back, percebi agr xd
+        //         // usu_cod,
+        //         usu_nome,
+        //         usu_email,
+        //         usu_senha,
+        //         usu_tel
+        // }).then((response) => {
+        //         console.log(response.data);
+        //         return res.status(201).send("USUARIO CRIADO");
+        // }).catch((error) => {
 
-            if(error.response) {
-                console.error("Server respondeu com:", error.response.data);
-            }
-            return res.status(500).json({error: error.message});
-        });
+        //     if(error.response) {
+        //         console.error("Server respondeu com:", error.response.data);
+        //     }
+        //     return res.status(500).json({error: error.message});
+        // });
 
         return res.status(201).json({message: 'Usuário criado.'})
         } catch (error) {
