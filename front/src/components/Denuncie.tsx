@@ -63,6 +63,18 @@ const Denuncie = () => {
     });
     }
 
+    if(denNome === "" || denPrazo === "" || denDesc === "" ||bairroCod === ""){//lógica de validação dos campos pra n mandar nada vazio
+      toast({
+        title: 'Erro',
+        description: "Algum campo parece estar vazio ou com dados incorretos. Verifique e tente novamente.",
+        status: 'error',
+        duration: 4000,
+        isClosable: true
+      })
+      return;
+      // return pra parar todo código que tiver em baixo se a condição for verdadeira e der erro
+    }
+
     axios.post('http://localhost:3344/criarDenuncia', { // realizar denuncias ('FUNCIONANDO')                            // mas primeiro tem q cadastrar o bairro, usuario
       den_nome: denNome,                                // e codigo do denunciante manualmente
       den_prazo: denPrazo,
