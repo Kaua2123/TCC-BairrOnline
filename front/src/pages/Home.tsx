@@ -179,9 +179,9 @@ const Home = () => {
                  </Flex>
              </Flex>
 
-                 <Box h='auto' mt='20px' p='20px' bg='#F2F2F2' boxShadow='lg'>
+            
                 <SlideDen/>
-                </Box>
+            
    {/* ------------AQUI ACABAM DENUNCIAS------------*/}
             
            <Flex justifyContent='space-between'>
