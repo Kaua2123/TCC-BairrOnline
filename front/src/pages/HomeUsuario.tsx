@@ -11,7 +11,15 @@ import sectionInst from "../img/sectionInst.png";
 import denunciaNaoAssumida from "../img/denunciaNaoassumida.png";
 
 
+//react-swiper pros slides de denuncia
+import { Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination, Scrollbar, A11y} from "swiper/modules";
 
+//estilos do swiper
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 //chakra
 import {Button, Center, Box, 
@@ -21,8 +29,9 @@ Image, extendTheme, Text, Wrap, WrapItem, VStack } from '@chakra-ui/react'
 //componentes
 import Footer from '../components/Footer';
 import { HeaderUsu } from '../components/Header';
-import CardDenH from '../components/CardDenH';
 import Denuncie from '../components/Denuncie';
+import { CardDenUsu } from '../components/CardDen';
+import { SlideDenUsu } from '../components/SlideDen';
 
 
 const theme = extendTheme({
@@ -75,62 +84,17 @@ const HomeUsuario = () => {
         </Flex>
 
             <Center>
-                <Box maxH='900px' w='1400px' mt='20px' bg='gray.100' boxShadow='lg' overflow='auto'>
+                <Box maxH='900px' w='1400px' mt='20px'  boxShadow='lg'>
+        
+                  
 
-                      <Flex>
-                          
-                      <Wrap p='30px' spacing='20px'>                                          
-                              {/* Cards de exemplo, essas denuncias tme q ser as q o usuario tiver feito tlgd,gd,ds
-                              */}
-                          <WrapItem>
-                              <CardDenH/>  
-                          </WrapItem>
+                     <SlideDenUsu/>
+              {/* as denuncias da home n tem mais comentarios diretamente nelas agora, tem um botao
+              ver denuncia q vai pra pagina de ver denuncias do gabriel, e lá vai ter a exibição da denuncia
+              que foi clicada e de outras se o cara quiser filtrar. lá vai ter os comentarioszin */}
 
-                          <WrapItem>
-                              <CardDenH/>                              
-                          </WrapItem>
-                                
-                          <WrapItem>
-                              <CardDenH/> 
-                          </WrapItem>
-
-                          <WrapItem>  
-                              <CardDenH/> 
-                          </WrapItem>             
-
-                          <WrapItem>  
-                              <CardDenH/> 
-                          </WrapItem>               
-                          
-                          <WrapItem>  
-                              <CardDenH/> 
-                          </WrapItem>             
-
-                           <WrapItem>  
-                              <CardDenH/> 
-                          </WrapItem>           
-
-                           <WrapItem>  
-                              <CardDenH/> 
-                          </WrapItem>           
-                                   
-                          <WrapItem>  
-                              <CardDenH/> 
-                          </WrapItem>           
-
-                          <WrapItem>  
-                              <CardDenH/> 
-                          </WrapItem>           
-
-                          <WrapItem>  
-                              <CardDenH/> 
-                          </WrapItem>           
-
-                          <WrapItem>  
-                              <CardDenH/> 
-                          </WrapItem>           
-                      </Wrap>                    
-                    </Flex>     
+       
+                         
                 </Box>
                 </Center>
 

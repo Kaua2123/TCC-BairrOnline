@@ -284,7 +284,7 @@ const Denuncie = () => {
                   </InputGroup>  
                       
                   {/*essa linha de baixo que mostra as imagens dps de enviar */}
-                  {imgPreview && <img src={imgPreview} alt="Imagem selecionada" style={{ marginTop: "40px", width: "300px", height: "150px" }} />}
+                  {imgPreview && <img src={imgPreview} alt="Imagem selecionada" style={{ marginTop: "40px", width: "500px", height: "500px" }} />}
               </FormControl>
   
           </Flex>
