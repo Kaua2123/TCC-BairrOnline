@@ -1,4 +1,4 @@
-import {Card, CardBody, Center, Stack, Heading, Divider, CardFooter, Button, Image, Text } from "@chakra-ui/react";
+import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter } from "@chakra-ui/react";
 
 import { Reportar } from "./reportar";
 import img2 from '../img/aguaEstancada.png';
@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const CardDen = () => {
     const [rep , setrep] = useState(false)
-    const [openCom, setOpenCom] = useState(false);
+
 
 return(
 
@@ -61,6 +61,7 @@ export default CardDen;
 
 export const CardDenUsu = () => {
 
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
 return(
 
@@ -88,10 +89,24 @@ return(
                  bgColor='#338BB0'
                 color='white'
                 _hover={{background: '#fff', color:'#338BB0'}}
-                textAlign='center'>
+                textAlign='center'
+                onClick={onOpen}>
                 Gerenciar denúncia
-        
-        </Button>
+                </Button>
+                <Modal isOpen={isOpen} onClose={onClose}> 
+                 <ModalOverlay/>
+                 <ModalContent>
+                    <ModalHeader><Text>Gerenciar denúncia</Text></ModalHeader>
+                    <ModalCloseButton/>
+                    <ModalBody>
+                        <Text>aqui onde será gerenciada a denuncia (editar, excluir, blabla) </Text>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button colorScheme="blue" onClick={onClose} mr={3}>Fechar</Button>
+                        <Button variant='ghost'>Ação secundária</Button>
+                    </ModalFooter>
+                 </ModalContent>
+                </Modal>
        
             
         </CardFooter>
