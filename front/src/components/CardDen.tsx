@@ -60,8 +60,7 @@ return(
 export default CardDen;
 
 export const CardDenUsu = () => {
-    const [rep , setrep] = useState(false)
-    const [openCom, setOpenCom] = useState(false);
+
 
 return(
 
@@ -84,17 +83,16 @@ return(
         <Divider/>
             <CardFooter>
                 <Button
-                w='168px'
+                w='auto'
                 leftIcon={<TbReportSearch size='3vh'/>}
                  bgColor='#338BB0'
                 color='white'
-                _hover={{background: '#fff', color:'#338BB0'}}>
-                <Link to='/VerDenuncia'>Ver denúncia</Link>
+                _hover={{background: '#fff', color:'#338BB0'}}
+                textAlign='center'>
+                Gerenciar denúncia
         
         </Button>
-        <Button color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
-            <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
-        </Button>
+       
             
         </CardFooter>
     </Card>
