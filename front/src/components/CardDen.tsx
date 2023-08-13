@@ -119,24 +119,24 @@ return(
                         <CardDenH editando={editando} setEditando={setEditando}/>
                     </ModalBody>
                     <ModalFooter>
+        
+                        <Button bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog}  _hover={{backgroundColor: '#D71D28'}}>Apagar</Button>
+                        
                         {editando ? (
                             <Button colorScheme="green" mr={3} onClick={() => setEditando(false)}>Salvar alterações</Button>
                         ) : (
                             <Button colorScheme="blue" mr={3} onClick={() => setEditando(true)}>Editar</Button>
                         )}
                         
-                        
-                        
-                        <Button bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog}  _hover={{backgroundColor: '#D71D28'}}>Apagar</Button>
                         <AlertDialog isOpen={isAlertDialogOpen} leastDestructiveRef={cancelRef} onClose={closeAlertDialog}>
                             <AlertDialogOverlay>
                                 <AlertDialogContent fontSize='lg' fontWeight='bold'>
                                     <AlertDialogHeader>
-                                        Apagar denúncia
+                                        <Text color='#338BB0'  fontFamily='BreeSerif-Regular' fontWeight='normal'>Apagar denúncia</Text>
                                     </AlertDialogHeader>        
 
                                     <AlertDialogBody>
-                                        Tem certeza? Você não poderá desfazer essa ação.
+                                        <Text fontWeight='normal'>Tem certeza? Você não poderá desfazer essa ação.</Text>
                                     </AlertDialogBody>   
 
                                     <AlertDialogFooter>
