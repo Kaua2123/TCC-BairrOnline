@@ -1,4 +1,5 @@
-import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter } from "@chakra-ui/react";
+import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
+AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, } from "@chakra-ui/react";
 
 import { Reportar } from "./reportar";
 import img2 from '../img/aguaEstancada.png';
@@ -9,6 +10,7 @@ import { TbReportSearch } from 'react-icons/tb'
 import { MdOutlineReportProblem} from 'react-icons/md'
 import { Link } from "react-router-dom";
 import CardDenH from "./CardDenH";
+import React from "react";
 
 
 
@@ -64,6 +66,17 @@ export const CardDenUsu = () => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [editando, setEditando] = useState(false);
+    const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
+    const cancelRef = React.useRef();
+
+    
+    const openAlertDialog = () => {
+        setIsAlertDialogOpen(true);
+    };
+
+    const closeAlertDialog = () => {
+        setIsAlertDialogOpen(false);
+    };
 
 return(
 
@@ -114,7 +127,31 @@ return(
                         
                         
                         
-                        <Button bgColor='#E75760' mr={3} color='white' _hover={{backgroundColor: '#D71D28'}}>Apagar</Button>
+                        <Button bgColor='#E75760' mr={3} color='white' onClick={onOpen}  _hover={{backgroundColor: '#D71D28'}}>Apagar</Button>
+                        <AlertDialog isOpen={isAlertDialogOpen} leastDestructiveRef={cancelRef} onClose={closeAlertDialog}>
+                            <AlertDialogOverlay>
+                                <AlertDialogContent fontSize='lg' fontWeight='bold'>
+                                    <AlertDialogHeader>
+                                        Apagar denúncia
+                                    </AlertDialogHeader>        
+
+                                    <AlertDialogBody>
+                                        Tem certeza? Você não poderá desfazer essa ação.
+                                    </AlertDialogBody>   
+
+                                    <AlertDialogFooter>
+                                        <Button ref={cancelRef} onClick={onClose}>
+                                            Cancelar
+                                        </Button>
+                                        <Button  bgColor='#E75760' _hover={{backgroundColor: '#D71D28'}} onClick={openAlertDialog} ml={3}>
+                                            Apagar
+                                        </Button>
+                                        
+                                    </AlertDialogFooter>
+                                </AlertDialogContent>
+                            </AlertDialogOverlay>
+                        </AlertDialog>
+                     
                     </ModalFooter>
                  </ModalContent>
                 </Modal>

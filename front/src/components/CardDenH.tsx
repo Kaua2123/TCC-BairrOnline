@@ -33,9 +33,9 @@ const CardDenH = ({editando, setEditando}) => { //card de denúncoa horizontal, 
                     <Text mt={2}>“muito lixo kkkk mds so jogar na latinha mano tlgd mdessss q raiva cara innnnananainannnn”</Text>
                 </CardBody>
 
-                <CardFooter>
+                <CardFooter/>
                    
-                </CardFooter>
+          
             </Stack>
         </Card>
     )
