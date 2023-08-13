@@ -8,6 +8,7 @@ import {useState} from 'react';
 import { TbReportSearch } from 'react-icons/tb'
 import { MdOutlineReportProblem} from 'react-icons/md'
 import { Link } from "react-router-dom";
+import CardDenH from "./CardDenH";
 
 
 
@@ -62,6 +63,7 @@ export default CardDen;
 export const CardDenUsu = () => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [editando, setEditando] = useState(false);
 
 return(
 
@@ -93,17 +95,26 @@ return(
                 onClick={onOpen}>
                 Gerenciar denúncia
                 </Button>
-                <Modal isOpen={isOpen} onClose={onClose}> 
+                <Modal  size='6xl' isOpen={isOpen} onClose={onClose}> 
                  <ModalOverlay/>
-                 <ModalContent>
-                    <ModalHeader><Text>Gerenciar denúncia</Text></ModalHeader>
+                 <ModalContent >
+                    <ModalHeader textAlign='center'>
+                        <Text fontFamily='BreeSerif-Regular' color='#338BB0' fontWeight='normal' fontSize='35px'>Gerenciar denúncia</Text>
+                    </ModalHeader>
                     <ModalCloseButton/>
                     <ModalBody>
-                        <Text>aqui onde será gerenciada a denuncia (editar, excluir, blabla) </Text>
+                        <CardDenH editando={editando} setEditando={setEditando}/>
                     </ModalBody>
                     <ModalFooter>
-                        <Button colorScheme="blue" onClick={onClose} mr={3}>Fechar</Button>
-                        <Button variant='ghost'>Ação secundária</Button>
+                        {editando ? (
+                            <Button colorScheme="green" mr={3} onClick={() => setEditando(false)}>Salvar alterações</Button>
+                        ) : (
+                            <Button colorScheme="blue" mr={3} onClick={() => setEditando(true)}>Editar</Button>
+                        )}
+                        
+                        
+                        
+                        <Button bgColor='#E75760' mr={3} color='white' _hover={{backgroundColor: '#D71D28'}}>Apagar</Button>
                     </ModalFooter>
                  </ModalContent>
                 </Modal>
