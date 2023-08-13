@@ -127,7 +127,7 @@ return(
                         
                         
                         
-                        <Button bgColor='#E75760' mr={3} color='white' onClick={onOpen}  _hover={{backgroundColor: '#D71D28'}}>Apagar</Button>
+                        <Button bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog}  _hover={{backgroundColor: '#D71D28'}}>Apagar</Button>
                         <AlertDialog isOpen={isAlertDialogOpen} leastDestructiveRef={cancelRef} onClose={closeAlertDialog}>
                             <AlertDialogOverlay>
                                 <AlertDialogContent fontSize='lg' fontWeight='bold'>
@@ -140,10 +140,10 @@ return(
                                     </AlertDialogBody>   
 
                                     <AlertDialogFooter>
-                                        <Button ref={cancelRef} onClick={onClose}>
+                                        <Button ref={cancelRef} onClick={closeAlertDialog}>
                                             Cancelar
                                         </Button>
-                                        <Button  bgColor='#E75760' _hover={{backgroundColor: '#D71D28'}} onClick={openAlertDialog} ml={3}>
+                                        <Button  bgColor='#E75760' color='white' _hover={{backgroundColor: '#D71D28'}} onClick={closeAlertDialog} ml={3}>
                                             Apagar
                                         </Button>
                                         
