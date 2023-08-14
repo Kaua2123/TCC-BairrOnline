@@ -1,5 +1,5 @@
 const knex = require('../../database/banco');
-const axios = require('axios');
+
 
 module.exports = {
     async raiz(req, res){

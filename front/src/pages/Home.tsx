@@ -18,7 +18,7 @@ import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHe
 //componentes
 import  Header  from '../components/Header';
 import Footer from '../components/Footer';
-import CardDen from '../components/CardDen';
+
 import CardInst from '../components/CardInst';
 import { Reportar } from '../components/reportar';
 import Comentarios from '../components/Comentarios';
@@ -28,9 +28,7 @@ import { BsChatSquareText } from 'react-icons/bs'
 import { MdOutlineReportProblem } from 'react-icons/md';
 import { FiSearch } from 'react-icons/fi'
 
-//react-swiper pros slides de denuncia
-import { Swiper, SwiperSlide} from "swiper/react";
-import {Navigation, Pagination, Scrollbar, A11y} from "swiper/modules";
+
 
 //estilos do swiper
 import 'swiper/css';

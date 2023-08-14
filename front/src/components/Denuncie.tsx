@@ -38,8 +38,7 @@ const opçoesDeBairros = bairros.map((bairro, index) => ({
 
 const Denuncie = () => {
 
-  const [imgPreview, setImgPreview] = useState('');  
-  const [denCod, setDenCod] = useState('');
+  const [img, setImg] = useState('');  
   const [denNome, setDenNome] = useState('');
   const [denPrazo, setDenPrazo] = useState('');
   const [denDesc, setDenDesc] = useState('');
@@ -133,7 +132,7 @@ const Denuncie = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImgPreview(reader.result);
+        setImg(reader.result);
       }
       reader.readAsDataURL(file);
     }
@@ -284,7 +283,7 @@ const Denuncie = () => {
                   </InputGroup>  
                       
                   {/*essa linha de baixo que mostra as imagens dps de enviar */}
-                  {imgPreview && <img src={imgPreview} alt="Imagem selecionada" style={{ marginTop: "40px", width: "500px", height: "500px" }} />}
+                  {img && <img src={img} alt="Imagem selecionada" style={{ marginTop: "40px", width: "500px", height: "500px" }} />}
               </FormControl>
   
           </Flex>

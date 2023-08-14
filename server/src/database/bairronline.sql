@@ -187,6 +187,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bairronline`.`imagem` (
   `img_id` INT NOT NULL AUTO_INCREMENT,
+  `img_nome` varchar(45) NOT NULL,
+  `img_tipo` VARCHAR(45) NOT NULL,
+  `img_data` DATE NOT NULL,
   `denunciante_usuario_usu_cod` INT NOT NULL,
   `denuncias_den_cod` INT NOT NULL,
   PRIMARY KEY (`img_id`),

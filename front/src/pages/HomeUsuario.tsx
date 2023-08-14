@@ -1,8 +1,6 @@
 import '../App.css';
 
-//reação (reactkkkkkkkkkomgggmgmgmggm)
-import  { Link } from 'react-router-dom'
-import { useState } from 'react';
+
 
 //imgs
 import sectionOla from "../img/sectionOlaDenunciante.png";
@@ -11,20 +9,12 @@ import sectionInst from "../img/sectionInst.png";
 import denunciaNaoAssumida from "../img/denunciaNaoassumida.png";
 
 
-//react-swiper pros slides de denuncia
-import { Swiper, SwiperSlide} from "swiper/react";
-import {Navigation, Pagination, Scrollbar, A11y} from "swiper/modules";
 
-//estilos do swiper
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
 //chakra
-import {Button, Center, Box, 
-ChakraProvider, Flex, HStack, IconButton, Menu, MenuButton, MenuItem, MenuList, Spacer, 
-Image, extendTheme, Text, Wrap, WrapItem, VStack } from '@chakra-ui/react'
+import {Center, Box, 
+ChakraProvider, Flex, 
+Image, extendTheme, Text} from '@chakra-ui/react'
 
 //componentes
 import Footer from '../components/Footer';
