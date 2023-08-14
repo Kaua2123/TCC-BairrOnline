@@ -50,9 +50,30 @@ const Denuncie = () => {
   
   const fixedUsuCod = 1; //valor fixo para o codigo do usuario, já que o login ainda n ta funcionando.
                          //tem q ser atribuido pra poder conseguir realizar a denuncia pelo front
+
+  const enviaImg = async (formData) => {
+    try{
+      await axios.post('http://localhost:3344/criarDenuncia', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log('Imagem enviada')
+    }catch(error){
+      console.log('Erro ao enviar a imagem.', error);
+    }
+  };
+
   const enviaDen = async () => {
     setCarregando(true);
     setErro(false);
+
+    const formData = new FormData();
+
+    if (img){
+      formData.append('img_tipo', img);
+      await enviaImg(formData);
+    }
 
     const bairroIndex = opçoesDeBairros.findIndex(bairro => bairro.label === bairroCod);
 
@@ -73,6 +94,7 @@ const Denuncie = () => {
       return;
       // return pra parar todo código que tiver em baixo se a condição for verdadeira e der erro
     }
+    
 
     axios.post('http://localhost:3344/criarDenuncia', { // realizar denuncias ('FUNCIONANDO')                            // mas primeiro tem q cadastrar o bairro, usuario
       den_nome: denNome,                                // e codigo do denunciante manualmente
