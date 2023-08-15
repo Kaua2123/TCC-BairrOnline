@@ -38,10 +38,11 @@ const opçoesDeBairros = bairros.map((bairro, index) => ({
 
 const Denuncie = () => {
 
-  const [img, setImg] = useState('');  
+  const [denImg, setDenImg] = useState('');  
   const [denNome, setDenNome] = useState('');
   const [denPrazo, setDenPrazo] = useState('');
   const [denDesc, setDenDesc] = useState('');
+  const [denData, setDenData] = useState();
   const [bairroCod, setBairroCod] = useState('');
   const [usuCod, setUsuCod] = useState();
   const [carregando, setCarregando] = useState(false);
@@ -83,6 +84,8 @@ const Denuncie = () => {
       den_nome: denNome,                                // e codigo do denunciante manualmente
       den_prazo: denPrazo,
       den_desc: denDesc,
+      den_data: new Date(),
+      den_img: denImg,
       bairro_bai_cod: bairroCod, 
       denunciante_usuario_usu_cod: fixedUsuCod                 
   }).then(response => {
@@ -137,7 +140,7 @@ const Denuncie = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImg(reader.result);
+        setDenImg(reader.result);
       }
       reader.readAsDataURL(file);
     }
@@ -288,7 +291,7 @@ const Denuncie = () => {
                   </InputGroup>  
                       
                   {/*essa linha de baixo que mostra as imagens dps de enviar */}
-                  {img && <img src={img} alt="Imagem selecionada" style={{ marginTop: "40px", width: "500px", height: "500px" }} />}
+                  {denImg && <img src={denImg} alt="Imagem selecionada" style={{ marginTop: "40px", width: "500px", height: "500px" }} />}
               </FormControl>
   
           </Flex>

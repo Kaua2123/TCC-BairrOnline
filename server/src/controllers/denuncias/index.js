@@ -16,11 +16,14 @@ module.exports = {
             // const { den_cod }  = req.body;
             const { den_nome } = req.body;
             const { den_prazo } = req.body;
-            const { den_desc } = req.body; 
+            const { den_desc } = req.body;
+            const { den_img } = req.body;
             const { bairro_bai_cod } = req.body;
             const { denunciante_usuario_usu_cod } = req.body;
 
             const bairroExists = await knex('bairro').where('bai_cod', bairro_bai_cod).first();
+
+            const dataAtual = new Date();
 
             if(!bairroExists){
                 return res.status(400).json({error: 'Valor inválido para bairro_bai_cod'});
@@ -32,9 +35,10 @@ module.exports = {
                 den_nome,
                 den_prazo,
                 den_desc,
+                den_data: dataAtual,
+                den_img,
                 bairro_bai_cod,
                 denunciante_usuario_usu_cod,
-                imagem_img_id
         
 
 
