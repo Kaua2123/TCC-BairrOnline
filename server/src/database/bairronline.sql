@@ -98,8 +98,8 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`denuncias` (
   `bairro_bai_cod` INT NOT NULL,
   `denunciante_usuario_usu_cod` INT NOT NULL,
   PRIMARY KEY (`den_cod`),
-  INDEX `fk_denuncias_bairro1_idx` (`bairro_bai_cod` ASC) VISIBLE,
-  INDEX `fk_denuncias_denunciante1_idx` (`denunciante_usuario_usu_cod` ASC) VISIBLE,
+  INDEX `fk_denuncias_bairro1_idx` (`bairro_bai_cod` ASC),
+  INDEX `fk_denuncias_denunciante1_idx` (`denunciante_usuario_usu_cod` ASC),
   CONSTRAINT `fk_denuncias_bairro1`
     FOREIGN KEY (`bairro_bai_cod`)
     REFERENCES `bairronline`.`bairro` (`bai_cod`)
@@ -122,8 +122,8 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`avaliaçao` (
   `administrador_usuario_usu_cod` INT NOT NULL,
   `denuncias_den_cod` INT NOT NULL,
   PRIMARY KEY (`ava_num`),
-  INDEX `fk_avaliaçao_administrador1_idx` (`administrador_usuario_usu_cod` ASC) VISIBLE,
-  INDEX `fk_avaliaçao_denuncias1_idx` (`denuncias_den_cod` ASC) VISIBLE,
+  INDEX `fk_avaliaçao_administrador1_idx` (`administrador_usuario_usu_cod` ASC),
+  INDEX `fk_avaliaçao_denuncias1_idx` (`denuncias_den_cod` ASC),
   CONSTRAINT `fk_avaliaçao_administrador1`
     FOREIGN KEY (`administrador_usuario_usu_cod`)
     REFERENCES `bairronline`.`administrador` (`usuario_usu_cod`)
@@ -149,8 +149,8 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`comentarios` (
   `denunciante_usuario_usu_cod` INT NOT NULL,
   `denuncias_den_cod` INT NOT NULL,
   PRIMARY KEY (`com_id`),
-  INDEX `fk_comentarios_denunciante1_idx` (`denunciante_usuario_usu_cod` ASC) VISIBLE,
-  INDEX `fk_comentarios_denuncias1_idx` (`denuncias_den_cod` ASC) VISIBLE,
+  INDEX `fk_comentarios_denunciante1_idx` (`denunciante_usuario_usu_cod` ASC),
+  INDEX `fk_comentarios_denuncias1_idx` (`denuncias_den_cod` ASC),
   CONSTRAINT `fk_comentarios_denunciante1`
     FOREIGN KEY (`denunciante_usuario_usu_cod`)
     REFERENCES `bairronline`.`denunciante` (`usuario_usu_cod`)
@@ -174,8 +174,8 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`acompanhamento` (
   `orgao publico/instituiçao_usuario_usu_cod` INT NOT NULL,
   `denuncias_den_cod` INT NOT NULL,
   PRIMARY KEY (`aco_num`),
-  INDEX `fk_acompanhamento_orgao publico/instituiçao1_idx` (`orgao publico/instituiçao_usuario_usu_cod` ASC) VISIBLE,
-  INDEX `fk_acompanhamento_denuncias1_idx` (`denuncias_den_cod` ASC) VISIBLE,
+  INDEX `fk_acompanhamento_orgao publico/instituiçao1_idx` (`orgao publico/instituiçao_usuario_usu_cod` ASC),
+  INDEX `fk_acompanhamento_denuncias1_idx` (`denuncias_den_cod` ASC),
   CONSTRAINT `fk_acompanhamento_orgao publico/instituiçao1`
     FOREIGN KEY (`orgao publico/instituiçao_usuario_usu_cod`)
     REFERENCES `bairronline`.`orgao publico/instituiçao` (`usuario_usu_cod`)
