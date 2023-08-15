@@ -11,6 +11,7 @@ const controllersDenunciante = require('../src/controllers/denunciante/index');
 const controllersDenuncias = require('../src/controllers/denuncias/index');
 const controllersOrgInst = require('../src/controllers/orgaoInstituiçao/index');
 const controllersUsu = require('../src/controllers/usuario/index');
+const controllersImg = require('../src/controllers/imagem/index');
 const routes = express.Router();
 
 
@@ -30,19 +31,11 @@ routes.post("/buscarBairro", controllersBairro.buscarBairro);
 routes.get("/", controllersDenunciante.raiz);
 routes.post("/criarDenunciante", controllersDenunciante.usuDenunciante);
 
+//img
+routes.get("/", controllersImg.raiz);
+routes.post("/upload-imagem", controllersImg.uploadImagem);
+
 module.exports = routes;
  
 
 
-/*
-const axios = require('axios');
-
-
-
-axios.post('http://localhost:3344/criarUsu').then((response) => {
-    console.log(response);
-    console.log('REGISTRO ENVIADO');
-}).catch((error) => {
-    console.error(error);
-});
-*/

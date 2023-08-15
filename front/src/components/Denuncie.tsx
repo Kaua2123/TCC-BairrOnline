@@ -291,7 +291,7 @@ const Denuncie = () => {
                           <BsCamera size='25px'/>
                       </InputLeftElement>
                             
-                    <Input id='file-input' type='file' display='none' onChange={handleFileChange}></Input>
+                    <Input id='file-input' name='imagem' type='file' display='none' onChange={handleFileChange}></Input>
 
                   <Spacer/> 
                   {carregando ? (
