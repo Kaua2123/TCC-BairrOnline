@@ -33,7 +33,8 @@ module.exports = {
                 den_prazo,
                 den_desc,
                 bairro_bai_cod,
-                denunciante_usuario_usu_cod
+                denunciante_usuario_usu_cod,
+                imagem_img_id
         
 
 
