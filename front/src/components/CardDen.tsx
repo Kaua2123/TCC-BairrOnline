@@ -3,7 +3,7 @@ AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, Aler
 
 import { Reportar } from "./reportar";
 import img2 from '../img/aguaEstancada.png';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 
 import { TbReportSearch } from 'react-icons/tb'
@@ -11,6 +11,7 @@ import { MdOutlineReportProblem} from 'react-icons/md'
 import { Link } from "react-router-dom";
 import CardDenH from "./CardDenH";
 import React from "react";
+import axios from "axios";
 
 
 
@@ -62,12 +63,23 @@ return(
 
 export default CardDen;
 
-export const CardDenUsu = () => {
+export const CardDenUsu = ({ nome, descricao }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [editando, setEditando] = useState(false);
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
     const cancelRef = React.useRef();
+    const [denuncias, setDenuncias] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:3344/cardDenuncia')
+        .then(response => {
+            setDenuncias(response.data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }, []);
 
     
     const openAlertDialog = () => {
@@ -79,6 +91,7 @@ export const CardDenUsu = () => {
     };
 
 return(
+    
 
         <Card  maxW='sm' w='250px' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
             <CardBody>
@@ -87,10 +100,10 @@ return(
             
                     <Stack mt='6' spacing='3'>  
                     
-                        <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>Muito lixo</Heading>
+                        <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
                         <Heading size='xs' textTransform='uppercase' color='gray'>em Santo Agostinho</Heading>
                             <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
-                            “muito lixo kkkkkk mdsssss so jogar na latinha mano tlgddddd”
+                            {descricao}
                             </Text>
                     </Stack>
                     {/* esses cards tao com conteúdo só de exemplo, mas na real eles tem q ser vazios, pois é 

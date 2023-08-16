@@ -49,15 +49,11 @@ const Denuncie = () => {
   const [erro, setErro] = useState(false);
   const toast = useToast();
   
-  const fixedUsuCod = 1; //valor fixo para o codigo do usuario, já que o login ainda n ta funcionando.
-                         //tem q ser atribuido pra poder conseguir realizar a denuncia pelo front
-
-
+  const fixedUsuCod = 1; //temporario. eqnuanto n tiver cadastro funcioanndo
+                        
   const enviaDen = async () => {
     setCarregando(true);
     setErro(false);
-
-    
 
     const bairroIndex = opçoesDeBairros.findIndex(bairro => bairro.label === bairroCod);
 
@@ -80,8 +76,8 @@ const Denuncie = () => {
     }
     
 
-    axios.post('http://localhost:3344/criarDenuncia', { // realizar denuncias ('FUNCIONANDO')                            // mas primeiro tem q cadastrar o bairro, usuario
-      den_nome: denNome,                                // e codigo do denunciante manualmente
+    axios.post('http://localhost:3344/criarDenuncia', {                       
+      den_nome: denNome,                                
       den_prazo: denPrazo,
       den_desc: denDesc,
       den_data: new Date(),
@@ -146,7 +142,6 @@ const Denuncie = () => {
     }
   }
 
-
   const theme = extendTheme({
     styles: {
       global: () => ({
@@ -156,7 +151,6 @@ const Denuncie = () => {
       }),
     },
   });
-
 
     return (
       <ChakraProvider theme={theme}>

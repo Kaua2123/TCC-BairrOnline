@@ -72,10 +72,10 @@ que foi clicada e de outras se o cara quiser filtrar. lá vai ter os comentarios
 export default SlideDen;
 
 
-export const SlideDenUsu = () => {
+export const SlideDenUsu = ({denuncias}) => {
     return(
         
-        <Box h='auto' mt='20px' p='20px' bg='#F2F2F2' boxShadow='lg'>
+        <Box h='auto' mt='20px' p='20px' boxShadow='lg'>
 
         <Swiper style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
@@ -84,34 +84,16 @@ export const SlideDenUsu = () => {
         pagination={{clickable: true}}>
 
        <Wrap>
-        <WrapItem>
-       <SwiperSlide><CardDenUsu/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDenUsu/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDenUsu/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDenUsu/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDenUsu/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDenUsu/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDenUsu/></SwiperSlide>
-       </WrapItem>
+        {denuncias.map((denuncia, index) => (
+            <WrapItem key={index}>
+            <SwiperSlide key={denuncia.den_cod}>
+             <CardDenUsu nome={denuncia.den_nome} descricao={denuncia.den_desc}/>
+            </SwiperSlide>
+            </WrapItem>
+        ))}
        
+
+
        </Wrap>
         </Swiper>
 {/* as denuncias da home n tem mais comentarios diretamente nelas agora, tem um botao

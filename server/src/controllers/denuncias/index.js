@@ -1,5 +1,4 @@
 const knex = require('../../database/banco');
-const axios = require('axios');
 
 module.exports = {
     
@@ -49,6 +48,16 @@ module.exports = {
         } catch (error) {
             console.log(error);
             return res.status(400).json({error: error.message});
+        }
+    },
+
+    async cardDenuncia(req, res){
+        try {
+            const denuncias = await knex('denuncias').select('*');
+
+            return res.status(200).json(denuncias); //retorna as denuncias
+        } catch (error) {
+            return res.status(400).json({error: 'Erro ao criar o card.'});
         }
     }
 }

@@ -9,7 +9,9 @@ import sectionInst from "../img/sectionInst.png";
 import denunciaNaoAssumida from "../img/denunciaNaoassumida.png";
 
 
-
+//react 
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 //chakra
 import {Center, Box, 
@@ -22,6 +24,7 @@ import { HeaderUsu } from '../components/Header';
 import Denuncie from '../components/Denuncie';
 import { CardDenUsu } from '../components/CardDen';
 import { SlideDenUsu } from '../components/SlideDen';
+import axios from 'axios';
 
 
 const theme = extendTheme({
@@ -36,6 +39,18 @@ const theme = extendTheme({
 
 
 const HomeUsuario = () => { 
+
+  const [denuncias, setDenuncias] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3344/cardDenuncia')
+    .then(response => {
+      setDenuncias(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    })
+  })
 
 
  return (
@@ -78,7 +93,7 @@ const HomeUsuario = () => {
         
                   
 
-                     <SlideDenUsu/>
+                     <SlideDenUsu denuncias={denuncias}/>
               {/* as denuncias da home n tem mais comentarios diretamente nelas agora, tem um botao
               ver denuncia q vai pra pagina de ver denuncias do gabriel, e lá vai ter a exibição da denuncia
               que foi clicada e de outras se o cara quiser filtrar. lá vai ter os comentarioszin */}
