@@ -32,7 +32,7 @@ module.exports = {
 
                 // den_cod, n precisa de codigo pq ta com auto increment
                 den_nome,
-                den_prazo,
+                // den_prazo,
                 den_desc,
                 den_data: dataAtual,
                 den_img,
@@ -61,7 +61,7 @@ module.exports = {
         }
     },
 
-    async deleteDenuncia(req, res){
+    async deleteDenuncia(req, res){ //deleta as denuncias pelo codigo
         try {
             const {cod} = req.params;
             if (await knex('denuncias').where("den_cod", cod) != ''){ // se houver denuncia, poderá ser deletada
@@ -73,6 +73,22 @@ module.exports = {
             }
         } catch (error) {
            return res.status(400).json({error: error.message});
+        }
+    },
+
+    async updateDenuncia(req, res){
+        try {
+            
+        } catch (error) {
+            
+        }
+    },
+
+    async updatePrazoDenuncia(req, res){
+        try {
+            
+        } catch (error) {
+            
         }
     }
 }

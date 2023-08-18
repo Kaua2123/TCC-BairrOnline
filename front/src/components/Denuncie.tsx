@@ -62,7 +62,7 @@ const Denuncie = () => {
     });
     }
 
-    if(denNome === "" || denPrazo === "" || denDesc === "" ||bairroCod === ""){//lógica de validação dos campos pra n mandar nada vazio
+    if(denNome === "" || denDesc === "" ||bairroCod === ""){//lógica de validação dos campos pra n mandar nada vazio
       toast({
         title: 'Erro',
         description: "Algum campo parece estar vazio ou com dados incorretos. Verifique e tente novamente.",
@@ -70,6 +70,7 @@ const Denuncie = () => {
         duration: 4000,
         isClosable: true
       })
+      console.log('Erro, algum campo vazio.')
       setErro(true);
       setCarregando(false);
       return;
@@ -79,7 +80,7 @@ const Denuncie = () => {
 
     axios.post('http://localhost:3344/criarDenuncia', {                       
       den_nome: denNome,                                
-      den_prazo: denPrazo,
+      // den_prazo: denPrazo,
       den_desc: denDesc,
       den_data: new Date(),
       den_img: denImg,
@@ -245,7 +246,7 @@ const Denuncie = () => {
                       _hover={{border: '1px solid #A9A9A9	'}}>  
                       </Textarea>
                   </InputGroup>  
-
+{/* 
                   <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Prazo: </FormLabel>
 
                     <InputGroup>
@@ -264,7 +265,7 @@ const Denuncie = () => {
                       _hover={{border: '1px solid #A9A9A9	'}}>  
                       </Input>
                   </InputGroup>  
-
+ */}
 
                   <FormLabel mt='80px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Enviar imagem </FormLabel>
                   <InputGroup>
