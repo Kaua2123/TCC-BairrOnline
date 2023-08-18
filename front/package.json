@@ -17,6 +17,7 @@
     "@types/react-slick": "^0.23.10",
     "axios": "^1.4.0",
     "bootstrap-icons": "^1.10.5",
+    "date-fns": "^2.30.0",
     "fa-icons": "^0.2.0",
     "framer-motion": "^10.12.22",
     "nanoid": "^4.0.2",

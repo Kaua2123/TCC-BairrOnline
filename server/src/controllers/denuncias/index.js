@@ -22,7 +22,7 @@ module.exports = {
 
             const bairroExists = await knex('bairro').where('bai_cod', bairro_bai_cod).first();
 
-            const dataAtual = new Date();
+            const dataAtual = new Date().toISOString();
 
             if(!bairroExists){
                 return res.status(400).json({error: 'Valor inválido para bairro_bai_cod'});

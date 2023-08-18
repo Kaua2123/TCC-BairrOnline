@@ -5,15 +5,20 @@ import { Reportar } from "./reportar";
 import img2 from '../img/aguaEstancada.png';
 import {useEffect, useState} from 'react';
 
-
+//icons
 import { TbReportSearch } from 'react-icons/tb'
 import { MdOutlineReportProblem} from 'react-icons/md'
+
+//react
 import { Link } from "react-router-dom";
-import CardDenH from "./CardDenH";
 import React from "react";
 import axios from "axios";
 
+//componente
+import CardDenH from "./CardDenH";
 
+//sla
+import {format} from ''
 
 const CardDen = () => {
     const [rep , setrep] = useState(false)
@@ -65,6 +70,9 @@ export default CardDen;
 
 export const CardDenUsu = ({ nome, descricao, data }) => {
 
+    const dataFormatada = new Date(data).toLocaleDateString("pt-BR");
+    
+
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [editando, setEditando] = useState(false);
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
@@ -91,7 +99,7 @@ return(
                     
                         <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
                         <Heading size='xs' textTransform='uppercase' color='gray'>em Santo Agostinho</Heading>
-                        <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {data}</Heading>
+                        <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
                             <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
                             {descricao}
                             </Text>
