@@ -7,7 +7,7 @@ import cameraIcon from "../img/camera.png";
 import { useState } from "react";
 
 
-const CardDenH = ({editando, setEditando}) => { //card de denúncoa horizontal, pra home do usuário
+const CardDenH = ({editando, setEditando, nome, descricao}) => { //card de denúncoa horizontal, pra home do usuário
 
     const [hover, setHover] = useState(false);
 
@@ -26,11 +26,11 @@ const CardDenH = ({editando, setEditando}) => { //card de denúncoa horizontal, 
         
             <Stack>
                 <CardBody>
-                    <Heading size='md'>Muito lixo</Heading>
+                    <Heading size='md'>{nome}</Heading>
                     <Heading mt={2} size='xs' color='gray' textTransform='uppercase'>Em Santo Agostinho</Heading>
                     <Heading mt={1} size='xs' color='gray' textTransform='uppercase'>Data de envio: 19/05/1945</Heading>
                     <Heading mt={2} size='xs' color='gray' textTransform='uppercase'>Descrição: </Heading>
-                    <Text mt={2}>“muito lixo kkkk mds so jogar na latinha mano tlgd mdessss q raiva cara innnnananainannnn”</Text>
+                    <Text mt={2}>{descricao}</Text>
                 </CardBody>
 
                 <CardFooter/>

@@ -61,9 +61,6 @@ const SlideDen = () => {
        
        </Wrap>
         </Swiper>
-{/* as denuncias da home n tem mais comentarios diretamente nelas agora, tem um botao
-ver denuncia q vai pra pagina de ver denuncias do gabriel, e lá vai ter a exibição da denuncia
-que foi clicada e de outras se o cara quiser filtrar. lá vai ter os comentarioszin */}
 
 </Box>
     )
@@ -87,7 +84,7 @@ export const SlideDenUsu = ({denuncias}) => {
         {denuncias.map((denuncia, index) => (
             <WrapItem key={index}>
             <SwiperSlide key={denuncia.den_cod}>
-             <CardDenUsu nome={denuncia.den_nome} descricao={denuncia.den_desc}/>
+             <CardDenUsu nome={denuncia.den_nome} descricao={denuncia.den_desc} data={denuncia.den_data}/>
             </SwiperSlide>
             </WrapItem>
         ))}
@@ -96,9 +93,7 @@ export const SlideDenUsu = ({denuncias}) => {
 
        </Wrap>
         </Swiper>
-{/* as denuncias da home n tem mais comentarios diretamente nelas agora, tem um botao
-ver denuncia q vai pra pagina de ver denuncias do gabriel, e lá vai ter a exibição da denuncia
-que foi clicada e de outras se o cara quiser filtrar. lá vai ter os comentarioszin */}
+
 
 </Box>
     )

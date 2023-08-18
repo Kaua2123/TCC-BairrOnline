@@ -42,15 +42,14 @@ const Denuncie = () => {
   const [denNome, setDenNome] = useState('');
   const [denPrazo, setDenPrazo] = useState('');
   const [denDesc, setDenDesc] = useState('');
-  const [denData, setDenData] = useState();
   const [bairroCod, setBairroCod] = useState('');
-  const [usuCod, setUsuCod] = useState();
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState(false);
   const toast = useToast();
   
   const fixedUsuCod = 1; //temporario. eqnuanto n tiver cadastro funcioanndo
                         
+  
   const enviaDen = async () => {
     setCarregando(true);
     setErro(false);
@@ -71,6 +70,8 @@ const Denuncie = () => {
         duration: 4000,
         isClosable: true
       })
+      setErro(true);
+      setCarregando(false);
       return;
       // return pra parar todo código que tiver em baixo se a condição for verdadeira e der erro
     }
@@ -114,7 +115,7 @@ const Denuncie = () => {
           duration: 4000,
           isClosable: true
         })
-
+        setCarregando(false);
       }
       console.error(error);
   });

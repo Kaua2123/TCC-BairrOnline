@@ -51,13 +51,28 @@ module.exports = {
         }
     },
 
-    async cardDenuncia(req, res){
+    async cardDenuncia(req, res){ // get da denuncia
         try {
             const denuncias = await knex('denuncias').select('*');
 
             return res.status(200).json(denuncias); //retorna as denuncias
         } catch (error) {
             return res.status(400).json({error: 'Erro ao criar o card.'});
+        }
+    },
+
+    async deleteDenuncia(req, res){
+        try {
+            const {cod} = req.params;
+            if (await knex('denuncias').where("den_cod", cod) != ''){ // se houver denuncia, poderá ser deletada
+                await knex('denuncias').del().where("den_cod", cod);
+                return res.status(201).json({message: 'Denúncia deletada.'})
+            }
+            else{
+                return res.status(201).json({message: 'Impossível deletar uma denúncia inexistente.'})
+            }
+        } catch (error) {
+           return res.status(400).json({error: error.message});
         }
     }
 }

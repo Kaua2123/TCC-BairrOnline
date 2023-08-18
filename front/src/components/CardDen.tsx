@@ -63,23 +63,12 @@ return(
 
 export default CardDen;
 
-export const CardDenUsu = ({ nome, descricao }) => {
+export const CardDenUsu = ({ nome, descricao, data }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [editando, setEditando] = useState(false);
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
     const cancelRef = React.useRef();
-    const [denuncias, setDenuncias] = useState([]);
-
-    useEffect(() => {
-        axios.get('http://localhost:3344/cardDenuncia')
-        .then(response => {
-            setDenuncias(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-    }, []);
 
     
     const openAlertDialog = () => {
@@ -93,15 +82,16 @@ export const CardDenUsu = ({ nome, descricao }) => {
 return(
     
 
-        <Card  maxW='sm' w='250px' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
+        <Card  maxW='sm' w='250px' maxH='lg' h='29em' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
             <CardBody>
              
-                    <Image src={img2} borderRadius='lg' objectFit='cover' width='100%'/>
+                    <Image src={img2} borderRadius='lg' w='20em' />
             
                     <Stack mt='6' spacing='3'>  
                     
                         <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
                         <Heading size='xs' textTransform='uppercase' color='gray'>em Santo Agostinho</Heading>
+                        <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {data}</Heading>
                             <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
                             {descricao}
                             </Text>
@@ -129,7 +119,7 @@ return(
                     </ModalHeader>
                     <ModalCloseButton/>
                     <ModalBody>
-                        <CardDenH editando={editando} setEditando={setEditando}/>
+                        <CardDenUsu nome={nome} descricao={descricao} data={data} />
                     </ModalBody>
                     <ModalFooter>
         

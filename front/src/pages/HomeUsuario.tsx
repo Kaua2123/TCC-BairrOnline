@@ -41,16 +41,26 @@ const theme = extendTheme({
 const HomeUsuario = () => { 
 
   const [denuncias, setDenuncias] = useState([]);
+  const [temDenuncia, setTemDenuncia] = useState(true); // true ate conseguir arrumar
 
-  useEffect(() => {
-    axios.get('http://localhost:3344/cardDenuncia')
-    .then(response => {
-      setDenuncias(response.data);
-    })
-    .catch(error => {
-      console.error(error);
-    })
-  })
+
+  async function getDenuncia () { //pega os dados da denuncia
+   await axios.get('http://localhost:3344/cardDenuncia')
+      .then(response => {
+        setDenuncias(response.data);
+       
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  
+  }
+  
+
+  useEffect(() => { 
+    getDenuncia(); 
+    
+  }, []) 
 
 
  return (
@@ -91,9 +101,20 @@ const HomeUsuario = () => {
             <Center>
                 <Box maxH='900px' w='1400px' mt='20px'  boxShadow='lg'>
         
-                  
-
+                  {temDenuncia ? ( // se tiver denuncia
                      <SlideDenUsu denuncias={denuncias}/>
+                  ) : ( // se não
+                    <>
+                    <Flex justify='center'>
+                      <Image src={denunciaNaoAssumida}></Image> {/*img temporaria */}
+                    </Flex>
+                    <Flex justify='center'>
+                      <Text fontSize='25px' mt='-50px'>Parece que você não realizou nenhuma denúncia...</Text>
+                    </Flex>
+                    </>
+                  )}
+
+                
               {/* as denuncias da home n tem mais comentarios diretamente nelas agora, tem um botao
               ver denuncia q vai pra pagina de ver denuncias do gabriel, e lá vai ter a exibição da denuncia
               que foi clicada e de outras se o cara quiser filtrar. lá vai ter os comentarioszin */}
