@@ -20,7 +20,7 @@ import CardDenH from "./CardDenH";
 //sla
 import {format} from ''
 
-const CardDen = (nome, descricao) => {
+const CardDen = ({nome, descricao}) => {
     const [rep , setrep] = useState(false)
 
 

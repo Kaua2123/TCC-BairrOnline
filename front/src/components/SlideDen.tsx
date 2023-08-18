@@ -34,7 +34,7 @@ const SlideDen = ({denuncias}) => {
        {denuncias.map((denuncia, index) => (
             <WrapItem key={index}>
             <SwiperSlide key={denuncia.den_cod}>
-             <CardDenUsu nome={denuncia.den_nome} descricao={denuncia.den_desc} data={denuncia.den_data}/>
+             <CardDen nome={denuncia.den_nome} descricao={denuncia.den_desc}/>
             </SwiperSlide>
             </WrapItem>
         ))}
