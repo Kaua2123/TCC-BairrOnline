@@ -23,7 +23,7 @@ routes.post("/criarUsu", controllersUsu.CriarUsuario);
 routes.get("/", controllersDenuncias.raiz);
 routes.post("/criarDenuncia", controllersDenuncias.criarDenuncia);
 routes.get("/cardDenuncia", controllersDenuncias.cardDenuncia);
-routes.delete("/deleteDenuncia", controllersDenuncias.deleteDenuncia);
+routes.delete("/deleteDenuncia/:cod", controllersDenuncias.deleteDenuncia);
  
 //bairro
 routes.get("/", controllersBairro.raiz);

@@ -14,11 +14,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import axios from "axios";
 
-//componente
-import CardDenH from "./CardDenH";
 
-//sla
-import {format} from ''
 
 const CardDen = ({nome, descricao}) => {
     const [rep , setrep] = useState(false)
@@ -68,7 +64,7 @@ return(
 
 export default CardDen;
 
-export const CardDenUsu = ({ nome, descricao, data }) => {
+export const CardDenUsu = ({ nome, descricao, data, denCod }) => {
 
     const dataFormatada = new Date(data).toLocaleDateString("pt-BR");
     
@@ -77,6 +73,16 @@ export const CardDenUsu = ({ nome, descricao, data }) => {
     const [editando, setEditando] = useState(false);
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
     const cancelRef = React.useRef();
+
+    async function deleteDenuncia(denCod) {
+        try {
+            await axios.delete(`http://localhost:3344/deleteDenuncia/${denCod}`);
+            closeAlertDialog();
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
 
     
     const openAlertDialog = () => {
@@ -127,7 +133,7 @@ return(
                     </ModalHeader>
                     <ModalCloseButton/>
                     <ModalBody>
-                        <CardDenUsu nome={nome} descricao={descricao} data={data} />
+                        <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={undefined} />
                     </ModalBody>
                     <ModalFooter>
         
@@ -154,7 +160,10 @@ return(
                                         <Button ref={cancelRef} onClick={closeAlertDialog}>
                                             Cancelar
                                         </Button>
-                                        <Button  bgColor='#E75760' color='white' _hover={{backgroundColor: '#D71D28'}} onClick={closeAlertDialog} ml={3}>
+                                        <Button  bgColor='#E75760' color='white' _hover={{backgroundColor: '#D71D28'}} onClick={() => {
+                                            deleteDenuncia(denCod);
+                                            closeAlertDialog();
+                                        }} ml={3}>
                                             Apagar
                                         </Button>
                                         
