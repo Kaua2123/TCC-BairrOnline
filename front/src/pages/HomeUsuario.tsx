@@ -7,6 +7,7 @@ import sectionOla from "../img/sectionOlaDenunciante.png";
 import sectionDen from "../img/sectionDen.png";
 import sectionInst from "../img/sectionInst.png";
 import denunciaNaoAssumida from "../img/denunciaNaoassumida.png";
+import denunciaNotFound from "../img/denunciaNotFound.png";
 
 
 //react 
@@ -109,7 +110,7 @@ const HomeUsuario = () => {
                   ) : ( // se não
                     <>
                     <Flex justify='center'>
-                      <Image src={denunciaNaoAssumida}></Image> {/*img temporaria */}
+                      <Image src={denunciaNotFound}></Image> {/*img temporaria */}
                     </Flex>
                     <Flex justify='center'>
                       <Text fontSize='25px' mt='-50px'>Parece que você não realizou nenhuma denúncia...</Text>

@@ -5,8 +5,7 @@ import '../App.css';
 
 import Logo from "../img/logo.svg";
 import aguaParada from "../img/aguaParada.jpg";
-import denunciaNaoAssumida from "../img/denunciaNaoassumida.png";
-
+import denunciaNotFound from "../img/denunciaNotFound.png";
 
 //react
 import { useState } from 'react';
@@ -210,7 +209,7 @@ const Home = () => {
                     <>
                     <Box bgColor='white' boxShadow='lg'>
                     <Flex justify='center'>
-                      <Image src={denunciaNaoAssumida}></Image> {/*img temporaria */}
+                      <Image src={denunciaNotFound}></Image> {/*img temporaria */}
                     </Flex>
                     <Flex justify='center'>
                       <Text fontSize='25px' mt='-50px'>Parece que não há nenhuma denúncia em alta...</Text>
