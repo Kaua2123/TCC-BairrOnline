@@ -41,19 +41,22 @@ const theme = extendTheme({
 const HomeUsuario = () => { 
 
   const [denuncias, setDenuncias] = useState([]);
-  const [temDenuncia, setTemDenuncia] = useState(true); // true ate conseguir arrumar
+  const [temDenuncia, setTemDenuncia] = useState(false); // true ate conseguir arrumar
 
 
   async function getDenuncia () { //pega os dados da denuncia
    await axios.get('http://localhost:3344/cardDenuncia')
       .then(response => {
         setDenuncias(response.data);
-       
+        
+        if(response.data.length > 0){
+          setTemDenuncia(true);
+        }
       })
       .catch(error => {
         console.error(error);
       })
-  
+      
   }
   
 
