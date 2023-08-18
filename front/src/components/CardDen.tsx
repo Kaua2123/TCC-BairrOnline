@@ -1,5 +1,5 @@
 import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
-AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, } from "@chakra-ui/react";
+AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast } from "@chakra-ui/react";
 
 import { Reportar } from "./reportar";
 import img2 from '../img/aguaEstancada.png';
@@ -73,14 +73,28 @@ export const CardDenUsu = ({ nome, descricao, data, denCod }) => {
     const [editando, setEditando] = useState(false);
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
     const cancelRef = React.useRef();
+    const toast = useToast();
 
     async function deleteDenuncia(denCod) {
-        try {
-            await axios.delete(`http://localhost:3344/deleteDenuncia/${denCod}`);
-            closeAlertDialog();
-        } catch (error) {
-            console.error(error);
-        }
+     await axios.delete(`http://localhost:3344/deleteDenuncia/${denCod}`)
+     .then(response => {
+        closeAlertDialog();
+
+        if(response){
+            toast({
+                title: 'Denúncia deletada',
+                description: "Sua denúncia foi deletada com sucesso. Recarregue para ver as alterações",
+                status: 'success',
+                duration: 4000,
+                isClosable: true
+              })
+       }
+     })
+     .catch(error => {
+        console.error(error);
+     })
+  
+    
     };
 
 
