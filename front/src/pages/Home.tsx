@@ -5,11 +5,12 @@ import '../App.css';
 
 import Logo from "../img/logo.svg";
 import aguaParada from "../img/aguaParada.jpg";
+import denunciaNaoAssumida from "../img/denunciaNaoassumida.png";
 
 
 //react
 import { useState } from 'react';
-
+import { useEffect } from 'react';
 
 //chakra 
 import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
@@ -37,6 +38,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import SlideDen from '../components/SlideDen';
 
+//axios limdo
+import axios from 'axios';
+
 
 
 //remove o background color padrao do chakra
@@ -52,8 +56,30 @@ const theme = extendTheme({
 
 
 const Home = () => {
-  const [rep , setrep] = useState(false)
+
+  const [denuncias, setDenuncias] = useState([]);
+  const [temDenuncia, setTemDenuncia] = useState(false);
   const [openCom, setOpenCom] = useState(false);
+  const [rep, setrep] = useState(false);
+
+  async function getDenuncia() {
+    axios.get('http://localhost:3344/cardDenuncia')
+    .then(response => {
+      setDenuncias(response.data);
+
+      if(response.data.length > 0){
+        setTemDenuncia(true);
+      }
+
+    })
+    .catch(error => {
+      console.error(error);
+    })
+  }
+
+  useEffect(() => {
+    getDenuncia();
+  }, [])
 
  return (
 
@@ -178,7 +204,20 @@ const Home = () => {
              </Flex>
 
             
-                <SlideDen/>
+                  {temDenuncia ? (
+                     <SlideDen denuncias={denuncias}/>
+                  ) : (
+                    <>
+                    <Box bgColor='white' boxShadow='lg'>
+                    <Flex justify='center'>
+                      <Image src={denunciaNaoAssumida}></Image> {/*img temporaria */}
+                    </Flex>
+                    <Flex justify='center'>
+                      <Text fontSize='25px' mt='-50px'>Parece que não há nenhuma denúncia em alta...</Text>
+                    </Flex>
+                    </Box>
+                    </>
+                  )}
             
    {/* ------------AQUI ACABAM DENUNCIAS------------*/}
             

@@ -20,7 +20,7 @@ import CardDenH from "./CardDenH";
 //sla
 import {format} from ''
 
-const CardDen = () => {
+const CardDen = (nome, descricao) => {
     const [rep , setrep] = useState(false)
 
 
@@ -33,10 +33,10 @@ return(
             
                     <Stack mt='6' spacing='3'>  
                     
-                        <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>Muito lixo</Heading>
+                        <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
                         <Heading size='xs' textTransform='uppercase' color='gray'>em Santo Agostinho</Heading>
                             <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
-                            “muito lixo kkkkkk mdsssss so jogar na latinha mano tlgddddd”
+                            {descricao}
                             </Text>
                     </Stack>
                     {/* esses cards tao com conteúdo só de exemplo, mas na real eles tem q ser vazios, pois é 

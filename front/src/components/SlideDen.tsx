@@ -19,7 +19,7 @@ import { Box, Wrap, WrapItem } from '@chakra-ui/react'
 
 
 
-const SlideDen = () => {
+const SlideDen = ({denuncias}) => {
     return(
         
         <Box h='auto' mt='20px' p='20px' bg='#F2F2F2' boxShadow='lg'>
@@ -31,33 +31,13 @@ const SlideDen = () => {
         pagination={{clickable: true}}>
 
        <Wrap>
-        <WrapItem>
-       <SwiperSlide><CardDen/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDen/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDen/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDen/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDen/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDen/></SwiperSlide>
-       </WrapItem>
-
-       <WrapItem>
-       <SwiperSlide><CardDen/></SwiperSlide>
-       </WrapItem>
+       {denuncias.map((denuncia, index) => (
+            <WrapItem key={index}>
+            <SwiperSlide key={denuncia.den_cod}>
+             <CardDenUsu nome={denuncia.den_nome} descricao={denuncia.den_desc} data={denuncia.den_data}/>
+            </SwiperSlide>
+            </WrapItem>
+        ))}
        
        </Wrap>
         </Swiper>
