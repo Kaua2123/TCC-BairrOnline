@@ -113,7 +113,7 @@ const HomeUsuario = () => {
                       <Image src={denunciaNotFound}></Image> {/*img temporaria */}
                     </Flex>
                     <Flex justify='center'>
-                      <Text fontSize='25px' mt='-50px'>Parece que você não realizou nenhuma denúncia...</Text>
+                      <Text fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='normal' mt='-60px' p={8} color='#338bb0'>Parece que você não realizou nenhuma denúncia...</Text>
                     </Flex>
                     </>
                   )}

@@ -1,5 +1,5 @@
 import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
-AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast } from "@chakra-ui/react";
+AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, Flex, InputLeftElement, FormLabel, Center, Flex } from "@chakra-ui/react";
 
 import { Reportar } from "./reportar";
 import img2 from '../img/aguaEstancada.png';
@@ -8,6 +8,8 @@ import {useEffect, useState} from 'react';
 //icons
 import { TbReportSearch } from 'react-icons/tb'
 import { MdOutlineReportProblem} from 'react-icons/md'
+import {HiOutlineClipboardDocumentList} from 'react-icons/hi2'
+import {BsCardText} from 'react-icons/bs';
 
 //react
 import { Link } from "react-router-dom";
@@ -64,7 +66,7 @@ return(
 
 export default CardDen;
 
-export const CardDenUsu = ({ nome, descricao, data, denCod }) => {
+export const CardDenUsu = ({ nome, descricao, data, imagem, denCod }) => {
 
     const dataFormatada = new Date(data).toLocaleDateString("pt-BR");
     
@@ -112,8 +114,9 @@ return(
 
         <Card  maxW='sm' w='250px' maxH='lg' h='29em' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
             <CardBody>
+
              
-                    <Image src={img2} borderRadius='lg' w='20em' />
+                    <Image src={img2}borderRadius='lg' w='20em' />
             
                     <Stack mt='6' spacing='3'>  
                     
@@ -139,7 +142,7 @@ return(
                 onClick={onOpen}>
                 Gerenciar denúncia
                 </Button>
-                <Modal  size='6xl' isOpen={isOpen} onClose={onClose}> 
+                <Modal  size={editando ? '6xl' : '3xl'} isOpen={isOpen} onClose={onClose}> 
                  <ModalOverlay/>
                  <ModalContent >
                     <ModalHeader textAlign='center'>
@@ -147,12 +150,56 @@ return(
                     </ModalHeader>
                     <ModalCloseButton/>
                     <ModalBody>
-                        <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={undefined} />
+                        <Flex direction={editando ? 'column' : 'row'} justify={editando ? 'space-between' : 'center'} align={editando ? 'flex-start' : 'normal'} >
+                           {!editando && (
+                             <Center>
+                             <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={undefined} imagem={imagem} />
+                         </Center>
+                           )}
+
+                        </Flex>
+                        {editando ? (
+                            <Flex justify='space-between' w='100%'>
+                                <Flex flexDirection='column' w='45%' p={10} ml='30px'>
+                                    <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={undefined} imagem={imagem} />
+                                 </Flex>
+                                 <Flex flexDirection='column' w='45%' p={10}>
+                                    <Text fontSize='20px'>Altere aqui o título e a descrição de sua denúncia. Por motivos de 
+                                        segurança, não é possível alterar a imagem.
+                                    </Text>
+                                    
+                                    <Box mt='30px'>
+
+                                    {/* TITULO */}
+                                    <FormLabel>Título da denúncia:</FormLabel>
+                                    <InputGroup>
+                                    <InputLeftElement>
+                                        <HiOutlineClipboardDocumentList size='25px'/>
+                                    </InputLeftElement>
+                                        <Input border='1px solid black' _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
+                                    </InputGroup> 
+
+                                    {/* DESCRIÇÃO */}
+                                    <FormLabel>Descrição</FormLabel>
+                                    <InputGroup>
+                                    <InputLeftElement>
+                                        <BsCardText size='25px'/>
+                                    </InputLeftElement>
+                                    <Textarea  border='1px solid black' resize='vertical' maxLength={220}  pl='2.5rem' _hover={{border: '1px solid #A9A9A9	'}}>  
+                                    </Textarea>
+                                </InputGroup>  
+
+                                    </Box>
+                                 </Flex>
+                            </Flex>
+                        ) : (
+                            <Box></Box> // 
+                        )}
+
                     </ModalBody>
                     <ModalFooter>
         
                         <Button bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog}  _hover={{backgroundColor: '#D71D28'}}>Apagar</Button>
-                        
                         {editando ? (
                             <Button colorScheme="green" mr={3} onClick={() => setEditando(false)}>Salvar alterações</Button>
                         ) : (

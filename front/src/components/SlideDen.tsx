@@ -64,7 +64,12 @@ export const SlideDenUsu = ({denuncias}) => {
         {denuncias.map((denuncia, index) => (
             <WrapItem key={index}>
             <SwiperSlide key={denuncia.den_cod}>
-             <CardDenUsu nome={denuncia.den_nome} descricao={denuncia.den_desc} data={denuncia.den_data}  denCod={denuncia.den_cod}/>
+             <CardDenUsu 
+             nome={denuncia.den_nome} 
+             descricao={denuncia.den_desc} 
+             data={denuncia.den_data} 
+             imagem={denuncia.den_img} 
+             denCod={denuncia.den_cod}/>
             </SwiperSlide>
             </WrapItem>
         ))}
