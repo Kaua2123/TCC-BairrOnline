@@ -199,11 +199,17 @@ return(
                     </ModalBody>
                     <ModalFooter>
         
-                        <Button bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog}  _hover={{backgroundColor: '#D71D28'}}>Apagar</Button>
+                       
                         {editando ? (
+                            <>
+                            <Button bgColor='#E75760' color='white' _hover={{backgroundColor: '#D71D28'}} mr={3} onClick={() => setEditando(false)}>Cancelar</Button>
                             <Button colorScheme="green" mr={3} onClick={() => setEditando(false)}>Salvar alterações</Button>
+                            </>
                         ) : (
+                            <>
+                             <Button bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog}  _hover={{backgroundColor: '#D71D28'}}>Apagar</Button>
                             <Button colorScheme="blue" mr={3} onClick={() => setEditando(true)}>Editar</Button>
+                            </>
                         )}
                         
                         <AlertDialog isOpen={isAlertDialogOpen} leastDestructiveRef={cancelRef} onClose={closeAlertDialog}>
