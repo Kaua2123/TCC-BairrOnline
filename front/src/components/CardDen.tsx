@@ -73,6 +73,8 @@ export const CardDenUsu = ({ nome, descricao, data, imagem, denCod }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [editando, setEditando] = useState(false);
+    const [tituloEditado, setTituloEditado] = useState(nome);
+    const [descricaoEditada, setDescricaoEditada] = useState(descricao);
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
     const cancelRef = React.useRef();
     const toast = useToast();
@@ -98,6 +100,37 @@ export const CardDenUsu = ({ nome, descricao, data, imagem, denCod }) => {
   
     
     };
+
+    async function updateDenuncia(denCod){
+       await axios.put(`http://localhost:3344/updateDenuncia/${denCod}`, {
+        den_nome: tituloEditado,
+        den_desc: descricaoEditada
+        })
+        .then(response => {
+            if(response.status === 201){
+                toast({
+                    title: 'Dados da denúncia atualizados',
+                    status: 'success',
+                    duration: 4000,
+                    isClosable: true
+                });  
+            }
+            setEditando(false);
+            onClose();
+        })
+        .catch(error => {
+            console.error(error);
+            if(error){
+                toast({
+                    title: 'Ocorreu um erro ao atualizar os dados da denúncia. Tente novamente',
+                    status: 'error',
+                    duration: 4000,
+                    isClosable: true
+                });  
+            }
+        })
+        
+    }
 
 
     
@@ -131,8 +164,9 @@ return(
                     o usuario que define o titulo, texto, imagem da denuncia */}
             </CardBody>
         <Divider/>
-            <CardFooter>
-                <Button
+
+              <CardFooter>
+                 <Button
                 w='auto'
                 leftIcon={<TbReportSearch size='3vh'/>}
                  bgColor='#338BB0'
@@ -142,6 +176,8 @@ return(
                 onClick={onOpen}>
                 Gerenciar denúncia
                 </Button>
+            </CardFooter>
+
                 <Modal  size={editando ? '6xl' : '3xl'} isOpen={isOpen} onClose={onClose}> 
                  <ModalOverlay/>
                  <ModalContent >
@@ -176,7 +212,12 @@ return(
                                     <InputLeftElement>
                                         <HiOutlineClipboardDocumentList size='25px'/>
                                     </InputLeftElement>
-                                        <Input border='1px solid black' _hover={{border: '1px solid #A9A9A9	'}} type='text'></Input>
+                                        <Input 
+                                        border='1px solid black' 
+                                        _hover={{border: '1px solid #A9A9A9	'}} 
+                                        type='text' 
+                                        value={tituloEditado}
+                                        onChange={(e) => setTituloEditado(e.target.value)}></Input>
                                     </InputGroup> 
 
                                     {/* DESCRIÇÃO */}
@@ -185,7 +226,14 @@ return(
                                     <InputLeftElement>
                                         <BsCardText size='25px'/>
                                     </InputLeftElement>
-                                    <Textarea  border='1px solid black' resize='vertical' maxLength={220}  pl='2.5rem' _hover={{border: '1px solid #A9A9A9	'}}>  
+                                    <Textarea 
+                                    border='1px solid black' 
+                                    resize='vertical' 
+                                    maxLength={220}  
+                                    pl='2.5rem' 
+                                    _hover={{border: '1px solid #A9A9A9	'}}
+                                    value={descricaoEditada}
+                                    onChange={(e) => setDescricaoEditada(e.target.value)}>  
                                     </Textarea>
                                 </InputGroup>  
 
@@ -202,8 +250,8 @@ return(
                        
                         {editando ? (
                             <>
-                            <Button bgColor='#E75760' color='white' _hover={{backgroundColor: '#D71D28'}} mr={3} onClick={() => setEditando(false)}>Cancelar</Button>
-                            <Button colorScheme="green" mr={3} onClick={() => setEditando(false)}>Salvar alterações</Button>
+                            <Button mr={3} colorScheme="blue" onClick={() => setEditando(false)}>Cancelar</Button>
+                            <Button colorScheme="green" mr={3} onClick={() => updateDenuncia(denCod)}>Salvar alterações</Button>
                             </>
                         ) : (
                             <>
@@ -244,7 +292,9 @@ return(
                 </Modal>
        
             
-        </CardFooter>
+
+     
+          
     </Card>
 
    
