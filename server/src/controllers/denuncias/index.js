@@ -17,31 +17,21 @@ module.exports = {
             const { den_nome } = req.body;
             const { den_prazo } = req.body;
             const { den_desc } = req.body;
+            const { den_bairro } = req.body;
             const { den_img } = req.body;
-            const { bairro_bai_cod } = req.body;
             const { denunciante_usuario_usu_cod } = req.body;
-
-            const bairroExists = await knex('bairro').where('bai_cod', bairro_bai_cod).first();
 
             const dataAtual = new Date().toISOString();
 
-            if(!bairroExists){
-                return res.status(400).json({error: 'Valor inválido para bairro_bai_cod'});
-            }
-
             await knex('denuncias').insert({
 
-                // den_cod, n precisa de codigo pq ta com auto increment
                 den_nome,
-                // den_prazo,
                 den_desc,
                 den_data: dataAtual,
                 den_img,
-                bairro_bai_cod,
+                den_bairro,
                 denunciante_usuario_usu_cod,
-        
-
-
+   
             });
 
   

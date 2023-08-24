@@ -18,21 +18,21 @@ import axios from "axios";
 
 
 
-const CardDen = ({nome, descricao}) => {
+const CardDen = ({nome, descricao, bairro}) => {
     const [rep , setrep] = useState(false)
 
 
 return(
 
-        <Card  maxW='sm' w='250px' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
+        <Card  maxW='sm' w='250px' maxH='lg' h='29em' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
             <CardBody>
              
-                    <Image src={img2} borderRadius='lg' objectFit='cover' width='100%'/>
+            <Image src={img2}borderRadius='lg' w='20em' />
             
                     <Stack mt='6' spacing='3'>  
                     
                         <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
-                        <Heading size='xs' textTransform='uppercase' color='gray'>em Santo Agostinho</Heading>
+                        <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
                             <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
                             {descricao}
                             </Text>
@@ -66,7 +66,7 @@ return(
 
 export default CardDen;
 
-export const CardDenUsu = ({ nome, descricao, data, imagem, denCod }) => {
+export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) => {
 
     const dataFormatada = new Date(data).toLocaleDateString("pt-BR");
     
@@ -154,7 +154,7 @@ return(
                     <Stack mt='6' spacing='3'>  
                     
                         <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
-                        <Heading size='xs' textTransform='uppercase' color='gray'>em Santo Agostinho</Heading>
+                        <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
                         <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
                             <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
                             {descricao}
@@ -189,7 +189,7 @@ return(
                         <Flex direction={editando ? 'column' : 'row'} justify={editando ? 'space-between' : 'center'} align={editando ? 'flex-start' : 'normal'} >
                            {!editando && (
                              <Center>
-                             <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={undefined} imagem={imagem} />
+                             <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={undefined} imagem={imagem} bairro={bairro} />
                          </Center>
                            )}
 
@@ -197,7 +197,7 @@ return(
                         {editando ? (
                             <Flex justify='space-between' w='100%'>
                                 <Flex flexDirection='column' w='45%' p={10} ml='30px'>
-                                    <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={undefined} imagem={imagem} />
+                                    <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={undefined} imagem={imagem} bairro={bairro} />
                                  </Flex>
                                  <Flex flexDirection='column' w='45%' p={10}>
                                     <Text fontSize='20px'>Altere aqui o título e a descrição de sua denúncia. Por motivos de 

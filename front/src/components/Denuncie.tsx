@@ -31,8 +31,8 @@ const bairros = ['Selecione dentre as opções', 'Aero Clube', 'Água Limpa', 'A
     'Santa Rita do Zarur', 'Santo Agostinho', 'São Cristóvão', 'São Geraldo', 'São João', 'São Luiz', 'Sessenta', 
   'Siderópolis', 'Três Poços', 'Vila Americana', 'Vila Mury', 'Vila Rica', 'Vila Santa Cecília', 'Voldac'];
 
-const opçoesDeBairros = bairros.map((bairro, index) => ({
-  value: index,
+const opçoesDeBairros = bairros.map((bairro) => ({
+  value: bairro,
   label: bairro
 }))
 
@@ -42,7 +42,7 @@ const Denuncie = () => {
   const [denNome, setDenNome] = useState('');
   const [denPrazo, setDenPrazo] = useState('');
   const [denDesc, setDenDesc] = useState('');
-  const [bairroCod, setBairroCod] = useState('');
+  const [denBairro, setDenBairro] = useState('');
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState(false);
   const toast = useToast();
@@ -54,15 +54,8 @@ const Denuncie = () => {
     setCarregando(true);
     setErro(false);
 
-    const bairroIndex = opçoesDeBairros.findIndex(bairro => bairro.label === bairroCod);
 
-    if (bairroCod === "" || bairroIndex === -1){ // se n tiver o codigo do bairro no back ele cadastra
-      await axios.post('http://localhost:3344/buscarBairro', {
-      bai_nome: bairros[bairroCod]
-    });
-    }
-
-    if(denNome === "" || denDesc === "" ||bairroCod === ""){//lógica de validação dos campos pra n mandar nada vazio
+    if(denNome === "" || denDesc === "" ||denBairro === ""){//lógica de validação dos campos pra n mandar nada vazio
       toast({
         title: 'Erro',
         description: "Algum campo parece estar vazio ou com dados incorretos. Verifique e tente novamente.",
@@ -74,7 +67,7 @@ const Denuncie = () => {
       setErro(true);
       setCarregando(false);
       return;
-      // return pra parar todo código que tiver em baixo se a condição for verdadeira e der erro
+     
     }
     
 
@@ -84,7 +77,7 @@ const Denuncie = () => {
       den_desc: denDesc,
       den_data: new Date(),
       den_img: denImg,
-      bairro_bai_cod: bairroCod, 
+      den_bairro: denBairro, 
       denunciante_usuario_usu_cod: fixedUsuCod                 
   }).then(response => {
       console.log('Denúncia postada');
@@ -122,7 +115,7 @@ const Denuncie = () => {
   });
   }
 
-  const fileInputRef = useRef(null);
+
 
   //pra upar a imagem com click no iconezinho da camera
   const handleImageUpload = () => {
@@ -214,8 +207,8 @@ const Denuncie = () => {
                     
                          <Select 
                     
-                      value={bairroCod}
-                      onChange={(e) => setBairroCod(e.target.value)} 
+                      value={denBairro}
+                      onChange={(e) => setDenBairro(e.target.value)} 
                       border='1px solid black' 
                       w={{base:'220px', md:'280px', lg: '340px'}} 
                       _hover={{border: '1px solid #A9A9A9	'}} 

@@ -27,8 +27,8 @@ routes.delete("/deleteDenuncia/:cod", controllersDenuncias.deleteDenuncia);
 routes.put("/updateDenuncia/:cod", controllersDenuncias.updateDenuncia);
  
 //bairro
-routes.get("/", controllersBairro.raiz);
-routes.post("/buscarBairro", controllersBairro.buscarBairro);
+// routes.get("/", controllersBairro.raiz);
+// routes.post("/buscarBairro", controllersBairro.buscarBairro);
 
 //usuario denunciante
 routes.get("/", controllersDenunciante.raiz);
