@@ -1,5 +1,5 @@
 import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
-AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, Flex, InputLeftElement, FormLabel, Center, Flex } from "@chakra-ui/react";
+AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, InputLeftElement, FormLabel, Center, Flex } from "@chakra-ui/react";
 
 import { Reportar } from "./reportar";
 import img2 from '../img/aguaEstancada.png';
