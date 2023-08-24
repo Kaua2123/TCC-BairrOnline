@@ -5,7 +5,6 @@ const multer = require('multer');
 const controllersAcomp = require('../src/controllers/acompanhamento/index');
 const controllersAdm = require('../src/controllers/administrador/index');
 const controllersAva = require('../src/controllers/avaliaçao/index');
-const controllersBairro = require('../src/controllers/bairro/index');
 const controllersComen = require('../src/controllers/comentarios/index');
 const controllersDenunciante = require('../src/controllers/denunciante/index');
 const controllersDenuncias = require('../src/controllers/denuncias/index');
@@ -26,9 +25,7 @@ routes.get("/cardDenuncia", controllersDenuncias.cardDenuncia);
 routes.delete("/deleteDenuncia/:cod", controllersDenuncias.deleteDenuncia);
 routes.put("/updateDenuncia/:cod", controllersDenuncias.updateDenuncia);
  
-//bairro
-// routes.get("/", controllersBairro.raiz);
-// routes.post("/buscarBairro", controllersBairro.buscarBairro);
+
 
 //usuario denunciante
 routes.get("/", controllersDenunciante.raiz);
