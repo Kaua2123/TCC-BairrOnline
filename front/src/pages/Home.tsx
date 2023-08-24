@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 
 //chakra 
 import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
-, Heading, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem} from '@chakra-ui/react';
+, Heading, Modal, ModalOverlay, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem, useDisclosure} from '@chakra-ui/react';
 
 //componentes
 import  Header  from '../components/Header';
@@ -21,8 +21,9 @@ import Footer from '../components/Footer';
 
 import CardInst from '../components/CardInst';
 import { Reportar } from '../components/reportar';
-import Comentarios from '../components/Comentarios';
-
+import CommentForm from '../components/CommentForm';
+import CommentList from '../components/CommentList';
+import CardCom from '../components/CardCom';
 //icones
 import { BsChatSquareText } from 'react-icons/bs'
 import { MdOutlineReportProblem } from 'react-icons/md';
@@ -53,12 +54,19 @@ const theme = extendTheme({
     },
   });
 
-
 const Home = () => {
 
   const [denuncias, setDenuncias] = useState([]);
   const [temDenuncia, setTemDenuncia] = useState(false);
-  const [openCom, setOpenCom] = useState(false);
+  const {isOpen, onOpen, onClose} = useDisclosure()
+  const [comments, setComments] = useState([]);
+
+  const handleCommentSubmit = (comment) => {setComments(
+    [
+      ...comments, comment
+    ]
+  )}
+
   const [rep, setrep] = useState(false);
 
   async function getDenuncia() {
@@ -183,13 +191,30 @@ const Home = () => {
                            fontWeight='normal'
                            w={{base: '240px', md: '125px', lg: '180px'}}
                            fontSize={{base: '11px', md: '12px', lg: '16px'}}
+                           onClick={onOpen}
+                           >
+                            <Modal isOpen={isOpen} onClose={onClose}>
+                            <ModalOverlay />
+                            <ModalContent>
+                              <ModalHeader>
+                                <Text fontFamily='BreeSerif-Regular' fontSize='25px' color='#338bb0' fontWeight='normal'>
+                                  Comentários
+                                  </Text>
+                                </ModalHeader>
+                              <ModalCloseButton />
+                              <ModalBody>
+                              <CommentList comments={comments} />
+                              <CommentForm onCommentSubmit={handleCommentSubmit} />
+                              <CardCom />
+                              </ModalBody>
+
+                              <ModalFooter>
+                          
+               
+                              </ModalFooter>
+                            </ModalContent>
+                          </Modal>
                            
-                           onClick={() => {setOpenCom(true)}}>
-                               <Comentarios
-                                   isOpen={openCom} 
-                                   setCloseCom = {() => {setOpenCom(!openCom)}}>
-                               </Comentarios>
-                                 Abrir comentários
                                </Button>
                                <Button variant='ghost'   w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
                                    <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
