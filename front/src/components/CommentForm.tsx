@@ -20,19 +20,14 @@ const CommentForm: React.FC<CommentFormProps> = ({ onCommentSubmit }) => {
   return (
     <div className="comment-form">
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="@kauazinpaidetodos"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-        />
+        
+        <strong>{author} @kauazinpaidetodos</strong>
         <Textarea 
         placeholder="No que está pensando?"
         value={text}
         onChange={(e) => setText(e.target.value)}
          />
       
-        <button type="submit">Enviar</button>
         <ButtonCom type="submit"/>
       </form>
     </div>

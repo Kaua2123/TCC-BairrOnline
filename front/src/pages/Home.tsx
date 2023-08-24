@@ -14,7 +14,8 @@ import { useEffect } from 'react';
 //chakra 
 import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
 , Heading, Modal, ModalOverlay, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem, useDisclosure} from '@chakra-ui/react';
-
+import { modalAnatomy as parts } from '@chakra-ui/anatomy'
+import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/styled-system'
 //componentes
 import  Header  from '../components/Header';
 import Footer from '../components/Footer';
@@ -53,6 +54,29 @@ const theme = extendTheme({
       }),
     },
   });
+
+//Estilizar Modal do Comentários
+const { definePartsStyle, defineMultiStyleConfig } =
+  createMultiStyleConfigHelpers(parts.keys)
+
+const xl = defineStyle({
+  px: '6',
+  py: '2',
+  fontSize: 'xl',
+})
+
+const sm = defineStyle({
+  fontSize: 'sm',
+  py: '6',
+})
+
+const sizes = {
+  xl: definePartsStyle({ header: sm, dialog: xl }),
+}
+
+export const modalTheme = defineMultiStyleConfig({
+  sizes,
+})
 
 const Home = () => {
 
@@ -193,7 +217,7 @@ const Home = () => {
                            fontSize={{base: '11px', md: '12px', lg: '16px'}}
                            onClick={onOpen}
                            >
-                            <Modal isOpen={isOpen} onClose={onClose}>
+                            <Modal isOpen={isOpen} onClose={onClose} size="xl">
                             <ModalOverlay />
                             <ModalContent>
                               <ModalHeader>
