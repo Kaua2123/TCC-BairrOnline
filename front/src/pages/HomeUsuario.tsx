@@ -4,7 +4,6 @@ import '../App.css';
 
 //imgs
 import sectionOla from "../img/sectionOlaDenunciante.png";
-import sectionDen from "../img/sectionDen.png";
 import sectionInst from "../img/sectionInst.png";
 import denunciaNaoAssumida from "../img/denunciaNaoassumida.png";
 import denunciaNotFound from "../img/denunciaNotFound.png";
@@ -23,7 +22,6 @@ Image, extendTheme, Text} from '@chakra-ui/react'
 import Footer from '../components/Footer';
 import { HeaderUsu } from '../components/Header';
 import Denuncie from '../components/Denuncie';
-import { CardDenUsu } from '../components/CardDen';
 import { SlideDenUsu } from '../components/SlideDen';
 import axios from 'axios';
 

@@ -1,10 +1,12 @@
 
-import { ChakraProvider, Box, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement} from '@chakra-ui/react';
+import { ChakraProvider, Box, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast} from '@chakra-ui/react';
 
 import imgFundo from '../img/imgfundo.png';
 
 import { Button, ButtonGroup } from '@chakra-ui/react';
 import {useState} from 'react';
+
+import axios from 'axios';
 
 //icones
 import {AiOutlineUser} from 'react-icons/ai';
@@ -14,6 +16,7 @@ import {AiFillEyeInvisible} from 'react-icons/ai';
 import {BsTelephone} from 'react-icons/bs';
 import {RiLockPasswordLine} from 'react-icons/ri';
 import {CiLocationOn} from 'react-icons/ci';
+import { MdDescription } from 'react-icons/md';
 
 
 const theme = extendTheme({
@@ -26,9 +29,69 @@ const theme = extendTheme({
     },
   });
 
+
 const Cadastro = () => {
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(false);
+    const [usuNome, setUsuNome] = useState("");
+    const [usuEmail, setUsuEmail] = useState("");
+    const [usuSenha, setUsuSenha] = useState("");
+    const [usuTel, setUsuTel] = useState ("");
+    const [usuCep, setUsuCep] = useState("");
+    const [usuData, setUsuData] = useState("");
+    const toast = useToast();
+
     const handleClick = () => setShow(!show)
+
+    
+  const cadastraUsuario = async () => {
+    
+    if(usuNome === "" || usuEmail === "" || usuSenha === "" || usuTel === "" || usuCep === "" ){
+      toast({
+        title: "Erro",
+        description:" Algum campo não esta preenchido corretamente, verifique-os.",
+        status: "error",
+        duration: 4000,
+        isClosable: false,
+      })
+      console.log('Erro, algum campo vazio.')
+      return;
+    }
+
+    axios.post('http://localhost:3344/criarUsu', {    //para cadastro do usuario
+      usu_nome: usuNome,
+      usu_email: usuEmail,
+      usu_senha: usuSenha,
+      usu_tel: usuTel,
+      usu_cep: usuCep,
+      usu_data: new Date(),     
+    })
+    .then(response => {
+      console.log('Usuário cadastrado');
+      console.log(response.data);
+      if (response){
+        toast({
+          title:"Cadastro realizado.",
+          description: "Você foi cadastrado com sucesso.",
+          status: "success",
+          duration: 4000,
+          isClosable: true, 
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      if(error){
+        toast({
+          title:"Erro: Você nâo foi cadastrado",
+          description: "Erro nas credenciais ou algum campo vazio. Tente novamente.",
+          status:"error",
+          duration: 4000,
+          isClosable: false,
+        })
+      }
+    })            
+  }
+
     return (
       <ChakraProvider theme={theme}>
 
@@ -51,7 +114,10 @@ const Cadastro = () => {
                         <InputLeftElement>
                         <AiOutlineUser/>
                         </InputLeftElement>
-                       <Input placeholder='Digite seu nome' required border='1px solid black' />
+                       <Input placeholder='Digite seu nome' required border='1px solid black' value={usuNome} onChange={(e) => {
+                        setUsuNome(e.target.value);
+  
+                       }} />
                     </InputGroup>
 
 <br></br>
@@ -60,7 +126,9 @@ const Cadastro = () => {
                         <InputLeftElement>
                         <BsTelephone/>
                         </InputLeftElement>
-                    <Input placeholder='Digite seu telefone' required border='1px solid black' type='email' />
+                    <Input placeholder='Digite seu telefone' required border='1px solid black' type='tel' value={usuTel} onChange={(e) => {
+                        setUsuTel(e.target.value)
+                      }} />
                     </InputGroup>   
 <br></br>
 
@@ -69,7 +137,9 @@ const Cadastro = () => {
                         <InputLeftElement>
                         <CiLocationOn/>
                         </InputLeftElement>
-                    <Input placeholder='Digite seu CEP' required border='1px solid black' type='number' />
+                    <Input placeholder='Digite seu CEP' required border='1px solid black' type='number' value={usuCep} onChange={(e) => {
+                      setUsuCep(e.target.value)
+                    }}/>
                     </InputGroup>
                  
 
@@ -80,7 +150,10 @@ const Cadastro = () => {
                         <InputLeftElement>
                         <AiOutlineMail/>
                         </InputLeftElement>
-                    <Input placeholder='Digite seu email' required border='1px solid black' type='email' />
+                    <Input placeholder='Digite seu email' required border='1px solid black' type='email'  value={usuEmail} onChange={(e) => {
+                      setUsuEmail(e.target.value)
+                      }}/>
+                
                     </InputGroup>
 <br></br>
 
@@ -89,7 +162,11 @@ const Cadastro = () => {
                     <InputLeftElement>
                         <RiLockPasswordLine/>
                         </InputLeftElement>
-                    <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Digite sua senha' border='1px solid black'/>
+                    <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Digite sua senha' border='1px solid black' value={usuSenha} onChange={(e) => {
+                      setUsuSenha(e.target.value);
+                    }
+
+                    }/>
                     <InputRightElement width='4.5rem'>
                     <Button h='2rem' size='md' onClick={handleClick}>
                     {show ? <AiFillEye size='20px'/> : <AiFillEyeInvisible size='20px'/>}
@@ -102,7 +179,7 @@ const Cadastro = () => {
            
                 </FormControl>
 <br></br>
-                    <Button colorScheme='blue'>Cadastrar</Button>
+                    <Button colorScheme='blue' onClick={cadastraUsuario}>Cadastrar</Button>
 
                     
 

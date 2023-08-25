@@ -37,8 +37,7 @@ return(
                             {descricao}
                             </Text>
                     </Stack>
-                    {/* esses cards tao com conteúdo só de exemplo, mas na real eles tem q ser vazios, pois é 
-                    o usuario que define o titulo, texto, imagem da denuncia */}
+                    
             </CardBody>
         <Divider/>
             <CardFooter>
@@ -78,6 +77,8 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
     const cancelRef = React.useRef();
     const toast = useToast();
+
+    
 
     async function deleteDenuncia(denCod) {
      await axios.delete(`http://localhost:3344/deleteDenuncia/${denCod}`)
@@ -149,7 +150,7 @@ return(
             <CardBody>
 
              
-                    <Image src={img2}borderRadius='lg' w='20em' />
+                    <Image src={img2} borderRadius='lg' w='20em' />
             
                     <Stack mt='6' spacing='3'>  
                     
@@ -160,8 +161,7 @@ return(
                             {descricao}
                             </Text>
                     </Stack>
-                    {/* esses cards tao com conteúdo só de exemplo, mas na real eles tem q ser vazios, pois é 
-                    o usuario que define o titulo, texto, imagem da denuncia */}
+             
             </CardBody>
         <Divider/>
 

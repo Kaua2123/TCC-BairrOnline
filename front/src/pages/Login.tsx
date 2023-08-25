@@ -6,6 +6,9 @@ import imgFundo from '../img/imgfundo.png';
 import { Button, ButtonGroup } from '@chakra-ui/react';
 import {useState} from 'react';
 
+//axios
+import axios from 'axios';
+
 //icones
 import {AiOutlineUser} from 'react-icons/ai';
 import {AiOutlineMail} from 'react-icons/ai';
@@ -26,8 +29,22 @@ const theme = extendTheme({
     },
   });
 
+
+
 const Login = () => {
-    const [show, setShow] = useState(false)
+
+    const [show, setShow] = useState(false);
+    const [usuEmail, setUsuEmail] = useState("");
+    const [usuSenha, setUsuSenha] = useState("");
+
+    const logarUsuario = async () => {
+
+      // if(usuEmail === "" || usuSenha === "")
+
+      axios.get() // para logar o usuario
+      
+    }
+
     const handleClick = () => setShow(!show)
     return (
       <ChakraProvider theme={theme}>
@@ -50,7 +67,9 @@ const Login = () => {
                         <InputLeftElement>
                         <AiOutlineMail/>
                         </InputLeftElement>
-                    <Input placeholder='Digite seu email' required border='1px solid black' type='email' />
+                    <Input placeholder='Digite seu email' required border='1px solid black' type='email' value={usuEmail} onChange={(e) =>{
+                      setUsuEmail(e.target.value)
+                    }}/>
                     </InputGroup>
 <br></br>
 
@@ -59,7 +78,9 @@ const Login = () => {
                     <InputLeftElement>
                         <RiLockPasswordLine/>
                         </InputLeftElement>
-                    <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Digite sua senha' border='1px solid black'/>
+                    <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Digite sua senha' border='1px solid black' value={usuSenha} onChange={(e) =>{
+                      setUsuSenha(e.target.value)
+                    }}/>
                     <InputRightElement width='4.5rem'>
                     <Button h='2rem' size='md' onClick={handleClick}>
                     {show ? <AiFillEye size='20px'/> : <AiFillEyeInvisible size='20px'/>}
@@ -71,7 +92,7 @@ const Login = () => {
                 </FormControl>
 <br></br>
 
-                    <Button colorScheme='blue'>Entrar</Button>
+                    <Button colorScheme='blue' onClick={logarUsuario}>Entrar</Button>
     <br></br>
     <br></br>
 

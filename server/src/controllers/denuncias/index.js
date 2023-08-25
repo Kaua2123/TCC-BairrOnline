@@ -47,6 +47,9 @@ module.exports = {
         try {
             const denuncias = await knex('denuncias').select('*');
 
+         
+
+
             return res.status(200).json(denuncias); //retorna as denuncias
         } 
         catch (error) {

@@ -132,6 +132,8 @@ const Denuncie = () => {
       const reader = new FileReader();
       reader.onloadend = () => {
         setDenImg(reader.result);
+
+        console.log('Imagem convertida para base64:', reader.result);
       }
       reader.readAsDataURL(file);
     }
