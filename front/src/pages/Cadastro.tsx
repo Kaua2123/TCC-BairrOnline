@@ -1,6 +1,6 @@
 
-import { ChakraProvider, Box, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast} from '@chakra-ui/react';
-
+import { ChakraProvider, Select, Box, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast} from '@chakra-ui/react';
+ 
 import imgFundo from '../img/imgfundo.png';
 
 import { Button, ButtonGroup } from '@chakra-ui/react';
@@ -38,6 +38,7 @@ const Cadastro = () => {
     const [usuTel, setUsuTel] = useState ("");
     const [usuCep, setUsuCep] = useState("");
     const [usuData, setUsuData] = useState("");
+    const [usuTipo, setUsuTipo] = useState("denunciante") //denunciante valor padrao
     const toast = useToast();
 
     const handleClick = () => setShow(!show)
@@ -64,6 +65,7 @@ const Cadastro = () => {
       usu_tel: usuTel,
       usu_cep: usuCep,
       usu_data: new Date(),     
+      usu_tipo: usuTipo
     })
     .then(response => {
       console.log('Usuário cadastrado');
@@ -171,11 +173,25 @@ const Cadastro = () => {
                     <Button h='2rem' size='md' onClick={handleClick}>
                     {show ? <AiFillEye size='20px'/> : <AiFillEyeInvisible size='20px'/>}
                     </Button>
-<br></br>
-                  
+
+                    <br></br>
 
       </InputRightElement>
     </InputGroup>
+
+                    <InputGroup mt='30px'>
+                    <FormLabel mt='10px'>Eu sou um</FormLabel>
+                    <Select
+                      w='200px'
+                      value={usuTipo}
+                      onChange={(e) => setUsuTipo(e.target.value)}
+                      required
+                      borderColor='black'
+                    >
+                      <option value="denunciante">Denunciante</option>
+                      <option value="instituicao">Instituição</option>
+                    </Select>
+                    </InputGroup>
            
                 </FormControl>
 <br></br>

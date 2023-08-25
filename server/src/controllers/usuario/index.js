@@ -18,9 +18,10 @@ module.exports = {
             const { usu_tel } = req.body;
             const { usu_img } = req.body;
             const { usu_cep } = req.body;
+            const { usu_tipo } = req.body;
+            
 
-
-            await knex('usuario').insert({
+            const [usu_cod] = await knex('usuario').insert({
               
                 usu_nome,
                 usu_email,
@@ -28,8 +29,13 @@ module.exports = {
                 usu_tel,
                 usu_img,
                 usu_cep,
-                usu_data: new Date() //data de criação do usuário
+                usu_data: new Date(), //data de criação do usuário
+                usu_tipo
             });
+
+            await knex(usu_tipo).insert({
+                usuario_usu_cod: usu_cod
+            })
 
  
 
