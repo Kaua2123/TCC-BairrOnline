@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`usuario` (
   `usu_img` BLOB(16777215) NOT NULL,
   `usu_cep` VARCHAR(45) NOT NULL,
   `usu_data` DATE NOT NULL,
+  `usu_tipo` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`usu_cod`))
 ENGINE = InnoDB;
 
@@ -50,7 +51,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `bairronline`.`orgao publico/instituiçao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bairronline`.`orgao publico/instituiçao` (
+CREATE TABLE IF NOT EXISTS `bairronline`.`instituicao` (
   `usuario_usu_cod` INT NOT NULL,
   PRIMARY KEY (`usuario_usu_cod`),
   CONSTRAINT `fk_orgao publico/instituiçao_usuario1`
@@ -171,7 +172,6 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`acompanhamento` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 
 

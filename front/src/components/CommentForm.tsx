@@ -8,6 +8,7 @@ const CommentForm = ({ denCod }) => {
   const toast = useToast();
 
   const fixedUsuCod = 1;
+  const fixedDenCod = 1; // codigo fixo da denuncia por enquanto 
 
   const enviaCom = async () => {
     if (!comCont.trim()) {
@@ -26,7 +27,7 @@ const CommentForm = ({ denCod }) => {
         com_conteudo: comCont,
         com_data: new Date(),
         denunciante_usuario_usu_cod: fixedUsuCod,
-        denuncias_den_cod: denCod,
+        denuncias_den_cod: fixedDenCod,
       });
 
       console.log('Comentário enviado');

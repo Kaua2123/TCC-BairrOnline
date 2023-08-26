@@ -18,7 +18,7 @@ module.exports = {
             const { com_editado_por } = req.body;
             const { com_editado_em } = req.body;
             const { denunciante_usuario_usu_cod } = req.body;
-            const { denunciante_den_cod } = req.body;
+            const { denuncias_den_cod } = req.body;
 
             await knex('comentarios').insert({
 
@@ -27,7 +27,7 @@ module.exports = {
                 com_editado_por,
                 com_editado_em,
                 denunciante_usuario_usu_cod,
-                denunciante_den_cod,
+                denuncias_den_cod,
     
             });
 
