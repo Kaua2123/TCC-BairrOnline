@@ -229,15 +229,15 @@ const Home = () => {
                               <ModalBody>
                               <CommentList comments={comments} />
                               <CommentForm onCommentSubmit={handleCommentSubmit} />
-                              <CardCom />
+                             
                               </ModalBody>
 
                               <ModalFooter>
                           
                
                               </ModalFooter>
-                            </ModalContent>
-                          </Modal>
+                             </ModalContent>
+                             </Modal>
                            
                                </Button>
                                <Button variant='ghost'   w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
