@@ -133,7 +133,7 @@ const Denuncie = () => {
       reader.onloadend = () => {
         setDenImg(reader.result);
 
-        console.log('Imagem convertida para base64:', reader.result);
+    
       }
       reader.readAsDataURL(file);
     }
@@ -264,11 +264,11 @@ const Denuncie = () => {
 
                   <FormLabel mt='80px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Enviar imagem </FormLabel>
                   <InputGroup>
-                      <InputLeftElement onClick={handleImageUpload} cursor='pointer' border='1px solid white' _hover={{color: 'blue.500', borderColor: 'black', transition: '0.1s', borderRadius: '70%'}}>
+                      <InputLeftElement  onClick={handleImageUpload} cursor='pointer' border='1px solid white' _hover={{color: 'blue.500', borderColor: 'black', transition: '0.1s', borderRadius: '70%'}}>
                           <BsCamera size='25px'/>
                       </InputLeftElement>
                             
-                    <Input id='file-input' type='file' display='none' onChange={handleFileChange}></Input>
+                    <Input id='file-input' name='den_img' type='file' display='none' onChange={handleFileChange}></Input>
 
                   <Spacer/> 
                   {carregando ? (
@@ -282,7 +282,16 @@ const Denuncie = () => {
                   </InputGroup>  
                       
                   {/*essa linha de baixo que mostra as imagens dps de enviar */}
-                  {denImg && <img src={denImg} alt="Imagem selecionada" style={{ marginTop: "40px", width: "500px", height: "500px" }} />}
+                  {denImg && (
+                  <Image
+                    src={denImg}
+                    alt="Imagem da denúncia"
+                    maxW="100%" 
+                    h="auto"   
+                    boxShadow='2xl'
+                    borderRadius='10px'
+                  />
+                )}
               </FormControl>
   
           </Flex>

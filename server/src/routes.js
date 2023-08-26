@@ -1,5 +1,6 @@
 const express = require('express'); 
 const multer = require('multer');
+const uploadMiddleware = require('./uploadMiddleware');
 
 
 const controllersAcomp = require('../src/controllers/acompanhamento/index');
@@ -20,7 +21,7 @@ routes.post("/criarUsu", controllersUsu.CriarUsuario);
 
 //denuncia
 routes.get("/", controllersDenuncias.raiz);
-routes.post("/criarDenuncia", controllersDenuncias.criarDenuncia);
+routes.post("/criarDenuncia", uploadMiddleware.single('den_img'), controllersDenuncias.criarDenuncia);
 routes.get("/cardDenuncia", controllersDenuncias.cardDenuncia);
 routes.delete("/deleteDenuncia/:cod", controllersDenuncias.deleteDenuncia);
 routes.put("/updateDenuncia/:cod", controllersDenuncias.updateDenuncia);

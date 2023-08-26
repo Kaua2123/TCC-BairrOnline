@@ -68,8 +68,8 @@ export const SlideDenUsu = ({denuncias}) => {
              nome={denuncia.den_nome} 
              descricao={denuncia.den_desc} 
              data={denuncia.den_data} 
-             bairro={denuncia.den_bairro}
              imagem={denuncia.den_img} 
+             bairro={denuncia.den_bairro}
              denCod={denuncia.den_cod}/>
             </SwiperSlide>
             </WrapItem>

@@ -1,4 +1,9 @@
+const multer = require('multer');
 const knex = require('../../database/banco');
+const upload = require('../../uploadMiddleware');
+
+
+
 
 module.exports = {
     
@@ -13,22 +18,37 @@ module.exports = {
 
     async criarDenuncia(req, res){
         try {
-            // const { den_cod }  = req.body;
+
+            
+            upload.single('den_img')(req, res, async function (err){
+                if (err instanceof multer.MulterError) {
+                    return res.status(400).json({ error: 'Erro ao upar a imagem.' });
+                }
+                else if(err){
+                    return res.status(500).json({ error: 'Erro inesperado.' });
+                }
+            
+
             const { den_nome } = req.body;
             const { den_prazo } = req.body;
             const { den_desc } = req.body;
             const { den_bairro } = req.body;
-            const { den_img } = req.body;
+
             const { denunciante_usuario_usu_cod } = req.body;
 
             const dataAtual = new Date().toISOString();
 
+          
+
+            console.log('Arquivo:', req.file);
+
+            
             await knex('denuncias').insert({
 
                 den_nome,
                 den_desc,
                 den_data: dataAtual,
-                den_img,
+                den_img: req.file,
                 den_bairro,
                 denunciante_usuario_usu_cod,
    
@@ -36,7 +56,7 @@ module.exports = {
 
   
            return res.status(201).json({message: 'Denúncia enviada'});
-        } 
+        })}
         catch (error) {
             console.log(error);
             return res.status(400).json({error: error.message});
@@ -47,7 +67,7 @@ module.exports = {
         try {
             const denuncias = await knex('denuncias').select('*');
 
-         
+            
 
 
             return res.status(200).json(denuncias); //retorna as denuncias

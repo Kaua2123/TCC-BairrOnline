@@ -184,18 +184,20 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
         const closeAlertDialog = () => {
             setIsAlertDialogOpen(false);
         };
+
+        
     
     return(
         
     
             <Card  maxW='sm' w='250px' maxH='lg' h='29em' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
                 <CardBody>
-    
-                 
-                        <Image src={img2} borderRadius='lg' w='20em' />
-                
+
+                        <Image src={imagem} borderRadius='lg' w='20em' />
+
+                            
+
                         <Stack mt='6' spacing='3'>  
-                        
                             <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
                             <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
                             <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
