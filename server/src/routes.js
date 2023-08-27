@@ -15,11 +15,11 @@ const routes = express.Router();
 
 
 //usuario
-
+routes.get("/", controllersUsu.raiz);   
 routes.post("/criarUsu", controllersUsu.CriarUsuario);
 
 //denuncia
-
+routes.get("/", controllersDenuncias.raiz);
 routes.post("/criarDenuncia", controllersDenuncias.criarDenuncia);
 routes.get("/cardDenuncia", controllersDenuncias.cardDenuncia);
 routes.delete("/deleteDenuncia/:cod", controllersDenuncias.deleteDenuncia);
@@ -28,11 +28,11 @@ routes.put("/updateDenuncia/:cod", controllersDenuncias.updateDenuncia);
 
 
 //usuario denunciante
-
+routes.get("/", controllersDenunciante.raiz);
 routes.post("/criarDenunciante", controllersDenunciante.usuDenunciante);
 
 //comentarios
-
+routes.get("/", controllersComen.raiz);
 routes.post("/criarComent", controllersComen.criarComentario);
 routes.get("/cardComent", controllersComen.cardCom);
 routes.delete("deleteComent", controllersComen.deleteComentario);

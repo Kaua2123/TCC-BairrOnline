@@ -41,10 +41,10 @@ module.exports = {
 
                 console.log(req.file);
 
-            if (!req.file) {
-                console.log({error: 'Nenhum arquivo de imagem enviado.'})
-                return res.status(400).json({error: 'Nenhum arquivo de imagem enviado.'})
-            }
+            // if (!req.file) {
+            //     console.log({error: 'Nenhum arquivo de imagem enviado.'})
+            //     return res.status(400).json({error: 'Nenhum arquivo de imagem enviado.'})
+            // }
 
            
       
