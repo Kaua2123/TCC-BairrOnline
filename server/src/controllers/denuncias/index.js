@@ -1,7 +1,18 @@
 const multer = require('multer');
 const knex = require('../../database/banco');
-const upload = require('../../uploadMiddleware');
+const uniqid = require('uniqid');
+const path = require('path');
 
+
+const storage = multer.diskStorage({
+    destination: '../../../imgsDen',    
+    filename: function (req, file, cb) {
+      const arquivoUnico = uniqid() + path.extname(file.originalname);
+      cb(null, arquivoUnico);
+    }
+  });
+  
+const upload = multer({storage});
 
 
 
@@ -18,29 +29,35 @@ module.exports = {
 
     async criarDenuncia(req, res){
         try {
-
-            
-            upload.single('den_img')(req, res, async function (err){
+            upload.single('denImg')(req, res, async function (err){
                 if (err instanceof multer.MulterError) {
+                    console.log(err)
                     return res.status(400).json({ error: 'Erro ao upar a imagem.' });
                 }
                 else if(err){
+                    console.log(err)
                     return res.status(500).json({ error: 'Erro inesperado.' });
                 }
-            
+
+                console.log(req.file);
+
+            if (!req.file) {
+                console.log({error: 'Nenhum arquivo de imagem enviado.'})
+                return res.status(400).json({error: 'Nenhum arquivo de imagem enviado.'})
+            }
+
+           
+      
 
             const { den_nome } = req.body;
             const { den_prazo } = req.body;
             const { den_desc } = req.body;
+            const { den_img } = req.body;
             const { den_bairro } = req.body;
 
             const { denunciante_usuario_usu_cod } = req.body;
 
             const dataAtual = new Date().toISOString();
-
-          
-
-            console.log('Arquivo:', req.file);
 
             
             await knex('denuncias').insert({
@@ -48,7 +65,7 @@ module.exports = {
                 den_nome,
                 den_desc,
                 den_data: dataAtual,
-                den_img: req.file,
+                den_img,
                 den_bairro,
                 denunciante_usuario_usu_cod,
    

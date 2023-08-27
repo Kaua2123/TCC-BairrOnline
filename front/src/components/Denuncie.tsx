@@ -183,7 +183,7 @@ const Denuncie = () => {
 
     
           <Flex flexDirection='column'>
-              <FormControl p='100px'>
+              <FormControl p='100px'  >
                 <FormLabel fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Protocolo da denúncia: </FormLabel>
              
                 <FormLabel mt='30px' fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Título da denúncia:</FormLabel>
@@ -268,7 +268,7 @@ const Denuncie = () => {
                           <BsCamera size='25px'/>
                       </InputLeftElement>
                             
-                    <Input id='file-input' name='den_img' type='file' display='none' onChange={handleFileChange}></Input>
+                    <Input id='file-input' name='denImg' type='file' display='none' onChange={handleFileChange}></Input>
 
                   <Spacer/> 
                   {carregando ? (
