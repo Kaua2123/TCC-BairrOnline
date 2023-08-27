@@ -105,7 +105,7 @@ const Cadastro = () => {
                   <Text fontFamily='BreeSerif-Regular' fontSize='35px' color='#338BB0' m='20px' >Cadastre-se e comece a denunciar!</Text>
                 </Box>
              
-                <Image src={imgFundo} mt='-40px'></Image>
+                <Image src={imgFundo} boxSize={{base: '25em', md: '34em', lg: '47em'}} mt='-40px'></Image>
             </Flex>
             <Flex flexDirection='column' mt='-70px' p='200px' bgColor='gray.100'>
                 <Box h='640px'>

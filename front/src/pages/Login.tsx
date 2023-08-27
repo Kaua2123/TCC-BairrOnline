@@ -56,10 +56,10 @@ const Login = () => {
                   <Text fontFamily='BreeSerif-Regular' fontSize='35px' color='#338BB0' m='20px' >Faça o login!</Text>
                 </Box>
              
-                <Image src={imgFundo} mt='-40px'></Image>
+                <Image src={imgFundo} boxSize={{base: '25em', md: '34em', lg: '47em'}}></Image>
             </Flex>
             <Flex flexDirection='column' mt='-50px' p='200px' bgColor='gray.100'>
-                <Box h='330px'>
+                <Box mt='100px'>
 
                 <FormControl>
                     <FormLabel>Email:</FormLabel>
