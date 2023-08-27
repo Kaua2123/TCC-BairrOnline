@@ -3,7 +3,7 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
     
     import { Reportar } from "./reportar";
     import img2 from '../img/aguaEstancada.png';
-    import {useEffect, useState} from 'react';
+
     
     //icons
     import { TbReportSearch } from 'react-icons/tb'
@@ -13,7 +13,7 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
     import {BsCardText} from 'react-icons/bs';
     
     //react
-    import { Link } from "react-router-dom";
+    import {useEffect, useState} from 'react';
     import React from "react";
     import axios from "axios";
     

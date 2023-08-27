@@ -118,7 +118,7 @@ const Denuncie = (denCod) => {
 
     let file = e.target.files[0];
     console.log(file);
-    
+
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -168,17 +168,7 @@ const Denuncie = (denCod) => {
     }
   }
 
-  //pra pegar a imagem enviada e mostrar
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setDenImg(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  
   
   const theme = extendTheme({
     styles: {
@@ -317,7 +307,6 @@ const Denuncie = (denCod) => {
                   ) : (
                     <Button type='submit' onClick={() => {
                       enviaDen();
-                      uparImagem(denCod);
                     }}  bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: '#DCDCDC'}}>
                     Criar denúncia
                   </Button>

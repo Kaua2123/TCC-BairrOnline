@@ -2,6 +2,7 @@ const multer = require('multer');
 const knex = require('../../database/banco');
 const uniqid = require('uniqid');
 const path = require('path');
+const fs = require('fs');
 
 
 const storage = multer.diskStorage({
@@ -75,8 +76,8 @@ module.exports = {
                 console.log(req.file);
 
                 if(!req.file){
-                    console.log("Arquivo nao enviado:", req.file);
-                    return res.status(500).json({error: 'Arquivo nao enviado'})
+                    console.log("Arquivo não enviado:", req.file);
+                    return res.status(500).json({error: 'Arquivo não enviado'})
                 }
 
             await knex('denuncias').where("den_cod", cod).update({
@@ -90,6 +91,25 @@ module.exports = {
         catch (error) {
             console.log(error);
             return res.status(500).json({ error: 'Erro ao upar a imagem.' });
+        }
+    },
+
+    async retornaImagem(req, res){
+        try {
+            const { filename } = req.params;
+            const imagePath = path.resolve(__dirname, '..', 'imgsDen', filename);
+
+            fs.readFile(imagePath, (err, data) => {
+                if (err){
+                    console.log('Erro ao ler a imagem: ', err);
+                    return res.status(500).json({error: 'Erro ao ler a imagem.'});
+                }
+                res.setHeader('Content-Type', 'image/jpeg');
+                res.end(data);
+            })
+            
+        } catch (error) {
+            return res.status(500).json({error: error.message});
         }
     },
 
