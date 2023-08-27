@@ -46,9 +46,16 @@ const HomeUsuario = () => {
   async function getDenuncia () { //pega os dados da denuncia
    await axios.get('http://localhost:3344/cardDenuncia')
       .then(response => {
-        setDenuncias(response.data);
+        const denunciaComImg = response.data.map(denuncia => {
+          return {
+            ...denuncia,
+            imagem: `http://localhost:3344/retornaImagem/${denuncia.imagem}`
+          }
+        });
+        
+        setDenuncias(denunciaComImg);
 
-        if(response.data.length > 0){
+        if(denunciaComImg.length > 0){
           setTemDenuncia(true);
         }
       })

@@ -96,11 +96,17 @@ module.exports = {
 
     async retornaImagem(req, res){
         try {
-            const  filename = req.params.filename;
-            const imagePath = path.join(__dirname, '..', '..',  'imgsDen', filename);
+            const { filename } = req.params;
+            const imagePath = path.resolve(__dirname, '..', 'imgsDen', filename);
 
-            const imageData = fs.readFileSync(imagePath);
-            res.send(imageData);
+            fs.readFile(imagePath, (err, data) => {
+                if (err){
+                    console.log('Erro ao ler a imagem: ', err);
+                    return res.status(500).json({error: 'Erro ao ler a imagem.'});
+                }
+                res.setHeader('Content-Type', 'image/jpeg');
+                res.end(data);
+            })
             
         } catch (error) {
             return res.status(500).json({error: error.message});
@@ -110,6 +116,9 @@ module.exports = {
     async cardDenuncia(req, res){ // get da denuncia
         try {
             const denuncias = await knex('denuncias').select('*');
+
+            
+
 
             return res.status(200).json(denuncias); //retorna as denuncias
         } 
