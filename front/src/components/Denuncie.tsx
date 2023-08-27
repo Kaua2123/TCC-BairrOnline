@@ -36,7 +36,7 @@ const opçoesDeBairros = bairros.map((bairro) => ({
   label: bairro
 }))
 
-const Denuncie = () => {
+const Denuncie = (denCod) => {
 
   const [denImg, setDenImg] = useState('');  
   const [denNome, setDenNome] = useState('');
@@ -76,7 +76,6 @@ const Denuncie = () => {
       // den_prazo: denPrazo,
       den_desc: denDesc,
       den_data: new Date(),
-      den_img: denImg,
       den_bairro: denBairro, 
       denunciante_usuario_usu_cod: fixedUsuCod                 
   }).then(response => {
@@ -115,7 +114,51 @@ const Denuncie = () => {
   });
   }
 
+  async function uparImagem(e){
 
+    let file = e.target.files[0];
+    console.log(file);
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setDenImg(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    if(!file){
+      console.log('nenhuma imagem selecionada.')
+      return;
+    }
+
+   if(file){
+    const formData = new FormData();
+    formData.append("selectedImage", file);
+
+    await axios.post(`http://localhost:3344/uparImagem/${denCod}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        
+      },
+      params: {
+        den_cod: denCod,
+      },
+    })
+    .then(response => {
+      console.log('Imagem upada com sucesso.')
+      
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+  }
+  else{
+    console.log('File não retornou nada.')
+  }
+
+
+   }
 
   //pra upar a imagem com click no iconezinho da camera
   const handleImageUpload = () => {
@@ -132,13 +175,11 @@ const Denuncie = () => {
       const reader = new FileReader();
       reader.onloadend = () => {
         setDenImg(reader.result);
-
-    
-      }
+      };
       reader.readAsDataURL(file);
     }
-  }
-
+  };
+  
   const theme = extendTheme({
     styles: {
       global: () => ({
@@ -268,13 +309,16 @@ const Denuncie = () => {
                           <BsCamera size='25px'/>
                       </InputLeftElement>
                             
-                    <Input id='file-input' name='denImg' type='file' display='none' onChange={handleFileChange}></Input>
+                    <Input id='file-input' name='denImg' type='file' display='none' onChange={uparImagem}></Input>
 
                   <Spacer/> 
                   {carregando ? (
                     <Spinner size='xl' color='#338BB0'/>
                   ) : (
-                    <Button type='submit' onClick={enviaDen}  bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: '#DCDCDC'}}>
+                    <Button type='submit' onClick={() => {
+                      enviaDen();
+                      uparImagem(denCod);
+                    }}  bgColor='#338BB0' color='white' _hover={{color: '#338BB0', bgColor: '#DCDCDC'}}>
                     Criar denúncia
                   </Button>
                   )}

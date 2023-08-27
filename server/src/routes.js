@@ -24,7 +24,7 @@ routes.post("/criarDenuncia", controllersDenuncias.criarDenuncia);
 routes.get("/cardDenuncia", controllersDenuncias.cardDenuncia);
 routes.delete("/deleteDenuncia/:cod", controllersDenuncias.deleteDenuncia);
 routes.put("/updateDenuncia/:cod", controllersDenuncias.updateDenuncia);
- 
+routes.post("/uparImagem/:cod", controllersDenuncias.uparImagem);
 
 
 //usuario denunciante

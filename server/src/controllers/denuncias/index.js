@@ -5,7 +5,7 @@ const path = require('path');
 
 
 const storage = multer.diskStorage({
-    destination: '../../../imgsDen',    
+    destination: './imgsDen',    
     filename: function (req, file, cb) {
       const arquivoUnico = uniqid() + path.extname(file.originalname);
       cb(null, arquivoUnico);
@@ -29,26 +29,6 @@ module.exports = {
 
     async criarDenuncia(req, res){
         try {
-            upload.single('denImg')(req, res, async function (err){
-                if (err instanceof multer.MulterError) {
-                    console.log(err)
-                    return res.status(400).json({ error: 'Erro ao upar a imagem.' });
-                }
-                else if(err){
-                    console.log(err)
-                    return res.status(500).json({ error: 'Erro inesperado.' });
-                }
-
-                console.log(req.file);
-
-            // if (!req.file) {
-            //     console.log({error: 'Nenhum arquivo de imagem enviado.'})
-            //     return res.status(400).json({error: 'Nenhum arquivo de imagem enviado.'})
-            // }
-
-           
-      
-
             const { den_nome } = req.body;
             const { den_prazo } = req.body;
             const { den_desc } = req.body;
@@ -65,7 +45,6 @@ module.exports = {
                 den_nome,
                 den_desc,
                 den_data: dataAtual,
-                den_img,
                 den_bairro,
                 denunciante_usuario_usu_cod,
    
@@ -73,10 +52,44 @@ module.exports = {
 
   
            return res.status(201).json({message: 'Denúncia enviada'});
-        })}
+        }
         catch (error) {
             console.log(error);
             return res.status(400).json({error: error.message});
+        }
+    },
+
+    async uparImagem(req, res){
+        try {
+            const {cod} = req.params;
+            upload.single('selectedImage')(req, res, async function (err){
+                if (err instanceof multer.MulterError) {
+                    console.log(err)
+                    return res.status(400).json({ error: 'Erro ao upar a imagem.' });
+                }
+                else if(err){
+                    console.log(err)
+                    return res.status(500).json({ error: 'Erro inesperado.' });
+                }
+
+                console.log(req.file);
+
+                if(!req.file){
+                    console.log("Arquivo nao enviado:", req.file);
+                    return res.status(500).json({error: 'Arquivo nao enviado'})
+                }
+
+            await knex('denuncias').where("den_cod", cod).update({
+                den_img: req.file.filename,
+            });
+
+            return res.status(200).json({message: 'Arquivo recebido'});
+        });
+
+        } 
+        catch (error) {
+            console.log(error);
+            return res.status(500).json({ error: 'Erro ao upar a imagem.' });
         }
     },
 
