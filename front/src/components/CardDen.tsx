@@ -233,7 +233,7 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
                             <Flex direction={editando ? 'column' : 'row'} justify={editando ? 'space-between' : 'center'} align={editando ? 'flex-start' : 'normal'} >
                                {!editando && (
                                  <Center>
-                                 <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={undefined} imagem={imagem} bairro={bairro} />
+                                 <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={denCod} imagem={imagem} bairro={bairro} />
                              </Center>
                                )}
     
@@ -241,7 +241,7 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
                             {editando ? (
                                 <Flex justify='space-between' w='100%'>
                                     <Flex flexDirection='column' w='45%' p={10} ml='30px'>
-                                        <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={undefined} imagem={imagem} bairro={bairro} />
+                                        <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={denCod} imagem={imagem} bairro={bairro} />
                                      </Flex>
                                      <Flex flexDirection='column' w='45%' p={10}>
                                         <Text fontSize='20px'>Altere aqui o título e a descrição de sua denúncia. Por motivos de 
