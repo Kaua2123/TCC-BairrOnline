@@ -7,6 +7,7 @@ import { Button, ButtonGroup } from '@chakra-ui/react';
 import {useState} from 'react';
 
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 //icones
 import {AiOutlineUser} from 'react-icons/ai';
@@ -197,7 +198,9 @@ const Cadastro = () => {
 <br></br>
                     <Button colorScheme='blue' onClick={cadastraUsuario}>Cadastrar</Button>
 
-                    
+                    <Box mt='20px'>
+                    <Link to='/Login'><Text color='blue.400'>Já possui uma conta? Clique para entrar</Text></Link>
+                    </Box>              
 
                 </Box>
             </Flex>
