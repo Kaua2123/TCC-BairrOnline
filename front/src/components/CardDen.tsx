@@ -117,6 +117,7 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
         const [tituloEditado, setTituloEditado] = useState(nome);
         const [descricaoEditada, setDescricaoEditada] = useState(descricao);
         const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
+        const [img, setImg] = useState("");
         const cancelRef = React.useRef();
         const toast = useToast();
     
@@ -174,6 +175,52 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
             })
             
         }
+
+        // useEffect(() => {
+        //     const retornaImg = async () => {
+        //         console.log('foi');
+        //         try {
+        //             const imgDen = imagem;
+        //             console.log(imgDen);
+    
+        //             if (imgDen) {
+        //                 const response = await axios.post(
+        //                     `http://localhost:3344/retornaImagem/${imgDen}`,
+        //                     {
+        //                         filename: imgDen,
+        //                     },
+        //                     {
+        //                         responseType: 'arraybuffer',
+        //                     }
+        //                 );
+    
+        //                 const arrayBufferView = new Uint8Array(response.data);
+        //                 const blob = new Blob([arrayBufferView], { type: 'image/jpeg' });
+    
+        //                 const reader = new FileReader();
+        //                 reader.readAsDataURL(blob);
+        //                 reader.onloadend = () => {
+        //                     setImg(reader.result) 
+        //                     console.log(response.data);
+        //                     console.log(img);
+        //                 };
+        //                 console.log('Funcionando');
+                    
+        //             } else {
+        //                 console.log('Nenhuma imagem enviada');
+                        
+        //             }
+        //         } catch (error) {
+        //             console.error('Erro ao retornar imagem:', error);
+        //         }  
+        //     };
+        //     if (img) {
+        //         console.log('Imagem selecionada');
+    
+        //     } else {
+        //         retornaImg();
+        //     }
+        // }, [imagem]);
     
     
         
@@ -233,7 +280,7 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
                             <Flex direction={editando ? 'column' : 'row'} justify={editando ? 'space-between' : 'center'} align={editando ? 'flex-start' : 'normal'} >
                                {!editando && (
                                  <Center>
-                                 <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={undefined} imagem={imagem} bairro={bairro} />
+                                 <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={denCod} imagem={imagem} bairro={bairro} />
                              </Center>
                                )}
     
