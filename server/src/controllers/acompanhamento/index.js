@@ -1,4 +1,4 @@
-const knex = require('../../database')
+const knex = require('../../database/banco')
  
 module.exports = {
     async criarAcompanhamento(req, res) {
