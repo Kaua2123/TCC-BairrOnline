@@ -11,12 +11,12 @@ import aguaParada from '../img/aguaParada.jpg'
 
 //chakra
 import { ChakraProvider, extendTheme, Image, Flex, Box, Button, Text,  FormControl,
-FormLabel, Spacer, Select,  Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, Card, CardBody, CardFooter, CardHeader, Divider, Heading} from '@chakra-ui/react';
+FormLabel, Spacer, Select,  Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, Card, CardBody, CardFooter, CardHeader, Divider, Heading, Center} from '@chakra-ui/react';
 
 
 
 //react
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRef } from "react";
 import axios from 'axios';
 
@@ -26,6 +26,7 @@ import { HiOutlineClipboardDocumentList } from "react-icons/hi2"
 import { MdOutlineReportProblem } from 'react-icons/md';
 import Comentarios from './Comentarios';
 import { Reportar } from './reportar';
+import CardGrande from './CardGrande';
 
 const bairros = ['Selecione dentre as opções', 'Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
 'Brasilândia', 'Caieira', 'Casa de Pedra', 'Conforto', 'Coqueiros', 'Cruzeiro', 'Dom Bosco', 'Eucaliptal',
@@ -42,6 +43,7 @@ const opçoesDeBairros = bairros.map((bairro, index) => ({
 
 const Ver = () => {
 
+  const [denuncias, setDenuncias] = useState([]);
   const [denImg, setDenImg] = useState('');  
   const [denNome, setDenNome] = useState('');
   const [denPrazo, setDenPrazo] = useState('');
@@ -49,10 +51,19 @@ const Ver = () => {
   const [bairroCod, setBairroCod] = useState('');
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState(false);
+
   const toast = useToast();
   
 
-                        
+  useEffect(() => {
+    axios.get('http://localhost:3344/cardDenuncia')
+    .then(response => {
+      setDenuncias(response.data);
+    })
+    .catch(error => {
+      console.error('Erro ao buscar denuncias', error);
+    });
+  }, []);
 
   const theme = extendTheme({
     styles: {
@@ -95,53 +106,37 @@ const Ver = () => {
         </Flex>
    
         <Box bgColor={'white'}>
-        <Flex justifyContent='space-between'>
+
         
-    
-          <Flex flexDirection='column'>
-          <Card m='20px'  fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '700px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> 
-                   {/* Card componente do chakra que cria um card  */}
-                     <CardHeader> {/* header do card, usado pra por titulo  */}
-                         <Heading borderRadius='7px' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
-                     </CardHeader>
-                         <CardBody> {/* corpo do card */}
-                             <Box>
-                                <Image src={aguaParada}  w='100%' h='250px'  boxShadow='lg'></Image>
-                             </Box>
-                                
-                        
-                         </CardBody>
-                              
-                         <Divider/> {/* divisor, geralmente é uma linha */}
-                              
-                           <CardFooter w={{base: '640px', md: '3000px', lg: '700px'}} h={{base: '200px', md: '90px', lg: '80px'}}> {/* rodapé do card  */}
-                               <Button 
-                           leftIcon={<BsChatSquareText/>}
-                           bgColor='#338BB0'
-                           color='white'
-                           _hover={{background: '#fff', color:'#338BB0'}}
-                           fontWeight='normal'
-                           w={{base: '240px', md: '125px', lg: '180px'}}
-                           fontSize={{base: '11px', md: '12px', lg: '16px'}}
-                           >
-                            
-                               </Button>
-                               <Button variant='ghost'   w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
-                                  
-                               </Button>
-                               <Box ml={{ lg: '80px'}} fontSize={{base: '12px', md: '14px', lg: '18px'}} mr={{base: '400px', md: '2600px', lg: '0px'}}  fontWeight='normal'>
-                                 Água estancada en el jd cidade do aco
-                              </Box>
-                           </CardFooter>
-                   </Card>
+    <Center>
+          <Flex >
+          {denuncias.map((denuncia, index) =>(
+            <CardGrande key={index} denuncia={denuncia}/>
+          ))}
   
   
           </Flex>
-          <Flex flexDirection='column'>
-           
+          </Center>
+            <Divider/>
+            <Flex justify='space-between'>
+              <Flex flexDirection='column'>
+
+                <Box p='120px' >
+                <Text mt='-60px' fontFamily='BreeSerif-Regular' fontWeight='bold' fontSize={{base: '12px', md: '14px', lg: '18px'}}>@Schweinsteger</Text>
+                <Text mt='50px' fontSize={{base: '12px', md: '14px', lg: '18px'}}>Stehendes Wasser in der Nähe von JD Cidade do Aco, ich kann
+        es nicht mehr ertragen! Es blockiert den größten Teil des 
+        Durchgangs. 
+</Text>
+                </Box>
+              </Flex>
+
+                <Flex flexDirection='column'>
+
+                <Box>
+                <Text mt={{base:'-42px', md:'-46px' , lg:'-60px'}} p='100px' color='#338BB0'   fontSize={{ base:'16px', md:'20px', lg: '35px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' mr='150px'>Comentários</Text>
+                </Box>
+              </Flex>
             </Flex>
-        </Flex>
-            
         </Box>
           </Box>
 
