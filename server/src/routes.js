@@ -35,11 +35,8 @@ routes.post("/criarDenunciante", controllersDenunciante.usuDenunciante);
 //comentarios
 routes.get("/", controllersComen.raiz);
 routes.post("/criarComent", controllersComen.criarComentario);
-routes.get("/cardComent", controllersComen.cardCom);
 routes.delete("deleteComent", controllersComen.deleteComentario);
 routes.put("updateComent", controllersComen.updateComentario);
+routes.get("/buscarComentario", controllersComen.buscarComentario);
 
 module.exports = routes;
- 
-
-

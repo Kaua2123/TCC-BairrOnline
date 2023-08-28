@@ -23,7 +23,7 @@ module.exports = {
             await knex('comentarios').insert({
 
                 com_conteudo,
-                com_data: new Date(),
+                com_data,
                 com_editado_por,
                 com_editado_em,
                 denunciante_usuario_usu_cod,
@@ -41,16 +41,6 @@ module.exports = {
         }
     },
 
-    async cardCom(req, res){ // get do comentario
-        try {
-            const comentarios = await knex('comentarios').select('*');
-
-            return res.status(200).json(comentarios); //retorna os comentarios
-        } 
-        catch (error) {
-            return res.status(400).json({error: 'Erro ao retornar os comentarios.'});
-        }
-    },
 
     async deleteComentario(req, res){ //deleta os comentarios pelo codigo
         try {
@@ -91,5 +81,18 @@ module.exports = {
         catch (error) {
             return res.status(400).json({error: error.message});
         }
-    }
+    },
+
+    async buscarComentario(req, res){ // get do comentário
+        try {
+            const comentarios = await knex('comentarios').select('*');
+
+
+            return res.status(200).json(comentarios); //retorna os comentarios
+        } 
+        catch (error) {
+            return res.status(400).json({error: 'Erro ao criar o comentário.'});
+        }
+    },
+
 }

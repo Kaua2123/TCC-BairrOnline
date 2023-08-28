@@ -1,22 +1,30 @@
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
 
-interface CommentData {
-  author: string;
-  text: string;
-}
+const CommentList = () => {
+  const [comments, setComments] = useState([]);
 
-interface CommentListProps {
-  comments: CommentData[];
-}
+  useEffect(() => {
+    // Faz a requisição para buscar os comentários
+    axios.get('http://localhost:3344/buscarComentario') 
+      .then(response => {
+        setComments(response.data);
+      })
+      .catch(error => {
+        console.error('Erro ao buscar comentários:', error);
+      });
+  }, []);
 
-const CommentList: React.FC<CommentListProps> = ({ comments }) => {
   return (
-    <div className="CommentList">
-      {comments.map((comment, index) => (
-        <div key={index}>
-          <p>Author: {comment.author}</p>
-          <p>Text: {comment.text}</p>
-        </div>
-      ))}
+    <div>
+      <ul>
+        {comments.map(comment => (
+          <li key={comment.com_id}>
+            <strong>@{comment.denunciante_usuario_usu_cod}</strong>
+            <p>{comment.com_conteudo}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
