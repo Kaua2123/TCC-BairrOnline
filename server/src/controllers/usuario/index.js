@@ -1,4 +1,5 @@
 const knex = require('../../database/banco');
+const bcrypt = require('bcrypt');
 
 
 module.exports = {
@@ -20,12 +21,13 @@ module.exports = {
             const { usu_cep } = req.body;
             const { usu_tipo } = req.body;
             
+            const senhaCriptog = await bcrypt.hash(usu_senha, 10);
 
             const [usu_cod] = await knex('usuario').insert({
               
                 usu_nome,
                 usu_email,
-                usu_senha,
+                usu_senha: senhaCriptog,
                 usu_tel,
                 usu_img,
                 usu_cep,

@@ -23,7 +23,7 @@ module.exports = {
             await knex('comentarios').insert({
 
                 com_conteudo,
-                com_data,
+                com_data: new Date(),
                 com_editado_por,
                 com_editado_em,
                 denunciante_usuario_usu_cod,

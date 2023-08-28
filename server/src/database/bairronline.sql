@@ -49,12 +49,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `bairronline`.`orgao publico/instituiçao`
+-- Table `bairronline`.`instituicao`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bairronline`.`instituicao` (
   `usuario_usu_cod` INT NOT NULL,
   PRIMARY KEY (`usuario_usu_cod`),
-  CONSTRAINT `fk_orgao publico/instituiçao_usuario1`
+  CONSTRAINT `fk_instituicao_usuario1`
     FOREIGN KEY (`usuario_usu_cod`)
     REFERENCES `bairronline`.`usuario` (`usu_cod`)
     ON DELETE NO ACTION
@@ -156,14 +156,14 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`acompanhamento` (
   `aco_num` INT NOT NULL AUTO_INCREMENT,
   `aco_data` DATE NOT NULL,
   `aco_progresso` DATE NULL,
-  `orgao publico/instituiçao_usuario_usu_cod` INT NOT NULL,
+  `instituicao_usuario_usu_cod` INT NOT NULL,
   `denuncias_den_cod` INT NOT NULL,
   PRIMARY KEY (`aco_num`),
-  INDEX `fk_acompanhamento_orgao publico/instituiçao1_idx` (`orgao publico/instituiçao_usuario_usu_cod` ASC),
+  INDEX `fk_acompanhamento_instituicao1_idx` (`instituicao_usuario_usu_cod` ASC),
   INDEX `fk_acompanhamento_denuncias1_idx` (`denuncias_den_cod` ASC),
-  CONSTRAINT `fk_acompanhamento_orgao publico/instituiçao1`
-    FOREIGN KEY (`orgao publico/instituiçao_usuario_usu_cod`)
-    REFERENCES `bairronline`.`orgao publico/instituiçao` (`usuario_usu_cod`)
+  CONSTRAINT `fk_acompanhamento_instituicao1`
+    FOREIGN KEY (`instituicao_usuario_usu_cod`)
+    REFERENCES `bairronline`.`instituicao` (`usuario_usu_cod`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_acompanhamento_denuncias1`
