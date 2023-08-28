@@ -39,4 +39,8 @@ routes.delete("deleteComent", controllersComen.deleteComentario);
 routes.put("updateComent", controllersComen.updateComentario);
 routes.get("/buscarComentario", controllersComen.buscarComentario);
 
+//acompanhamento
+routes.post("/criarAcompanhamento", controllersAcomp.criarAcompanhamento);
+routes.get("getAcompanhamento", controllersAcomp.getAcompanhamentos);
+
 module.exports = routes;
