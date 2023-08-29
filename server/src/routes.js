@@ -17,6 +17,7 @@ const routes = express.Router();
 //usuario
 routes.get("/", controllersUsu.raiz);   
 routes.post("/criarUsu", controllersUsu.CriarUsuario);
+routes.post("/logarUsu", controllersUsu.autenticaUsuario);
 
 //denuncia
 routes.get("/", controllersDenuncias.raiz);

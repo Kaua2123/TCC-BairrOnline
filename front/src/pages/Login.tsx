@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ChakraProvider, Box, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement} from '@chakra-ui/react';
+import { ChakraProvider, Box, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast} from '@chakra-ui/react';
 
 import imgFundo from '../img/imgfundo.png';
 
@@ -36,12 +36,41 @@ const Login = () => {
     const [show, setShow] = useState(false);
     const [usuEmail, setUsuEmail] = useState("");
     const [usuSenha, setUsuSenha] = useState("");
+    const toast = useToast();
 
     const logarUsuario = async () => {
 
-      // if(usuEmail === "" || usuSenha === "")
+      axios.post('http://localhost:3344/logarUsu', {// para logar o usuario
+        usu_email: usuEmail, 
+        usu_senha: usuSenha
+      })
+      .then((response) => {
+        console.log('Usuário autenticado, login bem sucedido.')
+        console.log(response.data);
 
-      axios.get() // para logar o usuario
+        if(response){
+          toast({
+            title: 'Login bem sucedido.',
+            description: 'Você foi autenticado.',
+            status: 'success',
+            duration: 4000,
+            isClosable: true,
+          })
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+
+        if(error){
+          toast({
+            title: 'Erro: Login não sucedido',
+            description: 'Credenciais incorretas',
+            status: 'error',
+            duration: 4000,
+            isClosable: true
+          })
+        }
+      })
       
     }
 
