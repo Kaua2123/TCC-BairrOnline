@@ -1,6 +1,7 @@
 const knex = require('../../database/banco');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const chaveJWT = 'jwtCHAVE';
 
 
 module.exports = {
@@ -50,7 +51,7 @@ module.exports = {
         }
     },
     
-    async autenticaUsuario(req, res){ //login, autentica usuários
+    async logarUsuario(req, res){ //login, autentica usuários
         try {
 
             const { usu_email } = req.body;
@@ -59,22 +60,26 @@ module.exports = {
             const usuario = await knex('usuario').where('usu_email', usu_email); //consulta o banco
 
             if (usuario.length > 0){
-                const senhaCorrespondente = await bcrypt.compare(usu_senha, usuario[0].usu_senha);
 
-                if (senhaCorrespondente) {
+                const senha = usu_senha;
+                const senhaCorrespondente = await bcrypt.compare(usu_senha, senha);
+
+              
                     //senha válida, logo irá gerar um token JWT.
-                    const token = jwt.sign({ userId: usuario[0].usu_cod}, 'jwtCHAVE', {expiresIn: '1h'});
 
-                    return res.status(200).json({token: token, message: 'Login sucedido'})
-                } else {
-                    return res.status(401).json({ message: 'Credenciais incorretas' });
-                }
+                    const token = jwt.sign({usu_cod: usuario[0].usu_cod}, chaveJWT, {expiresIn: '1h'});
+                    console.log(token);
+                    return res.status(200).json({message: 'Login sucedido', auth: true, token: token});
+
+        
+             
 
             } else {
-                return res.status(401).json({ message: 'Credenciais incorretas' });
+                return res.status(401).json({ message: 'Não há usuários cadastrados.' });
             }
           
         } catch (error) {
+            console.error(error);
             return res.status(500).json({ error: error.message });
         }
     }
