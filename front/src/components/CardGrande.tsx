@@ -31,7 +31,7 @@ const CardGrande = ({denuncia}) => {
 
     return(
         <Center>
-        <Card m='20px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '800px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> 
+        <Card m='20px' mb='250px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '800px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> 
         {/* Card componente do chakra que cria um card  */}
           <CardHeader> {/* header do card, usado pra por titulo  */}
               <Heading w={{base: '220px', md: '380px', lg: '100%'}} 
@@ -53,14 +53,17 @@ const CardGrande = ({denuncia}) => {
               <Divider/> {/* divisor, geralmente é uma linha */}
               
                 <CardFooter w={{base: '640px', md: '3000px', lg: '700px'}} h={{base: '200px', md: '90px', lg: '80px'}}> {/* rodapé do card  */}
-                    
-                    <Button variant='ghost' ml='600px' w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
+                   
+                    <Button variant='ghost' ml='700px' w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
                         <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
                     </Button>
                 </CardFooter>
-                <Box>
-                  
-                </Box>
+                
+                <Box p='70px' mt='-40px' ml='-70'>
+                    <Text  fontFamily='BreeSerif-Regular' fontWeight='bold' fontSize={{base: '12px', md: '14px', lg: '18px'}}>@{denuncia.denunciante_usuario_usu_cod}</Text>
+                    <Text mt='10px' fontSize={{base: '12px', md: '14px', lg: '16px'}}>{denuncia.den_desc}</Text>
+                    </Box>
+                
         </Card>
         </Center>
     )

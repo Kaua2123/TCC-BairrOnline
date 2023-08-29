@@ -109,25 +109,20 @@ const Ver = () => {
 
         
     <Center>
-          <Flex >
+          <Flex flexDirection='column'>
           {denuncias.map((denuncia, index) =>(
             <CardGrande key={index} denuncia={denuncia}/>
           ))}
   
   
-          </Flex>
+  </Flex>
           </Center>
+          
             <Divider/>
             <Flex justify='space-between'>
               <Flex flexDirection='column'>
 
-                <Box p='120px' >
-                <Text mt='-60px' fontFamily='BreeSerif-Regular' fontWeight='bold' fontSize={{base: '12px', md: '14px', lg: '18px'}}>@Schweinsteger</Text>
-                <Text mt='50px' fontSize={{base: '12px', md: '14px', lg: '18px'}}>Stehendes Wasser in der Nähe von JD Cidade do Aco, ich kann
-        es nicht mehr ertragen! Es blockiert den größten Teil des 
-        Durchgangs. 
-</Text>
-                </Box>
+              
               </Flex>
 
                 <Flex flexDirection='column'>
