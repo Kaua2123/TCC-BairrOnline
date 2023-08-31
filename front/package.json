@@ -20,6 +20,8 @@
     "date-fns": "^2.30.0",
     "fa-icons": "^0.2.0",
     "framer-motion": "^10.12.22",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^3.1.2",
     "nanoid": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -32,6 +34,7 @@
     "swiper": "^10.1.0"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@types/react-router-hash-link": "^2.4.6",

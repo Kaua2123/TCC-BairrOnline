@@ -65,6 +65,8 @@ module.exports = {
                     console.log('Credenciais corretas');
                     const token = jwt.sign({usu_cod: usuario[0].usu_cod}, process.env.CHAVE_JWT, {expiresIn: '1h'});
                     console.log(token);
+
+                    
                     return res.status(200).json({message: 'Login sucedido', auth: true, token: token});
 
                 } else {

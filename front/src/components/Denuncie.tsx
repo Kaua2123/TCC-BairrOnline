@@ -17,7 +17,11 @@
   //react
   import { useState } from "react";
   import { useRef } from "react";
+
+
+  //bibliotecas
   import axios from 'axios';
+  import jwt_decode from 'jwt-decode';
 
   //react icons
   import { BsCardText, BsCamera, BsListUl, BsCalendar3} from "react-icons/bs"
@@ -43,11 +47,12 @@
     const [denPrazo, setDenPrazo] = useState('');
     const [denDesc, setDenDesc] = useState('');
     const [denBairro, setDenBairro] = useState('');
+    const [usuCod, setUsuCod] = useState('');
     const [carregando, setCarregando] = useState(false);
     const [erro, setErro] = useState(false);
     const toast = useToast();
     
-    const fixedUsuCod = 1; //temporario. eqnuanto n tiver cadastro funcioanndo
+     //temporario. eqnuanto n tiver cadastro funcioanndo
                           
     
     const enviaDen = async () => {
@@ -69,7 +74,23 @@
         return;
       
       }
-      
+
+      const token = localStorage.getItem('token');  
+      if(!token){
+        toast({
+          title: 'Usuário não autenticado',
+          description: 'Logue para realizar a denúncia.',
+          status: 'error',
+          duration: 4000,
+          isClosable: true
+        })
+        setErro(true);
+        setCarregando(false);
+        return;
+      }
+
+      const decodificaToken: any = jwt_decode(token);
+      setUsuCod(decodificaToken.usu_cod)
 
       axios.post('http://localhost:3344/criarDenuncia', {                       
         den_nome: denNome,                                
@@ -77,7 +98,7 @@
         den_desc: denDesc,
         den_data: new Date(),
         den_bairro: denBairro, 
-        denunciante_usuario_usu_cod: fixedUsuCod                 
+        usuario_usu_cod: usuCod            
     }).then(response => {
         console.log('Denúncia postada');
         console.log(response.data);

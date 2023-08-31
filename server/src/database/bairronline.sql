@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`usuario` (
   `usu_cod` INT NOT NULL AUTO_INCREMENT,
   `usu_nome` VARCHAR(45) NOT NULL,
   `usu_email` VARCHAR(45) NOT NULL,
-  `usu_senha` VARCHAR(45) NOT NULL,
+  `usu_senha` VARCHAR(64) NOT NULL,
   `usu_tel` VARCHAR(20) NOT NULL,
   `usu_img` BLOB(16777215) NOT NULL,
   `usu_cep` VARCHAR(45) NOT NULL,

@@ -47,6 +47,8 @@ const Login = () => {
       .then((response) => {
         console.log('Usuário autenticado, login bem sucedido.')
         console.log(response.data);
+        
+        const token = response.data.token;
 
         if(response){
           toast({
@@ -57,7 +59,10 @@ const Login = () => {
             isClosable: true,
           })
         }
+
+        localStorage.setItem('token', token);
       })
+
       .catch((error) => {
         console.error(error);
 
