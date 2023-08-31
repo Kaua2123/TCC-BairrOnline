@@ -85,8 +85,8 @@ const Cadastro = () => {
       console.error(error);
       if(error){
         toast({
-          title:"Erro: Você nâo foi cadastrado",
-          description: "Erro nas credenciais ou algum campo vazio. Tente novamente.",
+          title:"Erro: Você não foi cadastrado",
+          description: "Email já utilizado. Mude e tente novamente",
           status:"error",
           duration: 4000,
           isClosable: false,

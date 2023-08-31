@@ -24,6 +24,11 @@ module.exports = {
             
             const senhaCriptog = await bcrypt.hash(usu_senha, 10);
 
+            const usuarioExistente = await knex('usuario').where('usu_email', usu_email).first();
+            if(usuarioExistente){
+                return res.status(400).json({error: 'Essa conta já existe.'})
+            }
+
             await knex('usuario').insert({
               
                 usu_nome,
