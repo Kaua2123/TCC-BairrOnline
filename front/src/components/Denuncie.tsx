@@ -310,15 +310,14 @@
                         <InputLeftElement>
                             <SiOpenstreetmap size='25px'/>
                         </InputLeftElement>
+
                         <Select
-                        value={denProblema}
-                        onChange={(e) => setDenProblema(e.target.value)}
-                        border='1px solid black' 
-                        w={{base:'220px', md:'280px', lg: '340px'}} 
-                        resize='vertical' 
-                          
-                        pl='2.5rem' 
-                        _hover={{border: '1px solid #A9A9A9	'}}> 
+                          value={denProblema}
+                          onChange={(e) => setDenProblema(e.target.value)} 
+                          border='1px solid black' 
+                          w={{base:'220px', md:'280px', lg: '340px'}} 
+                          _hover={{border: '1px solid #A9A9A9	'}} 
+                          textAlign='center'> 
                          <option value=''></option>
                           {opçoesDeProblemas.map((problema) => (
                             <option key={problema.value} value={problema.value}>
