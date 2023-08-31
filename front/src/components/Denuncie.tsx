@@ -25,6 +25,7 @@
 
   //react icons
   import { BsCardText, BsCamera, BsListUl, BsCalendar3} from "react-icons/bs"
+  import {SiOpenstreetmap} from 'react-icons/si';
   import { HiOutlineClipboardDocumentList } from "react-icons/hi2"
 
   const bairros = [ 'Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
@@ -35,9 +36,16 @@
       'Santa Rita do Zarur', 'Santo Agostinho', 'São Cristóvão', 'São Geraldo', 'São João', 'São Luiz', 'Sessenta', 
     'Siderópolis', 'Três Poços', 'Vila Americana', 'Vila Mury', 'Vila Rica', 'Vila Santa Cecília', 'Voldac'];
 
+  const problemas = ['Falta de estrutura', 'Poluição', 'Falta de recursos públicos', 'Desmatamento']
+
   const opçoesDeBairros = bairros.map((bairro) => ({
     value: bairro,
     label: bairro
+  }))
+
+  const opçoesDeProblemas = problemas.map((problema) => ({
+    value: problema,
+    label: problema
   }))
 
   const Denuncie = (denCod) => {
@@ -47,6 +55,7 @@
     const [denPrazo, setDenPrazo] = useState('');
     const [denDesc, setDenDesc] = useState('');
     const [denBairro, setDenBairro] = useState('');
+    const [denProblema, setDenProblema] = useState('');
     const [usuCod, setUsuCod] = useState('');
     const [carregando, setCarregando] = useState(false);
     const [erro, setErro] = useState(false);
@@ -89,16 +98,17 @@
         return;
       }
 
-      const decodificaToken: any = jwt_decode(token);
-      setUsuCod(decodificaToken.usu_cod)
+      const decodificaToken: any = await jwt_decode(token);
 
+
+    
       axios.post('http://localhost:3344/criarDenuncia', {                       
         den_nome: denNome,                                
-        // den_prazo: denPrazo,
         den_desc: denDesc,
         den_data: new Date(),
         den_bairro: denBairro, 
-        usuario_usu_cod: usuCod            
+        den_problema: denProblema,
+        usuario_usu_cod: decodificaToken.usu_cod            
     }).then(response => {
         console.log('Denúncia postada');
         console.log(response.data);
@@ -293,26 +303,31 @@
                         _hover={{border: '1px solid #A9A9A9	'}}>  
                         </Textarea>
                     </InputGroup>  
-  {/* 
-                    <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Prazo: </FormLabel>
+  
+                    <FormLabel mt='30px' whiteSpace='nowrap' placeholder='tipo de problema'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Problema específico:</FormLabel>
 
                       <InputGroup>
                         <InputLeftElement>
-                            <BsCalendar3 size='25px'/>
+                            <SiOpenstreetmap size='25px'/>
                         </InputLeftElement>
-                        <Input
-                        type='date' 
-                        value={denPrazo}
-                        onChange={(e) => setDenPrazo(e.target.value)}
+                        <Select
+                        value={denProblema}
+                        onChange={(e) => setDenProblema(e.target.value)}
                         border='1px solid black' 
                         w={{base:'220px', md:'280px', lg: '340px'}} 
                         resize='vertical' 
-                        maxLength={220} 
+                          
                         pl='2.5rem' 
-                        _hover={{border: '1px solid #A9A9A9	'}}>  
-                        </Input>
+                        _hover={{border: '1px solid #A9A9A9	'}}> 
+                         <option value=''></option>
+                          {opçoesDeProblemas.map((problema) => (
+                            <option key={problema.value} value={problema.value}>
+                              {problema.label}  
+                            </option> // mapeando o array e pegando cada opção como uma posição do array
+                          ))} 
+                        </Select>
                     </InputGroup>  
-  */}
+ 
 
                     <FormLabel mt='80px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Enviar imagem </FormLabel>
                     <InputGroup>

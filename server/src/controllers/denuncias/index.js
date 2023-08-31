@@ -35,6 +35,7 @@ module.exports = {
             const { den_desc } = req.body;
             const { den_img } = req.body;
             const { den_bairro } = req.body;
+            const { den_problema } = req.body;
             const { usuario_usu_cod } = req.body;
 
             const dataAtual = new Date().toISOString();
@@ -46,6 +47,7 @@ module.exports = {
                 den_desc,
                 den_data: dataAtual,
                 den_bairro,
+                den_problema,
                 usuario_usu_cod,
    
             });
