@@ -4,7 +4,7 @@ import '../App.css';
 
 //img
 
-import imgTemporaria from "../img/imgTemporaria.png";
+import verDenuncia from "../img/verDenuncia.png";
 import enviandoDen from "../img/enviandoDen.png";
 import aguaParada from '../img/aguaParada.jpg'
 
@@ -98,7 +98,7 @@ const Ver = () => {
         </Flex>
 
         <Flex  flexDirection='column' flexWrap='wrap' >
-            <Image src={imgTemporaria} boxSize={{base: '20em', md: '30em', lg: '50em'}}></Image>
+            <Image src={verDenuncia} boxSize={{base: '20em', md: '30em', lg: '50em'}}></Image>
         </Flex>
           
 
@@ -106,7 +106,10 @@ const Ver = () => {
         </Flex>
    
         <Box bgColor={'white'}>
+        <Center>
+          <Text mt='40px' fontSize={{ base:'12px', md:'18px', lg: '25px'}} fontWeight='normal'>Bairro:</Text>
 
+        </Center>
         
     <Center>
           <Flex flexDirection='column'>
@@ -127,9 +130,7 @@ const Ver = () => {
 
                 <Flex flexDirection='column'>
 
-                <Box>
-                <Text mt={{base:'-42px', md:'-46px' , lg:'-60px'}} p='100px' color='#338BB0'   fontSize={{ base:'16px', md:'20px', lg: '35px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' mr='150px'>Comentários</Text>
-                </Box>
+                
               </Flex>
             </Flex>
         </Box>
