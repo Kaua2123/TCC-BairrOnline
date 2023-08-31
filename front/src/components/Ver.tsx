@@ -98,7 +98,7 @@ const Ver = () => {
         </Flex>
 
         <Flex  flexDirection='column' flexWrap='wrap' >
-            <Image src={verDenuncia} boxSize={{base: '20em', md: '30em', lg: '50em'}}></Image>
+            <Image src={verDenuncia} boxSize={{base: '20em', md: '30em', lg: '44em'}}></Image>
         </Flex>
           
 

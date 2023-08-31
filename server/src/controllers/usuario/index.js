@@ -24,7 +24,7 @@ module.exports = {
             
             const senhaCriptog = await bcrypt.hash(usu_senha, 10);
 
-            const [usu_cod] = await knex('usuario').insert({
+            await knex('usuario').insert({
               
                 usu_nome,
                 usu_email,
@@ -35,10 +35,6 @@ module.exports = {
                 usu_data: new Date(), //data de criação do usuário
                 usu_tipo
             });
-
-            await knex(usu_tipo).insert({
-                usuario_usu_cod: usu_cod
-            })
 
  
 
