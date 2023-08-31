@@ -4,24 +4,26 @@ module.exports = {
     
     async criarAcompanhamento(req, res) {
         try {
-            const { denuncias_den_cod } = req.body;
+
             const { aco_progresso } = req.body;
             const { instituicao_usuario_usu_cod } = req.body;
+            const { denuncias_den_cod } = req.body;
 
-              
-            const denunciaExists = await knex('denuncias').where('denuncias_den_cod').first();
+
+            const denunciaExists = await knex('denuncias').where('den_cod', denuncias_den_cod).first();
              if (!denunciaExists) {
                 return res.status(404).json({ error:'Denúncia não encontrada'});                            
          }      
-       
-         const aco_data = new Date().toISOString();
+    
+
+         const acoData = new Date().toISOString();
 
          await knex('acompanhamento').insert({
-         
+        
+           aco_data: acoData,
+           aco_progresso: new Date(),
+           instituicao_usuario_usu_cod,
            denuncias_den_cod,
-           aco_data: new Date(),
-           aco_progresso,
-           instituicao_usuario_usu_cod
 
          });
 
@@ -34,10 +36,10 @@ module.exports = {
 
     async getAcompanhamentos(req, res) {
         try {
-            const { denuncias_den_cod } = req.params;
+            const { denCod } = req.params;
             
         
-             const denunciaExists = await knex('denuncias').where('den_cod',  denuncias_den_cod).first();
+             const denunciaExists = await knex('denuncias').where('den_cod',  denunciaCod).first();
              if(!denunciaExits) {
                 return res.status(404).json({ error: 'Denúncia nao encontrada'})
              }
