@@ -68,7 +68,7 @@ module.exports = {
                 if (senhaCorrespondente) {
                     //senha válida, logo irá gerar um token JWT.
                     console.log('Credenciais corretas');
-                    const token = jwt.sign({usu_cod: usuario[0].usu_cod}, process.env.CHAVE_JWT, {expiresIn: '1h'});
+                    const token = jwt.sign({usu_cod: usuario[0].usu_cod, usu_tipo: usuario[0].usu_tipo}, process.env.CHAVE_JWT, {expiresIn: '1h'});
                     console.log(token);
 
                     
@@ -85,6 +85,7 @@ module.exports = {
         } catch (error) {
             return res.status(500).json({ error: error.message });
         }
-    }
+    },
 
+   
 }

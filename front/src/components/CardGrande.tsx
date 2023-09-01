@@ -32,14 +32,14 @@ const CardGrande = ({denuncia}) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if ( token ) {
+
+    if (token) {
       const decodificaToken: any = jwt_decode(token);
-
-      setUsuTipo(decodificaToken.usu_tipo);
+      setUsuTipo(decodificaToken.usu_tipo); // Defina o estado com o tipo de usuário
+      console.log(decodificaToken.usu_tipo);
     }
-    console.log(usuTipo);
-  }, [])
-
+  
+  }, []);
     
     const criarAcompanhamento = async () => {
 
@@ -131,7 +131,7 @@ const CardGrande = ({denuncia}) => {
                         <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
                     </Button>
                       <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }}  
-                      ml={{base:'-196px', md:'-341px', lg:"-755px"}} mt={{base:'-14px', md:'-5px', lg:'-6px'}} fontSize="15px" onClick={criarAcompanhamento}>Assumir denúncia</Button>
+                      ml={{base:'-196px', md:'-341px', lg:"-755px"}} mt={{base:'-14px', md:'-5px', lg:'-6px'}} fontSize="15px" onClick={criarAcompanhamento} display={usuTipo === 'instituicao' ? 'block' : 'none'}>Assumir denúncia</Button>
                 </CardFooter>
                 <Box p='70px' mt={{base: '-60px', md:'-50px', lg:'-40px',}} ml='-70'>
                     <Text  fontFamily='BreeSerif-Regular' fontWeight='bold' fontSize={{base: '12px', md: '14px', lg: '18px'}}>@{denuncia.usuario_usu_cod}</Text>
