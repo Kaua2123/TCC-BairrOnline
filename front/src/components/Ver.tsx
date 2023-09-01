@@ -89,7 +89,7 @@ const Ver = () => {
 
         <Flex flexDirection='column' p='100px'  w='610px'>
         <Text color='#338BB0'   fontSize={{ base:'12px', md:'20px', lg: '35px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Veja outras denúncias</Text>
-          <Text w='410px' mt='40px' fontSize={{ base:'12px', md:'18px', lg: '25px'}}>Aqui você pode ver denúncias feitas por outros usuários. Opte pelo filtro de denúncias caso queira vê-las especificamente.</Text>
+          <Text w='410px' mt='40px' fontSize={{ base:'12px', md:'18px', lg: '25px'}}>Aqui você pode ver denúncias feitas por outros usuários. Opte pelo filtro de denúncias caso queira vê-las especificadamente.</Text>
                
                 
           <Text color='#338BB0' mt='30px'  fontSize={{ base:'12px', md:'20px', lg: '35px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Resolução</Text>
@@ -116,8 +116,6 @@ const Ver = () => {
           {denuncias.map((denuncia, index) =>(
             <CardGrande key={index} denuncia={denuncia}/>
           ))}
-  
-  
   </Flex>
           </Center>
           

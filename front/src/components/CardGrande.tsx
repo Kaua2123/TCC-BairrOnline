@@ -74,10 +74,10 @@ const CardGrande = ({denuncia}) => {
 
     return(
         <Center>
-        <Card m='20px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '800px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> 
+        <Card m='20px' mb='250px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '470px', md: '490px', lg:'490px'}} w={{base: '220px', md: '380px', lg: '800px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}>
         {/* Card componente do chakra que cria um card  */}
           <CardHeader> {/* header do card, usado pra por titulo  */}
-              <Heading w={{base: '220px', md: '380px', lg: '100%'}} 
+          <Heading w={{base: '100%', md: '100%', lg: '100%'}} 
               borderRadius='7px' 
               textAlign='center' 
               bgColor='#338BB0' 
@@ -85,6 +85,8 @@ const CardGrande = ({denuncia}) => {
               fontFamily='BreeSerif-Regular' 
               fontWeight='normal'>{denuncia.den_nome}</Heading>
           </CardHeader>
+          <Text fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular' ml={{base: '20px', md: '20px', lg:'20px'}}>Bairro: {denuncia.den_bairro}</Text>
+              <Text fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular'  ml={{base: '20px', md: '20px', lg:'20px'}}>Problema: {denuncia.den_problema} </Text>
               <CardBody> {/* corpo do card */}
                   <Box>
                     <Image src={aguaParada}  w='100%' h='250px'  boxShadow='lg'></Image>
@@ -97,13 +99,18 @@ const CardGrande = ({denuncia}) => {
               
                 <CardFooter w={{base: '640px', md: '3000px', lg: '700px'}} h={{base: '200px', md: '90px', lg: '80px'}}> {/* rodapé do card  */}
                     
-                    <Button variant='ghost' ml='600px' w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
+                <Button variant='ghost' mt={{base: '-7px', md: '', lg: '-5px'}} ml={{base:'155px', md:'300px', lg:'700px'}} w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
                         <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
                     </Button>
-                      <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }}  ml="-650px" fontSize="15px" onClick={criarAcompanhamento}>Assumir denúncia</Button>
+                      <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }}  
+                      ml={{base:'-196px', md:'-341px', lg:"-755px"}} mt={{base:'-14px', md:'-5px', lg:'-6px'}} fontSize="15px" onClick={criarAcompanhamento}>Assumir denúncia</Button>
                 </CardFooter>
-                <Box>
-                  
+                <Box p='70px' mt={{base: '-60px', md:'-50px', lg:'-40px',}} ml='-70'>
+                    <Text  fontFamily='BreeSerif-Regular' fontWeight='bold' fontSize={{base: '12px', md: '14px', lg: '18px'}}>@{denuncia.usuario_usu_cod}</Text>
+                    <Text mt='10px' fontSize={{base: '12px', md: '14px', lg: '16px'}}>{denuncia.den_desc}</Text>
+                    </Box>
+                    <Box>
+                <Text whiteSpace='nowrap' mt={{base:'-218px', md:'-227px' , lg:'-245px'}} ml={{base: '25px', md: '162px', lg: '490px'}} p='100px' color='#338BB0'   fontSize={{ base:'16px', md:'20px', lg: '35px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' mr='150px'>Comentários</Text>
                 </Box>
         </Card>
         </Center>
