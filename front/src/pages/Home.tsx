@@ -10,6 +10,7 @@ import denunciaNotFound from "../img/denunciaNotFound.png";
 //react
 import { useState } from 'react';
 import { useEffect } from 'react';
+import jwt_decode from 'jwt-decode';
 
 //chakra 
 import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
@@ -17,7 +18,7 @@ import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHe
 import { modalAnatomy as parts } from '@chakra-ui/anatomy'
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/styled-system'
 //componentes
-import  Header  from '../components/Header';
+import  Header, { HeaderUsu }  from '../components/Header';
 import Footer from '../components/Footer';
 
 import CardInst from '../components/CardInst';
@@ -41,6 +42,7 @@ import SlideDen from '../components/SlideDen';
 
 //axios limdo
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 
 
@@ -77,6 +79,10 @@ const sizes = {
 export const modalTheme = defineMultiStyleConfig({
   sizes,
 })
+
+ const token = localStorage.getItem('token');
+
+ 
 
 const Home = () => {
 
@@ -118,7 +124,11 @@ const Home = () => {
   
   <ChakraProvider theme={theme}>
     
+   {token ? (
+    <HeaderUsu/>
+   ) : (
     <Header/>
+   )}
    
 
     <Grid templateColumns="1fr 2fr 1fr" gap={4} bgColor="#338BB0">

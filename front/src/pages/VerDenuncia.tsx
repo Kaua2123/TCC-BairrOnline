@@ -3,7 +3,7 @@ import '../App.css';
 
 //componentes
 import Ver from '../components/Ver'
-import Header from '../components/Header';
+import Header, { HeaderUsu } from '../components/Header';
 import Footer from '../components/Footer';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
@@ -16,6 +16,7 @@ const problemas = ['Buraco', 'Lixo', 'Luz'];
 
 const VerDenuncia = () => {
 
+  const token = localStorage.getItem('token');
 
 
   const theme = extendTheme({
@@ -31,7 +32,11 @@ const VerDenuncia = () => {
 
     return (
       <ChakraProvider theme={theme}>
-          <Header/>
+          {token ? (
+            <HeaderUsu/>
+          ): (
+            <Header/>
+          )}
       <Ver/>
       <Footer/>
        

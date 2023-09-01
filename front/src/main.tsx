@@ -16,6 +16,7 @@ import HomeUsuario from './pages/HomeUsuario.tsx';
 import HomeInst from './pages/HomeInst.tsx';
 import SaibaMais from './pages/saibaMais.tsx';
 import Deslogado from './pages/Deslogado.tsx';
+import RotasPrivadas from './components/RotasPrivadas.tsx';
 
 
 
@@ -27,7 +28,9 @@ const router = createBrowserRouter([
   
   {
     path:"/HomeUsuario",
-    element: <HomeUsuario/>,
+    element: (
+      <><RotasPrivadas userType="denunciante" /><HomeUsuario /></>
+    ),
   },
   
   {
@@ -67,11 +70,15 @@ const router = createBrowserRouter([
 
   {
     path:"/homeADM",
-    element: <HomeADM/>
+    element: (
+      <><RotasPrivadas userType="denunciante" /><HomeADM /></>
+    ),
   },
   {
     path:"/homeInst",
-    element: <HomeInst/>
+    element: (
+      <><RotasPrivadas userType="denunciante" /><HomeInst /></>
+    ),
   },
   {
     path: "/SaibaMais",
