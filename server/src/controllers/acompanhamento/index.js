@@ -6,7 +6,7 @@ module.exports = {
         try {
 
             const { aco_progresso } = req.body;
-            const { instituicao_usuario_usu_cod } = req.body;
+            const { usuario_usu_cod } = req.body;
             const { denuncias_den_cod } = req.body;
 
 
@@ -22,8 +22,9 @@ module.exports = {
         
            aco_data: acoData,
            aco_progresso: new Date(),
-           instituicao_usuario_usu_cod,
+           usuario_usu_cod,
            denuncias_den_cod,
+           
 
          });
 

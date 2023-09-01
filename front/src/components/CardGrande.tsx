@@ -10,31 +10,58 @@ import { Reportar } from "./reportar";
 import aguaParada from "../img/aguaParada.jpg";
 
 //react
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 
 
 
 
 const CardGrande = ({denuncia}) => {
 
-    // const {isOpen, onOpen, onClose} = useDisclosure();
-    const [comments, setComments] = useState([]);
-    const [denCod, setDenCod] = useState('');
-    const [acoProgresso, setAcoProgresso] = useState('');
-    const [acoData, setAcoData] = useState('');
-    const [instCod, setInstCod] = useState('');
-    
-    const toast = useToast();
+  const [comments, setComments] = useState([]);
+  const [denCod, setDenCod] = useState('');
+  const [acoProgresso, setAcoProgresso] = useState('');
+  const [acoData, setAcoData] = useState('');
+  const [usuCod, setUsuCod] = useState('');
+  const [usuTipo, setUsuTipo] = useState(''); 
+  
+  const toast = useToast();
 
-    const [rep, setrep] = useState();
+  const [rep, setrep] = useState();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if ( token ) {
+      const decodificaToken: any = jwt_decode(token);
+
+      setUsuTipo(decodificaToken.usu_tipo);
+    }
+    console.log(usuTipo);
+  }, [])
+
     
-    const criarAcompanhamento = () => {
+    const criarAcompanhamento = async () => {
+
+      const token = localStorage.getItem('token');          //pegar o token e decodificar
+      if(!token){
+        toast({
+          title: 'Instituicao não autenticado',
+          description: 'Logue para assumir a denúncia.',
+          status: 'error',
+          duration: 4000,
+          isClosable: true
+        })
+        return;
+      }
+      const decodificaToken: any = await jwt_decode(token);
+
+    console.log(decodificaToken);
       axios.post('http://localhost:3344/criarAcompanhamento', {
-        denuncias_den_cod: denCod,
+        denuncias_den_cod: denuncia.den_cod,
         aco_data: new Date(),
         aco_progresso: acoProgresso,
-        instituicao_usuario_usu_cod: instCod
+        usuario_usu_cod: decodificaToken.usu_cod,
       })
       .then((response) => {
         console.log('Denúncia assumida');
@@ -64,6 +91,7 @@ const CardGrande = ({denuncia}) => {
       console.error(error);
     })
     }
+
 
     
   const handleCommentSubmit = (comment) => {setComments(
