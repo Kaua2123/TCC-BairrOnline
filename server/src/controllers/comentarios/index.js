@@ -17,7 +17,7 @@ module.exports = {
             const { com_data } = req.body;
             const { com_editado_por } = req.body;
             const { com_editado_em } = req.body;
-            const { denunciante_usuario_usu_cod } = req.body;
+            const { usuario_usu_cod } = req.body;
             const { denuncias_den_cod } = req.body;
 
             await knex('comentarios').insert({
@@ -26,7 +26,7 @@ module.exports = {
                 com_data,
                 com_editado_por,
                 com_editado_em,
-                denunciante_usuario_usu_cod,
+                usuario_usu_cod,
                 denuncias_den_cod,
     
             });
@@ -63,7 +63,7 @@ module.exports = {
             const { cod } = req.params; //verificando o codigo
 
             const { com_conteudo } = req.body;
-            const { denunciante_usuario_usu_cod } = req.body;
+            const { usuario_usu_cod } = req.body;
 
             const comentarioExists = await knex('comentarios').where('com_id', cod).first();
             if (!comentarioExists){
@@ -72,7 +72,7 @@ module.exports = {
 
             await knex('comentarios').update({ //atualizar o conteudo e nome do usuario.
                 com_conteudo,
-                denunciante_usuario_usu_cod
+                usuario_usu_cod
             }).where('com_id', cod);
             
             return res.status(201).json({message: 'Dados do comentário atualizados.'})
@@ -83,16 +83,25 @@ module.exports = {
         }
     },
 
-    async buscarComentario(req, res){ // get do comentário
+    async buscarComentario(req, res) {
         try {
-            const comentarios = await knex('comentarios').select('*');
-
-
-            return res.status(200).json(comentarios); //retorna os comentarios
-        } 
-        catch (error) {
-            return res.status(400).json({error: 'Erro ao criar o comentário.'});
+          const { den_cod } = req.params; // obtém o código da denúncia dos parâmetros da URL
+      
+          // verifica se a denúncia com o código especificado existe
+          const denuncia = await knex('denuncias').where('den_cod', den_cod).first();
+          
+          if (!denuncia) {
+            return res.status(404).json({ error: 'Denúncia não encontrada.' });
+          }
+      
+          // buscar os comentários associados à denúncia específica
+          const comentarios = await knex('comentarios')
+            .where('denuncias_den_cod', den_cod)
+            .select('*');
+      
+          return res.status(200).json(comentarios);
+        } catch (error) {
+          return res.status(400).json({ error: 'Erro ao buscar os comentários.' });
         }
-    },
-
+    }
 }

@@ -2,13 +2,15 @@ import { useState } from "react";
 import axios from 'axios';
 import { Textarea, useToast, FormControl, Button, Card, Text,} from '@chakra-ui/react';
 
-const CommentForm = ({ denCod }) => {
+//programation
+import jwt_decode from 'jwt-decode';
+
+const CommentForm = ({ denuncia, }) => {
   const [comCont, setComCont] = useState('');
-  const [submittedComment, setSubmittedComment] = useState(null);
+  const [submittedComment, setSubmittedComment] = useState('');
+
   const toast = useToast();
 
-  const fixedUsuCod = 1;
-  const fixedDenCod = 1; // codigo fixo da denuncia por enquanto 
 
   const enviaCom = async () => {
     if (!comCont.trim()) {
@@ -22,13 +24,28 @@ const CommentForm = ({ denCod }) => {
       return;
     }
 
+    const token = localStorage.getItem('token');
+    if(!token){
+      toast({
+        title: 'Usuário não autenticado',
+        description: 'Logue para realizar comentários.',
+        status: 'error',
+        duration: 4000,
+        isClosable: true
+      })
+      return;
+    }
+
+    const decodificaToken: any = await jwt_decode(token);
+
+
     try {
       const response = await axios.post('http://localhost:3344/criarComent', {
         com_conteudo: comCont,
         com_data: new Date(),
-        denunciante_usuario_usu_cod: fixedUsuCod,
-        denuncias_den_cod: fixedDenCod,
-      });
+        usuario_usu_cod: decodificaToken.usu_cod,
+        denuncias_den_cod: denuncia.den_cod,
+      }); 
 
       console.log('Comentário enviado');
       console.log(response.data);
