@@ -18,6 +18,7 @@ import { FaUserAlt } from "react-icons/fa";
 import Logo from '../img/logo.svg';
 import { MenuOutlined } from "@ant-design/icons";
 import { AiOutlineBell } from "react-icons/ai";
+import { BiSolidInstitution } from 'react-icons/bi';
 
 //componentes
  import { NotfiInst } from "./infoDen";
@@ -227,6 +228,13 @@ export const HeaderUsu = () => {
 }
 
 export const HeaderInst = () => {
+
+  const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+
+  const aoClicarAvatar = () => {
+    setSubMenuOpen(!isSubMenuOpen);
+  }
+
   return(
       <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' position={"sticky"} top={0} zIndex={2}> 
 
@@ -278,10 +286,64 @@ export const HeaderInst = () => {
             </Center>
             <Spacer/>
 
-            <HStack spacing='4'>
-              <Button colorScheme='blackAlpha' leftIcon={<AiOutlineUser/>} _hover={{backgroundColor: 'white', color: '#338bb0'}}> <Link to='/Cadastro'> Cadastre-se </Link> </Button>
-              <Button colorScheme='blackAlpha' leftIcon={<CgLogIn/>} _hover={{backgroundColor: 'white', color: '#338bb0'}} mr='4' >  <Link to='/Login'> Login </Link></Button>
+            <Box display={'inherit'} alignSelf={'center'} paddingRight={'2vh'}>
+              <HStack spacing={'20px'}>
+             
+               
+                <Popover>
+                  <PopoverTrigger>
+                  <Button variant={'ghost'} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
+                  <AiOutlineBell  fill='white' size='2.6em' />
+                  </Button>
+                  </PopoverTrigger>
+                  <PopoverContent w={'max-content'} height={'400px'} overflowY={'auto'}>
+                  <PopoverArrow/>
+                  <PopoverCloseButton/>
+                    <PopoverHeader textAlign={'center'} 
+                     background={'blue.500'} //<-- FAZER CORES PERSONALIZADAS DEPOIS PQ O CHAKRA NAO ACEITA RGB >:(
+                     color={'white'} 
+                     fontFamily='BreeSerif-Regular'
+                     fontSize={'15pt'}
+                     letterSpacing={'1px'}>
+                     
+                    <p>Notificações</p>
+                   </PopoverHeader>
+                   <PopoverBody display={'flex'} h={'800px'} maxW={'600px'} maxHeight={'maxcontent'} overflowY={'auto'} flexDirection={'column'} padding={'0'} alignItems={'flex-start'}>
+                   
+                    <NotfiInst/>
+                    <NotfiInst/>
+                    <NotfiInst/>
+                    <NotfiInst/>
+                  
+                  
+                  </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+               
+                <Menu isOpen={isSubMenuOpen}>
+          <MenuButton
+            as={Button}
+            variant="ghost"
+            size="3em"
+            padding="4px"
+            colorScheme="whiteAlpha"
+            borderRadius="full"
+            onClick={aoClicarAvatar} // Chama a função quando o avatar é clicado
+          >
+            <Avatar icon={<BiSolidInstitution  size='30px'/>} />
+          </MenuButton>
+          <MenuList>
+            {/* Opções de menu */}
+            <MenuItem>Meu Perfil</MenuItem>
+            <MenuItem>Configurações</MenuItem>
+            <MenuItem>Sair</MenuItem>
+          </MenuList>
+        </Menu>
+         
             </HStack>
+           </Box>
+
+       
           
 
       </Flex>
