@@ -3,7 +3,7 @@
 import { Menu,Image, MenuButton, Button, IconButton, MenuList, MenuItem,
   Center, Flex, HStack, Spacer,Popover,PopoverTrigger,
   PopoverContent,PopoverHeader,PopoverBody, 
-  PopoverArrow, PopoverCloseButton, AvatarBadge } from "@chakra-ui/react";
+  PopoverArrow, PopoverCloseButton, AvatarBadge, useToast } from "@chakra-ui/react";
 import { Avatar, Box } from "@chakra-ui/react";
 
 //react
@@ -93,10 +93,29 @@ const Header = () => {
 export const HeaderUsu = () => {
 
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+  const toast = useToast();
+
+  const deslogar = () => {
+    try {
+      localStorage.removeItem('token');
+      toast({
+        title: 'Você saiu',
+        description: 'Recarregue para ver as alterações.',
+        status: 'success',
+        duration: 4000,
+        isClosable: true
+      })
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   const aoClicarAvatar = () => {
     setSubMenuOpen(!isSubMenuOpen);
   }
+
+
 
   return(
   
@@ -212,7 +231,7 @@ export const HeaderUsu = () => {
             {/* Opções de menu */}
             <MenuItem>Meu Perfil</MenuItem>
             <MenuItem>Configurações</MenuItem>
-            <MenuItem>Sair</MenuItem>
+            <MenuItem onClick={deslogar}>Sair</MenuItem>
           </MenuList>
         </Menu>
          
@@ -230,6 +249,23 @@ export const HeaderUsu = () => {
 export const HeaderInst = () => {
 
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+
+  const deslogar = () => {
+    try {
+      localStorage.removeItem('token');
+      toast({
+        title: 'Você saiu',
+        description: 'Recarregue para ver as alterações.',
+        status: 'success',
+        duration: 4000,
+        isClosable: true
+      })
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
 
   const aoClicarAvatar = () => {
     setSubMenuOpen(!isSubMenuOpen);
@@ -336,7 +372,7 @@ export const HeaderInst = () => {
             {/* Opções de menu */}
             <MenuItem>Meu Perfil</MenuItem>
             <MenuItem>Configurações</MenuItem>
-            <MenuItem>Sair</MenuItem>
+            <MenuItem onClick={deslogar}>Sair</MenuItem>
           </MenuList>
         </Menu>
          
