@@ -3,7 +3,7 @@
 import { Menu,Image, MenuButton, Button, IconButton, MenuList, MenuItem,
   Center, Flex, HStack, Spacer,Popover,PopoverTrigger,
   PopoverContent,PopoverHeader,PopoverBody, 
-  PopoverArrow, PopoverCloseButton} from "@chakra-ui/react";
+  PopoverArrow, PopoverCloseButton, AvatarBadge } from "@chakra-ui/react";
 import { Avatar, Box } from "@chakra-ui/react";
 
 //react
@@ -21,6 +21,7 @@ import { AiOutlineBell } from "react-icons/ai";
 
 //componentes
  import { NotfiInst } from "./infoDen";
+import { useState } from "react";
 
 const Header = () => {
   return(
@@ -90,6 +91,11 @@ const Header = () => {
 
 export const HeaderUsu = () => {
 
+  const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+
+  const aoClicarAvatar = () => {
+    setSubMenuOpen(!isSubMenuOpen);
+  }
 
   return(
   
@@ -189,7 +195,26 @@ export const HeaderUsu = () => {
                   </PopoverContent>
                 </Popover>
                
-              <Avatar icon={ <FaUserAlt/> }/>
+                <Menu isOpen={isSubMenuOpen}>
+          <MenuButton
+            as={Button}
+            variant="ghost"
+            size="3em"
+            padding="4px"
+            colorScheme="whiteAlpha"
+            borderRadius="full"
+            onClick={aoClicarAvatar} // Chama a função quando o avatar é clicado
+          >
+            <Avatar icon={<FaUserAlt />} />
+          </MenuButton>
+          <MenuList>
+            {/* Opções de menu */}
+            <MenuItem>Meu Perfil</MenuItem>
+            <MenuItem>Configurações</MenuItem>
+            <MenuItem>Sair</MenuItem>
+          </MenuList>
+        </Menu>
+         
             </HStack>
            </Box>
 
