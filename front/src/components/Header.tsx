@@ -249,6 +249,7 @@ export const HeaderUsu = () => {
 export const HeaderInst = () => {
 
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+  const toast = useToast();
 
   const deslogar = () => {
     try {
