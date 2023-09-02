@@ -67,7 +67,7 @@ const Login = () => {
         }
 
         if(decodificaToken.usu_tipo === 'denunciante'){
-          navigate('/HomeUsu')
+          navigate('/HomeUsuario')
         }
         else if(decodificaToken.usu_tipo === 'instituicao'){
           navigate('/HomeInst')
