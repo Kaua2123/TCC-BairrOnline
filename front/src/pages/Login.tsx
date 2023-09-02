@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ChakraProvider, Box, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast} from '@chakra-ui/react';
 
 import imgFundo from '../img/imgfundo.png';
@@ -8,6 +8,7 @@ import {useState} from 'react';
 
 //axios
 import axios from 'axios';
+import jwt_decode from 'jwt-decode'
 
 //icones
 import {AiOutlineUser} from 'react-icons/ai';
@@ -37,6 +38,8 @@ const Login = () => {
     const [usuEmail, setUsuEmail] = useState("");
     const [usuSenha, setUsuSenha] = useState("");
     const toast = useToast();
+    const navigate = useNavigate();
+
 
     const logarUsuario = async () => {
 
@@ -49,6 +52,9 @@ const Login = () => {
         console.log(response.data);
         
         const token = response.data.token;
+        localStorage.setItem('token', token);
+
+        const decodificaToken: any = jwt_decode(token);
 
         if(response){
           toast({
@@ -60,7 +66,14 @@ const Login = () => {
           })
         }
 
-        localStorage.setItem('token', token);
+        if(decodificaToken.usu_tipo === 'denunciante'){
+          navigate('/HomeUsu')
+        }
+        else if(decodificaToken.usu_tipo === 'instituicao'){
+          navigate('/HomeInst')
+        }
+       
+        
       })
 
       .catch((error) => {
