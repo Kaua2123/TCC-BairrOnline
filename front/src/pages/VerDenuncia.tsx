@@ -3,9 +3,10 @@ import '../App.css';
 
 //componentes
 import Ver from '../components/Ver'
-import Header, { HeaderUsu } from '../components/Header';
+import Header, { HeaderInst, HeaderUsu } from '../components/Header';
 import Footer from '../components/Footer';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import jwt_decode from 'jwt-decode';
 
 //igms
 
@@ -16,7 +17,7 @@ const problemas = ['Buraco', 'Lixo', 'Luz'];
 
 const VerDenuncia = () => {
 
-  const token = localStorage.getItem('token');
+
 
 
   const theme = extendTheme({
@@ -29,14 +30,23 @@ const VerDenuncia = () => {
     },
   });
 
+  const token = localStorage.getItem('token');
+  const decodificaToken = token ? jwt_decode(token) : null;
+  
+  let headerComponent = null;
+  
+  if (decodificaToken && decodificaToken.usu_tipo === 'denunciante') {
+    headerComponent = <HeaderUsu />;
+  } else if (decodificaToken && decodificaToken.usu_tipo === 'instituicao') {
+    headerComponent = <HeaderInst />;
+  } else {
+    headerComponent = <Header/>;
+  }
 
     return (
+      
       <ChakraProvider theme={theme}>
-          {token ? (
-            <HeaderUsu/>
-          ): (
-            <Header/>
-          )}
+         {headerComponent}
       <Ver/>
       <Footer/>
        

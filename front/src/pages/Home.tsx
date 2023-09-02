@@ -18,7 +18,7 @@ import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHe
 import { modalAnatomy as parts } from '@chakra-ui/anatomy'
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/styled-system'
 //componentes
-import  Header, { HeaderUsu }  from '../components/Header';
+import  Header, { HeaderInst, HeaderUsu }  from '../components/Header';
 import Footer from '../components/Footer';
 
 import CardInst from '../components/CardInst';
@@ -80,8 +80,6 @@ export const modalTheme = defineMultiStyleConfig({
   sizes,
 })
 
- const token = localStorage.getItem('token');
-
  
 
 const Home = () => {
@@ -90,6 +88,20 @@ const Home = () => {
   const [temDenuncia, setTemDenuncia] = useState(false);
   const {isOpen, onOpen, onClose} = useDisclosure()
   const [comments, setComments] = useState([]);
+
+  const token = localStorage.getItem('token');
+  const decodificaToken = token ? jwt_decode(token) : null;
+  
+  let headerComponent = null;
+  
+  if (decodificaToken && decodificaToken.usu_tipo === 'denunciante') {
+    headerComponent = <HeaderUsu />;
+  } else if (decodificaToken && decodificaToken.usu_tipo === 'instituicao') {
+    headerComponent = <HeaderInst />;
+  } else {
+    headerComponent = <Header/>;
+  }
+ 
 
   const handleCommentSubmit = (comment) => {setComments(
     [
@@ -124,11 +136,7 @@ const Home = () => {
   
   <ChakraProvider theme={theme}>
     
-   {token ? (
-    <HeaderUsu/>
-   ) : (
-    <Header/>
-   )}
+  {headerComponent}
    
 
     <Grid templateColumns="1fr 2fr 1fr" gap={4} bgColor="#338BB0">
