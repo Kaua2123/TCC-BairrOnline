@@ -47,7 +47,7 @@ const SlideDen = ({denuncias}) => {
 }
 
 export default SlideDen;
-
+    
 
 export const SlideDenUsu = ({denuncias}) => {
     return(

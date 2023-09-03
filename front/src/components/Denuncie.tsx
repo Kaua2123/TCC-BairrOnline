@@ -61,8 +61,28 @@
     const [erro, setErro] = useState(false);
     const toast = useToast();
     
-     //temporario. eqnuanto n tiver cadastro funcioanndo
-                          
+ 
+
+     async function uparImagem(e){
+
+      let file = e.target.files[0];
+      console.log(file);
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setDenImg(reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+    
+    const handleImageUpload = () => {
+      const fileInput = document.getElementById("file-input");
+      if(fileInput){
+        fileInput.click();
+      }
+    }
     
     const enviaDen = async () => {
       setCarregando(true);
@@ -99,7 +119,9 @@
       }
 
       const decodificaToken: any = await jwt_decode(token);
-
+      
+      const formData = new FormData();
+      formData.append('selectedImage', denImg);
 
     
       axios.post('http://localhost:3344/criarDenuncia', {                       
@@ -107,6 +129,7 @@
         den_desc: denDesc,
         den_data: new Date(),
         den_bairro: denBairro, 
+        den_img: denImg,
         den_problema: denProblema,
         usuario_usu_cod: decodificaToken.usu_cod            
     }).then(response => {
@@ -145,59 +168,10 @@
     });
     }
 
-    async function uparImagem(e){
-
-      let file = e.target.files[0];
-      console.log(file);
-
-      if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          setDenImg(reader.result);
-        };
-        reader.readAsDataURL(file);
-      }
-
-      if(!file){
-        console.log('nenhuma imagem selecionada.')
-        return;
-      }
-
-    if(file){
-      const formData = new FormData();
-      formData.append("selectedImage", file);
-
-      await axios.post(`http://localhost:3344/uparImagem/${denCod}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          
-        },
-        params: {
-          den_cod: denCod,
-        },
-      })
-      .then(response => {
-        console.log('Imagem upada com sucesso.')
-        
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-    }
-    else{
-      console.log('File não retornou nada.')
-    }
-
-
-    }
+  
 
     //pra upar a imagem com click no iconezinho da camera
-    const handleImageUpload = () => {
-      const fileInput = document.getElementById("file-input");
-      if(fileInput){
-        fileInput.click();
-      }
-    }
+   
 
     
     
@@ -334,7 +308,7 @@
                             <BsCamera size='25px'/>
                         </InputLeftElement>
                               
-                      <Input id='file-input' name='denImg' type='file' display='none' onChange={uparImagem}></Input>
+                      <Input id='file-input' name='denImg' type='file' display='none' onChange={e => setDenImg(e.target.files[0])}></Input>
 
                     <Spacer/> 
                     {carregando ? (

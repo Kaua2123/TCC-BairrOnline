@@ -111,16 +111,18 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
     
         const dataFormatada = new Date(data).toLocaleDateString("pt-BR");
         
+       
     
         const { isOpen, onOpen, onClose } = useDisclosure();
         const [editando, setEditando] = useState(false);
         const [tituloEditado, setTituloEditado] = useState(nome);
         const [descricaoEditada, setDescricaoEditada] = useState(descricao);
         const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
+        const [imagemUrl, setImagemUrl] = useState('');
         const cancelRef = React.useRef();
         const toast = useToast();
-    
         
+      
     
         async function deleteDenuncia(denCod) {
          await axios.delete(`http://localhost:3344/deleteDenuncia/${denCod}`)
@@ -195,7 +197,7 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
             <Card  maxW='sm' w='250px' maxH='lg' h='29em' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
                 <CardBody>
 
-                        <Image src={imagem} borderRadius='lg' w='20em' />
+                        <Image src={img2} borderRadius='lg' w='20em' />
 
                             
 
