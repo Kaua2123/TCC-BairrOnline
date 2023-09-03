@@ -99,6 +99,7 @@ const HomeUsuario = () => {
           <Denuncie/>
         </Box>
 
+        <Box id='minhasDen'>
         <Flex justify='center'> 
           <Box>
             <Text fontSize='44px' color='#338BB0'  fontFamily='BreeSerif-Regular' whiteSpace='nowrap' >Suas denúncias</Text>
@@ -130,7 +131,7 @@ const HomeUsuario = () => {
                          
                 </Box>
                 </Center>
-
+          </Box>
        
           <Box id='acompanharDen'>
             <AcompanharDen/>

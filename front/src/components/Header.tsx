@@ -12,13 +12,15 @@ import { HashLink as Link } from 'react-router-hash-link';
 
 
 //icones
-import { AiOutlineUser } from 'react-icons/ai'
+
 import { CgLogIn } from 'react-icons/cg'
 import { FaUserAlt } from "react-icons/fa";
 import Logo from '../img/logo.svg';
 import { MenuOutlined } from "@ant-design/icons";
-import { AiOutlineBell } from "react-icons/ai";
+import { AiOutlineBell, AiOutlineUser  } from "react-icons/ai";
 import { BiSolidInstitution } from 'react-icons/bi';
+import { MdOutlineLogout } from 'react-icons/md';
+import { PiGearSixFill } from 'react-icons/pi'
 
 //componentes
  import { NotfiInst } from "./infoDen";
@@ -142,7 +144,7 @@ export const HeaderUsu = () => {
 
           <Spacer/>
           
-            <HStack w='25%' spacing='20' mr='50px' >
+            <HStack  spacing='10' justifyContent='center' alignItems='center' >
               <Button variant='link'
               color='white' 
               _hover={{color: '#338BB0'}}
@@ -158,7 +160,7 @@ export const HeaderUsu = () => {
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-              ml='20px'
+              
               display={['none', 'none', 'flex', 'flex']}>
                  <Link smooth to='/VerDenuncia'> Ver denúncias </Link>
               </Button>
@@ -167,7 +169,16 @@ export const HeaderUsu = () => {
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-              ml='40px'
+              
+              display={['none', 'none', 'flex', 'flex']}>
+                 <Link smooth to='/HomeUsuario#minhasDen'> Minhas denúncias </Link>
+              </Button>
+              <Button variant='link'
+              color='white' 
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'
+              
               display={['none', 'none', 'flex', 'flex']}>
                  <Link smooth to='/HomeUsuario#acompanharDen'> Acompanhar denuncias </Link>
               </Button> 
@@ -197,7 +208,7 @@ export const HeaderUsu = () => {
                   <PopoverArrow/>
                   <PopoverCloseButton/>
                     <PopoverHeader textAlign={'center'} 
-                     background={'blue.500'} //<-- FAZER CORES PERSONALIZADAS DEPOIS PQ O CHAKRA NAO ACEITA RGB >:(
+                     background={'#338BB0'} //<-- FAZER CORES PERSONALIZADAS DEPOIS PQ O CHAKRA NAO ACEITA RGB >:(
                      color={'white'} 
                      fontFamily='BreeSerif-Regular'
                      fontSize={'15pt'}
@@ -226,14 +237,19 @@ export const HeaderUsu = () => {
             colorScheme="whiteAlpha"
             borderRadius="full"
             onClick={aoClicarAvatar} // Chama a função quando o avatar é clicado
+            
           >
             <Avatar icon={<FaUserAlt />} />
           </MenuButton>
           <MenuList>
             {/* Opções de menu */}
-            <MenuItem>Meu Perfil</MenuItem>
-            <MenuItem>Configurações</MenuItem>
-            <MenuItem onClick={deslogar}>Sair</MenuItem>
+            <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+            icon={<AiOutlineUser size='20px'/>}>Meu Perfil</MenuItem>
+            <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+            icon={<PiGearSixFill size='20px'/>}>Configurações</MenuItem>
+            <MenuItem onClick={deslogar} 
+            _hover={{ bg: 'red.500', color: 'white' }}
+            icon={<MdOutlineLogout size='20px' />}>Sair</MenuItem>
           </MenuList>
         </Menu>
          
@@ -294,13 +310,13 @@ export const HeaderInst = () => {
 
           <Spacer/>
           <Center>
-            <HStack w='25%' spacing='20' mr='50px' >
+            <HStack  spacing='10' justifyContent='center' alignItems='center' >
               <Button variant='link'
               color='white' 
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-              mr='45px'
+              
               display={['none', 'none', 'flex', 'flex']}>
                   <Link to='/VerDenuncia'>Ver denúncias </Link>
               </Button>
@@ -309,7 +325,7 @@ export const HeaderInst = () => {
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-              mr='20px'
+              
               display={['none', 'none', 'flex', 'flex']}>
                  <Link to=''>Denúncias avaliadas </Link>
               </Button>
@@ -372,10 +388,13 @@ export const HeaderInst = () => {
             <Avatar icon={<BiSolidInstitution  size='30px'/>} />
           </MenuButton>
           <MenuList>
-            {/* Opções de menu */}
-            <MenuItem>Meu Perfil</MenuItem>
-            <MenuItem>Configurações</MenuItem>
-            <MenuItem onClick={deslogar}>Sair</MenuItem>
+          <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+          icon={<AiOutlineUser size='20px'/>}>Meu Perfil</MenuItem>
+            <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+            icon={<PiGearSixFill size='20px'/>}>Configurações</MenuItem>
+            <MenuItem onClick={deslogar} 
+            _hover={{ bg: 'red.500', color: 'white' }}
+            icon={<MdOutlineLogout size='20px' />}>Sair</MenuItem>
           </MenuList>
         </Menu>
          
