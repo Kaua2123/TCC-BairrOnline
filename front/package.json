@@ -12,14 +12,10 @@
   "dependencies": {
     "@ant-design/icons": "^5.1.4",
     "@chakra-ui/react": "^2.7.1",
-    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@types/react-slick": "^0.23.10",
     "axios": "^1.4.0",
     "bootstrap-icons": "^1.10.5",
-    "date-fns": "^2.30.0",
     "fa-icons": "^0.2.0",
-    "framer-motion": "^10.16.2",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^3.1.2",
     "nanoid": "^4.0.2",
@@ -29,9 +25,8 @@
     "react-id-swiper": "^4.0.0",
     "react-router-dom": "^6.13.0",
     "react-router-hash-link": "^2.4.3",
-    "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1",
-    "swiper": "^10.1.0"
+    "swiper": "^10.1.0",
+    "uninstall": "^0.0.0"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.2",

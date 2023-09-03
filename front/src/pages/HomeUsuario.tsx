@@ -18,8 +18,7 @@ import {Center, Box,
 ChakraProvider, Flex, 
 Image, extendTheme, Text} from '@chakra-ui/react'
 
-//framer motion
-import { motion } from 'framer-motion';
+
 
 //componentes
 import Footer from '../components/Footer';
@@ -27,6 +26,7 @@ import { HeaderUsu } from '../components/Header';
 import Denuncie from '../components/Denuncie';
 import { SlideDenUsu } from '../components/SlideDen';
 import axios from 'axios';
+import AcompanharDen from '../components/AcompanharDen';
 
 
 const theme = extendTheme({
@@ -75,10 +75,7 @@ const HomeUsuario = () => {
     <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
     <Flex align='center'>
       <Box bgColor='white' borderRadius='4px' h='auto' w='100%'>
-      <motion.div
-    initial={{ x: -1000}}
-    animate={{ x: 0}}
-    transition={{duration: 0.7}}>
+    
         <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Denunciante!</Text>
 
         <Flex justifyContent='space-between'>
@@ -96,7 +93,7 @@ const HomeUsuario = () => {
             </Box>
           </Flex>
         </Flex>
-        </motion.div>
+       
 
         <Box id='denuncieAqui'>
           <Denuncie/>
@@ -134,21 +131,10 @@ const HomeUsuario = () => {
                 </Box>
                 </Center>
 
-        <Flex justify='center' id='sexo'>
-          <Image src={sectionInst} boxSize='57em'></Image>
-        </Flex>
-        <Flex justify='center'>
-          <Text mt='-100px' fontSize='54px' fontFamily='BreeSerif-Regular' color='#338BB0' whiteSpace='nowrap'>Denúncias assumidas</Text>
-        </Flex>
-
-        <Flex justify='center'>
-          <Image src={denunciaNaoAssumida} boxSize='45em'></Image>
-        </Flex>
-
-        <Flex justify='center'>
-        <Text mt='-100px' fontSize='30px'  whiteSpace='nowrap'>Parece que nenhuma instituição assumiu alguma denúncia sua.</Text> 
-        </Flex>
-  
+       
+          <Box id='acompanharDen'>
+            <AcompanharDen/>
+          </Box>
       </Box>
       
     </Flex>

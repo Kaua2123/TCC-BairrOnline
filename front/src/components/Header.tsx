@@ -149,7 +149,9 @@ export const HeaderUsu = () => {
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
               display={['none', 'none', 'flex', 'flex']}>
-                  <Link to='/HomeUsuario#denuncieAqui'> Denuncie aqui</Link>
+
+                  <Link smooth to='/HomeUsuario#denuncieAqui'> Denuncie aqui</Link>
+         
               </Button>
               <Button variant='link'
               color='white' 
@@ -158,7 +160,7 @@ export const HeaderUsu = () => {
               fontWeight='normal'
               ml='20px'
               display={['none', 'none', 'flex', 'flex']}>
-                 <Link to='/VerDenuncia'> Ver denúncias </Link>
+                 <Link smooth to='/VerDenuncia'> Ver denúncias </Link>
               </Button>
               <Button variant='link'
               color='white' 
@@ -167,7 +169,7 @@ export const HeaderUsu = () => {
               fontWeight='normal'
               ml='40px'
               display={['none', 'none', 'flex', 'flex']}>
-                 <Link to='/'> Acompanhar denuncias </Link>
+                 <Link smooth to='/HomeUsuario#acompanharDen'> Acompanhar denuncias </Link>
               </Button> 
             </HStack>
 
