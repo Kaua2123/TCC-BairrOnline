@@ -54,7 +54,7 @@ module.exports = {
               den_nome,
               den_desc,
               den_data: dataAtual,
-            //   den_img,
+            //den_img,
               den_bairro,
               den_problema,
               usuario_usu_cod,

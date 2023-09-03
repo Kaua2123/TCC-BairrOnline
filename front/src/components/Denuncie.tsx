@@ -308,7 +308,7 @@
                             <BsCamera size='25px'/>
                         </InputLeftElement>
                               
-                      <Input id='file-input' name='denImg' type='file' display='none' onChange={e => setDenImg(e.target.files[0])}></Input>
+                      <Input id='file-input' name='denImg' type='file' display='none' onChange={uparImagem}></Input>
 
                     <Spacer/> 
                     {carregando ? (
