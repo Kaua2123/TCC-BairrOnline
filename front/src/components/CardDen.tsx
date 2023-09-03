@@ -20,6 +20,10 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
     //Componentes comentários
     import CommentForm from "./CommentForm";
     import CommentList from "./CommentList";
+
+
+    //framer motion
+    import {motion} from 'framer-motion';
     
     
     const CardDen = ({nome, descricao, bairro}) => {
@@ -189,7 +193,10 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
     
     return(
         
-    
+
+        <motion.div
+        whileHover={{ scale: 1.01 }}
+      >
             <Card  maxW='sm' w='250px' maxH='lg' h='29em' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
                 <CardBody>
 
@@ -217,11 +224,13 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
                     color='white'
                     _hover={{background: '#fff', color:'#338BB0'}}
                     textAlign='center'
-                    onClick={onOpen}>
+                    onClick={onOpen}
+                    >
                     Gerenciar denúncia
                     </Button>
                 </CardFooter>
     
+            
                     <Modal  size={editando ? '6xl' : '3xl'} isOpen={isOpen} onClose={onClose}> 
                      <ModalOverlay/>
                      <ModalContent >
@@ -340,7 +349,7 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
          
               
         </Card>
-    
+        </motion.div>
        
     
     );

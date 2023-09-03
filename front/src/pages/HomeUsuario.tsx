@@ -18,6 +18,9 @@ import {Center, Box,
 ChakraProvider, Flex, 
 Image, extendTheme, Text} from '@chakra-ui/react'
 
+//framer motion
+import { motion } from 'framer-motion';
+
 //componentes
 import Footer from '../components/Footer';
 import { HeaderUsu } from '../components/Header';
@@ -68,10 +71,14 @@ const HomeUsuario = () => {
  return (
   <ChakraProvider theme={theme}>
     <HeaderUsu/>
+   
     <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
     <Flex align='center'>
       <Box bgColor='white' borderRadius='4px' h='auto' w='100%'>
-        
+      <motion.div
+    initial={{ x: -1000}}
+    animate={{ x: 0}}
+    transition={{duration: 0.7}}>
         <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Denunciante!</Text>
 
         <Flex justifyContent='space-between'>
@@ -89,6 +96,7 @@ const HomeUsuario = () => {
             </Box>
           </Flex>
         </Flex>
+        </motion.div>
 
         <Box id='denuncieAqui'>
           <Denuncie/>
