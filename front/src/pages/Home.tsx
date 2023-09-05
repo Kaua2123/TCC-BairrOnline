@@ -3,7 +3,7 @@ import '../App.css';
 
 //imgs
 
-import Logo from "../img/logo.svg";
+import Logo from "../img/logohome.svg";
 import aguaParada from "../img/aguaParada.jpg";
 import denunciaNotFound from "../img/denunciaNotFound.png";
 
