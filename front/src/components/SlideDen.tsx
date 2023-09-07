@@ -23,11 +23,22 @@ import { Box, Wrap, WrapItem } from '@chakra-ui/react'
 
 const SlideDen = ({denuncias}) => {
     
-    const slidesPerView = window.innerWidth < 768 ? 1 : 5;
+    const [slidesPerView, setSlidesPerView] = useState(window.innerWidth < 768 ? 1 : 5);
+    useEffect(() => {
+        const resize = () => {
+            setSlidesPerView(window.innerWidth < 768 ? 1 : 5);
+        };
+
+        window.addEventListener('resize', resize);
+
+        return () => {
+            window.removeEventListener('resize', resize);
+        };
+    }, []);
 
     return(
         
-        <Box h='auto' mt='20px' p='20px' bg='#F2F2F2' boxShadow='lg'>
+        <Box h='auto' mt='20px' p='20px' bg='#F2F2F2' boxShadow='lg' >
 
         <Swiper style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
@@ -61,7 +72,19 @@ export default SlideDen;
 
 export const SlideDenUsu = ({denuncias}) => {
 
-    const slidesPerView = window.innerWidth < 768 ? 1 : 5;
+    const [slidesPerView, setSlidesPerView] = useState(window.innerWidth < 768 ? 1 : 5);
+    useEffect(() => {
+        const resize = () => {
+            setSlidesPerView(window.innerWidth < 768 ? 1 : 5);
+        };
+
+        window.addEventListener('resize', resize);
+
+        return () => {
+            window.removeEventListener('resize', resize);
+        };
+    }, []);
+
 
     return(
         

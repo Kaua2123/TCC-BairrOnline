@@ -46,7 +46,7 @@ const CardDen = ({ nome, descricao, bairro, imagem }) => {
             <CardBody>
 
             {imagem ? (
-                    <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' w='5em' />
+                    <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px'  />
                 ) : (
                     <HiOutlineClipboardDocumentList size='25vh' color='gray' />
                 )}
@@ -270,7 +270,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
             <CardBody>
 
                 {imagem ? (
-                    <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' w='5em' />
+                    <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
                 ) : (
                     <HiOutlineClipboardDocumentList size='25vh' color='gray' />
                 )}
