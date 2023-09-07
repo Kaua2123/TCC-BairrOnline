@@ -13,6 +13,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 //chakra
 import { Box, Wrap, WrapItem } from '@chakra-ui/react'
@@ -50,6 +52,9 @@ export default SlideDen;
     
 
 export const SlideDenUsu = ({denuncias}) => {
+
+  
+
     return(
         
         <Box h='auto' mt='20px' p='20px' boxShadow='lg'>

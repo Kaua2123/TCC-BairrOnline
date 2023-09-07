@@ -32,29 +32,17 @@ module.exports = {
         try {
           const { den_nome }= req.body;
           const { den_prazo } = req.body;
-          const { den_desc} = req.body;
-          const { den_bairro} = req.body;
-          const { den_problema} = req.body;
-          const { usuario_usu_cod} = req.body;
+          const { den_desc } = req.body;
+          const { den_bairro } = req.body;
+          const { den_problema } = req.body;
+          const { usuario_usu_cod } = req.body;
 
           const dataAtual = new Date().toISOString();
-      
-          upload.single('selectedImage')(req, res, async function (err) {
-            if (err instanceof multer.MulterError) {
-              console.log(err);
-              return res.status(400).json({ error: 'Erro ao upar a imagem.' });
-            } else if (err) {
-              console.log(err);
-              return res.status(500).json({ error: 'Erro inesperado.' });
-            }
-      
-            const den_img = req.file ? req.file.filename : null; // Obtenha o nome do arquivo da imagem
       
             await knex('denuncias').insert({
               den_nome,
               den_desc,
               den_data: dataAtual,
-            //den_img,
               den_bairro,
               den_problema,
               usuario_usu_cod,
@@ -62,54 +50,61 @@ module.exports = {
             });
       
             return res.status(201).json({ message: 'Denúncia enviada' });
-          });
+          
         } catch (error) {
           console.log(error);
           return res.status(400).json({ error: error.message });
         }
       },
 
-    // async uparImagem(req, res){
-    //     try {
-    //         const {cod} = req.params;
-    //         upload.single('selectedImage')(req, res, async function (err){
-    //             if (err instanceof multer.MulterError) {
-    //                 console.log(err)
-    //                 return res.status(400).json({ error: 'Erro ao upar a imagem.' });
-    //             }
-    //             else if(err){
-    //                 console.log(err)
-    //                 return res.status(500).json({ error: 'Erro inesperado.' });
-    //             }
+    async uparImagem(req, res){
+        try {
+            const {cod} = req.params;
+            upload.single('selectedImage')(req, res, async function (err){
+                if (err instanceof multer.MulterError) {
+                    console.log(err)
+                    return res.status(400).json({ error: 'Erro ao upar a imagem.' });
+                }
+                else if(err){
+                    console.log(err)
+                    return res.status(500).json({ error: 'Erro inesperado.' });
+                }
 
-    //             console.log(req.file);
+                console.log(req.file);
 
-    //             if(!req.file){
-    //                 console.log("Arquivo não enviado:", req.file);
-    //                 return res.status(500).json({error: 'Arquivo não enviado'})
-    //             }
+                if(!req.file){
+                    console.log("Arquivo não enviado:", req.file);
+                    return res.status(500).json({error: 'Arquivo não enviado'})
+                }
 
-    //         await knex('denuncias').where("den_cod", cod).update({
-    //             den_img: req.file.filename,
-    //         });
+            await knex('denuncias').where("den_cod", cod).update({
+                den_img: req.file.filename,
+            });
 
-    //         return res.status(200).json({message: 'Arquivo recebido'});
-    //     });
+            return res.status(200).json({message: 'Arquivo recebido'});
+        });
 
-    //     } 
-    //     catch (error) {
-    //         console.log(error);
-    //         return res.status(500).json({ error: 'Erro ao upar a imagem.' });
-    //     }
-    // },
+        } 
+        catch (error) {
+            console.log(error);
+            return res.status(500).json({ error: 'Erro ao upar a imagem.' });
+        }
+    },
 
     async retornaImagem(req, res){
         try {
-            const  filename  = req.params.filename;
-            const imagePath = path.join(__dirname, '..', '..', 'imgsDen', filename);
+            const {filename}  = req.params;
+            const imagePath = path.resolve(__dirname, '..', '..', 'imgsDen', filename);
 
-            const imageData = fs.readFileSync(imagePath);
-            res.send(imageData);
+            fs.readFile(imagePath, (error, data) => {
+                if (error) {
+                    return res.status(500).json({error: 'n leu a img'});
+                }
+
+                res.setHeader('contentType', `image/${path.extname(filename)}`);
+                res.end(data);
+            })
+       
 
         } catch (error) {
             return res.status(500).json({error: error.message});
@@ -119,9 +114,6 @@ module.exports = {
     async cardDenuncia(req, res){ // get da denuncia
         try {
             const denuncias = await knex('denuncias').select('*');
-
-            
-
 
             return res.status(200).json(denuncias); //retorna as denuncias
         } 

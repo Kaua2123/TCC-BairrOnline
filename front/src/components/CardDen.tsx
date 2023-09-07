@@ -115,14 +115,16 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
     
         const { isOpen, onOpen, onClose } = useDisclosure();
         const [editando, setEditando] = useState(false);
+        const [img, setImg] = useState<any>('');
         const [tituloEditado, setTituloEditado] = useState(nome);
         const [descricaoEditada, setDescricaoEditada] = useState(descricao);
         const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
+        const [selectedImage, setSelectedImage] = useState(null);
+        const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false);
         const [imagemUrl, setImagemUrl] = useState('');
         const cancelRef = React.useRef();
         const toast = useToast();
-        
-      
+       
     
         async function deleteDenuncia(denCod) {
          await axios.delete(`http://localhost:3344/deleteDenuncia/${denCod}`)
@@ -187,6 +189,51 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
             setIsAlertDialogOpen(false);
         };
 
+         
+        const openImageUploadModal = () => {
+            setImageUploadModalOpen(true);
+        }
+
+        const closeImageUploadModal = () => {
+            setImageUploadModalOpen(false);
+        }
+        
+        const handleImageUpload = (e) => {
+            const file = e.target.files[0];
+            setSelectedImage(file);
+        }
+
+        const uploadImage = async () => {
+            if (!selectedImage) {
+              return;
+            }
+        
+            const formData = new FormData();
+            formData.append('selectedImage', selectedImage);
+        
+            try {
+              const response = await axios.post(
+                `http://localhost:3344/uparImagem/${denCod}`,
+                formData,
+                {
+                  headers: {
+                    'Content-Type': 'multipart/form-data',
+                  },
+                  params: {
+                    den_cod: denCod,
+                  },
+                }
+              );
+        
+           
+              
+              setImagemUrl(response.data);  
+            
+              closeImageUploadModal();
+            } catch (error) {
+              console.error(error);
+            }
+          };
         
     
     return(
@@ -197,7 +244,7 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
             <Card  maxW='sm' w='250px' maxH='lg' h='29em' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
                 <CardBody>
 
-                        <Image src={img2} borderRadius='lg' w='20em' />
+                        <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' w='5em' />
 
                             
 
@@ -306,7 +353,9 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
                             ) : (
                                 <>
                                  <Button bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog}  _hover={{backgroundColor: '#D71D28'}}>Apagar</Button>
+                                 <Button colorScheme="blue" mr={3} color='white' onClick={openImageUploadModal}>Adicionar imagem</Button>
                                 <Button colorScheme="blue" mr={3} onClick={() => setEditando(true)}>Editar</Button>
+                               
                                 </>
                             )}
                             
@@ -339,6 +388,34 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
                          
                         </ModalFooter>
                      </ModalContent>
+                     <Modal isOpen={isImageUploadModalOpen} onClose={closeImageUploadModal}>
+                        <ModalOverlay />
+                        <ModalContent>
+                            <ModalHeader>Adicionar Imagem</ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => {
+                                const file = e.target.files[0];
+                                setSelectedImage(file);
+                                }}
+                            />
+                            {selectedImage && (
+                                <Image src={URL.createObjectURL(selectedImage)} alt="Imagem selecionada" />
+                            )}
+                            </ModalBody>
+                            <ModalFooter>
+                            <Button colorScheme="blue" mr={3} onClick={uploadImage}>
+                                Enviar Imagem
+                            </Button>
+                            <Button variant="ghost" onClick={closeImageUploadModal}>
+                                Cancelar
+                            </Button>
+                            </ModalFooter>
+                        </ModalContent>
+                    </Modal>
                     </Modal>
            
                 
