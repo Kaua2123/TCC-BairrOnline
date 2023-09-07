@@ -247,6 +247,8 @@ export const HeaderUsu = () => {
             icon={<AiOutlineUser size='20px'/>}>Meu Perfil</MenuItem>
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             icon={<PiGearSixFill size='20px'/>}>Configurações</MenuItem>
+             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+            ><Link to='/HomeUsuario'>Seção do Usuário </Link></MenuItem>
             <MenuItem onClick={deslogar} 
             _hover={{ bg: 'red.500', color: 'white' }}
             icon={<MdOutlineLogout size='20px' />}>Sair</MenuItem>
@@ -392,6 +394,8 @@ export const HeaderInst = () => {
           icon={<AiOutlineUser size='20px'/>}>Meu Perfil</MenuItem>
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             icon={<PiGearSixFill size='20px'/>}>Configurações</MenuItem>
+            <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+            ><Link to='/HomeInst'>Seção do Usuário </Link></MenuItem>
             <MenuItem onClick={deslogar} 
             _hover={{ bg: 'red.500', color: 'white' }}
             icon={<MdOutlineLogout size='20px' />}>Sair</MenuItem>
