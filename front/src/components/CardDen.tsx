@@ -9,8 +9,8 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
     import { TbReportSearch } from 'react-icons/tb'
     import { BsChatSquareText } from 'react-icons/bs'
     import { MdOutlineReportProblem} from 'react-icons/md'
-    import {HiOutlineClipboardDocumentList} from 'react-icons/hi2'
     import {BsCardText} from 'react-icons/bs';
+    import {HiOutlineClipboardDocumentList } from 'react-icons/hi2'
     
     //react
     import {useEffect, useState} from 'react';
@@ -228,10 +228,27 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
            
               
               setImagemUrl(response.data);  
+              
+              if(response){
+                toast({
+                    title: 'Imagem enviada',
+                    description: 'Sua imagem foi enviada e será exibida na denúncia.',
+                    status: 'success',
+                    duration: 4000,
+                    isClosable: true
+                  })
+              }
             
               closeImageUploadModal();
             } catch (error) {
               console.error(error);
+              toast({
+                title: 'Erro',
+                description: 'A imagem não pôde ser enviada. Verifique e tente novamente.',
+                status: 'error',
+                duration: 4000,
+                isClosable: true
+              })
             }
           };
         
@@ -244,7 +261,12 @@ import {Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text
             <Card  maxW='sm' w='250px' maxH='lg' h='29em' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
                 <CardBody>
 
+                    {imagem ? (
                         <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' w='5em' />
+                    ): (
+                        <HiOutlineClipboardDocumentList size='25vh' color='gray'/>
+                    )}
+                       
 
                             
 

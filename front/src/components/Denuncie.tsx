@@ -101,8 +101,6 @@
 
       const decodificaToken: any = await jwt_decode(token);
       
-      const formData = new FormData();
-      formData.append('selectedImage', denImg);
 
     
       axios.post('http://localhost:3344/criarDenuncia', {                       
@@ -110,7 +108,6 @@
         den_desc: denDesc,
         den_data: new Date(),
         den_bairro: denBairro,
-        den_img: denImg,
         den_problema: denProblema,
         usuario_usu_cod: decodificaToken.usu_cod            
     }).then(response => {
@@ -150,64 +147,7 @@
     });
     }
 
-  //   async function uparImagem(e){
-      
-  //     if(denCod){
-  //       console.log('O código da denuncia é:', denCod)
-  //     }
-  //     else{
-  //       console.log('Não há código de denúncia para a imagem', denCod);
-  //       return;
-  //     }
   
-  //     let file = e.target.files[0];
-  //     console.log(file);
-  
-  //     if (file) {
-  //       const reader = new FileReader();
-  //       reader.onloadend = () => {
-  //         setDenImg(reader.result);
-  //       };
-  //       reader.readAsDataURL(file);
-  //     }
-  
-  //     if(!file){
-  //       console.log('nenhuma imagem selecionada.')
-  //       return;
-  //     }
-  
-  //    if(file){
-  //     const formData = new FormData();
-  //     formData.append("selectedImage", file);
-  
-  //     await axios.post(`http://localhost:3344/uparImagem/${denCod}`, formData, {
-  //       headers: {
-  //         'Content-Type': 'multipart/form-data',
-  
-  //       },
-  //       params: {
-  //         den_cod: denCod,
-  //       },
-  //     })
-  //     .then(response => {
-  //       console.log('Imagem upada com sucesso.')
-  //       setDenImg(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     })
-  //   }
-  //   else{
-  //     console.log('File não retornou nada.')
-  //   }
-  // }
-      
-      const handleImageUpload = () => {
-        const fileInput = document.getElementById("file-input");
-        if(fileInput){
-          fileInput.click();
-        }
-      }
       
 
   
@@ -344,13 +284,9 @@
                     </InputGroup>  
  
 
-                    <FormLabel mt='80px' whiteSpace='nowrap'  fontSize={{ base:'14px', md:'20px', lg: '28px'}} fontWeight='normal' >Enviar imagem </FormLabel>
+
                     <InputGroup>
-                        {/* <InputLeftElement  onClick={handleImageUpload} cursor='pointer' border='1px solid white' _hover={{color: 'blue.500', borderColor: 'black', transition: '0.1s', borderRadius: '70%'}}>
-                            <BsCamera size='25px'/>
-                        </InputLeftElement>
-                              
-                      <Input id='file-input' name='denImg' type='file' display='none' onChange={uparImagem}></Input> */}
+                    
 
                     <Spacer/> 
                     {carregando ? (
