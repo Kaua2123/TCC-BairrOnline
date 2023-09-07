@@ -294,11 +294,13 @@ const Denuncie = () => {
                   {carregando ? (
                     <Spinner size='xl' color='#338BB0' />
                   ) : (
+                    <Box mt='80px'>
                     <Button type='submit' onClick={() => {
                       enviaDen();
                     }} bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: '#DCDCDC' }}>
                       Criar denúncia
                     </Button>
+                    </Box>
                   )}
 
                 </InputGroup>

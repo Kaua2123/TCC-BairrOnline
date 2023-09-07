@@ -22,13 +22,16 @@ import { Box, Wrap, WrapItem } from '@chakra-ui/react'
 
 
 const SlideDen = ({denuncias}) => {
+    
+    const slidesPerView = window.innerWidth < 768 ? 1 : 5;
+
     return(
         
         <Box h='auto' mt='20px' p='20px' bg='#F2F2F2' boxShadow='lg'>
 
         <Swiper style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
-        slidesPerView={5}
+        slidesPerView={slidesPerView}
         navigation
         pagination={{clickable: true}}>
 
@@ -58,7 +61,7 @@ export default SlideDen;
 
 export const SlideDenUsu = ({denuncias}) => {
 
-  
+    const slidesPerView = window.innerWidth < 768 ? 1 : 5;
 
     return(
         
@@ -66,7 +69,7 @@ export const SlideDenUsu = ({denuncias}) => {
 
         <Swiper style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
-        slidesPerView={5}
+        slidesPerView={slidesPerView}
         navigation
         pagination={{clickable: true}}>
 
