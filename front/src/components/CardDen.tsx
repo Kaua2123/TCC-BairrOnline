@@ -23,6 +23,9 @@ import axios from "axios";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
 
+//imgs
+import semImgDen from '../img/semImgDen.png';
+
 
 const CardDen = ({ nome, descricao, bairro, imagem }) => {
     const [rep, setrep] = useState(false)
@@ -62,13 +65,13 @@ const CardDen = ({ nome, descricao, bairro, imagem }) => {
 
     return (
 
-        <Card maxW='sm' w='250px' maxH='lg' h='29em' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+        <Card maxW='sm' w={{base: '280px', md: '265px', lg: '250px'}} maxH='lg' h={{base: '20em', md: '23em', lg: '29em'}} bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
          
             {imagem ? (
                     <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px'  />
                 ) : (
-                    <HiOutlineClipboardDocumentList size='25vh' color='gray' />
+                    <Image src={semImgDen} boxSize={{base: '90px', md: '140px', lg: '200px'}} align='center'></Image>
                 )}
 
                 <Stack mt='6' spacing='3'>
@@ -315,23 +318,23 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
 
 
-        <Card maxW='sm' w={{base: '280px', md: '265px', lg: '250px'}} maxH='lg' h={{base: '20em', md: '23em', lg: '29em'}} bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+        <Card maxW='sm' w={{base: '280px', md: '265px', lg: '250px'}} maxH='lg' h={{base: '23em', md: '23em', lg: '29em'}} bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
 
                 {imagem ? (
                     <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
                 ) : (
-                    <HiOutlineClipboardDocumentList size='25vh' color='gray' />
+                    <Image src={semImgDen} boxSize={{base: '90px', md: '140px', lg: '200px'}} align='center'></Image>
                 )}
 
 
 
 
                 <Stack mt='6' spacing='3'>
-                    <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
+                    <Heading size={{base: 'xs', md: 'xs', lg: 'md'}} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
                     <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
                     <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
-                    <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
+                    <Text fontFamily='BreeSerif-Regular' fontSize={{base: 'xs', md: 'xs', lg: 'md'}} fontWeight='thin'>
                         {cortaTextoDescricao(descricao)}
                     </Text>
                 </Stack>
@@ -341,7 +344,8 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
             <CardFooter>
                 <Button
-                    w='auto'
+                    w={{base: '100%', md: '180px', lg: 'auto'}}
+                    mb={{ base: '1rem', md: '0', lg: '0' }}
                     leftIcon={<TbReportSearch size='3vh' />}
                     bgColor='#338BB0'
                     color='white'

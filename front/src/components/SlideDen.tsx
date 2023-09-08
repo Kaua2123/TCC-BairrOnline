@@ -40,7 +40,7 @@ const SlideDen = ({denuncias}) => {
         
         <Box h='auto' mt='20px' p='20px' bg='#F2F2F2' boxShadow='lg' >
 
-        <Swiper style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
+        <Swiper className="swiper-container" style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
         slidesPerView={slidesPerView}
         navigation
@@ -48,8 +48,8 @@ const SlideDen = ({denuncias}) => {
 
        <Wrap>
        {denuncias.map((denuncia, index) => (
-            <WrapItem key={index}>
-            <SwiperSlide key={denuncia.den_cod}>
+            <Box key={index}>
+            <SwiperSlide className='swiper-slide' key={denuncia.den_cod}>
              <CardDen 
              nome={denuncia.den_nome} 
              descricao={denuncia.den_desc} 
@@ -57,7 +57,7 @@ const SlideDen = ({denuncias}) => {
              imagem={denuncia.den_img}
              />
             </SwiperSlide>
-            </WrapItem>
+            </Box>
         ))}
        
        </Wrap>
@@ -75,7 +75,7 @@ export const SlideDenUsu = ({denuncias}) => {
     const [slidesPerView, setSlidesPerView] = useState(window.innerWidth < 768 ? 1 : 5);
     useEffect(() => {
         const resize = () => {
-            setSlidesPerView(window.innerWidth < 768 ? 1 : 5);
+            setSlidesPerView(window.innerWidth < 768 ? 2 : 5);
         };
 
         window.addEventListener('resize', resize);
@@ -90,16 +90,16 @@ export const SlideDenUsu = ({denuncias}) => {
         
         <Box h='auto' mt='20px' p='20px' boxShadow='lg'>
 
-        <Swiper style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
+        <Swiper className="swiper-container" style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
-        slidesPerView={5}
+        slidesPerView={slidesPerView}
         navigation
         pagination={{clickable: true}}>
 
        
         {denuncias.map((denuncia, index) => (
             <Box key={index}>
-            <SwiperSlide className="slideDen" key={denuncia.den_cod}>
+            <SwiperSlide className='swiper-slide'  key={denuncia.den_cod}>
              <CardDenUsu 
              nome={denuncia.den_nome} 
              descricao={denuncia.den_desc} 
