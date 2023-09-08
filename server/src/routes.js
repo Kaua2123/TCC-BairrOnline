@@ -7,6 +7,7 @@ const controllersAva = require('../src/controllers/avaliaçao/index');
 const controllersComen = require('../src/controllers/comentarios/index');
 const controllersDenuncias = require('../src/controllers/denuncias/index');
 const controllersUsu = require('../src/controllers/usuario/index');
+const controllersNotificacoes = require('../src/controllers/notificações');
 
 const routes = express.Router();
 
@@ -35,5 +36,8 @@ routes.get("/buscarComentario", controllersComen.buscarComentario);
 //acompanhamento
 routes.post("/criarAcompanhamento", controllersAcomp.criarAcompanhamento);
 routes.get("getAcompanhamento", controllersAcomp.getAcompanhamentos);
+
+//notificações
+routes.get("/", controllersNotificacoes.raiz);
 
 module.exports = routes;
