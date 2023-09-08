@@ -9,6 +9,9 @@ import { Reportar } from "./reportar";
 //imgs
 import aguaParada from "../img/aguaParada.jpg";
 
+//icones
+import {HiOutlineClipboardDocumentList} from 'react-icons/hi2'
+
 //react
 import {useState, useEffect} from 'react';
 import axios from 'axios';
@@ -117,7 +120,11 @@ const CardGrande = ({denuncia}) => {
               <Text fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular'  ml={{base: '20px', md: '20px', lg:'20px'}}>Problema: {denuncia.den_problema} </Text>
               <CardBody> {/* corpo do card */}
                   <Box>
-                    <Image src={aguaParada}  w='100%' h='250px'  boxShadow='lg'></Image>
+                  {denuncia.den_img ? ( // se o usuario tiver adicionado imagem
+                    <Image src={`http://localhost:3344/retornaImagem/${denuncia.den_img}`} borderRadius='lg' w='100%' h='250px' />
+                ) : (
+                    <HiOutlineClipboardDocumentList size='10vh'  color='gray' /> // se n tiver adicionado imagem, é o que será exibido
+                )}
                   </Box>
                     
             
