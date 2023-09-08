@@ -40,7 +40,22 @@ const CardDen = ({ nome, descricao, bairro, imagem }) => {
         )
     }
 
-    
+    const caracteresMaxDescricao = 24;
+    const caracteresMaxTitulo = 20;
+
+    const cortaTextoDescricao = (text) => {
+        if (text.length > caracteresMaxDescricao) {
+            return text.slice(0, caracteresMaxDescricao) + '...';
+        }
+        return text;
+    }
+
+    const cortaTextoTitulo = (text) => {
+        if (text.length > caracteresMaxTitulo) {
+            return text.slice(0, caracteresMaxTitulo) + '...';
+        }
+        return text;
+    }
 
 
 
@@ -67,10 +82,10 @@ const CardDen = ({ nome, descricao, bairro, imagem }) => {
                         />
                         <TagLabel>@usuario</TagLabel>
                     </Tag>
-                    <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
+                    <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
                     <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
                     <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
-                        {descricao}
+                        {cortaTextoDescricao(descricao)}
                     </Text>
                     
                 </Stack>
@@ -300,7 +315,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
 
 
-        <Card maxW='sm' w='250px' maxH='lg' h='29em' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+        <Card maxW='sm' w={{base: '280px', md: '265px', lg: '250px'}} maxH='lg' h={{base: '20em', md: '23em', lg: '29em'}} bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
 
                 {imagem ? (

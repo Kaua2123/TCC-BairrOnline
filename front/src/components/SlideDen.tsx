@@ -92,14 +92,14 @@ export const SlideDenUsu = ({denuncias}) => {
 
         <Swiper style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
-        slidesPerView={slidesPerView}
+        slidesPerView={5}
         navigation
         pagination={{clickable: true}}>
 
-       <Wrap>
+       
         {denuncias.map((denuncia, index) => (
-            <WrapItem key={index}>
-            <SwiperSlide key={denuncia.den_cod}>
+            <Box key={index}>
+            <SwiperSlide className="slideDen" key={denuncia.den_cod}>
              <CardDenUsu 
              nome={denuncia.den_nome} 
              descricao={denuncia.den_desc} 
@@ -108,12 +108,11 @@ export const SlideDenUsu = ({denuncias}) => {
              bairro={denuncia.den_bairro}
              denCod={denuncia.den_cod}/>
             </SwiperSlide>
-            </WrapItem>
+            </Box>
         ))}
        
 
 
-       </Wrap>
         </Swiper>
 
 

@@ -256,7 +256,7 @@ const Denuncie = () => {
                     border='1px solid black'
                     w={{ base: '29ch', md: '37ch', lg: '45ch' }}
                     resize='vertical'
-                    maxLength={220}
+                    maxLength={130}
                     pl='2.5rem'
                     _hover={{ border: '1px solid #A9A9A9	' }}>
                   </Textarea>
