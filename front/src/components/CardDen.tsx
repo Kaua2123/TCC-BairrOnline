@@ -1,6 +1,6 @@
 import {
     Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
-    AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, InputLeftElement, FormLabel, Center, Flex, useDisclosure
+    AlertDialogOverlay, Tag, TagLabel, Avatar, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, InputLeftElement, FormLabel, Center, Flex, useDisclosure
 } from "@chakra-ui/react";
 
 import { Reportar } from "./reportar";
@@ -44,7 +44,7 @@ const CardDen = ({ nome, descricao, bairro, imagem }) => {
 
         <Card maxW='sm' w='250px' maxH='lg' h='29em' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
-
+         
             {imagem ? (
                     <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px'  />
                 ) : (
@@ -52,12 +52,22 @@ const CardDen = ({ nome, descricao, bairro, imagem }) => {
                 )}
 
                 <Stack mt='6' spacing='3'>
-
+                    <Tag size='sm' colorScheme='blue' borderRadius='full' >
+                        <Avatar
+                            src='https://bit.ly/sage-adebayo'
+                            size='xs'
+                            name='Segun Adebayo'
+                            ml={-1}
+                            mr={2}
+                        />
+                        <TagLabel>@usuario</TagLabel>
+                    </Tag>
                     <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
                     <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
                     <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
                         {descricao}
                     </Text>
+                    
                 </Stack>
 
             </CardBody>
@@ -433,7 +443,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                                 }}
                             />
                             {selectedImage && (
-                                <Image src={URL.createObjectURL(selectedImage)} alt="Imagem selecionada" />
+                                <Image src={URL.createObjectURL(selectedImage)} alt="Imagem selecionada" boxShadow='lg' borderRadius='10px' />
                             )}
                         </ModalBody>
                         <ModalFooter>
