@@ -27,8 +27,9 @@ import CommentList from "./CommentList";
 const CardDen = ({ nome, descricao, bairro, imagem }) => {
     const [rep, setrep] = useState(false)
 
-    //Manipular Comentários
+   
     const { isOpen, onOpen, onClose } = useDisclosure()
+     //Manipular Comentários
     const [comments, setComments] = useState([]);
 
     const handleCommentSubmit = (comment) => {
@@ -38,6 +39,10 @@ const CardDen = ({ nome, descricao, bairro, imagem }) => {
             ]
         )
     }
+
+    
+
+
 
 
     return (
@@ -128,6 +133,8 @@ export default CardDen;
 export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) => {
 
     const dataFormatada = new Date(data).toLocaleDateString("pt-BR");
+    
+   
 
 
 
@@ -270,6 +277,23 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
         }
     };
 
+    const caracteresMaxDescricao = 24;
+    const caracteresMaxTitulo = 20;
+
+    const cortaTextoDescricao = (text) => {
+        if (text.length > caracteresMaxDescricao) {
+            return text.slice(0, caracteresMaxDescricao) + '...';
+        }
+        return text;
+    }
+
+    const cortaTextoTitulo = (text) => {
+        if (text.length > caracteresMaxTitulo) {
+            return text.slice(0, caracteresMaxTitulo) + '...';
+        }
+        return text;
+    }
+
 
     return (
 
@@ -289,11 +313,11 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
 
                 <Stack mt='6' spacing='3'>
-                    <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
+                    <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
                     <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
                     <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
                     <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
-                        {descricao}
+                        {cortaTextoDescricao(descricao)}
                     </Text>
                 </Stack>
 
