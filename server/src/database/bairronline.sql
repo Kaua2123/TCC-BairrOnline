@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`denuncias` (
   `den_prazo` DATE NOT NULL,
   `den_desc` MEDIUMTEXT NOT NULL,
   `den_data` DATE NOT NULL,
-  `den_img` BLOB(16777215) NOT NULL,
+  `den_img` VARCHAR(20) NOT NULL,
   `den_bairro` VARCHAR(30) NOT NULL,
   `den_problema` VARCHAR(45) NOT NULL,
   `usuario_usu_cod` INT NOT NULL,
@@ -132,6 +132,8 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`acompanhamento` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+	
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
