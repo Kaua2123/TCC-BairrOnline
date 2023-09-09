@@ -11,7 +11,7 @@ import enviandoDen from "../img/enviandoDen.png";
 //chakra
 import {
   ChakraProvider, extendTheme, Image, Flex, Box, Button, Text, FormControl,
-  FormLabel, Spacer, Select, Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner
+  FormLabel, Spacer, Select, Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, useColorMode
 } from '@chakra-ui/react';
 
 
@@ -63,6 +63,8 @@ const Denuncie = () => {
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState(false);
   const toast = useToast();
+
+  const {colorMode} = useColorMode();
 
 
 
@@ -159,23 +161,14 @@ const Denuncie = () => {
 
 
 
-  const theme = extendTheme({
-    styles: {
-      global: () => ({
-        body: {
-          background: "",
-        },
-      }),
-    },
-  });
 
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider >
 
 
       <Flex align='center'>
 
-        <Box bg='#F8F8FF' borderRadius='4px' h='auto' w='100%'>
+        <Box bg={colorMode === 'light' ? '#F8F8FF' : 'gray.700'} borderRadius='4px' h='auto' w='100%'>
 
           <Flex justifyContent='space-between'>
 

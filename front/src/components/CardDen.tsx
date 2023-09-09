@@ -1,6 +1,6 @@
 import {
     Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
-    AlertDialogOverlay, Tag, TagLabel, Avatar, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, InputLeftElement, FormLabel, Center, Flex, useDisclosure
+    AlertDialogOverlay, Tag, TagLabel, Avatar, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, InputLeftElement, FormLabel, Center, Flex, useDisclosure, useColorMode
 } from "@chakra-ui/react";
 
 import { Reportar } from "./reportar";
@@ -30,6 +30,7 @@ import semImgDen from '../img/semImgDen.png';
 const CardDen = ({ nome, descricao, bairro, imagem }) => {
     const [rep, setrep] = useState(false)
 
+    const {colorMode} = useColorMode();
    
     const { isOpen, onOpen, onClose } = useDisclosure()
      //Manipular Comentários
@@ -65,7 +66,7 @@ const CardDen = ({ nome, descricao, bairro, imagem }) => {
 
     return (
 
-        <Card maxW='sm' w={{base: '280px', md: '265px', lg: '250px'}} maxH='lg' h={{base: '20em', md: '23em', lg: '29em'}} bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+        <Card maxW='sm' w={{base: '280px', md: '265px', lg: '250px'}} maxH='lg' h={{base: '20em', md: '23em', lg: '29em'}} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
          
             {imagem ? (
@@ -167,6 +168,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
     const [imagemUrl, setImagemUrl] = useState('');
     const cancelRef = React.useRef();
     const toast = useToast();
+    const {colorMode} = useColorMode();
 
 
     async function deleteDenuncia(denCod) {
@@ -318,7 +320,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
 
 
-        <Card maxW='sm' w={{base: '280px', md: '265px', lg: '250px'}} maxH='lg' h={{base: '23em', md: '23em', lg: '29em'}} bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+        <Card maxW='sm' w={{base: '280px', md: '265px', lg: '250px'}} maxH='lg' h={{base: '23em', md: '23em', lg: '29em'}} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
 
                 {imagem ? (
@@ -347,9 +349,11 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                     w={{base: '100%', md: '180px', lg: 'auto'}}
                     mb={{ base: '1rem', md: '0', lg: '0' }}
                     leftIcon={<TbReportSearch size='3vh' />}
-                    bgColor='#338BB0'
+                    bgColor={colorMode === 'light' ? '#338BB0' : 'blue.800'}
                     color='white'
-                    _hover={{ background: '#fff', color: '#338BB0' }}
+                    _hover=
+                    { colorMode === 'light' ? { background: '#fff', color: '#338BB0' } 
+                    : { background: 'gray.500', color: 'white' }}
                     textAlign='center'
                     onClick={onOpen}
                 >
@@ -369,7 +373,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                         <Flex direction={editando ? 'column' : 'row'} justify={editando ? 'space-between' : 'center'} align={editando ? 'flex-start' : 'normal'} >
                             {!editando && (
                                 <Center>
-                                    <Card boxShadow='lg' bgColor='gray.100'>
+                                    <Card boxShadow='lg' bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'}>
                                         <CardBody>
                                         {imagem ? (
                                             <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
@@ -394,7 +398,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                         {editando ? (
                             <Flex justify='space-between' w='100%'>
                                 <Flex flexDirection='column'  p={10} ml='30px'>
-                                <Card boxShadow='lg' bgColor='gray.100'>
+                                <Card boxShadow='lg' bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} >
                                         <CardBody>
                                         {imagem ? (
                                             <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />

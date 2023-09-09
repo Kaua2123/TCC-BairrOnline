@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 //chakra
 import {Center, Box, 
 ChakraProvider, Flex, 
-Image, extendTheme, Text} from '@chakra-ui/react'
+Image, extendTheme, Text, useColorMode} from '@chakra-ui/react'
 
 
 
@@ -29,27 +29,14 @@ import axios from 'axios';
 import AcompanharDen from '../components/AcompanharDen';
 
 
-const theme = extendTheme({
-  config: {
-    initialColorMode: 'light', // Defina o modo inicial como claro
-    useSystemColorMode: false, // Não use o modo de cores do sistema
-  },
-  // Defina as cores para o modo claro e escuro aqui
-  colors: {
-    light: {
-      primary: '#338BB0', // Personalize as cores de luz aqui
-    },
-    dark: {
-      primary: '#ffffff', // Personalize as cores escuras aqui
-    },
-  },
-});
+
 
 
 const HomeUsuario = () => { 
 
   const [denuncias, setDenuncias] = useState([]);
   const [temDenuncia, setTemDenuncia] = useState(false); 
+  const {colorMode} = useColorMode();
 
 
   async function getDenuncia () { //pega os dados da denuncia
@@ -75,12 +62,12 @@ const HomeUsuario = () => {
 
 
  return (
-  <ChakraProvider theme={theme}>
+  <ChakraProvider>
     <HeaderUsu/>
    
-    <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+    
     <Flex align='center'>
-      <Box bgColor='white' borderRadius='4px' h='auto' w='100%'>
+      <Box borderRadius='4px' h='auto' w='100%'>
     
         <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Denunciante!</Text>
 
@@ -92,7 +79,7 @@ const HomeUsuario = () => {
 
           <Flex direction='column' p='180px' mt='-150px'>
             <Box>
-            <Text fontSize='44px' color='#338BB0'   fontFamily='BreeSerif-Regular' whiteSpace='nowrap' align='center'>Seção do Usuário</Text>
+            <Text fontSize='44px' color='#338bb0'  fontFamily='BreeSerif-Regular' whiteSpace='nowrap' align='center'>Seção do Usuário</Text>
             </Box>  
             <Box mt='70px'>
             <Text fontSize='25px' whiteSpace='nowrap'>Denuncie, veja suas <b color='green'> denúncias</b> <br /> e o retorno das instituições</Text>

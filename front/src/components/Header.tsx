@@ -128,7 +128,7 @@ export const HeaderUsu = () => {
   return(
   
 
-      <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' > 
+      <Flex w='100%'  bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='dark-lg' > 
 
 
 {/*COMEÇA HEADERUSU NAV*/}
@@ -311,7 +311,7 @@ export const HeaderInst = () => {
 
     
 
-      <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' position={"sticky"} top={0} zIndex={2}> 
+      <Flex w='100%'  bg={colorMode === 'light' ? '#322F2F' : 'gray.700'}  boxShadow='dark-lg' position={"sticky"} top={0} zIndex={2}> 
 
           <Center>  
             <Menu>
@@ -366,7 +366,7 @@ export const HeaderInst = () => {
              
               <IconButton
         aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
-        icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+        icon={colorMode === 'light' ? <FaMoon /> : <FaSun color='white' />}
         onClick={toggleColorMode}
         colorScheme="whiteAlpha"
         
