@@ -369,15 +369,49 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                         <Flex direction={editando ? 'column' : 'row'} justify={editando ? 'space-between' : 'center'} align={editando ? 'flex-start' : 'normal'} >
                             {!editando && (
                                 <Center>
-                                    <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={denCod} imagem={imagem} bairro={bairro} />
+                                    <Card boxShadow='lg' bgColor='gray.100'>
+                                        <CardBody>
+                                        {imagem ? (
+                                            <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
+                                        ) : (
+                                            <Image src={semImgDen} boxSize={{base: '90px', md: '140px', lg: '200px'}} align='center'></Image>
+                                        )}
+                                    <Stack mt='6' spacing='3'>
+                                        <Heading size={{base: 'xs', md: 'xs', lg: 'md'}} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
+                                        <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
+                                        <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
+                                        <Text fontFamily='BreeSerif-Regular' fontSize={{base: 'xs', md: 'xs', lg: 'md'}} fontWeight='thin'>
+                                            {cortaTextoDescricao(descricao)}
+                                        </Text>
+                                    </Stack>
+                                        </CardBody>
+                                    
+                                    </Card>
                                 </Center>
                             )}
 
                         </Flex>
                         {editando ? (
                             <Flex justify='space-between' w='100%'>
-                                <Flex flexDirection='column' w='45%' p={10} ml='30px'>
-                                    <CardDenUsu nome={nome} descricao={descricao} data={data} denCod={denCod} imagem={imagem} bairro={bairro} />
+                                <Flex flexDirection='column'  p={10} ml='30px'>
+                                <Card boxShadow='lg' bgColor='gray.100'>
+                                        <CardBody>
+                                        {imagem ? (
+                                            <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
+                                        ) : (
+                                            <Image src={semImgDen} boxSize={{base: '90px', md: '140px', lg: '200px'}} align='center'></Image>
+                                        )}
+                                    <Stack mt='6' spacing='3'>
+                                        <Heading size={{base: 'xs', md: 'xs', lg: 'md'}} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
+                                        <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
+                                        <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
+                                        <Text fontFamily='BreeSerif-Regular' fontSize={{base: 'xs', md: 'xs', lg: 'md'}} fontWeight='thin'>
+                                            {cortaTextoDescricao(descricao)}
+                                        </Text>
+                                    </Stack>
+                                        </CardBody>
+                                    
+                                    </Card>
                                 </Flex>
                                 <Flex flexDirection='column' w='45%' p={10}>
                                     <Text fontSize='20px'>Altere aqui o título e a descrição de sua denúncia. Por motivos de
