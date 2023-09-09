@@ -1,10 +1,10 @@
 
 //chakra
-import { Menu,Image, MenuButton, Button, IconButton, MenuList, MenuItem,
+import { Menu,Image, MenuButton, Button,  MenuList, MenuItem,
   Center, Flex, HStack, Spacer,Popover,PopoverTrigger,
   PopoverContent,PopoverHeader,PopoverBody, 
-  PopoverArrow, PopoverCloseButton, AvatarBadge, useToast } from "@chakra-ui/react";
-import { Avatar, Box } from "@chakra-ui/react";
+  PopoverArrow, PopoverCloseButton, AvatarBadge, useToast, useColorMode } from "@chakra-ui/react";
+import { Avatar, Box, IconButton } from "@chakra-ui/react";
 
 //react
 import { HashLink as Link } from 'react-router-hash-link';
@@ -21,12 +21,17 @@ import { AiOutlineBell, AiOutlineUser  } from "react-icons/ai";
 import { BiSolidInstitution } from 'react-icons/bi';
 import { MdOutlineLogout } from 'react-icons/md';
 import { PiGearSixFill } from 'react-icons/pi'
+import {FaMoon, FaSun} from 'react-icons/fa'
 
 //componentes
  import { NotfiInst } from "./infoDen";
 import { useState } from "react";
 
+
+
 const Header = () => {
+
+
   return(
       <Flex w='100%'  bg='#322F2F' boxShadow='lg' position={"sticky"} top={0} zIndex={2}> 
 
@@ -96,6 +101,7 @@ export const HeaderUsu = () => {
 
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
   const toast = useToast();
+  const {colorMode, toggleColorMode} = useColorMode();
 
   const deslogar = () => {
     try {
@@ -121,6 +127,7 @@ export const HeaderUsu = () => {
 
   return(
   
+
       <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' > 
 
 
@@ -140,7 +147,7 @@ export const HeaderUsu = () => {
           
           <Link to='/'> <Image src={Logo} alt='logo' boxSize='20' ></Image> </Link>
 
-
+          
 
           <Spacer/>
           
@@ -197,7 +204,13 @@ export const HeaderUsu = () => {
             <Box display={'inherit'} alignSelf={'center'} paddingRight={'2vh'}>
               <HStack spacing={'20px'}>
              
-               
+              <IconButton
+        aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
+        icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+        onClick={toggleColorMode}
+        colorScheme="whiteAlpha"
+        
+      />
                 <Popover>
                   <PopoverTrigger>
                   <Button variant={'ghost'} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
@@ -227,6 +240,7 @@ export const HeaderUsu = () => {
                   </PopoverBody>
                   </PopoverContent>
                 </Popover>
+                
                
                 <Menu isOpen={isSubMenuOpen}>
           <MenuButton
@@ -269,6 +283,7 @@ export const HeaderUsu = () => {
 export const HeaderInst = () => {
 
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+  const {colorMode, toggleColorMode} = useColorMode();
   const toast = useToast();
 
   const deslogar = () => {
@@ -293,6 +308,9 @@ export const HeaderInst = () => {
   }
 
   return(
+
+    
+
       <Flex w='100%'  bg='#322F2F' boxShadow='dark-lg' position={"sticky"} top={0} zIndex={2}> 
 
           <Center>  
@@ -346,6 +364,13 @@ export const HeaderInst = () => {
             <Box display={'inherit'} alignSelf={'center'} paddingRight={'2vh'}>
               <HStack spacing={'20px'}>
              
+              <IconButton
+        aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
+        icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+        onClick={toggleColorMode}
+        colorScheme="whiteAlpha"
+        
+      />
                
                 <Popover>
                   <PopoverTrigger>

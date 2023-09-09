@@ -48,14 +48,21 @@ import jwtDecode from 'jwt-decode';
 
 //remove o background color padrao do chakra
 const theme = extendTheme({
-    styles: {
-      global: () => ({
-        body: {
-          background: "",
-        },
-      }),
+  config: {
+    initialColorMode: 'light', // Defina o modo inicial como claro
+    useSystemColorMode: false, // Não use o modo de cores do sistema
+  },
+  // Defina as cores para o modo claro e escuro aqui
+  colors: {
+    light: {
+      primary: '#338BB0', // Personalize as cores de luz aqui
     },
-  });
+    dark: {
+      primary: '#ffffff', // Personalize as cores escuras aqui
+    },
+  },
+});
+
 
 //Estilizar Modal do Comentários
 const { definePartsStyle, defineMultiStyleConfig } =
