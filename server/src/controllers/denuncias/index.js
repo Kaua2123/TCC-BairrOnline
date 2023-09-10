@@ -137,6 +137,17 @@ module.exports = {
            return res.status(400).json({error: error.message});
         }
     },
+    
+    async deleteTodasDenuncias(req, res){ // deletar TODAS denúncias
+        try {
+            
+            await knex('denuncias').del();
+            return res.status(201).json({message: 'Todas as denúncias foram deletadas com sucesso.'});
+
+        } catch (error) {
+            return res.status(400).json({error: error.message});
+        }
+    },
 
     async updateDenuncia(req, res){ // atualizar os dados da denuncia 
         try {

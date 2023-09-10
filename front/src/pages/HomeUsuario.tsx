@@ -4,19 +4,26 @@ import '../App.css';
 
 //imgs
 import sectionOla from "../img/sectionOlaDenunciante.png";
-import sectionInst from "../img/sectionInst.png";
-import denunciaNaoAssumida from "../img/denunciaNaoassumida.png";
+
 import denunciaNotFound from "../img/denunciaNotFound.png";
 
 
 //react 
 import { useState } from 'react';
 import { useEffect } from 'react';
+import React from 'react';
 
 //chakra
 import {Center, Box, 
 ChakraProvider, Flex, 
-Image, extendTheme, Text, useColorMode} from '@chakra-ui/react'
+Image,
+Button, Text, useColorMode, useToast, 
+AlertDialogContent, AlertDialogHeader, 
+AlertDialogBody, 
+AlertDialogFooter,
+AlertDialog,
+AlertDialogOverlay,
+} from '@chakra-ui/react'
 
 
 
@@ -36,7 +43,10 @@ const HomeUsuario = () => {
 
   const [denuncias, setDenuncias] = useState([]);
   const [temDenuncia, setTemDenuncia] = useState(false); 
-  const {colorMode} = useColorMode();
+  const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
+  const cancelRef = React.useRef();
+  const toast = useToast();
+ 
 
 
   async function getDenuncia () { //pega os dados da denuncia
@@ -59,6 +69,43 @@ const HomeUsuario = () => {
     getDenuncia(); 
     
   }, []) 
+
+  async function deleteTodasDenuncias () {
+    await axios.delete('http://localhost:3344/deleteTodasDenuncias')
+      .then(response => {
+        console.log('Todas as denúncias foram deletadas.', response)
+        if(response){
+          toast({
+            title: 'Deletadas',
+            description: 'Todas suas denúncias foram deletadas com sucesso. Você pode reverter...',
+            status: 'success',
+            isClosable: true,
+            duration: 4000
+          })
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        if(error){
+          toast({
+            title: 'Erro',
+            description: 'Ocorreu um erro ao deletar todas as denúncias.',
+            status: 'error',
+            isClosable: true,
+            duration: 4000
+          })
+        }
+      })
+  }
+  
+  const openAlertDialog = () => {
+    setIsAlertDialogOpen(true);
+};
+
+const closeAlertDialog = () => {
+    setIsAlertDialogOpen(false);
+};
+
 
 
  return (
@@ -98,6 +145,7 @@ const HomeUsuario = () => {
             <Text fontSize='44px' color='#338BB0'  fontFamily='BreeSerif-Regular' whiteSpace='nowrap' >Suas denúncias</Text>
           </Box>
         </Flex>
+        
 
             <Center>
                 <Box maxH='900px' w='1400px' mt='20px'  boxShadow='lg'>
@@ -125,6 +173,44 @@ const HomeUsuario = () => {
                 </Box>
                 </Center>
           </Box>
+          {temDenuncia ? ( // só aparece se tiver denúncia.
+            <Box>
+            <Center>
+            <Button mt='20px' onClick={openAlertDialog} colorScheme='red'>
+              Apagar todas
+            </Button>
+            </Center>
+          </Box>
+          ) : (
+            <></>
+          )}
+          
+          <AlertDialog isOpen={isAlertDialogOpen} leastDestructiveRef={cancelRef} onClose={closeAlertDialog}>
+                            <AlertDialogOverlay>
+                                <AlertDialogContent fontSize='lg' fontWeight='bold'>
+                                    <AlertDialogHeader>
+                                        <Text color='#338BB0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Apagar todas as denúncias</Text>
+                                    </AlertDialogHeader>
+
+                                    <AlertDialogBody>
+                                        <Text fontWeight='normal'>Tem certeza? </Text>
+                                    </AlertDialogBody>
+
+                                    <AlertDialogFooter>
+                                        <Button ref={cancelRef} onClick={closeAlertDialog}>
+                                            Cancelar
+                                        </Button>
+                                        <Button bgColor='#E75760' color='white' _hover={{ backgroundColor: '#D71D28' }} onClick={() => {
+                                            deleteTodasDenuncias();
+                                            closeAlertDialog();
+                                        }} ml={3}>
+                                            Apagar
+                                        </Button>
+
+                                    </AlertDialogFooter>
+                                </AlertDialogContent>
+                            </AlertDialogOverlay>
+                        </AlertDialog>
        
           <Box id='acompanharDen'>
             <AcompanharDen/>

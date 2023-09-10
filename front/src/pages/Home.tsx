@@ -1,4 +1,4 @@
-import '../App.css';
+
 
 
 //imgs
@@ -14,7 +14,7 @@ import jwt_decode from 'jwt-decode';
 
 //chakra 
 import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
-, Heading, Modal, ModalOverlay, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem, useDisclosure} from '@chakra-ui/react';
+, Heading, Modal, ModalOverlay, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem, useDisclosure, useColorMode, theme} from '@chakra-ui/react';
 import { modalAnatomy as parts } from '@chakra-ui/anatomy'
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/styled-system'
 //componentes
@@ -31,8 +31,6 @@ import { BsChatSquareText } from 'react-icons/bs'
 import { MdOutlineReportProblem } from 'react-icons/md';
 import { FiSearch } from 'react-icons/fi'
 
-
-
 //estilos do swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -44,34 +42,6 @@ import SlideDen from '../components/SlideDen';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
-
-
-//remove o background color padrao do chakra
-
-
-//Estilizar Modal do Comentários
-const { definePartsStyle, defineMultiStyleConfig } =
-  createMultiStyleConfigHelpers(parts.keys)
-
-const xl = defineStyle({
-  px: '6',
-  py: '2',
-  fontSize: 'xl',
-})
-
-const sm = defineStyle({
-  fontSize: 'sm',
-  py: '6',
-})
-
-const sizes = {
-  xl: definePartsStyle({ header: sm, dialog: xl }),
-}
-
-export const modalTheme = defineMultiStyleConfig({
-  sizes,
-})
-
  
 
 const Home = () => {
@@ -80,6 +50,8 @@ const Home = () => {
   const [temDenuncia, setTemDenuncia] = useState(false);
   const {isOpen, onOpen, onClose} = useDisclosure()
   const [comments, setComments] = useState([]);
+
+  const {colorMode} = useColorMode();
 
   const token = localStorage.getItem('token');
   const decodificaToken = token ? jwt_decode(token) : null;
@@ -122,16 +94,18 @@ const Home = () => {
     getDenuncia();
   }, [])
 
+  
+
  return (
 
   // BAIRRONLINE GRANDAO TLG (usando os componentes de estilo do chakra)
   
-  <ChakraProvider>
+  <ChakraProvider >
     
   {headerComponent}
    
-
-    <Grid templateColumns="1fr 2fr 1fr" gap={4} bgColor="#338BB0">
+  
+    <Grid templateColumns="1fr 2fr 1fr" gap={4} bgColor='#338bb0'>
         {/* container da esquerda */}
         <GridItem colSpan={{ base: 1, md: 1, lg: 1 }}>
 
