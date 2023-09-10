@@ -6,26 +6,26 @@ const fs = require('fs');
 
 
 const storage = multer.diskStorage({
-    destination: './imgsDen',    
+    destination: './imgsDen',
     filename: function (req, file, cb) {
       const arquivoUnico = uniqid() + path.extname(file.originalname);
       cb(null, arquivoUnico);
     }
   });
-  
+
 const upload = multer({storage});
 
 
 
 module.exports = {
-    
+
     async raiz(req, res){
         try {
             return res.send("pagina raiz");
-        } 
+        }
         catch (error) {
             return res.status(400).json({error: error.message});
-        }   
+        }
     },
 
     async criarDenuncia(req, res) {
@@ -38,7 +38,7 @@ module.exports = {
           const { usuario_usu_cod } = req.body;
 
           const dataAtual = new Date().toISOString();
-      
+
             await knex('denuncias').insert({
               den_nome,
               den_desc,
@@ -46,11 +46,11 @@ module.exports = {
               den_bairro,
               den_problema,
               usuario_usu_cod,
-               
+
             });
-      
+
             return res.status(201).json({ message: 'Denúncia enviada' });
-          
+
         } catch (error) {
           console.log(error);
           return res.status(400).json({ error: error.message });
@@ -84,7 +84,7 @@ module.exports = {
             return res.status(200).json({message: 'Arquivo recebido'});
         });
 
-        } 
+        }
         catch (error) {
             console.log(error);
             return res.status(500).json({ error: 'Erro ao upar a imagem.' });
@@ -104,7 +104,7 @@ module.exports = {
                 res.setHeader('contentType', `image/${path.extname(filename)}`);
                 res.end(data);
             })
-       
+
 
         } catch (error) {
             return res.status(500).json({error: error.message});
@@ -116,7 +116,7 @@ module.exports = {
             const denuncias = await knex('denuncias').select('*');
 
             return res.status(200).json(denuncias); //retorna as denuncias
-        } 
+        }
         catch (error) {
             return res.status(400).json({error: 'Erro ao criar o card.'});
         }
@@ -132,15 +132,15 @@ module.exports = {
             else{
                 return res.status(201).json({message: 'Impossível deletar uma denúncia inexistente.'})
             }
-        } 
+        }
         catch (error) {
            return res.status(400).json({error: error.message});
         }
     },
-    
+
     async deleteTodasDenuncias(req, res){ // deletar TODAS denúncias
         try {
-            
+
             await knex('denuncias').del();
             return res.status(201).json({message: 'Todas as denúncias foram deletadas com sucesso.'});
 
@@ -149,7 +149,29 @@ module.exports = {
         }
     },
 
-    async updateDenuncia(req, res){ // atualizar os dados da denuncia 
+    async reverterDenunciaExcluida(req, res){
+      try{
+        const {cod} = req.params;
+
+        const denunciaExcluida = await knex('denuncias_excluidas').where('den_cod', cod).first();
+
+        if (!denunciaExcluida){
+          return res.status(400).json({error: 'Não há denuncias excluidas para reverter.'});
+        }
+
+        const dataAtual = new Date().toISOString();
+
+        await knex('denuncias').insert({
+          den_cod: denunciaExcluida.den_cod,
+          den_data_exclusao: dataAtual
+        })
+      }
+      catch (error){
+        return res.status(400).json({error: error.message});
+      }
+    },
+
+    async updateDenuncia(req, res){ // atualizar os dados da denuncia
         try {
             const { cod } = req.params; //verificando o codigo
 
@@ -165,10 +187,10 @@ module.exports = {
                 den_nome,
                 den_desc
             }).where('den_cod', cod);
-            
+
             return res.status(201).json({message: 'Dados da denúncia atualizados.'})
 
-        } 
+        }
         catch (error) {
             return res.status(400).json({error: error.message});
         }
@@ -176,10 +198,10 @@ module.exports = {
 
     async updatePrazoDenuncia(req, res){ // pras instituições. poderão dar um prazo de resoluçao pras denuncias
         try {
-            
-        } 
+
+        }
         catch (error) {
-            
+
         }
     }
 }

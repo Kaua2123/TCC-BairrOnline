@@ -1,4 +1,4 @@
-const express = require('express'); 
+const express = require('express');
 
 
 
@@ -13,7 +13,7 @@ const routes = express.Router();
 
 
 //usuario
-routes.get("/", controllersUsu.raiz);   
+routes.get("/", controllersUsu.raiz);
 routes.post("/criarUsu", controllersUsu.CriarUsuario);
 routes.post("/logarUsu", controllersUsu.logarUsuario);
 
@@ -23,6 +23,7 @@ routes.post("/criarDenuncia", controllersDenuncias.criarDenuncia);
 routes.get("/cardDenuncia", controllersDenuncias.cardDenuncia);
 routes.delete("/deleteDenuncia/:cod", controllersDenuncias.deleteDenuncia);
 routes.delete("/deleteTodasDenuncias", controllersDenuncias.deleteTodasDenuncias);
+routes.post("/reverterDenunciaExcluida/:cod", controllersDenuncias.reverterDenunciaExcluida)
 routes.put("/updateDenuncia/:cod", controllersDenuncias.updateDenuncia);
 routes.post("/uparImagem/:cod", controllersDenuncias.uparImagem);
 routes.get("/retornaImagem/:filename", controllersDenuncias.retornaImagem);
