@@ -8,21 +8,22 @@ import sectionOla from "../img/sectionOlaDenunciante.png";
 import denunciaNotFound from "../img/denunciaNotFound.png";
 
 
-//react 
+//react
 import { useState } from 'react';
 import { useEffect } from 'react';
 import React from 'react';
 
 //chakra
-import {Center, Box, 
-ChakraProvider, Flex, 
+import {Center, Box,
+ChakraProvider, Flex,
 Image,
-Button, Text, useColorMode, useToast, 
-AlertDialogContent, AlertDialogHeader, 
-AlertDialogBody, 
+Button, Text, useColorMode, useToast,
+AlertDialogContent, AlertDialogHeader,
+AlertDialogBody,
 AlertDialogFooter,
 AlertDialog,
 AlertDialogOverlay,
+Spacer
 } from '@chakra-ui/react'
 
 
@@ -35,18 +36,21 @@ import { SlideDenUsu } from '../components/SlideDen';
 import axios from 'axios';
 import AcompanharDen from '../components/AcompanharDen';
 
+//icones
+import {IoTrashBinSharp} from 'react-icons/io5'
 
 
 
 
-const HomeUsuario = () => { 
+
+const HomeUsuario = () => {
 
   const [denuncias, setDenuncias] = useState([]);
-  const [temDenuncia, setTemDenuncia] = useState(false); 
+  const [temDenuncia, setTemDenuncia] = useState(false);
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
   const cancelRef = React.useRef();
   const toast = useToast();
- 
+
 
 
   async function getDenuncia () { //pega os dados da denuncia
@@ -61,14 +65,14 @@ const HomeUsuario = () => {
       .catch(error => {
         console.error(error);
       })
-      
-  }
-  
 
-  useEffect(() => { 
-    getDenuncia(); 
-    
-  }, []) 
+  }
+
+
+  useEffect(() => {
+    getDenuncia();
+
+  }, [])
 
   async function deleteTodasDenuncias () {
     await axios.delete('http://localhost:3344/deleteTodasDenuncias')
@@ -97,7 +101,7 @@ const HomeUsuario = () => {
         }
       })
   }
-  
+
   const openAlertDialog = () => {
     setIsAlertDialogOpen(true);
 };
@@ -111,11 +115,11 @@ const closeAlertDialog = () => {
  return (
   <ChakraProvider>
     <HeaderUsu/>
-   
-    
+
+
     <Flex align='center'>
       <Box borderRadius='4px' h='auto' w='100%'>
-    
+
         <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Denunciante!</Text>
 
         <Flex justifyContent='space-between'>
@@ -127,29 +131,29 @@ const closeAlertDialog = () => {
           <Flex direction='column' p='180px' mt='-150px'>
             <Box>
             <Text fontSize='44px' color='#338bb0'  fontFamily='BreeSerif-Regular' whiteSpace='nowrap' align='center'>Seção do Usuário</Text>
-            </Box>  
+            </Box>
             <Box mt='70px'>
             <Text fontSize='25px' whiteSpace='nowrap'>Denuncie, veja suas <b color='green'> denúncias</b> <br /> e o retorno das instituições</Text>
             </Box>
           </Flex>
         </Flex>
-       
+
 
         <Box id='denuncieAqui'>
           <Denuncie/>
         </Box>
 
         <Box id='minhasDen'>
-        <Flex justify='center'> 
+        <Flex justify='center'>
           <Box>
             <Text fontSize='44px' color='#338BB0'  fontFamily='BreeSerif-Regular' whiteSpace='nowrap' >Suas denúncias</Text>
           </Box>
         </Flex>
-        
+
 
             <Center>
                 <Box maxH='900px' w='1400px' mt='20px'  boxShadow='lg'>
-        
+
                   {temDenuncia ? ( // se tiver denuncia
                      <SlideDenUsu denuncias={denuncias}/>
                   ) : ( // se não
@@ -163,28 +167,33 @@ const closeAlertDialog = () => {
                     </>
                   )}
 
-                
+
               {/* as denuncias da home n tem mais comentarios diretamente nelas agora, tem um botao
               ver denuncia q vai pra pagina de ver denuncias do gabriel, e lá vai ter a exibição da denuncia
               que foi clicada e de outras se o cara quiser filtrar. lá vai ter os comentarioszin */}
 
-       
-                         
+
+
                 </Box>
                 </Center>
           </Box>
-          {temDenuncia ? ( // só aparece se tiver denúncia.
+
+          {temDenuncia && ( // oq ta aq dentro só aparece se tiver denúncia
             <Box>
             <Center>
-            <Button mt='20px' onClick={openAlertDialog} colorScheme='red'>
-              Apagar todas
-            </Button>
+              <Button mt='20px' onClick={openAlertDialog} colorScheme='red'>
+                Apagar todas
+              </Button>
             </Center>
+            <Box mt='-30px'>
+            <Button colorScheme='blue' leftIcon={<IoTrashBinSharp/>}>
+              Denúncias excluidas
+            </Button>
+            </Box>
           </Box>
-          ) : (
-            <></>
-          )}
-          
+        )}
+
+
           <AlertDialog isOpen={isAlertDialogOpen} leastDestructiveRef={cancelRef} onClose={closeAlertDialog}>
                             <AlertDialogOverlay>
                                 <AlertDialogContent fontSize='lg' fontWeight='bold'>
@@ -211,12 +220,12 @@ const closeAlertDialog = () => {
                                 </AlertDialogContent>
                             </AlertDialogOverlay>
                         </AlertDialog>
-       
+
           <Box id='acompanharDen'>
             <AcompanharDen/>
           </Box>
       </Box>
-      
+
     </Flex>
 
 
