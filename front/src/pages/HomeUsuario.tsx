@@ -31,7 +31,8 @@ ModalCloseButton,
 ModalContent,
 ModalFooter,
 ModalHeader,
-ModalOverlay
+ModalOverlay,
+Spinner
 } from '@chakra-ui/react'
 
 
@@ -56,6 +57,7 @@ const HomeUsuario = () => {
   const [denuncias, setDenuncias] = useState([]);
   const [denunciasExcluidas, setDenunciasExcluidas] = useState([]);
   const [denunciaExcluidaCod, setDenunciaExcluidaCod] = useState([]);
+  const [carregando, setCarregando] = useState(false);
   const [temDenuncia, setTemDenuncia] = useState(false);
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
   const cancelRef = React.useRef();
@@ -130,6 +132,8 @@ const HomeUsuario = () => {
   }, [])
 
   async function reverterDenunciaExcluida () {
+    setCarregando(true);
+
     await axios.post(`http://localhost:3344/reverterDenunciaExcluida/${denunciaExcluidaCod}`)
     .then(response => {
       if(response){
@@ -139,7 +143,8 @@ const HomeUsuario = () => {
           status: 'success',
           duration: 4000,
           isClosable: true
-        })
+        });
+        setCarregando(false);
       }
     })
     .catch(error => {
@@ -150,7 +155,8 @@ const HomeUsuario = () => {
           status: 'error',
           duration: 4000,
           isClosable: true
-        })
+        });
+        setCarregando(false);
       }
     })
   }
@@ -262,7 +268,10 @@ const closeAlertDialog = () => {
                            ))}
                         </ModalBody>
                         <ModalFooter>
-                            <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} onClick={reverterDenunciaExcluida} >
+                          {carregando && (
+                            <Spinner color='#338bb0'/>
+                          )}
+                            <Button bgColor='#338bb0' color='white' display={carregando ? 'none' : 'unset'} _hover={{ background: '#fff', color: '#338BB0' }} mr={3} onClick={reverterDenunciaExcluida} >
                                 Reverter
                             </Button>
                             <Button variant="ghost" onClick={onClose}>
