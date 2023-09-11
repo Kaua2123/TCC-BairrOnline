@@ -55,6 +55,7 @@ const HomeUsuario = () => {
 
   const [denuncias, setDenuncias] = useState([]);
   const [denunciasExcluidas, setDenunciasExcluidas] = useState([]);
+  const [denunciaExcluidaCod, setDenunciaExcluidaCod] = useState([]);
   const [temDenuncia, setTemDenuncia] = useState(false);
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
   const cancelRef = React.useRef();
@@ -76,7 +77,6 @@ const HomeUsuario = () => {
       })
 
   }
-
 
   useEffect(() => {
     getDenuncia();
@@ -117,6 +117,8 @@ const HomeUsuario = () => {
     await axios.get('http://localhost:3344/getDenunciaExcluida')
       .then(response => {
         setDenunciasExcluidas(response.data);
+        const codigosExcluidos = response.data.map(denunciaExcluida => denunciaExcluida.den_cod);
+        setDenunciaExcluidaCod(codigosExcluidos);
       })
       .catch(error => {
         console.error('Erro ao buscar as denúncias excluidas', error);
@@ -126,6 +128,32 @@ const HomeUsuario = () => {
   useEffect(() => {
     getDenunciaExcluida();
   }, [])
+
+  async function reverterDenunciaExcluida () {
+    await axios.post(`http://localhost:3344/reverterDenunciaExcluida/${denunciaExcluidaCod}`)
+    .then(response => {
+      if(response){
+        toast({
+          title: 'Sucesso',
+          description: 'Sua denúncia foi revertida.',
+          status: 'success',
+          duration: 4000,
+          isClosable: true
+        })
+      }
+    })
+    .catch(error => {
+      if(error){
+        toast({
+          title: 'Erro',
+          description: 'Houve um erro ao reverter a denúncia excluída.',
+          status: 'error',
+          duration: 4000,
+          isClosable: true
+        })
+      }
+    })
+  }
 
   const openAlertDialog = () => {
     setIsAlertDialogOpen(true);
@@ -234,7 +262,7 @@ const closeAlertDialog = () => {
                            ))}
                         </ModalBody>
                         <ModalFooter>
-                            <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} >
+                            <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} onClick={reverterDenunciaExcluida} >
                                 Reverter
                             </Button>
                             <Button variant="ghost" onClick={onClose}>
