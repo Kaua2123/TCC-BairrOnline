@@ -269,7 +269,7 @@ const closeAlertDialog = () => {
                         </ModalBody>
                         <ModalFooter>
                           {carregando && (
-                            <Spinner color='#338bb0'/>
+                            <Spinner size='lg' color='#338bb0'/>
                           )}
                             <Button bgColor='#338bb0' color='white' display={carregando ? 'none' : 'unset'} _hover={{ background: '#fff', color: '#338BB0' }} mr={3} onClick={reverterDenunciaExcluida} >
                                 Reverter

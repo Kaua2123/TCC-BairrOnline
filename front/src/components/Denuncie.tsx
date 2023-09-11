@@ -285,7 +285,7 @@ const Denuncie = () => {
 
                   <Spacer />
                   {carregando ? (
-                    <Spinner size='xl' color='#338BB0' />
+                    <Spinner size='lg' color='#338BB0' />
                   ) : (
                     <Box mt='80px'>
                     <Button type='submit' onClick={() => {
