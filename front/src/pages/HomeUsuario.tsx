@@ -83,19 +83,7 @@ const HomeUsuario = () => {
 
   }, [])
 
-  async function getDenunciaExcluida () {
-    await axios.get('http://localhost:3344/getDenunciaExcluida')
-      .then(response => {
-        setDenunciasExcluidas(response.data);
-      })
-      .catch(error => {
-        console.error('Erro ao buscar as denúncias excluidas', error);
-      });
-  }
-
-  useEffect(() => {
-    getDenunciaExcluida();
-  }, [])
+  
 
   async function deleteTodasDenuncias () {
     await axios.delete('http://localhost:3344/deleteTodasDenuncias')
@@ -124,6 +112,20 @@ const HomeUsuario = () => {
         }
       })
   }
+
+  async function getDenunciaExcluida () {
+    await axios.get('http://localhost:3344/getDenunciaExcluida')
+      .then(response => {
+        setDenunciasExcluidas(response.data);
+      })
+      .catch(error => {
+        console.error('Erro ao buscar as denúncias excluidas', error);
+      });
+  }
+
+  useEffect(() => {
+    getDenunciaExcluida();
+  }, [])
 
   const openAlertDialog = () => {
     setIsAlertDialogOpen(true);
@@ -219,7 +221,16 @@ const closeAlertDialog = () => {
                         <ModalCloseButton />
                         <ModalBody>
                            {denunciasExcluidas.map((denunciaExcluida, index) => (
-                            denunciaExcluida.den_nome
+                            <Box key={index}>
+                            <p>Nome: {denunciaExcluida.den_nome}</p>
+                            <p>Prazo: {denunciaExcluida.den_prazo}</p>
+                            <p>Descrição: {denunciaExcluida.den_desc}</p>
+                            <p>Data: {denunciaExcluida.den_data}</p>
+                            <p>Imagem: {denunciaExcluida.den_img}</p>
+                            <p>Bairro: {denunciaExcluida.den_bairro}</p>
+                            <p>Problema: {denunciaExcluida.den_problema}</p>
+                            <p>Data de Exclusão da denúncia: {denunciaExcluida.den_data_exclusao}</p>
+                            </Box>
                            ))}
                         </ModalBody>
                         <ModalFooter>
