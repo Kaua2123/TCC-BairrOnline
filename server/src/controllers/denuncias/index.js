@@ -122,12 +122,20 @@ module.exports = {
         }
     },
 
-    async deleteDenuncia(req, res){ //deleta as denuncias pelo codigo
+    async deleteDenuncia(req, res){ //deleta as denuncias pelo codigo, salvando elas em uma tabela de denuncias excluidas
         try {
             const {cod} = req.params;
+            
+            const denuncia = await knex('denuncias').where('den_cod', cod).first();
+            if (!denuncia){
+                return res.status(400).json({ error: 'Denúncia não encontrada.' });
+            }
+
+            await knex('denuncias_excluidas').insert(denuncia);
+
             if (await knex('denuncias').where("den_cod", cod) != ''){ // se houver denuncia, poderá ser deletada
                 await knex('denuncias').del().where("den_cod", cod);
-                return res.status(201).json({message: 'Denúncia deletada.'})
+                return res.status(201).json({message: 'Denúncia deletada e movida para tabela denuncias excluidas.'})
             }
             else{
                 return res.status(201).json({message: 'Impossível deletar uma denúncia inexistente.'})
@@ -149,7 +157,7 @@ module.exports = {
         }
     },
 
-    async reverterDenunciaExcluida(req, res){
+    async reverterDenunciaExcluida(req, res){ // reversão de denuncias
       try{
         const {cod} = req.params;
 
@@ -159,12 +167,20 @@ module.exports = {
           return res.status(400).json({error: 'Não há denuncias excluidas para reverter.'});
         }
 
-        const dataAtual = new Date().toISOString();
-
-        await knex('denuncias').insert({
-          den_cod: denunciaExcluida.den_cod,
-          den_data_exclusao: dataAtual
+        await knex('denuncias').insert({ //inserindo de novo na tabela de denúncias os dados da denuncia que foi excluida
+            den_cod: denunciaExcluida.den_cod,
+            den_nome: denunciaExcluida.den_nome,
+            den_prazo: denunciaExcluida.den_prazo,
+            den_desc: denunciaExcluida.den_desc,
+            den_data: denunciaExcluida.den_data,
+            den_img: denunciaExcluida.den_img,
+            den_bairro: denunciaExcluida.den_bairro,
+            den_problema: denunciaExcluida.den_problema,
+            usuario_usu_cod: denunciaExcluida.usuario_usu_cod,
         })
+
+        await knex('denuncias_excluidas').where('den_cod', cod).del();
+        return res.status(200).json({message: 'Denúncia revertida com sucesso.'})
       }
       catch (error){
         return res.status(400).json({error: error.message});

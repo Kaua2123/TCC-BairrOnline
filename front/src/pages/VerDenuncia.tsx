@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import jwt_decode from 'jwt-decode';
 
-//igms
+//imgs
 
 
 
