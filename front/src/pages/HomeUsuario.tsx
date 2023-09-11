@@ -23,7 +23,15 @@ AlertDialogBody,
 AlertDialogFooter,
 AlertDialog,
 AlertDialogOverlay,
-Spacer
+Spacer,
+Modal,
+useDisclosure,
+ModalBody,
+ModalCloseButton,
+ModalContent,
+ModalFooter,
+ModalHeader,
+ModalOverlay
 } from '@chakra-ui/react'
 
 
@@ -46,11 +54,12 @@ import {IoTrashBinSharp} from 'react-icons/io5'
 const HomeUsuario = () => {
 
   const [denuncias, setDenuncias] = useState([]);
+  const [denunciasExcluidas, setDenunciasExcluidas] = useState([]);
   const [temDenuncia, setTemDenuncia] = useState(false);
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
   const cancelRef = React.useRef();
   const toast = useToast();
-
+  const {isOpen, onOpen, onClose} = useDisclosure();
 
 
   async function getDenuncia () { //pega os dados da denuncia
@@ -72,6 +81,20 @@ const HomeUsuario = () => {
   useEffect(() => {
     getDenuncia();
 
+  }, [])
+
+  async function getDenunciaExcluida () {
+    await axios.get('http://localhost:3344/getDenunciaExcluida')
+      .then(response => {
+        setDenunciasExcluidas(response.data);
+      })
+      .catch(error => {
+        console.error('Erro ao buscar as denúncias excluidas', error);
+      });
+  }
+
+  useEffect(() => {
+    getDenunciaExcluida();
   }, [])
 
   async function deleteTodasDenuncias () {
@@ -184,11 +207,31 @@ const closeAlertDialog = () => {
               <Button mt='20px' onClick={openAlertDialog} colorScheme='red'>
                 Apagar todas
               </Button>
-            </Center>
+            </Center> 
             <Box mt='-30px'>
-            <Button colorScheme='blue' leftIcon={<IoTrashBinSharp/>}>
+            <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} leftIcon={<IoTrashBinSharp/>} onClick={onOpen}>
               Denúncias excluidas
             </Button>
+            <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>Denúncias Excluidas</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                           {denunciasExcluidas.map((denunciaExcluida, index) => (
+                            denunciaExcluida.den_nome
+                           ))}
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} >
+                                Reverter
+                            </Button>
+                            <Button variant="ghost" onClick={onClose}>
+                                Cancelar
+                            </Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
             </Box>
           </Box>
         )}

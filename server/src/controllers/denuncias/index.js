@@ -149,9 +149,26 @@ module.exports = {
     async deleteTodasDenuncias(req, res){ // deletar TODAS denúncias
         try {
 
+            const denuncia = await knex('denuncias').first();
+            if (!denuncia){
+                return res.status(400).json({ error: 'Denúncia não encontrada.' });
+            }
+
+            await knex('denuncias_excluidas').insert(denuncia);
+
             await knex('denuncias').del();
             return res.status(201).json({message: 'Todas as denúncias foram deletadas com sucesso.'});
 
+        } catch (error) {
+            return res.status(400).json({error: error.message});
+        }
+    },
+
+    async getDenunciaExcluida(req, res){
+        try {
+            const denunciaExcluida = await knex('denuncias_excluidas').select('*');
+
+            return res.status(200).json(denunciaExcluida);
         } catch (error) {
             return res.status(400).json({error: error.message});
         }

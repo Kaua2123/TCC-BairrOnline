@@ -23,6 +23,7 @@ routes.post("/criarDenuncia", controllersDenuncias.criarDenuncia);
 routes.get("/cardDenuncia", controllersDenuncias.cardDenuncia);
 routes.delete("/deleteDenuncia/:cod", controllersDenuncias.deleteDenuncia);
 routes.delete("/deleteTodasDenuncias", controllersDenuncias.deleteTodasDenuncias);
+routes.get("/getDenunciaExcluida", controllersDenuncias.getDenunciaExcluida);
 routes.post("/reverterDenunciaExcluida/:cod", controllersDenuncias.reverterDenunciaExcluida)
 routes.put("/updateDenuncia/:cod", controllersDenuncias.updateDenuncia);
 routes.post("/uparImagem/:cod", controllersDenuncias.uparImagem);

@@ -44,6 +44,7 @@ const opçoesDeBairros = bairros.map((bairro, index) => ({
 const Ver = () => {
 
   const [denuncias, setDenuncias] = useState([]);
+
   const [denImg, setDenImg] = useState('');  
   const [denNome, setDenNome] = useState('');
   const [denPrazo, setDenPrazo] = useState('');
@@ -64,6 +65,8 @@ const Ver = () => {
       console.error('Erro ao buscar denuncias', error);
     });
   }, []);
+
+  
 
   const theme = extendTheme({
     styles: {

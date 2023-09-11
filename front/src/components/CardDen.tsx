@@ -468,14 +468,14 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
                         {editando ? (
                             <>
-                                <Button mr={3} colorScheme="blue" onClick={() => setEditando(false)}>Cancelar</Button>
+                                <Button mr={3} bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} onClick={() => setEditando(false)}>Cancelar</Button>
                                 <Button colorScheme="green" mr={3} onClick={() => updateDenuncia(denCod)}>Salvar alterações</Button>
                             </>
                         ) : (
                             <>
                                 <Button bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog} _hover={{ backgroundColor: '#D71D28' }}>Apagar</Button>
-                                <Button colorScheme="blue" mr={3} color='white' onClick={openImageUploadModal}>Adicionar imagem</Button>
-                                <Button colorScheme="blue" mr={3} onClick={() => setEditando(true)}>Editar</Button>
+                                <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' onClick={openImageUploadModal}>Adicionar imagem</Button>
+                                <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} onClick={() => setEditando(true)}>Editar</Button>
 
                             </>
                         )}
