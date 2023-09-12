@@ -12,7 +12,8 @@ import aguaParada from '../img/aguaParada.jpg'
 //chakra
 import { ChakraProvider, extendTheme, Image, Flex, Box, Button, Text,  FormControl,
 FormLabel, Spacer, Select,  Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, Card, CardBody, CardFooter, CardHeader, Divider, Heading, Center} from '@chakra-ui/react';
-
+import { FiSearch } from 'react-icons/fi'
+import { SiOpenstreetmap } from 'react-icons/si';
 
 
 //react
@@ -36,9 +37,17 @@ const bairros = ['Selecione dentre as opções', 'Aero Clube', 'Água Limpa', 'A
     'Santa Rita do Zarur', 'Santo Agostinho', 'São Cristóvão', 'São Geraldo', 'São João', 'São Luiz', 'Sessenta', 
   'Siderópolis', 'Três Poços', 'Vila Americana', 'Vila Mury', 'Vila Rica', 'Vila Santa Cecília', 'Voldac'];
 
+  const problemas = ['Falta de estrutura', 'Poluição', 'Falta de recursos públicos', 'Desmatamento']
+
+
 const opçoesDeBairros = bairros.map((bairro, index) => ({
   value: index,
   label: bairro
+}))
+
+const opçoesDeProblemas = problemas.map((problema) => ({
+  value: problema,
+  label: problema
 }))
 
 const Ver = () => {
@@ -52,7 +61,9 @@ const Ver = () => {
   const [bairroCod, setBairroCod] = useState('');
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState(false);
-
+  const [denBairro, setDenBairro] = useState('');
+  const [denProblema, setDenProblema] = useState('');
+  
   const toast = useToast();
   
 
@@ -110,8 +121,73 @@ const Ver = () => {
    
         <Box bgColor={'white'}>
         <Center>
-          <Text mt='40px' fontSize={{ base:'12px', md:'18px', lg: '25px'}} fontWeight='normal'>Bairro:</Text>
+          <Flex flexDirection='column'>
+        <FormLabel mt='30px' fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular' fontWeight='normal' >Pesquisa por nome</FormLabel>
 
+<InputGroup>
+<InputLeftElement pointerEvents='none'>
+<FiSearch color='black' />
+      </InputLeftElement>
+  <Input value={denNome}
+    onChange={(e) => setDenNome(e.target.value)}
+    border='1px solid black'
+    w={{ base: '140px', md: '200px', lg: '240px' }}
+    _hover={{ border: '1px solid #A9A9A9	' }}
+    type='text'></Input>
+</InputGroup>
+</Flex>
+          <Flex flexDirection='column'>
+          <FormLabel mt='30px' fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular' fontWeight='normal'>Bairro</FormLabel>
+
+                <InputGroup>
+                  <InputLeftElement>
+                    <BsListUl size='25px' />
+                  </InputLeftElement>
+
+                  <Select
+
+                    value={denBairro}
+                    onChange={(e) => setDenBairro(e.target.value)}
+                    border='1px solid black'
+                    w={{ base: '140px', md: '200px', lg: '240px' }}
+                    _hover={{ border: '1px solid #A9A9A9	' }}
+                    textAlign='center'
+                  >
+                    <option value=''></option>
+                    {opçoesDeBairros.map((bairro) => (
+                      <option key={bairro.value} value={bairro.value}>
+                        {bairro.label}
+                      </option> // mapeando o array e pegando cada opção como uma posição do array
+                    ))}
+                  </Select>
+                </InputGroup>
+          </Flex>
+
+          <Flex flexDirection='column'>
+          <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular' fontWeight='normal' >Problema específico:</FormLabel>
+
+<InputGroup>
+  <InputLeftElement>
+    <SiOpenstreetmap size='25px' />
+  </InputLeftElement>
+
+  <Select
+    value={denProblema}
+    onChange={(e) => setDenProblema(e.target.value)}
+    border='1px solid black'
+    w={{ base: '140px', md: '200px', lg: '240px' }}
+    _hover={{ border: '1px solid #A9A9A9	' }}
+    textAlign='center'>
+    <option value=''></option>
+    {opçoesDeProblemas.map((problema) => (
+      <option key={problema.value} value={problema.value}>
+        {problema.label}
+      </option> // mapeando o array e pegando cada opção como uma posição do array
+    ))}
+  </Select>
+</InputGroup>
+
+          </Flex>
         </Center>
         
     <Center>
