@@ -160,7 +160,7 @@ const Home = () => {
            {/* ------------SEÇÃO DENUNCIAS E INSTITUIÇOES AQUI------------*/}
          <Box  w="100%" bgColor='gray.200' h='auto'  borderRadius='4px'>
 
-             <Flex justifyContent='space-between'>
+             <Flex justifyContent='space-between' direction={{base: "column", md: "row"}}>
                  <Flex flexDirection='column' p='120px' >
 
                    <Box>
