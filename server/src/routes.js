@@ -1,5 +1,5 @@
 const express = require('express');
-
+const autenticaJWT = require('./autenticaToken');
 
 
 const controllersAcomp = require('../src/controllers/acompanhamento/index');

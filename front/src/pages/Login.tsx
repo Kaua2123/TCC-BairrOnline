@@ -66,6 +66,8 @@ const Login = () => {
           })
         }
 
+        axios.defaults.headers.common['Authorization'] = `${token}`;
+
         if(decodificaToken.usu_tipo === 'denunciante'){
           navigate('/HomeUsuario')
         }
