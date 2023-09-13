@@ -3,6 +3,7 @@ const autentica = require('./autenticaToken');
 
 
 const controllersAcomp = require('../src/controllers/acompanhamento/index');
+const controllersAdm = require('../src/controllers/administrador/index');
 const controllersAva = require('../src/controllers/avaliaçao/index');
 const controllersComen = require('../src/controllers/comentarios/index');
 const controllersDenuncias = require('../src/controllers/denuncias/index');
