@@ -103,6 +103,10 @@ const Denuncie = () => {
       return;
     }
 
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `${token}`;
+    }
+
     const decodificaToken: any = await jwt_decode(token);
 
 

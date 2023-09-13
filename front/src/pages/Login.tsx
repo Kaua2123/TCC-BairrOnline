@@ -53,6 +53,7 @@ const Login = () => {
         
         const token = response.data.token;
         localStorage.setItem('token', token);
+        axios.defaults.headers.common['Authorization'] = `${token}`;
 
         const decodificaToken: any = jwt_decode(token);
 
@@ -66,7 +67,7 @@ const Login = () => {
           })
         }
 
-        axios.defaults.headers.common['Authorization'] = `${token}`;
+      
 
         if(decodificaToken.usu_tipo === 'denunciante'){
           navigate('/HomeUsuario')

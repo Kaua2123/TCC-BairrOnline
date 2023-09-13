@@ -172,6 +172,13 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
 
     async function deleteDenuncia(denCod) {
+
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+          }
+
+
         await axios.delete(`http://localhost:3344/deleteDenuncia/${denCod}`)
             .then(response => {
                 closeAlertDialog();
@@ -194,6 +201,11 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
     };
 
     async function updateDenuncia(denCod) {
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+          }
+
         await axios.put(`http://localhost:3344/updateDenuncia/${denCod}`, {
             den_nome: tituloEditado,
             den_desc: descricaoEditada
@@ -249,6 +261,12 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
     }
 
     const uploadImage = async () => {
+
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+          }
+          
         if (!selectedImage) {
             return;
         }
@@ -257,6 +275,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
         formData.append('selectedImage', selectedImage);
 
         try {
+            
             const response = await axios.post(
                 `http://localhost:3344/uparImagem/${denCod}`,
                 formData,
@@ -474,7 +493,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                         ) : (
                             <>
                                 <Button bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog} _hover={{ backgroundColor: '#D71D28' }}>Apagar</Button>
-                                <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' onClick={openImageUploadModal}>Adicionar imagem</Button>
+                                <Button bgColor='#338bb0'  _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' onClick={openImageUploadModal}>Adicionar imagem</Button>
                                 <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} onClick={() => setEditando(true)}>Editar</Button>
 
                             </>

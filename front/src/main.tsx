@@ -17,6 +17,7 @@ import HomeInst from './pages/HomeInst.tsx';
 import SaibaMais from './pages/saibaMais.tsx';
 import Deslogado from './pages/Deslogado.tsx';
 import RotasPrivadas from './components/RotasPrivadas.tsx';
+import MinhasDen from './pages/MinhasDen.tsx';
 
 
 
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
     path: "/SaibaMais",
     element: <SaibaMais/>
   },
+  {
+    path: "/MinhasDen",
+    element: <MinhasDen/>
+  }
 ]);
 
 

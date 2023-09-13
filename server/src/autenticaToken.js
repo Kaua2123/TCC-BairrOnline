@@ -4,6 +4,7 @@ require('dotenv').config({path: '../.env'});
 
 
 function autenticaJWT(req, res, next){
+    try{
     const token = req.headers.authorization;
 
     if(!token) {
@@ -21,6 +22,10 @@ function autenticaJWT(req, res, next){
         req.usuario = decoded;
         next();
     })
+}
+    catch(error){
+    return res.status(400).json({message: 'deu n'});
+}
 }
 
 module.exports = autenticaJWT;

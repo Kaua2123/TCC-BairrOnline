@@ -1,5 +1,5 @@
 const express = require('express');
-const autenticaJWT = require('./autenticaToken');
+const autentica = require('./autenticaToken');
 
 
 const controllersAcomp = require('../src/controllers/acompanhamento/index');
@@ -19,14 +19,14 @@ routes.post("/logarUsu", controllersUsu.logarUsuario);
 
 //denuncia
 routes.get("/", controllersDenuncias.raiz);
-routes.post("/criarDenuncia", controllersDenuncias.criarDenuncia);
+routes.post("/criarDenuncia", autentica, controllersDenuncias.criarDenuncia);
 routes.get("/cardDenuncia", controllersDenuncias.cardDenuncia);
-routes.delete("/deleteDenuncia/:cod", controllersDenuncias.deleteDenuncia);
+routes.delete("/deleteDenuncia/:cod", autentica, controllersDenuncias.deleteDenuncia);
 routes.delete("/deleteTodasDenuncias", controllersDenuncias.deleteTodasDenuncias);
 routes.get("/getDenunciaExcluida", controllersDenuncias.getDenunciaExcluida);
 routes.post("/reverterDenunciaExcluida/:cod", controllersDenuncias.reverterDenunciaExcluida)
-routes.put("/updateDenuncia/:cod", controllersDenuncias.updateDenuncia);
-routes.post("/uparImagem/:cod", controllersDenuncias.uparImagem);
+routes.put("/updateDenuncia/:cod", autentica, controllersDenuncias.updateDenuncia);
+routes.post("/uparImagem/:cod", autentica, controllersDenuncias.uparImagem);
 routes.get("/retornaImagem/:filename", controllersDenuncias.retornaImagem);
 
 //comentarios
