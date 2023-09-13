@@ -22,9 +22,9 @@ routes.get("/", controllersDenuncias.raiz);
 routes.post("/criarDenuncia", autentica, controllersDenuncias.criarDenuncia);
 routes.get("/cardDenuncia", controllersDenuncias.cardDenuncia);
 routes.delete("/deleteDenuncia/:cod", autentica, controllersDenuncias.deleteDenuncia);
-routes.delete("/deleteTodasDenuncias", controllersDenuncias.deleteTodasDenuncias);
+routes.delete("/deleteTodasDenuncias", autentica, controllersDenuncias.deleteTodasDenuncias);
 routes.get("/getDenunciaExcluida", controllersDenuncias.getDenunciaExcluida);
-routes.post("/reverterDenunciaExcluida/:cod", controllersDenuncias.reverterDenunciaExcluida)
+routes.post("/reverterDenunciaExcluida/:cod", autentica, controllersDenuncias.reverterDenunciaExcluida)
 routes.put("/updateDenuncia/:cod", autentica, controllersDenuncias.updateDenuncia);
 routes.post("/uparImagem/:cod", autentica, controllersDenuncias.uparImagem);
 routes.get("/retornaImagem/:filename", controllersDenuncias.retornaImagem);

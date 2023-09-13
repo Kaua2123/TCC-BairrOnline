@@ -88,6 +88,12 @@ const HomeUsuario = () => {
   
 
   async function deleteTodasDenuncias () {
+
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `${token}`;
+      }
+
     await axios.delete('http://localhost:3344/deleteTodasDenuncias')
       .then(response => {
         console.log('Todas as denúncias foram deletadas.', response)
@@ -132,6 +138,11 @@ const HomeUsuario = () => {
   }, [])
 
   async function reverterDenunciaExcluida () {
+    
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `${token}`;
+      }
     setCarregando(true);
 
     await axios.post(`http://localhost:3344/reverterDenunciaExcluida/${denunciaExcluidaCod}`)
