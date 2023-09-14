@@ -42,13 +42,15 @@ module.exports = {
 
     async getAcompanhamentos(req, res) {
         try {
-            const { denuncias_den_cod  } = req.params;
+            const acompanhamentos = await knex('acompanhamento').select('*');
+
+            if(!acompanhamentos){
+                return res.status(400).json({error: 'nenhum acompanhamento encontrado'});
+            }
             
-        
-             const denunciaExists = await knex('denuncias').where('den_cod',  denuncias_den_cod).first();
-             if(!denunciaExits) {
-                return res.status(404).json({ error: 'Denúncia nao encontrada'})
-             }
+            return res.status(200).json(acompanhamentos);
+
+
         } catch (error) {
             return res.status(400).json({error: error.message});
         }

@@ -2,7 +2,7 @@ import '../App.css';
 
 //reação (reactkkkkkkkkkomgggmgmgmggm)
 import  { Link } from 'react-router-dom'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 //imgs
 import sectionOlaInst from "../img/sectionOlaInst.png";
@@ -18,6 +18,7 @@ import {Box, ChakraProvider, Flex, Image, extendTheme, Text, Card, CardBody, Car
 import Footer from '../components/Footer';
 import { HeaderInst } from '../components/Header';
 import CardTarefa from '../components/CardTarefa';
+import axios from 'axios';
 
 
 
@@ -33,6 +34,27 @@ const theme = extendTheme({
 
 
 const HomeInst = () => { 
+
+  const [acompanhamentos, setAcompanhamentos] = useState([]);
+ 
+  const denCod = 4;
+
+  const getAcompanhamento = async () => {
+    await axios.get(`http://localhost:3344/getAcompanhamento`)
+      .then((response) => {
+        setAcompanhamentos(response.data);
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar acompanhamentos', error);
+      })
+
+  }
+  
+  useEffect(() => {
+    getAcompanhamento();
+  }, [])
+
+  
 
 
  return (
@@ -75,10 +97,12 @@ const HomeInst = () => {
           
           
           <Stack spacing={7} direction='column'>
-          <CardTarefa/>
-          <CardTarefa/>
-          <CardTarefa/>       
-          <CardTarefa/>
+
+          {acompanhamentos.map((acompanhamento) => (
+          <CardTarefa key={acompanhamento.aco_num} acompanhamento={acompanhamento} />
+        ))}
+
+         
     
           </Stack>
          

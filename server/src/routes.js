@@ -33,13 +33,13 @@ routes.get("/retornaImagem/:filename", controllersDenuncias.retornaImagem);
 //comentarios
 routes.get("/", controllersComen.raiz);
 routes.post("/criarComent", controllersComen.criarComentario);
-routes.delete("deleteComent", controllersComen.deleteComentario);
+routes.delete("/deleteComent", controllersComen.deleteComentario);
 routes.put("updateComent", controllersComen.updateComentario);
 routes.get("/buscarComentario", controllersComen.buscarComentario);
 
 //acompanhamento
 routes.post("/criarAcompanhamento", controllersAcomp.criarAcompanhamento);
-routes.get("getAcompanhamento", controllersAcomp.getAcompanhamentos);
+routes.get("/getAcompanhamento", controllersAcomp.getAcompanhamentos);
 
 //notificações
 routes.get("/", controllersNotificacoes.raiz);
