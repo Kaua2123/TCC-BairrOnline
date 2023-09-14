@@ -98,16 +98,12 @@ const Cadastro = () => {
     })            
   }
 
-  const MotionBox = motion(Box);
+
 
     return (
       <ChakraProvider theme={theme}>
 
-      <MotionBox
-        initial={{ x: '0%' }} // Define a posição inicial
-        animate={{ x: usuTipo === 'instituicao' ? '-5%' : '0.5%' }} // Define a posição final
-        transition={{ type: 'spring', stiffness: 80, damping: 10 }} // Adicione transições suaves
-      >
+   
         {/* Coloque o formulário de cadastro aqui */}
       
 
@@ -126,6 +122,8 @@ const Cadastro = () => {
                 <Box h='640px'>
 
                 <FormControl>
+               
+              
                     <FormLabel>Nome</FormLabel>
                     <InputGroup> 
                         <InputLeftElement>
@@ -220,7 +218,7 @@ const Cadastro = () => {
                     </Select>
                     
                     </InputGroup>
-           
+          
                 </FormControl>
 <br></br>
                     <Button colorScheme='blue' onClick={cadastraUsuario}>Cadastrar</Button>
@@ -350,7 +348,7 @@ const Cadastro = () => {
             </Flex>
      </Box>
       )}
-      </MotionBox>
+      
         
     </ChakraProvider>
     )
