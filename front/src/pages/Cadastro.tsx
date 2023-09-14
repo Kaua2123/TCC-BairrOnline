@@ -8,6 +8,7 @@ import {useState} from 'react';
 
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {motion} from 'framer-motion';
 
 //icones
 import {AiOutlineUser} from 'react-icons/ai';
@@ -38,7 +39,9 @@ const Cadastro = () => {
     const [usuSenha, setUsuSenha] = useState("");
     const [usuTel, setUsuTel] = useState ("");
     const [usuCep, setUsuCep] = useState("");
-    const [usuData, setUsuData] = useState("");
+    const [usuCPF, setUsuCPF] = useState("");
+    const [usuCNPJ, setUsuCNPJ] = useState("");
+    const [usuData, setUsuData] = useState("");''
     const [usuTipo, setUsuTipo] = useState("denunciante") //denunciante valor padrao
     const toast = useToast();
 
@@ -95,20 +98,31 @@ const Cadastro = () => {
     })            
   }
 
+  const MotionBox = motion(Box);
+
     return (
       <ChakraProvider theme={theme}>
 
-        <Box bgColor='White' h='1000px' >
+      <MotionBox
+        initial={{ x: '0%' }} // Define a posição inicial
+        animate={{ x: usuTipo === 'instituicao' ? '-5%' : '0.5%' }} // Define a posição final
+        transition={{ type: 'spring', stiffness: 80, damping: 10 }} // Adicione transições suaves
+      >
+        {/* Coloque o formulário de cadastro aqui */}
+      
+
+      {usuTipo === 'denunciante' ? (
+        <Box bgColor='White' h='100%' >
             <Flex justifyContent='space-between'> 
               
-              <Flex flexDirection='column'>
-                <Box> 
-                  <Text fontFamily='BreeSerif-Regular' fontSize='35px' color='#338BB0' m='20px' >Cadastre-se e comece a denunciar!</Text>
-                </Box>
-             
-                <Image src={imgFundo} boxSize={{base: '25em', md: '34em', lg: '47em'}} mt='-40px'></Image>
+            <Flex flexDirection='column'>
+              <Box p='180px' >
+              <Text fontSize='45px' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Autenticação</Text>
+              <Text align='center'>Entre já e comece a <br/> realizar suas denúncias</Text>
+              </Box>    
             </Flex>
-            <Flex flexDirection='column' mt='-70px' p='200px' bgColor='gray.100'>
+
+            <Flex flexDirection='column' mt='-70px' p='200px' h='100%' bgColor='gray.100'>
                 <Box h='640px'>
 
                 <FormControl>
@@ -142,6 +156,18 @@ const Cadastro = () => {
                         </InputLeftElement>
                     <Input placeholder='Digite seu CEP' required border='1px solid black' type='number' value={usuCep} onChange={(e) => {
                       setUsuCep(e.target.value)
+                    }}/>
+                    </InputGroup>
+
+                    <br></br>
+                 
+                    <FormLabel>CPF</FormLabel>
+                    <InputGroup>
+                        <InputLeftElement>
+                        <CiLocationOn/>
+                        </InputLeftElement>
+                    <Input placeholder='Digite seu CPF' required border='1px solid black' type='number' value={usuCPF} onChange={(e) => {
+                      setUsuCPF(e.target.value)
                     }}/>
                     </InputGroup>
                  
@@ -192,6 +218,7 @@ const Cadastro = () => {
                       <option value="denunciante">Denunciante</option>
                       <option value="instituicao">Instituição</option>
                     </Select>
+                    
                     </InputGroup>
            
                 </FormControl>
@@ -206,6 +233,125 @@ const Cadastro = () => {
             </Flex>
             </Flex>
      </Box>
+      ) : (
+        <Box bgColor='White' h='100%' >
+            <Flex justifyContent='space-between'> 
+              
+              
+              
+            <Flex flexDirection='column' mt='-70px' p='200px' bgColor='gray.100'>
+                <Box h='640px'>
+
+                <FormControl>
+                    <FormLabel>Nome</FormLabel>
+                    <InputGroup> 
+                        <InputLeftElement>
+                        <AiOutlineUser/>
+                        </InputLeftElement>
+                       <Input placeholder='Digite seu nome' required border='1px solid black' value={usuNome} onChange={(e) => {
+                        setUsuNome(e.target.value);
+  
+                       }} />
+                    </InputGroup>
+
+<br></br>
+                    <FormLabel>Telefone</FormLabel>
+                    <InputGroup>
+                        <InputLeftElement>
+                        <BsTelephone/>
+                        </InputLeftElement>
+                    <Input placeholder='Digite seu telefone' required border='1px solid black' type='tel' value={usuTel} onChange={(e) => {
+                        setUsuTel(e.target.value)
+                      }} />
+                    </InputGroup>   
+<br></br>
+
+                    
+
+                    <FormLabel>CNPJ</FormLabel>
+                    <InputGroup>
+                        <InputLeftElement>
+                        <CiLocationOn/>
+                        </InputLeftElement>
+                    <Input placeholder='Digite seu CNPJ' required border='1px solid black' type='number' value={usuCNPJ} onChange={(e) => {
+                      setUsuCNPJ(e.target.value)
+                    }}/>
+                    </InputGroup>
+                 
+
+                    <br></br>
+             
+                    <FormLabel>Email</FormLabel>
+                    <InputGroup>
+                        <InputLeftElement>
+                        <AiOutlineMail/>
+                        </InputLeftElement>
+                    <Input placeholder='Digite seu email' required border='1px solid black' type='email'  value={usuEmail} onChange={(e) => {
+                      setUsuEmail(e.target.value)
+                      }}/>
+                
+                    </InputGroup>
+<br></br>
+
+                    <FormLabel>Senha</FormLabel>
+                    <InputGroup size='md' >
+                    <InputLeftElement>
+                        <RiLockPasswordLine/>
+                        </InputLeftElement>
+                    <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Digite sua senha' border='1px solid black' value={usuSenha} onChange={(e) => {
+                      setUsuSenha(e.target.value);
+                    }
+
+                    }/>
+                    <InputRightElement width='4.5rem'>
+                    <Button h='2rem' size='md' onClick={handleClick}>
+                    {show ? <AiFillEye size='20px'/> : <AiFillEyeInvisible size='20px'/>}
+                    </Button>
+
+                    <br></br>
+
+      </InputRightElement>
+    </InputGroup>
+
+                    <InputGroup mt='30px'>
+                    <FormLabel mt='10px'>Eu sou um</FormLabel>
+                    <Select
+                      w='200px'
+                      value={usuTipo}
+                      onChange={(e) => setUsuTipo(e.target.value)}
+                      required
+                      borderColor='black'
+                    >
+                      <option value="denunciante">Denunciante</option>
+                      <option value="instituicao">Instituição</option>
+                    </Select>
+                    
+                    </InputGroup>
+           
+                </FormControl>
+<br></br>
+                    <Button colorScheme='blue' onClick={cadastraUsuario}>Cadastrar</Button>
+
+                    <Box mt='20px'>
+                    <Link to='/Login'><Text color='blue.400'>Já possui uma conta? Clique para entrar</Text></Link>
+                    </Box>              
+
+                    
+
+                    
+                </Box>
+            </Flex>
+            <Flex flexDirection='column'>
+              <Box p='180px' >
+              <Text fontSize='45px' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Autenticação</Text>
+              <Text align='center'>Entre já e comece a <br/> realizar suas denúncias</Text>
+              </Box>    
+            </Flex>
+            </Flex>
+     </Box>
+      )}
+      </MotionBox>
+        
     </ChakraProvider>
     )
 }
