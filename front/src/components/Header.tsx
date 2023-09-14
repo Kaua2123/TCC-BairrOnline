@@ -187,7 +187,7 @@ export const HeaderUsu = () => {
               fontWeight='normal'
               
               display={['none', 'none', 'flex', 'flex']}>
-                 <Link smooth to='/HomeUsuario#acompanharDen'> Acompanhar denuncias </Link>
+                 <Link smooth to='/HomeUsuario#acompanharDen'> Minhas denúncias 2 </Link> 
               </Button> 
             </HStack>
 
