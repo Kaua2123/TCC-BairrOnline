@@ -14,6 +14,7 @@ import { ChakraProvider, extendTheme, Image, Flex, Box, Button, Text,  FormContr
 FormLabel, Spacer, Select,  Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, Card, CardBody, CardFooter, CardHeader, Divider, Heading, Center} from '@chakra-ui/react';
 import { FiSearch } from 'react-icons/fi'
 import { SiOpenstreetmap } from 'react-icons/si';
+import { useMediaQuery} from '@chakra-ui/react';
 
 
 //react
@@ -65,7 +66,8 @@ const Ver = () => {
   const [denProblema, setDenProblema] = useState('');
   
   const toast = useToast();
-  
+  const [isMediumScreen] = useMediaQuery("(min-width: 992px)");
+  const paddingLeft = isMediumScreen ? "40px" : "10px";
 
   useEffect(() => {
     axios.get('http://localhost:3344/cardDenuncia')
@@ -77,6 +79,7 @@ const Ver = () => {
     });
   }, []);
 
+  
   
 
   const theme = extendTheme({
@@ -126,13 +129,15 @@ const Ver = () => {
 
 <InputGroup>
 <InputLeftElement pointerEvents='none'>
-<FiSearch color='black' />
+{isMediumScreen && <FiSearch color="black" size="20px" />}
       </InputLeftElement>
   <Input value={denNome}
     onChange={(e) => setDenNome(e.target.value)}
     border='1px solid black'
-    w={{ base: '140px', md: '200px', lg: '240px' }}
+    w={{ base: '140px', md: '180px', lg: '210px' }}
     _hover={{ border: '1px solid #A9A9A9	' }}
+    fontSize={{ base: '8px', md: '12px', lg: '14.8px' }}
+    mb='20px' mr='10px '  pl={paddingLeft}
     type='text'></Input>
 </InputGroup>
 </Flex>
@@ -141,7 +146,7 @@ const Ver = () => {
 
                 <InputGroup>
                   <InputLeftElement>
-                    <BsListUl size='25px' />
+                  {isMediumScreen && <BsListUl size='20px' />}
                   </InputLeftElement>
 
                   <Select
@@ -149,8 +154,10 @@ const Ver = () => {
                     value={denBairro}
                     onChange={(e) => setDenBairro(e.target.value)}
                     border='1px solid black'
-                    w={{ base: '140px', md: '200px', lg: '240px' }}
+                    w={{ base: '140px', md: '180px', lg: '240px' }}
                     _hover={{ border: '1px solid #A9A9A9	' }}
+                    fontSize={{ base: '8px', md: '12px', lg: '14.8px' }}
+                    mb='20px' mr='10px' 
                     textAlign='center'
                   >
                     <option value=''></option>
@@ -164,19 +171,21 @@ const Ver = () => {
           </Flex>
 
           <Flex flexDirection='column'>
-          <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular' fontWeight='normal' >Problema específico:</FormLabel>
+          <FormLabel mt='30px' whiteSpace='nowrap'  fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
 
 <InputGroup>
   <InputLeftElement>
-    <SiOpenstreetmap size='25px' />
+  {isMediumScreen && <SiOpenstreetmap size='20px' />}
   </InputLeftElement>
 
   <Select
     value={denProblema}
     onChange={(e) => setDenProblema(e.target.value)}
     border='1px solid black'
-    w={{ base: '140px', md: '200px', lg: '240px' }}
+    w={{ base: '140px', md: '180px', lg: '240px' }}
     _hover={{ border: '1px solid #A9A9A9	' }}
+    fontSize={{ base: '8px', md: '12px', lg: '14.8px' }}
+    mb='20px' mr='10px' 
     textAlign='center'>
     <option value=''></option>
     {opçoesDeProblemas.map((problema) => (
@@ -188,6 +197,14 @@ const Ver = () => {
 </InputGroup>
 
           </Flex>
+          <Flex>
+          <Button type='submit' onClick={() => {
+                      enviaDen();
+                    }} bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}
+                    mt={{ base: '35px', md: '38px', lg: '45px' }}>
+                      Aplicar
+                    </Button>
+                    </Flex>
         </Center>
         
     <Center>
