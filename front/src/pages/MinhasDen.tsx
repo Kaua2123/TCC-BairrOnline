@@ -1,5 +1,5 @@
 //CHAKRA
-import { ChakraProvider, Button, Box, Flex, Image, Grid, Text, Center, Container, GridItem, IconButton, Wrap, WrapItem, } from "@chakra-ui/react";
+import { ChakraProvider, Button, Box, Flex, Image, Grid, Text, Card, Center, Container, GridItem, IconButton, Wrap, WrapItem, HStack, VStack, } from "@chakra-ui/react";
 
 //componentes
 import Header, { HeaderUsu, HeaderInst } from "../components/Header";
@@ -37,43 +37,77 @@ const MinhasDen = () => {
             {headerComponent}
 
             <Flex justify='space-between'  direction={{base: 'column', md: 'row'}}>
-              <Flex direction='column' align='flex-end' bgColor='#338bb0' w='50%' h='30em'>
-                <Box p='120px'>
-                <Text fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='normal' color='white'>Minhas denúncias 2 nome temporairo</Text>
+              <Flex direction='column' align='flex-end' bgColor='#338bb0' w='50%' h='40em'>
+                <Box m='120px'>
+                <Text fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='normal' color='white'>Denúncias detalhadas</Text>
                 <Text fontSize='20px' color='white' >Acompanhar denúncias, reverter exclusão <br/> e ver suas denúncias</Text>
                 <Text fontSize='15px' color='white'>Exibição detalhada das funções do usuário</Text>
                 </Box>
               </Flex>
 
-              <Flex direction='column' w='60%' flexWrap='wrap' align='flex-end'>
-                <Box p='200px'> 
+              <Flex direction='column' w='50%' flexWrap='wrap' align='flex-end'>
+                <Box m='200px'> 
                   <Text mt='-40px' fontSize='35px' color='#338bb0' fontFamily='BreeSerif-Regular' align='center'>Acesso rápido</Text>
-                  <Wrap spacing={8}>
-                    <WrapItem>
+                  <HStack spacing={8}>
+                  
                     <Link to={'/'}>
-                  <IconButton boxSize='100px' aria-label="xd" _hover={{color: '#338bb0'}} icon={<FaUndo size='60px' />}></IconButton >
+                  <IconButton boxSize='80px' aria-label="xd" _hover={{color: '#338bb0'}} icon={<FaRegTrashAlt size='40px' />}></IconButton >
                 </Link>
-                    </WrapItem>
-                    <WrapItem>
+                    
+                  
                     <Link to={'/'}>
-                  <IconButton boxSize='100px' aria-label="xd" _hover={{color: '#338bb0'}} icon={<FaRegTrashAlt size='60px'/>}></IconButton >
+                  <IconButton boxSize='80px' aria-label="xd" _hover={{color: '#338bb0'}} icon={<FaUndo size='40px'/>}></IconButton >
                 </Link>
-                    </WrapItem>
-                    <WrapItem>
+                    
+                  
                     <Link to={'/'}>
-                  <IconButton boxSize='100px' aria-label="xd" _hover={{color: '#338bb0'}} icon={<PiMagnifyingGlassBold size='60px'/>}></IconButton >
+                  <IconButton boxSize='80px' aria-label="xd" _hover={{color: '#338bb0'}} icon={<PiMagnifyingGlassBold size='40px'/>}></IconButton >
                 </Link>
-                    </WrapItem>
-                  </Wrap>
+                    
+                  </HStack>
                 
-                </Box>
-                 
-
-              
-               
+                </Box> 
               </Flex>
+            </Flex>
+            <Flex justify='space-between'>
+              <Flex direction='column' bgColor='gray.200' w='50%' h='40em' alignItems='center'>
+                <Box m='120px' boxShadow='lg' bgColor='white' w='500px' h='80px' textAlign='center' alignItems='center'>
+                
+                    <Text fontFamily='BreeSerif-Regular' fontSize='35px' justifyContent='center'>
+                      Funcionalidades:
+                    </Text>
+                </Box>
 
-      
+<Center>
+                <Grid templateColumns="repeat(3, 1fr)" gap={8} w='80%' alignContent='center'>
+  
+          <GridItem colSpan={1}>
+            <Card boxShadow='lg' w='150px' minH='150px' bg='white' display='flex' justifyContent='center' alignItems='center'>
+              <FaRegTrashAlt size='70px'/>
+            </Card>
+            <Text mt='1em' textAlign='center'>Delete as suas<br/> denúncias de  forma<br/> simples e facilitada</Text>
+          </GridItem>
+
+       
+          <GridItem colSpan={1}>
+            <Card boxShadow='lg' w='150px' minH='150px' bg='white' display='flex' justifyContent='center' alignItems='center'>
+              <FaUndo size='70px'/>
+            </Card>
+            <Text mt='1em' textAlign='center'>Excluiu alguma<br/> denúncia por engano?<br/> Basta reverter aqui</Text>
+          </GridItem>
+
+          <GridItem colSpan={1}>
+          <Card boxShadow='lg' w='150px' minH='150px' bg='white' display='flex' justifyContent='center' alignItems='center'>
+                    <PiMagnifyingGlassBold size='70px'/>
+                  </Card>
+             
+              <Text mt='1em' textAlign='center'> Acompanhe suas<br/> denúncias quanto<br/> ao feedback das instituições</Text>
+           
+          </GridItem>
+        </Grid>
+        </Center>
+              </Flex>
+              <Flex direction='column'></Flex>
             </Flex>
             <Footer/>
         </ChakraProvider>
