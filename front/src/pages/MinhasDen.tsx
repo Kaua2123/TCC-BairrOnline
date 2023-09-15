@@ -15,6 +15,7 @@ import Logo from '../img/logo.svg';
 //icones
 import {FaUndo} from 'react-icons/fa';
 import {FaRegTrashAlt} from 'react-icons/fa';
+import {FiFilter} from 'react-icons/fi';
 import {PiMagnifyingGlassBold} from 'react-icons/pi';
 
 
@@ -47,7 +48,7 @@ const MinhasDen = () => {
 
               <Flex direction='column' w='50%' flexWrap='wrap' align='flex-end'>
                 <Box m='200px'> 
-                  <Text mt='-40px' fontSize='35px' color='#338bb0' fontFamily='BreeSerif-Regular' align='center'>Acesso rápido</Text>
+                  <Text mt='-40px' py='60px' fontSize='35px' color='#338bb0' fontFamily='BreeSerif-Regular' align='center'>Acesso rápido</Text>
                   <HStack spacing={8}>
                   
                     <Link to={'/'}>
@@ -85,7 +86,7 @@ const MinhasDen = () => {
             <Card boxShadow='lg' w='150px' minH='150px' bg='white' display='flex' justifyContent='center' alignItems='center'>
               <FaRegTrashAlt size='70px'/>
             </Card>
-            <Text mt='1em' textAlign='center'>Delete as suas<br/> denúncias de  forma<br/> simples e facilitada</Text>
+            <Text mt='1em' fontSize='18px' textAlign='center'>Delete as suas<br/> denúncias de  forma<br/> simples e facilitada</Text>
           </GridItem>
 
        
@@ -93,7 +94,7 @@ const MinhasDen = () => {
             <Card boxShadow='lg' w='150px' minH='150px' bg='white' display='flex' justifyContent='center' alignItems='center'>
               <FaUndo size='70px'/>
             </Card>
-            <Text mt='1em' textAlign='center'>Excluiu alguma<br/> denúncia por engano?<br/> Basta reverter aqui</Text>
+            <Text mt='1em' fontSize='18px' textAlign='center'>Excluiu alguma<br/> denúncia por engano?<br/> Basta reverter aqui</Text>
           </GridItem>
 
           <GridItem colSpan={1}>
@@ -101,14 +102,51 @@ const MinhasDen = () => {
                     <PiMagnifyingGlassBold size='70px'/>
                   </Card>
              
-              <Text mt='1em' textAlign='center'> Acompanhe suas<br/> denúncias quanto<br/> ao feedback das instituições</Text>
+              <Text mt='1em' fontSize='18px' textAlign='center'> Acompanhe suas<br/> denúncias quanto<br/> ao feedback das instituições</Text>
            
           </GridItem>
         </Grid>
         </Center>
+
               </Flex>
-              <Flex direction='column'></Flex>
+              <Flex direction='column' justify='center' alignItems='center' mt={4}>
+              <VStack spacing={4} alignItems='center' mr={40}>
+                <FiFilter size='320px'/>
+                <Text fontSize='18px'>Não se esqueça de utilizar o filtro para<br/> uma melhor eficiência no manuseio<br/> das denúncias.
+                  Ainda, também<br/> na visualização das denúncias feitas<br/> por outros usuários. Denuncie conosco!
+                </Text>
+              </VStack>
+              </Flex>
             </Flex>
+
+            <Box pt='40px'>
+              <Center>
+              <Text color="#338bb0" fontSize='35px' fontFamily='BreeSerif-Regular'>Acompanhar Denúncias</Text>
+              </Center>
+              <Box>Aq vai ter algo dps tlggggggg</Box>
+            </Box>
+
+            <Box pt='40px'>
+              <Center>
+              <Text color="#338bb0" fontSize='35px' fontFamily='BreeSerif-Regular'>Denúncias Excluidas</Text>
+              </Center>
+
+              <Flex justify='space-between'>
+                
+                <Flex direction='column'>
+                  <Box m='100px'>
+                  AQUI ONDE VAO FICAR AS DENNCIAS EXCLUIDAS
+                  </Box>
+                </Flex>
+                <Flex direction='column'>
+                  <Box m='100px'>
+                  AQUI ONDE VAO PODER SER REVERTIDAS E PESQUISADAS
+                  </Box>
+                </Flex>
+              </Flex>
+              
+            </Box>
+
             <Footer/>
         </ChakraProvider>
     )
