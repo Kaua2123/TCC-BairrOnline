@@ -69,6 +69,10 @@ const Ver = () => {
   const [isMediumScreen] = useMediaQuery("(min-width: 992px)");
   const paddingLeft = isMediumScreen ? "40px" : "10px";
 
+  const [termoPesquisa, setTermoPesquisa] = useState(""); // Estado para armazenar o termo de pesquisa
+  const [denunciasFiltradas, setDenunciasFiltradas] = useState([]); // Estado para armazenar as denúncias filtradas
+  const [filtroAtivo, setFiltroAtivo] = useState(false); // Estado para controlar se o filtro está ativo
+
   useEffect(() => {
     axios.get('http://localhost:3344/cardDenuncia')
     .then(response => {
@@ -124,23 +128,24 @@ const Ver = () => {
    
         <Box bgColor={'white'}>
         <Center>
-          <Flex flexDirection='column'>
-        <FormLabel mt='30px' fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular' fontWeight='normal' >Pesquisa por nome</FormLabel>
-
-<InputGroup>
-<InputLeftElement pointerEvents='none'>
-{isMediumScreen && <FiSearch color="black" size="20px" />}
-      </InputLeftElement>
-  <Input value={denNome}
-    onChange={(e) => setDenNome(e.target.value)}
-    border='1px solid black'
-    w={{ base: '140px', md: '180px', lg: '210px' }}
-    _hover={{ border: '1px solid #A9A9A9	' }}
-    fontSize={{ base: '8px', md: '12px', lg: '14.8px' }}
-    mb='20px' mr='10px '  pl={paddingLeft}
-    type='text'></Input>
-</InputGroup>
-</Flex>
+        <Flex flexDirection="column">
+        <FormLabel mt="30px" fontSize={{ base: '12px', md: '14px', lg: '18px' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>Pesquisa por nome</FormLabel>
+        <InputGroup>
+          <InputLeftElement pointerEvents='none'>
+            {isMediumScreen && <FiSearch color="black" size="20px" />}
+          </InputLeftElement>
+          <Input
+            value={termoPesquisa}
+            onChange={(e) => setTermoPesquisa(e.target.value)}
+            border='1px solid black'
+            w={{ base: '140px', md: '180px', lg: '210px' }}
+            _hover={{ border: '1px solid #A9A9A9 ' }}
+            fontSize={{ base: '8px', md: '12px', lg: '14.8px' }}
+            mb='20px' mr='10px '  pl={paddingLeft}
+            type='text'
+          />
+        </InputGroup>
+      </Flex>
           <Flex flexDirection='column'>
           <FormLabel mt='30px' fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular' fontWeight='normal'>Bairro</FormLabel>
 
@@ -198,20 +203,50 @@ const Ver = () => {
 
           </Flex>
           <Flex>
-          <Button type='submit' onClick={() => {
-                      enviaDen();
-                    }} bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}
-                    mt={{ base: '35px', md: '38px', lg: '45px' }}>
-                      Aplicar
-                    </Button>
+          <Button
+                type='submit'
+                onClick={() => {
+                  // Filtrar as denúncias com base no termo de pesquisa
+                  if (termoPesquisa || denBairro || denProblema) {
+                    // Se algum filtro estiver ativo, define o estado do filtroAtivo como verdadeiro
+                    setFiltroAtivo(true);
+
+                    // Filtra as denúncias com base nos critérios de pesquisa
+                    const denunciasFiltradas = denuncias.filter((denuncia) => {
+                      const nomeInclui = denuncia.den_nome.toLowerCase().includes(termoPesquisa.toLowerCase());
+                      const bairroCorresponde = denuncia.den_bairro === denBairro || !denBairro;
+                      const problemaCorresponde = denuncia.den_problema === denProblema || !denProblema;
+
+                      return nomeInclui && bairroCorresponde && problemaCorresponde;
+                    });
+
+                    setDenunciasFiltradas(denunciasFiltradas);
+                  } else {
+                    // Se nenhum filtro estiver ativo, define o estado do filtroAtivo como falso
+                    setFiltroAtivo(false);
+                  }
+                }}
+                 bgColor='#338BB0'
+                  color='white'
+                  _hover={{ color: '#338BB0', bgColor: 'white' }}
+                mt={{ base: '35px', md: '38px', lg: '45px' }}
+                >
+                          Aplicar
+                        </Button>
                     </Flex>
         </Center>
-        
+        {/* Usar denuncias ou denunciasFiltradas com base no estado do filtroAtivo */}
     <Center>
           <Flex flexDirection='column'>
-          {denuncias.map((denuncia, index) =>(
-            <CardGrande key={index} denuncia={denuncia}/>
-          ))}
+          {filtroAtivo ? (
+            denunciasFiltradas.map((denuncia, index) => (
+              <CardGrande key={index} denuncia={denuncia} />
+            ))
+          ) : (
+            denuncias.map((denuncia, index) => (
+              <CardGrande key={index} denuncia={denuncia} />
+            ))
+          )}
   </Flex>
           </Center>
           
