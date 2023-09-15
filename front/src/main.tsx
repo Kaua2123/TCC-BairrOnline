@@ -17,7 +17,7 @@ import HomeInst from './pages/HomeInst.tsx';
 import SaibaMais from './pages/saibaMais.tsx';
 import Deslogado from './pages/Deslogado.tsx';
 import RotasPrivadas from './components/RotasPrivadas.tsx';
-import MinhasDen from './pages/MinhasDen.tsx';
+import MinhasDen from './pages/DenDetalhadas.tsx';
 
 
 

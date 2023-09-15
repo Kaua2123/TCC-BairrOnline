@@ -30,10 +30,10 @@ import semImgDen from '../img/semImgDen.png';
 const CardDen = ({ nome, descricao, bairro, imagem }) => {
     const [rep, setrep] = useState(false)
 
-    const {colorMode} = useColorMode();
-   
+    const { colorMode } = useColorMode();
+
     const { isOpen, onOpen, onClose } = useDisclosure()
-     //Manipular Comentários
+    //Manipular Comentários
     const [comments, setComments] = useState([]);
 
     const handleCommentSubmit = (comment) => {
@@ -66,13 +66,13 @@ const CardDen = ({ nome, descricao, bairro, imagem }) => {
 
     return (
 
-        <Card maxW='sm' w={{base: '280px', md: '265px', lg: '250px'}} maxH='lg' h={{base: '20em', md: '23em', lg: '29em'}} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+        <Card maxW='sm' w={{ base: '280px', md: '265px', lg: '250px' }} maxH='lg' h={{ base: '20em', md: '23em', lg: '29em' }} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
-         
-            {imagem ? (
-                    <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px'  />
+
+                {imagem ? (
+                    <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
                 ) : (
-                    <Image src={semImgDen} boxSize={{base: '90px', md: '140px', lg: '200px'}} align='center'></Image>
+                    <Image src={semImgDen} boxSize={{ base: '90px', md: '140px', lg: '200px' }} align='center'></Image>
                 )}
 
                 <Stack mt='6' spacing='3'>
@@ -91,7 +91,7 @@ const CardDen = ({ nome, descricao, bairro, imagem }) => {
                     <Text fontFamily='BreeSerif-Regular' fontWeight='thin'>
                         {cortaTextoDescricao(descricao)}
                     </Text>
-                    
+
                 </Stack>
 
             </CardBody>
@@ -152,8 +152,8 @@ export default CardDen;
 export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) => {
 
     const dataFormatada = new Date(data).toLocaleDateString("pt-BR");
-    
-   
+
+
 
 
 
@@ -168,7 +168,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
     const [imagemUrl, setImagemUrl] = useState('');
     const cancelRef = React.useRef();
     const toast = useToast();
-    const {colorMode} = useColorMode();
+    const { colorMode } = useColorMode();
 
 
     async function deleteDenuncia(denCod) {
@@ -176,7 +176,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
         const token = localStorage.getItem('token');
         if (token) {
             axios.defaults.headers.common['Authorization'] = `${token}`;
-          }
+        }
 
 
         await axios.delete(`http://localhost:3344/deleteDenuncia/${denCod}`)
@@ -204,7 +204,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
         const token = localStorage.getItem('token');
         if (token) {
             axios.defaults.headers.common['Authorization'] = `${token}`;
-          }
+        }
 
         await axios.put(`http://localhost:3344/updateDenuncia/${denCod}`, {
             den_nome: tituloEditado,
@@ -265,8 +265,8 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
         const token = localStorage.getItem('token');
         if (token) {
             axios.defaults.headers.common['Authorization'] = `${token}`;
-          }
-          
+        }
+
         if (!selectedImage) {
             return;
         }
@@ -275,7 +275,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
         formData.append('selectedImage', selectedImage);
 
         try {
-            
+
             const response = await axios.post(
                 `http://localhost:3344/uparImagem/${denCod}`,
                 formData,
@@ -339,23 +339,23 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
 
 
-        <Card maxW='sm' w={{base: '280px', md: '265px', lg: '250px'}} maxH='lg' h={{base: '23em', md: '23em', lg: '29em'}} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+        <Card maxW='sm' w={{ base: '280px', md: '265px', lg: '250px' }} maxH='lg' h={{ base: '23em', md: '23em', lg: '29em' }} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
 
                 {imagem ? (
                     <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
                 ) : (
-                    <Image src={semImgDen} boxSize={{base: '90px', md: '140px', lg: '200px'}} align='center'></Image>
+                    <Image src={semImgDen} boxSize={{ base: '90px', md: '140px', lg: '200px' }} align='center'></Image>
                 )}
 
 
 
 
                 <Stack mt='6' spacing='3'>
-                    <Heading size={{base: 'xs', md: 'xs', lg: 'md'}} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
+                    <Heading size={{ base: 'xs', md: 'xs', lg: 'md' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
                     <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
                     <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
-                    <Text fontFamily='BreeSerif-Regular' fontSize={{base: 'xs', md: 'xs', lg: 'md'}} fontWeight='thin'>
+                    <Text fontFamily='BreeSerif-Regular' fontSize={{ base: 'xs', md: 'xs', lg: 'md' }} fontWeight='thin'>
                         {cortaTextoDescricao(descricao)}
                     </Text>
                 </Stack>
@@ -365,14 +365,14 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
             <CardFooter>
                 <Button
-                    w={{base: '100%', md: '180px', lg: 'auto'}}
+                    w={{ base: '100%', md: '180px', lg: 'auto' }}
                     mb={{ base: '1rem', md: '0', lg: '0' }}
                     leftIcon={<TbReportSearch size='3vh' />}
                     bgColor={colorMode === 'light' ? '#338BB0' : 'blue.800'}
                     color='white'
                     _hover=
-                    { colorMode === 'light' ? { background: '#fff', color: '#338BB0' } 
-                    : { background: 'gray.500', color: 'white' }}
+                    {colorMode === 'light' ? { background: '#fff', color: '#338BB0' }
+                        : { background: 'gray.500', color: 'white' }}
                     textAlign='center'
                     onClick={onOpen}
                 >
@@ -394,21 +394,21 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                                 <Center>
                                     <Card boxShadow='lg' bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'}>
                                         <CardBody>
-                                        {imagem ? (
-                                            <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
-                                        ) : (
-                                            <Image src={semImgDen} boxSize={{base: '90px', md: '140px', lg: '200px'}} align='center'></Image>
-                                        )}
-                                    <Stack mt='6' spacing='3'>
-                                        <Heading size={{base: 'xs', md: 'xs', lg: 'md'}} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
-                                        <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
-                                        <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
-                                        <Text fontFamily='BreeSerif-Regular' fontSize={{base: 'xs', md: 'xs', lg: 'md'}} fontWeight='thin'>
-                                            {cortaTextoDescricao(descricao)}
-                                        </Text>
-                                    </Stack>
+                                            {imagem ? (
+                                                <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
+                                            ) : (
+                                                <Image src={semImgDen} boxSize={{ base: '90px', md: '140px', lg: '200px' }} align='center'></Image>
+                                            )}
+                                            <Stack mt='6' spacing='3'>
+                                                <Heading size={{ base: 'xs', md: 'xs', lg: 'md' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
+                                                <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
+                                                <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
+                                                <Text fontFamily='BreeSerif-Regular' fontSize={{ base: 'xs', md: 'xs', lg: 'md' }} fontWeight='thin'>
+                                                    {cortaTextoDescricao(descricao)}
+                                                </Text>
+                                            </Stack>
                                         </CardBody>
-                                    
+
                                     </Card>
                                 </Center>
                             )}
@@ -416,24 +416,24 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                         </Flex>
                         {editando ? (
                             <Flex justify='space-between' w='100%'>
-                                <Flex flexDirection='column'  p={10} ml='30px'>
-                                <Card boxShadow='lg' bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} >
+                                <Flex flexDirection='column' p={10} ml='30px'>
+                                    <Card boxShadow='lg' bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} >
                                         <CardBody>
-                                        {imagem ? (
-                                            <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
-                                        ) : (
-                                            <Image src={semImgDen} boxSize={{base: '90px', md: '140px', lg: '200px'}} align='center'></Image>
-                                        )}
-                                    <Stack mt='6' spacing='3'>
-                                        <Heading size={{base: 'xs', md: 'xs', lg: 'md'}} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
-                                        <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
-                                        <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
-                                        <Text fontFamily='BreeSerif-Regular' fontSize={{base: 'xs', md: 'xs', lg: 'md'}} fontWeight='thin'>
-                                            {cortaTextoDescricao(descricao)}
-                                        </Text>
-                                    </Stack>
+                                            {imagem ? (
+                                                <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
+                                            ) : (
+                                                <Image src={semImgDen} boxSize={{ base: '90px', md: '140px', lg: '200px' }} align='center'></Image>
+                                            )}
+                                            <Stack mt='6' spacing='3'>
+                                                <Heading size={{ base: 'xs', md: 'xs', lg: 'md' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
+                                                <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
+                                                <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
+                                                <Text fontFamily='BreeSerif-Regular' fontSize={{ base: 'xs', md: 'xs', lg: 'md' }} fontWeight='thin'>
+                                                    {cortaTextoDescricao(descricao)}
+                                                </Text>
+                                            </Stack>
                                         </CardBody>
-                                    
+
                                     </Card>
                                 </Flex>
                                 <Flex flexDirection='column' w='45%' p={10}>
@@ -493,7 +493,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                         ) : (
                             <>
                                 <Button bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog} _hover={{ backgroundColor: '#D71D28' }}>Apagar</Button>
-                                <Button bgColor='#338bb0'  _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' onClick={openImageUploadModal}>Adicionar imagem</Button>
+                                <Button bgColor='#338bb0' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' onClick={openImageUploadModal}>Adicionar imagem</Button>
                                 <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} onClick={() => setEditando(true)}>Editar</Button>
 
                             </>
