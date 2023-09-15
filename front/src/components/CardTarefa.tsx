@@ -19,21 +19,23 @@ const steps = [
 
 const CardTarefa = ({acompanhamento}) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [denNome, setDenNome] = useState("");
   const { activeStep, setActiveStep } = useSteps({
     index: 1,
     count: steps.length,
   })
 
 
-  const denCod = 3;
-
   
+
+   const denCod = 3;
+
   
 
   return (
 
     <Box bg='#338BB0' fontSize='20px' borderRadius='10px' w='80%' p={3} color='white'>
-      Acompanhamento número {acompanhamento.aco_num} 
+      NOME: {acompanhamento.den_nome}
       <Button onClick={onOpen} w='100px' h='30px' ml='130px' leftIcon={<TfiPlus />} _hover={{ backgroundColor: 'acqua', color: '#338bb0' }}
         color='black'>Abrir</Button>
       <Modal size='5xl' isOpen={isOpen} onClose={onClose}>

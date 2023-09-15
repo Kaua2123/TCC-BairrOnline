@@ -42,7 +42,9 @@ module.exports = {
 
     async getAcompanhamentos(req, res) {
         try {
-            const acompanhamentos = await knex('acompanhamento').select('*');
+            const acompanhamentos = await knex('acompanhamento')
+            .select('acompanhamento.*', 'denuncias.den_nome')
+            .join('denuncias', 'acompanhamento.denuncias_den_cod', 'denuncias.den_cod');
 
             if(!acompanhamentos){
                 return res.status(400).json({error: 'nenhum acompanhamento encontrado'});
