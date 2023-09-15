@@ -226,19 +226,16 @@ const MinhasDen = () => {
           <Text color="#338bb0" fontSize='35px' pb='80px' fontFamily='BreeSerif-Regular'>Denúncias Excluidas</Text>
         </Center>
 
-        <Flex justify='space-between'>
 
-          <Flex direction='column'>
+          <Flex>
             {denunciasExcluidas.map((denunciaExcluida, index) => ( //mapeando as denuncias excluidas
               <CardDenExcluida key={index} denunciaExcluida={denunciaExcluida} />
               //key index para gerar um card novo a cada denuncia excluida
             ))}
 
-
-
-
           </Flex>
-          <Flex direction='column' bgColor='gray.200'>
+
+          <Flex bgColor='gray.200'>
             <Box m='100px'>
               <HStack spacing={8} justifyContent='center'>
                 <InputGroup>
@@ -317,8 +314,7 @@ const MinhasDen = () => {
 
             </Box>
           </Flex>
-        </Flex>
-
+   
       </Box>
 
       <Footer />

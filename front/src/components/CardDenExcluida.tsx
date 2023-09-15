@@ -28,7 +28,7 @@ const CardDenExcluida = ({ denunciaExcluida }) => {
         return text;
     }
     return (
-        <Box >
+ 
             <Card boxShadow='lg'>
                 <CardBody>
                     {denunciaExcluida.den_img ? (
@@ -56,7 +56,7 @@ const CardDenExcluida = ({ denunciaExcluida }) => {
                 </CardFooter>
 
             </Card>
-        </Box>
+   
     )
 
 }
