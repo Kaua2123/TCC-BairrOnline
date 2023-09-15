@@ -8,7 +8,7 @@ const app = express();
 
 
 const corsOptions = {
-    origin: 'http://127.0.0.1:5173', // tem q mexer nisso aq dependendo da url
+    origin: 'http://localhost:5173', // tem q mexer nisso aq dependendo da url
 };
 
 

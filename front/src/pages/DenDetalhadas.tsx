@@ -32,7 +32,9 @@ const MinhasDen = () => {
 
   const [denuncias, setDenuncias] = useState([]);
   const [denunciasExcluidas, setDenunciasExcluidas] = useState([]);
+  const [denunciasExcluidasFiltradas, setDenunciasExcluidasFiltradas] = useState([]);
   const [denunciaExcluidaCod, setDenunciaExcluidaCod] = useState([]);
+  const [pesquisa, setPesquisa] = useState('');
   const toast = useToast();
 
   async function getDenuncia() { //pega os dados da denuncia
@@ -103,6 +105,13 @@ const MinhasDen = () => {
       })
   }
 
+  const aoPesquisar = (e) => {
+    if (e.key === 'Enter'){
+      const denunciasFiltradas = denunciasExcluidas.filter((denuncia) => denuncia.den_nome.toLowerCase().includes(pesquisa.toLowerCase()));
+      setDenunciasExcluidasFiltradas(denunciasFiltradas);
+    }
+  }
+
 
   const token = localStorage.getItem('token');
   const decodificaToken = token ? jwt_decode(token) : null;
@@ -157,7 +166,7 @@ const MinhasDen = () => {
       </Flex>
       <Flex justify='space-between' h='53em'>
         <Flex direction='column' bgColor='gray.200' w='50%' alignItems='center' justifyContent='center'>
-          <Box m='120px' boxShadow='lg' bgColor='white' w='500px' h='80px' textAlign='center' alignItems='center'>
+          <Box m='120px' boxShadow='lg' bgColor='white' w='600px' h='80px' textAlign='center' alignItems='center'>
 
             <Text fontFamily='BreeSerif-Regular' fontSize='35px' justifyContent='center'>
               Funcionalidades:
@@ -165,7 +174,7 @@ const MinhasDen = () => {
           </Box>
 
           <Center>
-            <Grid templateColumns="repeat(3, 1fr)" gap={8} w='50%' alignContent='center' alignItems='center' mr={32}>
+            <Grid templateColumns="repeat(3, 1fr)" gap={8} w='57%' alignContent='center' alignItems='center' mr={32}>
 
               <GridItem colSpan={1}>
                 <Card boxShadow='lg' w='150px' minH='150px' bg='white' display='flex' justifyContent='center' alignItems='center'>
@@ -197,7 +206,7 @@ const MinhasDen = () => {
         <Flex direction='column' justify='center' alignItems='center' mt={4}>
           <VStack spacing={4} alignItems='center' mr={40}>
             <FiFilter size='320px' />
-            <Text fontSize='25px' textAlign='center' mt='140px'>Não se esqueça de utilizar o filtro para<br /> uma melhor eficiência no manuseio<br /> das denúncias.
+            <Text fontSize='25px' mt='40px'>Não se esqueça de utilizar o filtro para<br /> uma melhor eficiência no manuseio<br /> das denúncias.
               Ainda, também<br /> na visualização das denúncias feitas<br /> por outros usuários. Denuncie conosco!
             </Text>
           </VStack>
@@ -235,9 +244,11 @@ const MinhasDen = () => {
                   <InputLeftElement>
                     <FiSearch />
                   </InputLeftElement>
-                  <Input type='text' bgColor='white' placeholder="Pesquisar denúncia"></Input>
+                  <Input type='text' bgColor='white' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
                 </InputGroup>
-
+                {denunciasExcluidasFiltradas.map((denunciaExcluida, index) => (
+  <CardDenExcluida key={index} denunciaExcluida={denunciaExcluida} />
+))}
                 <InputGroup>
                   <InputLeftElement>
                     <BsListUl />
