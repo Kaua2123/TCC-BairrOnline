@@ -1,5 +1,5 @@
 //CHAKRA
-import { ChakraProvider, Button,  Kbd, Box, Flex, Image, useToast, InputLeftElement, Grid, Text, Card, Center, Container, GridItem, IconButton, Wrap, WrapItem, HStack, VStack, Input, InputGroup, CardHeader, CardBody, CardFooter, Heading, Stack, } from "@chakra-ui/react";
+import { ChakraProvider, Button, Kbd, Box, Flex, Icon, Image, useToast, InputLeftElement, Grid, Text, Card, Center, Container, GridItem, IconButton, Wrap, WrapItem, HStack, VStack, Input, InputGroup, CardHeader, CardBody, CardFooter, Heading, Stack, } from "@chakra-ui/react";
 
 //componentes
 import Header, { HeaderUsu, HeaderInst } from "../components/Header";
@@ -14,7 +14,7 @@ import Logo from '../img/logo.svg';
 import semImgDen from '../img/semImgDen.png';
 
 //icones
-import { FaUndo } from 'react-icons/fa';
+import { FaUndo, FaTrash } from 'react-icons/fa';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { FiFilter, FiSearch } from 'react-icons/fi';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
@@ -107,7 +107,7 @@ const MinhasDen = () => {
   }
 
   const aoPesquisar = (e) => {
-    if (e.key === 'Enter'){
+    if (e.key === 'Enter') {
       const denunciasFiltradas = denunciasExcluidas.filter((denuncia) => denuncia.den_nome.toLowerCase().includes(pesquisa.toLowerCase()));
       setDenunciasExcluidasFiltradas(denunciasFiltradas);
     }
@@ -246,9 +246,9 @@ const MinhasDen = () => {
                     <FiSearch />
                   </InputLeftElement>
                   <Input type='text' bgColor='white' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
-                 
+
                 </InputGroup>
-                
+
                 <InputGroup>
                   <InputLeftElement>
                     <BsListUl />
@@ -261,47 +261,57 @@ const MinhasDen = () => {
               <span>
                 <Kbd>Enter</Kbd>
               </span>
-              
+
               {denunciasExcluidasFiltradas.map((denunciaExcluida, index) => (
                 <>
-                <Box key={index}>
-                <Card
-  direction={{ base: 'column', sm: 'row' }}
-  overflow='hidden'
-  variant='outline'
->
-  {denunciaExcluida ? (
-  <Image
-  objectFit='cover'
-  maxW={{ base: '100%', sm: '200px' }}
-  src={`http://localhost:3344/retornaImagem/${denunciaExcluida.den_img}`}
-  
-/>
-  ) : (
-    <Image src={semImgDen}  maxW={{ base: '100%', sm: '200px'}} objectFit='cover' />
-  )}
+                  <Box key={index}>
+                    <Card
+                      direction={{ base: 'column', sm: 'row' }}
+                      overflow='hidden'
+                      variant='outline'
+                      bgColor='#f7f7f7'
+                    >
+                      {denunciaExcluida ? (
+                        <Image
+                          objectFit='cover'
+                          maxW={{ base: '100%', sm: '200px' }}
+                          src={`http://localhost:3344/retornaImagem/${denunciaExcluida.den_img}`}
+
+                        />
+                      ) : (
+                        <Image src={semImgDen} maxW={{ base: '100%', sm: '200px' }} objectFit='cover' />
+                      )}
 
 
 
-  <Stack>
-    <CardBody>
-      <Heading size='md'>{denunciaExcluida.den_nome}</Heading>
+                      <Stack>
+                        <CardBody>
+                          <Heading size='md'>{denunciaExcluida.den_nome}</Heading>
+                          
+                          <Heading size='10px' color='gray' >EM {denunciaExcluida.den_bairro.toUpperCase()}</Heading>
+                          <Heading size='10px' color='gray'>Data de exclusão: {denunciaExcluida.den_data_exclusao}</Heading>
+                          <Text fontSize='18px' color='#338bb0'>
+                          <Icon as={FaTrash} mr={2} /> 
+                          Excluída
+                          </Text>
 
-      <Text py='2'>
-        {denunciaExcluida.den_desc}
-      </Text>
-    </CardBody>
+                          <Text py='2'>
+                            {denunciaExcluida.den_desc}
+                          </Text>
 
-    <CardFooter>
-      <Button variant='solid' colorScheme='blue' onClick={reverterDenunciaExcluida}>
-        Reverter
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-                </Box>
-  </>
-))}
+
+                        </CardBody>
+
+                        <CardFooter>
+                          <Button variant='solid' colorScheme='blue' onClick={reverterDenunciaExcluida}>
+                            Reverter
+                          </Button>
+                        </CardFooter>
+                      </Stack>
+                    </Card>
+                  </Box>
+                </>
+              ))}
 
 
             </Box>

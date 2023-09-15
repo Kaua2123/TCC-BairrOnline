@@ -1,9 +1,12 @@
 //chakra
-import { Box, Card, CardBody, CardHeader, Heading, Stack, Text, Image } from "@chakra-ui/react";
+import { Box, Card, CardBody, CardHeader, Flex, Icon, Heading, Stack, Text, Image, CardFooter } from "@chakra-ui/react";
 
 
 //imgs
 import semImgDen from '../img/semImgDen.png';
+
+//icones
+import { FaTrash } from "react-icons/fa";
 
 
 const CardDenExcluida = ({ denunciaExcluida }) => {
@@ -42,6 +45,15 @@ const CardDenExcluida = ({ denunciaExcluida }) => {
                         </Text>
                     </Stack>
                 </CardBody>
+                <CardFooter>
+
+                <Flex alignItems='flex-end'>
+                <Text fontSize='18px' color='#338bb0'>
+                <Icon as={FaTrash} mr={2} /> 
+                    Excluída
+                </Text>
+                </Flex>
+                </CardFooter>
 
             </Card>
         </Box>
