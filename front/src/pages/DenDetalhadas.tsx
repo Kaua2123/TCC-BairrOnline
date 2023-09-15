@@ -270,8 +270,9 @@ const MinhasDen = () => {
                       overflow='hidden'
                       variant='outline'
                       bgColor='#f7f7f7'
+                      boxShadow='lg'
                     >
-                      {denunciaExcluida ? (
+                      {denunciaExcluida.den_img ? (
                         <Image
                           objectFit='cover'
                           maxW={{ base: '100%', sm: '200px' }}
