@@ -1,5 +1,5 @@
 //CHAKRA
-import { ChakraProvider, Button, Box, Flex, Image, useToast, InputLeftElement, Grid, Text, Card, Center, Container, GridItem, IconButton, Wrap, WrapItem, HStack, VStack, Input, InputGroup, CardHeader, } from "@chakra-ui/react";
+import { ChakraProvider, Button,  Kbd, Box, Flex, Image, useToast, InputLeftElement, Grid, Text, Card, Center, Container, GridItem, IconButton, Wrap, WrapItem, HStack, VStack, Input, InputGroup, CardHeader, CardBody, CardFooter, Heading, Stack, } from "@chakra-ui/react";
 
 //componentes
 import Header, { HeaderUsu, HeaderInst } from "../components/Header";
@@ -11,6 +11,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 
 //imgs
 import Logo from '../img/logo.svg';
+import semImgDen from '../img/semImgDen.png';
 
 //icones
 import { FaUndo } from 'react-icons/fa';
@@ -33,7 +34,7 @@ const MinhasDen = () => {
   const [denuncias, setDenuncias] = useState([]);
   const [denunciasExcluidas, setDenunciasExcluidas] = useState([]);
   const [denunciasExcluidasFiltradas, setDenunciasExcluidasFiltradas] = useState([]);
-  const [denunciaExcluidaCod, setDenunciaExcluidaCod] = useState([]);
+  const [denunciaExcluidaCod, setDenunciaExcluidaCod] = useState();
   const [pesquisa, setPesquisa] = useState('');
   const toast = useToast();
 
@@ -245,10 +246,9 @@ const MinhasDen = () => {
                     <FiSearch />
                   </InputLeftElement>
                   <Input type='text' bgColor='white' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
+                 
                 </InputGroup>
-                {denunciasExcluidasFiltradas.map((denunciaExcluida, index) => (
-  <CardDenExcluida key={index} denunciaExcluida={denunciaExcluida} />
-))}
+                
                 <InputGroup>
                   <InputLeftElement>
                     <BsListUl />
@@ -256,7 +256,54 @@ const MinhasDen = () => {
                   <Input type='text' bgColor='white' placeholder="Bairros"></Input>
                 </InputGroup>
 
+
               </HStack>
+              <span>
+                <Kbd>Enter</Kbd>
+              </span>
+              
+              {denunciasExcluidasFiltradas.map((denunciaExcluida, index) => (
+                <>
+                <Box key={index}>
+                <Card
+  direction={{ base: 'column', sm: 'row' }}
+  overflow='hidden'
+  variant='outline'
+>
+  {denunciaExcluida ? (
+  <Image
+  objectFit='cover'
+  maxW={{ base: '100%', sm: '200px' }}
+  src={`http://localhost:3344/retornaImagem/${denunciaExcluida.den_img}`}
+  
+/>
+  ) : (
+    <Image src={semImgDen}  maxW={{ base: '100%', sm: '200px'}} objectFit='cover' />
+  )}
+
+
+
+  <Stack>
+    <CardBody>
+      <Heading size='md'>{denunciaExcluida.den_nome}</Heading>
+
+      <Text py='2'>
+        {denunciaExcluida.den_desc}
+      </Text>
+    </CardBody>
+
+    <CardFooter>
+      <Button variant='solid' colorScheme='blue' onClick={reverterDenunciaExcluida}>
+        Reverter
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+                </Box>
+  </>
+))}
+
+
             </Box>
           </Flex>
         </Flex>
