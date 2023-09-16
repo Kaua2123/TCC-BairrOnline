@@ -29,6 +29,18 @@ import axios from 'axios';
 //componentes
 import CardDenExcluida from "../components/CardDenExcluida";
 
+//swiper
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+
+//estilos do swiper
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { SlideDenExcluida } from "../components/SlideDen";
+
 const MinhasDen = () => {
 
   const [denuncias, setDenuncias] = useState([]);
@@ -226,95 +238,95 @@ const MinhasDen = () => {
           <Text color="#338bb0" fontSize='35px' pb='80px' fontFamily='BreeSerif-Regular'>Denúncias Excluidas</Text>
         </Center>
 
+<Center>
+        <Box h='auto' maxH='900px' w='1400px'  bg='white' boxShadow='lg' >
 
-          <Flex>
-            {denunciasExcluidas.map((denunciaExcluida, index) => ( //mapeando as denuncias excluidas
-              <CardDenExcluida key={index} denunciaExcluida={denunciaExcluida} />
-              //key index para gerar um card novo a cada denuncia excluida
+          <SlideDenExcluida denunciasExcluidas={denunciasExcluidas}/>
+
+        </Box>
+        </Center>
+
+        
+        <Flex bgColor='gray.200'>
+          <Box m='100px'>
+            <HStack spacing={8} justifyContent='center'>
+              <InputGroup>
+                <InputLeftElement>
+                  <FiSearch />
+                </InputLeftElement>
+                <Input type='text' bgColor='white' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
+
+              </InputGroup>
+
+              <InputGroup>
+                <InputLeftElement>
+                  <BsListUl />
+                </InputLeftElement>
+                <Input type='text' bgColor='white' placeholder="Bairros"></Input>
+              </InputGroup>
+
+
+            </HStack>
+            <span>
+              <Kbd>Enter</Kbd>
+            </span>
+
+            {denunciasExcluidasFiltradas.map((denunciaExcluida, index) => (
+              <>
+                <Box key={index} >
+                  <Card
+                    direction={{ base: 'column', sm: 'row' }}
+                    overflow='hidden'
+                    variant='outline'
+                    bgColor='#f7f7f7'
+                    boxShadow='lg'
+                  >
+                    {denunciaExcluida.den_img ? (
+                      <Image
+                        objectFit='cover'
+                        maxW={{ base: '100%', sm: '200px' }}
+                        src={`http://localhost:3344/retornaImagem/${denunciaExcluida.den_img}`}
+
+                      />
+                    ) : (
+                      <Image src={semImgDen} maxW={{ base: '100%', sm: '200px' }} objectFit='cover' />
+                    )}
+
+
+
+                    <Stack>
+                      <CardBody>
+                        <Heading size='md'>{denunciaExcluida.den_nome}</Heading>
+
+                        <Heading size='10px' color='gray' >EM {denunciaExcluida.den_bairro.toUpperCase()}</Heading>
+                        <Heading size='10px' color='gray'>Data de exclusão: {denunciaExcluida.den_data_exclusao}</Heading>
+                        <Text fontSize='18px' color='#338bb0'>
+                          <Icon as={FaTrash} mr={2} />
+                          Excluída
+                        </Text>
+
+                        <Text py='2'>
+                          {denunciaExcluida.den_desc}
+                        </Text>
+
+
+                      </CardBody>
+
+                      <CardFooter>
+                        <Button variant='solid' colorScheme='blue' onClick={reverterDenunciaExcluida}>
+                          Reverter
+                        </Button>
+                      </CardFooter>
+                    </Stack>
+                  </Card>
+                </Box>
+              </>
             ))}
 
-          </Flex>
 
-          <Flex bgColor='gray.200'>
-            <Box m='100px'>
-              <HStack spacing={8} justifyContent='center'>
-                <InputGroup>
-                  <InputLeftElement>
-                    <FiSearch />
-                  </InputLeftElement>
-                  <Input type='text' bgColor='white' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
+          </Box>
+        </Flex>
 
-                </InputGroup>
-
-                <InputGroup>
-                  <InputLeftElement>
-                    <BsListUl />
-                  </InputLeftElement>
-                  <Input type='text' bgColor='white' placeholder="Bairros"></Input>
-                </InputGroup>
-
-
-              </HStack>
-              <span>
-                <Kbd>Enter</Kbd>
-              </span>
-
-              {denunciasExcluidasFiltradas.map((denunciaExcluida, index) => (
-                <>
-                  <Box key={index}>
-                    <Card
-                      direction={{ base: 'column', sm: 'row' }}
-                      overflow='hidden'
-                      variant='outline'
-                      bgColor='#f7f7f7'
-                      boxShadow='lg'
-                    >
-                      {denunciaExcluida.den_img ? (
-                        <Image
-                          objectFit='cover'
-                          maxW={{ base: '100%', sm: '200px' }}
-                          src={`http://localhost:3344/retornaImagem/${denunciaExcluida.den_img}`}
-
-                        />
-                      ) : (
-                        <Image src={semImgDen} maxW={{ base: '100%', sm: '200px' }} objectFit='cover' />
-                      )}
-
-
-
-                      <Stack>
-                        <CardBody>
-                          <Heading size='md'>{denunciaExcluida.den_nome}</Heading>
-                          
-                          <Heading size='10px' color='gray' >EM {denunciaExcluida.den_bairro.toUpperCase()}</Heading>
-                          <Heading size='10px' color='gray'>Data de exclusão: {denunciaExcluida.den_data_exclusao}</Heading>
-                          <Text fontSize='18px' color='#338bb0'>
-                          <Icon as={FaTrash} mr={2} /> 
-                          Excluída
-                          </Text>
-
-                          <Text py='2'>
-                            {denunciaExcluida.den_desc}
-                          </Text>
-
-
-                        </CardBody>
-
-                        <CardFooter>
-                          <Button variant='solid' colorScheme='blue' onClick={reverterDenunciaExcluida}>
-                            Reverter
-                          </Button>
-                        </CardFooter>
-                      </Stack>
-                    </Card>
-                  </Box>
-                </>
-              ))}
-
-
-            </Box>
-          </Flex>
-   
       </Box>
 
       <Footer />

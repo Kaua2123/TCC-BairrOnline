@@ -1,6 +1,6 @@
 
 import CardDen, { CardDenUsu } from "./CardDen";
-
+import CardDenExcluida from "./CardDenExcluida";
 
 
 //react-swiper pros slides de denuncia
@@ -18,6 +18,7 @@ import axios from 'axios';
 
 //chakra
 import { Box, Wrap, WrapItem } from '@chakra-ui/react'
+
 
 
 
@@ -118,4 +119,53 @@ export const SlideDenUsu = ({denuncias}) => {
 
 </Box>
     )
+}
+
+export const SlideDenExcluida = ({ denunciasExcluidas }) => {
+    const [slidesPerView, setSlidesPerView] = useState(
+        window.innerWidth < 768 ? 1 : 5
+      );
+    
+      useEffect(() => {
+        const resize = () => {
+          setSlidesPerView(window.innerWidth < 768 ? 1 : 5);
+        };
+    
+        window.addEventListener("resize", resize);
+    
+        return () => {
+          window.removeEventListener("resize", resize);
+        };
+      }, []);
+    
+      return (
+        <Box h="auto" bg='white'  boxShadow="lg">
+          <Swiper
+            className="swiper-container"
+            style={{ padding: "20px" }}
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={50}
+            slidesPerView={slidesPerView}
+            navigation
+            pagination={{ clickable: true }}
+          >
+            <Wrap>
+              {denunciasExcluidas.map((denunciaExcluida, index) => (
+                <Box key={index}>
+                  <SwiperSlide className="swiper-slide" key={denunciaExcluida.den_cod}>
+                    <CardDenExcluida
+                      nome={denunciaExcluida.den_nome}
+                      descricao={denunciaExcluida.den_desc}
+                      bairro={denunciaExcluida.den_bairro}
+                      imagem={denunciaExcluida.den_img}
+                      dataExclusao={denunciaExcluida.den_data_exclusao}
+                    />
+                  </SwiperSlide>
+                </Box>
+              ))}
+            </Wrap>
+          </Swiper>
+        </Box>
+      );
+    
 }

@@ -9,7 +9,7 @@ import semImgDen from '../img/semImgDen.png';
 import { FaTrash } from "react-icons/fa";
 
 
-const CardDenExcluida = ({ denunciaExcluida }) => {
+const CardDenExcluida = ({ nome, descricao, bairro, imagem, dataExclusao }) => {
 
     const caracteresMaxDescricao = 24;
     const caracteresMaxTitulo = 20;
@@ -27,32 +27,36 @@ const CardDenExcluida = ({ denunciaExcluida }) => {
         }
         return text;
     }
+
+    const dataFormatada = new Date(dataExclusao).toLocaleDateString("pt-BR");
+
+
     return (
  
-            <Card boxShadow='lg'>
+            <Card boxShadow='lg' border='1px solid gray' maxW='sm' w={{ base: '280px', md: '265px' }} maxH='lg' h={{ base: '23em', md: '23em', lg: '29em' }} >
                 <CardBody>
-                    {denunciaExcluida.den_img ? (
-                        <Image src={`http://localhost:3344/retornaImagem/${denunciaExcluida.den_img}`} borderRadius='lg' boxSize='200px' />
+                    {imagem ? (
+                        <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
                     ) : (
                         <Image src={semImgDen} boxSize={{ base: '90px', md: '140px', lg: '200px' }} align='center'></Image>
                     )}
                     <Stack mt='6' spacing='3'>
-                        <Heading size={{ base: 'xs', md: 'xs', lg: 'md' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>{denunciaExcluida.den_nome}</Heading>
-                        <Heading size='xs' textTransform='uppercase' color='gray'>em {denunciaExcluida.den_bairro}</Heading>
-                        <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {denunciaExcluida.den_data}</Heading>
+                        <Heading size={{ base: 'xs', md: 'xs', lg: 'md' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
+                        <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
+                        <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
                         <Text fontFamily='BreeSerif-Regular' fontSize={{ base: 'xs', md: 'xs' }} fontWeight='thin'>
-                            {denunciaExcluida.den_desc}
+                            {descricao}
                         </Text>
                     </Stack>
                 </CardBody>
                 <CardFooter>
 
-                <Flex alignItems='flex-end'>
+           
                 <Text fontSize='18px' color='#338bb0'>
                 <Icon as={FaTrash} mr={2} /> 
                     Excluída
                 </Text>
-                </Flex>
+    
                 </CardFooter>
 
             </Card>
