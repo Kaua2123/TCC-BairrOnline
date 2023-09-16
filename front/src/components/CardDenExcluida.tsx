@@ -43,7 +43,7 @@ const CardDenExcluida = ({ nome, descricao, bairro, imagem, dataExclusao }) => {
                     <Stack mt='6' spacing='3'>
                         <Heading size={{ base: 'xs', md: 'xs', lg: 'md' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>{nome}</Heading>
                         <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
-                        <Heading size='xs' textTransform='uppercase' color='gray'>Data de envio: {dataFormatada}</Heading>
+                        <Heading size='xs' textTransform='uppercase' color='gray'>Data de exclusão: {dataFormatada}</Heading>
                         <Text fontFamily='BreeSerif-Regular' fontSize={{ base: 'xs', md: 'xs' }} fontWeight='thin'>
                             {descricao}
                         </Text>
