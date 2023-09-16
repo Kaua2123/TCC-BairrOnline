@@ -48,7 +48,14 @@ const MinhasDen = () => {
   const [denunciasExcluidasFiltradas, setDenunciasExcluidasFiltradas] = useState([]);
   const [denunciaExcluidaCod, setDenunciaExcluidaCod] = useState();
   const [pesquisa, setPesquisa] = useState('');
+  const [denunciasPorPagina, setDenunciasPorPagina] = useState(5);
+  const [paginaAtual, setPaginaAtual] = useState(1);
   const toast = useToast();
+
+
+  const carregarMaisDenuncias = () => {
+    setPaginaAtual((prevPagina) => prevPagina + 1);
+  }
 
   async function getDenuncia() { //pega os dados da denuncia
     await axios.get('http://localhost:3344/cardDenuncia')
@@ -120,10 +127,17 @@ const MinhasDen = () => {
 
   const aoPesquisar = (e) => {
     if (e.key === 'Enter') {
+      setPaginaAtual(1);
       const denunciasFiltradas = denunciasExcluidas.filter((denuncia) => denuncia.den_nome.toLowerCase().includes(pesquisa.toLowerCase()));
       setDenunciasExcluidasFiltradas(denunciasFiltradas);
     }
   }
+
+  const inicioDenuncias = (paginaAtual - 1) * denunciasPorPagina;
+  const denunciasExibidas = denunciasExcluidasFiltradas.slice(
+    inicioDenuncias,
+    inicioDenuncias + denunciasPorPagina
+  );
 
 
   const token = localStorage.getItem('token');
@@ -271,7 +285,7 @@ const MinhasDen = () => {
               <Kbd>Enter</Kbd>
             </span>
 
-            {denunciasExcluidasFiltradas.map((denunciaExcluida, index) => (
+            {denunciasExibidas.map((denunciaExcluida, index) => (
               <>
                 <Box key={index} >
                   <Card
@@ -322,6 +336,12 @@ const MinhasDen = () => {
                 </Box>
               </>
             ))}
+
+            {denunciasExcluidasFiltradas.length > denunciasPorPagina * paginaAtual && (
+              <Center mt='4'>
+                <Button onClick={carregarMaisDenuncias}>Ver mais</Button>
+              </Center>
+            )}
 
 
           </Box>
