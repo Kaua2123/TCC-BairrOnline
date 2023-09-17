@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 
-//chakra 
+//chakra
 import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
 , Heading, Modal, ModalOverlay, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem, useDisclosure, useColorMode, theme} from '@chakra-ui/react';
 import { modalAnatomy as parts } from '@chakra-ui/anatomy'
@@ -20,6 +20,7 @@ import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/styled-sy
 //componentes
 import  Header, { HeaderInst, HeaderUsu }  from '../components/Header';
 import Footer from '../components/Footer';
+import theme from '../breakpoints.tsx';
 
 import CardInst from '../components/CardInst';
 import { Reportar } from '../components/reportar';
@@ -42,7 +43,7 @@ import SlideDen from '../components/SlideDen';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
- 
+
 
 const Home = () => {
 
@@ -55,9 +56,9 @@ const Home = () => {
 
   const token = localStorage.getItem('token');
   const decodificaToken = token ? jwt_decode(token) : null;
-  
+
   let headerComponent = null;
-  
+
   if (decodificaToken && decodificaToken.usu_tipo === 'denunciante') {
     headerComponent = <HeaderUsu />;
   } else if (decodificaToken && decodificaToken.usu_tipo === 'instituicao') {
@@ -65,7 +66,7 @@ const Home = () => {
   } else {
     headerComponent = <Header/>;
   }
- 
+
 
   const handleCommentSubmit = (comment) => {setComments(
     [
@@ -94,18 +95,18 @@ const Home = () => {
     getDenuncia();
   }, [])
 
-  
+
 
  return (
 
   // BAIRRONLINE GRANDAO TLG (usando os componentes de estilo do chakra)
-  
-  <ChakraProvider >
-    
+
+  <ChakraProvider theme={theme} >
+
   {headerComponent}
-   
-  
-    <Grid templateColumns="1fr 2fr 1fr" gap={4} bgColor='#338bb0'>
+
+
+    <Grid templateColumns={{base: '1fr', sm: '1fr 2fr 1fr'}} gap={4} bgColor='#338bb0'>
         {/* container da esquerda */}
         <GridItem colSpan={{ base: 1, md: 1, lg: 1 }}>
 
@@ -126,7 +127,7 @@ const Home = () => {
             <Image
               mt="-60px"
               src={Logo}
-              boxSize={{ base: "360px", md: "420px", lg: "480px" }}
+              boxSize={{ base: "400px", md: "420px", lg: "480px" }}
             />
           </Center>
         </GridItem>
@@ -172,10 +173,10 @@ const Home = () => {
                    </Box>
                  </Flex>
 
-                
-                 
+
+
                  <Flex flexDirection='column'>
-                 <Card m='20px'  fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '700px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> 
+                 <Card m='20px'  fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '700px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}>
                    {/* Card componente do chakra que cria um card  */}
                      <CardHeader> {/* header do card, usado pra por titulo  */}
                          <Heading borderRadius='7px' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
@@ -184,14 +185,14 @@ const Home = () => {
                              <Box>
                                 <Image src={aguaParada}  w='100%' h='250px'  boxShadow='lg'></Image>
                              </Box>
-                                
-                        
+
+
                          </CardBody>
-                              
+
                          <Divider/> {/* divisor, geralmente é uma linha */}
-                              
+
                            <CardFooter w={{base: '640px', md: '3000px', lg: '700px'}} h={{base: '200px', md: '90px', lg: '80px'}}> {/* rodapé do card  */}
-                               <Button 
+                               <Button
                            leftIcon={<BsChatSquareText/>}
                            bgColor='#338BB0'
                            color='white'
@@ -213,16 +214,16 @@ const Home = () => {
                               <ModalBody>
                               <CommentList comments={comments} />
                               <CommentForm onCommentSubmit={handleCommentSubmit} />
-                             
+
                               </ModalBody>
 
                               <ModalFooter>
-                          
-               
+
+
                               </ModalFooter>
                              </ModalContent>
                              </Modal>
-                           
+
                                </Button>
                                <Button variant='ghost'   w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
                                    <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
@@ -235,7 +236,7 @@ const Home = () => {
                  </Flex>
              </Flex>
 
-            
+
                   {temDenuncia ? (
                      <SlideDen denuncias={denuncias}/>
                   ) : (
@@ -250,25 +251,25 @@ const Home = () => {
                     </Box>
                     </>
                   )}
-            
+
    {/* ------------AQUI ACABAM DENUNCIAS------------*/}
-            
+
            <Flex justifyContent='space-between'>
 
               <Flex flexDirection='column'>
-      
-              <Wrap spacing='50px' m='80px'> 
+
+              <Wrap spacing='50px' m='80px'>
                       <WrapItem>
                               <CardInst/>
                       </WrapItem>
-                            
+
                       <WrapItem>
                               <CardInst/>
                       </WrapItem>
                       <WrapItem>
                               <CardInst/>
                       </WrapItem>
-                            
+
                       <WrapItem>
                               <CardInst/>
                       </WrapItem>
@@ -288,9 +289,9 @@ const Home = () => {
                       <WrapItem>
                               <CardInst/>
                       </WrapItem>
-                
-                 
-                  </Wrap>         
+
+
+                  </Wrap>
               </Flex>
 
               <Flex flexDirection='column' p='120px' >
@@ -303,10 +304,10 @@ const Home = () => {
                   <Text fontSize={{base: '21px', md: '25px', lg:'25px'}}>
                     Conheça as <b>instituições</b> que poderão resolver os problemas de seu <b>bairro</b>
                   </Text>
-                </Box>  
+                </Box>
 
-                <Box mt='100px' w={{base: '5%', md: '40%', xl: '100%'}}>   
-                      <InputGroup> 
+                <Box mt='100px' w={{base: '5%', md: '40%', xl: '100%'}}>
+                      <InputGroup>
                            <InputLeftElement pointerEvents='none'>
                                <FiSearch color='white' />
                            </InputLeftElement>
@@ -316,21 +317,21 @@ const Home = () => {
 
               </Flex>
            </Flex>
-                
-          
-          
+
+
+
                 <Flex flexDirection='column'>
-              
+
                 </Flex>
-         
+
               <Button variant='link' color='black' ml='15px'>Ver mais</Button>
          </Box>
       {/* ------------E AQUI INSTITUIÇOES------------*/}
-            
+
 
     <Footer/>
      </ChakraProvider>
-     
+
   );
 }
 

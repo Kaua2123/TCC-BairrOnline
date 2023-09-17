@@ -87,7 +87,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/DenDetalhadas",
-    element: <DenDetalhadas/>
+    element: (
+      <><RotasPrivadas userType="denunciante"/> <DenDetalhadas/></>
+    )
   }
 ]);
 

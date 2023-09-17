@@ -60,7 +60,6 @@ const HomeUsuario = () => {
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
   const cancelRef = React.useRef();
   const toast = useToast();
-  const {isOpen, onOpen, onClose} = useDisclosure();
 
 
   async function getDenuncia () { //pega os dados da denuncia
