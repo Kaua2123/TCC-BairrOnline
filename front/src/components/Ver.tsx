@@ -76,7 +76,7 @@ const Ver = () => {
   const [filtroAtivo, setFiltroAtivo] = useState(false); // Estado para controlar se o filtro está ativo
 
   useEffect(() => {
-    axios.get('http://localhost:3344/cardDenuncia')
+    axios.get('http://localhost:3344/getDenuncia')
       .then(response => {
         setDenuncias(response.data);
       })

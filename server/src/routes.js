@@ -21,7 +21,7 @@ routes.post("/logarUsu", controllersUsu.logarUsuario);
 //denuncia
 routes.get("/", controllersDenuncias.raiz);
 routes.post("/criarDenuncia", autentica, controllersDenuncias.criarDenuncia);
-routes.get("/cardDenuncia", controllersDenuncias.cardDenuncia);
+routes.get("/getDenuncia", controllersDenuncias.getDenuncia);
 routes.delete("/deleteDenuncia/:cod", autentica, controllersDenuncias.deleteDenuncia);
 routes.delete("/deleteTodasDenuncias", autentica, controllersDenuncias.deleteTodasDenuncias);
 routes.get("/getDenunciaExcluida", controllersDenuncias.getDenunciaExcluida);

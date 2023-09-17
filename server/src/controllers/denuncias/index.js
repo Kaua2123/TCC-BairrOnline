@@ -111,7 +111,7 @@ module.exports = {
         }
     },
 
-    async cardDenuncia(req, res) { // get da denuncia
+    async getDenuncia(req, res) { // get da denuncia
         try {
             const denuncias = await knex('denuncias').select('denuncias.*', 'usuario.usu_nome', 'usuario.usu_img') // juntando duas tabelas
             .join('usuario', 'denuncias.usuario_usu_cod', 'usuario.usu_cod') //pra pegar a img e o nome do usuario e exibir nos cards

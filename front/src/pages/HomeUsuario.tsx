@@ -66,7 +66,7 @@ const HomeUsuario = () => {
 
 
   async function getDenuncia () { //pega os dados da denuncia
-   await axios.get('http://localhost:3344/cardDenuncia')
+   await axios.get('http://localhost:3344/getDenuncia')
       .then(response => {
         setDenuncias(response.data)
 
