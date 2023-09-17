@@ -260,40 +260,50 @@ const MinhasDen = () => {
         </Box>
         </Center>
 
-        
-        <Flex bgColor='gray.200'>
-          <Box m='100px'>
-            <HStack spacing={8} justifyContent='center'>
-              <InputGroup>
-                <InputLeftElement>
-                  <FiSearch />
-                </InputLeftElement>
-                <Input type='text' bgColor='white' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
 
-              </InputGroup>
+      <Box m='100px'>
+        <HStack spacing={8} justifyContent='center'>
+          <InputGroup>
+            <InputLeftElement>
+              <FiSearch />
+            </InputLeftElement>
+            <Input type='text' bgColor='white' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
 
-              <InputGroup>
-                <InputLeftElement>
-                  <BsListUl />
-                </InputLeftElement>
-                <Input type='text' bgColor='white' placeholder="Bairros"></Input>
-              </InputGroup>
+          </InputGroup>
+
+          <InputGroup>
+            <InputLeftElement>
+              <BsListUl />
+            </InputLeftElement>
+            <Input type='text' bgColor='white' placeholder="Bairros"></Input>
+          </InputGroup>
 
 
-            </HStack>
-            <span>
-              <Kbd>Enter</Kbd>
-            </span>
+        </HStack>
+        <span>
+          <Kbd>Enter</Kbd>
+        </span>
+        </Box>
 
+        <Box bgColor='gray.200' minH='240px' h='auto'>
+
+
+
+            <Box m='100px' alignItems='center' justifyContent='center'>
             {denunciasExibidas.map((denunciaExcluida, index) => (
               <>
-                <Box key={index} >
+
+
+                <Box key={index} pt='20px'   >
+                  <Center>
                   <Card
                     direction={{ base: 'column', sm: 'row' }}
                     overflow='hidden'
                     variant='outline'
                     bgColor='#f7f7f7'
                     boxShadow='lg'
+                    marginBottom='20px'
+                    w={{base: '40em', md:'50em'}}
                   >
                     {denunciaExcluida.den_img ? (
                       <Image
@@ -308,12 +318,13 @@ const MinhasDen = () => {
 
 
 
-                    <Stack>
+
                       <CardBody>
                         <Heading size='md'>{denunciaExcluida.den_nome}</Heading>
 
                         <Heading size='10px' color='gray' >EM {denunciaExcluida.den_bairro.toUpperCase()}</Heading>
                         <Heading size='10px' color='gray'>Data de exclusão: {denunciaExcluida.den_data_exclusao}</Heading>
+                        
                         <Text fontSize='18px' color='#338bb0'>
                           <Icon as={FaTrash} mr={2} />
                           Excluída
@@ -327,25 +338,28 @@ const MinhasDen = () => {
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='blue' onClick={reverterDenunciaExcluida}>
+                        <Button variant='solid' mt={24} bgColor='#338bb0' color='white' _hover={{color: '#338bb0', backgroundColor: 'white'}} onClick={reverterDenunciaExcluida}>
                           Reverter
                         </Button>
                       </CardFooter>
-                    </Stack>
+
                   </Card>
+                  </Center>
                 </Box>
               </>
             ))}
+            </Box>
 
             {denunciasExcluidasFiltradas.length > denunciasPorPagina * paginaAtual && (
-              <Center mt='4'>
-                <Button onClick={carregarMaisDenuncias}>Ver mais</Button>
-              </Center>
+
+              <Flex justifyContent='center' >
+                <Button bgColor='#338bb0' color='white' _hover={{color: '#338bb0', backgroundColor: 'white'}} onClick={carregarMaisDenuncias}>Ver mais</Button>
+              </Flex>
             )}
 
 
-          </Box>
-        </Flex>
+
+        </Box>
 
       </Box>
 
