@@ -116,6 +116,9 @@ const MinhasDen = () => {
             isClosable: true
           });
 
+          setTimeout(() => { // esperar um tempo e recarregar a pagina
+            window.location.reload();
+          }, 1000);
         }
       })
       .catch(error => {

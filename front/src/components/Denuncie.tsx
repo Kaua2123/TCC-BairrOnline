@@ -108,6 +108,7 @@ const Denuncie = () => {
     }
 
     const decodificaToken: any = await jwt_decode(token);
+    
 
 
 
@@ -123,16 +124,20 @@ const Denuncie = () => {
       console.log(response.data);
       setDenCod(response.data.den_cod);
 
-      if (response) { // se for criada, executa o codigo abaixo, responsavel pelo feedback ao usuario
-        toast({
-          title: 'Denúncia criada',
-          description: "Sua denúncia foi realizada e será encaminhada para as instituições.",
-          status: 'success',
-          duration: 4000,
-          isClosable: true,
-        })
-      }
-      setCarregando(false);
+      
+      setTimeout(() => {
+        if (response) { // se for criada, executa o codigo abaixo, responsavel pelo feedback ao usuario
+          toast({
+            title: 'Denúncia criada',
+            description: "Sua denúncia foi realizada e será encaminhada para as instituições.",
+            status: 'success',
+            duration: 4000,
+            isClosable: true,
+          })
+        }
+        setCarregando(false);
+      }, 1100)
+      
     }).catch((error) => {
 
       setErro(true);
@@ -141,6 +146,7 @@ const Denuncie = () => {
       setTimeout(() => {
         setErro(false);
       })
+      
       if (error) {
         toast({
           title: 'Erro',
