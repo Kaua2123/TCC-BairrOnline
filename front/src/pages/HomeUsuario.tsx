@@ -55,8 +55,6 @@ import {IoTrashBinSharp} from 'react-icons/io5'
 const HomeUsuario = () => {
 
   const [denuncias, setDenuncias] = useState([]);
-  const [denunciasExcluidas, setDenunciasExcluidas] = useState([]);
-  const [denunciaExcluidaCod, setDenunciaExcluidaCod] = useState([]);
   const [carregando, setCarregando] = useState(false);
   const [temDenuncia, setTemDenuncia] = useState(false);
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
@@ -66,7 +64,13 @@ const HomeUsuario = () => {
 
 
   async function getDenuncia () { //pega os dados da denuncia
-   await axios.get('http://localhost:3344/getDenuncia')
+
+    const token = localStorage.getItem('token'); //primeiro pegar o token, pois é uma rota protegida
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `${token}`;
+      }
+
+   await axios.get('http://localhost:3344/getDenunciaLogado')
       .then(response => {
         setDenuncias(response.data)
 
@@ -121,56 +125,7 @@ const HomeUsuario = () => {
       })
   }
 
-  async function getDenunciaExcluida () {
-    await axios.get('http://localhost:3344/getDenunciaExcluida')
-      .then(response => {
-        setDenunciasExcluidas(response.data);
-        const codigosExcluidos = response.data.map(denunciaExcluida => denunciaExcluida.den_cod);
-        setDenunciaExcluidaCod(codigosExcluidos);
-      })
-      .catch(error => {
-        console.error('Erro ao buscar as denúncias excluidas', error);
-      });
-  }
-
-  useEffect(() => {
-    getDenunciaExcluida();
-  }, [])
-
-  async function reverterDenunciaExcluida () {
-    
-    const token = localStorage.getItem('token');
-    if (token) {
-        axios.defaults.headers.common['Authorization'] = `${token}`;
-      }
-    setCarregando(true);
-
-    await axios.post(`http://localhost:3344/reverterDenunciaExcluida/${denunciaExcluidaCod}`)
-    .then(response => {
-      if(response){
-        toast({
-          title: 'Sucesso',
-          description: 'Sua denúncia foi revertida.',
-          status: 'success',
-          duration: 4000,
-          isClosable: true
-        });
-        setCarregando(false);
-      }
-    })
-    .catch(error => {
-      if(error){
-        toast({
-          title: 'Erro',
-          description: 'Houve um erro ao reverter a denúncia excluída.',
-          status: 'error',
-          duration: 4000,
-          isClosable: true
-        });
-        setCarregando(false);
-      }
-    })
-  }
+  
 
   const openAlertDialog = () => {
     setIsAlertDialogOpen(true);
@@ -255,43 +210,6 @@ const closeAlertDialog = () => {
                 Apagar todas
               </Button>
             </Center> 
-            <Box mt='-30px'>
-            <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} leftIcon={<IoTrashBinSharp/>} onClick={onOpen}>
-              Denúncias excluidas
-            </Button>
-            <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent>
-                        <ModalHeader>Denúncias Excluidas</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>
-                           {denunciasExcluidas.map((denunciaExcluida, index) => (
-                            <Box key={index}>
-                            <p>Nome: {denunciaExcluida.den_nome}</p>
-                            <p>Prazo: {denunciaExcluida.den_prazo}</p>
-                            <p>Descrição: {denunciaExcluida.den_desc}</p>
-                            <p>Data: {denunciaExcluida.den_data}</p>
-                            <p>Imagem: {denunciaExcluida.den_img}</p>
-                            <p>Bairro: {denunciaExcluida.den_bairro}</p>
-                            <p>Problema: {denunciaExcluida.den_problema}</p>
-                            <p>Data de Exclusão da denúncia: {denunciaExcluida.den_data_exclusao}</p>
-                            </Box>
-                           ))}
-                        </ModalBody>
-                        <ModalFooter>
-                          {carregando && (
-                            <Spinner size='lg' color='#338bb0'/>
-                          )}
-                            <Button bgColor='#338bb0' color='white' display={carregando ? 'none' : 'unset'} _hover={{ background: '#fff', color: '#338BB0' }} mr={3} onClick={reverterDenunciaExcluida} >
-                                Reverter
-                            </Button>
-                            <Button variant="ghost" onClick={onClose}>
-                                Cancelar
-                            </Button>
-                        </ModalFooter>
-                    </ModalContent>
-                </Modal>
-            </Box>
           </Box>
         )}
 

@@ -19,12 +19,14 @@ routes.post("/criarUsu", controllersUsu.CriarUsuario);
 routes.post("/logarUsu", controllersUsu.logarUsuario);
 
 //denuncia
+//chamando o middleware "autentica" nas rotas protegidas, que so usuarios podem acessar
 routes.get("/", controllersDenuncias.raiz);
 routes.post("/criarDenuncia", autentica, controllersDenuncias.criarDenuncia);
 routes.get("/getDenuncia", controllersDenuncias.getDenuncia);
+routes.get("/getDenunciaLogado", autentica, controllersDenuncias.getDenunciaLogado);
 routes.delete("/deleteDenuncia/:cod", autentica, controllersDenuncias.deleteDenuncia);
 routes.delete("/deleteTodasDenuncias", autentica, controllersDenuncias.deleteTodasDenuncias);
-routes.get("/getDenunciaExcluida", controllersDenuncias.getDenunciaExcluida);
+routes.get("/getDenunciaExcluida", autentica, controllersDenuncias.getDenunciaExcluida);
 routes.post("/reverterDenunciaExcluida/:cod", autentica, controllersDenuncias.reverterDenunciaExcluida)
 routes.put("/updateDenuncia/:cod", autentica, controllersDenuncias.updateDenuncia);
 routes.post("/uparImagem/:cod", autentica, controllersDenuncias.uparImagem);

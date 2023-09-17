@@ -120,7 +120,37 @@ module.exports = {
             return res.status(200).json(denuncias); //retorna as denuncias
         }
         catch (error) {
-            return res.status(400).json({ error: 'Erro ao criar o card.' });
+            return res.status(400).json({ error: 'Erro ao obter a denúncia' });
+        }
+    },
+
+    async getDenunciaLogado(req, res) { // get da denuncias dos usuarios logados.
+        try {
+
+            const {usu_cod} = req.usuario; //verificando o codigo do usuario logado
+
+            const denuncias = await knex('denuncias').select('denuncias.*', 'usuario.usu_nome', 'usuario.usu_img') // juntando duas tabelas
+            .join('usuario', 'denuncias.usuario_usu_cod', 'usuario.usu_cod')
+            .where('denuncias.usuario_usu_cod', usu_cod); 
+
+            return res.status(200).json(denuncias); //retorna as denuncias
+        }
+        catch (error) {
+            return res.status(400).json({ error: 'Erro ao obter a denúncia' });
+        }
+    },
+
+    async getDenunciaExcluida(req, res) { //get das denuncias excluidas. protegida pelo token também
+        try {
+
+            const {usu_cod} = req.usuario; //verificando o codigo do usuario logado
+
+            const denunciaExcluida = await knex('denuncias_excluidas')
+            .select('*')
+            .where('denuncias_excluidas.usuario_usu_cod', usu_cod)
+            return res.status(200).json(denunciaExcluida);
+        } catch (error) {
+            return res.status(400).json({ error: 'Erro ao obter denúncias excluidas' });
         }
     },
 
@@ -180,15 +210,7 @@ module.exports = {
         }
     },
 
-    async getDenunciaExcluida(req, res) {
-        try {
-            const denunciaExcluida = await knex('denuncias_excluidas').select('*');
-
-            return res.status(200).json(denunciaExcluida);
-        } catch (error) {
-            return res.status(400).json({ error: error.message });
-        }
-    },
+  
 
     async reverterDenunciaExcluida(req, res) { // reversão de denuncias
         try {

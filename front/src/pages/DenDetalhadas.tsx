@@ -58,7 +58,7 @@ const MinhasDen = () => {
   }
 
   async function getDenuncia() { //pega os dados da denuncia
-    await axios.get('http://localhost:3344/cardDenuncia')
+    await axios.get('http://localhost:3344/getDenuncia')
       .then(response => {
         setDenuncias(response.data)
 
@@ -76,6 +76,13 @@ const MinhasDen = () => {
   }, [])
 
   async function getDenunciaExcluida() {
+
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `${token}`;
+    }
+
+
     await axios.get('http://localhost:3344/getDenunciaExcluida')
       .then(response => {
         setDenunciasExcluidas(response.data);
