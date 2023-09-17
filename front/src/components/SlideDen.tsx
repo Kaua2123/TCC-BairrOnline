@@ -23,7 +23,7 @@ import { Box, Wrap, WrapItem } from '@chakra-ui/react'
 
 
 const SlideDen = ({denuncias}) => {
-    
+
     const [slidesPerView, setSlidesPerView] = useState(window.innerWidth < 768 ? 1 : 5);
     useEffect(() => {
         const resize = () => {
@@ -38,7 +38,7 @@ const SlideDen = ({denuncias}) => {
     }, []);
 
     return(
-        
+
         <Box h='auto' mt='20px' p='20px' bg='#F2F2F2' boxShadow='lg' >
 
         <Swiper className="swiper-container" style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -51,16 +51,17 @@ const SlideDen = ({denuncias}) => {
        {denuncias.map((denuncia, index) => (
             <Box key={index}>
             <SwiperSlide className='swiper-slide' key={denuncia.den_cod}>
-             <CardDen 
-             nome={denuncia.den_nome} 
-             descricao={denuncia.den_desc} 
+             <CardDen
+             nome={denuncia.den_nome}
+             descricao={denuncia.den_desc}
              bairro={denuncia.den_bairro}
              imagem={denuncia.den_img}
+             usuNome={denuncia.usu_nome}
              />
             </SwiperSlide>
             </Box>
         ))}
-       
+
        </Wrap>
         </Swiper>
 
@@ -69,7 +70,7 @@ const SlideDen = ({denuncias}) => {
 }
 
 export default SlideDen;
-    
+
 
 export const SlideDenUsu = ({denuncias}) => {
 
@@ -88,7 +89,7 @@ export const SlideDenUsu = ({denuncias}) => {
 
 
     return(
-        
+
         <Box h='auto' mt='20px' p='20px' boxShadow='lg'>
 
         <Swiper className="swiper-container" style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -97,21 +98,21 @@ export const SlideDenUsu = ({denuncias}) => {
         navigation
         pagination={{clickable: true}}>
 
-       
+
         {denuncias.map((denuncia, index) => (
             <Box key={index}>
             <SwiperSlide className='swiper-slide'  key={denuncia.den_cod}>
-             <CardDenUsu 
-             nome={denuncia.den_nome} 
-             descricao={denuncia.den_desc} 
-             data={denuncia.den_data} 
-             imagem={denuncia.den_img} 
+             <CardDenUsu
+             nome={denuncia.den_nome}
+             descricao={denuncia.den_desc}
+             data={denuncia.den_data}
+             imagem={denuncia.den_img}
              bairro={denuncia.den_bairro}
              denCod={denuncia.den_cod}/>
             </SwiperSlide>
             </Box>
         ))}
-       
+
 
 
         </Swiper>
@@ -125,19 +126,19 @@ export const SlideDenExcluida = ({ denunciasExcluidas }) => {
     const [slidesPerView, setSlidesPerView] = useState(
         window.innerWidth < 768 ? 1 : 5
       );
-    
+
       useEffect(() => {
         const resize = () => {
           setSlidesPerView(window.innerWidth < 768 ? 1 : 5);
         };
-    
+
         window.addEventListener("resize", resize);
-    
+
         return () => {
           window.removeEventListener("resize", resize);
         };
       }, []);
-    
+
       return (
         <Box h="auto" bg='white'  boxShadow="lg">
           <Swiper
@@ -167,5 +168,5 @@ export const SlideDenExcluida = ({ denunciasExcluidas }) => {
           </Swiper>
         </Box>
       );
-    
+
 }

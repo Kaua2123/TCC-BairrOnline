@@ -27,8 +27,8 @@ const CardGrande = ({denuncia}) => {
   const [acoProgresso, setAcoProgresso] = useState('');
   const [acoData, setAcoData] = useState('');
   const [usuCod, setUsuCod] = useState('');
-  const [usuTipo, setUsuTipo] = useState(''); 
-  
+  const [usuTipo, setUsuTipo] = useState('');
+
   const toast = useToast();
 
   const [rep, setrep] = useState();
@@ -41,9 +41,9 @@ const CardGrande = ({denuncia}) => {
       setUsuTipo(decodificaToken.usu_tipo); // Defina o estado com o tipo de usuário
       console.log(decodificaToken.usu_tipo);
     }
-  
+
   }, []);
-    
+
     const criarAcompanhamento = async () => {
 
       const token = localStorage.getItem('token');          //pegar o token e decodificar
@@ -77,7 +77,7 @@ const CardGrande = ({denuncia}) => {
             status: 'success',
             duration: 4000,
             isClosable: true,
-          })     
+          })
       }
     })
     .catch((error) => {
@@ -96,7 +96,7 @@ const CardGrande = ({denuncia}) => {
     }
 
 
-    
+
   const handleCommentSubmit = (comment) => {setComments(
     [
       ...comments, comment
@@ -108,12 +108,12 @@ const CardGrande = ({denuncia}) => {
         <Card m='20px' mb='250px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '470px', md: '490px', lg:'490px'}} w={{base: '535px', md: '653px', lg: '802px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}>
         {/* Card componente do chakra que cria um card  */}
           <CardHeader> {/* header do card, usado pra por titulo  */}
-          <Heading w={{base: '100%', md: '100%', lg: '100%'}} 
-              borderRadius='7px' 
-              textAlign='center' 
-              bgColor='#338BB0' 
-              color='white' 
-              fontFamily='BreeSerif-Regular' 
+          <Heading w={{base: '100%', md: '100%', lg: '100%'}}
+              borderRadius='7px'
+              textAlign='center'
+              bgColor='#338BB0'
+              color='white'
+              fontFamily='BreeSerif-Regular'
               fontWeight='normal'>{denuncia.den_nome}</Heading>
           </CardHeader>
           <Text fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular' ml={{base: '20px', md: '20px', lg:'20px'}}>Bairro: {denuncia.den_bairro}</Text>
@@ -126,22 +126,22 @@ const CardGrande = ({denuncia}) => {
                     <HiOutlineClipboardDocumentList size='10vh'  color='gray' /> // se n tiver adicionado imagem, é o que será exibido
                 )}
                   </Box>
-                    
-            
+
+
               </CardBody>
-                  
+
               <Divider/> {/* divisor, geralmente é uma linha */}
-              
+
                 <CardFooter w={{base: '640px', md: '3000px', lg: '700px'}} h={{base: '200px', md: '90px', lg: '80px'}}> {/* rodapé do card  */}
-                    
+
                 <Button variant='ghost' mt={{base: '-7px', md: '', lg: '-5px'}} ml={{base:'450px', md:'550px', lg:'700px'}} w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
                         <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
                     </Button>
-                      <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }}  
+                      <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }}
                       ml={{base:'-196px', md:'-341px', lg:"-755px"}} mt={{base:'-14px', md:'-5px', lg:'-6px'}} fontSize="15px" onClick={criarAcompanhamento} display={usuTipo === 'instituicao' ? 'block' : 'none'}>Assumir denúncia</Button>
                 </CardFooter>
                 <Box p='70px' mt={{base: '-60px', md:'-50px', lg:'-40px',}} ml='-70'>
-                    <Text  fontFamily='BreeSerif-Regular' fontWeight='bold' fontSize={{base: '12px', md: '14px', lg: '18px'}}>@{denuncia.usuario_usu_cod}</Text>
+                    <Text  fontFamily='BreeSerif-Regular' fontWeight='bold' fontSize={{base: '12px', md: '14px', lg: '18px'}}>@{denuncia.usu_nome}</Text>
                     <Text mt='10px' fontSize={{base: '12px', md: '14px', lg: '16px'}}>{denuncia.den_desc}</Text>
                     </Box>
                     <Box>

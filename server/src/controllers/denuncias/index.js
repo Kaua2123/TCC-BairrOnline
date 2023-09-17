@@ -113,7 +113,9 @@ module.exports = {
 
     async cardDenuncia(req, res) { // get da denuncia
         try {
-            const denuncias = await knex('denuncias').select('*');
+            const denuncias = await knex('denuncias').select('denuncias.*', 'usuario.usu_nome', 'usuario.usu_img') // juntando duas tabelas
+            .join('usuario', 'denuncias.usuario_usu_cod', 'usuario.usu_cod') //pra pegar a img e o nome do usuario e exibir nos cards
+           
 
             return res.status(200).json(denuncias); //retorna as denuncias
         }
@@ -121,6 +123,7 @@ module.exports = {
             return res.status(400).json({ error: 'Erro ao criar o card.' });
         }
     },
+
 
     async deleteDenuncia(req, res) { //deleta as denuncias pelo codigo, salvando elas em uma tabela de denuncias excluidas
         try {

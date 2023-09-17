@@ -27,7 +27,7 @@ import CommentList from "./CommentList";
 import semImgDen from '../img/semImgDen.png';
 
 
-const CardDen = ({ nome, descricao, bairro, imagem }) => {
+const CardDen = ({ nome, descricao, bairro, imagem, usuNome }) => {
     const [rep, setrep] = useState(false)
 
     const { colorMode } = useColorMode();
@@ -84,7 +84,7 @@ const CardDen = ({ nome, descricao, bairro, imagem }) => {
                             ml={-1}
                             mr={2}
                         />
-                        <TagLabel>@usuario</TagLabel>
+                        <TagLabel>{usuNome}</TagLabel>
                     </Tag>
                     <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
                     <Heading size='xs' textTransform='uppercase' color='gray'>em {bairro}</Heading>
@@ -478,7 +478,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                                 </Flex>
                             </Flex>
                         ) : (
-                            <Box></Box> // 
+                            <Box></Box> //
                         )}
 
                     </ModalBody>
@@ -569,4 +569,3 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
     );
 
 }
-
