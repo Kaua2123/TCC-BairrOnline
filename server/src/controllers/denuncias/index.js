@@ -195,12 +195,27 @@ module.exports = {
     async deleteTodasDenuncias(req, res) { // deletar TODAS denúncias
         try {
 
-            const denuncia = await knex('denuncias').first();
-            if (!denuncia) {
+            const denuncias = await knex('denuncias').select('*');
+            if (!denuncias || denuncias.length === 0) {
                 return res.status(400).json({ error: 'Denúncia não encontrada.' });
             }
 
-            await knex('denuncias_excluidas').insert(denuncia);
+            const dataExclusao = new Date().toISOString();
+             
+            for (const denuncia of denuncias) {
+                await knex('denuncias_excluidas').insert({
+                  den_cod: denuncia.den_cod,
+                  den_nome: denuncia.den_nome,
+                  den_prazo: denuncia.den_prazo,
+                  den_desc: denuncia.den_desc,
+                  den_data: denuncia.den_data,
+                  den_img: denuncia.den_img,
+                  den_bairro: denuncia.den_bairro,
+                  den_problema: denuncia.den_problema,
+                  usuario_usu_cod: denuncia.usuario_usu_cod,
+                  den_data_exclusao: dataExclusao,
+                });
+              }
 
             await knex('denuncias').del();
             return res.status(201).json({ message: 'Todas as denúncias foram deletadas com sucesso.' });
