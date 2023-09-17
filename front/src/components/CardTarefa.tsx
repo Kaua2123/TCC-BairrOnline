@@ -35,9 +35,9 @@ const CardTarefa = ({acompanhamento}) => {
   return (
 
     <Box bg='#338BB0' fontSize='20px' borderRadius='10px' w='80%' p={3} color='white'>
-      NOME: {acompanhamento.den_nome}
+      {acompanhamento.den_nome}
       <Button onClick={onOpen} w='100px' h='30px' ml='130px' leftIcon={<TfiPlus />} _hover={{ backgroundColor: 'acqua', color: '#338bb0' }}
-        color='black'>Abrir</Button>
+        color='black ' position="absolute" right="130px">Abrir</Button>
       <Modal size='5xl' isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
