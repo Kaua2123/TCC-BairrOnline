@@ -72,13 +72,13 @@ const router = createBrowserRouter([
   {
     path:"/homeADM",
     element: (
-      <><RotasPrivadas userType="denunciante" /><HomeADM /></>
+      <><RotasPrivadas userType="administrador" /><HomeADM /></>
     ),
   },
   {
     path:"/homeInst",
     element: (
-      <><RotasPrivadas userType="denunciante" /><HomeInst /></>
+      <><RotasPrivadas userType="instituicao" /><HomeInst /></>
     ),
   },
   {

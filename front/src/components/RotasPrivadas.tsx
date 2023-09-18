@@ -10,7 +10,7 @@ const RotasPrivadas = ({ userType }) => {
 
   // Verificar se o tipo de usuário é permitido para a rota
 
-  const isUserAllowed = userType === 'denunciante' || userType === 'instituicao'; 
+  const isUserAllowed = userType === 'denunciante' || userType === 'instituicao' || userType === 'administrador'; 
 
   if(!isAuthenticated || !isUserAllowed) {
     return <Navigate to='/Deslogado'/>;

@@ -1,5 +1,5 @@
 const express = require('express');
-const autentica = require('./autenticaToken');
+const autentica = require('./middleware/autenticaToken');
 
 
 const controllersAcomp = require('../src/controllers/acompanhamento/index');

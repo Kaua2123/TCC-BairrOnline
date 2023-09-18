@@ -80,6 +80,11 @@ const Login = () => {
             navigate('/HomeInst')
           }, 1000)
         }
+        else if(decodificaToken.usu_tipo === 'administrador'){
+          setTimeout(() => {
+            navigate('/HomeADM')
+          })
+        }
        
         
       })
