@@ -18,7 +18,7 @@ import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHe
 import { modalAnatomy as parts } from '@chakra-ui/anatomy'
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/styled-system'
 //componentes
-import  Header, { HeaderInst, HeaderUsu }  from '../components/Header';
+import  Header, { HeaderADM, HeaderInst, HeaderUsu }  from '../components/Header';
 import Footer from '../components/Footer';
 import theme from '../breakpoints.tsx';
 
@@ -63,7 +63,10 @@ const Home = () => {
     headerComponent = <HeaderUsu />;
   } else if (decodificaToken && decodificaToken.usu_tipo === 'instituicao') {
     headerComponent = <HeaderInst />;
-  } else {
+  } else if (decodificaToken && decodificaToken.usu_tipo === 'administrador') {
+    headerComponent = <HeaderADM />
+  }
+  else {
     headerComponent = <Header/>;
   }
 

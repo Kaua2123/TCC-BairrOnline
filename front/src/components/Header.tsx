@@ -527,24 +527,21 @@ export const HeaderADM = () => {
             <Spacer/>
 
 
-{/*TERMINA HEADERUSU NAV*/}
 
 
 
-  {/* COMEÇA NOTIFICAÇÃO */}
+
 
 
             
             <HStack>
      
               <Text color='white' fontSize='25px' fontFamily='BreeSerif-Regular' mr={3} >Administração</Text>
-  
-             
+
             </HStack>
          
 
 
-  {/* TERMINA NOTIFICAÇÃO */}
       </Flex>
 
 
