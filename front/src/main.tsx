@@ -30,7 +30,9 @@ const router = createBrowserRouter([
   {
     path:"/HomeUsuario",
     element: (
-      <><RotasPrivadas userType="denunciante" /><HomeUsuario /></>
+      <RotasPrivadas userType='denunciante'>
+        <HomeUsuario/>
+      </RotasPrivadas>
     ),
   },
 
@@ -72,13 +74,17 @@ const router = createBrowserRouter([
   {
     path:"/homeADM",
     element: (
-      <><RotasPrivadas userType="administrador" /><HomeADM /></>
+      <RotasPrivadas userType='administrador'>
+      <HomeADM/>
+    </RotasPrivadas>
     ),
   },
   {
     path:"/homeInst",
     element: (
-      <><RotasPrivadas userType="instituicao" /><HomeInst /></>
+      <RotasPrivadas userType='instituicao'>
+        <HomeInst/>
+      </RotasPrivadas>
     ),
   },
   {
@@ -88,7 +94,9 @@ const router = createBrowserRouter([
   {
     path: "/DenDetalhadas",
     element: (
-      <><RotasPrivadas userType="denunciante"/> <DenDetalhadas/></>
+      <RotasPrivadas userType='denunciante'>
+        <DenDetalhadas/>
+      </RotasPrivadas>
     )
   }
 ]);

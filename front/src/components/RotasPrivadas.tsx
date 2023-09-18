@@ -2,7 +2,7 @@
 
 import { Navigate } from 'react-router-dom';
 
-const RotasPrivadas = ({ userType }) => {
+const RotasPrivadas = ({ children, userType }) => {
 
   // Verificar se o usuário está autenticado
 
@@ -15,7 +15,12 @@ const RotasPrivadas = ({ userType }) => {
   if(!isAuthenticated || !isUserAllowed) {
     return <Navigate to='/Deslogado'/>;
   }
-  return null;
+
+  if(!isUserAllowed) {
+    return <Navigate to='/'/>
+  }
+
+  return children;
 };
 
 export default RotasPrivadas;

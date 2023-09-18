@@ -1,7 +1,7 @@
 import '../App.css';
 
 //reação (reactkkkkkkkkkomgggmgmgmggm)
-import  { Link } from 'react-router-dom'
+import  { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 
 //imgs
@@ -20,6 +20,8 @@ import { HeaderInst } from '../components/Header';
 import CardTarefa from '../components/CardTarefa';
 import axios from 'axios';
 
+//jwt
+import jwtDecode from 'jwt-decode';
 
 
 const theme = extendTheme({
@@ -36,6 +38,17 @@ const theme = extendTheme({
 const HomeInst = () => { 
 
   const [acompanhamentos, setAcompanhamentos] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const decodificaToken: any = jwtDecode(token);
+
+    if(decodificaToken.usu_tipo !== 'instituicao'){
+      navigate('/');
+    }
+  }, [])
+
  
   const denCod = 4;
 
@@ -58,6 +71,8 @@ const HomeInst = () => {
 
 
  return (
+
+  
   <ChakraProvider theme={theme}>
     <HeaderInst/>
     <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>

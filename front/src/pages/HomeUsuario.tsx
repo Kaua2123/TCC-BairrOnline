@@ -47,6 +47,8 @@ import AcompanharDen from '../components/AcompanharDen';
 
 //icones
 import {IoTrashBinSharp} from 'react-icons/io5'
+import jwtDecode from 'jwt-decode';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 
@@ -58,8 +60,18 @@ const HomeUsuario = () => {
   const [carregando, setCarregando] = useState(false);
   const [temDenuncia, setTemDenuncia] = useState(false);
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
+  const navigate = useNavigate();
   const cancelRef = React.useRef();
   const toast = useToast();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const decodificaToken: any = jwtDecode(token);
+
+    if(decodificaToken.usu_tipo !== 'denunciante'){
+      navigate('/');
+    }
+  }, [])
 
 
   async function getDenuncia () { //pega os dados da denuncia

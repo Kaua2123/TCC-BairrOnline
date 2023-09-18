@@ -40,6 +40,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { SlideDenExcluida } from "../components/SlideDen";
+import jwtDecode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 const MinhasDen = () => {
 
@@ -50,12 +52,23 @@ const MinhasDen = () => {
   const [pesquisa, setPesquisa] = useState('');
   const [denunciasPorPagina, setDenunciasPorPagina] = useState(5);
   const [paginaAtual, setPaginaAtual] = useState(1);
+  const navigate = useNavigate();
   const toast = useToast();
 
 
   const carregarMaisDenuncias = () => {
     setPaginaAtual((prevPagina) => prevPagina + 1);
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const decodificaToken: any = jwtDecode(token);
+
+    if(decodificaToken.usu_tipo !== 'denunciante'){
+      navigate('/');
+    }
+  }, [])
+
 
   async function getDenuncia() { //pega os dados da denuncia
     await axios.get('http://localhost:3344/getDenuncia')

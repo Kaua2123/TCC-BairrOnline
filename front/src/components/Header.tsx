@@ -3,7 +3,7 @@
 import { Menu,Image, MenuButton, Button,  MenuList, MenuItem,
   Center, Flex, HStack, Spacer,Popover,PopoverTrigger,
   PopoverContent,PopoverHeader,PopoverBody,
-  PopoverArrow, PopoverCloseButton, AvatarBadge, useToast, useColorMode } from "@chakra-ui/react";
+  PopoverArrow, PopoverCloseButton, AvatarBadge, Text, useToast, useColorMode, Icon } from "@chakra-ui/react";
 import { Avatar, Box, IconButton } from "@chakra-ui/react";
 
 //react
@@ -22,6 +22,7 @@ import { BiSolidInstitution } from 'react-icons/bi';
 import { MdOutlineLogout } from 'react-icons/md';
 import { PiGearSixFill } from 'react-icons/pi'
 import {FaMoon, FaSun} from 'react-icons/fa'
+
 
 //componentes
  import { NotfiInst } from "./infoDen";
@@ -434,6 +435,119 @@ export const HeaderInst = () => {
 
 
       </Flex>
+  )
+}
+
+export const HeaderADM = () => {
+
+  const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+  const toast = useToast();
+  const {colorMode, toggleColorMode} = useColorMode();
+
+  const deslogar = () => {
+    try {
+      localStorage.removeItem('token');
+      toast({
+        title: 'Você saiu',
+        description: 'Recarregue para ver as alterações.',
+        status: 'success',
+        duration: 4000,
+        isClosable: true
+      })
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const aoClicarAvatar = () => {
+    setSubMenuOpen(!isSubMenuOpen);
+  }
+
+
+
+  return(
+
+
+      <Flex w='100%'  bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='dark-lg' >
+
+
+{/*COMEÇA HEADERUSU NAV*/}
+
+          <Center>
+          <Menu>
+            <MenuButton display={['flex', 'flex', 'none', 'none']} bg='#322F2F' color='white' as={IconButton} aria-label="opções" icon = {<MenuOutlined/>}></MenuButton>
+            <MenuList>
+              <MenuItem > <Link to='/'> BairrOnline </Link> </MenuItem>
+              <MenuItem> <Link to='/Denuncie'> Denuncie aqui </Link> </MenuItem>
+              <MenuItem> <Link to='/VerDenuncia'> Ver denúncias </Link></MenuItem>
+              <MenuItem> <Link to='/SaibaMais'> Saiba mais </Link></MenuItem>
+            </MenuList>
+          </Menu>
+          </Center>
+
+          <Link to='/'> <Image src={Logo} alt='logo' boxSize='20' ></Image> </Link>
+
+
+
+          <Spacer/>
+
+            <HStack  spacing='10' justifyContent='center' alignItems='center' >
+              <Button variant='link'
+              color='white'
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'
+              display={['none', 'none', 'flex', 'flex']}>
+
+                  <Link smooth to='/'>Gestão de denúncias</Link>
+
+              </Button>
+              <Button variant='link'
+              color='white'
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'
+
+              display={['none', 'none', 'flex', 'flex']}>
+                 <Link smooth to='/'>Conteúdo reportado</Link>
+              </Button>
+              <Button variant='link'
+              color='white'
+              _hover={{color: '#338BB0'}}
+              fontFamily='BreeSerif-Regular'
+              fontWeight='normal'
+
+              display={['none', 'none', 'flex', 'flex']}>
+                 <Link smooth to='/'>Usuários</Link>
+              </Button>
+              
+            </HStack>
+
+            <Spacer/>
+
+
+{/*TERMINA HEADERUSU NAV*/}
+
+
+
+  {/* COMEÇA NOTIFICAÇÃO */}
+
+
+            
+            <HStack>
+     
+              <Text color='white' fontSize='25px' fontFamily='BreeSerif-Regular' mr={3} >Administração</Text>
+  
+             
+            </HStack>
+         
+
+
+  {/* TERMINA NOTIFICAÇÃO */}
+      </Flex>
+
+
   )
 }
 
