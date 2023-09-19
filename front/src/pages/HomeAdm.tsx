@@ -15,6 +15,7 @@ import { HeaderADM, HeaderUsu } from '../components/Header';
 import { Sidebar } from '../components/ADM/Sidebar';
 import { MdMenu } from 'react-icons/md';
 import { CardsReportadas } from '../components/ADM/CardsReportadas';
+import { GestaoDenuncias } from '../components/ADM/GestaoDenuncias';
 
 const HomeADM = () => {
 
@@ -29,6 +30,7 @@ const HomeADM = () => {
   } 
 
   const [menuClicado, setMenuClicado] = useState(false);
+  const [secaoAtiva, setSecaoAtiva] = useState()
 
   return (
 
@@ -38,7 +40,7 @@ const HomeADM = () => {
     <HStack w='full' h='100vh' bg='gray.200' padding={10}>
         <Flex as='aside' w={menuClicado ? '5vw' : 'full'} transition='width 0.2s ease-in-out' h='full' maxW={350} bg='white' alignItems='center' padding={3}
             flexDirection='column' justifyContent='space-between' borderRadius='3xl'>
-              <Sidebar menuClicado={menuClicado}/>
+              <Sidebar menuClicado={menuClicado} secaoAtiva={secaoAtiva} setSecaoAtiva={setSecaoAtiva}/>
         </Flex>
        
         
@@ -46,11 +48,14 @@ const HomeADM = () => {
 
         <Flex as='main' overflowY='auto' w='full' h='full' bg='white'  flexDirection='column'
         position='relative' borderRadius='3xl'>
-           <IconButton aria-label='xd' icon={<MdMenu/>} boxSize={menuClicado ? '20px' : '40px'} position='absolute' top={6} left={6} onClick={menuClicado ? () => setMenuClicado(false) : () => setMenuClicado(true)}></IconButton>
+           <IconButton aria-label='xd' icon={<MdMenu/>} position='absolute' top={6} left={6} onClick={menuClicado ? () => setMenuClicado(false) : () => setMenuClicado(true)}></IconButton>
            
-        <HStack w='full' m='80px'>
-        <CardsReportadas/>
-        </HStack>
+          {secaoAtiva === 'gestaoDenuncias' && (
+            <HStack w='full' m='80px'>
+              <GestaoDenuncias/>
+            </HStack>
+          )}
+      
         
            
         </Flex>

@@ -8,13 +8,13 @@ import { Navigation } from "./Navigation";
 import FooterSidebar from "./FooterSidebar";
 
 
-export const Sidebar = ({menuClicado}) => {
+export const Sidebar = ({menuClicado, secaoAtiva, setSecaoAtiva}) => {
     return(
     <React.Fragment>
         <Box w='full'>
         <PesquisarSidebar menuClicado={menuClicado}/>
         <Divider/>
-        <Navigation menuClicado={menuClicado}/>
+        <Navigation menuClicado={menuClicado} secaoAtiva={secaoAtiva} setSecaoAtiva={setSecaoAtiva}/>
         </Box>
     </React.Fragment>
     )
