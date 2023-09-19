@@ -8,9 +8,13 @@ import Comentarios from '../components/Comentarios';
 import { useState } from 'react';
 import { Reportar } from '../components/reportar';
 
+//chakra
+import { ChakraProvider, Flex, HStack, Text, IconButton, Box } from '@chakra-ui/react';
+
+
 //componentes 
 import Footer from '../components/Footer';
-import { ChakraProvider, Flex, HStack, Text, IconButton } from '@chakra-ui/react';
+
 import jwt_decode from 'jwt-decode';
 import { HeaderADM, HeaderUsu } from '../components/Header';
 
@@ -46,11 +50,15 @@ const HomeADM = () => {
         
         
 
-        <Flex as='main' w='full' h='full' bg='white' alignItems='center' justifyContent='center' flexDirection='column'
+        <Flex as='main' overflowY='auto' w='full' h='full' bg='white' alignItems='center' justifyContent='center' flexDirection='column'
         position='relative' borderRadius='3xl'>
-            <IconButton aria-label='xd' icon={<MdMenu/>} position='absolute' top={6} left={6} onClick={menuClicado ? () => setMenuClicado(false) : () => setMenuClicado(true)}></IconButton>
-            <Text fontSize={100} color='gray.800'>ADM</Text>
+           <IconButton aria-label='xd' icon={<MdMenu/>} position='absolute' top={6} left={6} onClick={menuClicado ? () => setMenuClicado(false) : () => setMenuClicado(true)}></IconButton>
+           
+          <Text fontSize={100} color='gray.800'>ADM</Text>
+
+           
         </Flex>
+       
     </HStack>
     </ChakraProvider>
 )

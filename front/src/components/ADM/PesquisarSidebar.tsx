@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 
 export const PesquisarSidebar = ({menuClicado}) => {
-    const [pesquisando, setPesquisando] = useState(false);
+    const [pesquisando, setPesquisando] = useState(false)
     
     return(
     <Flex w='full' alignItems='center' justifyContent='space-between' flexDirection='row' gap={4}>
