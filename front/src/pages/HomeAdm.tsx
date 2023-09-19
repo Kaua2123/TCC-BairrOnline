@@ -34,7 +34,7 @@ const HomeADM = () => {
   return (
     <ChakraProvider>
     <HStack w='full' h='100vh' bg='gray.200' padding={10}>
-        <Flex as='aside' w='full' h='full' maxW={350} bg='white' alignItems='center' padding={0}
+        <Flex as='aside' w='full' h='full' maxW={350} bg='white' alignItems='center' padding={3}
             flexDirection='column' justifyContent='space-between' borderRadius='3xl'>
               <Sidebar/>
         </Flex>
