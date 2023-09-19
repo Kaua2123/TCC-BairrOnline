@@ -1,6 +1,6 @@
 //menu lateral pro adm (dashboard)
 
-import { Box, ChakraProvider, HStack, Text, Flex, IconButton, Divider } from "@chakra-ui/react";
+import { Box, Divider } from "@chakra-ui/react";
 import React from "react";
 import { MdMenu } from "react-icons/md";
 import { PesquisarSidebar } from "./PesquisarSidebar";
@@ -15,7 +15,6 @@ export const Sidebar = ({menuClicado}) => {
         <PesquisarSidebar menuClicado={menuClicado}/>
         <Divider/>
         <Navigation menuClicado={menuClicado}/>
-        <FooterSidebar/>
         </Box>
     </React.Fragment>
     )

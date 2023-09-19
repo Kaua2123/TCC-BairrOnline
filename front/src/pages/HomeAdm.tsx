@@ -1,19 +1,13 @@
 import '../App.css';
-import img2 from "../img/aguaEstancada.png";
-import instagram from "../img/instagram.png";
-import twitter from "../img/twitter.png";
-import Logo from "../img/logo.svg";
-import  { Link } from 'react-router-dom'
-import Comentarios from '../components/Comentarios';
+
 import { useState } from 'react';
-import { Reportar } from '../components/reportar';
 
 //chakra
 import { ChakraProvider, Flex, HStack, Text, IconButton, Box } from '@chakra-ui/react';
 
 
 //componentes 
-import Footer from '../components/Footer';
+
 
 import jwt_decode from 'jwt-decode';
 import { HeaderADM, HeaderUsu } from '../components/Header';
@@ -22,8 +16,7 @@ import { Sidebar } from '../components/ADM/Sidebar';
 import { MdMenu } from 'react-icons/md';
 
 const HomeADM = () => {
-  const [rep , setrep] = useState(false)
-  const [openCom, setOpenCom] = useState(false);
+
 
   const token = localStorage.getItem('token');
   const decodificaToken = token ? jwt_decode(token) : null;
