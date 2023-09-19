@@ -1,4 +1,4 @@
-import { Card, CardHeader, Heading, CardBody, Divider, CardFooter, Image, Text, Box, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, Center, useToast } from "@chakra-ui/react";
+import { Card, CardHeader, Heading, CardBody, Divider, CardFooter, Image, Text, Box, Button, Flex, Avatar, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, Center, useToast } from "@chakra-ui/react";
 import { BsChatSquareText } from "react-icons/bs";
 import { MdOutlineReportProblem } from "react-icons/md";
 import CardCom from "./CardCom";
@@ -148,6 +148,57 @@ const CardGrande = ({denuncia}) => {
                 <Text whiteSpace='nowrap' mt={{base:'-218px', md:'-227px' , lg:'-245px'}} ml={{base: '335px', md: '430px', lg: '495px'}} p='100px' color='#338BB0'   fontSize={{ base:'16px', md:'20px', lg: '35px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Comentários</Text>
                 </Box>
         </Card>
+        <Card bgColor='white' border='1px solid #A9A9A9' w={{base: '535px', md: '653px', lg: '802px'}}> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
+  <CardHeader>
+    <Flex spacing='4'>
+      <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
+        <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' />
+
+        <Box>
+          <Heading fontSize={{base: '12px', md: '14px', lg: '16px'}}>{denuncia.usu_nome}</Heading>
+           
+        </Box>
+      </Flex>
+    
+    </Flex>
+  </CardHeader>
+  <CardBody>
+    <Center>
+    <Text fontWeight='normal' mt='-20px' fontFamily='BreeSerif-Regular'>{denuncia.den_nome}</Text>
+    </Center>
+
+    <Text mt='10px'>
+    {denuncia.den_desc}
+    </Text>
+  </CardBody>
+  <Box>
+                  {denuncia.den_img ? ( // se o usuario tiver adicionado imagem
+                    <Image src={`http://localhost:3344/retornaImagem/${denuncia.den_img}`}  w='100%' h='250px' />
+                ) : (
+                    <HiOutlineClipboardDocumentList size='10vh'  color='gray' /> // se n tiver adicionado imagem, é o que será exibido
+                )}
+                  </Box>
+
+  <CardFooter
+    justify='space-between'
+    flexWrap='wrap'
+    sx={{
+      '& > button': {
+        minW: '136px',
+      },
+    }}
+  >
+    <Button flex='1' variant='ghost' leftIcon={''}>  
+      Curtir
+    </Button>
+    <Button flex='1' variant='ghost' leftIcon={''}>
+      Comentar
+    </Button>
+    <Button flex='1' variant='ghost' leftIcon={''}>
+      Reportar
+    </Button>
+  </CardFooter>
+</Card>
         </Center>
     )
 }
