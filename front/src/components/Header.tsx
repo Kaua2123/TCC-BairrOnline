@@ -14,7 +14,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 //icones
 
 import { CgLogIn } from 'react-icons/cg'
-import { FaUserAlt } from "react-icons/fa";
+import { FaUserAlt, FaUserTie } from "react-icons/fa";
 import Logo from '../img/logo.svg';
 import { MenuOutlined } from "@ant-design/icons";
 import { AiOutlineBell, AiOutlineUser  } from "react-icons/ai";
@@ -500,7 +500,7 @@ export const HeaderADM = () => {
               fontWeight='normal'
               display={['none', 'none', 'flex', 'flex']}>
 
-                  <Link smooth to='/'>Gestão de denúncias</Link>
+                  <Link smooth to='/HomeADM'>Gestão de denúncias</Link>
 
               </Button>
               <Button variant='link'
@@ -510,7 +510,7 @@ export const HeaderADM = () => {
               fontWeight='normal'
 
               display={['none', 'none', 'flex', 'flex']}>
-                 <Link smooth to='/'>Conteúdo reportado</Link>
+                 <Link smooth to='/HomeADM'>Conteúdo reportado</Link>
               </Button>
               <Button variant='link'
               color='white'
@@ -519,7 +519,7 @@ export const HeaderADM = () => {
               fontWeight='normal'
 
               display={['none', 'none', 'flex', 'flex']}>
-                 <Link smooth to='/'>Usuários</Link>
+                 <Link smooth to='/HomeADM'>Usuários</Link>
               </Button>
               
             </HStack>
@@ -534,9 +534,34 @@ export const HeaderADM = () => {
 
 
             
-            <HStack>
+            <HStack m={3}>
      
-              <Text color='white' fontSize='25px' fontFamily='BreeSerif-Regular' mr={3} >Administração</Text>
+            <Menu isOpen={isSubMenuOpen} >
+          <MenuButton
+            as={Button}
+            variant="ghost"
+            size="3em"
+            padding="4px"
+            colorScheme="whiteAlpha"
+            borderRadius="full"
+            onClick={aoClicarAvatar} // Chama a função quando o avatar é clicado
+
+          >
+            <Avatar icon={<FaUserTie />} />
+          </MenuButton>
+          <MenuList>
+            {/* Opções de menu */}
+            <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+            icon={<AiOutlineUser size='20px'/>}>Meu Perfil</MenuItem>
+            
+             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+            ><Link to='/HomeADM'>Administração </Link></MenuItem>
+            <MenuItem onClick={deslogar}
+            _hover={{ bg: 'red.500', color: 'white' }}
+            icon={<MdOutlineLogout size='20px' />}>Sair</MenuItem>
+          </MenuList>
+        </Menu>
+
 
             </HStack>
          

@@ -37,6 +37,7 @@ const HomeADM = () => {
   
 
     <ChakraProvider>
+      {headerComponent}
     <HStack w='full' h='100vh' bg='gray.200' padding={10}>
         <Flex as='aside' w={menuClicado ? '5vw' : 'full'} transition='width 0.2s ease-in-out' h='full' maxW={350} bg='white' alignItems='center' padding={3}
             flexDirection='column' justifyContent='space-between' borderRadius='3xl'>
