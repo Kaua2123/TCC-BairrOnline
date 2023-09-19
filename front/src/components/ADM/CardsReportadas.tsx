@@ -12,14 +12,16 @@ export const CardsReportadas = () => {
         
         <CardBody>
             <Box>
-                <Text>kk</Text>
+                <Text>Reportada em: 02/02/20025</Text>
+                <Text>Reportada por: cunho agressivo</Text>
+                <Text>Usuário denunciante: @123</Text>
             </Box>
         </CardBody>
 
             <CardFooter>
                 <Flex justifyContent='flex-end' >
                     <Flex justify='flex-end'> 
-                        <Button variant='ghost'>Deletar</Button>
+                        <Button variant='ghost' color='red'>Deletar</Button>
                     </Flex>
                 </Flex>
             </CardFooter>
