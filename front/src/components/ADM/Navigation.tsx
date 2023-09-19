@@ -3,7 +3,7 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { MdOutlineReport } from 'react-icons/md';
 import {TbMessageReport} from 'react-icons/tb';
 
-export const Navigation = () => {
+export const Navigation = ({menuClicado}) => {
 
     const links = [
         {label: 'Home', href: '/', icon: <AiOutlineHome/>},
@@ -18,7 +18,7 @@ export const Navigation = () => {
                 {links.map((link, index) => (
                     <ListItem key={index}>
                         <ChakraLink href={link.href}>
-                            <Flex p={3} align='flex-start'>
+                            <Flex p={2} align='flex-start'>
                                 <VStack spacing={2}>
                                     <Button  bg='white' w='full' _hover={{color: '#338bb0'}}>
                                     <Icon fontSize={24} _hover={{color: '#338bb0'}}> {link.icon}</Icon> {link.label}

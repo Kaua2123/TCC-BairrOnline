@@ -30,20 +30,25 @@ const HomeADM = () => {
     headerComponent = <HeaderADM />;
   } 
 
+  const [menuClicado, setMenuClicado] = useState(false);
 
   return (
+
+  
+
     <ChakraProvider>
     <HStack w='full' h='100vh' bg='gray.200' padding={10}>
-        <Flex as='aside' w='full' h='full' maxW={350} bg='white' alignItems='center' padding={3}
+        <Flex as='aside' w={menuClicado ? '5vw' : 'full'} transition='width 0.2s ease-in-out' h='full' maxW={350} bg='white' alignItems='center' padding={3}
             flexDirection='column' justifyContent='space-between' borderRadius='3xl'>
-              <Sidebar/>
+              <Sidebar menuClicado={menuClicado}/>
         </Flex>
-        {/* sidebar */}
+       
+        
         
 
         <Flex as='main' w='full' h='full' bg='white' alignItems='center' justifyContent='center' flexDirection='column'
         position='relative' borderRadius='3xl'>
-            <IconButton aria-label='xd' icon={<MdMenu/>} position='absolute' top={6} left={6} onClick={() => null}></IconButton>
+            <IconButton aria-label='xd' icon={<MdMenu/>} position='absolute' top={6} left={6} onClick={menuClicado ? () => setMenuClicado(false) : () => setMenuClicado(true)}></IconButton>
             <Text fontSize={100} color='gray.800'>ADM</Text>
         </Flex>
     </HStack>

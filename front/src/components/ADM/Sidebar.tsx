@@ -5,15 +5,17 @@ import React from "react";
 import { MdMenu } from "react-icons/md";
 import { PesquisarSidebar } from "./PesquisarSidebar";
 import { Navigation } from "./Navigation";
+import FooterSidebar from "./FooterSidebar";
 
 
-export const Sidebar = () => {
+export const Sidebar = ({menuClicado}) => {
     return(
     <React.Fragment>
         <Box w='full'>
-        <PesquisarSidebar/>
+        <PesquisarSidebar menuClicado={menuClicado}/>
         <Divider/>
-        <Navigation/>
+        <Navigation menuClicado={menuClicado}/>
+        <FooterSidebar/>
         </Box>
     </React.Fragment>
     )
