@@ -1,6 +1,6 @@
 import '../App.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 //chakra
 import { ChakraProvider, Flex, HStack, Text, IconButton, Box } from '@chakra-ui/react';
@@ -32,6 +32,22 @@ const HomeADM = () => {
   const [menuClicado, setMenuClicado] = useState(false);
   const [secaoAtiva, setSecaoAtiva] = useState()
 
+  useEffect(() => {
+   
+    const redimensionar = () => { // se a tela for menor que 768px
+      const isSmallScreen = window.innerWidth <= 768;
+      setMenuClicado(isSmallScreen);
+    }
+  
+    window.addEventListener('resize', redimensionar); // irá redimensionar o tamanho da sidebar
+  
+    return () => {
+      window.removeEventListener('resize', redimensionar);
+    };
+  }, []);
+
+  
+
   return (
 
   
@@ -39,7 +55,7 @@ const HomeADM = () => {
     <ChakraProvider>
       {headerComponent}
     <HStack w='full' h='100vh' bg='gray.200' padding={10}>
-        <Flex as='aside' w={menuClicado ? '5vw' : 'full'} transition='width 0.2s ease-in-out' h='full' maxW={350} bg='white' alignItems='center' padding={3}
+        <Flex as='aside' w={menuClicado ? {base: '5vw'} : 'full'} transition='width 0.2s ease-in-out' h='full' maxW={350} bg='white' alignItems='center' padding={3}
             flexDirection='column' justifyContent='space-between' borderRadius='3xl'>
               <Sidebar menuClicado={menuClicado} secaoAtiva={secaoAtiva} setSecaoAtiva={setSecaoAtiva}/>
         </Flex>
@@ -50,10 +66,13 @@ const HomeADM = () => {
         <Flex as='main' overflowY='auto' w='full' h='full' bg='white'  flexDirection='column'
         position='relative' borderRadius='3xl'>
            <IconButton aria-label='xd' icon={<MdMenu/>} position='absolute' top={6} left={6} onClick={menuClicado ? () => setMenuClicado(false) : () => setMenuClicado(true)}></IconButton>
-           
+           {secaoAtiva === 'gestaoDenuncias' && (
+              <Text align='center' color='#338bb0' fontSize={{base: '0px', md: '25px'}} fontFamily='BreeSerif-Regular' mt={6}>Gestão de Denúncias</Text>
+           )}
+         
           {secaoAtiva === 'gestaoDenuncias' && (
-            <HStack w='full' m='80px'>
-              <GestaoDenuncias/>
+            <HStack w='1000px' m='70px' transition='opacity 0.5s ease-in-out'>
+              <GestaoDenuncias secaoAtiva={secaoAtiva} menuClicado={menuClicado}/>
             </HStack>
           )}
       

@@ -5,7 +5,7 @@ import { Flex, Box, Text, Card, CardBody, CardFooter, CardHeader, Link as Chakra
 export const CardsReportadas = () => {
     return(
     <ChakraProvider>
-        <Card boxShadow='lg'  w='300px' h='auto' bg='gray.200' borderRadius='3xl'>
+        <Card boxShadow='lg'  w='300px' h='auto' bg='gray.200' borderRadius='3xl' transition='4s ease-in-out '>
             <Heading>
                 <Text fontSize='15px' m={4}>@nomedenuncia</Text>
             </Heading>
