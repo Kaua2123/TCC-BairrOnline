@@ -14,6 +14,7 @@ import { HeaderADM, HeaderUsu } from '../components/Header';
 
 import { Sidebar } from '../components/ADM/Sidebar';
 import { MdMenu } from 'react-icons/md';
+import { CardsReportadas } from '../components/ADM/CardsReportadas';
 
 const HomeADM = () => {
 
@@ -43,12 +44,14 @@ const HomeADM = () => {
         
         
 
-        <Flex as='main' overflowY='auto' w='full' h='full' bg='white' alignItems='center' justifyContent='center' flexDirection='column'
+        <Flex as='main' overflowY='auto' w='full' h='full' bg='white'  flexDirection='column'
         position='relative' borderRadius='3xl'>
-           <IconButton aria-label='xd' icon={<MdMenu/>} position='absolute' top={6} left={6} onClick={menuClicado ? () => setMenuClicado(false) : () => setMenuClicado(true)}></IconButton>
+           <IconButton aria-label='xd' icon={<MdMenu/>} boxSize={menuClicado ? '20px' : '40px'} position='absolute' top={6} left={6} onClick={menuClicado ? () => setMenuClicado(false) : () => setMenuClicado(true)}></IconButton>
            
-          <Text fontSize={100} color='gray.800'>ADM</Text>
-
+        <HStack w='full' m='80px'>
+        <CardsReportadas/>
+        </HStack>
+        
            
         </Flex>
        
