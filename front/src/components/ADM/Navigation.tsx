@@ -18,15 +18,15 @@ export const Navigation = ({menuClicado}) => {
     ];
 
     return(
-        <Flex>
+        <Flex flexDirection='column' alignItems={menuClicado ? 'center' : 'flex-start'} transition='.8s'>
             <List>
                 {links.map((link, index) => (
                     <ListItem key={index}>
                         <ChakraLink href={link.href}>
                             <Flex p={0} align='flex-start' justifyContent={menuClicado ? 'center' : 'normal'} >
-                                <VStack spacing={2}  justifyContent={menuClicado ? 'center' : 'normal'}>
-                                    <Button position='relative' variant='ghost'  w='full' _hover={{color: '#338bb0'}}>
-                                    <Icon fontSize={24} transition='.4s ' color={menuClicado ? 'gray' : 'black'} _hover={{color: '#338bb0'}}> {link.icon}</Icon>
+                                <VStack spacing={2}>
+                                    <Button position='relative' variant='ghost'  w='full' _hover={{color: '#338bb0'}} >
+                                    <Icon fontSize={24} transition='.4s ' mr={menuClicado ? '5px' : '10px'} color={menuClicado ? 'gray' : 'black'} _hover={{color: '#338bb0'}}> {link.icon}</Icon>
                                      <Text display={menuClicado ? 'none' : 'block'}>{link.label}</Text>        
                                     </Button>
                                 </VStack>
