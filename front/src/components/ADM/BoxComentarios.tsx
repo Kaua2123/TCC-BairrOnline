@@ -11,7 +11,7 @@ export const BoxComentarios = () => {
                     <Flex gap={4} borderRadius='3xl' direction='row' alignItems='center' justify='center'> 
                         <Icon as={FaRegComment} fontSize='10vw'></Icon>
                         <Box bg='gray.200' borderRadius='2xl' alignItems='center' boxShadow='lg' w='20vw' h='15vh'>
-                        <Text  fontSize='15px' mt={6}>
+                        <Text  fontSize='1vw' mt={6}>
                             EL AGUA ESTAS ESTANCADA MDSSSS @120910291@!@!!!!PPQQP!!@!@!@@!@!@!@!@
                             !@2091212189218219821998201
                         </Text>
