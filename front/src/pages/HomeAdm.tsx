@@ -17,6 +17,7 @@ import { MdMenu } from 'react-icons/md';
 import { CardsReportadas } from '../components/ADM/CardsReportadas';
 import { GestaoDenuncias } from '../components/ADM/GestaoDenuncias';
 import { UsuariosReportados } from '../components/ADM/UsuariosReportados';
+import { ComentariosReportados } from '../components/ADM/ComentariosReportados';
 
 const HomeADM = () => {
 
@@ -90,7 +91,7 @@ const HomeADM = () => {
             <>
              <Text align='center' color='#338bb0' fontSize={{base: '0px', md: '25px'}} fontFamily='BreeSerif-Regular' mt={6}>Comentários reportados</Text>
              <HStack w='1000px' >
-             <UsuariosReportados secaoAtiva={secaoAtiva} menuClicado={menuClicado}/>
+             <ComentariosReportados secaoAtiva={secaoAtiva}/>
              </HStack>
             
             </>

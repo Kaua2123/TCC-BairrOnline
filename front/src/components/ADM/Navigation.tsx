@@ -8,7 +8,7 @@ import {FiUserX} from 'react-icons/fi';
 export const Navigation = ({menuClicado, secaoAtiva, setSecaoAtiva}) => {
 
     const links = [
-        {label: 'Home', name: 'home', href: '/', icon: <AiOutlineHome/>},
+        // {label: 'Home', name: 'home', href: '/', icon: <AiOutlineHome/>},
         {label: 'Gestão de denúncias', name: 'gestaoDenuncias', icon: <TbMessageReport/>},
         {label: 'Comentários reportados', name: 'comentariosReportados',  icon: <MdOutlineCommentsDisabled/>},
         {label: 'Usuários reportados', name: 'usuariosReportados', icon: <FiUserX/>}
