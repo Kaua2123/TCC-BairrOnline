@@ -79,7 +79,20 @@ const HomeADM = () => {
            {secaoAtiva === 'usuariosReportados' && (
             <>
              <Text align='center' color='#338bb0' fontSize={{base: '0px', md: '25px'}} fontFamily='BreeSerif-Regular' mt={6}>Usuários reportados</Text>
-              <UsuariosReportados/>
+             <HStack w='1000px' >
+             <UsuariosReportados secaoAtiva={secaoAtiva} menuClicado={menuClicado}/>
+             </HStack>
+            
+            </>
+           )}
+
+           {secaoAtiva === 'comentariosReportados' && (
+            <>
+             <Text align='center' color='#338bb0' fontSize={{base: '0px', md: '25px'}} fontFamily='BreeSerif-Regular' mt={6}>Comentários reportados</Text>
+             <HStack w='1000px' >
+             <UsuariosReportados secaoAtiva={secaoAtiva} menuClicado={menuClicado}/>
+             </HStack>
+            
             </>
            )}
            
