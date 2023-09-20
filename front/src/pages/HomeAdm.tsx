@@ -16,6 +16,7 @@ import { Sidebar } from '../components/ADM/Sidebar';
 import { MdMenu } from 'react-icons/md';
 import { CardsReportadas } from '../components/ADM/CardsReportadas';
 import { GestaoDenuncias } from '../components/ADM/GestaoDenuncias';
+import { UsuariosReportados } from '../components/ADM/UsuariosReportados';
 
 const HomeADM = () => {
 
@@ -67,14 +68,23 @@ const HomeADM = () => {
         position='relative' borderRadius='3xl'>
            <IconButton aria-label='xd' icon={<MdMenu/>} position='absolute' top={6} left={6} onClick={menuClicado ? () => setMenuClicado(false) : () => setMenuClicado(true)}></IconButton>
            {secaoAtiva === 'gestaoDenuncias' && (
+            <>
               <Text align='center' color='#338bb0' fontSize={{base: '0px', md: '25px'}} fontFamily='BreeSerif-Regular' mt={6}>Gestão de Denúncias</Text>
-           )}
-         
-          {secaoAtiva === 'gestaoDenuncias' && (
-            <HStack w='1000px' m='70px' transition='opacity 0.5s ease-in-out'>
+              <HStack w='1000px' m='70px' transition='opacity 0.5s ease-in-out'>
               <GestaoDenuncias secaoAtiva={secaoAtiva} menuClicado={menuClicado}/>
             </HStack>
-          )}
+            </>
+           )}
+
+           {secaoAtiva === 'usuariosReportados' && (
+            <>
+             <Text align='center' color='#338bb0' fontSize={{base: '0px', md: '25px'}} fontFamily='BreeSerif-Regular' mt={6}>Usuários reportados</Text>
+              <UsuariosReportados/>
+            </>
+           )}
+           
+         
+          
       
         
            

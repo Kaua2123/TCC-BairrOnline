@@ -10,7 +10,6 @@ export const Navigation = ({menuClicado, secaoAtiva, setSecaoAtiva}) => {
     const links = [
         {label: 'Home', name: 'home', href: '/', icon: <AiOutlineHome/>},
         {label: 'Gestão de denúncias', name: 'gestaoDenuncias', icon: <TbMessageReport/>},
-        {label: 'Conteúdo reportado', name: 'conteudoReportado',  icon: <MdOutlineReport/>},
         {label: 'Comentários reportados', name: 'comentariosReportados',  icon: <MdOutlineCommentsDisabled/>},
         {label: 'Usuários reportados', name: 'usuariosReportados', icon: <FiUserX/>}
 
