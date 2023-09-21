@@ -172,9 +172,9 @@ const closeAlertDialog = () => {
           <Flex w='full' h='full' alignItems='center' justifyContent='center'>
             <Stack w='full' maxW='md' spacing={4} p={6}>
             
-            <Heading fontSize='4xl' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Seção do Usuário</Heading>
+            <Heading fontSize='35px' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Seção do Usuário</Heading>
           
-            <Text fontSize='22px' whiteSpace='nowrap'>Denuncie, veja suas <b> denúncias</b> <br /> e o retorno das instituições</Text>
+            <Text fontSize='25px' whiteSpace='nowrap'>Denuncie, veja suas <b> denúncias</b> <br /> e o retorno das instituições</Text>
           
             </Stack>
           </Flex>
