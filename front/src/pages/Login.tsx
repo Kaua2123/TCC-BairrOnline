@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { ChakraProvider, Box, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast, HStack, Stack, Heading} from '@chakra-ui/react';
 
-import imgFundo from '../img/imgfundo.png';
+import cadastro_login from '../img/cadastro_login.png';
 
 import { Button, ButtonGroup } from '@chakra-ui/react';
 import {useState} from 'react';
@@ -112,13 +112,14 @@ const Login = () => {
 
         <HStack w='full' h='100vh'>
 
-              <Flex w='full' h='full' borderRightWidth={1} display={{base: 'none', md: 'flex'}}>
+              <Flex w='full' h='full'  display={{base: 'none', md: 'flex'}} >
            
-                <Image src={imgFundo} objectFit='cover'></Image>
+                <Image src={cadastro_login} objectFit='cover'  w='full' h='full' position='absolute' top='0' left='0' zIndex='-1'></Image>
             </Flex>
 
             <Flex w='full' h='full' alignItems='center' justifyContent='center'> 
             <Stack w='full' maxW='md' spacing={4} p={6}>
+              
               <Heading fontSize='2xl' color='#338bb0'>Entre e comece a denunciar</Heading>
               <FormControl>
                     <FormLabel>Email:</FormLabel>
