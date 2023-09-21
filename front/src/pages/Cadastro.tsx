@@ -1,7 +1,9 @@
 
 import { ChakraProvider, Select, Box, Heading, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast, HStack, Stack, Checkbox } from '@chakra-ui/react';
-
+//imgs
 import imgFundo from '../img/imgfundo.png';
+import cadastro_login from '../img/cadastro_login.png'
+import cadastro_loginEsquerdo from '../img/cadastro_login esquerdo.png'
 
 import { Button, ButtonGroup } from '@chakra-ui/react';
 import { useState } from 'react';
@@ -113,12 +115,14 @@ const Cadastro = () => {
         <HStack w='full' h='100vh' >
 
 
-          <Flex w='full' h='full' borderRightWidth={1} display={{base: 'none', md: 'flex'}}>
-            <Image objectFit='cover' w='full' h='full' src={imgFundo}></Image>
+          <Flex w='full' h='full' display={{base: 'none', md: 'flex'}}>
+            
+          <Image src={cadastro_login} objectFit='cover'  w='full' h='full' position='absolute' top='0' left='0' zIndex='-1'></Image>
+
           </Flex>
 
           <Flex w='full' h='full' alignItems='center' justifyContent='center'>
-            <Stack w='full' maxW='md' spacing={4} p={6}>
+            <Stack w='full' maxW='md' spacing={4} p={6} mt={12} ml={14}>
               <Heading fontSize='2xl' color='#338bb0'>
                 Cadastre-se agora mesmo!
               </Heading>
@@ -362,7 +366,7 @@ const Cadastro = () => {
           </Flex>
 
           <Flex w='full' h='full' borderRightWidth={1}>
-            <Image objectFit='cover' w='full' h='full' src={imgFundo}></Image>
+          <Image src={cadastro_loginEsquerdo} objectFit='cover'  w='full' h='full' position='absolute' top='0' left='0' zIndex='-1'></Image>
           </Flex>
         </HStack>
 
