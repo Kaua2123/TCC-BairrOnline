@@ -124,7 +124,7 @@ const Cadastro = () => {
           <Flex w='full' h='full' alignItems='center' justifyContent='center'>
             <Stack w='full' maxW='md' spacing={4} p={6} mt={12} ml={14}>
               <Heading fontSize='2xl' color='#338bb0'>
-                Cadastre-se agora mesmo!
+                Seja bem vindo, denunciante!
               </Heading>
 
               <FormControl>
@@ -199,8 +199,8 @@ const Cadastro = () => {
 
                   } />
                   <InputRightElement width='4.5rem'>
-                    <Button h='2rem' size='md' onClick={handleClick}>
-                      {show ? <AiFillEye size='20px' /> : <AiFillEyeInvisible size='20px' />}
+                    <Button h='2rem' variant='ghost' size='md' onClick={handleClick}>
+                      {show ? <AiFillEye size='20px' color='#338bb0' /> : <AiFillEyeInvisible size='20px' />}
                     </Button>
 
                  
@@ -248,7 +248,7 @@ const Cadastro = () => {
           <Flex w='full' h='full' alignItems='center' justifyContent='center' display={{base: 'none', md: 'flex'}}>
             <Stack w='full' maxW='md' spacing={4} p={6}>
               <Heading fontSize='2xl' color='#338bb0'>
-                Cadastre-se agora mesmo!
+                Seja bem vinda, instituição!
               </Heading>
 
               <FormControl>
@@ -323,8 +323,8 @@ const Cadastro = () => {
 
                   } />
                   <InputRightElement width='4.5rem'>
-                    <Button h='2rem' size='md' onClick={handleClick}>
-                      {show ? <AiFillEye size='20px' /> : <AiFillEyeInvisible size='20px' />}
+                    <Button variant='ghost' h='2rem' size='md' onClick={handleClick}>
+                      {show ? <AiFillEye size='20px' color='#338bb0' /> : <AiFillEyeInvisible size='20px' />}
                     </Button>
 
                  

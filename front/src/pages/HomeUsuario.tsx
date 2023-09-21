@@ -32,7 +32,10 @@ ModalContent,
 ModalFooter,
 ModalHeader,
 ModalOverlay,
-Spinner
+Spinner,
+HStack,
+Stack,
+Heading
 } from '@chakra-ui/react'
 
 
@@ -153,27 +156,30 @@ const closeAlertDialog = () => {
     <HeaderUsu/>
 
 
-    <Flex align='center'>
-      <Box borderRadius='4px' h='auto' w='100%'>
 
-        <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Denunciante!</Text>
+        <HStack w='full' h='100vh'>
+          
+          <Flex w='full' h='full' display={{base: 'none', md: 'flex'}} id='denuncie'>
 
-        <Flex justifyContent='space-between'>
-          <Flex direction='column' mt='-200px' id='denuncie'>
-            <Image src={sectionOla} boxSize='50em' ></Image>
+          <Flex flexDirection='column' alignItems='center'>
+            <Heading mt={14} fontSize='5xl' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='none'>Olá, denunciante!</Heading>
+            <Image src={sectionOla} objectFit='cover' zIndex='-1' />
+          </Flex>
+
           </Flex>
 
 
-          <Flex direction='column' p='180px' mt='-150px'>
-            <Box>
-            <Text fontSize='44px' color='#338bb0'  fontFamily='BreeSerif-Regular' whiteSpace='nowrap' align='center'>Seção do Usuário</Text>
-            </Box>
-            <Box mt='70px'>
-            <Text fontSize='25px' whiteSpace='nowrap'>Denuncie, veja suas <b color='green'> denúncias</b> <br /> e o retorno das instituições</Text>
-            </Box>
+          <Flex w='full' h='full' alignItems='center' justifyContent='center'>
+            <Stack w='full' maxW='md' spacing={4} p={6}>
+            
+            <Heading fontSize='4xl' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Seção do Usuário</Heading>
+          
+            <Text fontSize='22px' whiteSpace='nowrap'>Denuncie, veja suas <b> denúncias</b> <br /> e o retorno das instituições</Text>
+          
+            </Stack>
           </Flex>
-        </Flex>
-
+       
+          </HStack>
 
         <Box id='denuncieAqui'>
           <Denuncie/>
@@ -253,11 +259,11 @@ const closeAlertDialog = () => {
                         </AlertDialog>
 
          
-      </Box>
+      
 
-    </Flex>
+ 
 
-
+                     
 
 
      <Footer/>
