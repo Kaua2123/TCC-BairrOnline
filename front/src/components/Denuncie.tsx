@@ -11,7 +11,7 @@ import enviandoDen from "../img/enviandoDen.png";
 //chakra
 import {
   ChakraProvider, extendTheme, Image, Flex, Box, Button, Text, FormControl,
-  FormLabel, Spacer, Select, Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, useColorMode
+  FormLabel, Spacer, Select, Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, useColorMode, HStack, Stack, Heading
 } from '@chakra-ui/react';
 
 
@@ -176,39 +176,33 @@ const Denuncie = () => {
     <ChakraProvider >
 
 
-      <Flex align='center'>
 
-        <Box bg={colorMode === 'light' ? '#F8F8FF' : 'gray.700'} borderRadius='4px' h='auto' w='100%'>
+          <HStack bg='gray.100' w='full' h='100vh'>
 
-          <Flex justifyContent='space-between'>
-
-            <Flex flexDirection='column' flexWrap='wrap' >
-              <Image src={realizarDen} boxSize={{ base: '25em', md: '34em', lg: '54em' }}></Image>
+            <Flex w='full' h='full' display={{base: 'none', md: 'flex'}}>
+              <Image src={realizarDen} objectFit='cover'></Image>
             </Flex>
 
 
-            <Flex flexDirection='column' m='20px' mt='100px' w='610px'>
-              <Text color='#338BB0' fontSize={{ base: '12px', md: '20px', lg: '35px' }} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Realize sua denúncia</Text>
-              <Text w='410px' mt='40px' fontSize={{ base: '12px', md: '18px', lg: '25px' }}>Seu lugar de denunciar é aqui. Esteja ciente de que suas denúncias poderão ser visualizadas por outros usuários e/ou instituições.</Text>
+            <Flex w='full' h='full' alignItems='center' justifyContent='center'>
+              <Stack w='full' maxW='md' spacing={4} p={6} mt={5}>
+              <Heading fontSize={{base: '1xl', md: '3xl'}} color='#338bb0'>Realize sua denúncia</Heading>
+              <Text  fontSize={{ base: '16px', md: '19px'}}>Seu lugar de denunciar é aqui. Esteja ciente de que suas denúncias poderão ser visualizadas por outros usuários e/ou instituições.</Text>
 
 
-              <Text color='#338BB0' mt='30px' fontSize={{ base: '12px', md: '20px', lg: '35px' }} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Acompanhamento </Text>
-              <Text w='450px' mt='40px' fontSize={{ base: '12px', md: '18px', lg: '25px' }}>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução destas. Você pode acompanhar as soluções na página Acompanhar Denúncias</Text>
-
+              <Heading fontSize='3xl' color='#338bb0'>Acompanhamento</Heading>
+              <Text fontSize={{ base: '16px', md: '19px' }}>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução destas. Você pode acompanhar as soluções na página Acompanhar Denúncias</Text>
+              </Stack>
             </Flex>
 
+        </HStack>
 
+          <HStack bg='gray.100' w='full' h='100vh'>
+            <Flex w='full' h='full' alignItems='center' justifyContent='center'>
+              <Stack w='full' maxW='md' spacing={4} p={6}>
+              <FormControl>
 
-          </Flex>
-
-
-          <Flex justifyContent='space-between'>
-
-
-            <Flex flexDirection='column'>
-              <FormControl p='100px'  >
-
-                <FormLabel mt='30px' fontSize={{ base: '14px', md: '20px', lg: '28px' }} fontWeight='normal' >Título da denúncia:</FormLabel>
+                <FormLabel mt='30px' fontSize={{ base: '14px', md: '18px' }} fontWeight='normal' >Título da denúncia:</FormLabel>
 
                 <InputGroup>
                   <InputLeftElement>
@@ -217,12 +211,13 @@ const Denuncie = () => {
                   <Input value={denNome}
                     onChange={(e) => setDenNome(e.target.value)}
                     border='1px solid black'
-                    w={{ base: '220px', md: '280px', lg: '340px' }}
+             
                     _hover={{ border: '1px solid #A9A9A9	' }}
                     type='text'></Input>
                 </InputGroup>
+                <br></br>
 
-                <FormLabel mt='30px' fontSize={{ base: '14px', md: '20px', lg: '28px' }} fontWeight='normal' >Selecione o bairro a ser denunciado</FormLabel>
+                <FormLabel  fontSize={{ base: '14px', md: '18px' }} fontWeight='normal' >Selecione o bairro a ser denunciado</FormLabel>
 
                 <InputGroup>
                   <InputLeftElement>
@@ -234,7 +229,7 @@ const Denuncie = () => {
                     value={denBairro}
                     onChange={(e) => setDenBairro(e.target.value)}
                     border='1px solid black'
-                    w={{ base: '220px', md: '280px', lg: '340px' }}
+                
                     _hover={{ border: '1px solid #A9A9A9	' }}
                     textAlign='center'
                   >
@@ -246,8 +241,8 @@ const Denuncie = () => {
                     ))}
                   </Select>
                 </InputGroup>
-
-                <FormLabel mt='30px' whiteSpace='nowrap' fontSize={{ base: '14px', md: '20px', lg: '28px' }} fontWeight='normal' >Digite o que está lhe incomodando: </FormLabel>
+                <br></br>
+                <FormLabel whiteSpace='nowrap'  fontWeight='normal' >Digite o que está lhe incomodando: </FormLabel>
 
                 <InputGroup>
                   <InputLeftElement>
@@ -256,15 +251,15 @@ const Denuncie = () => {
                   <Textarea value={denDesc}
                     onChange={(e) => setDenDesc(e.target.value)}
                     border='1px solid black'
-                    w={{ base: '29ch', md: '37ch', lg: '45ch' }}
+                 
                     resize='vertical'
                     maxLength={130}
                     pl='2.5rem'
                     _hover={{ border: '1px solid #A9A9A9	' }}>
                   </Textarea>
                 </InputGroup>
-
-                <FormLabel mt='30px' whiteSpace='nowrap' placeholder='tipo de problema' fontSize={{ base: '14px', md: '20px', lg: '28px' }} fontWeight='normal' >Problema específico:</FormLabel>
+                      <br></br>
+                <FormLabel whiteSpace='nowrap' placeholder='tipo de problema' fontWeight='normal' >Problema específico:</FormLabel>
 
                 <InputGroup>
                   <InputLeftElement>
@@ -275,7 +270,6 @@ const Denuncie = () => {
                     value={denProblema}
                     onChange={(e) => setDenProblema(e.target.value)}
                     border='1px solid black'
-                    w={{ base: '220px', md: '280px', lg: '340px' }}
                     _hover={{ border: '1px solid #A9A9A9	' }}
                     textAlign='center'>
                     <option value=''></option>
@@ -286,49 +280,33 @@ const Denuncie = () => {
                     ))}
                   </Select>
                 </InputGroup>
+                  
+                
 
-
-
-                <InputGroup>
-
-
-                  <Spacer />
+              </FormControl>     
+              <Spacer />
                   {carregando ? (
                     <Spinner size='lg' color='#338BB0' />
                   ) : (
-                    <Box mt='80px'>
-                    <Button type='submit' onClick={() => {
+                   
+                    <Button w='124px' type='submit' onClick={() => {
                       enviaDen();
                     }} bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: '#DCDCDC' }}>
                       Criar denúncia
                     </Button>
-                    </Box>
+                  
                   )}
-
-                </InputGroup>
-
-                {/*essa linha de baixo que mostra as imagens dps de enviar */}
-                {denImg && (
-                  <Image
-                    src={denImg}
-                    alt="Imagem da denúncia"
-                    maxW="100%"
-                    h="auto"
-                    boxShadow='2xl'
-                    borderRadius='10px'
-                  />
-                )}
-              </FormControl>
-
+              </Stack>
             </Flex>
-            <Flex direction='column'>
-              <Image src={enviandoDen} boxSize={{ base: '38em', md: '42em', lg: '48em' }}></Image>
+
+            <Flex w='full' h='full' display={{base: 'none', md: 'flex'}} >
+              <Image src={enviandoDen} objectFit='cover'></Image>
             </Flex>
-          </Flex>
 
-        </Box>
+            
+            </HStack>
 
-      </Flex>
+
 
 
 
