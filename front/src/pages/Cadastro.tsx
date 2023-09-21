@@ -1,59 +1,59 @@
 
-import { ChakraProvider, Select, Box, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast} from '@chakra-ui/react';
- 
+import { ChakraProvider, Select, Box, Heading, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast, HStack, Stack, Checkbox } from '@chakra-ui/react';
+
 import imgFundo from '../img/imgfundo.png';
 
 import { Button, ButtonGroup } from '@chakra-ui/react';
-import {useState} from 'react';
+import { useState } from 'react';
 
 import axios from 'axios';
-import {Link} from 'react-router-dom';
-import {motion} from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 //icones
-import {AiOutlineUser} from 'react-icons/ai';
-import {AiOutlineMail} from 'react-icons/ai';
-import {AiFillEye} from 'react-icons/ai';
-import {AiFillEyeInvisible} from 'react-icons/ai';
-import {BsTelephone} from 'react-icons/bs';
-import {RiLockPasswordLine} from 'react-icons/ri';
-import {CiLocationOn} from 'react-icons/ci';
+import { AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineMail } from 'react-icons/ai';
+import { AiFillEye } from 'react-icons/ai';
+import { AiFillEyeInvisible } from 'react-icons/ai';
+import { BsTelephone } from 'react-icons/bs';
+import { RiLockPasswordLine } from 'react-icons/ri';
+import { CiLocationOn } from 'react-icons/ci';
 import { MdDescription } from 'react-icons/md';
 
 
 const theme = extendTheme({
-    styles: {
-      global: () => ({
-        body: {
-          background: "",
-        },
-      }),
-    },
-  });
+  styles: {
+    global: () => ({
+      body: {
+        background: "",
+      },
+    }),
+  },
+});
 
 
 const Cadastro = () => {
-    const [show, setShow] = useState(false);
-    const [usuNome, setUsuNome] = useState("");
-    const [usuEmail, setUsuEmail] = useState("");
-    const [usuSenha, setUsuSenha] = useState("");
-    const [usuTel, setUsuTel] = useState ("");
-    const [usuCep, setUsuCep] = useState("");
-    const [usuCPF, setUsuCPF] = useState("");
-    const [usuCNPJ, setUsuCNPJ] = useState("");
-    const [usuData, setUsuData] = useState("");''
-    const [usuTipo, setUsuTipo] = useState("denunciante") //denunciante valor padrao
-    const toast = useToast();
+  const [show, setShow] = useState(false);
+  const [usuNome, setUsuNome] = useState("");
+  const [usuEmail, setUsuEmail] = useState("");
+  const [usuSenha, setUsuSenha] = useState("");
+  const [usuTel, setUsuTel] = useState("");
+  const [usuCep, setUsuCep] = useState("");
+  const [usuCPF, setUsuCPF] = useState("");
+  const [usuCNPJ, setUsuCNPJ] = useState("");
+  const [usuData, setUsuData] = useState(""); ''
+  const [usuTipo, setUsuTipo] = useState("denunciante") //denunciante valor padrao
+  const toast = useToast();
 
-    const handleClick = () => setShow(!show)
+  const handleClick = () => setShow(!show)
 
-    
+
   const cadastraUsuario = async () => {
-    
-    if(usuNome === "" || usuEmail === "" || usuSenha === "" || usuTel === "" || usuCep === "" ){
+
+    if (usuNome === "" || usuEmail === "" || usuSenha === "" || usuTel === "" || usuCep === "") {
       toast({
         title: "Erro",
-        description:" Algum campo não esta preenchido corretamente, verifique-os.",
+        description: " Algum campo não esta preenchido corretamente, verifique-os.",
         status: "error",
         duration: 4000,
         isClosable: false,
@@ -68,290 +68,309 @@ const Cadastro = () => {
       usu_senha: usuSenha,
       usu_tel: usuTel,
       usu_cep: usuCep,
-      usu_data: new Date(),     
+      usu_data: new Date(),
       usu_tipo: usuTipo
     })
-    .then(response => {
-      console.log('Usuário cadastrado');
-      console.log(response.data);
-      if (response){
-        toast({
-          title:"Cadastro realizado.",
-          description: "Você foi cadastrado com sucesso.",
-          status: "success",
-          duration: 4000,
-          isClosable: true, 
-        })
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      if(error){
-        toast({
-          title:"Erro: Você não foi cadastrado",
-          description: "Email já utilizado. Mude e tente novamente",
-          status:"error",
-          duration: 4000,
-          isClosable: false,
-        })
-      }
-    })            
+      .then(response => {
+        console.log('Usuário cadastrado');
+        console.log(response.data);
+        if (response) {
+          toast({
+            title: "Cadastro realizado.",
+            description: "Você foi cadastrado com sucesso.",
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+          })
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        if (error) {
+          toast({
+            title: "Erro: Você não foi cadastrado",
+            description: "Email já utilizado. Mude e tente novamente",
+            status: "error",
+            duration: 4000,
+            isClosable: false,
+          })
+        }
+      })
   }
 
 
 
-    return (
-      <ChakraProvider theme={theme}>
+  return (
+    <ChakraProvider theme={theme}>
 
-   
-        {/* Coloque o formulário de cadastro aqui */}
-      
+
+      {/* Coloque o formulário de cadastro aqui */}
+
 
       {usuTipo === 'denunciante' ? (
-        <Box bgColor='White' h='100%' >
-            <Flex justifyContent='space-between'> 
+
+
+        <HStack w='full' h='100vh' >
+
+
+          <Flex w='full' h='full' borderRightWidth={1}>
+            <Image objectFit='cover' w='full' h='full' src={imgFundo}></Image>
+          </Flex>
+
+          <Flex w='full' h='full' alignItems='center' justifyContent='center'>
+            <Stack w='full' maxW='md' spacing={4} p={6}>
+              <Heading fontSize='2xl' color='#338bb0'>
+                Cadastre-se agora mesmo!
+              </Heading>
+
+              <FormControl>
+                <FormLabel>Nome</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    <AiOutlineUser />
+                  </InputLeftElement>
+                  <Input placeholder='Digite seu nome' required value={usuNome} onChange={(e) => {
+                    setUsuNome(e.target.value);
+
+                  }} />
+                </InputGroup>
+
+    
+                <FormLabel>Telefone</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    <BsTelephone />
+                  </InputLeftElement>
+                  <Input placeholder='Digite seu telefone' required type='tel' value={usuTel} onChange={(e) => {
+                    setUsuTel(e.target.value)
+                  }} />
+                </InputGroup>
               
-            <Flex flexDirection='column'>
-              <Box p='180px' >
-              <Text fontSize='45px' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Autenticação</Text>
-              <Text align='center'>Entre já e comece a <br/> realizar suas denúncias</Text>
-              </Box>    
-            </Flex>
 
-            <Flex flexDirection='column' mt='-70px' p='200px' h='100%' bgColor='gray.100'>
-                <Box h='640px'>
+                <FormLabel>CEP</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    <CiLocationOn />
+                  </InputLeftElement>
+                  <Input placeholder='Digite seu CEP' required type='number' value={usuCep} onChange={(e) => {
+                    setUsuCep(e.target.value)
+                  }} />
+                </InputGroup>
 
-                <FormControl>
+             
+
+                <FormLabel>CPF</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    <CiLocationOn />
+                  </InputLeftElement>
+                  <Input placeholder='Digite seu CPF' required type='number' value={usuCPF} onChange={(e) => {
+                    setUsuCPF(e.target.value)
+                  }} />
+                </InputGroup>
+
+
+            
+
+                <FormLabel>Email</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    <AiOutlineMail />
+                  </InputLeftElement>
+                  <Input placeholder='Digite seu email' required type='email' value={usuEmail} onChange={(e) => {
+                    setUsuEmail(e.target.value)
+                  }} />
+
+                </InputGroup>
                
-              
-                    <FormLabel>Nome</FormLabel>
-                    <InputGroup> 
-                        <InputLeftElement>
-                        <AiOutlineUser/>
-                        </InputLeftElement>
-                       <Input placeholder='Digite seu nome' required border='1px solid black' value={usuNome} onChange={(e) => {
-                        setUsuNome(e.target.value);
-  
-                       }} />
-                    </InputGroup>
 
-<br></br>
-                    <FormLabel>Telefone</FormLabel>
-                    <InputGroup>
-                        <InputLeftElement>
-                        <BsTelephone/>
-                        </InputLeftElement>
-                    <Input placeholder='Digite seu telefone' required border='1px solid black' type='tel' value={usuTel} onChange={(e) => {
-                        setUsuTel(e.target.value)
-                      }} />
-                    </InputGroup>   
-<br></br>
+                <FormLabel>Senha</FormLabel>
+                <InputGroup >
+                  <InputLeftElement>
+                    <RiLockPasswordLine />
+                  </InputLeftElement>
+                  <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='*********' value={usuSenha} onChange={(e) => {
+                    setUsuSenha(e.target.value);
+                  }
 
-                    <FormLabel>CEP</FormLabel>
-                    <InputGroup>
-                        <InputLeftElement>
-                        <CiLocationOn/>
-                        </InputLeftElement>
-                    <Input placeholder='Digite seu CEP' required border='1px solid black' type='number' value={usuCep} onChange={(e) => {
-                      setUsuCep(e.target.value)
-                    }}/>
-                    </InputGroup>
-
-                    <br></br>
-                 
-                    <FormLabel>CPF</FormLabel>
-                    <InputGroup>
-                        <InputLeftElement>
-                        <CiLocationOn/>
-                        </InputLeftElement>
-                    <Input placeholder='Digite seu CPF' required border='1px solid black' type='number' value={usuCPF} onChange={(e) => {
-                      setUsuCPF(e.target.value)
-                    }}/>
-                    </InputGroup>
-                 
-
-                    <br></br>
-             
-                    <FormLabel>Email</FormLabel>
-                    <InputGroup>
-                        <InputLeftElement>
-                        <AiOutlineMail/>
-                        </InputLeftElement>
-                    <Input placeholder='Digite seu email' required border='1px solid black' type='email'  value={usuEmail} onChange={(e) => {
-                      setUsuEmail(e.target.value)
-                      }}/>
-                
-                    </InputGroup>
-<br></br>
-
-                    <FormLabel>Senha</FormLabel>
-                    <InputGroup size='md' >
-                    <InputLeftElement>
-                        <RiLockPasswordLine/>
-                        </InputLeftElement>
-                    <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Digite sua senha' border='1px solid black' value={usuSenha} onChange={(e) => {
-                      setUsuSenha(e.target.value);
-                    }
-
-                    }/>
-                    <InputRightElement width='4.5rem'>
+                  } />
+                  <InputRightElement width='4.5rem'>
                     <Button h='2rem' size='md' onClick={handleClick}>
-                    {show ? <AiFillEye size='20px'/> : <AiFillEyeInvisible size='20px'/>}
+                      {show ? <AiFillEye size='20px' /> : <AiFillEyeInvisible size='20px' />}
                     </Button>
 
-                    <br></br>
+                 
 
-      </InputRightElement>
-    </InputGroup>
+                  </InputRightElement>
+                </InputGroup>
 
-                    <InputGroup mt='30px'>
-                    <FormLabel mt='10px'>Eu sou um</FormLabel>
-                    <Select
-                      w='200px'
-                      value={usuTipo}
-                      onChange={(e) => setUsuTipo(e.target.value)}
-                      required
-                      borderColor='black'
-                    >
-                      <option value="denunciante">Denunciante</option>
-                      <option value="instituicao">Instituição</option>
-                    </Select>
-                    
-                    </InputGroup>
-          
-                </FormControl>
-<br></br>
-                    <Button colorScheme='blue' onClick={cadastraUsuario}>Cadastrar</Button>
+                <InputGroup mt={4}>
+                  <FormLabel>Eu sou um</FormLabel>
+                  <Select
+                   
+                    value={usuTipo}
+                    onChange={(e) => setUsuTipo(e.target.value)}
+                    required
+                    borderColor='black'
+                  >
+                    <option value="denunciante">Denunciante</option>
+                    <option value="instituicao">Instituição</option>
+                  </Select>
 
-                    <Box mt='20px'>
-                    <Link to='/Login'><Text color='blue.400'>Já possui uma conta? Clique para entrar</Text></Link>
-                    </Box>              
+                </InputGroup>
 
-                </Box>
-            </Flex>
-            </Flex>
-     </Box>
+              </FormControl>
+                
+                <Stack spacing={4} direction='row' align='start' justify='space-between'> 
+
+                  <Checkbox colorScheme='blue'>Lembrar de mim</Checkbox>
+                  <Link to='/' ><Text color='#338bb0'>Esqueci minha senha</Text></Link>
+
+                  
+                </Stack>
+                <Button colorScheme='blue' onClick={cadastraUsuario}>Cadastrar</Button>
+
+
+              <Link to='/Login'><Text color='blue.400'>Já possui uma conta? Clique para entrar</Text></Link>
+
+
+            </Stack>
+          </Flex>
+        </HStack>
+
       ) : (
-        <Box bgColor='White' h='100%' >
-            <Flex justifyContent='space-between'> 
+        <HStack w='full' h='100vh' >
+
+          <Flex w='full' h='full' alignItems='center' justifyContent='center'>
+            <Stack w='full' maxW='md' spacing={4} p={6}>
+              <Heading fontSize='2xl' color='#338bb0'>
+                Cadastre-se agora mesmo!
+              </Heading>
+
+              <FormControl>
+                <FormLabel>Nome</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    <AiOutlineUser />
+                  </InputLeftElement>
+                  <Input placeholder='Digite seu nome' required value={usuNome} onChange={(e) => {
+                    setUsuNome(e.target.value);
+
+                  }} />
+                </InputGroup>
+
+    
+                <FormLabel>Telefone</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    <BsTelephone />
+                  </InputLeftElement>
+                  <Input placeholder='Digite seu telefone' required type='tel' value={usuTel} onChange={(e) => {
+                    setUsuTel(e.target.value)
+                  }} />
+                </InputGroup>
               
-              
-              
-            <Flex flexDirection='column' mt='-70px' p='200px' bgColor='gray.100'>
-                <Box h='640px'>
 
-                <FormControl>
-                    <FormLabel>Nome</FormLabel>
-                    <InputGroup> 
-                        <InputLeftElement>
-                        <AiOutlineUser/>
-                        </InputLeftElement>
-                       <Input placeholder='Digite seu nome' required border='1px solid black' value={usuNome} onChange={(e) => {
-                        setUsuNome(e.target.value);
-  
-                       }} />
-                    </InputGroup>
+                <FormLabel>CEP</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    <CiLocationOn />
+                  </InputLeftElement>
+                  <Input placeholder='Digite seu CEP' required type='number' value={usuCep} onChange={(e) => {
+                    setUsuCep(e.target.value)
+                  }} />
+                </InputGroup>
 
-<br></br>
-                    <FormLabel>Telefone</FormLabel>
-                    <InputGroup>
-                        <InputLeftElement>
-                        <BsTelephone/>
-                        </InputLeftElement>
-                    <Input placeholder='Digite seu telefone' required border='1px solid black' type='tel' value={usuTel} onChange={(e) => {
-                        setUsuTel(e.target.value)
-                      }} />
-                    </InputGroup>   
-<br></br>
-
-                    
-
-                    <FormLabel>CNPJ</FormLabel>
-                    <InputGroup>
-                        <InputLeftElement>
-                        <CiLocationOn/>
-                        </InputLeftElement>
-                    <Input placeholder='Digite seu CNPJ' required border='1px solid black' type='number' value={usuCNPJ} onChange={(e) => {
-                      setUsuCNPJ(e.target.value)
-                    }}/>
-                    </InputGroup>
-                 
-
-                    <br></br>
              
-                    <FormLabel>Email</FormLabel>
-                    <InputGroup>
-                        <InputLeftElement>
-                        <AiOutlineMail/>
-                        </InputLeftElement>
-                    <Input placeholder='Digite seu email' required border='1px solid black' type='email'  value={usuEmail} onChange={(e) => {
-                      setUsuEmail(e.target.value)
-                      }}/>
-                
-                    </InputGroup>
-<br></br>
 
-                    <FormLabel>Senha</FormLabel>
-                    <InputGroup size='md' >
-                    <InputLeftElement>
-                        <RiLockPasswordLine/>
-                        </InputLeftElement>
-                    <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Digite sua senha' border='1px solid black' value={usuSenha} onChange={(e) => {
-                      setUsuSenha(e.target.value);
-                    }
+                <FormLabel>CPF</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    <CiLocationOn />
+                  </InputLeftElement>
+                  <Input placeholder='Digite seu CPF' required type='number' value={usuCPF} onChange={(e) => {
+                    setUsuCPF(e.target.value)
+                  }} />
+                </InputGroup>
 
-                    }/>
-                    <InputRightElement width='4.5rem'>
+
+            
+
+                <FormLabel>Email</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    <AiOutlineMail />
+                  </InputLeftElement>
+                  <Input placeholder='Digite seu email' required type='email' value={usuEmail} onChange={(e) => {
+                    setUsuEmail(e.target.value)
+                  }} />
+
+                </InputGroup>
+               
+
+                <FormLabel>Senha</FormLabel>
+                <InputGroup >
+                  <InputLeftElement>
+                    <RiLockPasswordLine />
+                  </InputLeftElement>
+                  <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='*********' value={usuSenha} onChange={(e) => {
+                    setUsuSenha(e.target.value);
+                  }
+
+                  } />
+                  <InputRightElement width='4.5rem'>
                     <Button h='2rem' size='md' onClick={handleClick}>
-                    {show ? <AiFillEye size='20px'/> : <AiFillEyeInvisible size='20px'/>}
+                      {show ? <AiFillEye size='20px' /> : <AiFillEyeInvisible size='20px' />}
                     </Button>
 
-                    <br></br>
+                 
 
-      </InputRightElement>
-    </InputGroup>
+                  </InputRightElement>
+                </InputGroup>
 
-                    <InputGroup mt='30px'>
-                    <FormLabel mt='10px'>Eu sou um</FormLabel>
-                    <Select
-                      w='200px'
-                      value={usuTipo}
-                      onChange={(e) => setUsuTipo(e.target.value)}
-                      required
-                      borderColor='black'
-                    >
-                      <option value="denunciante">Denunciante</option>
-                      <option value="instituicao">Instituição</option>
-                    </Select>
-                    
-                    </InputGroup>
-           
-                </FormControl>
-<br></br>
-                    <Button colorScheme='blue' onClick={cadastraUsuario}>Cadastrar</Button>
+                <InputGroup mt={4}>
+                  <FormLabel>Eu sou um</FormLabel>
+                  <Select
+                   
+                    value={usuTipo}
+                    onChange={(e) => setUsuTipo(e.target.value)}
+                    required
+                    borderColor='black'
+                  >
+                    <option value="denunciante">Denunciante</option>
+                    <option value="instituicao">Instituição</option>
+                  </Select>
 
-                    <Box mt='20px'>
-                    <Link to='/Login'><Text color='blue.400'>Já possui uma conta? Clique para entrar</Text></Link>
-                    </Box>              
+                </InputGroup>
 
-                    
+              </FormControl>
+                
+                <Stack spacing={4} direction='row' align='start' justify='space-between'> 
 
-                    
-                </Box>
-            </Flex>
-            <Flex flexDirection='column'>
-              <Box p='180px' >
-              <Text fontSize='45px' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Autenticação</Text>
-              <Text align='center'>Entre já e comece a <br/> realizar suas denúncias</Text>
-              </Box>    
-            </Flex>
-            </Flex>
-     </Box>
+                  <Checkbox colorScheme='blue'>Lembrar de mim</Checkbox>
+                  <Link to='/' ><Text color='#338bb0'>Esqueci minha senha</Text></Link>
+
+                  
+                </Stack>
+                <Button colorScheme='blue' onClick={cadastraUsuario}>Cadastrar</Button>
+
+
+              <Link to='/Login'><Text color='blue.400'>Já possui uma conta? Clique para entrar</Text></Link>
+
+
+            </Stack>
+          </Flex>
+          
+          <Flex w='full' h='full' borderRightWidth={1}>
+            <Image objectFit='cover' w='full' h='full' src={imgFundo}></Image>
+          </Flex>
+        </HStack>
+
       )}
-      
-        
+
+
     </ChakraProvider>
-    )
+  )
 }
 
 export default Cadastro;

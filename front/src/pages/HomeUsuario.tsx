@@ -252,9 +252,7 @@ const closeAlertDialog = () => {
                             </AlertDialogOverlay>
                         </AlertDialog>
 
-          <Box id='acompanharDen'>
-            <AcompanharDen/>
-          </Box>
+         
       </Box>
 
     </Flex>
