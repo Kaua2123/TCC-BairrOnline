@@ -31,6 +31,7 @@ import { MdOutlineReportProblem } from 'react-icons/md';
 import Comentarios from './Comentarios';
 import { Reportar } from './reportar';
 import CardGrande from './CardGrande';
+import { CiLocationOn } from 'react-icons/ci';
 
 const bairros = ['Selecione dentre as opções', 'Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
   'Brasilândia', 'Caieira', 'Casa de Pedra', 'Conforto', 'Coqueiros', 'Cruzeiro', 'Dom Bosco', 'Eucaliptal',
@@ -153,7 +154,7 @@ const Ver = () => {
 
                 <InputGroup>
                   <InputLeftElement>
-                    {isMediumScreen && <BsListUl size='20px' />}
+                    {isMediumScreen && <CiLocationOn color='black' size='20px'/>}
                   </InputLeftElement>
 
                   <Select

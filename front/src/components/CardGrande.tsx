@@ -1,4 +1,4 @@
-import { Card, CardHeader, Heading, CardBody, Divider, CardFooter, Image, Text, Box, Button, Flex, Avatar, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, Center, useToast } from "@chakra-ui/react";
+import { Card, CardHeader, Heading, CardBody, Divider, CardFooter, Image, Text, Box, Button, Flex, Avatar, Icon, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, Center, useToast, HStack, Tag, TagLabel, TagLeftIcon } from "@chakra-ui/react";
 import { BsChatSquareText } from "react-icons/bs";
 import { MdOutlineReportProblem } from "react-icons/md";
 import CardCom from "./CardCom";
@@ -11,11 +11,14 @@ import aguaParada from "../img/aguaParada.jpg";
 
 //icones
 import {HiOutlineClipboardDocumentList} from 'react-icons/hi2'
+import { CiLocationOn } from 'react-icons/ci';
+
 
 //react
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import { AddIcon } from "@chakra-ui/icons";
 
 
 
@@ -105,49 +108,7 @@ const CardGrande = ({denuncia}) => {
 
     return(
         <Center>
-        <Card m='20px' mb='250px' fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '470px', md: '490px', lg:'490px'}} w={{base: '535px', md: '653px', lg: '802px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}>
-        {/* Card componente do chakra que cria um card  */}
-          <CardHeader> {/* header do card, usado pra por titulo  */}
-          <Heading w={{base: '100%', md: '100%', lg: '100%'}}
-              borderRadius='7px'
-              textAlign='center'
-              bgColor='#338BB0'
-              color='white'
-              fontFamily='BreeSerif-Regular'
-              fontWeight='normal'>{denuncia.den_nome}</Heading>
-          </CardHeader>
-          <Text fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular' ml={{base: '20px', md: '20px', lg:'20px'}}>Bairro: {denuncia.den_bairro}</Text>
-              <Text fontSize={{base: '12px', md: '14px', lg: '18px'}} fontFamily='BreeSerif-Regular'  ml={{base: '20px', md: '20px', lg:'20px'}}>Problema: {denuncia.den_problema} </Text>
-              <CardBody> {/* corpo do card */}
-                  <Box>
-                  {denuncia.den_img ? ( // se o usuario tiver adicionado imagem
-                    <Image src={`http://localhost:3344/retornaImagem/${denuncia.den_img}`} borderRadius='lg' w='100%' h='250px' />
-                ) : (
-                    <HiOutlineClipboardDocumentList size='10vh'  color='gray' /> // se n tiver adicionado imagem, é o que será exibido
-                )}
-                  </Box>
-
-
-              </CardBody>
-
-              <Divider/> {/* divisor, geralmente é uma linha */}
-
-                <CardFooter w={{base: '640px', md: '3000px', lg: '700px'}} h={{base: '200px', md: '90px', lg: '80px'}}> {/* rodapé do card  */}
-
-                <Button variant='ghost' mt={{base: '-7px', md: '', lg: '-5px'}} ml={{base:'450px', md:'550px', lg:'700px'}} w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
-                        <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
-                    </Button>
-                      <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }}
-                      ml={{base:'-196px', md:'-341px', lg:"-755px"}} mt={{base:'-14px', md:'-5px', lg:'-6px'}} fontSize="15px" onClick={criarAcompanhamento} display={usuTipo === 'instituicao' ? 'block' : 'none'}>Assumir denúncia</Button>
-                </CardFooter>
-                <Box p='70px' mt={{base: '-60px', md:'-50px', lg:'-40px',}} ml='-70'>
-                    <Text  fontFamily='BreeSerif-Regular' fontWeight='bold' fontSize={{base: '12px', md: '14px', lg: '18px'}}>@{denuncia.usu_nome}</Text>
-                    <Text mt='10px' fontSize={{base: '12px', md: '14px', lg: '16px'}}>{denuncia.den_desc}</Text>
-                    </Box>
-                    <Box>
-                <Text whiteSpace='nowrap' mt={{base:'-218px', md:'-227px' , lg:'-245px'}} ml={{base: '335px', md: '430px', lg: '495px'}} p='100px' color='#338BB0'   fontSize={{ base:'16px', md:'20px', lg: '35px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Comentários</Text>
-                </Box>
-        </Card>
+      
         <Card bgColor='white' border='1px solid #A9A9A9' w={{base: '535px', md: '653px', lg: '802px'}}> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
   <CardHeader>
     <Flex spacing='4'>
@@ -164,10 +125,19 @@ const CardGrande = ({denuncia}) => {
   </CardHeader>
   <CardBody>
     <Center>
-    <Text fontWeight='normal' mt='-20px' fontFamily='BreeSerif-Regular'>{denuncia.den_nome}</Text>
+    <Text fontWeight='normal' textAlign='center' borderRadius='7px' bgColor='#338BB0' color='white' w='100%' mt='-20px'  fontSize={{ base: '12px', md: '18px', lg: '25px' }} fontFamily='BreeSerif-Regular'>{denuncia.den_nome}</Text>
     </Center>
+    <Flex flexDirection='column' mt='15px' ml='-18px' color='gray'>
+    
+    <Tag bg='white' color='gray' fontSize={{base: '12px', md: '14px', lg: '16px'}}>
+      <TagLeftIcon as={CiLocationOn} />
+      <Text>{denuncia.den_bairro}</Text>
+    </Tag>
+ 
 
-    <Text mt='10px'>
+    <Text fontSize={{base: '12px', md: '14px', lg: '16px'}} fontFamily='BreeSerif-Regular'  ml={{base: '20px', md: '20px', lg:'20px'}}>Problema: {denuncia.den_problema} </Text>
+    </Flex>
+    <Text  mt='10px'>
     {denuncia.den_desc}
     </Text>
   </CardBody>
@@ -194,9 +164,9 @@ const CardGrande = ({denuncia}) => {
     <Button flex='1' variant='ghost' leftIcon={''}>
       Comentar
     </Button>
-    <Button flex='1' variant='ghost' leftIcon={''}>
-      Reportar
-    </Button>
+     <Button variant='ghost' mt={{base: '-7px', md: '', lg: '-5px'}} ml={{base:'450px', md:'550px', lg:'700px'}} w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
+                        <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
+                    </Button>
   </CardFooter>
 </Card>
         </Center>
