@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ChakraProvider, Box, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast} from '@chakra-ui/react';
+import { ChakraProvider, Box, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast, HStack, Stack, Heading} from '@chakra-ui/react';
 
 import imgFundo from '../img/imgfundo.png';
 
@@ -108,20 +108,19 @@ const Login = () => {
     const handleClick = () => setShow(!show)
     return (
       <ChakraProvider theme={theme}>
-        <Box bgColor='White' h='auto' >
-            <Flex justifyContent='space-between'> 
-              
-              <Flex flexDirection='column'>
-                <Box> 
-                  <Text fontFamily='BreeSerif-Regular' fontSize='35px' color='#338BB0' m='20px' >Faça o login!</Text>
-                </Box>
-             
-                <Image src={imgFundo} boxSize={{base: '25em', md: '34em', lg: '47em'}}></Image>
-            </Flex>
-            <Flex flexDirection='column' mt='-50px' p='200px' bgColor='gray.100'>
-                <Box mt='100px'>
 
-                <FormControl>
+
+        <HStack w='full' h='100vh'>
+
+              <Flex w='full' h='full' borderRightWidth={1} display={{base: 'none', md: 'flex'}}>
+           
+                <Image src={imgFundo} objectFit='cover'></Image>
+            </Flex>
+
+            <Flex w='full' h='full' alignItems='center' justifyContent='center'> 
+            <Stack w='full' maxW='md' spacing={4} p={6}>
+              <Heading fontSize='2xl' color='#338bb0'>Entre e comece a denunciar</Heading>
+              <FormControl>
                     <FormLabel>Email:</FormLabel>
                     <InputGroup>
                         <InputLeftElement>
@@ -145,25 +144,38 @@ const Login = () => {
                     <Button h='2rem' size='md' onClick={handleClick}>
                     {show ? <AiFillEye size='20px'/> : <AiFillEyeInvisible size='20px'/>}
                     </Button>
-<br></br>
+
                 </InputRightElement>
                 </InputGroup>
            
                 </FormControl>
-<br></br>
 
-                    <Button colorScheme='blue' onClick={logarUsuario}>Entrar</Button>
-    <br></br>
-    <br></br>
+                <Stack spacing={4} direction='row' align='start' justify='space-between'> 
 
-                    <Link to='/Cadastro'><Text color='blue.400'>Ainda não tem uma conta? Cadastre-se</Text></Link>
-<br></br>
+                  
+                  <Link to='/Cadastro' ><Text color='#338bb0'>Ainda não tem uma conta? Cadastre-se!</Text></Link>
+
+                  
+                </Stack>
+
+        <Button colorScheme='blue' onClick={logarUsuario}>Entrar</Button>
+
+            </Stack>
+             
+
+                
+
+                 
+
+
+                   
+
           
                    
-                </Box>
+                
             </Flex>
-            </Flex>
-     </Box>
+           
+            </HStack>
     </ChakraProvider>
     )
 }

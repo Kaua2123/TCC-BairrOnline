@@ -113,7 +113,7 @@ const Cadastro = () => {
         <HStack w='full' h='100vh' >
 
 
-          <Flex w='full' h='full' borderRightWidth={1}>
+          <Flex w='full' h='full' borderRightWidth={1} display={{base: 'none', md: 'flex'}}>
             <Image objectFit='cover' w='full' h='full' src={imgFundo}></Image>
           </Flex>
 
@@ -241,7 +241,7 @@ const Cadastro = () => {
       ) : (
         <HStack w='full' h='100vh' >
 
-          <Flex w='full' h='full' alignItems='center' justifyContent='center'>
+          <Flex w='full' h='full' alignItems='center' justifyContent='center' display={{base: 'none', md: 'flex'}}>
             <Stack w='full' maxW='md' spacing={4} p={6}>
               <Heading fontSize='2xl' color='#338bb0'>
                 Cadastre-se agora mesmo!
@@ -360,7 +360,7 @@ const Cadastro = () => {
 
             </Stack>
           </Flex>
-          
+
           <Flex w='full' h='full' borderRightWidth={1}>
             <Image objectFit='cover' w='full' h='full' src={imgFundo}></Image>
           </Flex>
