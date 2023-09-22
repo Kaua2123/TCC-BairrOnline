@@ -67,6 +67,8 @@ const HomeUsuario = () => {
   const cancelRef = React.useRef();
   const toast = useToast();
 
+  
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     const decodificaToken: any = jwtDecode(token);
@@ -75,6 +77,28 @@ const HomeUsuario = () => {
       navigate('/');
     }
   }, [])
+
+  const isTokenExpired = () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return true; // verdadeiro, expirou
+    }
+
+    try {
+      const tokenDados = jwt_decode(token);
+      const tempoExpiracao = tokenDados.exp * 1000; //milisegundos
+      const tempoAgora = Date.now();
+      return tempoAgora > tempoExpiracao;
+    }
+    catch (error) {
+      return true;
+    }
+  }
+
+  if (isTokenExpired()) {
+    localStorage.removeItem('token');
+    
+  }
 
 
   async function getDenuncia () { //pega os dados da denuncia

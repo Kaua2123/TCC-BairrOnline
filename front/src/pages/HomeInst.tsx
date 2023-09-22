@@ -49,6 +49,28 @@ const HomeInst = () => {
     }
   }, [])
 
+  const isTokenExpired = () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return true; // verdadeiro, expirou
+    }
+
+    try {
+      const tokenDados = jwt_decode(token);
+      const tempoExpiracao = tokenDados.exp * 1000; //milisegundos
+      const tempoAgora = Date.now();
+      return tempoAgora > tempoExpiracao;
+    }
+    catch (error) {
+      return true;
+    }
+  }
+
+  if (isTokenExpired()) {
+    localStorage.removeItem('token');
+    
+  }
+
  
   const denCod = 4;
 
