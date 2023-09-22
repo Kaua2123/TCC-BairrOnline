@@ -14,7 +14,7 @@ import jwt_decode from 'jwt-decode';
 
 //chakra
 import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
-, Heading, Modal, ModalOverlay, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem, useDisclosure, useColorMode, theme} from '@chakra-ui/react';
+, Heading, Modal, ModalOverlay, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem, useDisclosure, useColorMode, theme, Avatar, Tag, TagLeftIcon} from '@chakra-ui/react';
 import { modalAnatomy as parts } from '@chakra-ui/anatomy'
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/styled-system'
 //componentes
@@ -42,6 +42,10 @@ import SlideDen from '../components/SlideDen';
 //axios limdo
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import { BiSolidLike, BiSolidCommentDetail } from "react-icons/bi";
+import { CiLocationOn } from "react-icons/ci";
+import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
+import { SiOpenstreetmap } from "react-icons/si";
 
 
 
@@ -202,63 +206,79 @@ const Home = () => {
 
 
                  <Flex flexDirection='column'>
-                 <Card m='20px'  fontFamily='BreeSerif-Regular' bgColor='white' mt='10px' boxShadow='lg' h={{base: '550px', md: 'auto', lg:'450px'}} w={{base: '220px', md: '380px', lg: '700px'}} border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}>
-                   {/* Card componente do chakra que cria um card  */}
-                     <CardHeader> {/* header do card, usado pra por titulo  */}
-                         <Heading borderRadius='7px' textAlign='center' bgColor='#338BB0' color='white' fontFamily='BreeSerif-Regular' fontWeight='normal'>El agua estas estancada</Heading>
-                     </CardHeader>
-                         <CardBody> {/* corpo do card */}
-                             <Box>
-                                <Image src={aguaParada}  w='100%' h='250px'  boxShadow='lg'></Image>
-                             </Box>
+                 <Center>
+      
+      {denuncias.length > 0 && (
 
+      
+        <Card bgColor='white' border='1px solid #A9A9A9' w={{base: '535px', md: '653px', lg: '802px'}}> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
+  <CardHeader>
+    <Flex spacing='4'>
+      <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
+        <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' />
 
-                         </CardBody>
+        <Box>
+          <Heading fontSize={{base: '12px', md: '14px', lg: '16px'}}>{denuncias[0].usu_nome}</Heading>
+           
+        </Box>
+      </Flex>
+    
+    </Flex>
+  </CardHeader>
+  <CardBody>
+    <Center>
+    <Text fontWeight='normal' textAlign='center' borderRadius='7px' bgColor='#338BB0' color='white' w='100%' mt='-20px'  fontSize={{ base: '14px', md: '18px', lg: '25px' }} fontFamily='BreeSerif-Regular' >{denuncias[0].den_nome}</Text>
+    </Center>
+    <Flex flexDirection='column' mt='15px' ml='-18px' color='gray'>
+    
+    <Tag bg='white' color='gray' fontSize={{base: '12px', md: '14px', lg: '16px'}}>
+      <TagLeftIcon as={CiLocationOn} />
+      <Text fontFamily='BreeSerif-Regular'>{denuncias[0].den_bairro}</Text>
+    </Tag>
+ 
+    <Tag bg='white' color='gray' fontSize={{base: '12px', md: '14px', lg: '16px'}}>
+    <TagLeftIcon as={SiOpenstreetmap} />
+    <Text fontFamily='BreeSerif-Regular'>{denuncias[0].den_problema} </Text>
+    </Tag>
+    </Flex>
+    <Text  mt='10px'>
+    {denuncias[0].den_desc}
+    </Text>
+  </CardBody>
+  <Box>
+                  {denuncias[0].den_img ? ( // se o usuario tiver adicionado imagem
+                    <Image src={`http://localhost:3344/retornaImagem/${denuncias[0].den_img}`}  w='100%' h='350px' />
+                ) : (
+                    <HiOutlineClipboardDocumentList size='10vh'  color='gray' /> // se n tiver adicionado imagem, é o que será exibido
+                )}
+                  </Box>
 
-                         <Divider/> {/* divisor, geralmente é uma linha */}
-
-                           <CardFooter w={{base: '640px', md: '3000px', lg: '700px'}} h={{base: '200px', md: '90px', lg: '80px'}}> {/* rodapé do card  */}
-                               <Button
-                           leftIcon={<BsChatSquareText/>}
-                           bgColor='#338BB0'
-                           color='white'
-                           _hover={{background: '#fff', color:'#338BB0'}}
-                           fontWeight='normal'
-                           w={{base: '240px', md: '125px', lg: '180px'}}
-                           fontSize={{base: '11px', md: '12px', lg: '16px'}}
-                           onClick={onOpen}
-                           >
-                            <Modal isOpen={isOpen} onClose={onClose} size="xl">
-                            <ModalOverlay />
-                            <ModalContent>
-                              <ModalHeader>
-                                <Text fontFamily='BreeSerif-Regular' fontSize='25px' color='#338bb0' fontWeight='normal'>
-                                  Comentários
-                                  </Text>
-                                </ModalHeader>
-                              <ModalCloseButton />
-                              <ModalBody>
-                              <CommentList comments={comments} />
-                              <CommentForm onCommentSubmit={handleCommentSubmit} />
-
-                              </ModalBody>
-
-                              <ModalFooter>
-
-
-                              </ModalFooter>
-                             </ModalContent>
-                             </Modal>
-
-                               </Button>
-                               <Button variant='ghost'   w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
-                                   <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
-                               </Button>
-                               <Box ml={{ lg: '80px'}} fontSize={{base: '12px', md: '14px', lg: '18px'}} mr={{base: '400px', md: '2600px', lg: '0px'}}  fontWeight='normal'>
-                                 Água estancada en el jd cidade do aco
-                              </Box>
-                           </CardFooter>
-                   </Card>
+  <CardFooter
+    justify='space-between'
+    flexWrap='wrap'
+    sx={{
+      '& > button': {
+        minW: '136px',
+      },
+    }}
+  >
+    <Button ml='20px'  bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidLike style={{ color: "white" }} />
+    <Text  mr='15px' ml='6px'>
+      Curtir
+      </Text>
+    </Button>
+    <Button mr='400px' bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidCommentDetail style={{ color: 'white' }}/>
+      <Text mr='15px' ml='7px'>     
+      Comentar
+      </Text> 
+    </Button>
+     <Button variant='ghost' mt={{base: '-75px', md: '-75px', lg: '-35px'}} ml={{base:'400px', md:'500px', lg:'650px'}} w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='2.5vh' />} onClick={()=>{setrep(true)}}>
+                        <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
+                    </Button>
+  </CardFooter>
+</Card>
+)}
+        </Center>
                  </Flex>
              </Flex>
 
