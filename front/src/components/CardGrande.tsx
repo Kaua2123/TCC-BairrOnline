@@ -112,7 +112,7 @@ const CardGrande = ({denuncia}) => {
     return(
         <Center>
       
-        <Card bgColor='white' border='1px solid #A9A9A9' w={{base: '535px', md: '653px', lg: '802px'}}> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
+        <Card mt='50px' bgColor='white' border='1px solid #A9A9A9' w={{base: '535px', md: '653px', lg: '802px'}}> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
   <CardHeader>
     <Flex spacing='4'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
@@ -163,12 +163,12 @@ const CardGrande = ({denuncia}) => {
       },
     }}
   >
-    <Button ml='20px'  bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidLike style={{ color: "white" }} />
+    <Button ml='20px'  bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidLike style={{ color: "inherit" }} />
     <Text  mr='15px' ml='6px'>
       Curtir
       </Text>
     </Button>
-    <Button mr='400px' bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidCommentDetail style={{ color: 'white' }}/>
+    <Button mr='400px' bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidCommentDetail style={{ color: 'inherit' }}/>
       <Text mr='15px' ml='7px'>     
       Comentar
       </Text> 

@@ -33,7 +33,7 @@ import { Reportar } from './reportar';
 import CardGrande from './CardGrande';
 import { CiLocationOn } from 'react-icons/ci';
 
-const bairros = ['Selecione dentre as opções', 'Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
+const bairros = ['Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
   'Brasilândia', 'Caieira', 'Casa de Pedra', 'Conforto', 'Coqueiros', 'Cruzeiro', 'Dom Bosco', 'Eucaliptal',
   'Jardim Amália', 'Jardim Belvedere', 'Jardim Cidade do Aço', 'Jardim Cordoeira', 'Jardim Europa', 'Jardim Normândia',
   'Jardim Ponte Alta', 'Jardim Primavera', 'Jardim Vila Rica', 'Laranjal', 'Monte Castelo', 'Niterói', 'Nova Primavera',
@@ -67,6 +67,12 @@ const Ver = () => {
   const [erro, setErro] = useState(false);
   const [denBairro, setDenBairro] = useState('');
   const [denProblema, setDenProblema] = useState('');
+  const bairrosUnicos = [...new Set(denuncias.map((denuncia) => denuncia.den_bairro))];
+  const opcoesDeBairros = bairros.map((bairro, index) => ({
+    value: bairro,
+    label: bairro
+  }));
+
 
   const toast = useToast();
   const [isMediumScreen] = useMediaQuery("(min-width: 992px)");
@@ -129,6 +135,7 @@ const Ver = () => {
 
           </Flex>
 
+    
           <Box bgColor={'white'}>
             <Center>
               <Flex flexDirection="column">
@@ -158,29 +165,28 @@ const Ver = () => {
                   </InputLeftElement>
 
                   <Select
-
-                    value={denBairro}
-                    onChange={(e) => setDenBairro(e.target.value)}
-                    border='1px solid black'
-                    w={{ base: '140px', md: '180px', lg: '240px' }}
-                    _hover={{ border: '1px solid #A9A9A9	' }}
-                    fontSize={{ base: '8px', md: '12px', lg: '14.8px' }}
-                    mb='20px' mr='10px'
-                    textAlign='center'
-                  >
-                    <option value=''></option>
-                    {opçoesDeBairros.map((bairro) => (
-                      <option key={bairro.value} value={bairro.value}>
-                        {bairro.label}
-                      </option> // mapeando o array e pegando cada opção como uma posição do array
-                    ))}
-                  </Select>
+  value={denBairro}
+  onChange={(e) => setDenBairro(e.target.value)}
+  border='1px solid black'
+  w={{ base: '140px', md: '180px', lg: '240px' }}
+  _hover={{ border: '1px solid #A9A9A9 ' }}
+  fontSize={{ base: '8px', md: '12px', lg: '14.8px' }}
+  mb='20px' mr='10px'
+  textAlign='center'
+>
+  <option value=''></option>
+  {opcoesDeBairros.map((bairro) => (
+    <option key={bairro.value} value={bairro.value}>
+      {bairro.label}
+    </option>
+  ))}
+</Select>
                 </InputGroup>
               </Flex>
 
-              <Flex flexDirection='column'>
-                <FormLabel mt='30px' whiteSpace='nowrap' fontSize={{ base: '12px', md: '14px', lg: '18px' }} fontFamily='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
-
+      <Flex flexDirection='column' >
+                <FormLabel mt='30px' whiteSpace='nowrap' fontSize={{ base: '12px', md: '14px', lg: '18px' }} font
+Family='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
                 <InputGroup>
                   <InputLeftElement>
                     {isMediumScreen && <SiOpenstreetmap size='20px' />}
@@ -199,12 +205,15 @@ const Ver = () => {
                     {opçoesDeProblemas.map((problema) => (
                       <option key={problema.value} value={problema.value}>
                         {problema.label}
-                      </option> // mapeando o array e pegando cada opção como uma posição do array
+                      </option> // mapeando oa array e pegando cada opção como uma posição do array
                     ))}
                   </Select>
                 </InputGroup>
 
               </Flex>
+  
+              
+
               <Flex>
                 <Button
                   type='submit'
