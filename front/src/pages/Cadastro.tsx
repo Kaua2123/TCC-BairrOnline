@@ -1,5 +1,5 @@
 
-import { ChakraProvider, Select, Box, Heading, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast, HStack, Stack, Checkbox } from '@chakra-ui/react';
+import { ChakraProvider, Spacer,Select, Box, Heading, extendTheme, Flex, Image, FormControl, FormLabel, Input, InputGroup, InputLeftElement, Text, InputRightElement, useToast, HStack, Stack, Checkbox, IconButton } from '@chakra-ui/react';
 //imgs
 import imgFundo from '../img/imgfundo.png';
 import cadastro_login from '../img/cadastro_login.png'
@@ -13,7 +13,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //icones
-import { AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineMail } from 'react-icons/ai';
 import { AiFillEye } from 'react-icons/ai';
 import { AiFillEyeInvisible } from 'react-icons/ai';
@@ -45,6 +45,7 @@ const Cadastro = () => {
   const [usuCNPJ, setUsuCNPJ] = useState("");
   const [usuData, setUsuData] = useState(""); ''
   const [usuTipo, setUsuTipo] = useState("denunciante") //denunciante valor padrao
+  const [secaoAtual, setSecaoAtual] = useState(1);
   const navigate = useNavigate();
   const toast = useToast();
 
@@ -115,13 +116,13 @@ const Cadastro = () => {
       {/* Coloque o formulário de cadastro aqui */}
 
 
-      {usuTipo === 'denunciante' ? (
+    
 
 
         <HStack w='full' h='100vh' >
 
 
-          <Flex w='full' h='full' display={{base: 'none', md: 'flex'}}>
+          <Flex w='full' h='full' display={{base: 'none', md: 'flex',}}>
             
           <Image src={cadastro_login} objectFit='cover'  w='full' h='full' position='absolute' top='0' left='0' zIndex='-1'></Image>
 
@@ -129,65 +130,79 @@ const Cadastro = () => {
 
           <Flex w='full' h='full' alignItems='center' justifyContent='center'>
             <Stack w='full' maxW='md' spacing={4} p={6} mt={12} ml={14}>
-              <Heading fontSize='2xl' color='#338bb0'>
-                Seja bem vindo, denunciante!
+              {usuTipo === 'denunciante' ? (
+                <Heading fontSize='2xl' color='#338bb0'>
+                  Seja bem vindo, denunciante!
+               </Heading>
+              ) : (
+                <Heading fontSize='2xl' color='#338bb0'>
+                  Seja bem vinda, instituição!
               </Heading>
-
-              <FormControl>
-                <FormLabel>Nome</FormLabel>
-                <InputGroup>
-                  <InputLeftElement>
-                    <AiOutlineUser />
-                  </InputLeftElement>
-                  <Input placeholder='Digite seu nome' required value={usuNome} onChange={(e) => {
-                    setUsuNome(e.target.value);
-
-                  }} />
-                </InputGroup>
-
-    
-                <FormLabel>Telefone</FormLabel>
-                <InputGroup>
-                  <InputLeftElement>
-                    <BsTelephone />
-                  </InputLeftElement>
-                  <Input placeholder='Digite seu telefone' required type='tel' value={usuTel} onChange={(e) => {
-                    setUsuTel(e.target.value)
-                  }} />
-                </InputGroup>
+              )}
               
+              <FormControl>
 
-                <FormLabel>CEP</FormLabel>
-                <InputGroup>
-                  <InputLeftElement>
-                    <CiLocationOn />
-                  </InputLeftElement>
-                  <Input placeholder='Digite seu CEP' required type='number' value={usuCep} onChange={(e) => {
-                    setUsuCep(e.target.value)
-                  }} />
-                </InputGroup>
+         {secaoAtual === 1 && (
+          <>
+          <FormLabel>Nome de Usuário</FormLabel>
+          <InputGroup>
+            <InputLeftElement>
+              <AiOutlineUser />
+            </InputLeftElement>
+            <Input placeholder='Digite seu nome' borderColor='black' required value={usuNome} onChange={(e) => {
+              setUsuNome(e.target.value);
 
-             
-
-                <FormLabel>CPF</FormLabel>
-                <InputGroup>
-                  <InputLeftElement>
-                    <CiLocationOn />
-                  </InputLeftElement>
-                  <Input placeholder='Digite seu CPF' required type='number' value={usuCPF} onChange={(e) => {
-                    setUsuCPF(e.target.value)
-                  }} />
-                </InputGroup>
+            }} />
+          </InputGroup>
 
 
-            
+          <FormLabel>Telefone</FormLabel>
+          <InputGroup>
+            <InputLeftElement>
+              <BsTelephone />
+            </InputLeftElement>
+            <Input placeholder='Digite seu telefone' borderColor='black' required type='tel' value={usuTel} onChange={(e) => {
+              setUsuTel(e.target.value)
+            }} />
+          </InputGroup>
+        
 
-                <FormLabel>Email</FormLabel>
+          <FormLabel>CEP</FormLabel>
+          <InputGroup>
+            <InputLeftElement>
+              <CiLocationOn />
+            </InputLeftElement>
+            <Input placeholder='Digite seu CEP' borderColor='black' required type='number' value={usuCep} onChange={(e) => {
+              setUsuCep(e.target.value)
+            }} />
+          </InputGroup>
+
+       
+
+          <FormLabel>CPF</FormLabel>
+          <InputGroup>
+            <InputLeftElement>
+              <CiLocationOn />
+            </InputLeftElement>
+            <Input placeholder='Digite seu CPF' borderColor='black' required type='number' value={usuCPF} onChange={(e) => {
+              setUsuCPF(e.target.value)
+            }} />
+          </InputGroup>
+          <Spacer/>
+          
+
+          <IconButton aria-label='anterior' mt={3}  icon={<AiOutlineArrowRight/>} onClick={() => setSecaoAtual(secaoAtual + 1)} bgColor='#338bb0' color='white' _hover={{color: '#338bb0', backgroundColor: 'white'}}>Próximo</IconButton>
+          </>
+         )}
+
+          {secaoAtual === 2 && (
+            <>
+            <FormLabel>Email</FormLabel>
                 <InputGroup>
                   <InputLeftElement>
                     <AiOutlineMail />
                   </InputLeftElement>
-                  <Input placeholder='Digite seu email' required type='email' value={usuEmail} onChange={(e) => {
+                  <Input placeholder='Digite seu email' borderColor='black'  required type='email' value={usuEmail} onChange={(e) => {
                     setUsuEmail(e.target.value)
                   }} />
 
@@ -199,7 +214,7 @@ const Cadastro = () => {
                   <InputLeftElement>
                     <RiLockPasswordLine />
                   </InputLeftElement>
-                  <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='*********' value={usuSenha} onChange={(e) => {
+                  <Input pr='4.5rem' borderColor='black' type={show ? 'text' : 'password'} placeholder='*********' value={usuSenha} onChange={(e) => {
                     setUsuSenha(e.target.value);
                   }
 
@@ -214,134 +229,9 @@ const Cadastro = () => {
                   </InputRightElement>
                 </InputGroup>
 
-                <InputGroup mt={4}>
-                  <FormLabel>Eu sou um</FormLabel>
-                  <Select
-                   
-                    value={usuTipo}
-                    onChange={(e) => setUsuTipo(e.target.value)}
-                    required
-                    borderColor='black'
-                  >
-                    <option value="denunciante">Denunciante</option>
-                    <option value="instituicao">Instituição</option>
-                  </Select>
-
-                </InputGroup>
-
-              </FormControl>
-                
-                <Stack spacing={4} direction='row' align='start' justify='space-between'> 
-
-                  <Checkbox colorScheme='blue'>Lembrar de mim</Checkbox>
-                  <Link to='/' ><Text color='#338bb0'>Esqueci minha senha</Text></Link>
-
-                  
-                </Stack>
-                <Button colorScheme='blue' onClick={cadastraUsuario}>Cadastrar</Button>
-
-
-              <Link to='/Login'><Text color='blue.400'>Já possui uma conta? Clique para entrar</Text></Link>
-
-
-            </Stack>
-          </Flex>
-        </HStack>
-
-      ) : (
-        <HStack w='full' h='100vh' >
-
-          <Flex w='full' h='full' alignItems='center' justifyContent='center' display={{base: 'none', md: 'flex'}}>
-            <Stack w='full' maxW='md' spacing={4} p={6}>
-              <Heading fontSize='2xl' color='#338bb0'>
-                Seja bem vinda, instituição!
-              </Heading>
-
-              <FormControl>
-                <FormLabel>Nome</FormLabel>
-                <InputGroup>
-                  <InputLeftElement>
-                    <AiOutlineUser />
-                  </InputLeftElement>
-                  <Input placeholder='Digite seu nome' required value={usuNome} onChange={(e) => {
-                    setUsuNome(e.target.value);
-
-                  }} />
-                </InputGroup>
-
-    
-                <FormLabel>Telefone</FormLabel>
-                <InputGroup>
-                  <InputLeftElement>
-                    <BsTelephone />
-                  </InputLeftElement>
-                  <Input placeholder='Digite seu telefone' required type='tel' value={usuTel} onChange={(e) => {
-                    setUsuTel(e.target.value)
-                  }} />
-                </InputGroup>
-              
-
-                <FormLabel>CEP</FormLabel>
-                <InputGroup>
-                  <InputLeftElement>
-                    <CiLocationOn />
-                  </InputLeftElement>
-                  <Input placeholder='Digite seu CEP' required type='number' value={usuCep} onChange={(e) => {
-                    setUsuCep(e.target.value)
-                  }} />
-                </InputGroup>
-
-             
-
-                <FormLabel>CPF</FormLabel>
-                <InputGroup>
-                  <InputLeftElement>
-                    <CiLocationOn />
-                  </InputLeftElement>
-                  <Input placeholder='Digite seu CPF' required type='number' value={usuCPF} onChange={(e) => {
-                    setUsuCPF(e.target.value)
-                  }} />
-                </InputGroup>
-
-
-            
-
-                <FormLabel>Email</FormLabel>
-                <InputGroup>
-                  <InputLeftElement>
-                    <AiOutlineMail />
-                  </InputLeftElement>
-                  <Input placeholder='Digite seu email' required type='email' value={usuEmail} onChange={(e) => {
-                    setUsuEmail(e.target.value)
-                  }} />
-
-                </InputGroup>
-               
-
-                <FormLabel>Senha</FormLabel>
+                <FormLabel>Sou: </FormLabel>
                 <InputGroup >
-                  <InputLeftElement>
-                    <RiLockPasswordLine />
-                  </InputLeftElement>
-                  <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='*********' value={usuSenha} onChange={(e) => {
-                    setUsuSenha(e.target.value);
-                  }
-
-                  } />
-                  <InputRightElement width='4.5rem'>
-                    <Button variant='ghost' h='2rem' size='md' onClick={handleClick}>
-                      {show ? <AiFillEye size='20px' color='#338bb0' /> : <AiFillEyeInvisible size='20px' />}
-                    </Button>
-
-                 
-
-                  </InputRightElement>
-                </InputGroup>
-
-                <InputGroup mt={4}>
-                  <FormLabel>Eu sou um</FormLabel>
                   <Select
-                   
                     value={usuTipo}
                     onChange={(e) => setUsuTipo(e.target.value)}
                     required
@@ -352,17 +242,22 @@ const Cadastro = () => {
                   </Select>
 
                 </InputGroup>
+                <IconButton aria-label='anterior' mt={3} icon={<AiOutlineArrowLeft/>} onClick={() => setSecaoAtual(secaoAtual - 1)}  color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}}  >Anterior</IconButton>
+                </>
+          )}
 
+                
+                  
               </FormControl>
                 
                 <Stack spacing={4} direction='row' align='start' justify='space-between'> 
 
-                  <Checkbox colorScheme='blue'>Lembrar de mim</Checkbox>
-                  <Link to='/' ><Text color='#338bb0'>Esqueci minha senha</Text></Link>
+                  <Checkbox colorScheme='blue' display={secaoAtual === 1 ? 'none' : 'block'}>Lembrar de mim</Checkbox>
+                  <Link to='/' ><Text color='#338bb0' display={secaoAtual === 1 ? 'none' : 'block'}>Esqueci minha senha</Text></Link>
 
                   
                 </Stack>
-                <Button colorScheme='blue' onClick={cadastraUsuario}>Cadastrar</Button>
+                <Button bgColor="#338bb0" _hover={{color: '#338bb0', backgroundColor: 'white'}} color='white' onClick={cadastraUsuario} display={secaoAtual === 1 ? 'none' : 'block'}>Cadastrar</Button>
 
 
               <Link to='/Login'><Text color='blue.400'>Já possui uma conta? Clique para entrar</Text></Link>
@@ -370,13 +265,9 @@ const Cadastro = () => {
 
             </Stack>
           </Flex>
-
-          <Flex w='full' h='full' borderRightWidth={1}>
-          <Image src={cadastro_loginEsquerdo} objectFit='cover'  w='full' h='full' position='absolute' top='0' left='0' zIndex='-1'></Image>
-          </Flex>
         </HStack>
 
-      )}
+     
 
 
     </ChakraProvider>
