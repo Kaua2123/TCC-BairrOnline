@@ -12,8 +12,9 @@ import aguaParada from "../img/aguaParada.jpg";
 //icones
 import {HiOutlineClipboardDocumentList} from 'react-icons/hi2'
 import { CiLocationOn } from 'react-icons/ci';
-
-
+import { SiOpenstreetmap } from 'react-icons/si';
+import { BiSolidLike } from 'react-icons/bi';
+import { BiSolidCommentDetail } from 'react-icons/bi';
 //react
 import {useState, useEffect} from 'react';
 import axios from 'axios';
@@ -106,6 +107,8 @@ const CardGrande = ({denuncia}) => {
     ]
   )}
 
+  
+
     return(
         <Center>
       
@@ -125,17 +128,19 @@ const CardGrande = ({denuncia}) => {
   </CardHeader>
   <CardBody>
     <Center>
-    <Text fontWeight='normal' textAlign='center' borderRadius='7px' bgColor='#338BB0' color='white' w='100%' mt='-20px'  fontSize={{ base: '12px', md: '18px', lg: '25px' }} fontFamily='BreeSerif-Regular'>{denuncia.den_nome}</Text>
+    <Text fontWeight='normal' textAlign='center' borderRadius='7px' bgColor='#338BB0' color='white' w='100%' mt='-20px'  fontSize={{ base: '14px', md: '18px', lg: '25px' }} fontFamily='BreeSerif-Regular' >{denuncia.den_nome}</Text>
     </Center>
     <Flex flexDirection='column' mt='15px' ml='-18px' color='gray'>
     
     <Tag bg='white' color='gray' fontSize={{base: '12px', md: '14px', lg: '16px'}}>
       <TagLeftIcon as={CiLocationOn} />
-      <Text>{denuncia.den_bairro}</Text>
+      <Text fontFamily='BreeSerif-Regular'>{denuncia.den_bairro}</Text>
     </Tag>
  
-
-    <Text fontSize={{base: '12px', md: '14px', lg: '16px'}} fontFamily='BreeSerif-Regular'  ml={{base: '20px', md: '20px', lg:'20px'}}>Problema: {denuncia.den_problema} </Text>
+    <Tag bg='white' color='gray' fontSize={{base: '12px', md: '14px', lg: '16px'}}>
+    <TagLeftIcon as={SiOpenstreetmap} />
+    <Text fontFamily='BreeSerif-Regular'>{denuncia.den_problema} </Text>
+    </Tag>
     </Flex>
     <Text  mt='10px'>
     {denuncia.den_desc}
@@ -143,7 +148,7 @@ const CardGrande = ({denuncia}) => {
   </CardBody>
   <Box>
                   {denuncia.den_img ? ( // se o usuario tiver adicionado imagem
-                    <Image src={`http://localhost:3344/retornaImagem/${denuncia.den_img}`}  w='100%' h='250px' />
+                    <Image src={`http://localhost:3344/retornaImagem/${denuncia.den_img}`}  w='100%' h='350px' />
                 ) : (
                     <HiOutlineClipboardDocumentList size='10vh'  color='gray' /> // se n tiver adicionado imagem, é o que será exibido
                 )}
@@ -158,13 +163,17 @@ const CardGrande = ({denuncia}) => {
       },
     }}
   >
-    <Button flex='1' variant='ghost' leftIcon={''}>  
+    <Button ml='20px'  bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidLike style={{ color: "white" }} />
+    <Text  mr='15px' ml='6px'>
       Curtir
+      </Text>
     </Button>
-    <Button flex='1' variant='ghost' leftIcon={''}>
+    <Button mr='400px' bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidCommentDetail style={{ color: 'white' }}/>
+      <Text mr='15px' ml='7px'>     
       Comentar
+      </Text> 
     </Button>
-     <Button variant='ghost' mt={{base: '-7px', md: '', lg: '-5px'}} ml={{base:'450px', md:'550px', lg:'700px'}} w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={()=>{setrep(true)}}>
+     <Button variant='ghost' mt={{base: '-75px', md: '-75px', lg: '-35px'}} ml={{base:'400px', md:'500px', lg:'650px'}} w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='2.5vh' />} onClick={()=>{setrep(true)}}>
                         <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
                     </Button>
   </CardFooter>
