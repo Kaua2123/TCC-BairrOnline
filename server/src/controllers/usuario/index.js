@@ -87,5 +87,25 @@ module.exports = {
         }
     },
 
+    async getUsuarios(req, res) { //receber todos os dados dos usuarios
+        try {
+            const usuarios = await knex('usuario').select('*');
+
+            return res.status(200).json(usuarios)
+        } catch (error) {
+            return res.status(400).json({error: error.message})
+        }
+    },
+
+    async getInstituicoes(req, res) { // receber só dos usuarios tipo instituição
+        try {
+            const instituicoes = await knex('usuario').select('*').where('usu_tipo', 'instituicao');
+
+            return res.status(200).json(instituicoes);
+        } catch (error) {
+            return res.status(400).json({error: error.message})
+        }
+    }
+
    
 }

@@ -364,13 +364,7 @@ const Home = () => {
               </Flex>
            </Flex>
 
-
-
-                <Flex flexDirection='column'>
-
-                </Flex>
-
-              <Button variant='link' color='black' ml='15px'>Ver mais</Button>
+           
          </Box>
       {/* ------------E AQUI INSTITUIÇOES------------*/}
 
