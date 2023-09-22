@@ -78,27 +78,7 @@ const HomeUsuario = () => {
     }
   }, [])
 
-  const isTokenExpired = () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      return true; // verdadeiro, expirou
-    }
-
-    try {
-      const tokenDados = jwt_decode(token);
-      const tempoExpiracao = tokenDados.exp * 1000; //milisegundos
-      const tempoAgora = Date.now();
-      return tempoAgora > tempoExpiracao;
-    }
-    catch (error) {
-      return true;
-    }
-  }
-
-  if (isTokenExpired()) {
-    localStorage.removeItem('token');
-    
-  }
+  
 
 
   async function getDenuncia () { //pega os dados da denuncia
@@ -215,18 +195,16 @@ const closeAlertDialog = () => {
         </Flex>
 
 
-            <Center>
-                <Box maxH='900px' w='1400px' mt='20px'  boxShadow='lg'>
 
                   {temDenuncia ? ( // se tiver denuncia
                      <SlideDenUsu denuncias={denuncias}/>
                   ) : ( // se não
                     <>
                     <Flex justify='center'>
-                      <Image src={denunciaNotFound}></Image> {/*img temporaria */}
+                      <Image src={denunciaNotFound} objectFit='cover'></Image> {/*img temporaria */}
                     </Flex>
                     <Flex justify='center'>
-                      <Text fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='normal' mt='-60px' p={8} color='#338bb0'>Parece que você não realizou nenhuma denúncia...</Text>
+                      <Text fontSize={{base: '25px', md: '35px'}} fontFamily='BreeSerif-Regular' fontWeight='normal' mt='-60px' p={8} color='#338bb0'>Parece que você não realizou nenhuma denúncia...</Text>
                     </Flex>
                     </>
                   )}
@@ -236,8 +214,8 @@ const closeAlertDialog = () => {
               ver denuncia q vai pra pagina de ver denuncias do gabriel, e lá vai ter a exibição da denuncia
               que foi clicada e de outras se o cara quiser filtrar. lá vai ter os comentarioszin */}
 
-                </Box>
-                </Center>
+             
+          
           </Box>
 
           {temDenuncia && ( // oq ta aq dentro só aparece se tiver denúncia
@@ -277,8 +255,8 @@ const closeAlertDialog = () => {
                                 </AlertDialogContent>
                             </AlertDialogOverlay>
                         </AlertDialog>
-
-     <Footer/>
+{/* 
+     <Footer/> */}
      </ChakraProvider>
 
   );

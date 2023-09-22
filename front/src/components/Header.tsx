@@ -129,7 +129,7 @@ export const HeaderUsu = () => {
   return(
 
 
-      <Flex w={{base: '80vw', md: '100%'}}   bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='dark-lg' >
+      <Flex w={{base: '79vw', md: '100%'}}   bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='dark-lg' >
 
 
 {/*COMEÇA HEADERUSU NAV*/}
@@ -152,7 +152,7 @@ export const HeaderUsu = () => {
 
           <Spacer/>
 
-            <HStack  spacing='10' justifyContent='center' alignItems='center' >
+            <HStack spacing='10' justifyContent='center' alignItems='center' >
               <Button variant='link'
               color='white'
               _hover={{color: '#338BB0'}}
@@ -252,7 +252,7 @@ export const HeaderUsu = () => {
             colorScheme="whiteAlpha"
             borderRadius="full"
             onClick={aoClicarAvatar} // Chama a função quando o avatar é clicado
-
+          
           >
             <Avatar icon={<FaUserAlt />} />
           </MenuButton>

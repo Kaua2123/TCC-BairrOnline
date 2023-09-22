@@ -69,7 +69,7 @@ export const SlideDenUsu = ({denuncias}) => {
     
     return(
 
-        <Box h='auto' mt='20px' p='20px' boxShadow='lg' w={{base: '80vw', md: 'full'}}>
+        <Box h='auto' mt='20px' p='20px' boxShadow='lg' w={{base: '87vw', md: 'full'}}>
 
         <Swiper className="swiper-container" style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
