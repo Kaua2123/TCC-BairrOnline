@@ -18,24 +18,14 @@ import axios from 'axios';
 
 //chakra
 import { Box, Wrap, WrapItem } from '@chakra-ui/react'
-
+import { useMediaQuery } from "@chakra-ui/react";
 
 
 
 const SlideDen = ({denuncias}) => {
 
-    const [slidesPerView, setSlidesPerView] = useState(window.innerWidth < 768 ? 1 : 5);
-    useEffect(() => {
-        const resize = () => {
-            setSlidesPerView(window.innerWidth < 768 ? 1 : 5);
-        };
-
-        window.addEventListener('resize', resize);
-
-        return () => {
-            window.removeEventListener('resize', resize);
-        };
-    }, []);
+  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+  const slidesPerView = isSmallerThan768 ? 1 : 5;
 
     return(
 
@@ -74,23 +64,12 @@ export default SlideDen;
 
 export const SlideDenUsu = ({denuncias}) => {
 
-    const [slidesPerView, setSlidesPerView] = useState(window.innerWidth < 768 ? 1 : 5);
-    useEffect(() => {
-        const resize = () => {
-            setSlidesPerView(window.innerWidth < 768 ? 2 : 5);
-        };
-
-        window.addEventListener('resize', resize);
-
-        return () => {
-            window.removeEventListener('resize', resize);
-        };
-    }, []);
-
-
+    const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+    const slidesPerView = isSmallerThan768 ? 1 : 5;
+    
     return(
 
-        <Box h='auto' mt='20px' p='20px' boxShadow='lg'>
+        <Box h='auto' mt='20px' p='20px' boxShadow='lg' w={{base: '80vw', md: 'full'}}>
 
         <Swiper className="swiper-container" style={{padding: '20px'}} modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
@@ -123,25 +102,14 @@ export const SlideDenUsu = ({denuncias}) => {
 }
 
 export const SlideDenExcluida = ({ denunciasExcluidas }) => {
-    const [slidesPerView, setSlidesPerView] = useState(
-        window.innerWidth < 768 ? 1 : 5
-      );
-
-      useEffect(() => {
-        const resize = () => {
-          setSlidesPerView(window.innerWidth < 768 ? 1 : 5);
-        };
-
-        window.addEventListener("resize", resize);
-
-        return () => {
-          window.removeEventListener("resize", resize);
-        };
-      }, []);
+  
+  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+  const slidesPerView = isSmallerThan768 ? 1 : 5;
 
       return (
         <Box h="auto" bg='white'  boxShadow="lg">
           <Swiper
+            
             className="swiper-container"
             style={{ padding: "20px" }}
             modules={[Navigation, Pagination, Scrollbar, A11y]}

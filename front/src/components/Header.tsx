@@ -129,7 +129,7 @@ export const HeaderUsu = () => {
   return(
 
 
-      <Flex w='100%'  bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='dark-lg' >
+      <Flex w={{base: '80vw', md: '100%'}}   bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='dark-lg' >
 
 
 {/*COMEÇA HEADERUSU NAV*/}
@@ -469,7 +469,7 @@ export const HeaderADM = () => {
   return(
 
 
-      <Flex w='100%'  bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='dark-lg' >
+      <Flex w='100%' bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='dark-lg' >
 
 
 {/*COMEÇA HEADERUSU NAV*/}

@@ -176,33 +176,34 @@ const Denuncie = () => {
     <ChakraProvider >
 
 
+      
+          <HStack w='full' bgColor='#f8f8ff' h='100vh' display={{base: 'none', md: 'flex'}}>
 
-          <HStack bg='gray.100' w='full' h='100vh'>
-
-            <Flex w='full' h='full' display={{base: 'none', md: 'flex'}}>
+            <Flex w='full' h='full' >
               <Image src={realizarDen} objectFit='cover'></Image>
             </Flex>
 
 
-            <Flex w='full' h='full' alignItems='center' justifyContent='center'>
+            <Flex display={{base: 'none', md: 'flex'}} w='full' h='full' alignItems='center' justifyContent='center'>
               <Stack w='full' maxW='md' spacing={4} p={6} mt={5}>
               <Heading fontSize={{base: '1xl', md: '3xl'}} color='#338bb0'>Realize sua denúncia</Heading>
               <Text  fontSize={{ base: '16px', md: '19px'}}>Seu lugar de denunciar é aqui. Esteja ciente de que suas denúncias poderão ser visualizadas por outros usuários e/ou instituições.</Text>
 
 
-              <Heading fontSize='3xl' color='#338bb0'>Acompanhamento</Heading>
+              <Heading fontSize={{base: '1xl', md: '3xl'}} color='#338bb0'>Acompanhamento</Heading>
               <Text fontSize={{ base: '16px', md: '19px' }}>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução destas. Você pode acompanhar as soluções na página Acompanhar Denúncias</Text>
               </Stack>
             </Flex>
 
         </HStack>
 
-          <HStack bg='gray.100' w='full' h='100vh'>
+          <HStack w='full' h='100vh' bgColor='#f8f8ff'>
             <Flex w='full' h='full' alignItems='center' justifyContent='center'>
               <Stack w='full' maxW='md' spacing={4} p={6}>
               <FormControl>
 
-                <FormLabel mt='30px' fontSize={{ base: '14px', md: '18px' }} fontWeight='normal' >Título da denúncia:</FormLabel>
+            <Heading display={{base: 'block', md:'none'}} color='#338bb0'  justifyContent='center'>Realize sua denúncia</Heading> {/* exibir no cel, telas pequenas*/}
+                <FormLabel mt='30px' fontSize={{ base: '17px', md: '18px' }} fontWeight='normal' >Título da denúncia:</FormLabel>
 
                 <InputGroup>
                   <InputLeftElement>
@@ -211,13 +212,13 @@ const Denuncie = () => {
                   <Input value={denNome}
                     onChange={(e) => setDenNome(e.target.value)}
                     border='1px solid black'
-             
                     _hover={{ border: '1px solid #A9A9A9	' }}
-                    type='text'></Input>
+                    type='text'
+                    w={{base: '70vw'}}></Input>
                 </InputGroup>
                 <br></br>
 
-                <FormLabel  fontSize={{ base: '14px', md: '18px' }} fontWeight='normal' >Selecione o bairro a ser denunciado</FormLabel>
+                <FormLabel  fontSize={{ base: '17px', md: '18px' }} fontWeight='normal' >Selecione o bairro a ser denunciado</FormLabel>
 
                 <InputGroup>
                   <InputLeftElement>
@@ -225,11 +226,10 @@ const Denuncie = () => {
                   </InputLeftElement>
 
                   <Select
-
                     value={denBairro}
                     onChange={(e) => setDenBairro(e.target.value)}
                     border='1px solid black'
-                
+                    w={{base: '70vw'}}
                     _hover={{ border: '1px solid #A9A9A9	' }}
                     textAlign='center'
                   >
@@ -242,7 +242,7 @@ const Denuncie = () => {
                   </Select>
                 </InputGroup>
                 <br></br>
-                <FormLabel whiteSpace='nowrap'  fontWeight='normal' >Digite o que está lhe incomodando: </FormLabel>
+                <FormLabel whiteSpace='nowrap'  fontWeight='normal'  fontSize={{ base: '17px', md: '18px' }} >Digite o que está lhe incomodando: </FormLabel>
 
                 <InputGroup>
                   <InputLeftElement>
@@ -251,7 +251,7 @@ const Denuncie = () => {
                   <Textarea value={denDesc}
                     onChange={(e) => setDenDesc(e.target.value)}
                     border='1px solid black'
-                 
+                    w={{base: '70vw'}}
                     resize='vertical'
                     maxLength={130}
                     pl='2.5rem'
@@ -259,7 +259,7 @@ const Denuncie = () => {
                   </Textarea>
                 </InputGroup>
                       <br></br>
-                <FormLabel whiteSpace='nowrap' placeholder='tipo de problema' fontWeight='normal' >Problema específico:</FormLabel>
+                <FormLabel whiteSpace='nowrap' placeholder='tipo de problema' fontWeight='normal' fontSize={{ base: '17px', md: '18px' }} >Problema específico:</FormLabel>
 
                 <InputGroup>
                   <InputLeftElement>
@@ -271,7 +271,8 @@ const Denuncie = () => {
                     onChange={(e) => setDenProblema(e.target.value)}
                     border='1px solid black'
                     _hover={{ border: '1px solid #A9A9A9	' }}
-                    textAlign='center'>
+                    textAlign='center'
+                    w={{base: '70vw'}}>
                     <option value=''></option>
                     {opçoesDeProblemas.map((problema) => (
                       <option key={problema.value} value={problema.value}>

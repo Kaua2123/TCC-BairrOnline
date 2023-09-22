@@ -157,7 +157,7 @@ const closeAlertDialog = () => {
 
 
 
-        <HStack w='full' h='100vh'>
+        <HStack w={{base: '', md: 'full'}} h='100vh'>
           
           <Flex w='full' h='full' display={{base: 'none', md: 'flex'}} id='denuncie'>
 
@@ -170,11 +170,9 @@ const closeAlertDialog = () => {
 
 
           <Flex w='full' h='full' alignItems='center' justifyContent='center'>
-            <Stack w='full' maxW='md' spacing={4} p={6}>
-            
-            <Heading fontSize='35px' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Seção do Usuário</Heading>
-          
-            <Text fontSize='25px' whiteSpace='nowrap'>Denuncie, veja suas <b> denúncias</b> <br /> e o retorno das instituições</Text>
+            <Stack w='full' maxW='md' spacing={4} p={{base: '18', md: '6'}}>
+            <Heading fontSize={{base: '32px', md: '35px'}} color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Seção do Usuário</Heading>
+            <Text fontSize={{base: '20px', md: '25px'}}  whiteSpace='nowrap'>Denuncie, veja suas <b> denúncias</b> <br /> e o retorno das instituições</Text>
           
             </Stack>
           </Flex>
@@ -187,9 +185,9 @@ const closeAlertDialog = () => {
 
         <Box id='minhasDen'>
         <Flex justify='center'>
-          <Box>
-            <Text fontSize='44px' color='#338BB0'  fontFamily='BreeSerif-Regular' whiteSpace='nowrap' >Suas denúncias</Text>
-          </Box>
+        
+            <Heading color='#338bb0'> Suas denúncias </Heading>
+         
         </Flex>
 
 
@@ -213,8 +211,6 @@ const closeAlertDialog = () => {
               {/* as denuncias da home n tem mais comentarios diretamente nelas agora, tem um botao
               ver denuncia q vai pra pagina de ver denuncias do gabriel, e lá vai ter a exibição da denuncia
               que foi clicada e de outras se o cara quiser filtrar. lá vai ter os comentarioszin */}
-
-
 
                 </Box>
                 </Center>
@@ -257,14 +253,6 @@ const closeAlertDialog = () => {
                                 </AlertDialogContent>
                             </AlertDialogOverlay>
                         </AlertDialog>
-
-         
-      
-
- 
-
-                     
-
 
      <Footer/>
      </ChakraProvider>
