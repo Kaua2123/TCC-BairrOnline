@@ -4,7 +4,7 @@ import { Card, CardBody, Image, Text, CardFooter } from "@chakra-ui/react"
 import logoInst from "../img/logoInst.png"
 
 
-const CardInst = () => {
+const CardInst = ({instituicao}) => {
     return(
         <Card   maxW='sm' w='150px' h='150px' bgColor='gray.100' align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s'}}>
         <CardBody>
@@ -12,7 +12,7 @@ const CardInst = () => {
         </CardBody>
 
         <CardFooter>
-          <Text align='center' fontFamily='BreeSerif-Regular'> @instituição </Text>
+          <Text align='center' fontFamily='BreeSerif-Regular'> {instituicao.usu_nome} </Text>
         </CardFooter>
      </Card>
     )

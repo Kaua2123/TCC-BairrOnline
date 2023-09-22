@@ -52,8 +52,9 @@ import { SiOpenstreetmap } from "react-icons/si";
 const Home = () => {
 
   const [denuncias, setDenuncias] = useState([]);
+  const [instituicoes, setInstituicoes] = useState([]);
   const [temDenuncia, setTemDenuncia] = useState(false);
-  const {isOpen, onOpen, onClose} = useDisclosure()
+
   const [comments, setComments] = useState([]);
 
   const {colorMode} = useColorMode();
@@ -125,6 +126,20 @@ const Home = () => {
     getDenuncia();
   }, [])
 
+  async function getInstituicoes() {
+    axios.get('http://localhost:3344/getInstituicoes')
+    .then(response => {
+      setInstituicoes(response.data);
+
+    })
+    .catch(error => {
+      console.error(error);
+    })
+  }
+
+  useEffect(() => {
+    getInstituicoes();
+  }, [])
 
 
  return (
@@ -305,37 +320,12 @@ const Home = () => {
               <Flex flexDirection='column'>
 
               <Wrap spacing='50px' m='80px'>
-                      <WrapItem>
-                              <CardInst/>
+                {instituicoes.map((instituicao) => (
+                      <WrapItem key={instituicao.usu_cod}>
+                              <CardInst instituicao={instituicao}/>
                       </WrapItem>
-
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-                      <WrapItem>
-                              <CardInst/>
-                      </WrapItem>
-
+                ))}
+                      
 
                   </Wrap>
               </Flex>

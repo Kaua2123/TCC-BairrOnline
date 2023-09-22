@@ -17,6 +17,8 @@ const routes = express.Router();
 routes.get("/", controllersUsu.raiz);
 routes.post("/criarUsu", controllersUsu.CriarUsuario);
 routes.post("/logarUsu", controllersUsu.logarUsuario);
+routes.get("/getUsuarios", controllersUsu.getUsuarios);
+routes.get("/getInstituicoes", controllersUsu.getInstituicoes);
 
 //denuncia
 //chamando o middleware "autentica" nas rotas protegidas, que so usuarios podem acessar
