@@ -259,9 +259,7 @@ export const HeaderUsu = () => {
           <MenuList>
             {/* Opções de menu */}
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
-            icon={<AiOutlineUser size='20px'/>}>Meu Perfil</MenuItem>
-            <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
-            icon={<PiGearSixFill size='20px'/>}>Configurações</MenuItem>
+            ><Link to='/MeuPerfil'>Meu Perfil</Link></MenuItem>
              <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             ><Link to='/HomeUsuario'>Seção do Usuário </Link></MenuItem>
             <MenuItem onClick={deslogar}
@@ -417,9 +415,8 @@ export const HeaderInst = () => {
           </MenuButton>
           <MenuList>
           <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
-          icon={<AiOutlineUser size='20px'/>}>Meu Perfil</MenuItem>
-            <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
-            icon={<PiGearSixFill size='20px'/>}>Configurações</MenuItem>
+          ><Link to='/MeuPerfil'>Meu Perfil </Link> </MenuItem>
+           
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             ><Link to='/HomeInst'>Seção do Usuário </Link></MenuItem>
             <MenuItem onClick={deslogar}

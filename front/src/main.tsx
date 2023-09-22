@@ -18,6 +18,7 @@ import SaibaMais from './pages/saibaMais.tsx';
 import Deslogado from './pages/Deslogado.tsx';
 import RotasPrivadas from './components/RotasPrivadas.tsx';
 import DenDetalhadas from './pages/DenDetalhadas.tsx';
+import { MeuPerfil } from './pages/MeuPerfil.tsx';
 
 
 
@@ -96,6 +97,14 @@ const router = createBrowserRouter([
     element: (
       <RotasPrivadas userType='denunciante'>
         <DenDetalhadas/>
+      </RotasPrivadas>
+    )
+  },
+  {
+    path: "/MeuPerfil",
+    element: (
+      <RotasPrivadas userType='denunciante'>
+        <MeuPerfil/>
       </RotasPrivadas>
     )
   }

@@ -9,7 +9,7 @@ import { Button, ButtonGroup } from '@chakra-ui/react';
 import { useState } from 'react';
 
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //icones
@@ -45,6 +45,7 @@ const Cadastro = () => {
   const [usuCNPJ, setUsuCNPJ] = useState("");
   const [usuData, setUsuData] = useState(""); ''
   const [usuTipo, setUsuTipo] = useState("denunciante") //denunciante valor padrao
+  const navigate = useNavigate();
   const toast = useToast();
 
   const handleClick = () => setShow(!show)
@@ -79,11 +80,16 @@ const Cadastro = () => {
         if (response) {
           toast({
             title: "Cadastro realizado.",
-            description: "Você foi cadastrado com sucesso.",
+            description: "Você foi cadastrado com sucesso. Redirecionando para a página de login...",
             status: "success",
             duration: 4000,
             isClosable: true,
           })
+          setTimeout(() => {
+            navigate('/Login')
+          }, 1700)
+          
+          
         }
       })
       .catch((error) => {
