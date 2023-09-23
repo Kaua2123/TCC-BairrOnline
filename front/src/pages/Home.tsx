@@ -14,7 +14,7 @@ import jwt_decode from 'jwt-decode';
 
 //chakra
 import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
-, Heading, Modal, ModalOverlay, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem, useDisclosure, useColorMode, theme, Avatar, Tag, TagLeftIcon, HStack, Stack} from '@chakra-ui/react';
+, Heading, Modal, ModalOverlay, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem, useDisclosure, useColorMode, theme, Avatar, Tag, TagLeftIcon, HStack, Stack, VStack} from '@chakra-ui/react';
 import { modalAnatomy as parts } from '@chakra-ui/anatomy'
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/styled-system'
 //componentes
@@ -46,6 +46,7 @@ import { BiSolidLike, BiSolidCommentDetail } from "react-icons/bi";
 import { CiLocationOn } from "react-icons/ci";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import { SiOpenstreetmap } from "react-icons/si";
+import CardGrande from "../components/CardGrande.tsx";
 
 
 
@@ -204,98 +205,33 @@ const Home = () => {
          {/*------------FIM FULLSCREEN------------*/}
 
            {/* ------------SEÇÃO DENUNCIAS E INSTITUIÇOES AQUI------------*/}
-         <Box  w="100%" bgColor='gray.200' h='auto'  borderRadius='4px'>
+         <Box  w="100%" bgColor='gray.200' h='full'  borderRadius='4px'>
 
-             <Flex justifyContent='space-between' direction={{base: "column", md: "row"}}>
-                 <Flex flexDirection='column' p='120px' >
+             <HStack  w='full' h='60vh'>
+                 <Flex w='full' h='full' display={{base: 'none', md: 'flex'}} alignItems='center' justifyContent='center' >
 
-                   <Box>
-                 <Text color='#338BB0' fontSize={{base: '28px', md: '35px', lg:'36px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Denúncias em alta</Text>
-                 </Box>
-
-                   <Box mt='40px'>
-                     <Text fontSize={{base: '24px', md: '25px', lg:'25px'}}>Denúncias em alta dos <br /> bairros de  <b>Volta Redonda</b></Text>
-                   </Box>
+              <VStack>
+                 <Heading color='#338bb0' fontSize='3xl'  fontFamily='BreeSerif-Regular' fontWeight='normal'>Denúncias em alta </Heading>
+                  <Text fontSize='19px'>Denúncias em alta dos <br /> bairros de  <b>Volta Redonda</b></Text>
+          
+              </VStack>
                  </Flex>
 
 
+                 <Flex w='full' h='full' alignItems='center' justifyContent='center'>
+         
 
-                 <Flex flexDirection='column'>
-                 <Center>
-      
-      {denuncias.length > 0 && (
+{/*       
+     {denuncias.map((denuncia, index) => (
+        <CardGrande denuncia={denuncia}/>
+     ))}
+        */}
 
-      
-        <Card bgColor='white' border='1px solid #A9A9A9' w={{base: '535px', md: '653px', lg: '802px'}}> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
-  <CardHeader>
-    <Flex spacing='4'>
-      <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-        <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' />
-
-        <Box>
-          <Heading fontSize={{base: '12px', md: '14px', lg: '16px'}}>{denuncias[0].usu_nome}</Heading>
-           
-        </Box>
-      </Flex>
-    
-    </Flex>
-  </CardHeader>
-  <CardBody>
-    <Center>
-    <Text fontWeight='normal' textAlign='center' borderRadius='7px' bgColor='#338BB0' color='white' w='100%' mt='-20px'  fontSize={{ base: '14px', md: '18px', lg: '25px' }} fontFamily='BreeSerif-Regular' >{denuncias[0].den_nome}</Text>
-    </Center>
-    <Flex flexDirection='column' mt='15px' ml='-18px' color='gray'>
-    
-    <Tag bg='white' color='gray' fontSize={{base: '12px', md: '14px', lg: '16px'}}>
-      <TagLeftIcon as={CiLocationOn} />
-      <Text fontFamily='BreeSerif-Regular'>{denuncias[0].den_bairro}</Text>
-    </Tag>
+        {temDenuncia && <CardGrande denuncia={denuncias[0]} />}
  
-    <Tag bg='white' color='gray' fontSize={{base: '12px', md: '14px', lg: '16px'}}>
-    <TagLeftIcon as={SiOpenstreetmap} />
-    <Text fontFamily='BreeSerif-Regular'>{denuncias[0].den_problema} </Text>
-    </Tag>
-    </Flex>
-    <Text  mt='10px'>
-    {denuncias[0].den_desc}
-    </Text>
-  </CardBody>
-  <Box>
-                  {denuncias[0].den_img ? ( // se o usuario tiver adicionado imagem
-                    <Image src={`http://localhost:3344/retornaImagem/${denuncias[0].den_img}`}  w='100%' h='350px' />
-                ) : (
-                    <HiOutlineClipboardDocumentList size='10vh'  color='gray' /> // se n tiver adicionado imagem, é o que será exibido
-                )}
-                  </Box>
 
-  <CardFooter
-    justify='space-between'
-    flexWrap='wrap'
-    sx={{
-      '& > button': {
-        minW: '136px',
-      },
-    }}
-  >
-    <Button ml='20px'  bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidLike style={{ color: "white" }} />
-    <Text  mr='15px' ml='6px'>
-      Curtir
-      </Text>
-    </Button>
-    <Button mr='400px' bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidCommentDetail style={{ color: 'white' }}/>
-      <Text mr='15px' ml='7px'>     
-      Comentar
-      </Text> 
-    </Button>
-     <Button variant='ghost' mt={{base: '-75px', md: '-75px', lg: '-35px'}} ml={{base:'400px', md:'500px', lg:'650px'}} w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='2.5vh' />} onClick={()=>{setrep(true)}}>
-                        <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
-                    </Button>
-  </CardFooter>
-</Card>
-)}
-        </Center>
                  </Flex>
-             </Flex>
+                </HStack>
 
 
                   {temDenuncia ? (
@@ -317,25 +253,28 @@ const Home = () => {
 
            <HStack w='full' h='100vh'>
 
-              <Flex w='full' h='full' >
-                <Flex display={{base: 'flex', md: 'none'}}>
-                    <Heading fontSize='1xl' color='#338bb0' >Instituições</Heading>
+              <Flex w='full' h='full' flexDirection='column' alignItems='center' >
+
+                <Flex gap={4} display={{base: 'flex', md: 'none'}} w='full' maxW='md' p={6}>
+                    <Heading fontSize='2xl' color='#338bb0' >Instituições</Heading>
                     <InputGroup >  
                             <InputLeftElement pointerEvents='none'>
                                 <FiSearch color='white' />
                             </InputLeftElement>
-                            <Input /* onSubmit= */ w='280px' color='white' placeholder='Busque por instituições' _placeholder={{color: "white"}} bg='#338BB0'/>
-                        </InputGroup>
+                            <Input  color='white' placeholder='Busque por instituições' _placeholder={{color: "white"}} bg='#338BB0'/>
+                    </InputGroup>
                 </Flex>
+              
+              <Flex>
 
-                    <Grid templateColumns={{base: '1fr', md: '1fr 1fr 1fr'}} gap={4} p={20}>
+                    <Grid templateColumns={{base: '1fr', md: '1fr 1fr 1fr'}} gap={{base: 16, md: 4}} p={20}>
   {instituicoes.map((instituicao) => (
     <GridItem key={instituicao.usu_cod}>
       <CardInst instituicao={instituicao} />
     </GridItem>
   ))}
 </Grid>
-                      
+</Flex>      
 
                  
               </Flex>

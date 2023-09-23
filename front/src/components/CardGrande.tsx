@@ -1,4 +1,4 @@
-import { Card, CardHeader, Heading, CardBody, Divider, CardFooter, Image, Text, Box, Button, Flex, Avatar, Icon, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, Center, useToast, HStack, Tag, TagLabel, TagLeftIcon } from "@chakra-ui/react";
+import { Card, CardHeader, Heading, CardBody, Divider, CardFooter, Image, Text, Box, Button, Flex, Avatar, Icon, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, Center, useToast, HStack, Tag, TagLabel, TagLeftIcon, ChakraProvider } from "@chakra-ui/react";
 import { BsChatSquareText } from "react-icons/bs";
 import { MdOutlineReportProblem } from "react-icons/md";
 import CardCom from "./CardCom";
@@ -13,7 +13,7 @@ import aguaParada from "../img/aguaParada.jpg";
 import {HiOutlineClipboardDocumentList} from 'react-icons/hi2'
 import { CiLocationOn } from 'react-icons/ci';
 import { SiOpenstreetmap } from 'react-icons/si';
-import { BiSolidLike } from 'react-icons/bi';
+import { BiCommentDetail, BiSolidLike } from 'react-icons/bi';
 import { BiSolidCommentDetail } from 'react-icons/bi';
 //react
 import {useState, useEffect} from 'react';
@@ -110,9 +110,9 @@ const CardGrande = ({denuncia}) => {
   
 
     return(
-        <Center>
-      
-        <Card mt='50px' bgColor='white' border='1px solid #A9A9A9' w={{base: '535px', md: '653px', lg: '802px'}}> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
+        <ChakraProvider>
+                                                                {/* w={{base: '535px', md: '653px', lg: '802px'}} */}
+        <Card boxShadow='lg'  mt='50px' bgColor='white' border='1px solid #A9A9A9'  w='700px'> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
   <CardHeader>
     <Flex spacing='4'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
@@ -120,7 +120,7 @@ const CardGrande = ({denuncia}) => {
 
         <Box>
           <Heading fontSize={{base: '12px', md: '14px', lg: '16px'}}>{denuncia.usu_nome}</Heading>
-           
+          
         </Box>
       </Flex>
     
@@ -148,14 +148,14 @@ const CardGrande = ({denuncia}) => {
   </CardBody>
   <Box>
                   {denuncia.den_img ? ( // se o usuario tiver adicionado imagem
-                    <Image src={`http://localhost:3344/retornaImagem/${denuncia.den_img}`}  w='100%' h='350px' />
+                    <Image src={`http://localhost:3344/retornaImagem/${denuncia.den_img}`} objectFit='cover'  w='full' h='300px'  />
                 ) : (
                     <HiOutlineClipboardDocumentList size='10vh'  color='gray' /> // se n tiver adicionado imagem, é o que será exibido
                 )}
                   </Box>
 
   <CardFooter
-    justify='space-between'
+  gap={5}
     flexWrap='wrap'
     sx={{
       '& > button': {
@@ -163,22 +163,16 @@ const CardGrande = ({denuncia}) => {
       },
     }}
   >
-    <Button ml='20px'  bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidLike style={{ color: "inherit" }} />
-    <Text  mr='15px' ml='6px'>
+    <Button w='20px' color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiSolidLike />}>
       Curtir
-      </Text>
     </Button>
-    <Button mr='400px' bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}> <BiSolidCommentDetail style={{ color: 'inherit' }}/>
-      <Text mr='15px' ml='7px'>     
+    <Button  color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiCommentDetail />}>
       Comentar
-      </Text> 
     </Button>
-     <Button variant='ghost' mt={{base: '-75px', md: '-75px', lg: '-35px'}} ml={{base:'400px', md:'500px', lg:'650px'}} w={{base: '4px', md: '30px', lg: '55px'}}  color='red' _hover={{color: '#8B0000'}}  leftIcon={<MdOutlineReportProblem size='2.5vh' />} onClick={()=>{setrep(true)}}>
-                        <Reportar taAberto={rep} tafechado={()=>{setrep(!rep)}}/>
-                    </Button>
+
   </CardFooter>
 </Card>
-        </Center>
+</ChakraProvider>
     )
 }
 
