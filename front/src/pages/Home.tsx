@@ -212,13 +212,13 @@ const Home = () => {
 
               <VStack>
                  <Heading color='#338bb0' fontSize='3xl'  fontFamily='BreeSerif-Regular' fontWeight='normal'>Denúncias em alta </Heading>
-                  <Text fontSize='19px'>Denúncias em alta dos <br /> bairros de  <b>Volta Redonda</b></Text>
+                  <Text fontSize='19px' mr={6}>Denúncias em alta dos <br /> bairros de  <b>Volta Redonda</b></Text>
           
               </VStack>
                  </Flex>
 
 
-                 <Flex w='full' h='full' alignItems='center' justifyContent='center'>
+                 <Flex w='full' h='full' mr={5} alignItems='center' justifyContent='center'>
          
 
 {/*       

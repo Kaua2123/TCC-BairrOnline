@@ -35,7 +35,8 @@ ModalOverlay,
 Spinner,
 HStack,
 Stack,
-Heading
+Heading,
+useMediaQuery
 } from '@chakra-ui/react'
 
 
@@ -66,6 +67,7 @@ const HomeUsuario = () => {
   const navigate = useNavigate();
   const cancelRef = React.useRef();
   const toast = useToast();
+  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
 
   
 
@@ -77,6 +79,28 @@ const HomeUsuario = () => {
       navigate('/');
     }
   }, [])
+
+  const isTokenExpired = () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return true; // verdadeiro, expirou
+    }
+
+    try {
+      const tokenDados = jwtDecode(token);
+      const tempoExpiracao = tokenDados.exp * 1000; //milisegundos
+      const tempoAgora = Date.now();
+      return tempoAgora > tempoExpiracao;
+    }
+    catch (error) {
+      return true;
+    }
+  }
+
+  if (isTokenExpired()) {
+    localStorage.removeItem('token');
+    
+  }
 
   
 
@@ -190,7 +214,7 @@ const closeAlertDialog = () => {
         <Box id='minhasDen'>
         <Flex justify='center'>
         
-            <Heading color='#338bb0'> Suas denúncias </Heading>
+            <Heading color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'> Suas denúncias </Heading>
          
         </Flex>
 
@@ -255,8 +279,12 @@ const closeAlertDialog = () => {
                                 </AlertDialogContent>
                             </AlertDialogOverlay>
                         </AlertDialog>
-{/* 
-     <Footer/> */}
+
+      {!isSmallerThan768 && (
+        <Footer/> 
+      )}
+        
+  
      </ChakraProvider>
 
   );

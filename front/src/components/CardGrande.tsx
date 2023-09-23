@@ -20,6 +20,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { AddIcon } from "@chakra-ui/icons";
+import { FaHandshake } from "react-icons/fa";
 
 
 
@@ -169,6 +170,12 @@ const CardGrande = ({denuncia}) => {
     <Button  color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiCommentDetail />}>
       Comentar
     </Button>
+
+    {usuTipo === 'instituicao' && (
+      <Button onClick={criarAcompanhamento} color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<FaHandshake />}>
+      Assumir denuncia
+    </Button>
+    )}
 
   </CardFooter>
 </Card>

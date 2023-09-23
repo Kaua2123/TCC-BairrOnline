@@ -186,11 +186,11 @@ const Denuncie = () => {
 
             <Flex display={{base: 'none', md: 'flex'}} w='full' h='full' alignItems='center' justifyContent='center'>
               <Stack w='full' maxW='md' spacing={4} p={6} mt={5}>
-              <Heading fontSize={{base: '1xl', md: '3xl'}} color='#338bb0'>Realize sua denúncia</Heading>
+              <Heading fontSize={{base: '1xl', md: '3xl'}} fontFamily='BreeSerif-Regular' fontWeight='normal' color='#338bb0'>Realize sua denúncia</Heading>
               <Text  fontSize={{ base: '16px', md: '19px'}}>Seu lugar de denunciar é aqui. Esteja ciente de que suas denúncias poderão ser visualizadas por outros usuários e/ou instituições.</Text>
 
 
-              <Heading fontSize={{base: '1xl', md: '3xl'}} color='#338bb0'>Acompanhamento</Heading>
+              <Heading fontSize={{base: '1xl', md: '3xl'}} fontFamily='BreeSerif-Regular' fontWeight='normal' color='#338bb0'>Acompanhamento</Heading>
               <Text fontSize={{ base: '16px', md: '19px' }}>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução destas. Você pode acompanhar as soluções na página Acompanhar Denúncias</Text>
               </Stack>
             </Flex>
