@@ -14,7 +14,7 @@ import jwt_decode from 'jwt-decode';
 
 //chakra
 import { ChakraProvider, Center, Box, Flex, Image, Text, Container, Card, CardHeader, CardBody, CardFooter
-, Heading, Modal, ModalOverlay, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem, useDisclosure, useColorMode, theme, Avatar, Tag, TagLeftIcon} from '@chakra-ui/react';
+, Heading, Modal, ModalOverlay, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, Wrap, WrapItem, Button, Divider, Input, InputGroup, InputLeftElement, extendTheme, Grid, GridItem, useDisclosure, useColorMode, theme, Avatar, Tag, TagLeftIcon, HStack, Stack} from '@chakra-ui/react';
 import { modalAnatomy as parts } from '@chakra-ui/anatomy'
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/styled-system'
 //componentes
@@ -315,45 +315,54 @@ const Home = () => {
 
    {/* ------------AQUI ACABAM DENUNCIAS------------*/}
 
-           <Flex justifyContent='space-between'>
+           <HStack w='full' h='100vh'>
 
-              <Flex flexDirection='column'>
+              <Flex w='full' h='full' >
+                <Flex display={{base: 'flex', md: 'none'}}>
+                    <Heading fontSize='1xl' color='#338bb0' >Instituições</Heading>
+                    <InputGroup >  
+                            <InputLeftElement pointerEvents='none'>
+                                <FiSearch color='white' />
+                            </InputLeftElement>
+                            <Input /* onSubmit= */ w='280px' color='white' placeholder='Busque por instituições' _placeholder={{color: "white"}} bg='#338BB0'/>
+                        </InputGroup>
+                </Flex>
 
-              <Wrap spacing='50px' m='80px'>
-                {instituicoes.map((instituicao) => (
-                      <WrapItem key={instituicao.usu_cod}>
-                              <CardInst instituicao={instituicao}/>
-                      </WrapItem>
-                ))}
+                    <Grid templateColumns={{base: '1fr', md: '1fr 1fr 1fr'}} gap={4} p={20}>
+  {instituicoes.map((instituicao) => (
+    <GridItem key={instituicao.usu_cod}>
+      <CardInst instituicao={instituicao} />
+    </GridItem>
+  ))}
+</Grid>
                       
 
-                  </Wrap>
+                 
               </Flex>
 
-              <Flex flexDirection='column' p='120px' >
+              <Flex w='full' h='full' alignItems='center' display={{base: 'none', md: 'flex'}} justifyContent='center' >
+                  <Stack w='full' maxW='md' spacing={4}>
+                  <Heading fontSize={{base: '1xl', md: '3xl'}} color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Instituições</Heading>
+                 
+                    <Text fontSize={{ base: '16px', md: '19px'}}>
+                      Conheça as <b>instituições</b> que poderão resolver os problemas de seu <b>bairro</b>
+                    </Text>
+                    
+                    <InputGroup >  
+                            <InputLeftElement pointerEvents='none'>
+                                <FiSearch color='white' />
+                            </InputLeftElement>
+                            <Input /* onSubmit= */ w='280px' color='white' placeholder='Busque por instituições' _placeholder={{color: "white"}} bg='#338BB0'/>
+                        </InputGroup>
+              
+                  </Stack>
+          
 
-                <Box>
-                  <Text color='#338BB0' fontSize={{base: '28px', md: '35px', lg:'36px'}} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Instituições</Text>
-                </Box>
-
-                <Box mt='50px'>
-                  <Text fontSize={{base: '21px', md: '25px', lg:'25px'}}>
-                    Conheça as <b>instituições</b> que poderão resolver os problemas de seu <b>bairro</b>
-                  </Text>
-                </Box>
-
-                <Box mt='100px' w={{base: '5%', md: '40%', xl: '100%'}}>
-                      <InputGroup>
-                           <InputLeftElement pointerEvents='none'>
-                               <FiSearch color='white' />
-                           </InputLeftElement>
-                           <Input /* onSubmit= */ w='280px' color='white' placeholder='Busque por instituições' _placeholder={{color: "white"}} bg='#338BB0'/>
-                       </InputGroup>
-              </Box>
+         
 
               </Flex>
-           </Flex>
-
+        
+          </HStack>
            
          </Box>
       {/* ------------E AQUI INSTITUIÇOES------------*/}
