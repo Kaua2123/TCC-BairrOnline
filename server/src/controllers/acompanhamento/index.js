@@ -33,6 +33,18 @@ module.exports = {
 
          });
 
+         //notificação vai ter que ser gerada/postada aqui, logo ao ser criado o acompanhamento. o resto
+         //será feito no controllers das mesmas
+         const notData = new Date().toISOString();
+
+         await knex('notificacao').insert({
+            not_titulo: `Sua denúncia foi assumida pela Instituição: `,
+            not_mensagem: '',
+            not_data: notData,
+            usuario_usu_cod,
+            denuncias_den_cod
+         })
+
             return res.status(201).json({ message: 'Acompanhamento criado com sucesso.'});
 
         } catch(error){

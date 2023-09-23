@@ -13,7 +13,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //icones
-import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineIdcard, AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineMail } from 'react-icons/ai';
 import { AiFillEye } from 'react-icons/ai';
 import { AiFillEyeInvisible } from 'react-icons/ai';
@@ -182,7 +182,7 @@ const Cadastro = () => {
           <FormLabel>CPF</FormLabel>
           <InputGroup>
             <InputLeftElement>
-              <CiLocationOn />
+              <AiOutlineIdcard />
             </InputLeftElement>
             <Input placeholder='Digite seu CPF' borderColor='black' required type='number' value={usuCPF} onChange={(e) => {
               setUsuCPF(e.target.value)
