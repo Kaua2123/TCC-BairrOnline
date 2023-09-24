@@ -47,6 +47,8 @@ routes.get("/getAcompanhamento", controllersAcomp.getAcompanhamentos);
 
 //notificações
 routes.get("/", controllersNotificacoes.raiz);
+routes.post("/msgNotificacao", controllersNotificacoes.msgNotificacao);
 routes.get("/getNotificacoes",  autentica, controllersNotificacoes.getNotificacoes);
+
 
 module.exports = routes;

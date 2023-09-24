@@ -1,4 +1,4 @@
-import { Card, CardHeader, Heading, CardBody, Divider, CardFooter, Image, Text, Box, Button, Flex, Avatar, Icon, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, Center, useToast, HStack, Tag, TagLabel, TagLeftIcon, ChakraProvider } from "@chakra-ui/react";
+import { Card, CardHeader, Heading, CardBody, Divider, FormControl, CardFooter, Image, Text, Box, Button, Flex, Avatar, Icon, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, Center, useToast, HStack, Tag, TagLabel, TagLeftIcon, ChakraProvider, FormLabel, Input } from "@chakra-ui/react";
 import { BsChatSquareText } from "react-icons/bs";
 import { MdOutlineReportProblem } from "react-icons/md";
 import CardCom from "./CardCom";
@@ -27,12 +27,16 @@ import { FaHandshake } from "react-icons/fa";
 
 const CardGrande = ({denuncia}) => {
 
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   const [comments, setComments] = useState([]);
   const [denCod, setDenCod] = useState('');
   const [acoProgresso, setAcoProgresso] = useState('');
   const [acoData, setAcoData] = useState('');
   const [usuCod, setUsuCod] = useState('');
   const [usuTipo, setUsuTipo] = useState('');
+  const [notMensagem, setNotMensagem] = useState('');
+  const [notTitulo, setNotTitulo] = useState('');
 
   const toast = useToast();
 
@@ -100,6 +104,37 @@ const CardGrande = ({denuncia}) => {
     })
     }
 
+    const enviaMsgNotificacao = async () => {
+
+      const token = localStorage.getItem('token'); //pegar o token e decodificar
+      if(!token){
+        toast({
+          title: 'Instituicao não autenticado',
+          description: 'Logue para assumir a denúncia.',
+          status: 'error',
+          duration: 4000,
+          isClosable: true
+        })
+        return;
+      }
+
+      const decodificaToken: any = await jwt_decode(token);
+
+      axios.post('http://localhost:3344/msgNotificacao', {
+        not_titulo: notTitulo,
+        not_mensagem: notMensagem,
+        not_data: new Date(),
+        usuario_usu_cod: decodificaToken.usu_cod,
+        denuncias_den_cod: denuncia.den_cod
+      })
+      .then((response) => {
+        console.log('msg enviada');
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+    }
+
 
 
   const handleCommentSubmit = (comment) => {setComments(
@@ -108,7 +143,7 @@ const CardGrande = ({denuncia}) => {
     ]
   )}
 
-  
+
 
     return(
         <ChakraProvider>
@@ -121,10 +156,10 @@ const CardGrande = ({denuncia}) => {
 
         <Box>
           <Heading fontSize={{base: '12px', md: '14px', lg: '16px'}}>{denuncia.usu_nome}</Heading>
-          
+
         </Box>
       </Flex>
-    
+
     </Flex>
   </CardHeader>
   <CardBody>
@@ -132,12 +167,12 @@ const CardGrande = ({denuncia}) => {
     <Text fontWeight='normal' textAlign='center' borderRadius='7px' bgColor='#338BB0' color='white' w='100%' mt='-20px'  fontSize={{ base: '14px', md: '18px', lg: '25px' }} fontFamily='BreeSerif-Regular' >{denuncia.den_nome}</Text>
     </Center>
     <Flex flexDirection='column' mt='15px' ml='-18px' color='gray'>
-    
+
     <Tag bg='white' color='gray' fontSize={{base: '12px', md: '14px', lg: '16px'}}>
       <TagLeftIcon as={CiLocationOn} />
       <Text fontFamily='BreeSerif-Regular'>{denuncia.den_bairro}</Text>
     </Tag>
- 
+
     <Tag bg='white' color='gray' fontSize={{base: '12px', md: '14px', lg: '16px'}}>
     <TagLeftIcon as={SiOpenstreetmap} />
     <Text fontFamily='BreeSerif-Regular'>{denuncia.den_problema} </Text>
@@ -172,10 +207,41 @@ const CardGrande = ({denuncia}) => {
     </Button>
 
     {usuTipo === 'instituicao' && (
-      <Button onClick={criarAcompanhamento} color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<FaHandshake />}>
+      <Button onClick={onOpen} color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<FaHandshake />}>
       Assumir denuncia
     </Button>
     )}
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Assumir denúncia</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+              <FormControl>
+              <Heading fontSize='1xl' color='#338bb0'>Diga algo para o denunciante</Heading>
+              <FormLabel>Titulo da mensagem</FormLabel>
+              <Input type='text' onChange={(e) => {
+                setNotTitulo(e.target.value);
+              }}/>
+
+                <FormLabel>Mensagem</FormLabel>
+                <Input type='text' onChange={(e) => {
+                  setNotMensagem(e.target.value);
+                }}/>
+
+
+              </FormControl>
+              </ModalBody>
+
+              <ModalFooter>
+                <Button onClick={() => {
+                  criarAcompanhamento();
+                  enviaMsgNotificacao();
+                }} bgColor='#338bb0' color='white' _hover={{color: '#338bb0', backgroundColor: 'white'}}>Concluir</Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+
 
   </CardFooter>
 </Card>

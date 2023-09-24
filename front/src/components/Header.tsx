@@ -19,6 +19,7 @@ import Logo from '../img/logo.svg';
 import { MenuOutlined } from "@ant-design/icons";
 import { AiOutlineBell, AiOutlineUser  } from "react-icons/ai";
 import { BiSolidInstitution } from 'react-icons/bi';
+import { MdBusiness } from 'react-icons/md';
 import { MdOutlineLogout } from 'react-icons/md';
 import { PiGearSixFill } from 'react-icons/pi'
 import {FaMoon, FaSun} from 'react-icons/fa'
@@ -128,27 +129,29 @@ export const HeaderUsu = () => {
     setSubMenuOpen(!isSubMenuOpen);
   }
 
- 
+
   async function getNotificacoes() {
     const token = localStorage.getItem('token'); //primeiro pegar o token, pois é uma rota protegida
     if (token) {
         axios.defaults.headers.common['Authorization'] = `${token}`;
       }
 
-    await  axios.get('http://localhost:3344/getNotificacoes')
+    await axios.get('http://localhost:3344/getNotificacoes')
       .then((response) => {
           setNotificacoes(response.data);
-          setTemNot(true);
+          if(response.data.length > 0){
+            setTemNot(true);
+          }
       })
       .catch((error) => {
           console.error(error);
       })
   }
-    
+
   useEffect(() => {
     getNotificacoes();
   }, [])
-  
+
 
 
 
@@ -238,9 +241,9 @@ export const HeaderUsu = () => {
         colorScheme="whiteAlpha"
 
       />
-                <Popover onOpen={() => setTemNot(false)}>
+                <Popover>
                   <PopoverTrigger>
-                  <Button variant={'ghost'} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
+                  <Button variant={'ghost'} onClick={() => setTemNot(false)} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
                   <AiOutlineBell  fill='white' size='2.6em' />
                   {temNot && (
                       <Badge
@@ -272,7 +275,7 @@ export const HeaderUsu = () => {
           {notificacoes.map((notificacao) => (
             <NotificacaoDen notificacao={notificacao}/>
           ))}
-                    
+
 
 
 
@@ -290,7 +293,7 @@ export const HeaderUsu = () => {
             colorScheme="whiteAlpha"
             borderRadius="full"
             onClick={aoClicarAvatar} // Chama a função quando o avatar é clicado
-          
+
           >
             <Avatar icon={<FaUserAlt />} />
           </MenuButton>
@@ -449,12 +452,12 @@ export const HeaderInst = () => {
             borderRadius="full"
             onClick={aoClicarAvatar} // Chama a função quando o avatar é clicado
           >
-            <Avatar icon={<BiSolidInstitution  size='30px'/>} />
+            <Avatar icon={<MdBusiness  size='30px'/>} />
           </MenuButton>
           <MenuList>
           <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
           ><Link to='/MeuPerfil'>Meu Perfil </Link> </MenuItem>
-           
+
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             ><Link to='/HomeInst'>Seção do Usuário </Link></MenuItem>
             <MenuItem onClick={deslogar}
@@ -556,7 +559,7 @@ export const HeaderADM = () => {
               display={['none', 'none', 'flex', 'flex']}>
                  <Link smooth to='/HomeADM'>Usuários</Link>
               </Button>
-              
+
             </HStack>
 
             <Spacer/>
@@ -568,9 +571,9 @@ export const HeaderADM = () => {
 
 
 
-            
+
             <HStack m={3}>
-     
+
             <Menu isOpen={isSubMenuOpen} >
           <MenuButton
             as={Button}
@@ -588,7 +591,7 @@ export const HeaderADM = () => {
             {/* Opções de menu */}
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             icon={<AiOutlineUser size='20px'/>}>Meu Perfil</MenuItem>
-            
+
              <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             ><Link to='/HomeADM'>Administração </Link></MenuItem>
             <MenuItem onClick={deslogar}
@@ -599,7 +602,7 @@ export const HeaderADM = () => {
 
 
             </HStack>
-         
+
 
 
       </Flex>
