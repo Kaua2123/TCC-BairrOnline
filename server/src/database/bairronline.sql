@@ -165,7 +165,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bairronline`.`notificacao` (
   `not_cod` INT NOT NULL AUTO_INCREMENT,
-  `not_titulo` VARCHAR(25) NOT NULL,
+  `not_titulo` VARCHAR(45) NOT NULL,
   `not_mensagem` MEDIUMTEXT NOT NULL,
   `not_data` DATE NOT NULL,
   `usuario_usu_cod` INT NOT NULL,

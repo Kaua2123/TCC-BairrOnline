@@ -13,9 +13,14 @@ module.exports = {
 
     async getNotificacoes(req, res){ //pegar as notificações
         try {
+
+            const {usu_cod} = req.usuario; //verificando o codigo do usuario logado
+
+
             const notificacoes = await knex('notificacao')
             .select('notificacao.*', 'denuncias.den_nome', 'denuncias.den_img')
-            .join('denuncias', 'notificacao.denuncias_den_cod', 'denuncias.den_cod');
+            .join('denuncias', 'notificacao.denuncias_den_cod', 'denuncias.den_cod')
+            // .where('notificacao.usuario_usu_cod', usu_cod);
 
             if (!notificacoes) {
                 return res.status(400).json({error: 'Nenhuma notificação.'})

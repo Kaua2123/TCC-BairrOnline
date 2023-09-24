@@ -3,7 +3,7 @@
 import { Menu,Image, MenuButton, Button,  MenuList, MenuItem,
   Center, Flex, HStack, Spacer,Popover,PopoverTrigger,
   PopoverContent,PopoverHeader,PopoverBody,
-  PopoverArrow, PopoverCloseButton, AvatarBadge, Text, useToast, useColorMode, Icon } from "@chakra-ui/react";
+  PopoverArrow, PopoverCloseButton, Badge, AvatarBadge, Text, useToast, useColorMode, Icon } from "@chakra-ui/react";
 import { Avatar, Box, IconButton } from "@chakra-ui/react";
 
 //react
@@ -25,9 +25,11 @@ import {FaMoon, FaSun} from 'react-icons/fa'
 
 
 //componentes
- import { NotfiInst } from "./infoDen";
-import { useState } from "react";
+ import { NotificacaoDen } from "./NotificacaoDen";
+import { useState, useEffect } from "react";
 
+import axios from 'axios';
+import { NotificacaoInst } from "./NotificacaoInst";
 
 
 const Header = () => {
@@ -101,6 +103,8 @@ const Header = () => {
 export const HeaderUsu = () => {
 
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+  const [notificacoes, setNotificacoes] = useState([]);
+  const [temNot, setTemNot] = useState(false);
   const toast = useToast();
   const {colorMode, toggleColorMode} = useColorMode();
 
@@ -123,6 +127,28 @@ export const HeaderUsu = () => {
   const aoClicarAvatar = () => {
     setSubMenuOpen(!isSubMenuOpen);
   }
+
+ 
+  async function getNotificacoes() {
+    const token = localStorage.getItem('token'); //primeiro pegar o token, pois é uma rota protegida
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `${token}`;
+      }
+
+    await  axios.get('http://localhost:3344/getNotificacoes')
+      .then((response) => {
+          setNotificacoes(response.data);
+          setTemNot(true);
+      })
+      .catch((error) => {
+          console.error(error);
+      })
+  }
+    
+  useEffect(() => {
+    getNotificacoes();
+  }, [])
+  
 
 
 
@@ -212,10 +238,21 @@ export const HeaderUsu = () => {
         colorScheme="whiteAlpha"
 
       />
-                <Popover>
+                <Popover onOpen={() => setTemNot(false)}>
                   <PopoverTrigger>
                   <Button variant={'ghost'} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
                   <AiOutlineBell  fill='white' size='2.6em' />
+                  {temNot && (
+                      <Badge
+                      position="absolute"
+                      top={9}
+                      right={1}
+                      bg="#338bb0"
+                      borderRadius="full"
+                      w="10px"
+                      h="10px"
+                    ></Badge>
+                  )}
                   </Button>
                   </PopoverTrigger>
                   <PopoverContent w={'max-content'} height={'400px'} overflowY={'auto'}>
@@ -232,10 +269,11 @@ export const HeaderUsu = () => {
                    </PopoverHeader>
                    <PopoverBody display={'flex'} h={'800px'} maxW={'600px'} maxHeight={'maxcontent'} overflowY={'auto'} flexDirection={'column'} padding={'0'} alignItems={'flex-start'}>
 
-                    <NotfiInst/>
-                    <NotfiInst/>
-                    <NotfiInst/>
-                    <NotfiInst/>
+          {notificacoes.map((notificacao) => (
+            <NotificacaoDen notificacao={notificacao}/>
+          ))}
+                    
+
 
 
                   </PopoverBody>
@@ -391,10 +429,10 @@ export const HeaderInst = () => {
                    </PopoverHeader>
                    <PopoverBody display={'flex'} h={'800px'} maxW={'600px'} maxHeight={'maxcontent'} overflowY={'auto'} flexDirection={'column'} padding={'0'} alignItems={'flex-start'}>
 
-                    <NotfiInst/>
-                    <NotfiInst/>
-                    <NotfiInst/>
-                    <NotfiInst/>
+                    <NotificacaoInst/>
+                    <NotificacaoInst/>
+                    <NotificacaoInst/>
+                    <NotificacaoInst/>
 
 
                   </PopoverBody>
