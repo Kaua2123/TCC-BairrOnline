@@ -218,14 +218,9 @@ const CardGrande = ({denuncia}) => {
               <ModalCloseButton />
               <ModalBody>
               <FormControl>
-              <Heading fontSize='1xl' color='#338bb0'>Diga algo para o denunciante</Heading>
-              <FormLabel>Titulo da mensagem</FormLabel>
-              <Input type='text' onChange={(e) => {
-                setNotTitulo(e.target.value);
-              }}/>
+              <Heading fontSize='1xl'>Diga algo para o denunciante</Heading>
 
-                <FormLabel>Mensagem</FormLabel>
-                <Input type='text' onChange={(e) => {
+                <Input mt={3} type='text' onChange={(e) => {
                   setNotMensagem(e.target.value);
                 }}/>
 

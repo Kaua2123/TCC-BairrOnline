@@ -1,4 +1,4 @@
-import { HStack,Image, Box, Text, Icon, Checkbox,Hide, Heading, ChakraProvider} from "@chakra-ui/react"
+import { HStack,Image, Box, Text, Icon, Checkbox,Hide, Heading, ChakraProvider, Card, VStack} from "@chakra-ui/react"
 import imden from './../img/buraco.jpg'
 import '../App.css';
 
@@ -9,6 +9,9 @@ import { FiTrash } from "react-icons/fi";
 import { MdBusiness } from 'react-icons/md';
 import { AiOutlineCalendar, AiOutlineMessage } from 'react-icons/ai';
 
+import semImgDen from '../img/semImgDen.png';
+
+
 export const NotificacaoDen = ({notificacao}) => {
 
 const dataFormatada = new Date(notificacao.not_data).toLocaleDateString("pt-BR");
@@ -17,36 +20,36 @@ const dataFormatada = new Date(notificacao.not_data).toLocaleDateString("pt-BR")
         //(EXEMPLO) ISSO TEM QUE TAR VAZIO PQ BACKEND
 
     <ChakraProvider>
-        <Box w='450px'border={'#F5F5F5 solid '}height={'200px'}  _hover={{bgColor:'#f5f5f5', cursor:'pointer'}} padding={'10px'} >
+         <Card ml={5} mt={3} w='425px' boxShadow='lg'> 
+         <Heading color='#338bb0' fontSize='1xl'> Denúncia assumida! </Heading> 
+            <HStack gap={5}>
 
-         <Text fontSize={'12pt'} color={'blackAlpha.700'} fontFamily='BreeSerif-Regular'></Text>
-            <HStack>
-
-                <label htmlFor="CheckNot">
-                 <Box className="Boxnot" w="150px" h={'100px'} maxH={'120px'} maxW={'200px'}>
-                  <Image src={imden} height={'inherit'} width={'inherit'}/>
-                 </Box>
-                </label>
-
-
-
-                <Box display={"flex"} flexDirection={'column'} w={'55%'} h={'100px'} paddingLeft={'5px'} paddingRight={'5px'} >
-                    {/*padding é melhor quando usado no elemento que ele precisa, tipo o box que vai conter os valores, usando no container principal ficou fei*/}
-
-                    <Heading color='#338bb0' fontSize='1xl'> Denúncia assumida! </Heading> {/*Titulo entra aqui*/}
-                    <HStack>
+                 {notificacao.den_img ? (
+                        <Image src={`http://localhost:3344/retornaImagem/${notificacao.den_img}`} boxSize='140px'/>
+                    ) : (
+                        <Image src={semImgDen} boxSize='140px'></Image>
+                    )}
+        
+                   {/*Titulo entra aqui*/}
+                    
+                <VStack align='center'>
                     <Icon as={MdBusiness}/>
                     <Text>   {notificacao.inst_nome}</Text>
+                </VStack>
+                
+                <VStack>
                     <Icon as={AiOutlineCalendar}/>
                     <Text> {dataFormatada}</Text>
+                </VStack>
+
+                    <VStack>
                     <Icon as={AiOutlineMessage}/>
                     <Text>{notificacao.not_mensagem}</Text>
-                    </HStack>
-                    
-                  <Icon as={FiTrash} mr={2} _hover={{color: '#338bb0'}} />
-                </Box>
+                    </VStack>
             </HStack>
-        </Box>
+
+            <Icon as={FiTrash} mr={2} cursor='pointer' _hover={{color: '#338bb0'}} />
+            </Card>
         </ChakraProvider>
     )
 }
