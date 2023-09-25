@@ -24,13 +24,15 @@ const CardTarefa = ({acompanhamento}) => {
     index: 1,
     count: steps.length,
   })
+  const [subtarefas, setSubtarefas] = useState([]);
+  const [novaSubtarefa, setNovasubtarefa] = useState("");
 
-
-  
-
-   const denCod = 3;
-
-  
+  const adicionarSubtarefa = () => {
+    if(novaSubtarefa.trim() !== "") {
+      setSubtarefas([...subtarefas, novaSubtarefa]);
+      setNovasubtarefa("");
+    }
+  };
 
   return (
 
@@ -45,6 +47,8 @@ const CardTarefa = ({acompanhamento}) => {
           <ModalCloseButton />
           <ModalBody>
             <Flex flexDirection="column">
+              <Text fontSize='28px' ml='300px' mt='-10px' color='#338BB0'><b>Resolução da denúncia</b></Text>
+              
               <Stepper size='lg' index={activeStep}>
                 {steps.map((step, index) => (
                   <Step key={index} onClick={() => setActiveStep(index)}>
@@ -71,20 +75,30 @@ const CardTarefa = ({acompanhamento}) => {
                       <Text fontSize="20px">
                         <b>Adicionar subtarefa</b>
                       </Text>
-                      <Input type="text" w='150px' borderColor="gray" mt='10px' />
+                      <Input type="text" w='150px' borderColor="gray" mt='10px' value={novaSubtarefa}
+                       onChange={(e) => setNovasubtarefa(e.target.value)}/>
                       <Stack></Stack>
                       <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }}
-                        mt='-67px' ml='160px'>
+                        mt='-67px' ml='160px' onClick={adicionarSubtarefa}>
                         Adicionar
                       </Button>
                     </Box>
-                    <Box ml="600px" mt="-110px">
+                    <Box mt="20px" maxH="5px"> 
+                       <Stack >
+                      {subtarefas.map((subtarefa, index) => (
+                     <div key={index}>
+                     <p style={{ fontWeight: 'bold', fontFamily: 'Arial' }}>{subtarefa}</p>
+                   </div>
+                 ))}
+                        </Stack>
+                      </Box>
+                    <Box ml="600px" mt="-130px">
                       <Text fontSize="20px">
-                        <b>Enviar mensagem para o denunciante</b>
+                        <b>Mensagem para o denunciante</b>
                       </Text>
                       <Textarea borderColor="gray" />
-                      <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }} mt='10px'
-                        ml='300px'>
+                      <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }}
+                      w="90px" h="45px " mt='10px'ml='300px'>
                         Enviar
                       </Button>
                     </Box>

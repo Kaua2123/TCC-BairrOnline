@@ -52,7 +52,6 @@ const HomeInst = () => {
   
 
  
-  const denCod = 4;
 
   const getAcompanhamento = async () => {
     await axios.get(`http://localhost:3344/getAcompanhamento`)
