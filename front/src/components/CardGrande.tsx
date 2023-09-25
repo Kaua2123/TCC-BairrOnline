@@ -57,13 +57,6 @@ const CardGrande = ({denuncia}) => {
 
       const token = localStorage.getItem('token');          //pegar o token e decodificar
       if(!token){
-        toast({
-          title: 'Instituicao não autenticado',
-          description: 'Logue para assumir a denúncia.',
-          status: 'error',
-          duration: 4000,
-          isClosable: true
-        })
         return;
       }
       const decodificaToken: any = await jwt_decode(token);
@@ -108,13 +101,6 @@ const CardGrande = ({denuncia}) => {
 
       const token = localStorage.getItem('token'); //pegar o token e decodificar
       if(!token){
-        toast({
-          title: 'Instituicao não autenticado',
-          description: 'Logue para assumir a denúncia.',
-          status: 'error',
-          duration: 4000,
-          isClosable: true
-        })
         return;
       }
 
