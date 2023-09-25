@@ -23,6 +23,7 @@ module.exports = {
         await knex('notificacao').insert({
           not_titulo,
           not_mensagem,
+          not_data: new Date().toISOString(),
           usuario_usu_cod: denunciaExists.usuario_usu_cod,
           denuncias_den_cod,
         })
