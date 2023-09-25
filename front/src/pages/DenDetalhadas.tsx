@@ -284,28 +284,26 @@ const MinhasDen = () => {
         </Center>
 
 
-      <Box m='100px'>
-        <HStack spacing={8} justifyContent='center'>
-          <InputGroup>
+      <Box m='100px' borderRadius='12px' h='40vh' display='flex' alignItems='center' boxShadow='lg'>
+        
+        <VStack w='full'>
+        <VStack justify='center'>
+          <Text fontFamily='BreeSerif-Regular' fontSize='45px' color='#338bb0'>Simples,  e fácil.</Text>
+          <Text>Abaixo, pesquise suas denúncias e faça a reversão das mesmas. Pressione ENTER para validar sua pesquisa.</Text>
+        </VStack>
+
+          <InputGroup mt={3} justifyContent='center'>
             <InputLeftElement>
-              <FiSearch />
+              <FiSearch color='white' />
             </InputLeftElement>
-            <Input type='text' bgColor='white' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
+            <Input type='text' w='30vw' color='white' _placeholder={{color: "white"}} bg='#338BB0' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
 
           </InputGroup>
+          </VStack>
+    
+         
 
-          <InputGroup>
-            <InputLeftElement>
-              <BsListUl />
-            </InputLeftElement>
-            <Input type='text' bgColor='white' placeholder="Bairros"></Input>
-          </InputGroup>
-
-
-        </HStack>
-        <span>
-          <Kbd>Enter</Kbd>
-        </span>
+       
         </Box>
 
         <Box bgColor='gray.200' minH='240px' h='auto'>

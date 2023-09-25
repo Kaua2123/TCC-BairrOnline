@@ -190,7 +190,7 @@ const closeAlertDialog = () => {
           <Flex w='full' h='full' display={{base: 'none', md: 'flex'}} id='denuncie'>
 
           <Flex flexDirection='column' alignItems='center'>
-            <Heading mt={14} fontSize='5xl' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='none'>Olá, denunciante!</Heading>
+            <Text mt={14} fontFamily='BreeSerif-Regular' fontWeight='normal' color='#338bb0' fontSize='45px'>Olá, denunciante!</Text>
             <Image src={sectionOla} objectFit='cover' zIndex='-1' />
           </Flex>
 
