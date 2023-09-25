@@ -214,54 +214,7 @@ const MinhasDen = () => {
           </Box>
         </Flex>
       </Flex>
-      <Flex justify='space-between' h='53em'>
-        <Flex direction='column' bgColor='gray.200' w='50%' alignItems='center' justifyContent='center'>
-          <Box m='120px' boxShadow='lg' bgColor='white' w='600px' h='80px' textAlign='center' alignItems='center'>
-
-            <Text fontFamily='BreeSerif-Regular' fontSize='35px' justifyContent='center'>
-              Funcionalidades:
-            </Text>
-          </Box>
-
-          <Center>
-            <Grid templateColumns="repeat(3, 1fr)" gap={8} w='57%' alignContent='center' alignItems='center' mr={32}>
-
-              <GridItem colSpan={1}>
-                <Card boxShadow='lg' w='150px' minH='150px' bg='white' display='flex' justifyContent='center' alignItems='center'>
-                  <FaRegTrashAlt size='70px' />
-                </Card>
-                <Text mt='1em' fontSize='18px' textAlign='center'>Delete as suas<br /> denúncias de  forma<br /> simples e facilitada</Text>
-              </GridItem>
-
-
-              <GridItem colSpan={1}>
-                <Card boxShadow='lg' w='150px' minH='150px' bg='white' display='flex' justifyContent='center' alignItems='center'>
-                  <FaUndo size='70px' />
-                </Card>
-                <Text mt='1em' fontSize='18px' textAlign='center'>Excluiu alguma<br /> denúncia por engano?<br /> Basta reverter aqui</Text>
-              </GridItem>
-
-              <GridItem colSpan={1}>
-                <Card boxShadow='lg' w='150px' minH='150px' bg='white' display='flex' justifyContent='center' alignItems='center'>
-                  <PiMagnifyingGlassBold size='70px' />
-                </Card>
-
-                <Text mt='1em' fontSize='18px' textAlign='center'> Acompanhe suas<br /> denúncias quanto<br /> ao feedback das instituições</Text>
-
-              </GridItem>
-            </Grid>
-          </Center>
-
-        </Flex>
-        <Flex direction='column' justify='center' alignItems='center' mt={4}>
-          <VStack spacing={4} alignItems='center' mr={40}>
-            <FiFilter size='320px' />
-            <Text fontSize='25px' mt='40px'>Não se esqueça de utilizar o filtro para<br /> uma melhor eficiência no manuseio<br /> das denúncias.
-              Ainda, também<br /> na visualização das denúncias feitas<br /> por outros usuários. Denuncie conosco!
-            </Text>
-          </VStack>
-        </Flex>
-      </Flex>
+     
 
       <Box pt='40px'>
         <Center>
