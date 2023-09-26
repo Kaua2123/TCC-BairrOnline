@@ -64,7 +64,7 @@ const MinhasDen = () => {
     const token = localStorage.getItem('token');
     const decodificaToken: any = jwtDecode(token);
 
-    if(decodificaToken.usu_tipo !== 'denunciante'){
+    if (decodificaToken.usu_tipo !== 'denunciante') {
       navigate('/');
     }
   }, [])
@@ -181,40 +181,36 @@ const MinhasDen = () => {
     <ChakraProvider>
       {headerComponent}
 
-      <Flex justify='space-between' direction={{ base: 'column', md: 'row' }}>
-        <Flex direction='column' align='flex-end' bgColor='#338bb0' w='50%' h='40em'>
-          <Box m='120px'>
-            <Text fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='normal' color='white'>Denúncias detalhadas</Text>
-            <Text fontSize='20px' color='white' >Acompanhar denúncias, reverter exclusão <br /> e ver suas denúncias</Text>
-            <Text fontSize='15px' color='white'>Exibição detalhada das funções do usuário</Text>
-          </Box>
-        </Flex>
-
-        <Flex direction='column' w='50%' flexWrap='wrap' align='flex-end'>
-          <Box m='200px'>
-            <Text mt='-40px' py='60px' fontSize='35px' color='#338bb0' fontFamily='BreeSerif-Regular' align='center'>Acesso rápido</Text>
-            <HStack spacing={8}>
+      <HStack w='full' h='80vh'>
+        <Flex w='full' h='full'>
+          <VStack m={20} alignItems='flex-start'>
+            <Text color='#338bb0' fontSize='50px' fontFamily='BreeSerif-Regular'>Reverta suas denúncias, <br/> faça a diferença.</Text>
+            <Text mt={5}>Visualize o acompanhamento das suas denúncias e realize a reversão dos que foram excluídos. <br/> Seu bairro precisa de você.</Text>
+            <HStack spacing={8} mt={10}>
 
               <Link to={'/'}>
-                <IconButton boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaRegTrashAlt size='40px' />}></IconButton >
+                <IconButton boxShadow='lg' boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaRegTrashAlt size='40px' />}></IconButton >
               </Link>
 
 
               <Link to={'/'}>
-                <IconButton boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaUndo size='40px' />}></IconButton >
+                <IconButton boxShadow='lg' boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaUndo size='40px' />}></IconButton >
               </Link>
 
 
               <Link to={'/'}>
-                <IconButton boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<PiMagnifyingGlassBold size='40px' />}></IconButton >
+                <IconButton boxShadow='lg' boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<PiMagnifyingGlassBold size='40px' />}></IconButton >
               </Link>
 
             </HStack>
 
-          </Box>
+          </VStack>
         </Flex>
-      </Flex>
-     
+        <Flex>
+          <Image></Image>
+        </Flex>
+      </HStack>
+
 
       <Box pt='40px'>
         <Center>
@@ -225,70 +221,70 @@ const MinhasDen = () => {
 
       <Box pt='40px'>
         <Center>
-          <Text color="#338bb0" fontSize='35px' pb='80px' fontFamily='BreeSerif-Regular'>Denúncias Excluidas</Text>
+          <Text color="#338bb0" fontSize='35px' pb='30px' fontFamily='BreeSerif-Regular'>Denúncias Excluidas</Text>
         </Center>
 
-<Center>
-        <Box h='auto' maxH='900px' w='1400px'  bg='white' boxShadow='lg' >
+        <Center>
+          <Box h='auto' maxH='900px' w='1400px' bg='white' boxShadow='lg' >
 
-          <SlideDenExcluida denunciasExcluidas={denunciasExcluidas}/>
+            <SlideDenExcluida denunciasExcluidas={denunciasExcluidas} />
 
-        </Box>
+          </Box>
         </Center>
 
 
-      <Box m='100px' borderRadius='12px' h='40vh' display='flex' alignItems='center' boxShadow='lg'>
-        
-        <VStack w='full'>
-        <VStack justify='center'>
-          <Text fontFamily='BreeSerif-Regular' fontSize='45px' color='#338bb0'>Simples,  e fácil.</Text>
-          <Text>Abaixo, pesquise suas denúncias e faça a reversão das mesmas. Pressione ENTER para validar sua pesquisa.</Text>
-        </VStack>
+        <Box m='100px' borderRadius='12px' h='40vh' display='flex' alignItems='center' boxShadow='lg'>
 
-          <InputGroup mt={3} justifyContent='center'>
-            <InputLeftElement>
-              <FiSearch color='white' />
-            </InputLeftElement>
-            <Input type='text' w='30vw' color='white' _placeholder={{color: "white"}} bg='#338BB0' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
+          <VStack w='full'>
+            <VStack justify='center'>
+              <Text fontFamily='BreeSerif-Regular' fontSize='45px' color='#338bb0'>Simples,  e fácil.</Text>
+              <Text>Abaixo, pesquise suas denúncias e faça a reversão das mesmas. Pressione ENTER para validar sua pesquisa.</Text>
+            </VStack>
 
-          </InputGroup>
+            <InputGroup mt={3} justifyContent='center'>
+              <InputLeftElement>
+                <FiSearch color='white' />
+              </InputLeftElement>
+              <Input type='text' w='30vw' color='white' _placeholder={{ color: "white" }} bg='#338BB0' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
+
+            </InputGroup>
           </VStack>
-    
-         
 
-       
+
+
+
         </Box>
 
         <Box bgColor='gray.200' minH='240px' h='auto'>
 
 
 
-            <Box m='100px' alignItems='center' justifyContent='center'>
+          <Box m='100px' alignItems='center' justifyContent='center'>
             {denunciasExibidas.map((denunciaExcluida, index) => (
               <>
 
 
                 <Box key={index} pt='20px'   >
                   <Center>
-                  <Card
-                    direction={{ base: 'column', sm: 'row' }}
-                    overflow='hidden'
-                    variant='outline'
-                    bgColor='#f7f7f7'
-                    boxShadow='lg'
-                    marginBottom='20px'
-                    w={{base: '40em', md:'50em'}}
-                  >
-                    {denunciaExcluida.den_img ? (
-                      <Image
-                        objectFit='cover'
-                        maxW={{ base: '100%', sm: '200px' }}
-                        src={`http://localhost:3344/retornaImagem/${denunciaExcluida.den_img}`}
+                    <Card
+                      direction={{ base: 'column', sm: 'row' }}
+                      overflow='hidden'
+                      variant='outline'
+                      bgColor='#f7f7f7'
+                      boxShadow='lg'
+                      marginBottom='20px'
+                      w={{ base: '40em', md: '50em' }}
+                    >
+                      {denunciaExcluida.den_img ? (
+                        <Image
+                          objectFit='cover'
+                          maxW={{ base: '100%', sm: '200px' }}
+                          src={`http://localhost:3344/retornaImagem/${denunciaExcluida.den_img}`}
 
-                      />
-                    ) : (
-                      <Image src={semImgDen} maxW={{ base: '100%', sm: '200px' }} objectFit='cover' />
-                    )}
+                        />
+                      ) : (
+                        <Image src={semImgDen} maxW={{ base: '100%', sm: '200px' }} objectFit='cover' />
+                      )}
 
 
 
@@ -298,7 +294,7 @@ const MinhasDen = () => {
 
                         <Heading size='10px' color='gray' >EM {denunciaExcluida.den_bairro.toUpperCase()}</Heading>
                         <Heading size='10px' color='gray'>Data de exclusão: {denunciaExcluida.den_data_exclusao}</Heading>
-                        
+
                         <Text fontSize='18px' color='#338bb0'>
                           <Icon as={FaTrash} mr={2} />
                           Excluída
@@ -312,24 +308,24 @@ const MinhasDen = () => {
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' mt={24} bgColor='#338bb0' color='white' _hover={{color: '#338bb0', backgroundColor: 'white'}} onClick={reverterDenunciaExcluida}>
+                        <Button variant='solid' mt={24} bgColor='#338bb0' color='white' _hover={{ color: '#338bb0', backgroundColor: 'white' }} onClick={reverterDenunciaExcluida}>
                           Reverter
                         </Button>
                       </CardFooter>
 
-                  </Card>
+                    </Card>
                   </Center>
                 </Box>
               </>
             ))}
-            </Box>
+          </Box>
 
-            {denunciasExcluidasFiltradas.length > denunciasPorPagina * paginaAtual && (
+          {denunciasExcluidasFiltradas.length > denunciasPorPagina * paginaAtual && (
 
-              <Flex justifyContent='center' >
-                <Button bgColor='#338bb0' color='white' _hover={{color: '#338bb0', backgroundColor: 'white'}} onClick={carregarMaisDenuncias}>Ver mais</Button>
-              </Flex>
-            )}
+            <Flex justifyContent='center' >
+              <Button bgColor='#338bb0' color='white' _hover={{ color: '#338bb0', backgroundColor: 'white' }} onClick={carregarMaisDenuncias}>Ver mais</Button>
+            </Flex>
+          )}
 
 
 

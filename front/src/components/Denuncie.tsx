@@ -191,7 +191,7 @@ const Denuncie = () => {
 
 
               <Heading fontSize={{base: '1xl', md: '3xl'}} fontFamily='BreeSerif-Regular' fontWeight='normal' color='#338bb0'>Acompanhamento</Heading>
-              <Text fontSize={{ base: '16px', md: '19px' }}>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução destas. Você pode acompanhar as soluções na página Acompanhar Denúncias</Text>
+              <Text fontSize={{ base: '16px', md: '19px' }}>O apoio dos outros usuários às denúncias ajuda na visibilidade, fazendo com que instituições vejam e desejem assumir a solução destas. Você pode acompanhar as soluções na página Denúncias Detalhadas</Text>
               </Stack>
             </Flex>
 

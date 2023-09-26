@@ -158,7 +158,7 @@ export const HeaderUsu = () => {
   return(
 
 
-      <Flex w={{base: '79vw', md: '100%'}}   bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='dark-lg' >
+      <Flex w={{base: '79vw', md: '100%'}}   bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='lg' >
 
 
 {/*COMEÇA HEADERUSU NAV*/}
@@ -351,7 +351,7 @@ export const HeaderInst = () => {
 
 
 
-      <Flex w='100%'  bg={colorMode === 'light' ? '#322F2F' : 'gray.700'}  boxShadow='dark-lg' position={"sticky"} top={0} zIndex={2}>
+      <Flex w='100%'  bg={colorMode === 'light' ? '#322F2F' : 'gray.700'}  boxShadow='lg' position={"sticky"} top={0} zIndex={2}>
 
           <Center>
             <Menu>
@@ -507,7 +507,7 @@ export const HeaderADM = () => {
   return(
 
 
-      <Flex w='100%' bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='dark-lg' >
+      <Flex w='100%' bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='lg' >
 
 
 {/*COMEÇA HEADERUSU NAV*/}

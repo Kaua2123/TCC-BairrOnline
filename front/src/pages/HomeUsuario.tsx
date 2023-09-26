@@ -214,7 +214,7 @@ const closeAlertDialog = () => {
         <Box id='minhasDen'>
         <Flex justify='center'>
         
-            <Heading color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'> Suas denúncias </Heading>
+            <Text fontSize='35px' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'> Suas denúncias </Text>
          
         </Flex>
 
