@@ -12,6 +12,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 //imgs
 import Logo from '../img/logo.svg';
 import semImgDen from '../img/semImgDen.png';
+import xd from '../img/design teste 15.png'
 
 //icones
 import { FaUndo, FaTrash } from 'react-icons/fa';
@@ -186,40 +187,41 @@ const MinhasDen = () => {
           <VStack m={20} alignItems='flex-start'>
             <Text color='#338bb0' fontSize='50px' fontFamily='BreeSerif-Regular'>Reverta suas denúncias, <br/> faça a diferença.</Text>
             <Text mt={5}>Visualize o acompanhamento das suas denúncias e realize a reversão dos que foram excluídos. <br/> Seu bairro precisa de você.</Text>
-            <HStack spacing={8} mt={10}>
-
-              <Link to={'/'}>
-                <IconButton boxShadow='lg' boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaRegTrashAlt size='40px' />}></IconButton >
+            <HStack spacing={8} mt={10} bgColor='#5271ff' p={7} borderRadius='2xl' boxShadow='lg' >
+              <Link smooth to={'/DenDetalhadas#denExcluida'}>
+                <IconButton boxShadow='dark-lg' bgColor='white'  boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaRegTrashAlt size='40px' />}></IconButton >
               </Link>
 
 
-              <Link to={'/'}>
-                <IconButton boxShadow='lg' boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaUndo size='40px' />}></IconButton >
+              <Link smooth to={'/DenDetalhadas#reversaoDen'}>
+                <IconButton boxShadow='dark-lg' bgColor='white' boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaUndo size='40px' />}></IconButton >
               </Link>
 
 
-              <Link to={'/'}>
-                <IconButton boxShadow='lg' boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<PiMagnifyingGlassBold size='40px' />}></IconButton >
+              <Link smooth to={'/DenDetalhadas#acompanhaDen'}>
+                <IconButton boxShadow='dark-lg' bgColor='white' boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<PiMagnifyingGlassBold size='40px' />}></IconButton >
               </Link>
 
             </HStack>
 
+    
           </VStack>
+        
         </Flex>
-        <Flex>
-          <Image></Image>
-        </Flex>
+  
+        <Image src={xd} w='100%' objectFit='cover' position='absolute' zIndex='-1'/>
+      
       </HStack>
 
 
-      <Box pt='40px'>
+      <Box pt='40px' mt={20} id="acompanhaDen">
         <Center>
           <Text color="#338bb0" fontSize='35px' fontFamily='BreeSerif-Regular'>Acompanhar Denúncias</Text>
         </Center>
         <Box>Aq vai ter algo dps tlggggggg</Box>
       </Box>
 
-      <Box pt='40px'>
+      <Box pt='40px' id='denExcluida'>
         <Center>
           <Text color="#338bb0" fontSize='35px' pb='30px' fontFamily='BreeSerif-Regular'>Denúncias Excluidas</Text>
         </Center>
@@ -233,11 +235,11 @@ const MinhasDen = () => {
         </Center>
 
 
-        <Box m='100px' borderRadius='12px' h='40vh' display='flex' alignItems='center' boxShadow='lg'>
+        <Box m='100px' id='reversaoDen' borderRadius='12px' h='40vh' display='flex' alignItems='center' boxShadow='lg'>
 
           <VStack w='full'>
             <VStack justify='center'>
-              <Text fontFamily='BreeSerif-Regular' fontSize='45px' color='#338bb0'>Simples,  e fácil.</Text>
+              <Text fontFamily='BreeSerif-Regular' fontSize='45px' color='#338bb0'>Simples e fácil.</Text>
               <Text>Abaixo, pesquise suas denúncias e faça a reversão das mesmas. Pressione ENTER para validar sua pesquisa.</Text>
             </VStack>
 
