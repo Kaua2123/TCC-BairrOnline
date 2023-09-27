@@ -1,4 +1,4 @@
-import { HStack,Image, Box, Text, Flex, IconButton, MenuItem, MenuList, Icon, Checkbox,Hide, Heading, ChakraProvider, Card, VStack, Menu, MenuButton} from "@chakra-ui/react"
+import { HStack,Image, Box, Text, Flex, IconButton, MenuItem, MenuList, Icon, Checkbox,Hide, Heading, ChakraProvider, Card, VStack, Menu, MenuButton, useToast} from "@chakra-ui/react"
 
 import '../App.css';
 
@@ -15,9 +15,34 @@ import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import { BiDotsVertical } from "react-icons/bi";
 
 
-export const NotificacaoDen = ({notificacao}) => {
+export const NotificacaoDen = ({notificacao, notCod}) => {
 
 const dataFormatada = new Date(notificacao.not_data).toLocaleDateString("pt-BR");
+const toast = useToast();
+
+
+const deleteNotificacoes = (notCod) => {
+  
+  axios.delete(`http://localhost:3344/deleteNotificacoes/${notCod}`)
+  .then((response) => {
+    console.log("notificação deletada.")
+    toast({
+      title: 'Notificação deletada',
+      duration: 2000,
+      isClosable: true,
+      status: 'success'
+    })
+  })
+  .catch((error) => {
+    console.log("erro ao deletar notificação")
+    toast({
+      title: 'Erro ao deletar notificação',
+      duration: 2000,
+      isClosable: true,
+      status: 'error'
+    })
+  })
+}
 
     return(
         //(EXEMPLO) ISSO TEM QUE TAR VAZIO PQ BACKEND
@@ -39,7 +64,9 @@ const dataFormatada = new Date(notificacao.not_data).toLocaleDateString("pt-BR")
     _hover={{color: 'white', backgroundColor: '#338bb0'}}
   />
   <MenuList>
-    <MenuItem >
+    <MenuItem onClick={() => {
+      deleteNotificacoes(notCod);
+    }}>
       Apagar
     </MenuItem>
     <MenuItem >

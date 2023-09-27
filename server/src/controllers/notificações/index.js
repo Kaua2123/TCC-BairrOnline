@@ -56,4 +56,22 @@ module.exports = {
             return res.status(400).json({error: error.message});
         }
     },
+
+    async deleteNotificacoes(req, res){
+      try {
+
+        const {cod} = req.params;
+
+        const notificacoes = await knex('notificacao').where('not_cod', cod).first();
+        if (!notificacoes) {
+          return res.status(400).json({error: 'notificação inexistente.'})
+        }
+
+        await knex('notificacao').where('not_cod', cod).del();
+
+        return res.status(200).json({msg: 'Notificação deletada com sucesso.'})
+      } catch (error) {
+        return res.status(400).json({error: error.message});
+      }
+    },
 }

@@ -273,7 +273,7 @@ export const HeaderUsu = () => {
                    <PopoverBody display={'flex'} h={'800px'} maxW={'600px'} maxHeight={'maxcontent'} overflowY={'auto'} flexDirection={'column'} padding={'0'} alignItems={'flex-start'}>
 
           {notificacoes.map((notificacao) => (
-            <NotificacaoDen notificacao={notificacao}/>
+            <NotificacaoDen key={notificacao.not_cod} notCod={notificacao.not_cod} notificacao={notificacao} />
           ))}
 
 
