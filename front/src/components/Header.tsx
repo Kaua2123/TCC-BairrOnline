@@ -106,6 +106,7 @@ export const HeaderUsu = () => {
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
   const [notificacoes, setNotificacoes] = useState([]);
   const [temNot, setTemNot] = useState(false);
+  const [notLida, setNotLida] = useState(false);
   const toast = useToast();
   const {colorMode, toggleColorMode} = useColorMode();
 
@@ -234,13 +235,13 @@ export const HeaderUsu = () => {
             <Box display={'inherit'} alignSelf={'center'} paddingRight={'2vh'}>
               <HStack spacing={'20px'}>
 
-              <IconButton
+              {/* <IconButton
         aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
         icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
         onClick={toggleColorMode}
         colorScheme="whiteAlpha"
 
-      />
+      /> */}
                 <Popover>
                   <PopoverTrigger>
                   <Button variant={'ghost'} onClick={() => setTemNot(false)} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
@@ -404,13 +405,13 @@ export const HeaderInst = () => {
             <Box display={'inherit'} alignSelf={'center'} paddingRight={'2vh'}>
               <HStack spacing={'20px'}>
 
-              <IconButton
+              {/* <IconButton
         aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
         icon={colorMode === 'light' ? <FaMoon /> : <FaSun color='white' />}
         onClick={toggleColorMode}
         colorScheme="whiteAlpha"
 
-      />
+      /> */}
 
                 <Popover>
                   <PopoverTrigger>
