@@ -82,4 +82,17 @@ module.exports = {
         return res.status(400).json({error: error.message});
       }
     },
+
+    async notificacaoLida(req, res){
+      try {
+        const {cod} = req.params;
+
+        await knex('notificacao').where('not_cod', cod).update({not_lida: 0});
+
+        return res.status(200).json({msg: 'notificação marcada como lida.'})
+      }
+      catch (error) {
+        return res.status(400).json({error: error.message});
+      }
+    }
 }

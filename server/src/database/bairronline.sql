@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `bairronline`.`notificacao` (
   `not_titulo` VARCHAR(25) NOT NULL,
   `not_mensagem` MEDIUMTEXT NOT NULL,
   `not_data` DATE NOT NULL,
-  `not_lida` TINYINT NOT NULL,
+  `not_lida` TINYINT NOT NULL DEFAULT 1,
   `usuario_usu_cod` INT NOT NULL,
   `denuncias_den_cod` INT NOT NULL,
   INDEX `fk_denuncias_usuario1_idx` (`usuario_usu_cod` ASC),

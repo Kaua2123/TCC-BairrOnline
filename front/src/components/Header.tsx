@@ -105,8 +105,8 @@ export const HeaderUsu = () => {
 
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
   const [notificacoes, setNotificacoes] = useState([]);
+  const [notLida, setNotLida] = useState()
   const [temNot, setTemNot] = useState(false);
-  const [notLida, setNotLida] = useState(false);
   const toast = useToast();
   const {colorMode, toggleColorMode} = useColorMode();
 
@@ -246,7 +246,7 @@ export const HeaderUsu = () => {
                   <PopoverTrigger>
                   <Button variant={'ghost'} onClick={() => setTemNot(false)} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
                   <AiOutlineBell  fill='white' size='2.6em' />
-                  {temNot && (
+                  {notificacoes.some((notificacao) => notificacao.not_lida) && (
                       <Badge
                       position="absolute"
                       top={9}

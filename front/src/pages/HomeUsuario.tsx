@@ -146,7 +146,7 @@ const HomeUsuario = () => {
         if(response){
           toast({
             title: 'Deletadas',
-            description: 'Todas suas denúncias foram deletadas com sucesso. Você pode reverter...',
+            description: 'Todas suas denúncias foram deletadas com sucesso. Você pode revertê-las.',
             status: 'success',
             isClosable: true,
             duration: 4000

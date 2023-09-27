@@ -50,5 +50,6 @@ routes.get("/", controllersNotificacoes.raiz);
 routes.post("/msgNotificacao", autentica, controllersNotificacoes.msgNotificacao);
 routes.get("/getNotificacoes",  autentica, controllersNotificacoes.getNotificacoes);
 routes.delete("/deleteNotificacoes/:cod", autentica, controllersNotificacoes.deleteNotificacoes);
+routes.put("/notificacaoLida/:cod", autentica, controllersNotificacoes.notificacaoLida);
 
 module.exports = routes;
