@@ -99,11 +99,13 @@ const CardGrande = ({denuncia}) => {
 
     const enviaMsgNotificacao = async () => {
 
-      const token = localStorage.getItem('token'); //pegar o token e decodificar
-      if(!token){
-        return;
-      }
+      
+      const token = localStorage.getItem('token'); //primeiro pegar o token, pois é uma rota protegida
+      if (token) {
+          axios.defaults.headers.common['Authorization'] = `${token}`;
+        }
 
+        
       const decodificaToken: any = await jwt_decode(token);
 
       axios.post('http://localhost:3344/msgNotificacao', {

@@ -18,17 +18,25 @@ module.exports = {
         const { usuario_usu_cod } = req.body;
         const { denuncias_den_cod } = req.body;
 
-          const denunciaExists = await knex('denuncias').where('den_cod', denuncias_den_cod).first();
+        const {usu_cod} = req.usuario;
+
+        const denunciaExists = await knex('denuncias').where('den_cod', denuncias_den_cod).first();
+
+        const usuario = await knex('usuario').where('usu_cod', usu_cod).first();
+
+        if (!usuario) {
+          return res.status(400).json({ error: 'Usuário não encontrado.' });
+        }
 
         await knex('notificacao').insert({
           not_titulo,
           not_mensagem,
           not_data: new Date().toISOString(),
-          usuario_usu_cod: denunciaExists.usuario_usu_cod,
+          usuario_usu_cod: usu_cod,
           denuncias_den_cod,
         })
 
-        return res.status(201).json({msg: 'mensagem enviada'})
+        return res.status(201).json({msg: 'mensagem enviada', usu_nome: usuario.usu_nome})
       }
       catch (error) {
         return res.status(400).json({error: error.message});
@@ -42,10 +50,10 @@ module.exports = {
 
 
             const notificacoes = await knex('notificacao')
-              .select('notificacao.*', 'denuncias.den_nome', 'denuncias.den_img', 'usuario.usu_nome as inst_nome')
+              .select('notificacao.*', 'denuncias.den_nome', 'denuncias.den_img', 'usuario.usu_tipo', 'usuario.usu_nome')
               .join('denuncias', 'notificacao.denuncias_den_cod', 'denuncias.den_cod')
               .join('usuario', 'denuncias.usuario_usu_cod', 'usuario.usu_cod')
-              .where('notificacao.usuario_usu_cod', usu_cod);
+              .where('usuario.usu_cod', usu_cod);
 
             if (!notificacoes) {
                 return res.status(400).json({error: 'Nenhuma notificação.'})

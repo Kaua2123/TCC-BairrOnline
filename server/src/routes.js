@@ -47,7 +47,7 @@ routes.get("/getAcompanhamento", controllersAcomp.getAcompanhamentos);
 
 //notificações
 routes.get("/", controllersNotificacoes.raiz);
-routes.post("/msgNotificacao", controllersNotificacoes.msgNotificacao);
+routes.post("/msgNotificacao", autentica, controllersNotificacoes.msgNotificacao);
 routes.get("/getNotificacoes",  autentica, controllersNotificacoes.getNotificacoes);
 routes.delete("/deleteNotificacoes/:cod", autentica, controllersNotificacoes.deleteNotificacoes);
 
