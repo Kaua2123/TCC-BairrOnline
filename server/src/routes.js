@@ -45,7 +45,8 @@ routes.post("/criarAcompanhamento", controllersAcomp.criarAcompanhamento);
 routes.get("/getAcompanhamento", controllersAcomp.getAcompanhamentos);
 
 //subtarefas
-routes.post("/criarSubtarefa", controllersSubtarefas.criarSubtarefa);
+routes.post("/criarSubtarefa", autentica, controllersSubtarefas.criarSubtarefa);
+routes.get("/getSubtarefa", controllersSubtarefas.getSubtarefa);
 
 //notificações
 routes.get("/", controllersNotificacoes.raiz);

@@ -29,4 +29,16 @@ module.exports = {
         }
     },
 
+    async getSubtarefa(req, res) {
+        try {
+            
+           const subtarefas = await knex('subtarefa').select("*");
+
+           return res.status(200).json(subtarefas);
+        } 
+        catch (error) {
+            return res.status(400).json({error: error.message});
+        }
+    }
+
 }

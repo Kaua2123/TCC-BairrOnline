@@ -19,21 +19,20 @@ const steps = [
 
 
 const CardTarefa = ({acompanhamento}) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const [denNome, setDenNome] = useState("");
   const { activeStep, setActiveStep } = useSteps({
     index: 1,
     count: steps.length,
   })
-  const [subtarefas, setSubtarefas] = useState([]);
-  const [novaSubtarefa, setNovasubtarefa] = useState("");
 
+  const [subtarefas, setSubtarefas] = useState([]);
   const [subtarefaTexto, setSubtarefaTexto] = useState("");
   const [subtarefaPrioridade, setSubtarefaPrioridade] = useState("media");
   const [subtarefaEstado, setSubtarefaEstado] = useState("andamento");
   const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const criarSubtarefa = async () => {
+
+  const criarSubtarefa = async () => { //para criação de subtarefas kkkkkkk tmn3cc39109129119
 
     const token = localStorage.getItem('token')
     if (!token) {
@@ -41,8 +40,11 @@ const CardTarefa = ({acompanhamento}) => {
       return;
     }
 
-    const decodificaToken: any = jwt_decode(token);
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `${token}`;
+    }
 
+    const decodificaToken: any = jwt_decode(token);
 
       await axios.post('http://localhost:3344/criarSubtarefa', {
           sub_data_inicio: new Date(),
@@ -71,6 +73,19 @@ const CardTarefa = ({acompanhamento}) => {
       })
   }
 
+  const getSubtarefa = () => { //para exibição das subtarefas
+    axios.get("http://localhost:3344/getSubtarefa")
+    .then((response) => {
+      setSubtarefas(response.data);
+    })
+    .catch((error) => {
+      console.log('Erro ao buscar subtarefas.', error)
+    })
+  }
+
+  useEffect(() => { //chamar a função de get assim que o componente/página for carregada
+    getSubtarefa();
+  }, [])
   
 
   return (
@@ -122,15 +137,15 @@ const CardTarefa = ({acompanhamento}) => {
                         Adicionar
                       </Button>
                     </Box>
-                    {/* <Box mt="20px" maxH="5px"> 
+                    <Box mt="20px" maxH="5px"> 
                        <Stack >
-                      {subtarefas.map((subtarefa, index) => (
-                     <div key={index}>
-                     <p style={{ fontWeight: 'bold', fontFamily: 'Arial' }}>{subtarefa}</p>
-                   </div>
-                 ))}
+                       <ul className="subtarefas-list">
+                        {subtarefas.map((subtarefa, index) => (
+                          <li key={index}>Subtarefa {index + 1}: {subtarefa.sub_texto}</li>
+                        ))}
+                      </ul>
                         </Stack>
-                      </Box> */}
+                      </Box>
                     <Box ml="600px" mt="-130px">
                       <Text fontSize="20px">
                         <b>Mensagem para o denunciante</b>
