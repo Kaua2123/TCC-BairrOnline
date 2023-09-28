@@ -74,6 +74,17 @@ const CardTarefa = ({acompanhamento}) => {
   }
 
   const getSubtarefa = () => { //para exibição das subtarefas
+
+    const token = localStorage.getItem('token') //pegando token do usuario logado para exibir somente as subtarefas dele
+    if (!token) {
+      console.log('não autenticado')
+      return;
+    }
+
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `${token}`;
+    }
+
     axios.get("http://localhost:3344/getSubtarefa")
     .then((response) => {
       setSubtarefas(response.data);

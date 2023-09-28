@@ -22,22 +22,51 @@ module.exports = {
                 usuario_usu_cod
             })
 
-            return res.status(200).json({msg: 'subtarefa criada'})
+            return res.status(200).json({ msg: 'subtarefa criada' })
         }
         catch (error) {
-            return res.status(400).json({error: error.message});
+            return res.status(400).json({ error: error.message });
         }
     },
 
-    async getSubtarefa(req, res) {
+    async getSubtarefa(req, res) { // para exibição das subtarefas no card tarefa e na pagina tarefas 
+        try {
+
+            const {usu_cod} = req.usuario;
+
+            const subtarefas = await knex('subtarefa').select("*")
+            .where('usuario_usu_cod', usu_cod);
+
+            return res.status(200).json(subtarefas);
+        }
+        catch (error) {
+            return res.status(400).json({ error: error.message });
+        }
+    },
+
+    async deleteSubtarefa(req, res) { // para deletar as subtarefas
+        try {
+            const { cod } = req.params;
+
+            const subtarefas = await knex('subtarefa').where('sub_cod', cod).first();
+
+            if (!subtarefas) {
+                return res.status(400).json({ error: 'Não há subtarefas.' })
+            }
+
+            await knex('subtarefa').where('sub_cod', cod).del();
+        }
+        catch (error) {
+            return res.status(400).json({ error: error.message });
+        }
+    },
+
+    async atualizarStatusSubtarefa(req, res){ //para atualizar o estado (em andamento, concluido) e prioridade
         try {
             
-           const subtarefas = await knex('subtarefa').select("*");
-
-           return res.status(200).json(subtarefas);
         } 
         catch (error) {
-            return res.status(400).json({error: error.message});
+            
         }
     }
 

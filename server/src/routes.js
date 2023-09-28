@@ -42,11 +42,12 @@ routes.get("/buscarComentario", controllersComen.buscarComentario);
 
 //acompanhamento
 routes.post("/criarAcompanhamento", controllersAcomp.criarAcompanhamento);
-routes.get("/getAcompanhamento", controllersAcomp.getAcompanhamentos);
+routes.get("/getAcompanhamento", autentica, controllersAcomp.getAcompanhamentos);
 
 //subtarefas
 routes.post("/criarSubtarefa", autentica, controllersSubtarefas.criarSubtarefa);
-routes.get("/getSubtarefa", controllersSubtarefas.getSubtarefa);
+routes.get("/getSubtarefa", autentica, controllersSubtarefas.getSubtarefa);
+routes.delete("deleteSubtarefa", controllersSubtarefas.deleteSubtarefa);
 
 //notificações
 routes.get("/", controllersNotificacoes.raiz);

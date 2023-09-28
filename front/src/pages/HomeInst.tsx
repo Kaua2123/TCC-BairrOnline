@@ -49,12 +49,21 @@ const HomeInst = () => {
     }
   }, [])
 
-  
 
- 
+  const getAcompanhamento =  () => {
 
-  const getAcompanhamento = async () => {
-    await axios.get(`http://localhost:3344/getAcompanhamento`)
+    const token = localStorage.getItem('token') //pegando token do usuario logado para exibir somente os acompanhamentos dele
+    if (!token) {
+      console.log('não autenticado')
+      return;
+    }
+
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `${token}`;
+    }
+
+
+     axios.get(`http://localhost:3344/getAcompanhamento`)
       .then((response) => {
         setAcompanhamentos(response.data);
       })
