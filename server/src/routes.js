@@ -3,12 +3,11 @@ const autentica = require('./autenticaToken');
 
 
 const controllersAcomp = require('../src/controllers/acompanhamento/index');
-const controllersAdm = require('../src/controllers/administrador/index');
-const controllersAva = require('../src/controllers/avaliaçao/index');
+const controllersSubtarefas = require('./controllers/subtarefa/index');
 const controllersComen = require('../src/controllers/comentarios/index');
 const controllersDenuncias = require('../src/controllers/denuncias/index');
 const controllersUsu = require('../src/controllers/usuario/index');
-const controllersNotificacoes = require('../src/controllers/notificações');
+const controllersNotificacoes = require('../src/controllers/notificações/index');
 
 const routes = express.Router();
 
@@ -44,6 +43,9 @@ routes.get("/buscarComentario", controllersComen.buscarComentario);
 //acompanhamento
 routes.post("/criarAcompanhamento", controllersAcomp.criarAcompanhamento);
 routes.get("/getAcompanhamento", controllersAcomp.getAcompanhamentos);
+
+//subtarefas
+routes.post("/criarSubtarefa", controllersSubtarefas.criarSubtarefa);
 
 //notificações
 routes.get("/", controllersNotificacoes.raiz);

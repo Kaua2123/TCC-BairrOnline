@@ -1,13 +1,14 @@
 import {
   Box, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure,
   Button, Text, Input, Textarea, Flex, Stack, Step, StepDescription, StepIcon, StepIndicator, StepSeparator,
-  StepStatus, StepTitle, Stepper, useSteps,
+  StepStatus, StepTitle, Stepper, useSteps, useToast,
 }
   from "@chakra-ui/react"
 import { TfiPlus } from "react-icons/tfi";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import jwt_decode from 'jwt-decode';
 
 const steps = [
   { title: '20%', description: 'Saneamento básico.' },
@@ -27,12 +28,50 @@ const CardTarefa = ({acompanhamento}) => {
   const [subtarefas, setSubtarefas] = useState([]);
   const [novaSubtarefa, setNovasubtarefa] = useState("");
 
-  const adicionarSubtarefa = () => {
-    if(novaSubtarefa.trim() !== "") {
-      setSubtarefas([...subtarefas, novaSubtarefa]);
-      setNovasubtarefa("");
+  const [subtarefaTexto, setSubtarefaTexto] = useState("");
+  const [subtarefaPrioridade, setSubtarefaPrioridade] = useState("media");
+  const [subtarefaEstado, setSubtarefaEstado] = useState("andamento");
+  const toast = useToast();
+
+  const criarSubtarefa = async () => {
+
+    const token = localStorage.getItem('token')
+    if (!token) {
+      console.log('não autenticado')
+      return;
     }
-  };
+
+    const decodificaToken: any = jwt_decode(token);
+
+
+      await axios.post('http://localhost:3344/criarSubtarefa', {
+          sub_data_inicio: new Date(),
+          sub_data_conclusao: new Date(),
+          sub_texto: subtarefaTexto,
+          sub_prioridade: subtarefaPrioridade,
+          sub_estado: subtarefaEstado,
+          acompanhamento_aco_num: acompanhamento.aco_num,
+          usuario_usu_cod: decodificaToken.usu_cod
+      })
+      .then((response) => {
+        toast({
+          title: 'Subtarefa criada.',
+          duration: 3000,
+          status: 'success',
+          isClosable: true
+        })
+      })
+      .catch((error) => {
+        toast({
+          title: 'erro ao criar subtarefa.',
+          duration: 3000,
+          status: 'error',
+          isClosable: true
+        })
+      })
+  }
+
+  
 
   return (
 
@@ -75,15 +114,15 @@ const CardTarefa = ({acompanhamento}) => {
                       <Text fontSize="20px">
                         <b>Adicionar subtarefa</b>
                       </Text>
-                      <Input type="text" w='150px' borderColor="gray" mt='10px' value={novaSubtarefa}
-                       onChange={(e) => setNovasubtarefa(e.target.value)}/>
+                      <Input type="text" w='150px' borderColor="gray" mt='10px' value={subtarefaTexto}
+                       onChange={(e) => setSubtarefaTexto(e.target.value)}/>
                       <Stack></Stack>
                       <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }}
-                        mt='-67px' ml='160px' onClick={adicionarSubtarefa}>
+                        mt='-67px' ml='160px' onClick={criarSubtarefa}>
                         Adicionar
                       </Button>
                     </Box>
-                    <Box mt="20px" maxH="5px"> 
+                    {/* <Box mt="20px" maxH="5px"> 
                        <Stack >
                       {subtarefas.map((subtarefa, index) => (
                      <div key={index}>
@@ -91,7 +130,7 @@ const CardTarefa = ({acompanhamento}) => {
                    </div>
                  ))}
                         </Stack>
-                      </Box>
+                      </Box> */}
                     <Box ml="600px" mt="-130px">
                       <Text fontSize="20px">
                         <b>Mensagem para o denunciante</b>
