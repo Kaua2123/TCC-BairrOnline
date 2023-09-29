@@ -1,4 +1,4 @@
-import { Box, ChakraProvider, Image, Text, VStack, Input, Flex, HStack, Button, Grid, useToast, } from "@chakra-ui/react"
+import { Box, ChakraProvider, Image, Text, VStack, Input, Flex, HStack, Button, Grid, useToast, Modal, ModalOverlay, ModalFooter, ModalContent, ModalCloseButton, ModalHeader, ModalBody, } from "@chakra-ui/react"
 import { HeaderUsu } from "../components/Header"
 import imgAvatar from '../img/avatar.png';
 
@@ -14,6 +14,9 @@ export const MeuPerfil = () => {
     const [cepUsu, setCepUsu] = useState("");
     const [emailUsu, setEmailUsu] = useState("");
     const [senhaUsu, setSenhaUsu] = useState("");
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [imagemUrl, setImagemUrl] = useState(''); //para imagem de perfil
+    const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false);
     const toast = useToast();
 
     const updateUsuarios = async () => {
@@ -51,6 +54,74 @@ export const MeuPerfil = () => {
         })
     }
 
+    const uploadImage = async () => {
+
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+        }
+
+        const decodificaToken: any = jwtDecode(token);
+
+
+        if (!selectedImage) {
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('selectedImage', selectedImage);
+
+        try {
+
+            const response = await axios.post(
+                `http://localhost:3344/imgPerfil/${decodificaToken.usu_cod}`,
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                    params: {
+                        usu_cod: decodificaToken.usu_cod,
+                    },
+                }
+            );
+
+
+
+            setImagemUrl(response.data);
+
+            if (response) {
+                toast({
+                    title: 'Imagem enviada',
+                    description: 'Sua imagem foi enviada e será exibida na denúncia.',
+                    status: 'success',
+                    duration: 4000,
+                    isClosable: true
+                })
+            }
+
+         
+        } catch (error) {
+            console.error(error);
+            toast({
+                title: 'Erro',
+                description: 'A imagem não pôde ser enviada. Verifique e tente novamente.',
+                status: 'error',
+                duration: 4000,
+                isClosable: true
+            })
+        }
+    };
+
+    const openImageUploadModal = () => {
+        setImageUploadModalOpen(true);
+    }
+
+    const closeImageUploadModal = () => {
+        setImageUploadModalOpen(false);
+    }
+
+
     return (
         <ChakraProvider>
             <HeaderUsu/>    
@@ -60,8 +131,36 @@ export const MeuPerfil = () => {
 
                 <Text fontSize='35px'>Altere sua foto de perfil</Text>
 
-                <Button ml={24} w='10vw' boxShadow='lg' bgColor='#338bb0' color='white'>Alterar</Button>
+                <Button ml={24} w='10vw' boxShadow='lg' bgColor='#338bb0' color='white' onClick={openImageUploadModal}>Alterar</Button>
             </HStack>
+            <Modal isOpen={isImageUploadModalOpen} onClose={closeImageUploadModal}>
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>Adicionar Imagem</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => {
+                                    const file = e.target.files[0];
+                                    setSelectedImage(file);
+                                }}
+                            />
+                            {selectedImage && (
+                                <Image src={URL.createObjectURL(selectedImage)} alt="Imagem selecionada" boxShadow='lg' borderRadius='10px' />
+                            )}
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button colorScheme="blue" mr={3} onClick={uploadImage}>
+                                Enviar Imagem
+                            </Button>
+                            <Button variant="ghost" onClick={closeImageUploadModal}>
+                                Cancelar
+                            </Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
         </Box>
 
         <Box boxShadow='lg' pb={10} mt={16} borderRadius='12px'>

@@ -2,6 +2,22 @@ require('dotenv').config({path: '../.env'}); // lendo o arquivo env
 const knex = require('../../database/banco');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const uniqid = require('uniqid');
+const path = require('path');
+const fs = require('fs');
+const multer = require('multer');
+
+const storage = multer.diskStorage({ 
+    destination: './imgsPerfil',
+    filename: function (req, file, cb) {
+        const arquivoUnico = uniqid() + path.extname(file.originalname);
+        cb(null, arquivoUnico);
+    }
+});
+
+const upload = multer({ storage });
+
+
 
 module.exports = {
     async raiz(req, res){
@@ -131,6 +147,40 @@ module.exports = {
             return res.status(200).json(instituicoes);
         } catch (error) {
             return res.status(400).json({error: error.message})
+        }
+    },
+
+    async imgPerfil(req, res) {
+        try {
+            const { cod } = req.params;
+            upload.single('selectedImage')(req, res, async function (err) {
+                if (err instanceof multer.MulterError) {
+                    console.log(err)
+                    return res.status(400).json({ error: 'Erro ao upar a imagem.' });
+                }
+                else if (err) {
+                    console.log(err)
+                    return res.status(500).json({ error: 'Erro inesperado.' });
+                }
+
+                console.log(req.file);
+
+                if (!req.file) {
+                    console.log("Arquivo não enviado:", req.file);
+                    return res.status(500).json({ error: 'Arquivo não enviado' })
+                }
+
+                await knex('denuncias').where("den_cod", cod).update({
+                    usu_img: req.file.filename,
+                });
+
+                return res.status(200).json({ message: 'Arquivo recebido' });
+            });
+
+        }
+        catch (error) {
+            console.log(error);
+            return res.status(500).json({ error: 'Erro ao upar a imagem.' });
         }
     },
     

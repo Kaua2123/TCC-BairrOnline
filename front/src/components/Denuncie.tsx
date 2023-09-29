@@ -166,8 +166,6 @@ const Denuncie = () => {
 
 
 
-  //pra upar a imagem com click no iconezinho da camera
-
 
 
 
