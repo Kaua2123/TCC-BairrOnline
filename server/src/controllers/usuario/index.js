@@ -183,6 +183,26 @@ module.exports = {
             return res.status(500).json({ error: 'Erro ao upar a imagem.' });
         }
     },
+
+    async retornaImgPerfil(req, res) {
+        try {
+            const { filename } = req.params;
+            const imagePath = path.resolve(__dirname, '..', '..', 'imgsPerfil', filename);
+
+            fs.readFile(imagePath, (error, data) => {
+                if (error) {
+                    return res.status(500).json({ error: 'n leu a img' });
+                }
+
+                res.setHeader('contentType', `image/${path.extname(filename)}`);
+                res.end(data);
+            })
+
+
+        } catch (error) {
+            return res.status(500).json({ error: error.message });
+        }
+    },
     
    
 }

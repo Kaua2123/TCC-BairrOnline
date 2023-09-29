@@ -3,13 +3,14 @@ import { HeaderUsu } from "../components/Header"
 import imgAvatar from '../img/avatar.png';
 
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 
 
 
 export const MeuPerfil = () => {
 
+    const [usuarios, setUsuarios] = useState([]);
     const [nomeUsu, setNomeUsu] = useState("");
     const [cepUsu, setCepUsu] = useState("");
     const [emailUsu, setEmailUsu] = useState("");
@@ -18,6 +19,20 @@ export const MeuPerfil = () => {
     const [imagemUrl, setImagemUrl] = useState(''); //para imagem de perfil
     const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false);
     const toast = useToast();
+    
+    const getUsuarios  = () => {
+        axios.get('http://localhost:3344/getUsuarios')
+        .then((response) => {
+            setUsuarios(response.data);
+        })
+        .catch((error) => {
+            console.log('Erro ao buscar usuarios', error)
+        })
+    }
+
+    useEffect(() => {
+        getUsuarios();
+    }, [])
 
     const updateUsuarios = async () => {
 
@@ -127,8 +142,16 @@ export const MeuPerfil = () => {
             <HeaderUsu/>    
         <Box boxShadow='lg'  mt={8} borderRadius='12px' >
             <HStack  justify='center' w='full' h='60vh' alignItems='center'>
-                <Image src={imgAvatar} boxSize='150px' mr={24}></Image>
-
+                {usuarios.map((usuario) => (
+                    <>
+                    {usuario.usu_img ? (
+                        <Image src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`} borderRadius='lg' boxSize='150px' />
+                    ) : (
+                        <Image src={imgAvatar} boxSize={{ base: '90px', md: '150px' }}></Image>
+                    )}
+                    </>
+                ))}
+            
                 <Text fontSize='35px'>Altere sua foto de perfil</Text>
 
                 <Button ml={24} w='10vw' boxShadow='lg' bgColor='#338bb0' color='white' onClick={openImageUploadModal}>Alterar</Button>

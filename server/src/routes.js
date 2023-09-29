@@ -20,6 +20,7 @@ routes.put("/updateUsuarios/:cod", controllersUsu.updateUsuarios);
 routes.get("/getUsuarios", controllersUsu.getUsuarios);
 routes.get("/getInstituicoes", controllersUsu.getInstituicoes);
 routes.post("/imgPerfil/:cod", controllersUsu.imgPerfil);
+routes.get("/retornaImgPerfil/:filename", controllersUsu.retornaImgPerfil);
 
 //denuncia
 //chamando o middleware "autentica" nas rotas protegidas, que so usuarios podem acessar
