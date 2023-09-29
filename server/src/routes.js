@@ -16,6 +16,7 @@ const routes = express.Router();
 routes.get("/", controllersUsu.raiz);
 routes.post("/criarUsu", controllersUsu.CriarUsuario);
 routes.post("/logarUsu", controllersUsu.logarUsuario);
+routes.put("/updateUsuarios/:cod", controllersUsu.updateUsuarios);
 routes.get("/getUsuarios", controllersUsu.getUsuarios);
 routes.get("/getInstituicoes", controllersUsu.getInstituicoes);
 
@@ -54,6 +55,6 @@ routes.get("/", controllersNotificacoes.raiz);
 routes.post("/msgNotificacao", autentica, controllersNotificacoes.msgNotificacao);
 routes.get("/getNotificacoes",  autentica, controllersNotificacoes.getNotificacoes);
 routes.delete("/deleteNotificacoes/:cod", autentica, controllersNotificacoes.deleteNotificacoes);
-routes.put("/notificacaoLida", autentica, controllersNotificacoes.notificacaoLida);
+routes.put("/notificacaoLida/:cod", autentica, controllersNotificacoes.notificacaoLida);
 
 module.exports = routes;

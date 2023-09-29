@@ -97,6 +97,31 @@ module.exports = {
         }
     },
 
+    async updateUsuarios(req, res) { // para atualização dos dados do usuário
+        try {
+
+            const {cod} = req.params;
+
+            const { usu_nome } = req.body;
+            const { usu_cep } = req.body;
+            const { usu_email } = req.body;
+            const { usu_senha } = req.body;
+
+            await knex('usuario').update({
+                usu_nome,
+                usu_cep,
+                usu_email,
+                usu_senha
+            }).where('usu_cod', cod);
+
+            return res.status(200).json({msg: 'Dados atualizados.'})
+
+        } 
+        catch (error) {
+            return res.status(400).json({error: error.message});
+        }
+    },
+
     async getInstituicoes(req, res) { // receber só dos usuarios tipo instituição
         try {
             const instituicoes = await knex('usuario').select('*').where('usu_tipo', 'instituicao');
@@ -105,7 +130,7 @@ module.exports = {
         } catch (error) {
             return res.status(400).json({error: error.message})
         }
-    }
-
+    },
+    
    
 }

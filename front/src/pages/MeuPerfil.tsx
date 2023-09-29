@@ -1,9 +1,56 @@
-import { Box, ChakraProvider, Image, Text, VStack, Input, Flex, HStack, Button, Grid, } from "@chakra-ui/react"
+import { Box, ChakraProvider, Image, Text, VStack, Input, Flex, HStack, Button, Grid, useToast, } from "@chakra-ui/react"
 import { HeaderUsu } from "../components/Header"
 import imgAvatar from '../img/avatar.png';
 
+import axios from "axios";
+import { useState } from "react";
+import jwtDecode from "jwt-decode";
+
+
 
 export const MeuPerfil = () => {
+
+    const [nomeUsu, setNomeUsu] = useState("");
+    const [cepUsu, setCepUsu] = useState("");
+    const [emailUsu, setEmailUsu] = useState("");
+    const [senhaUsu, setSenhaUsu] = useState("");
+    const toast = useToast();
+
+    const updateUsuarios = async () => {
+
+        const token = localStorage.getItem('token'); //token para proteção das rotas
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+        }
+
+        const decodificaToken: any = jwtDecode(token);
+
+        await axios.put(`http://localhost:3344/updateUsuarios/${decodificaToken.usu_cod}`, {
+            usu_nome: nomeUsu,
+            usu_cep: cepUsu,
+            usu_email: emailUsu,
+            usu_senha: senhaUsu
+        })
+        .then((response) => {
+            console.log('sucesso', response);
+            toast({
+                title: 'Dados atualizados.',
+                status: 'success',
+                duration: 3000,
+                isClosable: true
+            })
+        })
+        .catch((error) => {
+            console.log('erro', error)
+            toast({
+                title: 'Erro ao atualizar os dados.',
+                status: 'error',
+                duration: 3000,
+                isClosable: true
+            })
+        })
+    }
+
     return (
         <ChakraProvider>
             <HeaderUsu/>    
@@ -25,28 +72,36 @@ export const MeuPerfil = () => {
 
                     <VStack alignItems='flex-start'>
                         <Text>Nome completo</Text>
-                        <Input/>
+                        <Input value={nomeUsu} onChange={(e) => {
+                            setNomeUsu(e.target.value)
+                        }}/>
                     </VStack>
 
                     <VStack alignItems='flex-start'>
                         <Text>CEP</Text>
-                        <Input/>
+                        <Input value={cepUsu} onChange={(e) => {
+                            setCepUsu(e.target.value)
+                        }}/>
                     </VStack>
 
                     <VStack alignItems='flex-start'>
                         <Text>Email</Text>
-                        <Input/>
+                        <Input value={emailUsu} onChange={(e) => {
+                            setEmailUsu(e.target.value)
+                        }}/>
                     </VStack>
 
                     <VStack alignItems='flex-start'>
                         <Text>Senha</Text>
-                        <Input/>
+                        <Input value={senhaUsu} onChange={(e) => {
+                            setSenhaUsu(e.target.value);
+                        }}/>
                     </VStack>
 
 
                     </Grid> 
                 </HStack>
-                <Button mt={14} w='60%' bgColor='#338bb0' color='white'> Salvar suas informações </Button>
+                <Button mt={14} w='60%' bgColor='#338bb0' color='white' onClick={updateUsuarios}> Salvar suas informações </Button>
             </VStack>
         </Box>
         </ChakraProvider>
