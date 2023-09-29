@@ -107,11 +107,13 @@ module.exports = {
             const { usu_email } = req.body;
             const { usu_senha } = req.body;
 
+            const senhaCriptog = await bcrypt.hash(usu_senha, 10);
+
             await knex('usuario').update({
                 usu_nome,
                 usu_cep,
                 usu_email,
-                usu_senha
+                usu_senha: senhaCriptog,
             }).where('usu_cod', cod);
 
             return res.status(200).json({msg: 'Dados atualizados.'})
