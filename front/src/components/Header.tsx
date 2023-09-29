@@ -414,7 +414,7 @@ export const HeaderInst = () => {
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
               display={['none', 'none', 'flex', 'flex']}>
-                 <Link to=''>Tarefas</Link>
+                 <Link to='/Tarefas'>Tarefas</Link>
               </Button>
             </HStack>
             </Center>
