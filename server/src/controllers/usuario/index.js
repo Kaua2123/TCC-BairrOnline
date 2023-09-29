@@ -170,7 +170,7 @@ module.exports = {
                     return res.status(500).json({ error: 'Arquivo não enviado' })
                 }
 
-                await knex('denuncias').where("den_cod", cod).update({
+                await knex('usuario').where("usu_cod", cod).update({
                     usu_img: req.file.filename,
                 });
 

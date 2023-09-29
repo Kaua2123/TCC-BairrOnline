@@ -67,7 +67,7 @@ export const MeuPerfil = () => {
         if (!selectedImage) {
             return;
         }
-
+        
         const formData = new FormData();
         formData.append('selectedImage', selectedImage);
 
