@@ -85,11 +85,11 @@ module.exports = {
 
     async notificacaoLida(req, res){
       try {
-        const {cod} = req.params;
+        const {usu_cod} = req.usuario;
 
-        await knex('notificacao').where('not_cod', cod).update({not_lida: 0});
+        await knex('notificacao').where('usuario.usu_cod', usu_cod).update({not_lida: 0});
 
-        return res.status(200).json({msg: 'notificação marcada como lida.'})
+        return res.status(200).json({msg: 'notificações marcadas como lidas.'})
       }
       catch (error) {
         return res.status(400).json({error: error.message});

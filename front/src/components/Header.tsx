@@ -105,7 +105,8 @@ export const HeaderUsu = () => {
 
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
   const [notificacoes, setNotificacoes] = useState([]);
-  const [notLida, setNotLida] = useState()
+  const [notLida, setNotLida] = useState(false);
+  const [notNova, setNotNova] = useState(false);
   const [temNot, setTemNot] = useState(false);
   const toast = useToast();
   const {colorMode, toggleColorMode} = useColorMode();
@@ -132,26 +133,43 @@ export const HeaderUsu = () => {
 
 
   async function getNotificacoes() {
-    const token = localStorage.getItem('token'); //primeiro pegar o token, pois é uma rota protegida
-    if (token) {
-        axios.defaults.headers.common['Authorization'] = `${token}`;
-      }
-
-    await axios.get('http://localhost:3344/getNotificacoes')
-      .then((response) => {
-          setNotificacoes(response.data);
-          if(response.data.length > 0){
-            setTemNot(true);
-          }
-      })
-      .catch((error) => {
-          console.error(error);
-      })
+     const token = localStorage.getItem('token');
+  if (token) {
+    axios.defaults.headers.common['Authorization'] = `${token}`;
   }
 
-  useEffect(() => {
-    getNotificacoes();
-  }, [])
+  try {
+    const response = await axios.get('http://localhost:3344/getNotificacoes');
+    const notificacoesData = response.data;
+    setNotificacoes(notificacoesData);
+
+    const todasNotLidas = notificacoesData.every((notificacao) => notificacao.not_lida === false);
+    setNotLida(todasNotLidas);
+
+    if (notificacoesData.length > 0) {
+      const notNaoLida = notificacoesData.some((notificacao) => notificacao.not_lida);
+      setNotNova(notNaoLida);
+    }
+
+    if (!todasNotLidas) {
+      localStorage.setItem('notificacoesVisualizadas', 'true');
+    } else {
+      localStorage.removeItem('notificacoesVisualizadas');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+useEffect(() => {
+  getNotificacoes();
+
+  const notificacoesVisualizadas = localStorage.getItem('notificacoesVisualizadas');
+  if (notificacoesVisualizadas === 'true') {
+    setNotLida(false);
+  }
+}, []);
+
 
 
 
@@ -244,9 +262,9 @@ export const HeaderUsu = () => {
       /> */}
                 <Popover>
                   <PopoverTrigger>
-                  <Button variant={'ghost'} onClick={() => setTemNot(false)} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
+                  <Button variant={'ghost'} onClick={() => setNotLida(true)} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
                   <AiOutlineBell  fill='white' size='2.6em' />
-                  {notificacoes.some((notificacao) => notificacao.not_lida) && (
+                  {notNova && !notLida  && (
                       <Badge
                       position="absolute"
                       top={9}

@@ -65,7 +65,7 @@ export const NotificacaoDen = ({ notificacao, notCod }) => {
     //(EXEMPLO) ISSO TEM QUE TAR VAZIO PQ BACKEND
 
     <ChakraProvider>
-      <Card ml={5} mt={3} w='425px' h='500px' boxShadow='lg'>
+      <Card ml={5} mt={3} w='425px' h='250px' boxShadow='lg'>
         <HStack justify='space-between'>
 
           <Text color='#338bb0' fontSize='25px' fontFamily='BreeSerif-Regular' ml={2}> Denúncia assumida! </Text>
