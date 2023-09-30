@@ -16,10 +16,10 @@ const routes = express.Router();
 routes.get("/", controllersUsu.raiz);
 routes.post("/criarUsu", controllersUsu.CriarUsuario);
 routes.post("/logarUsu", controllersUsu.logarUsuario);
-routes.put("/updateUsuarios/:cod", controllersUsu.updateUsuarios);
+routes.put("/updateUsuarios/:cod", autentica, controllersUsu.updateUsuarios);
 routes.get("/getUsuarios", controllersUsu.getUsuarios);
 routes.get("/getInstituicoes", controllersUsu.getInstituicoes);
-routes.post("/imgPerfil/:cod", controllersUsu.imgPerfil);
+routes.post("/imgPerfil/:cod", autentica, controllersUsu.imgPerfil);
 routes.get("/retornaImgPerfil/:filename", controllersUsu.retornaImgPerfil);
 
 //denuncia

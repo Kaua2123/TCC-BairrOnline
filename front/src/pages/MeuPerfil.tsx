@@ -145,9 +145,14 @@ export const MeuPerfil = () => {
                 {usuarios.map((usuario) => (
                     <>
                     {usuario.usu_img ? (
-                        <Image src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`} borderRadius='lg' boxSize='150px' />
+                        <>
+                        <VStack alignItems='flex-start'>
+                        <Image src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`} mr={20} boxShadow='lg' borderRadius='lg' boxSize='150px' />
+                        <Text color='#338bb0'  fontSize='25px'>{usuario.usu_nome} </Text>
+                        </VStack>
+                        </>
                     ) : (
-                        <Image src={imgAvatar} boxSize={{ base: '90px', md: '150px' }}></Image>
+                        <Image src={imgAvatar} boxSize={{ base: '90px', md: '150px' }} mr={20}></Image>
                     )}
                     </>
                 ))}

@@ -108,8 +108,23 @@ export const HeaderUsu = () => {
   const [notLida, setNotLida] = useState(false);
   const [notNova, setNotNova] = useState(false);
   const [temNot, setTemNot] = useState(false);
+  const [usuarios, setUsuarios] = useState([]);
   const toast = useToast();
   const {colorMode, toggleColorMode} = useColorMode();
+
+  const getUsuarios  = () => {
+    axios.get('http://localhost:3344/getUsuarios')
+    .then((response) => {
+        setUsuarios(response.data);
+    })
+    .catch((error) => {
+        console.log('Erro ao buscar usuarios', error)
+    })
+}
+
+useEffect(() => {
+    getUsuarios();
+}, [])
 
   const deslogar = () => {
     try {
@@ -314,7 +329,19 @@ useEffect(() => {
             onClick={aoClicarAvatar} // Chama a função quando o avatar é clicado
 
           >
-            <Avatar icon={<FaUserAlt />} />
+
+          {usuarios.map((usuario) => (
+          <>
+          {usuario.usu_img ? (
+              <>
+              <Avatar src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`}></Avatar>
+              </>
+          ) : (
+              <Avatar icon={FaUserAlt}></Avatar>
+          )}
+          </>
+          ))}
+           
           </MenuButton>
           <MenuList>
             {/* Opções de menu */}
