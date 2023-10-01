@@ -18,6 +18,7 @@ routes.post("/criarUsu", controllersUsu.CriarUsuario);
 routes.post("/logarUsu", controllersUsu.logarUsuario);
 routes.put("/updateUsuarios/:cod", autentica, controllersUsu.updateUsuarios);
 routes.get("/getUsuarios", controllersUsu.getUsuarios);
+routes.get("/getUsuarioLogado", autentica, controllersUsu.getUsuarioLogado);
 routes.get("/getInstituicoes", controllersUsu.getInstituicoes);
 routes.post("/imgPerfil/:cod", autentica, controllersUsu.imgPerfil);
 routes.get("/retornaImgPerfil/:filename", controllersUsu.retornaImgPerfil);

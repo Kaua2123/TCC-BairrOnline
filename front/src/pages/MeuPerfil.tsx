@@ -1,5 +1,5 @@
 import { Box, ChakraProvider, Image, Text, VStack, Input, Flex, HStack, Button, Grid, useToast, Modal, ModalOverlay, ModalFooter, ModalContent, ModalCloseButton, ModalHeader, ModalBody, } from "@chakra-ui/react"
-import { HeaderUsu } from "../components/Header"
+import Header, { HeaderADM, HeaderInst, HeaderUsu } from "../components/Header"
 import imgAvatar from '../img/avatar.png';
 
 import axios from "axios";
@@ -8,7 +8,7 @@ import jwtDecode from "jwt-decode";
 
 
 
-export const MeuPerfil = () => {
+const MeuPerfil = () => {
 
     const [usuarios, setUsuarios] = useState([]);
     const [nomeUsu, setNomeUsu] = useState("");
@@ -19,9 +19,18 @@ export const MeuPerfil = () => {
     const [imagemUrl, setImagemUrl] = useState(''); //para imagem de perfil
     const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false);
     const toast = useToast();
+
+    const token = localStorage.getItem('token');
+    const decodificaToken: any = jwtDecode(token);
     
     const getUsuarios  = () => {
-        axios.get('http://localhost:3344/getUsuarios')
+
+        const token = localStorage.getItem('token'); //primeiro pegar o token, pois é uma rota protegida
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+          }
+
+        axios.get('http://localhost:3344/getUsuarioLogado')
         .then((response) => {
             setUsuarios(response.data);
         })
@@ -136,25 +145,39 @@ export const MeuPerfil = () => {
         setImageUploadModalOpen(false);
     }
 
+    let headerComponent = null;
+
+  if (decodificaToken && decodificaToken.usu_tipo === 'denunciante') {
+    headerComponent = <HeaderUsu />;
+  } else if (decodificaToken && decodificaToken.usu_tipo === 'instituicao') {
+    headerComponent = <HeaderInst />;
+  } else if (decodificaToken && decodificaToken.usu_tipo === 'administrador') {
+    headerComponent = <HeaderADM />
+  }
+  else {
+    headerComponent = <Header/>;
+  }
+
 
     return (
         <ChakraProvider>
-            <HeaderUsu/>    
+            {headerComponent}
         <Box boxShadow='lg'  mt={8} borderRadius='12px' >
             <HStack  justify='center' w='full' h='60vh' alignItems='center'>
-                {usuarios.map((usuario) => (
-                    <>
-                    {usuario.usu_img ? (
+                {usuarios.map((usuario, index) => (
+                    <Box >
+              
                         <>
-                        <VStack alignItems='flex-start'>
-                        <Image src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`} mr={20} boxShadow='lg' borderRadius='lg' boxSize='150px' />
-                        <Text color='#338bb0'  fontSize='25px'>{usuario.usu_nome} </Text>
+                        <VStack alignItems='flex-start' >
+                        <Image  src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`} fallbackSrc={imgAvatar} mr={20} boxShadow='lg' borderRadius='lg' boxSize='150px' />
+                        <Text color='#338bb0'  fontSize='25px' >Nome: {usuario.usu_nome} </Text>
+                        <Text color='#338bb0'  fontSize='25px' >Email: {usuario.usu_email} </Text>
                         </VStack>
                         </>
-                    ) : (
-                        <Image src={imgAvatar} boxSize={{ base: '90px', md: '150px' }} mr={20}></Image>
-                    )}
-                    </>
+                
+                       
+
+                    </Box>
                 ))}
             
                 <Text fontSize='35px'>Altere sua foto de perfil</Text>
@@ -236,3 +259,4 @@ export const MeuPerfil = () => {
 }
 
 
+export default MeuPerfil;

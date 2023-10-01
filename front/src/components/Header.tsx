@@ -3,7 +3,7 @@
 import { Menu,Image, MenuButton, Button,  MenuList, MenuItem,
   Center, Flex, HStack, Spacer,Popover,PopoverTrigger,
   PopoverContent,PopoverHeader,PopoverBody,
-  PopoverArrow, PopoverCloseButton, Badge, AvatarBadge, Text, useToast, useColorMode, Icon } from "@chakra-ui/react";
+  PopoverArrow, PopoverCloseButton, Badge, AvatarBadge, Text, useToast, useColorMode, Icon, MenuGroup } from "@chakra-ui/react";
 import { Avatar, Box, IconButton } from "@chakra-ui/react";
 
 //react
@@ -330,25 +330,34 @@ useEffect(() => {
 
           >
 
-          {usuarios.map((usuario) => (
-          <>
-          {usuario.usu_img ? (
-              <>
-              <Avatar src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`}></Avatar>
-              </>
+          {usuarios.map((usuario, index) => (
+          <Box key={index}>
+          {usuario.usu_img && usuario.usu_tipo === 'denunciante' ? (
+          
+              <Avatar key={index} src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`}></Avatar>
+        
           ) : (
-              <Avatar icon={FaUserAlt}></Avatar>
+              <Box></Box>
           )}
-          </>
+        </Box>
           ))}
            
           </MenuButton>
           <MenuList>
+            <MenuGroup title='Perfil'>
             {/* Opções de menu */}
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             ><Link to='/MeuPerfil'>Meu Perfil</Link></MenuItem>
              <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             ><Link to='/HomeUsuario'>Seção do Usuário </Link></MenuItem>
+            </MenuGroup>
+            <MenuGroup title='Ajuda'>
+            {/* Opções de menu */}
+            <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+            ><Link to='/MeuPerfil'>Saiba mais</Link></MenuItem>
+             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+            ><Link to='/HomeUsuario'>Seção do Usuário </Link></MenuItem>
+            </MenuGroup>
             <MenuItem onClick={deslogar}
             _hover={{ bg: 'red.500', color: 'white' }}
             icon={<MdOutlineLogout size='20px' />}>Sair</MenuItem>

@@ -19,8 +19,7 @@ import Deslogado from './pages/Deslogado.tsx';
 import RotasPrivadas from './components/RotasPrivadas.tsx';
 import DenDetalhadas from './pages/DenDetalhadas.tsx';
 import { Tarefas } from './pages/Tarefas.tsx';
-import { MeuPerfil } from './pages/MeuPerfil.tsx';
-
+import MeuPerfil from './pages/MeuPerfil.tsx';
 
 
 const router = createBrowserRouter([
@@ -116,7 +115,8 @@ const router = createBrowserRouter([
         <MeuPerfil/>
       </RotasPrivadas>
     )
-  }
+  },
+  
 ]);
 
 

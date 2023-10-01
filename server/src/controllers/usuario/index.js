@@ -113,6 +113,21 @@ module.exports = {
         }
     },
 
+    async getUsuarioLogado(req, res) { // get do usuario loagdo
+        try {
+
+            const {usu_cod} = req.usuario; //verificando o codigo do usuario logado
+
+            const usuarios = await knex('usuario').select('*') // juntando duas tabelas
+            .where('usuario.usu_cod', usu_cod); 
+
+            return res.status(200).json(usuarios); //retorna as denuncias
+        }
+        catch (error) {
+            return res.status(400).json({ error: 'Erro ao obter a denúncia' });
+        }
+    },
+
     async updateUsuarios(req, res) { // para atualização dos dados do usuário
         try {
 
