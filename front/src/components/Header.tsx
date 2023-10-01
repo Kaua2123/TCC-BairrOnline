@@ -385,7 +385,29 @@ export const HeaderInst = () => {
 
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
   const {colorMode, toggleColorMode} = useColorMode();
+  const [usuarios, setUsuarios] = useState([]);
   const toast = useToast();
+
+  const getUsuarios  = () => {
+
+    const token = localStorage.getItem('token'); //token para proteção das rotas
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+        }
+
+    axios.get('http://localhost:3344/getUsuarioLogado')
+    .then((response) => {
+        setUsuarios(response.data);
+    })
+    .catch((error) => {
+        console.log('Erro ao buscar usuarios', error)
+    })
+}
+
+useEffect(() => {
+    getUsuarios();
+}, [])
+
 
   const deslogar = () => {
     try {
@@ -513,7 +535,17 @@ export const HeaderInst = () => {
             borderRadius="full"
             onClick={aoClicarAvatar} // Chama a função quando o avatar é clicado
           >
-            <Avatar icon={<MdBusiness  size='30px'/>} />
+            {usuarios.map((usuario, index) => (
+          <Box key={index}>
+          {usuario.usu_img ? (
+            <Avatar src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`} />
+          ) : (
+            // Caso usuário não tenha imagem, renderiza um Avatar com um ícone padrão
+            <Avatar icon={<MdBusiness size='30px' />} />
+          )}
+       
+        </Box>
+          ))}
           </MenuButton>
           <MenuList>
           <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
