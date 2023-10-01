@@ -1,10 +1,11 @@
-import { Box, ChakraProvider, Image, Text, VStack, Input, Flex, HStack, Button, Grid, useToast, Modal, ModalOverlay, ModalFooter, ModalContent, ModalCloseButton, ModalHeader, ModalBody, } from "@chakra-ui/react"
+import { Box, ChakraProvider, Image, Text, VStack, Input, Flex, HStack, Button, Grid, useToast, Modal, ModalOverlay, ModalFooter, ModalContent, ModalCloseButton, ModalHeader, ModalBody, IconButton, } from "@chakra-ui/react"
 import Header, { HeaderADM, HeaderInst, HeaderUsu } from "../components/Header"
 import imgAvatar from '../img/avatar.png';
 
 import axios from "axios";
 import { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 
 
@@ -18,7 +19,7 @@ const MeuPerfil = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [imagemUrl, setImagemUrl] = useState(''); //para imagem de perfil
     const [alterando, setAlterando] = useState(false);
-    const [senhaOculta, setSenhaOculta] = useState(false);
+    const [mostrarSenha, setMostrarSenha] = useState(false);
     const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false);
     const toast = useToast();
 
@@ -286,7 +287,27 @@ const MeuPerfil = () => {
 
                                     <VStack alignItems='flex-start'>
                                         <Text>Senha</Text>
-                                        <Text>{usuario.usu_email}</Text>
+                                        <Box display="flex" alignItems="center" >
+                                        <Text>{mostrarSenha ? usuario.usu_senha : "••••••••"}</Text>
+                                        {!mostrarSenha && (
+                                            <IconButton
+                                            icon={mostrarSenha ? <FaEyeSlash /> : <FaEye />}
+                                            onClick={() => {setMostrarSenha(true)}}
+                                            aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+                                            variant="ghost"
+                                            ml={2}
+                                            />
+                                        )}
+                                       {mostrarSenha && (
+                                         <IconButton
+                                         icon={mostrarSenha ? <FaEyeSlash /> : <FaEye />}
+                                         onClick={() => {setMostrarSenha(false)}}
+                                         aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+                                         variant="ghost"
+                                         ml={2}
+                                         />
+                                       )}
+                                    </Box>
                                     </VStack>
                                 </>
                     )}
