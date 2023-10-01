@@ -113,7 +113,13 @@ export const HeaderUsu = () => {
   const {colorMode, toggleColorMode} = useColorMode();
 
   const getUsuarios  = () => {
-    axios.get('http://localhost:3344/getUsuarios')
+
+    const token = localStorage.getItem('token'); //token para proteção das rotas
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+        }
+
+    axios.get('http://localhost:3344/getUsuarioLogado')
     .then((response) => {
         setUsuarios(response.data);
     })
@@ -332,13 +338,13 @@ useEffect(() => {
 
           {usuarios.map((usuario, index) => (
           <Box key={index}>
-          {usuario.usu_img && usuario.usu_tipo === 'denunciante' ? (
-          
-              <Avatar key={index} src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`}></Avatar>
-        
+          {usuario.usu_img ? (
+            <Avatar src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`} />
           ) : (
-              <Box></Box>
+            // Caso usuário não tenha imagem, renderiza um Avatar com um ícone padrão
+            <Avatar icon={<FaUserAlt />} />
           )}
+       
         </Box>
           ))}
            

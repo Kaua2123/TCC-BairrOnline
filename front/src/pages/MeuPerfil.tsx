@@ -17,26 +17,28 @@ const MeuPerfil = () => {
     const [senhaUsu, setSenhaUsu] = useState("");
     const [selectedImage, setSelectedImage] = useState(null);
     const [imagemUrl, setImagemUrl] = useState(''); //para imagem de perfil
+    const [alterando, setAlterando] = useState(false);
+    const [senhaOculta, setSenhaOculta] = useState(false);
     const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false);
     const toast = useToast();
 
     const token = localStorage.getItem('token');
     const decodificaToken: any = jwtDecode(token);
-    
-    const getUsuarios  = () => {
+
+    const getUsuarios = () => {
 
         const token = localStorage.getItem('token'); //primeiro pegar o token, pois é uma rota protegida
         if (token) {
             axios.defaults.headers.common['Authorization'] = `${token}`;
-          }
+        }
 
         axios.get('http://localhost:3344/getUsuarioLogado')
-        .then((response) => {
-            setUsuarios(response.data);
-        })
-        .catch((error) => {
-            console.log('Erro ao buscar usuarios', error)
-        })
+            .then((response) => {
+                setUsuarios(response.data);
+            })
+            .catch((error) => {
+                console.log('Erro ao buscar usuarios', error)
+            })
     }
 
     useEffect(() => {
@@ -52,30 +54,42 @@ const MeuPerfil = () => {
 
         const decodificaToken: any = jwtDecode(token);
 
+        if (nomeUsu === "" || cepUsu === "" || emailUsu === "" || senhaUsu === "") {//lógica de validação dos campos pra n mandar nada vazio
+            toast({
+                title: 'Preencha todos os campos.',
+                status: 'error',
+                duration: 4000,
+                isClosable: true
+            })
+            console.log('Erro, algum campo vazio.')
+            return;
+        }
+
+
         await axios.put(`http://localhost:3344/updateUsuarios/${decodificaToken.usu_cod}`, {
             usu_nome: nomeUsu,
             usu_cep: cepUsu,
             usu_email: emailUsu,
             usu_senha: senhaUsu
         })
-        .then((response) => {
-            console.log('sucesso', response);
-            toast({
-                title: 'Dados atualizados.',
-                status: 'success',
-                duration: 3000,
-                isClosable: true
+            .then((response) => {
+                console.log('sucesso', response);
+                toast({
+                    title: 'Dados atualizados.',
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: true
+                })
             })
-        })
-        .catch((error) => {
-            console.log('erro', error)
-            toast({
-                title: 'Erro ao atualizar os dados.',
-                status: 'error',
-                duration: 3000,
-                isClosable: true
+            .catch((error) => {
+                console.log('erro', error)
+                toast({
+                    title: 'Erro ao atualizar os dados.',
+                    status: 'error',
+                    duration: 3000,
+                    isClosable: true
+                })
             })
-        })
     }
 
     const uploadImage = async () => {
@@ -91,7 +105,7 @@ const MeuPerfil = () => {
         if (!selectedImage) {
             return;
         }
-        
+
         const formData = new FormData();
         formData.append('selectedImage', selectedImage);
 
@@ -124,7 +138,7 @@ const MeuPerfil = () => {
                 })
             }
 
-         
+
         } catch (error) {
             console.error(error);
             toast({
@@ -147,44 +161,42 @@ const MeuPerfil = () => {
 
     let headerComponent = null;
 
-  if (decodificaToken && decodificaToken.usu_tipo === 'denunciante') {
-    headerComponent = <HeaderUsu />;
-  } else if (decodificaToken && decodificaToken.usu_tipo === 'instituicao') {
-    headerComponent = <HeaderInst />;
-  } else if (decodificaToken && decodificaToken.usu_tipo === 'administrador') {
-    headerComponent = <HeaderADM />
-  }
-  else {
-    headerComponent = <Header/>;
-  }
+    if (decodificaToken && decodificaToken.usu_tipo === 'denunciante') {
+        headerComponent = <HeaderUsu />;
+    } else if (decodificaToken && decodificaToken.usu_tipo === 'instituicao') {
+        headerComponent = <HeaderInst />;
+    } else if (decodificaToken && decodificaToken.usu_tipo === 'administrador') {
+        headerComponent = <HeaderADM />
+    }
+    else {
+        headerComponent = <Header />;
+    }
 
 
     return (
         <ChakraProvider>
             {headerComponent}
-        <Box boxShadow='lg'  mt={8} borderRadius='12px' >
-            <HStack  justify='center' w='full' h='60vh' alignItems='center'>
-                {usuarios.map((usuario, index) => (
-                    <Box >
-              
-                        <>
-                        <VStack alignItems='flex-start' >
-                        <Image  src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`} fallbackSrc={imgAvatar} mr={20} boxShadow='lg' borderRadius='lg' boxSize='150px' />
-                        <Text color='#338bb0'  fontSize='25px' >Nome: {usuario.usu_nome} </Text>
-                        <Text color='#338bb0'  fontSize='25px' >Email: {usuario.usu_email} </Text>
-                        </VStack>
-                        </>
-                
-                       
+            <Box boxShadow='lg' mt={8} borderRadius='12px' >
+                <HStack justify='center' w='full' h='60vh' alignItems='center'>
+                    {usuarios.map((usuario, index) => (
+                        <Box >
 
-                    </Box>
-                ))}
-            
-                <Text fontSize='35px'>Altere sua foto de perfil</Text>
+                            <>
+                                <VStack alignItems='flex-start' >
+                                    <Image src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`} fallbackSrc={imgAvatar} mr={20} boxShadow='lg' borderRadius='lg' boxSize='150px' />
+                                    <Text color='#338bb0' fontSize='25px' >Nome: {usuario.usu_nome} </Text>
+                                    <Text color='#338bb0' fontSize='25px' >Email: {usuario.usu_email} </Text>
+                                </VStack>
+                            </>
 
-                <Button ml={24} w='10vw' boxShadow='lg' bgColor='#338bb0' color='white' onClick={openImageUploadModal}>Alterar</Button>
-            </HStack>
-            <Modal isOpen={isImageUploadModalOpen} onClose={closeImageUploadModal}>
+                        </Box>
+                    ))}
+
+                    <Text fontSize='35px'>Altere sua foto de perfil</Text>
+
+                    <Button ml={24} w='10vw' boxShadow='lg' bgColor='#338bb0' color='white' onClick={openImageUploadModal}>Alterar</Button>
+                </HStack>
+                <Modal isOpen={isImageUploadModalOpen} onClose={closeImageUploadModal}>
                     <ModalOverlay />
                     <ModalContent>
                         <ModalHeader>Adicionar Imagem</ModalHeader>
@@ -212,48 +224,97 @@ const MeuPerfil = () => {
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
-        </Box>
+            </Box>
 
-        <Box boxShadow='lg' pb={10} mt={16} borderRadius='12px'>
-            <VStack w='full' h='70vh' mt={10}>
-                <Text fontSize='35px'>Altere seus dados aqui</Text>
-                <HStack>
-                    <Grid gap={20} templateColumns='1fr 1fr'>
+            <Box boxShadow='lg' pb={10}  borderRadius='12px'>
+                <VStack w='full' justify='center' h='70vh' mt={26}  p={7} borderRadius='2xl' boxShadow='lg'>
+                    <Text fontSize='35px'>Altere seus dados aqui</Text>
+                    {usuarios.map((usuario, index) => (
+                        <HStack key={index}>
+                            <Grid gap={20} templateColumns='1fr 1fr'>
 
-                    <VStack alignItems='flex-start'>
-                        <Text>Nome completo</Text>
-                        <Input value={nomeUsu} onChange={(e) => {
-                            setNomeUsu(e.target.value)
-                        }}/>
-                    </VStack>
+                                {alterando ? (
+                                    <>
+                                        <VStack alignItems='flex-start'>
+                                            <Text>Nome completo</Text>
 
-                    <VStack alignItems='flex-start'>
-                        <Text>CEP</Text>
-                        <Input value={cepUsu} onChange={(e) => {
-                            setCepUsu(e.target.value)
-                        }}/>
-                    </VStack>
-
-                    <VStack alignItems='flex-start'>
-                        <Text>Email</Text>
-                        <Input value={emailUsu} onChange={(e) => {
-                            setEmailUsu(e.target.value)
-                        }}/>
-                    </VStack>
-
-                    <VStack alignItems='flex-start'>
-                        <Text>Senha</Text>
-                        <Input value={senhaUsu} onChange={(e) => {
-                            setSenhaUsu(e.target.value);
-                        }}/>
-                    </VStack>
+                                            <Input value={nomeUsu} onChange={(e) => {
+                                                setNomeUsu(e.target.value)
+                                            }} />
 
 
-                    </Grid> 
-                </HStack>
-                <Button mt={14} w='60%' bgColor='#338bb0' color='white' onClick={updateUsuarios}> Salvar suas informações </Button>
-            </VStack>
-        </Box>
+                                        </VStack>
+
+                                        <VStack alignItems='flex-start'>
+                                            <Text>CEP</Text>
+                                            <Input value={cepUsu} onChange={(e) => {
+                                                setCepUsu(e.target.value)
+                                            }} />
+                                        </VStack>
+
+                                        <VStack alignItems='flex-start'>
+                                            <Text>Email</Text>
+                                            <Input value={emailUsu} onChange={(e) => {
+                                                setEmailUsu(e.target.value)
+                                            }} />
+                                        </VStack>
+
+                                        <VStack alignItems='flex-start'>
+                                            <Text>Senha</Text>
+                                            <Input value={senhaUsu} onChange={(e) => {
+                                                setSenhaUsu(e.target.value);
+                                            }} />
+                                        </VStack>
+                                    </>
+                                ) : (
+                                    <>
+                                    <VStack alignItems='flex-start'>
+                                        <Text>Nome completo</Text>
+                                        <Text>{usuario.usu_nome}</Text>
+
+                                    </VStack>
+
+                                    <VStack alignItems='flex-start'>
+                                        <Text>CEP</Text>
+                                        <Text>{usuario.usu_tipo === 'denunciante' ? usuario.usu_cep : usuario.usu_cnpj}</Text>
+                                    </VStack>
+
+                                    <VStack alignItems='flex-start'>
+                                        <Text>Email</Text>
+                                        <Text>{usuario.usu_email}</Text>
+                                    </VStack>
+
+                                    <VStack alignItems='flex-start'>
+                                        <Text>Senha</Text>
+                                        <Text>{usuario.usu_email}</Text>
+                                    </VStack>
+                                </>
+                    )}
+
+
+                            </Grid>
+                        </HStack>
+                    ))}
+
+                    {alterando ? (
+                        <>
+              
+              <Flex justifyContent="flex-start">
+              <Button mt={14} mr={4}  bgColor="red" color="white"  onClick={() => { setAlterando(false) }}
+            >
+    Cancelar
+  </Button>
+  <Button mt={14} bgColor="#338bb0" color="white" onClick={updateUsuarios}>
+    Salvar suas informações
+  </Button>
+
+</Flex>
+                        </>
+                    ) : (
+                        <Button mt={14} w='60%' bgColor='#338bb0' color='white' onClick={() => { setAlterando(true) }}> Alterar seus dados </Button>
+                    )}
+                </VStack>
+            </Box>
         </ChakraProvider>
     )
 }
