@@ -350,23 +350,21 @@ useEffect(() => {
            
           </MenuButton>
           <MenuList>
-            <MenuGroup title='Perfil'>
+            <MenuGroup title='Perfil' fontSize='20px' color='#338bb0'>
             {/* Opções de menu */}
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             ><Link to='/MeuPerfil'>Meu Perfil</Link></MenuItem>
              <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             ><Link to='/HomeUsuario'>Seção do Usuário </Link></MenuItem>
             </MenuGroup>
-            <MenuGroup title='Ajuda'>
+            <MenuGroup title='Ajuda' fontSize='20px' color='#338bb0'>
             {/* Opções de menu */}
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             ><Link to='/MeuPerfil'>Saiba mais</Link></MenuItem>
-             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
-            ><Link to='/HomeUsuario'>Seção do Usuário </Link></MenuItem>
             </MenuGroup>
             <MenuItem onClick={deslogar}
             _hover={{ bg: 'red.500', color: 'white' }}
-            icon={<MdOutlineLogout size='20px' />}>Sair</MenuItem>
+            >Sair</MenuItem>
           </MenuList>
         </Menu>
 
@@ -548,14 +546,21 @@ useEffect(() => {
           ))}
           </MenuButton>
           <MenuList>
-          <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
-          ><Link to='/MeuPerfil'>Meu Perfil </Link> </MenuItem>
-
+          <MenuGroup title='Perfil' fontSize='20px' color='#338bb0'>
+            {/* Opções de menu */}
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+            ><Link to='/MeuPerfil'>Meu Perfil</Link></MenuItem>
+             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
             ><Link to='/HomeInst'>Seção do Usuário </Link></MenuItem>
+            </MenuGroup>
+            <MenuGroup title='Ajuda' fontSize='20px' color='#338bb0'>
+            {/* Opções de menu */}
+            <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
+            ><Link to='/MeuPerfil'>Saiba mais</Link></MenuItem>
+            </MenuGroup>
             <MenuItem onClick={deslogar}
             _hover={{ bg: 'red.500', color: 'white' }}
-            icon={<MdOutlineLogout size='20px' />}>Sair</MenuItem>
+            >Sair</MenuItem>  
           </MenuList>
         </Menu>
 
