@@ -282,6 +282,20 @@ module.exports = {
         }
     },
 
+    async curtirDenuncia(req, res) {
+        try {
+            
+            const {cod} = req.params;
+
+            await knex('denuncias').where('den_cod', cod).increment('den_like', 1);
+
+            return res.status(200).json({ msg: 'Denúncia curtida com sucesso.'})
+        } 
+        catch (error) {
+            return res.status(500).json({ error: error.message });
+        }
+    },
+
     async updatePrazoDenuncia(req, res) { // pras instituições. poderão dar um prazo de resoluçao pras denuncias
         try {
 

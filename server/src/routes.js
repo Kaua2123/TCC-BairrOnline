@@ -36,6 +36,7 @@ routes.post("/reverterDenunciaExcluida/:cod", autentica, controllersDenuncias.re
 routes.put("/updateDenuncia/:cod", autentica, controllersDenuncias.updateDenuncia);
 routes.post("/uparImagem/:cod", autentica, controllersDenuncias.uparImagem);
 routes.get("/retornaImagem/:filename", controllersDenuncias.retornaImagem);
+routes.post("/curtirDenuncia", controllersDenuncias.curtirDenuncia);
 
 //comentarios
 routes.get("/", controllersComen.raiz);
@@ -59,5 +60,6 @@ routes.post("/msgNotificacao", autentica, controllersNotificacoes.msgNotificacao
 routes.get("/getNotificacoes",  autentica, controllersNotificacoes.getNotificacoes);
 routes.delete("/deleteNotificacoes/:cod", autentica, controllersNotificacoes.deleteNotificacoes);
 routes.put("/notificacaoLida/:cod", autentica, controllersNotificacoes.notificacaoLida);
+
 
 module.exports = routes;
