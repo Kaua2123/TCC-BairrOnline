@@ -114,7 +114,8 @@ module.exports = {
     async getDenuncia(req, res) { // get da denuncia
         try {
             const denuncias = await knex('denuncias').select('denuncias.*', 'usuario.usu_nome', 'usuario.usu_img') // juntando duas tabelas
-            .join('usuario', 'denuncias.usuario_usu_cod', 'usuario.usu_cod') //pra pegar a img e o nome do usuario e exibir nos cards
+            .join('usuario', 'denuncias.usuario_usu_cod', 'usuario.usu_cod')  //pra pegar a img e o nome do usuario e exibir nos cards
+            .orderBy('denuncias.den_like', 'desc')
            
 
             return res.status(200).json(denuncias); //retorna as denuncias
@@ -295,6 +296,7 @@ module.exports = {
             return res.status(500).json({ error: error.message });
         }
     },
+    
 
     async updatePrazoDenuncia(req, res) { // pras instituições. poderão dar um prazo de resoluçao pras denuncias
         try {

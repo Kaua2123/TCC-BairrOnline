@@ -132,6 +132,13 @@ const CardGrande = ({denuncia}) => {
   )}
 
   const curtirDenuncia = () => {
+    
+    const token = localStorage.getItem('token'); //primeiro pegar o token, pois é uma rota protegida
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `${token}`;
+      }
+
+
     axios.post(`http://localhost:3344/curtirDenuncia/${denuncia.den_cod}`)
     .then((response) => {
       console.log(response.data)
