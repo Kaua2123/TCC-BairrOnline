@@ -1,4 +1,4 @@
-import { Card, CardHeader, Heading, CardBody, Divider, FormControl, CardFooter, Image, Text, Box, Button, Flex, Avatar, Icon, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, Center, useToast, HStack, Tag, TagLabel, TagLeftIcon, ChakraProvider, FormLabel, Input } from "@chakra-ui/react";
+import { Card, CardHeader, Heading, CardBody, Divider, FormControl, CardFooter, Image, Text, Box, Button, Flex, Avatar, Icon, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, Center, useToast, HStack, Tag, TagLabel, TagLeftIcon, ChakraProvider, FormLabel, Input, VStack } from "@chakra-ui/react";
 import { BsChatSquareText } from "react-icons/bs";
 import { MdOutlineReportProblem } from "react-icons/md";
 import CardCom from "./CardCom";
@@ -132,7 +132,7 @@ const CardGrande = ({denuncia}) => {
   )}
 
   const curtirDenuncia = () => {
-    
+
     const token = localStorage.getItem('token'); //primeiro pegar o token, pois é uma rota protegida
     if (token) {
         axios.defaults.headers.common['Authorization'] = `${token}`;
@@ -215,9 +215,12 @@ const CardGrande = ({denuncia}) => {
       },
     }}
   >
-    <Button w='20px' color='white' onClick={curtirDenuncia}  bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiSolidLike />}>
+    <VStack>
+    <Button  color='white' onClick={curtirDenuncia}  bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiSolidLike />}>
       Curtir
     </Button>
+    <Text>Curtidas: {denuncia.den_like}</Text>
+    </VStack>
     <Button  color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiCommentDetail />}>
       Comentar
     </Button>
