@@ -360,7 +360,7 @@ useEffect(() => {
             <MenuGroup title='Ajuda' fontSize='20px' color='#338bb0'>
             {/* Opções de menu */}
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
-            ><Link to='/MeuPerfil'>Saiba mais</Link></MenuItem>
+            ><Link to='/SaibaMais'>Saiba mais</Link></MenuItem>
             </MenuGroup>
             <MenuItem onClick={deslogar}
             _hover={{ bg: 'red.500', color: 'white' }}
@@ -556,7 +556,7 @@ useEffect(() => {
             <MenuGroup title='Ajuda' fontSize='20px' color='#338bb0'>
             {/* Opções de menu */}
             <MenuItem _hover={{ bg: '#338BB0', color: 'white' }}
-            ><Link to='/MeuPerfil'>Saiba mais</Link></MenuItem>
+            ><Link to='/SaibaMais'>Saiba mais</Link></MenuItem>
             </MenuGroup>
             <MenuItem onClick={deslogar}
             _hover={{ bg: 'red.500', color: 'white' }}
