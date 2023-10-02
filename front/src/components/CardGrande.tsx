@@ -131,6 +131,27 @@ const CardGrande = ({denuncia}) => {
     ]
   )}
 
+  const curtirDenuncia = () => {
+    axios.post(`http://localhost:3344/curtirDenuncia/${denuncia.den_cod}`)
+    .then((response) => {
+      console.log(response.data)
+      toast({
+        title: 'Denúncia curtida',
+        status: 'success',
+        duration: 2000,
+        isClosable: true
+      })
+    })
+    .catch((error) => {
+      toast({
+        title: 'Falha ao curtir a denúncia',
+        status: 'error',
+        duration: 2000,
+        isClosable: true
+      })
+    })
+  }
+
 
 
     return(
@@ -187,7 +208,7 @@ const CardGrande = ({denuncia}) => {
       },
     }}
   >
-    <Button w='20px' color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiSolidLike />}>
+    <Button w='20px' color='white' onClick={curtirDenuncia}  bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiSolidLike />}>
       Curtir
     </Button>
     <Button  color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiCommentDetail />}>
