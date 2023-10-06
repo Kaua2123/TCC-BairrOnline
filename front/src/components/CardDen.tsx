@@ -161,10 +161,10 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome }) => {
 
                             <Select>
                                 <option value="tipo1">Descrição falsa</option>
-                                    <option value="tipo2">Descrição ofensiva</option>{/*discurso de ódio, racismo,ameaças sla*/}
-                                    <option value="tipo3">Imagem imprópria</option> {/*pornografia, Conteudo explicito(Ferimentos, lesoes sla), localização que pode revelar a casa dos outros */}
-                                    <option value="tipo4">Informação irrelevante </option>{/* Envolveu a vida pessoal demais na denuncia, coisa que nois nao precisa saber */}
-                                <option value="tipo5">Denuncia repetida</option>{/*Bora fazer regras dps*/} 
+                                    <option value="tipo2">Descrição ofensiva</option>
+                                    <option value="tipo3">Imagem imprópria</option> 
+                                    <option value="tipo4">Informação irrelevante </option>
+                                <option value="tipo5">Denuncia repetida</option>
                             </Select>
                             </ModalBody>
 
