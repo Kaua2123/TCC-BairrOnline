@@ -1,9 +1,9 @@
 import {
     Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
-    AlertDialogOverlay, Tag, TagLabel, Avatar, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, InputLeftElement, FormLabel, Center, Flex, useDisclosure, useColorMode
+    AlertDialogOverlay, Tag, TagLabel, Avatar, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, InputLeftElement, FormLabel, Center, Flex, useDisclosure, useColorMode, Select
 } from "@chakra-ui/react";
 
-import { Reportar } from "./reportar";
+import { Reportar } from "./Reportar";
 import img2 from '../img/aguaEstancada.png';
 
 
@@ -28,11 +28,19 @@ import semImgDen from '../img/semImgDen.png';
 
 
 const CardDen = ({ nome, descricao, bairro, imagem, usuNome }) => {
-    const [rep, setrep] = useState(false)
 
     const { colorMode } = useColorMode();
-
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const [isModalRepOpen, setIsModalRepOpen] = useState();
+
+    const openModal = () => {
+        setIsModalRepOpen(true);
+      };
+    
+      const closeModal = () => {
+        setIsModalRepOpen(false);
+      };
+
     //Manipular Comentários
     const [comments, setComments] = useState([]);
 
@@ -134,9 +142,38 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome }) => {
 
                 </Button>
 
-                <Button color='red' _hover={{ color: '#8B0000' }} leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={() => { setrep(true) }}>
-                    <Reportar taAberto={rep} tafechado={() => { setrep(!rep) }} />
+                <Button color='red' _hover={{ color: '#8B0000' }} leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={openModal}>
+                    
                 </Button>
+
+                    <Modal isOpen={isModalRepOpen} onClose={closeModal} size="xl">
+                        <ModalOverlay />
+                        <ModalContent>
+                            <ModalHeader>
+                                <Text fontFamily='BreeSerif-Regular' fontSize='25px' color='#338bb0' fontWeight='normal'>
+                                    Reportar denúncia
+                                </Text>
+                            </ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody>
+                           
+                            <Text fontFamily='BreeSerif-Regular' fontSize='18px'  fontWeight='normal' >Por que deseja reportar esta denúncia?</Text>
+
+                            <Select>
+                                <option value="tipo1">Descrição falsa</option>
+                                    <option value="tipo2">Descrição ofensiva</option>{/*discurso de ódio, racismo,ameaças sla*/}
+                                    <option value="tipo3">Imagem imprópria</option> {/*pornografia, Conteudo explicito(Ferimentos, lesoes sla), localização que pode revelar a casa dos outros */}
+                                    <option value="tipo4">Informação irrelevante </option>{/* Envolveu a vida pessoal demais na denuncia, coisa que nois nao precisa saber */}
+                                <option value="tipo5">Denuncia repetida</option>{/*Bora fazer regras dps*/} 
+                            </Select>
+                            </ModalBody>
+
+                            <ModalFooter>
+
+                        <Button color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}}>Reportar</Button>
+                            </ModalFooter>
+                        </ModalContent>
+                    </Modal>
 
             </CardFooter>
         </Card>

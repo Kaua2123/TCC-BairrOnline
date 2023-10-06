@@ -29,7 +29,7 @@ import { BsCardText, BsCamera, BsListUl, BsCalendar3, BsChatSquareText } from "r
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2"
 import { MdOutlineReportProblem } from 'react-icons/md';
 import Comentarios from './Comentarios';
-import { Reportar } from './reportar';
+import { Reportar } from './Reportar';
 import CardGrande from './CardGrande';
 import { CiLocationOn } from 'react-icons/ci';
 

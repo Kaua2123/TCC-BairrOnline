@@ -4,7 +4,7 @@ import { MdOutlineReportProblem } from "react-icons/md";
 import CardCom from "./CardCom";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
-import { Reportar } from "./reportar";
+import { Reportar } from "./Reportar";
 
 //imgs
 import aguaParada from "../img/aguaParada.jpg";
