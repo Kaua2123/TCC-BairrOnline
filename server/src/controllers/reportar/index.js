@@ -26,4 +26,18 @@ module.exports = {
             return res.status(400).json({error: error.message});
         }
     },
+
+    async denunciasReportadas(req, res){ //get das denuncias reportadas
+        try {
+            
+            const reportadas = await knex('reportar').select('reportar.*', 'usuario.usu_nome')
+            .join('usuario', 'reportar.usuario_usu_cod', 'usuario.usu_cod');
+
+            return res.status(200).json(reportadas);
+
+        } 
+        catch (error) {
+            return res.status(400).json({error: 'Erro ao obter as denúncias reportadas.'})
+        }
+    },
 }

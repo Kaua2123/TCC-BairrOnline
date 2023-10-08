@@ -41,6 +41,7 @@ routes.post("/curtirDenuncia/:cod", controllersDenuncias.curtirDenuncia);
 
 //reportar
 routes.post("/postReportar", controllersReportar.postReportar);
+routes.get("/denunciasReportadas", controllersReportar.denunciasReportadas);
 
 //comentarios
 routes.get("/", controllersComen.raiz);
