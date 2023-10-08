@@ -8,9 +8,9 @@ export const CardsReportadas = ({reportar}) => {
 
     return(
     <ChakraProvider>
-        <Card boxShadow='lg'  w='20vw' h='auto' bg='gray.200' borderRadius='3xl'>
+        <Card  boxShadow='lg'  w='20vw' h='auto' bg='gray.200' borderRadius='3xl'>
             <Heading>
-                <Text fontSize='15px' m={4}>@nomedenuncia</Text>
+                <Text fontSize='15px' m={4}>Denúncia: {reportar.den_nome}</Text>
             </Heading>
         
         <CardBody>

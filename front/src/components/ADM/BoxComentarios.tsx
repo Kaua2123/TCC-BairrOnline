@@ -9,11 +9,10 @@ export const BoxComentarios = () => {
        
                 <Flex m={20}>
                     <Flex gap={4} borderRadius='3xl' direction='row' alignItems='center' justify='center'> 
-                        <Icon as={FaRegComment} fontSize='10vw'></Icon>
-                        <Box bg='gray.200' borderRadius='2xl' alignItems='center' boxShadow='lg' w='20vw' h='15vh'>
-                        <Text  fontSize='1vw' mt={6}>
-                            EL AGUA ESTAS ESTANCADA MDSSSS @120910291@!@!!!!PPQQP!!@!@!@@!@!@!@!@
-                            !@2091212189218219821998201
+                        <Icon as={FaRegComment} fontSize='7vw'></Icon>
+                        <Box bg='gray.200' borderRadius='2xl' alignItems='center' boxShadow='lg' w='auto' h='15vh'>
+                        <Text  fontSize='1vw' p={2} pl={4} pr={4} fontFamily='sans-serif' mt={6}>
+                            complicado
                         </Text>
                         </Box>
                     </Flex>

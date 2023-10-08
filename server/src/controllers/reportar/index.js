@@ -30,8 +30,9 @@ module.exports = {
     async denunciasReportadas(req, res){ //get das denuncias reportadas
         try {
             
-            const reportadas = await knex('reportar').select('reportar.*', 'usuario.usu_nome')
-            .join('usuario', 'reportar.usuario_usu_cod', 'usuario.usu_cod');
+            const reportadas = await knex('reportar').select('reportar.*', 'usuario.usu_nome', 'denuncias.den_nome')
+            .join('usuario', 'reportar.usuario_usu_cod', 'usuario.usu_cod')
+            .join('denuncias', 'reportar.denuncias_den_cod', 'denuncias.den_cod');
 
             return res.status(200).json(reportadas);
 
