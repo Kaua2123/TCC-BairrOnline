@@ -25,13 +25,53 @@ import CommentList from "./CommentList";
 
 //imgs
 import semImgDen from '../img/semImgDen.png';
+import jwtDecode from "jwt-decode";
 
 
-const CardDen = ({ nome, descricao, bairro, imagem, usuNome }) => {
+const CardDen = ({ nome, descricao, bairro, imagem, usuNome, denCod }) => {
 
     const { colorMode } = useColorMode();
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [isModalRepOpen, setIsModalRepOpen] = useState();
+    const [repMotivo, setRepMotivo] = useState('');
+    const [repStatus, setRepStatus] = useState("pendente");
+
+    const toast = useToast();
+
+
+    const postReportar = () => {
+
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+        }
+
+        const decodificaToken: any = jwtDecode(token);
+
+        axios.post("http://localhost:3344/postReportar", {
+            rep_motivo: repMotivo,
+            rep_data: new Date().toISOString(),
+            rep_status: repStatus,
+            denuncias_den_cod: denCod,
+            usuario_usu_cod: decodificaToken.usu_cod
+        })
+        .then((response) => {
+            toast({
+                title: 'Denúncia reportada com sucesso.',
+                duration: 2000,
+                status: 'success',
+                isClosable: true
+            })
+        })
+        .catch((error) => {
+            toast({
+                title: 'Erro ao reportar a denúncia',
+                duration: 2000,
+                status: 'error',
+                isClosable: true
+            })
+        })
+    }
 
     const openModal = () => {
         setIsModalRepOpen(true);
@@ -159,18 +199,18 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome }) => {
                            
                             <Text fontFamily='BreeSerif-Regular' fontSize='18px'  fontWeight='normal' >Por que deseja reportar esta denúncia?</Text>
 
-                            <Select>
-                                <option value="tipo1">Descrição falsa</option>
-                                    <option value="tipo2">Descrição ofensiva</option>
-                                    <option value="tipo3">Imagem imprópria</option> 
-                                    <option value="tipo4">Informação irrelevante </option>
-                                <option value="tipo5">Denuncia repetida</option>
+                            <Select value={repMotivo} onChange={(e) => setRepMotivo(e.target.value)}>
+                                <option value="Descrição falsa">Descrição falsa</option>
+                                    <option value="Descrição ofensiva">Descrição ofensiva</option>
+                                    <option value="Imagem inadequada">Imagem imprópria</option> 
+                                    <option value="Informação irrelevante">Informação irrelevante </option>
+                                <option value="Spam: Denúncia repetida">Denuncia repetida</option>
                             </Select>
                             </ModalBody>
 
                             <ModalFooter>
 
-                        <Button color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}}>Reportar</Button>
+                        <Button color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} onClick={postReportar}>Reportar</Button>
                             </ModalFooter>
                         </ModalContent>
                     </Modal>

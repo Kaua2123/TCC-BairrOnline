@@ -6,6 +6,7 @@ const controllersAcomp = require('../src/controllers/acompanhamento/index');
 const controllersSubtarefas = require('./controllers/subtarefa/index');
 const controllersComen = require('../src/controllers/comentarios/index');
 const controllersDenuncias = require('../src/controllers/denuncias/index');
+const controllersReportar = require('../src/controllers/reportar/index');
 const controllersUsu = require('../src/controllers/usuario/index');
 const controllersNotificacoes = require('../src/controllers/notificações/index');
 
@@ -37,6 +38,9 @@ routes.put("/updateDenuncia/:cod", autentica, controllersDenuncias.updateDenunci
 routes.post("/uparImagem/:cod", autentica, controllersDenuncias.uparImagem);
 routes.get("/retornaImagem/:filename", controllersDenuncias.retornaImagem);
 routes.post("/curtirDenuncia/:cod", controllersDenuncias.curtirDenuncia);
+
+//reportar
+routes.post("/postReportar", controllersReportar.postReportar);
 
 //comentarios
 routes.get("/", controllersComen.raiz);
