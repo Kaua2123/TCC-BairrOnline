@@ -21,12 +21,12 @@ export const CardsReportadas = ({reportar}) => {
             </Box>
         </CardBody>
 
-            <CardFooter>
-                <Flex justifyContent='flex-end' >
-                    <Flex justify='flex-end'> 
+            <CardFooter justifyContent='flex-end'>
+                    <Flex> 
                         <Button variant='ghost' color='red'>Deletar</Button>
+                        <Text>{reportar.rep_status}</Text>
                     </Flex>
-                </Flex>
+ 
             </CardFooter>
         </Card>
     </ChakraProvider>
