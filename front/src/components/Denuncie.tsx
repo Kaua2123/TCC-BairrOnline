@@ -11,7 +11,7 @@ import enviandoDen from "../img/enviandoDen.png";
 //chakra
 import {
   ChakraProvider, extendTheme, Image, Flex, Box, Button, Text, FormControl,
-  FormLabel, Spacer, Select, Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, useColorMode, HStack, Stack, Heading
+  FormLabel, Spacer, Select, Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, useColorMode, HStack, Stack, Heading, VStack
 } from '@chakra-ui/react';
 
 
@@ -173,15 +173,15 @@ const Denuncie = () => {
   return (
     <ChakraProvider >
 
-
-      
-
           <HStack w='full' h='100vh' bgColor='#f8f8ff'>
+
             <Flex w='full' h='full' alignItems='center' justifyContent='center'>
-              <Stack w='full' maxW='md' spacing={4} p={6}>
+              <VStack m={12}>  
+              <Text color='#338bb0' fontSize='35px' fontFamily='BreeSerif-Regular' mr={20} display={{base: 'none', md: 'flex'}}>Realize sua denúncia</Text>
+               <Stack w='full' maxW='md' spacing={4} p={6}>
               <FormControl>
 
-            <Heading display={{base: 'block', md:'none'}} color='#338bb0'  justifyContent='center'>Realize sua denúncia</Heading> {/* exibir no cel, telas pequenas*/}
+            <Text fontSize='35px' fontFamily='BreeSerif-Regular' display={{base: 'block', md:'none'}} color='#338bb0'  justifyContent='center'>Realize sua denúncia</Text> {/* exibir no cel, telas pequenas*/}
                 <FormLabel mt='30px' fontSize={{ base: '17px', md: '18px' }} fontWeight='normal' >Título da denúncia:</FormLabel>
 
                 <InputGroup>
@@ -277,6 +277,8 @@ const Denuncie = () => {
                   
                   )}
               </Stack>
+              </VStack>
+             
             </Flex>
 
             <Flex w='full' h='full' display={{base: 'none', md: 'flex'}} >
@@ -286,7 +288,7 @@ const Denuncie = () => {
             
             </HStack>
 
-          <HStack w='full' bgColor='#f8f8ff' h='100vh' display={{base: 'none', md: 'flex'}}>
+          {/* <HStack w='full' bgColor='#f8f8ff' h='100vh' display={{base: 'none', md: 'flex'}}>
 
             <Flex w='full' h='full' >
               <Image src={realizarDen} objectFit='cover'></Image>
@@ -304,7 +306,7 @@ const Denuncie = () => {
               </Stack>
             </Flex>
 
-        </HStack>
+        </HStack> */}
 
 
 
