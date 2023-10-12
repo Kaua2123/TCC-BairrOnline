@@ -28,7 +28,7 @@ import semImgDen from '../img/semImgDen.png';
 import jwtDecode from "jwt-decode";
 
 
-const CardDen = ({ nome, descricao, bairro, imagem, usuNome, denCod }) => {
+const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) => {
 
     const { colorMode } = useColorMode();
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -125,13 +125,18 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, denCod }) => {
 
                 <Stack mt='6' spacing='3'>
                     <Tag size='sm' colorScheme='blue' borderRadius='full' >
-                        <Avatar
-                            src='https://bit.ly/sage-adebayo'
+                    {usuImg ? (
+                        <Avatar src={`http://localhost:3344/retornaImgPerfil/${usuImg}`} size='xs' name={usuNome} ml={-1} mr={2}> </Avatar>
+                    ) : (
+                       
+                       <Avatar
                             size='xs'
-                            name='Segun Adebayo'
+                            name={usuNome}
                             ml={-1}
                             mr={2}
                         />
+                    )}
+                        
                         <TagLabel>{usuNome}</TagLabel>
                     </Tag>
                     <Heading size='md' fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>

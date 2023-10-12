@@ -37,6 +37,7 @@ const CardGrande = ({denuncia}) => {
   const [usuTipo, setUsuTipo] = useState('');
   const [notMensagem, setNotMensagem] = useState('');
   const [notTitulo, setNotTitulo] = useState('');
+  const [usuarios, setUsuarios] = useState([]);
 
   const toast = useToast();
 
@@ -159,6 +160,21 @@ const CardGrande = ({denuncia}) => {
     })
   }
 
+  const getUsuarios = () => {
+    axios.get('http://localhost:3344/getUsuarios')
+    .then((response) => {
+      setUsuarios(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+
+  useEffect(() => {
+    getUsuarios();
+  }, [])
+  
+
 
 
     return(
@@ -168,7 +184,12 @@ const CardGrande = ({denuncia}) => {
   <CardHeader>
     <Flex>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-        <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' />
+        {denuncia.usu_img ? (
+          <Avatar src={`http://localhost:3344/retornaImgPerfil/${denuncia.usu_img}`}  ml={-1} mr={2}> </Avatar>
+        ): (
+          <Avatar name={usuarios.usu_nome} ml={-1} mr={2}> </Avatar>
+        )}
+    
 
         <Box>
           <Heading fontSize={{base: '12px', md: '14px', lg: '16px'}}>{denuncia.usu_nome}</Heading>

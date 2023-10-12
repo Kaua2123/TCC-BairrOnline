@@ -342,7 +342,7 @@ useEffect(() => {
             <Avatar src={`http://localhost:3344/retornaImgPerfil/${usuario.usu_img}`} />
           ) : (
             // Caso usuário não tenha imagem, renderiza um Avatar com um ícone padrão
-            <Avatar icon={<FaUserAlt />} />
+            <Avatar name={usuario.usu_nome} />
           )}
        
         </Box>

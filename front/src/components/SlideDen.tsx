@@ -47,6 +47,7 @@ const SlideDen = ({denuncias}) => {
              bairro={denuncia.den_bairro}
              imagem={denuncia.den_img}
              usuNome={denuncia.usu_nome}
+             usuImg={denuncia.usu_img}
              denCod={denuncia.den_cod}
              />
             </SwiperSlide>
