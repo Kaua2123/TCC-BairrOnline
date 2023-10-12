@@ -219,13 +219,13 @@ const CardGrande = ({denuncia}) => {
     {denuncia.den_desc}
     </Text>
   </CardBody>
-  <Box>
+
                   {denuncia.den_img ? ( // se o usuario tiver adicionado imagem
-                    <Image src={`http://localhost:3344/retornaImagem/${denuncia.den_img}`} objectFit='cover'  w='full' h='300px'  />
+                    <Image src={`http://localhost:3344/retornaImagem/${denuncia.den_img}`} w='full' h='100px'  />
                 ) : (
                     <HiOutlineClipboardDocumentList size='10vh'  color='gray' /> // se n tiver adicionado imagem, é o que será exibido
                 )}
-                  </Box>
+
 
   <CardFooter
   gap={5}

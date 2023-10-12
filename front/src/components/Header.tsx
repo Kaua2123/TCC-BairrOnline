@@ -154,41 +154,28 @@ useEffect(() => {
 
 
   async function getNotificacoes() {
-     const token = localStorage.getItem('token');
-  if (token) {
-    axios.defaults.headers.common['Authorization'] = `${token}`;
-  }
-
-  try {
-    const response = await axios.get('http://localhost:3344/getNotificacoes');
-    const notificacoesData = response.data;
-    setNotificacoes(notificacoesData);
-
-    const todasNotLidas = notificacoesData.every((notificacao) => notificacao.not_lida === false);
-    setNotLida(todasNotLidas);
-
-    if (notificacoesData.length > 0) {
-      const notNaoLida = notificacoesData.some((notificacao) => notificacao.not_lida);
-      setNotNova(notNaoLida);
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `${token}`;
     }
 
-    if (!todasNotLidas) {
-      localStorage.setItem('notificacoesVisualizadas', 'true');
-    } else {
-      localStorage.removeItem('notificacoesVisualizadas');
-    }
-  } catch (error) {
-    console.error(error);
-  }
+    await axios.get('http://localhost:3344/getNotificacoes')
+    .then((response) => {
+      setNotificacoes(response.data);
+
+      if(response.data.length > 0) {
+        setTemNot(true);
+      }
+    })
+    .catch((error) => {
+      console.log(error)
+    });
+
 }
 
 useEffect(() => {
   getNotificacoes();
 
-  const notificacoesVisualizadas = localStorage.getItem('notificacoesVisualizadas');
-  if (notificacoesVisualizadas === 'true') {
-    setNotLida(false);
-  }
 }, []);
 
 
@@ -283,10 +270,10 @@ useEffect(() => {
       /> */}
                 <Popover>
                   <PopoverTrigger>
-                  <Button variant={'ghost'} onClick={() => setNotLida(true)} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
+                  <Button variant={'ghost'} onClick={() => setTemNot(false)} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
                   <AiOutlineBell  fill='white' size='2.6em' />
-                  {notNova && !notLida  && (
-                      <Badge
+                  {temNot && (
+                    <Badge
                       position="absolute"
                       top={9}
                       right={1}
@@ -294,7 +281,7 @@ useEffect(() => {
                       borderRadius="full"
                       w="10px"
                       h="10px"
-                    ></Badge>
+                    />
                   )}
                   </Button>
                   </PopoverTrigger>
