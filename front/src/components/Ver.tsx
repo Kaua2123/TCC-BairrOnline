@@ -12,7 +12,7 @@ import aguaParada from '../img/aguaParada.jpg'
 //chakra
 import {
   ChakraProvider, extendTheme, Image, Flex, Box, Button, Text, FormControl,
-  FormLabel, Spacer, Select, Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, Card, CardBody, CardFooter, CardHeader, Divider, Heading, Center
+  FormLabel, Spacer, Select, Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, Card, CardBody, CardFooter, CardHeader, Divider, Heading, Center, HStack, IconButton, Link, VStack
 } from '@chakra-ui/react';
 import { FiSearch } from 'react-icons/fi'
 import { SiOpenstreetmap } from 'react-icons/si';
@@ -32,6 +32,8 @@ import Comentarios from './Comentarios';
 import { Reportar } from './Reportar';
 import CardGrande from './CardGrande';
 import { CiLocationOn } from 'react-icons/ci';
+import { FaRegTrashAlt, FaUndo } from 'react-icons/fa';
+import { PiMagnifyingGlassBold } from 'react-icons/pi';
 
 const bairros = ['Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
   'Brasilândia', 'Caieira', 'Casa de Pedra', 'Conforto', 'Coqueiros', 'Cruzeiro', 'Dom Bosco', 'Eucaliptal',
@@ -67,6 +69,10 @@ const Ver = () => {
   const [erro, setErro] = useState(false);
   const [denBairro, setDenBairro] = useState('');
   const [denProblema, setDenProblema] = useState('');
+  const [termoPesquisa, setTermoPesquisa] = useState(""); // Estado para armazenar o termo de pesquisa
+  const [denunciasFiltradas, setDenunciasFiltradas] = useState([]); // Estado para armazenar as denúncias filtradas
+  const [filtroAtivo, setFiltroAtivo] = useState(false); // Estado para controlar se o filtro está ativo
+  const [nenhumaDenuncia, setNenhumaDenuncia] = useState(false);
   const bairrosUnicos = [...new Set(denuncias.map((denuncia) => denuncia.den_bairro))];
   const opcoesDeBairros = bairros.map((bairro, index) => ({
     value: bairro,
@@ -78,9 +84,7 @@ const Ver = () => {
   const [isMediumScreen] = useMediaQuery("(min-width: 992px)");
   const paddingLeft = isMediumScreen ? "40px" : "10px";
 
-  const [termoPesquisa, setTermoPesquisa] = useState(""); // Estado para armazenar o termo de pesquisa
-  const [denunciasFiltradas, setDenunciasFiltradas] = useState([]); // Estado para armazenar as denúncias filtradas
-  const [filtroAtivo, setFiltroAtivo] = useState(false); // Estado para controlar se o filtro está ativo
+
 
   useEffect(() => {
     axios.get('http://localhost:3344/getDenuncia')
@@ -109,36 +113,14 @@ const Ver = () => {
     <ChakraProvider theme={theme}>
 
 
-      <Flex align='center'>
 
-        <Box bg='#F8F8FF' borderRadius='4px' h='auto' w='100%'>
-
-          <Flex justifyContent='space-between'>
-
-
-
-            <Flex flexDirection='column' p='100px' w='610px'>
-              <Text color='#338BB0' fontSize={{ base: '12px', md: '20px', lg: '35px' }} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Veja outras denúncias</Text>
-              <Text w='410px' mt='40px' fontSize={{ base: '12px', md: '18px', lg: '25px' }}>Aqui você pode ver denúncias feitas por outros usuários. Opte pelo filtro de denúncias caso queira vê-las especificadamente.</Text>
-
-
-              <Text color='#338BB0' mt='30px' fontSize={{ base: '12px', md: '20px', lg: '35px' }} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Resolução</Text>
-              <Text w='450px' mt='40px' fontSize={{ base: '12px', md: '18px', lg: '25px' }}> Comente e dê sua opinião de forma respeitosa e compreensível, isso ajuda muito na resolução e visibilidade das denúncias. Participe!</Text>
-
-            </Flex>
-
-            <Flex flexDirection='column' flexWrap='wrap' >
-              <Image src={verDenuncia} boxSize={{ base: '20em', md: '30em', lg: '44em' }}></Image>
-            </Flex>
-
-
-
-          </Flex>
-
-    
-          <Box bgColor={'white'}>
-            <Center>
-              <Flex flexDirection="column">
+      <HStack w='full' h='80vh'>
+        <Flex w='full' h='full'>
+          <VStack m={20} alignItems='flex-start'>
+            <Text color='#338bb0' fontSize='50px' fontFamily='BreeSerif-Regular'>Veja aqui as denúncias, apoie a comunidade.</Text>
+            <Text mt={5}>Você pode filtrá-las para um melhor manuseio e visualização.</Text>
+            <HStack>
+            <Flex flexDirection="column">
                 <FormLabel mt="30px" fontSize={{ base: '12px', md: '14px', lg: '18px' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>Pesquisa por nome</FormLabel>
                 <InputGroup>
                   <InputLeftElement pointerEvents='none'>
@@ -219,11 +201,16 @@ Family='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
                   type='submit'
                   onClick={() => {
                     // Filtrar as denúncias com base no termo de pesquisa
+                    
                     if (termoPesquisa || denBairro || denProblema) {
                       // Se algum filtro estiver ativo, define o estado do filtroAtivo como verdadeiro
+                      setCarregando(true);
                       setFiltroAtivo(true);
 
                       // Filtra as denúncias com base nos critérios de pesquisa
+                      setTimeout(() => {
+
+                  
                       const denunciasFiltradas = denuncias.filter((denuncia) => {
                         const nomeInclui = denuncia.den_nome.toLowerCase().includes(termoPesquisa.toLowerCase());
                         const bairroCorresponde = denuncia.den_bairro === denBairro || !denBairro;
@@ -233,6 +220,8 @@ Family='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
                       });
 
                       setDenunciasFiltradas(denunciasFiltradas);
+                      setCarregando(false);
+                    }, 1000)
                     } else {
                       // Se nenhum filtro estiver ativo, define o estado do filtroAtivo como falso
                       setFiltroAtivo(false);
@@ -246,10 +235,23 @@ Family='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
                   Aplicar
                 </Button>
               </Flex>
-            </Center>
+            </HStack>
+
+    
+                <Flex justifyContent='center'>
+                  {carregando && (
+                     <Spinner size="xl" color="blue.500" thickness="4px" speed="0.65s" />
+                  )}
+                </Flex>
+        
+          </VStack>
+        
+        </Flex>
+      </HStack>
+      <VStack bgColor={'white'}>
             {/* Usar denuncias ou denunciasFiltradas com base no estado do filtroAtivo */}
-            <Center>
-              <Flex flexDirection='column'>
+ 
+              <Flex gap={8} mt='-40'>
                 {filtroAtivo ? (
                   denunciasFiltradas.map((denuncia, index) => (
                     <CardGrande key={index} denuncia={denuncia} />
@@ -260,24 +262,37 @@ Family='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
                   ))
                 )}
               </Flex>
-            </Center>
+      
 
             <Divider />
-            <Flex justify='space-between'>
-              <Flex flexDirection='column'>
+          </VStack>
+    
 
 
-              </Flex>
 
-              <Flex flexDirection='column'>
+          {/* <Flex justifyContent='space-between'>
 
 
-              </Flex>
+
+            <Flex flexDirection='column' p='100px' w='610px'>
+              <Text color='#338BB0' fontSize={{ base: '12px', md: '20px', lg: '35px' }} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Veja outras denúncias</Text>
+              <Text w='410px' mt='40px' fontSize={{ base: '12px', md: '18px', lg: '25px' }}>Aqui você pode ver denúncias feitas por outros usuários. Opte pelo filtro de denúncias caso queira vê-las especificadamente.</Text>
+
+
+              <Text color='#338BB0' mt='30px' fontSize={{ base: '12px', md: '20px', lg: '35px' }} fontFamily='BreeSerif-Regular' fontWeight='extrabold' >Resolução</Text>
+              <Text w='450px' mt='40px' fontSize={{ base: '12px', md: '18px', lg: '25px' }}> Comente e dê sua opinião de forma respeitosa e compreensível, isso ajuda muito na resolução e visibilidade das denúncias. Participe!</Text>
+
             </Flex>
-          </Box>
-        </Box>
 
-      </Flex>
+            <Flex flexDirection='column' flexWrap='wrap' >
+              <Image src={verDenuncia} boxSize={{ base: '20em', md: '30em', lg: '44em' }}></Image>
+            </Flex>
+
+
+
+          </Flex> */}
+
+    
 
 
 

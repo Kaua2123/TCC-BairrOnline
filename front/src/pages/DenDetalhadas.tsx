@@ -243,13 +243,15 @@ const MinhasDen = () => {
               <Text>Abaixo, pesquise suas denúncias e faça a reversão das mesmas. Pressione ENTER para validar sua pesquisa.</Text>
             </VStack>
 
-            <InputGroup mt={3} justifyContent='center'>
+    <Box justifyContent='center'>
+            <InputGroup mt={3} >
               <InputLeftElement>
                 <FiSearch color='white' />
               </InputLeftElement>
               <Input type='text' w='30vw' color='white' _placeholder={{ color: "white" }} bg='#338BB0' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
 
             </InputGroup>
+    </Box>
           </VStack>
 
 

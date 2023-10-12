@@ -164,9 +164,9 @@ const CardGrande = ({denuncia}) => {
     return(
         <ChakraProvider>
                                                                 {/* w={{base: '535px', md: '653px', lg: '802px'}} */}
-        <Card boxShadow='lg'  mt='50px' bgColor='white' border='1px solid #A9A9A9'  w='700px'> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
+        <Card boxShadow='lg'  mt='50px' bgColor='white' border='1px solid #A9A9A9'   w='650px'> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
   <CardHeader>
-    <Flex spacing='4'>
+    <Flex>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
         <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' />
 
