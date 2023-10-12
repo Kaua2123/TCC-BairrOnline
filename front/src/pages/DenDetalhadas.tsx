@@ -298,8 +298,8 @@ const MinhasDen = () => {
           <Box m='100px' alignItems='center' justifyContent='center'>
 
           {nenhumaDen && !carregando && (
-            <Center >
-              <Box borderRadius='12px' bgColor='white' p={10} mb={10} boxShadow='lg'>
+            <Center>
+              <Box borderRadius='12px' bgColor='white' p={10} mt={10} boxShadow='lg'>
               <Text color='#338bb0' fontSize='40px' fontFamily='BreeSerif-Regular' > Nenhuma denúncia encontrada.</Text>
               </Box>
               </Center>

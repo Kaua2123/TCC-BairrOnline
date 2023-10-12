@@ -145,8 +145,7 @@ const HomeUsuario = () => {
         console.log('Todas as denúncias foram deletadas.', response)
         if(response){
           toast({
-            title: 'Deletadas',
-            description: 'Todas suas denúncias foram deletadas com sucesso. Você pode revertê-las.',
+            title: 'Deletadas com sucesso',
             status: 'success',
             isClosable: true,
             duration: 4000

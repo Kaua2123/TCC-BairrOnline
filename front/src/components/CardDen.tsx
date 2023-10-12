@@ -264,7 +264,6 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                 if (response) {
                     toast({
                         title: 'Denúncia deletada',
-                        description: "Sua denúncia foi deletada com sucesso. Recarregue para ver as alterações",
                         status: 'success',
                         duration: 4000,
                         isClosable: true

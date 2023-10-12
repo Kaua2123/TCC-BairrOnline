@@ -12,7 +12,7 @@ import aguaParada from '../img/aguaParada.jpg'
 //chakra
 import {
   ChakraProvider, extendTheme, Image, Flex, Box, Button, Text, FormControl,
-  FormLabel, Spacer, Select, Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, Card, CardBody, CardFooter, CardHeader, Divider, Heading, Center, HStack, IconButton, Link, VStack
+  FormLabel, Spacer, Select, Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, Card, CardBody, CardFooter, CardHeader, Divider, Heading, Center, HStack, IconButton, Link, VStack, Grid
 } from '@chakra-ui/react';
 import { FiSearch } from 'react-icons/fi'
 import { SiOpenstreetmap } from 'react-icons/si';
@@ -276,12 +276,14 @@ Family='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
       <VStack bgColor={'white'}>
             {/* Usar denuncias ou denunciasFiltradas com base no estado do filtroAtivo */}
  
-              <Flex gap={8} mt='-40'>
+              <Grid templateColumns="repeat(2, 1fr)" gap={4} mt='-40' >
                 {filtroAtivo ? (
                   denunciasFiltradas.length === 0 ? (
+ 
                     <Box mt='-20px' borderRadius='12px' bgColor='white' p={10} boxShadow='lg'>
                       <Text color='#338bb0' fontSize='40px' fontFamily='BreeSerif-Regular'>{mensagemNenhumaDen}</Text>
                     </Box>
+   
                   ) : (
                     
                     denunciasFiltradas.map((denuncia, index) => (
@@ -293,7 +295,7 @@ Family='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
                     <CardGrande key={index} denuncia={denuncia} />
                   ))
                 )}
-              </Flex>
+              </Grid>
       
 
             <Divider />
