@@ -1,5 +1,5 @@
 //CHAKRA
-import { ChakraProvider, Button, Kbd, Box, Flex, Icon, Image, useToast, InputLeftElement, Grid, Text, Card, Center, Container, GridItem, IconButton, Wrap, WrapItem, HStack, VStack, Input, InputGroup, CardHeader, CardBody, CardFooter, Heading, Stack, } from "@chakra-ui/react";
+import { ChakraProvider, Button, Kbd, Box, Flex, Icon, Image, useToast, InputLeftElement, Grid, Text, Card, Center, Container, GridItem, IconButton, Wrap, WrapItem, HStack, VStack, Input, InputGroup, CardHeader, CardBody, CardFooter, Heading, Stack, Spinner, } from "@chakra-ui/react";
 
 //componentes
 import Header, { HeaderUsu, HeaderInst } from "../components/Header";
@@ -53,6 +53,10 @@ const MinhasDen = () => {
   const [pesquisa, setPesquisa] = useState('');
   const [denunciasPorPagina, setDenunciasPorPagina] = useState(5);
   const [paginaAtual, setPaginaAtual] = useState(1);
+  const [carregando, setCarregando] = useState(false);
+  const [textoPesquisa, setTextoPesquisa] = useState('');
+  const [nenhumaDen, setNenhumaDen] = useState(false);
+
   const navigate = useNavigate();
   const toast = useToast();
 
@@ -152,8 +156,22 @@ const MinhasDen = () => {
   const aoPesquisar = (e) => {
     if (e.key === 'Enter') {
       setPaginaAtual(1);
-      const denunciasFiltradas = denunciasExcluidas.filter((denuncia) => denuncia.den_nome.toLowerCase().includes(pesquisa.toLowerCase()));
-      setDenunciasExcluidasFiltradas(denunciasFiltradas);
+      setDenunciasExcluidasFiltradas([]);
+      setCarregando(true);
+      setTextoPesquisa(e.target.value);
+      setNenhumaDen(false);
+
+      setTimeout(() => {
+        const denunciasFiltradas = denunciasExcluidas.filter((denuncia) => 
+        denuncia.den_nome.toLowerCase().includes(pesquisa.toLowerCase()));
+
+        if(denunciasFiltradas.length === 0) {
+          setNenhumaDen(true);
+        }
+
+        setDenunciasExcluidasFiltradas(denunciasFiltradas);
+        setCarregando(false)
+      }, 1000);
     }
   }
 
@@ -246,24 +264,47 @@ const MinhasDen = () => {
     <Box justifyContent='center'>
             <InputGroup mt={3} >
               <InputLeftElement>
-                <FiSearch color='white' />
+                <FiSearch/>
               </InputLeftElement>
-              <Input type='text' w='30vw' color='white' _placeholder={{ color: "white" }} bg='#338BB0' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
+              <Input type='text' w='30vw' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
 
             </InputGroup>
+            {textoPesquisa && !carregando && (
+              <Center>
+              <Box m={20} mt={20}>
+              <Text>Você pesquisou: {textoPesquisa}</Text>
+              </Box>
+              </Center>
+            )}
+
+            <Center>
+            {carregando && (
+              <Spinner mt={6} size="xl" color="blue.500" thickness="4px" speed="0.65s" />
+            )}
+            </Center>
     </Box>
           </VStack>
 
-
-
-
         </Box>
-
+      <Center>
+     
+      </Center>
         <Box bgColor='gray.200' minH='240px' h='auto'>
 
+           
 
+            
 
           <Box m='100px' alignItems='center' justifyContent='center'>
+
+          {nenhumaDen && !carregando && (
+            <Center >
+              <Box borderRadius='12px' bgColor='white' p={10} mb={10} boxShadow='lg'>
+              <Text color='#338bb0' fontSize='40px' fontFamily='BreeSerif-Regular' > Nenhuma denúncia encontrada.</Text>
+              </Box>
+              </Center>
+            )}
+     
             {denunciasExibidas.map((denunciaExcluida, index) => (
               <>
 

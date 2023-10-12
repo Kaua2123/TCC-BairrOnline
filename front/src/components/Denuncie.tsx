@@ -161,6 +161,12 @@ const Denuncie = () => {
     });
   }
 
+  const pegaTecla = (e) => {
+    if (e.key === 'Enter'){
+      e.preventDefault();
+      enviaDen();
+    }
+  }
 
 
 
@@ -251,7 +257,8 @@ const Denuncie = () => {
                     border='1px solid black'
                     _hover={{ border: '1px solid #A9A9A9	' }}
                     textAlign='center'
-                    w={{base: '70vw'}}>
+                    w={{base: '70vw'}}
+                    onKeyDown={pegaTecla}>
                     <option value=''></option>
                     {opçoesDeProblemas.map((problema) => (
                       <option key={problema.value} value={problema.value}>
@@ -266,7 +273,7 @@ const Denuncie = () => {
               </FormControl>     
               <Spacer />
                   {carregando ? (
-                    <Spinner size='lg' color='#338BB0' />
+                     <Spinner size="xl" color="blue.500" thickness="4px" speed="0.65s" />
                   ) : (
                    
                     <Button w='124px' type='submit' onClick={() => {
