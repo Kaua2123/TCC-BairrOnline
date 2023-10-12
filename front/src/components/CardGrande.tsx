@@ -216,17 +216,17 @@ const CardGrande = ({denuncia}) => {
     }}
   >
     <VStack>
-    <Button  color='white' onClick={curtirDenuncia}  bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiSolidLike />}>
+    <Button  boxShadow='lg' color='white' onClick={curtirDenuncia}  bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiSolidLike />}>
       Curtir
     </Button>
     <Text>Curtidas: {denuncia.den_like}</Text>
     </VStack>
-    <Button  color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiCommentDetail />}>
+    <Button  boxShadow='lg' color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiCommentDetail />}>
       Comentar
     </Button>
 
     {usuTipo === 'instituicao' && (
-      <Button onClick={onOpen} color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<FaHandshake />}>
+      <Button boxShadow='lg' onClick={onOpen} color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<FaHandshake />}>
       Assumir denuncia
     </Button>
     )}
@@ -248,7 +248,7 @@ const CardGrande = ({denuncia}) => {
               </ModalBody>
 
               <ModalFooter>
-                <Button onClick={() => {
+                <Button boxShadow='lg' onClick={() => {
                   criarAcompanhamento();
                   enviaMsgNotificacao();
                 }} bgColor='#338bb0' color='white' _hover={{color: '#338bb0', backgroundColor: 'white'}}>Concluir</Button>

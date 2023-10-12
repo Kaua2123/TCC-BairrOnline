@@ -70,6 +70,8 @@ const Ver = () => {
   const [denBairro, setDenBairro] = useState('');
   const [denProblema, setDenProblema] = useState('');
   const [termoPesquisa, setTermoPesquisa] = useState(""); // Estado para armazenar o termo de pesquisa
+  const [mensagemPesquisa, setMensagemPesquisa] = useState("");
+  const [mensagemNenhumaDen, setMensagemNenhumaDen] = useState("");
   const [denunciasFiltradas, setDenunciasFiltradas] = useState([]); // Estado para armazenar as denúncias filtradas
   const [filtroAtivo, setFiltroAtivo] = useState(false); // Estado para controlar se o filtro está ativo
   const [nenhumaDenuncia, setNenhumaDenuncia] = useState(false);
@@ -209,6 +211,23 @@ Family='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
 
                       // Filtra as denúncias com base nos critérios de pesquisa
                       setTimeout(() => {
+                        if (denunciasFiltradas.length === 0) {
+                          setMensagemNenhumaDen('Nenhuma denúncia encontrada');
+                        }
+                      }, 1000)
+                     
+                      
+
+                      setTimeout(() => {
+                        let mensagem = 'Denúncias encontradas para a pesquisa: ' // para exibir pro usuario oq ele pesquisou
+                        if (termoPesquisa) mensagem += ` "${termoPesquisa}"`;
+                        if (denBairro) mensagem += ` Bairro selecionado: "${denBairro}"`;
+                        if (denProblema) mensagem += ` Problema selecionado: "${denProblema}"`;
+  
+                        setMensagemPesquisa(mensagem);
+                      }, 1000)
+
+                      setTimeout(() => {
 
                   
                       const denunciasFiltradas = denuncias.filter((denuncia) => {
@@ -225,22 +244,28 @@ Family='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
                     } else {
                       // Se nenhum filtro estiver ativo, define o estado do filtroAtivo como falso
                       setFiltroAtivo(false);
+                      setMensagemPesquisa(''); //limpando a mensagem da pesquisa
                     }
                   }}
                   bgColor='#338BB0'
                   color='white'
                   _hover={{ color: '#338BB0', bgColor: 'white' }}
                   mt={{ base: '35px', md: '38px', lg: '45px' }}
+                  boxShadow='lg'
                 >
                   Aplicar
                 </Button>
               </Flex>
             </HStack>
 
+            
     
                 <Flex justifyContent='center'>
                   {carregando && (
                      <Spinner size="xl" color="blue.500" thickness="4px" speed="0.65s" />
+                  )}
+                  {mensagemPesquisa && (
+                    <Text>{mensagemPesquisa}</Text>
                   )}
                 </Flex>
         
@@ -253,9 +278,16 @@ Family='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
  
               <Flex gap={8} mt='-40'>
                 {filtroAtivo ? (
-                  denunciasFiltradas.map((denuncia, index) => (
-                    <CardGrande key={index} denuncia={denuncia} />
-                  ))
+                  denunciasFiltradas.length === 0 ? (
+                    <Box mt='-20px' borderRadius='12px' bgColor='white' p={10} boxShadow='lg'>
+                      <Text color='#338bb0' fontSize='40px' fontFamily='BreeSerif-Regular'>{mensagemNenhumaDen}</Text>
+                    </Box>
+                  ) : (
+                    
+                    denunciasFiltradas.map((denuncia, index) => (
+                      <CardGrande key={index} denuncia={denuncia} />
+                    ))
+                  )       
                 ) : (
                   denuncias.map((denuncia, index) => (
                     <CardGrande key={index} denuncia={denuncia} />

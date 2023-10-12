@@ -25,7 +25,6 @@ import Footer from '../components/Footer';
 import theme from '../breakpoints.tsx';
 
 import CardInst from '../components/CardInst';
-import { Reportar } from '../components/Reportar.tsx';
 import CommentForm from '../components/CommentForm';
 import CommentList from '../components/CommentList';
 import CardCom from '../components/CardCom';

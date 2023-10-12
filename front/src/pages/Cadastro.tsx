@@ -191,7 +191,7 @@ const Cadastro = () => {
           <Spacer/>
           
 
-          <IconButton aria-label='anterior' mt={3}  icon={<AiOutlineArrowRight/>} onClick={() => setSecaoAtual(secaoAtual + 1)} bgColor='#338bb0' color='white' _hover={{color: '#338bb0', backgroundColor: 'white'}}>Próximo</IconButton>
+          <IconButton aria-label='anterior' mt={3}  icon={<AiOutlineArrowRight/>} onClick={() => setSecaoAtual(secaoAtual + 1)} bgColor='#338bb0' color='white' _hover={{color: '#338bb0', backgroundColor: 'white'}} boxShadow='lg'>Próximo</IconButton>
           </>
          )}
 
@@ -242,7 +242,7 @@ const Cadastro = () => {
                   </Select>
 
                 </InputGroup>
-                <IconButton aria-label='anterior' mt={3} icon={<AiOutlineArrowLeft/>} onClick={() => setSecaoAtual(secaoAtual - 1)}  color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}}  >Anterior</IconButton>
+                <IconButton boxShadow='lg' aria-label='anterior' mt={3} icon={<AiOutlineArrowLeft/>} onClick={() => setSecaoAtual(secaoAtual - 1)}  color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}}  >Anterior</IconButton>
                 </>
           )}
 
@@ -257,7 +257,7 @@ const Cadastro = () => {
 
                   
                 </Stack>
-                <Button bgColor="#338bb0" _hover={{color: '#338bb0', backgroundColor: 'white'}} color='white' onClick={cadastraUsuario} display={secaoAtual === 1 ? 'none' : 'block'}>Cadastrar</Button>
+                <Button bgColor="#338bb0" _hover={{color: '#338bb0', backgroundColor: 'white'}} color='white' onClick={cadastraUsuario} display={secaoAtual === 1 ? 'none' : 'block'} boxShadow='lg'>Cadastrar</Button>
 
 
               <Link to='/Login'><Text color='blue.400'>Já possui uma conta? Clique para entrar</Text></Link>

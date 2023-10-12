@@ -245,7 +245,7 @@ const closeAlertDialog = () => {
           {temDenuncia && ( // oq ta aq dentro só aparece se tiver denúncia
             <Box>
             <Center>
-              <Button mt='20px' onClick={openAlertDialog} colorScheme='red'>
+              <Button mt='20px' boxShadow='lg' onClick={openAlertDialog} colorScheme='red'>
                 Apagar todas
               </Button>
             </Center> 
@@ -265,10 +265,10 @@ const closeAlertDialog = () => {
                                     </AlertDialogBody>
 
                                     <AlertDialogFooter>
-                                        <Button ref={cancelRef} onClick={closeAlertDialog}>
+                                        <Button boxShadow='lg' ref={cancelRef} onClick={closeAlertDialog}>
                                             Cancelar
                                         </Button>
-                                        <Button bgColor='#E75760' color='white' _hover={{ backgroundColor: '#D71D28' }} onClick={() => {
+                                        <Button boxShadow='lg' bgColor='#E75760' color='white' _hover={{ backgroundColor: '#D71D28' }} onClick={() => {
                                             deleteTodasDenuncias();
                                             closeAlertDialog();
                                         }} ml={3}>

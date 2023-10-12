@@ -176,7 +176,7 @@ const Denuncie = () => {
           <HStack w='full' h='100vh' bgColor='#f8f8ff'>
 
             <Flex w='full' h='full' alignItems='center' justifyContent='center'>
-              <VStack m={12}>  
+              <VStack >  
               <Text color='#338bb0' fontSize='35px' fontFamily='BreeSerif-Regular' mr={20} display={{base: 'none', md: 'flex'}}>Realize sua denúncia</Text>
                <Stack w='full' maxW='md' spacing={4} p={6}>
               <FormControl>
@@ -271,7 +271,7 @@ const Denuncie = () => {
                    
                     <Button w='124px' type='submit' onClick={() => {
                       enviaDen();
-                    }} bgColor='#338BB0' color='white' _hover={{ color: '#338BB0', bgColor: '#DCDCDC' }}>
+                    }} bgColor='#338BB0' boxShadow='lg' color='white' _hover={{ color: '#338BB0', bgColor: 'white' }}>
                       Criar denúncia
                     </Button>
                   

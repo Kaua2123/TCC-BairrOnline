@@ -148,6 +148,7 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, denCod }) => {
 
 
                 <Button
+    
                     leftIcon={<BsChatSquareText />}
                     bgColor='#338BB0'
                     color='white'
@@ -182,7 +183,7 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, denCod }) => {
 
                 </Button>
 
-                <Button color='red' _hover={{ color: '#8B0000' }} leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={openModal}>
+                <Button variant='ghost' color='red' _hover={{ color: '#8B0000' }} leftIcon={<MdOutlineReportProblem size='3vh' />} onClick={openModal}>
                     
                 </Button>
 
@@ -210,7 +211,7 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, denCod }) => {
 
                             <ModalFooter>
 
-                        <Button color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} onClick={postReportar}>Reportar</Button>
+                        <Button boxShadow='lg' color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} onClick={postReportar}>Reportar</Button>
                             </ModalFooter>
                         </ModalContent>
                     </Modal>
@@ -564,14 +565,14 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
                         {editando ? (
                             <>
-                                <Button mr={3} bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} onClick={() => setEditando(false)}>Cancelar</Button>
-                                <Button colorScheme="green" mr={3} onClick={() => updateDenuncia(denCod)}>Salvar alterações</Button>
+                                <Button boxShadow='lg' mr={3} bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} onClick={() => setEditando(false)}>Cancelar</Button>
+                                <Button boxShadow='lg' colorScheme="green" mr={3} onClick={() => updateDenuncia(denCod)}>Salvar alterações</Button>
                             </>
                         ) : (
                             <>
-                                <Button bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog} _hover={{ backgroundColor: '#D71D28' }}>Apagar</Button>
-                                <Button bgColor='#338bb0' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' onClick={openImageUploadModal}>Adicionar imagem</Button>
-                                <Button bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} onClick={() => setEditando(true)}>Editar</Button>
+                                <Button boxShadow='lg' bgColor='#E75760' mr={3} color='white' onClick={openAlertDialog} _hover={{ backgroundColor: '#D71D28' }}>Apagar</Button>
+                                <Button boxShadow='lg' bgColor='#338bb0' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' onClick={openImageUploadModal}>Adicionar imagem</Button>
+                                <Button boxShadow='lg' bgColor='#338bb0' color='white' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} onClick={() => setEditando(true)}>Editar</Button>
 
                             </>
                         )}
@@ -588,10 +589,10 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                                     </AlertDialogBody>
 
                                     <AlertDialogFooter>
-                                        <Button ref={cancelRef} onClick={closeAlertDialog}>
+                                        <Button boxShadow='lg' ref={cancelRef} onClick={closeAlertDialog}>
                                             Cancelar
                                         </Button>
-                                        <Button bgColor='#E75760' color='white' _hover={{ backgroundColor: '#D71D28' }} onClick={() => {
+                                        <Button boxShadow='lg' bgColor='#E75760' color='white' _hover={{ backgroundColor: '#D71D28' }} onClick={() => {
                                             deleteDenuncia(denCod);
                                             closeAlertDialog();
                                         }} ml={3}>
@@ -624,10 +625,10 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                             )}
                         </ModalBody>
                         <ModalFooter>
-                            <Button colorScheme="blue" mr={3} onClick={uploadImage}>
+                            <Button boxShadow='lg' bgColor='#338bb0' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' mr={3} onClick={uploadImage}>
                                 Enviar Imagem
                             </Button>
-                            <Button variant="ghost" onClick={closeImageUploadModal}>
+                            <Button boxShadow='lg' variant="ghost" onClick={closeImageUploadModal}>
                                 Cancelar
                             </Button>
                         </ModalFooter>
