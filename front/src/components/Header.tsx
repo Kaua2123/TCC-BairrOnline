@@ -185,7 +185,7 @@ useEffect(() => {
   return(
 
 
-      <Flex w={{base: '79vw', md: '100%'}}   bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='lg' >
+      <Flex w={{base: '100%', md: '100%'}}  bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} boxShadow='lg' >
 
 
 {/*COMEÇA HEADERUSU NAV*/}
@@ -419,7 +419,7 @@ useEffect(() => {
 
 
 
-      <Flex w='100%'  bg={colorMode === 'light' ? '#322F2F' : 'gray.700'}  boxShadow='lg' position={"sticky"} top={0} zIndex={2}>
+      <Flex w={{base: '100%', md: '100%'}}  bg={colorMode === 'light' ? '#322F2F' : 'gray.700'}  boxShadow='lg' position={"sticky"} top={0} zIndex={2}>
 
           <Center>
             <Menu>

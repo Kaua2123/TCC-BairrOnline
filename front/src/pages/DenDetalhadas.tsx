@@ -1,5 +1,5 @@
 //CHAKRA
-import { ChakraProvider, Button, Kbd, Box, Flex, Icon, Image, useToast, InputLeftElement, Grid, Text, Card, Center, Container, GridItem, IconButton, Wrap, WrapItem, HStack, VStack, Input, InputGroup, CardHeader, CardBody, CardFooter, Heading, Stack, Spinner, } from "@chakra-ui/react";
+import { ChakraProvider, Button, useMediaQuery, Kbd, Box, Flex, Icon, Image, useToast, InputLeftElement, Grid, Text, Card, Center, Container, GridItem, IconButton, Wrap, WrapItem, HStack, VStack, Input, InputGroup, CardHeader, CardBody, CardFooter, Heading, Stack, Spinner, } from "@chakra-ui/react";
 
 //componentes
 import Header, { HeaderUsu, HeaderInst } from "../components/Header";
@@ -60,6 +60,7 @@ const MinhasDen = () => {
   const navigate = useNavigate();
   const toast = useToast();
 
+  const [mobile] = useMediaQuery("(max-width: 768px)");
 
   const carregarMaisDenuncias = () => {
     setPaginaAtual((prevPagina) => prevPagina + 1);
@@ -202,22 +203,26 @@ const MinhasDen = () => {
 
       <HStack w='full' h='80vh'>
         <Flex w='full' h='full'>
-          <VStack m={20} alignItems='flex-start'>
-            <Text color='#338bb0' fontSize='50px' fontFamily='BreeSerif-Regular'>Reverta suas denúncias, <br/> faça a diferença.</Text>
-            <Text mt={5}>Visualize o acompanhamento das suas denúncias e realize a reversão dos que foram excluídos. <br/> Seu bairro precisa de você.</Text>
-            <HStack spacing={8} mt={10} bgColor='#5271ff' p={7} borderRadius='2xl' boxShadow='lg' >
+          <VStack m={{base: '14', md: '20'}} alignItems={{base: 'normal', md: 'flex-start'}}>
+            <Text color='#338bb0' fontSize={{base: '25px', md: '50px'}}  fontFamily='BreeSerif-Regular'>Reverta suas denúncias, <br/> faça a diferença.</Text>
+            {!mobile && (
+              <Text mt={5}>Visualize o acompanhamento das suas denúncias e realize a reversão dos que foram excluídos. <br/> Seu bairro precisa de você.</Text>
+            )}
+            
+            
+            <HStack spacing={{base: '4', md: '8'}} mt={10} mr={{base: '10', md: '0'}} bgColor='#5271ff' p={{base: '3', md: '7'}} borderRadius='2xl' boxShadow='lg' >
               <Link smooth to={'/DenDetalhadas#denExcluida'}>
-                <IconButton boxShadow='dark-lg' bgColor='white'  boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaRegTrashAlt size='40px' />}></IconButton >
+                <IconButton boxShadow='dark-lg' bgColor='white'  boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaRegTrashAlt size='40px' />}></IconButton >
               </Link>
 
 
               <Link smooth to={'/DenDetalhadas#reversaoDen'}>
-                <IconButton boxShadow='dark-lg' bgColor='white' boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaUndo size='40px' />}></IconButton >
+                <IconButton boxShadow='dark-lg' bgColor='white' boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaUndo size='40px' />}></IconButton >
               </Link>
 
 
               <Link smooth to={'/DenDetalhadas#acompanhaDen'}>
-                <IconButton boxShadow='dark-lg' bgColor='white' boxSize='80px' aria-label="xd" _hover={{ color: '#338bb0' }} icon={<PiMagnifyingGlassBold size='40px' />}></IconButton >
+                <IconButton boxShadow='dark-lg' bgColor='white' boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<PiMagnifyingGlassBold size='40px' />}></IconButton >
               </Link>
 
             </HStack>
@@ -240,9 +245,14 @@ const MinhasDen = () => {
       </Box>
 
       <Box pt='40px' id='denExcluida'>
+        {mobile ? (
+           <Text color="#338bb0" fontSize='35px' ml={4} pb='30px' fontFamily='BreeSerif-Regular'>Denúncias Excluidas</Text>
+        ) : (
         <Center>
           <Text color="#338bb0" fontSize='35px' pb='30px' fontFamily='BreeSerif-Regular'>Denúncias Excluidas</Text>
         </Center>
+        )}
+      
 
         <Center>
           <Box h='auto' maxH='900px' w='1400px' bg='white' boxShadow='lg' >
@@ -252,8 +262,8 @@ const MinhasDen = () => {
           </Box>
         </Center>
 
-
-        <Box m='100px' id='reversaoDen' borderRadius='12px' h='40vh' display='flex' alignItems='center' boxShadow='lg'>
+        {mobile === false ? (
+          <Box m='100px' id='reversaoDen' borderRadius='12px' h='40vh' display='flex' alignItems='center' boxShadow='lg'>
 
           <VStack w='full'>
             <VStack justify='center'>
@@ -261,7 +271,7 @@ const MinhasDen = () => {
               <Text>Abaixo, pesquise suas denúncias e faça a reversão das mesmas. Pressione ENTER para validar sua pesquisa.</Text>
             </VStack>
 
-    <Box justifyContent='center'>
+          <Box justifyContent='center'>
             <InputGroup mt={3} >
               <InputLeftElement>
                 <FiSearch/>
@@ -282,13 +292,52 @@ const MinhasDen = () => {
               <Spinner mt={6} size="xl" color="blue.500" thickness="4px" speed="0.65s" />
             )}
             </Center>
-    </Box>
+          </Box>
           </VStack>
 
-        </Box>
+          </Box>
+        ) : (
+          <Box m='50px' id='reversaoDen' borderRadius='12px' h='40vh' display='flex' alignItems='center' boxShadow='lg'>
+
+          <VStack w='full'>
+            <VStack justify='center'>
+              <Text fontFamily='BreeSerif-Regular' fontSize={{base: '30px', md: '45px'}} color='#338bb0'>Simples e fácil.</Text>
+              <Text mt={3}>Abaixo, pesquise suas denúncias e faça a reversão das mesmas.</Text>
+            </VStack>
+
+          <Box justifyContent='center'>
+            <InputGroup mt={3} >
+              <InputLeftElement>
+                <FiSearch/>
+              </InputLeftElement>
+              <Input type='text' w='30vw' onChange={(e) => setPesquisa(e.target.value)} onKeyPress={aoPesquisar} placeholder="Pesquisar denúncia"></Input>
+
+            </InputGroup>
+            {textoPesquisa && !carregando && (
+              <Center>
+              <Box m={20} mt={20}>
+              <Text>Você pesquisou: {textoPesquisa}</Text>
+              </Box>
+              </Center>
+            )}
+
+            <Center>
+            {carregando && (
+              <Spinner mt={6} size="xl" color="blue.500" thickness="4px" speed="0.65s" />
+            )}
+            </Center>
+          </Box>
+          </VStack>
+
+          </Box>
+        )}
+
+       
       <Center>
      
       </Center>
+
+      
         <Box bgColor='gray.200' minH='240px' h='auto'>
 
            
@@ -319,6 +368,7 @@ const MinhasDen = () => {
                       boxShadow='lg'
                       marginBottom='20px'
                       w={{ base: '40em', md: '50em' }}
+                      h={{base: '38em', md: '200px'}}
                     >
                       {denunciaExcluida.den_img ? (
                         <Image
