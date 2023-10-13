@@ -138,8 +138,7 @@ const CardGrande = ({denuncia}) => {
     if (token) {
         axios.defaults.headers.common['Authorization'] = `${token}`;
       }
-
-
+      
     axios.post(`http://localhost:3344/curtirDenuncia/${denuncia.den_cod}`)
     .then((response) => {
       console.log(response.data)
@@ -238,9 +237,9 @@ const CardGrande = ({denuncia}) => {
   >
     <VStack>
     <Button  boxShadow='lg' color='white' onClick={curtirDenuncia}  bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiSolidLike />}>
-      Curtir
+    {denuncia.den_like}
     </Button>
-    <Text>Curtidas: {denuncia.den_like}</Text>
+  
     </VStack>
     <Button  boxShadow='lg' color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiCommentDetail />}>
       Comentar

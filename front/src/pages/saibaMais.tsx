@@ -7,8 +7,9 @@ import ilustDen from '../img/ilustracaoDenuncia.png';
 import tarefas from '../img/tarefas.png';
 
 //componentees
-import Header from "../components/Header";
+import Header, { HeaderADM, HeaderInst, HeaderUsu } from "../components/Header";
 import Footer from "../components/Footer";
+import jwtDecode from "jwt-decode";
 
 
 
@@ -22,11 +23,29 @@ const theme = extendTheme({
     },
   });
 
+
 const saibaMais = () => {
+    
+    let headerComponent = null;
+
+    const token = localStorage.getItem('token');
+    const decodificaToken: any = jwtDecode(token);
+    
+    if (decodificaToken && decodificaToken.usu_tipo === 'denunciante') {
+      headerComponent = <HeaderUsu />;
+    } else if (decodificaToken && decodificaToken.usu_tipo === 'instituicao') {
+      headerComponent = <HeaderInst />;
+    } else if (decodificaToken && decodificaToken.usu_tipo === 'administrador') {
+      headerComponent = <HeaderADM />
+    }
+    else {
+      headerComponent = <Header />;
+    }
+  
     return(
         
         <ChakraProvider theme={theme}>
-    <Header/>
+    {headerComponent}
 
         <Flex justify='center'>
             <Box w='100%' h='110em' borderRadius='4px'   bg='white'>
@@ -72,9 +91,9 @@ const saibaMais = () => {
                                 Por que escolher o BairrOnline?
                              </Text>
                              <Text  m='18px'  fontSize='20px' fontFamily='Inter-Regular'  whiteSpace='nowrap' >
-                                Nossa proposta com o BairrOnline, é fazer com que as denúncias tenham <br /> visibilidade
+                                Nossa proposta com o BairrOnline é fazer com que as denúncias tenham <br /> visibilidade
                                 e sejam realmente notadas pelas instituições. Faremos o nosso   <br />  melhor para que de fato, 
-                                seja uma aplicação eficiente e que satisfaça <br />  às expectativas dos usuários da mesma.
+                                seja uma aplicação eficiente e que satisfaça <br /> as expectativas dos usuários da mesma.
 
                              </Text>    
 
