@@ -22,6 +22,7 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 import { CiLocationOn } from 'react-icons/ci';
 import { MdDescription } from 'react-icons/md';
 
+//validacpf
 
 const theme = extendTheme({
   styles: {
@@ -38,8 +39,11 @@ const Cadastro = () => {
   const [show, setShow] = useState(false);
   const [usuNome, setUsuNome] = useState("");
   const [usuEmail, setUsuEmail] = useState("");
+  const [emailValido, setEmailValido] = useState(false);
   const [usuSenha, setUsuSenha] = useState("");
+  const [senhaValida, setSenhaValida] = useState(false);
   const [usuTel, setUsuTel] = useState("");
+  const [telefoneValido, setTelefoneValido] = useState(false);
   const [usuCep, setUsuCep] = useState("");
   const [usuCPF, setUsuCPF] = useState("");
   const [usuCNPJ, setUsuCNPJ] = useState("");
@@ -51,13 +55,50 @@ const Cadastro = () => {
 
   const handleClick = () => setShow(!show)
 
+  
+  const validarCPF = (cpf) => {
+
+  
+    let soma = 0;
+    for (let i = 0; i < 9; i++) {
+      soma += parseInt(usuCPF.charAt(i)) * (10 - i);
+    }
+  
+    let resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(usuCPF.charAt(9))) return false;
+  
+    soma = 0;
+    for (let i = 0; i < 10; i++) {
+      soma += parseInt(usuCPF.charAt(i)) * (11 - i);
+    }
+  
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(usuCPF.charAt(10))) return false;
+  
+    return true;
+  };
+
+
+  const validaEmail = () => {
+    // regex pra validar cm a estrutura normal de email blabla@gmail.com...
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    setEmailValido(emailRegex.test(usuEmail));
+  }
+
+  const validarTelefone = () => {
+    // regex pra validar com 10 digitos
+    const regexTelefone = /^\d{11}$/;
+  
+    setTelefoneValido(regexTelefone.test(usuTel));
+  }
 
   const cadastraUsuario = async () => {
 
-    if (usuNome === "" || usuEmail === "" || usuSenha === "" || usuTel === "" || usuCep === "") {
+    if (usuNome === "" || usuEmail === "" || usuSenha === "" || usuTel === "" || usuCPF === "") { //validaçao
       toast({
-        title: "Erro",
-        description: " Algum campo não esta preenchido corretamente, verifique-os.",
+        title: "Algum campo parece estar vazio.",
         status: "error",
         duration: 4000,
         isClosable: false,
@@ -65,6 +106,49 @@ const Cadastro = () => {
       console.log('Erro, algum campo vazio.')
       return;
     }
+
+    if (usuSenha.length < 6) { //validaçao 
+      toast({
+        title: "Sua senha deve ter no mínimo 6 caracteres, por segurança.",
+        status: "error",
+        duration: 4000,
+        isClosable: false,
+      })
+      return;
+    }
+
+    if (!emailValido) {
+      toast({
+        title: "Digite seu email corretamente.",
+        status: "error",
+        duration: 4000,
+        isClosable: false,
+      })
+      return;
+    }
+
+    if (!telefoneValido) {
+      toast({
+        title: "Digite seu telefone corretamente. Verifique se incluiu o DDD",
+        status: "error",
+        duration: 4000,
+        isClosable: false,
+      })
+      return;
+    }
+
+    if (!validarCPF(usuCPF)) {
+    toast({
+      title: "CPF inválido, verifique e tente novamente.",
+      status: "error",
+      duration: 4000,
+      isClosable: false,
+    });
+    console.log('CPF inválido');
+    return;
+  }
+
+
 
     axios.post('http://localhost:3344/criarUsu', {    //para cadastro do usuario
       usu_nome: usuNome,
@@ -161,13 +245,15 @@ const Cadastro = () => {
             <InputLeftElement>
               <BsTelephone />
             </InputLeftElement>
-            <Input placeholder='Digite seu telefone' borderColor='black' required type='tel' value={usuTel} onChange={(e) => {
+            <Input placeholder='Digite seu telefone' borderColor={telefoneValido ? 'green' : 'red'} required type='tel' value={usuTel} onChange={(e) => {
               setUsuTel(e.target.value)
-            }} />
+              setTelefoneValido(true);
+            }}
+              onBlur={validarTelefone} />
           </InputGroup>
         
 
-          <FormLabel>CEP</FormLabel>
+          {/* <FormLabel>CEP</FormLabel>
           <InputGroup>
             <InputLeftElement>
               <CiLocationOn />
@@ -175,7 +261,7 @@ const Cadastro = () => {
             <Input placeholder='Digite seu CEP' borderColor='black' required type='number' value={usuCep} onChange={(e) => {
               setUsuCep(e.target.value)
             }} />
-          </InputGroup>
+          </InputGroup> */}
 
        
 
@@ -202,9 +288,11 @@ const Cadastro = () => {
                   <InputLeftElement>
                     <AiOutlineMail />
                   </InputLeftElement>
-                  <Input placeholder='Digite seu email' borderColor='black'  required type='email' value={usuEmail} onChange={(e) => {
-                    setUsuEmail(e.target.value)
-                  }} />
+                  <Input placeholder='Digite seu email' borderColor={emailValido ? 'green' : 'red'}  required type='email' value={usuEmail} onChange={(e) => {
+                    setUsuEmail(e.target.value);
+                    setEmailValido(true);
+                  }}
+                  onBlur={validaEmail} />
 
                 </InputGroup>
                

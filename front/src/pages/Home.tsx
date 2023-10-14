@@ -312,17 +312,14 @@ const Home = () => {
 
             <Flex w='full' h='full' alignItems='center' display={{ base: 'none', md: 'flex' }} justifyContent='center' >
               <Stack w='full' maxW='md' spacing={4}>
-                <Heading fontSize={{ base: '1xl', md: '3xl' }} color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Instituições</Heading>
+                <Heading fontSize={{ base: '1xl', md: '3xl' }} textAlign='center' color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Instituições</Heading>
 
-                <Text fontSize={{ base: '16px', md: '19px' }}>
-                  Conheça as <b>instituições</b> que poderão resolver os problemas de seu <b>bairro</b>
+                <Text fontSize={{ base: '16px', md: '19px' }} textAlign='center'>
+                  Conheça as <b>instituições</b> que poderão <br/>resolver os problemas de seu <b>bairro</b>
                 </Text>
 
 
               </Stack>
-
-
-
 
             </Flex>
 
