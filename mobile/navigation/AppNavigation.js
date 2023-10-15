@@ -1,20 +1,19 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from './screens/Home'; // Importe a tela "Home" aqui
-import HomeUsu from './screens/HomeUsu';
+import Home from '../screens/Home';
+import App from '../App';
 
 const Tab = createBottomTabNavigator();
 
-function App() {
+function AppNavigator() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={Home} /> 
-        <Tab.Screen name="HomeUsu" component={HomeUsu}></Tab.Screen>
+        <Tab.Screen name="raiz" component={App}  />
+        <Tab.Screen name="Home" component={Home} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
 
-export default App;
+export default AppNavigator;
