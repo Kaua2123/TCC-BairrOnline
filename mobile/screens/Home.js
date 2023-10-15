@@ -11,7 +11,7 @@ function Home() {
       <Text>home aqui</Text>
 
       <Button title='home usuario' onPress={() => {
-        navigation.navigate('Home');
+        navigation.navigate('HomeUsu');
       }}></Button>
     </View>
   );
