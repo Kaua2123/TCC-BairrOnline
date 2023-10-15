@@ -629,7 +629,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                             )}
                         </ModalBody>
                         <ModalFooter>
-                            <Button boxShadow='lg' bgColor='#338bb0' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' mr={3} onClick={uploadImage}>
+                            <Button boxShadow='lg' bgColor='#338bb0' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' onClick={uploadImage}>
                                 Enviar Imagem
                             </Button>
                             <Button boxShadow='lg' variant="ghost" onClick={closeImageUploadModal}>
