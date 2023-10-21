@@ -238,6 +238,7 @@ module.exports = {
                 return res.status(400).json({ error: 'Não há denuncias excluidas para reverter.' });
             }
 
+            
             await knex('denuncias').insert({ //inserindo de novo na tabela de denúncias os dados da denuncia que foi excluida
                 den_cod: denunciaExcluida.den_cod,
                 den_nome: denunciaExcluida.den_nome,

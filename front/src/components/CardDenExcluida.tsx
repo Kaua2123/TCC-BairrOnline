@@ -1,6 +1,8 @@
 //chakra
-import { Box, Card, CardBody, CardHeader, Flex, Icon, Heading, Stack, Text, Image, CardFooter } from "@chakra-ui/react";
+import { Box, Card, CardBody, CardHeader, Flex, Icon, Heading, Stack, Text, Image, CardFooter, useToast, Button } from "@chakra-ui/react";
 
+//axios
+import axios from "axios";
 
 //imgs
 import semImgDen from '../img/semImgDen.png';
@@ -9,7 +11,7 @@ import semImgDen from '../img/semImgDen.png';
 import { FaTrash } from "react-icons/fa";
 
 
-const CardDenExcluida = ({ nome, descricao, bairro, imagem, dataExclusao }) => {
+const CardDenExcluida = ({ nome, descricao, bairro, imagem, dataExclusao, denCod }) => {
 
     const caracteresMaxDescricao = 24;
     const caracteresMaxTitulo = 20;
@@ -29,7 +31,46 @@ const CardDenExcluida = ({ nome, descricao, bairro, imagem, dataExclusao }) => {
     }
 
     const dataFormatada = new Date(dataExclusao).toLocaleDateString("pt-BR");
+    const toast = useToast();
 
+    async function reverterDenunciaExcluida() {
+
+        const token = localStorage.getItem('token');
+        if (token) {
+          axios.defaults.headers.common['Authorization'] = `${token}`;
+        }
+    
+        const codTeste = 23
+        await axios.post(`http://localhost:3344/reverterDenunciaExcluida/${denCod}`)
+          .then(response => {
+            if (response) {
+              toast({
+                title: 'Sucesso',
+                description: 'Sua denúncia foi revertida.',
+                status: 'success',
+                duration: 4000,
+                isClosable: true
+              });
+    
+              setTimeout(() => { // esperar um tempo e recarregar a pagina
+                window.location.reload();
+              }, 1000);
+            }
+          })
+          .catch(error => {
+            if (error) {
+              toast({
+                title: 'Erro',
+                description: 'Houve um erro ao reverter a denúncia excluída.',
+                status: 'error',
+                duration: 4000,
+                isClosable: true
+              });
+    
+            }
+          })
+      }
+    
 
     return (
  
@@ -52,9 +93,13 @@ const CardDenExcluida = ({ nome, descricao, bairro, imagem, dataExclusao }) => {
                 <CardFooter>
 
            
-                <Text fontSize='18px' color='#338bb0'>
-                <Icon as={FaTrash} mr={2} /> 
-                    Excluída
+               
+                <Button variant='solid' bgColor='#338bb0' color='white' _hover={{ color: '#338bb0', backgroundColor: 'white' }} onClick={reverterDenunciaExcluida}>
+                          Reverter
+                </Button>
+
+                <Text fontSize='18px' color='#338bb0' ml={28} mt={3}>
+                <Icon as={FaTrash} /> 
                 </Text>
     
                 </CardFooter>

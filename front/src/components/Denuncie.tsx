@@ -133,7 +133,11 @@ const Denuncie = () => {
             status: 'success',
             duration: 4000,
             isClosable: true,
-          })
+          });
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
         }
         setCarregando(false);
       }, 1100)

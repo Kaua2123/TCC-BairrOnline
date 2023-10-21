@@ -130,6 +130,7 @@ export const SlideDenExcluida = ({ denunciasExcluidas }) => {
                       bairro={denunciaExcluida.den_bairro}
                       imagem={denunciaExcluida.den_img}
                       dataExclusao={denunciaExcluida.den_data_exclusao}
+                      denCod={denunciaExcluida.den_cod}
                     />
                   </SwiperSlide>
                 </Box>

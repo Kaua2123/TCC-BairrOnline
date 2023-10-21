@@ -105,8 +105,7 @@ const MinhasDen = () => {
     await axios.get('http://localhost:3344/getDenunciaExcluida')
       .then(response => {
         setDenunciasExcluidas(response.data);
-        const codigosExcluidos = response.data.map(denunciaExcluida => denunciaExcluida.den_cod);
-        setDenunciaExcluidaCod(codigosExcluidos);
+        setDenunciaExcluidaCod(response.data.den_cod);
       })
       .catch(error => {
         console.error('Erro ao buscar as denúncias excluidas', error);
@@ -117,12 +116,13 @@ const MinhasDen = () => {
     getDenunciaExcluida();
   }, [])
 
-  async function reverterDenunciaExcluida() {
+  async function reverterDenunciaExcluida(denCod) {
 
     const token = localStorage.getItem('token');
     if (token) {
       axios.defaults.headers.common['Authorization'] = `${token}`;
     }
+
 
     await axios.post(`http://localhost:3344/reverterDenunciaExcluida/${denunciaExcluidaCod}`)
       .then(response => {
