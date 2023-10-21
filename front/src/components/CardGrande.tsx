@@ -41,8 +41,6 @@ const CardGrande = ({denuncia}) => {
 
   const toast = useToast();
 
-  const [rep, setrep] = useState();
-
   useEffect(() => {
     const token = localStorage.getItem('token');
 
@@ -54,49 +52,75 @@ const CardGrande = ({denuncia}) => {
 
   }, []);
 
-    const criarAcompanhamento = async () => {
-
-      const token = localStorage.getItem('token');          //pegar o token e decodificar
-      if(!token){
-        return;
-      }
-      const decodificaToken: any = await jwt_decode(token);
-
-    console.log(decodificaToken);
-      axios.post('http://localhost:3344/criarAcompanhamento', {
-        denuncias_den_cod: denuncia.den_cod,
-        aco_data: new Date(),
-        aco_progresso: acoProgresso,
-        usuario_usu_cod: decodificaToken.usu_cod,
-      })
+  const criarAcompanhamento = async () => {
+    const token = localStorage.getItem('token');
+  
+    if (!token) {
+      return;
+    }
+  
+    const decodificaToken: any = await jwt_decode(token);
+  
+    axios.post('http://localhost:3344/criarAcompanhamento', {
+      denuncias_den_cod: denuncia.den_cod,
+      aco_data: new Date(),
+      aco_progresso: acoProgresso,
+      usuario_usu_cod: decodificaToken.usu_cod,
+    })
       .then((response) => {
-        console.log('Denúncia assumida');
-        console.log(response.data);
-
-        if(response){ // se for criada, executa o codigo abaixo, responsavel pelo feedback ao usuario
+        if (response.status === 201) {
+          // denuncia assumida, acompanhamento criado
           toast({
             title: 'Denúncia assumida',
-            description: "A denúncia foi assumida com sucesso.",
+            description: 'A denúncia foi assumida com sucesso.',
             status: 'success',
             duration: 4000,
             isClosable: true,
-          })
-      }
-    })
-    .catch((error) => {
-      if (error){
+          });
+        } else if (response.status === 400) {
+          // denuncia ja assumida pela instituiçao logada
+          toast({
+            title: 'Você já assumiu esta denúncia.',
+            description: 'Esta denúncia já foi assumida pela sua instituição.',
+            status: 'error',
+            duration: 4000,
+            isClosable: true,
+          });
+        } else if (response.status === 401) {
+          // denúncia já assumida por outra instituição 
+          toast({
+            title: 'Outra instituição já assumiu esta denúncia.',
+            description: 'Esta denúncia já foi assumida por outra instituição.',
+            status: 'error',
+            duration: 4000,
+            isClosable: true,
+          });
+        } else if (response.status === 404) {
+          // denuncia n encontrada
+          toast({
+            title: 'Denúncia não encontrada',
+            description: 'A denúncia que você tentou assumir não foi encontrada.',
+            status: 'error',
+            duration: 4000,
+            isClosable: true,
+          });
+        }
+      })
+      .catch((error) => {
+
+        if (error.response) {
+          console.log(error.response.data);
+        }
+        
         toast({
-          title: 'Denúncia não pôde ser assumida',
-          description: 'houve um erro ao assumir',
-          status: 'error',
-          duration: 4000,
-          isClosable: true
-        })
-      }
-      console.log('denuncia não pôde ser assumida.')
-      console.error(error);
-    })
-    }
+            title: 'Erro ao assumir denúncia', 
+            description: 'Você ou outra instituição já assumiu essa denúncia.', //temporario, ate eu arrumar os response.status bugado
+            status: 'error',
+            duration: 4000,
+            isClosable: true,
+          });
+      });
+  };
 
     const enviaMsgNotificacao = async () => {
 
@@ -138,10 +162,9 @@ const CardGrande = ({denuncia}) => {
     if (token) {
         axios.defaults.headers.common['Authorization'] = `${token}`;
       }
-      
+  
     axios.post(`http://localhost:3344/curtirDenuncia/${denuncia.den_cod}`)
     .then((response) => {
-      console.log(response.data)
       toast({
         title: 'Denúncia curtida',
         status: 'success',

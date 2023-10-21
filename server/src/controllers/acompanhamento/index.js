@@ -14,12 +14,19 @@ module.exports = {
                 return res.status(404).json({ error:'Denúncia não encontrada'});
          }
 
-         const acompanhamentoExists = await knex('acompanhamento').where({denuncias_den_cod, usuario_usu_cod}) .first();
+         const acompanhamentoExists = await knex('acompanhamento').where({denuncias_den_cod, usuario_usu_cod}).first();
 
          if (acompanhamentoExists) {
             return res.status(400).json({ error: 'Esta denúncia já foi assumida pela instituição.' });
           }
 
+        const denunciaAssumida = await knex('acompanhamento')
+        .where('denuncias_den_cod', denuncias_den_cod)
+        .first();
+
+        if (denunciaAssumida) {
+            return res.status(401).json({ error: 'Esta denúncia já foi assumida por outra instituição.' });
+        }
 
          const acoData = new Date().toISOString();
 
@@ -33,10 +40,11 @@ module.exports = {
 
          });
 
-            return res.status(201).json({ message: 'Acompanhamento criado com sucesso.'});
+        return res.status(201).json({ message: 'Acompanhamento criado com sucesso.'});
 
-        } catch(error){
-              return res.status(400).json({ error: error.message });
+        } 
+        catch(error){
+              return res.status(500).json({ error: error.message });
         }
     },
 

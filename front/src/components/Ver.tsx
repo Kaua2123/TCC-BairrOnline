@@ -4,15 +4,12 @@ import '../App.css';
 
 //img
 
-import verDenuncia from "../img/verDenuncia.png";
-import enviandoDen from "../img/enviandoDen.png";
-import aguaParada from '../img/aguaParada.jpg'
 
 
 //chakra
 import {
-  ChakraProvider, extendTheme, Image, Flex, Box, Button, Text, FormControl,
-  FormLabel, Spacer, Select, Input, InputLeftElement, InputGroup, Textarea, useToast, Spinner, Card, CardBody, CardFooter, CardHeader, Divider, Heading, Center, HStack, IconButton, Link, VStack, Grid
+  ChakraProvider, extendTheme, Flex, Box, Button, Text, 
+  FormLabel, Select, Input, InputLeftElement, InputGroup, Spinner, Divider, HStack, VStack, Grid
 } from '@chakra-ui/react';
 import { FiSearch } from 'react-icons/fi'
 import { SiOpenstreetmap } from 'react-icons/si';
@@ -21,19 +18,11 @@ import { useMediaQuery } from '@chakra-ui/react';
 
 //react
 import { useEffect, useState } from "react";
-import { useRef } from "react";
 import axios from 'axios';
 
 //react icons
-import { BsCardText, BsCamera, BsListUl, BsCalendar3, BsChatSquareText } from "react-icons/bs"
-import { HiOutlineClipboardDocumentList } from "react-icons/hi2"
-import { MdOutlineReportProblem } from 'react-icons/md';
-import Comentarios from './Comentarios';
-import { Reportar } from './Reportar';
 import CardGrande from './CardGrande';
 import { CiLocationOn } from 'react-icons/ci';
-import { FaRegTrashAlt, FaUndo } from 'react-icons/fa';
-import { PiMagnifyingGlassBold } from 'react-icons/pi';
 
 const bairros = ['Aero Clube', 'Água Limpa', 'Açude', 'Aterrado', 'Belo Horizonte', 'Belmonte', 'Boa Sorte',
   'Brasilândia', 'Caieira', 'Casa de Pedra', 'Conforto', 'Coqueiros', 'Cruzeiro', 'Dom Bosco', 'Eucaliptal',
@@ -82,7 +71,7 @@ const Ver = () => {
   }));
 
 
-  const toast = useToast();
+
   const [isMediumScreen] = useMediaQuery("(min-width: 992px)");
   const paddingLeft = isMediumScreen ? "40px" : "10px";
 
