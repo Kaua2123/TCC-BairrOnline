@@ -15,11 +15,12 @@ import semImgDen from '../img/semImgDen.png';
 import xd from '../img/design teste 15.png'
 
 //icones
-import { FaUndo, FaTrash } from 'react-icons/fa';
+import { FaUndo, FaTrash, FaClock, FaEye, FaBinoculars, FaCogs } from 'react-icons/fa';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { FiFilter, FiSearch } from 'react-icons/fi';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
-import { BsListUl } from "react-icons/bs";
+import { FaChartLine } from 'react-icons/fa';
+import {BsHourglass} from 'react-icons/bs'
 
 //react
 import { useState, useEffect } from "react";
@@ -105,7 +106,6 @@ const MinhasDen = () => {
     await axios.get('http://localhost:3344/getDenunciaExcluida')
       .then(response => {
         setDenunciasExcluidas(response.data);
-        setDenunciaExcluidaCod(response.data.den_cod);
       })
       .catch(error => {
         console.error('Erro ao buscar as denúncias excluidas', error);
@@ -153,6 +153,11 @@ const MinhasDen = () => {
         }
       })
   }
+
+  useEffect(() => {
+    setDenunciasExcluidasFiltradas(denunciasExcluidas);
+  }, [denunciasExcluidas]);
+
 
   const aoPesquisar = (e) => {
     if (e.key === 'Enter') {
@@ -211,18 +216,18 @@ const MinhasDen = () => {
             
             
             <HStack spacing={{base: '4', md: '8'}} mt={10} mr={{base: '10', md: '0'}} bgColor='#5271ff' p={{base: '3', md: '7'}} borderRadius='2xl' boxShadow='lg' >
-              <Link smooth to={'/DenDetalhadas#denExcluida'}>
-                <IconButton boxShadow='dark-lg' bgColor='white'  boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaRegTrashAlt size='40px' />}></IconButton >
+              <Link smooth to={'/DenDetalhadas#pesquisa'}>
+                <IconButton boxShadow='dark-lg' bgColor='white'  boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<PiMagnifyingGlassBold size='40px' />}></IconButton >
               </Link>
 
 
-              <Link smooth to={'/DenDetalhadas#reversaoDen'}>
-                <IconButton boxShadow='dark-lg' bgColor='white' boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaUndo size='40px' />}></IconButton >
+              <Link smooth to={'/DenDetalhadas#excluidas'}>
+                <IconButton boxShadow='dark-lg' bgColor='white' boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaRegTrashAlt size='40px' />}></IconButton >
               </Link>
 
 
               <Link smooth to={'/DenDetalhadas#acompanhaDen'}>
-                <IconButton boxShadow='dark-lg' bgColor='white' boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<PiMagnifyingGlassBold size='40px' />}></IconButton >
+                <IconButton boxShadow='dark-lg' bgColor='white' boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<BsHourglass size='40px' />}></IconButton >
               </Link>
 
             </HStack>
@@ -237,37 +242,15 @@ const MinhasDen = () => {
       </HStack>
 
 
-      <Box pt='40px' mt={20} id="acompanhaDen">
-        <Center>
-          <Text color="#338bb0" fontSize='35px' fontFamily='BreeSerif-Regular'>Acompanhar Denúncias</Text>
-        </Center>
-        <Box>Aq vai ter algo dps tlggggggg</Box>
-      </Box>
+    
 
       <Box pt='40px' id='denExcluida'>
-        {mobile ? (
-           <Text color="#338bb0" fontSize='35px' ml={4} pb='30px' fontFamily='BreeSerif-Regular'>Denúncias Excluidas</Text>
-        ) : (
-        <Center>
-          <Text color="#338bb0" fontSize='35px' pb='30px' fontFamily='BreeSerif-Regular'>Denúncias Excluidas</Text>
-        </Center>
-        )}
-      
-
-        <Center>
-          <Box h='auto' maxH='900px' w='1400px' bg='white' boxShadow='lg' >
-
-            <SlideDenExcluida denunciasExcluidas={denunciasExcluidas} />
-
-          </Box>
-        </Center>
-
-        {mobile === false ? (
+      {mobile === false ? (
           <Box m='100px' id='reversaoDen' borderRadius='12px' h='40vh' display='flex' alignItems='center' boxShadow='lg'>
 
           <VStack w='full'>
             <VStack justify='center'>
-              <Text fontFamily='BreeSerif-Regular' fontSize='45px' color='#338bb0'>Simples e fácil.</Text>
+              <Text fontFamily='BreeSerif-Regular' id="pesquisa" fontSize='45px' color='#338bb0'>Simples e fácil.</Text>
               <Text>Abaixo, pesquise suas denúncias e faça a reversão das mesmas. Pressione ENTER para validar sua pesquisa.</Text>
             </VStack>
 
@@ -329,103 +312,27 @@ const MinhasDen = () => {
           </Box>
           </VStack>
 
+          
+
           </Box>
         )}
-
-       
-      <Center>
-     
-      </Center>
-
       
-        <Box bgColor='gray.200' minH='240px' h='auto'>
 
-           
+        <Center>
+          <Box h='auto' id="excluidas" maxH='900px' w='1400px' bg='white'>
 
-            
+            <SlideDenExcluida denunciasExcluidas={denunciasExcluidasFiltradas} />
 
-          <Box m='100px' alignItems='center' justifyContent='center'>
-
-          {nenhumaDen && !carregando && (
-            <Center>
-              <Box borderRadius='12px' bgColor='white' p={10} mt={10} boxShadow='lg'>
-              <Text color='#338bb0' fontSize='40px' fontFamily='BreeSerif-Regular' > Nenhuma denúncia encontrada.</Text>
-              </Box>
-              </Center>
-            )}
-     
-            {denunciasExibidas.map((denunciaExcluida, index) => (
-              <>
-
-
-                <Box key={index} pt='20px'   >
-                  <Center>
-                    <Card
-                      direction={{ base: 'column', sm: 'row' }}
-                      overflow='hidden'
-                      variant='outline'
-                      bgColor='#f7f7f7'
-                      boxShadow='lg'
-                      marginBottom='20px'
-                      w={{ base: '40em', md: '50em' }}
-                      h={{base: '38em', md: '200px'}}
-                    >
-                      {denunciaExcluida.den_img ? (
-                        <Image
-                          objectFit='cover'
-                          maxW={{ base: '100%', sm: '200px' }}
-                          src={`http://localhost:3344/retornaImagem/${denunciaExcluida.den_img}`}
-
-                        />
-                      ) : (
-                        <Image src={semImgDen} maxW={{ base: '100%', sm: '200px' }} objectFit='cover' />
-                      )}
-
-
-
-
-                      <CardBody>
-                        <Heading size='md'>{denunciaExcluida.den_nome}</Heading>
-
-                        <Heading size='10px' color='gray' >EM {denunciaExcluida.den_bairro.toUpperCase()}</Heading>
-                        <Heading size='10px' color='gray'>Data de exclusão: {denunciaExcluida.den_data_exclusao}</Heading>
-
-                        <Text fontSize='18px' color='#338bb0'>
-                          <Icon as={FaTrash} mr={2} />
-                          Excluída
-                        </Text>
-
-                        <Text py='2'>
-                          {denunciaExcluida.den_desc}
-                        </Text>
-
-
-                      </CardBody>
-
-                      <CardFooter>
-                        <Button variant='solid' mt={24} bgColor='#338bb0' color='white' _hover={{ color: '#338bb0', backgroundColor: 'white' }} onClick={reverterDenunciaExcluida}>
-                          Reverter
-                        </Button>
-                      </CardFooter>
-
-                    </Card>
-                  </Center>
-                </Box>
-              </>
-            ))}
           </Box>
+        </Center>
 
-          {denunciasExcluidasFiltradas.length > denunciasPorPagina * paginaAtual && (
+      </Box>
 
-            <Flex justifyContent='center' >
-              <Button bgColor='#338bb0' color='white' _hover={{ color: '#338bb0', backgroundColor: 'white' }} onClick={carregarMaisDenuncias}>Ver mais</Button>
-            </Flex>
-          )}
-
-
-
-        </Box>
-
+      <Box pt='40px' mt={20} id="acompanhaDen">
+        <Center>
+          <Text color="#338bb0" fontSize='35px' fontFamily='BreeSerif-Regular'>Acompanhar Denúncias</Text>
+        </Center>
+        <Box>ACOMPNHAR DENUNCIAS SERA AQUI</Box>
       </Box>
 
       <Footer />

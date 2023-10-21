@@ -421,7 +421,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
 
 
-        <Card maxW='sm' w={{ base: '280px', md: '265px', lg: '250px' }} maxH='lg' h={{ base: '23em', md: '23em', lg: '29em' }} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+        <Card maxW='sm' w={{ base: '280px', md: '265px', lg: '250px' }} maxH='lg' h={{ base: '23em', md: '23em', lg: '29em' }} onClick={onOpen} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
 
                 {imagem ? (
