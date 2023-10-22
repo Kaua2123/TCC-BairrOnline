@@ -17,7 +17,7 @@ module.exports = {
          const acompanhamentoExists = await knex('acompanhamento').where({denuncias_den_cod, usuario_usu_cod}).first();
 
          if (acompanhamentoExists) {
-            return res.status(400).json({ error: 'Esta denúncia já foi assumida pela instituição.' });
+            return res.status(400).json({ error: 'Você já assumiu essa denúncia.' });
           }
 
         const denunciaAssumida = await knex('acompanhamento')
@@ -42,7 +42,7 @@ module.exports = {
 
         return res.status(201).json({ message: 'Acompanhamento criado com sucesso.'});
 
-        } 
+        }
         catch(error){
               return res.status(500).json({ error: error.message });
         }

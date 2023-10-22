@@ -37,7 +37,7 @@ routes.post("/reverterDenunciaExcluida/:cod", autentica, controllersDenuncias.re
 routes.put("/updateDenuncia/:cod", autentica, controllersDenuncias.updateDenuncia);
 routes.post("/uparImagem/:cod", autentica, controllersDenuncias.uparImagem);
 routes.get("/retornaImagem/:filename", controllersDenuncias.retornaImagem);
-routes.post("/curtirDenuncia/:cod", controllersDenuncias.curtirDenuncia);
+routes.put("/curtirDenuncia/:cod", autentica, controllersDenuncias.curtirDenuncia);
 
 //reportar
 routes.post("/postReportar", controllersReportar.postReportar);

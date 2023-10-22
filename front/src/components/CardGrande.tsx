@@ -54,13 +54,13 @@ const CardGrande = ({denuncia}) => {
 
   const criarAcompanhamento = async () => {
     const token = localStorage.getItem('token');
-  
+
     if (!token) {
       return;
     }
-  
+
     const decodificaToken: any = await jwt_decode(token);
-  
+
     axios.post('http://localhost:3344/criarAcompanhamento', {
       denuncias_den_cod: denuncia.den_cod,
       aco_data: new Date(),
@@ -68,6 +68,7 @@ const CardGrande = ({denuncia}) => {
       usuario_usu_cod: decodificaToken.usu_cod,
     })
       .then((response) => {
+        
         if (response.status === 201) {
           // denuncia assumida, acompanhamento criado
           toast({
@@ -77,60 +78,54 @@ const CardGrande = ({denuncia}) => {
             duration: 4000,
             isClosable: true,
           });
-        } else if (response.status === 400) {
-          // denuncia ja assumida pela instituiçao logada
-          toast({
-            title: 'Você já assumiu esta denúncia.',
-            description: 'Esta denúncia já foi assumida pela sua instituição.',
-            status: 'error',
-            duration: 4000,
-            isClosable: true,
-          });
-        } else if (response.status === 401) {
-          // denúncia já assumida por outra instituição 
-          toast({
-            title: 'Outra instituição já assumiu esta denúncia.',
-            description: 'Esta denúncia já foi assumida por outra instituição.',
-            status: 'error',
-            duration: 4000,
-            isClosable: true,
-          });
-        } else if (response.status === 404) {
-          // denuncia n encontrada
-          toast({
-            title: 'Denúncia não encontrada',
-            description: 'A denúncia que você tentou assumir não foi encontrada.',
-            status: 'error',
-            duration: 4000,
-            isClosable: true,
-          });
-        }
+        } 
       })
       .catch((error) => {
 
         if (error.response) {
           console.log(error.response.data);
-        }
-        
-        toast({
-            title: 'Erro ao assumir denúncia', 
-            description: 'Você ou outra instituição já assumiu essa denúncia.', //temporario, ate eu arrumar os response.status bugado
+          const status = error.response.status;
+          let errorMessage = 'Erro desconhecido'
+
+          switch (status) {
+            case 400:
+              errorMessage = error.response.data.error || 'Você já assumiu essa denúncia.';
+              break;
+            case 401:
+              errorMessage = 'Denúncia já assumida por outra instituição.';
+              break;
+            case 500:
+              errorMessage = 'Erro no servidor.';
+              break;
+            // Outros casos de erro e mensagens personalizadas podem ser adicionados aqui.
+          }
+          toast({
+            title: errorMessage,
             status: 'error',
-            duration: 4000,
+            duration: 2000,
             isClosable: true,
           });
+        }
+        else {
+          toast({
+              title: 'Erro desconhecido',
+              status: 'error',
+              duration: 4000,
+              isClosable: true,
+            });
+        }
       });
   };
 
     const enviaMsgNotificacao = async () => {
 
-      
+
       const token = localStorage.getItem('token'); //primeiro pegar o token, pois é uma rota protegida
       if (token) {
           axios.defaults.headers.common['Authorization'] = `${token}`;
         }
 
-        
+
       const decodificaToken: any = await jwt_decode(token);
 
       axios.post('http://localhost:3344/msgNotificacao', {
@@ -157,30 +152,54 @@ const CardGrande = ({denuncia}) => {
   )}
 
   const curtirDenuncia = () => {
+  const token = localStorage.getItem('token');
 
-    const token = localStorage.getItem('token'); //primeiro pegar o token, pois é uma rota protegida
-    if (token) {
-        axios.defaults.headers.common['Authorization'] = `${token}`;
-      }
-  
-    axios.post(`http://localhost:3344/curtirDenuncia/${denuncia.den_cod}`)
+  if (token) {
+    axios.defaults.headers.common['Authorization'] = `${token}`;
+  }
+
+  axios.put(`http://localhost:3344/curtirDenuncia/${denuncia.den_cod}`)
     .then((response) => {
       toast({
         title: 'Denúncia curtida',
         status: 'success',
         duration: 2000,
-        isClosable: true
-      })
+        isClosable: true,
+      });
     })
     .catch((error) => {
-      toast({
-        title: 'Falha ao curtir a denúncia',
-        status: 'error',
-        duration: 2000,
-        isClosable: true
-      })
-    })
-  }
+      if (error.response) {
+        const status = error.response.status;
+        let errorMessage = 'Erro desconhecido';
+
+        switch (status) {
+          case 400:
+            errorMessage = error.response.data.error || 'Você já curtiu esta denúncia.';
+            break;
+          case 404:
+            errorMessage = 'Denúncia não encontrada.';
+            break;
+          case 500:
+            errorMessage = 'Erro no servidor.';
+            break;
+        }
+
+        toast({
+          title: errorMessage,
+          status: 'error',
+          duration: 2000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: 'Falha ao curtir a denúncia',
+          status: 'error',
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+    });
+};
 
   const getUsuarios = () => {
     axios.get('http://localhost:3344/getUsuarios')
@@ -195,14 +214,14 @@ const CardGrande = ({denuncia}) => {
   useEffect(() => {
     getUsuarios();
   }, [])
-  
+
 
 
 
     return(
         <ChakraProvider>
                                                                 {/* w={{base: '535px', md: '653px', lg: '802px'}} */}
-        <Card boxShadow='lg'  mt='50px' bgColor='white' border='1px solid #A9A9A9'   w='650px'> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
+        <Card boxShadow='lg'  mt='50px' bgColor='white' border='1px solid #A9A9A9'   w={{base: '', md:'650px'}}> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
   <CardHeader>
     <Flex>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
@@ -211,7 +230,7 @@ const CardGrande = ({denuncia}) => {
         ): (
           <Avatar name={usuarios.usu_nome} ml={-1} mr={2}> </Avatar>
         )}
-    
+
 
         <Box>
           <Heading fontSize={{base: '12px', md: '14px', lg: '16px'}}>{denuncia.usu_nome}</Heading>
@@ -262,7 +281,7 @@ const CardGrande = ({denuncia}) => {
     <Button  boxShadow='lg' color='white' onClick={curtirDenuncia}  bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiSolidLike />}>
     {denuncia.den_like}
     </Button>
-  
+
     </VStack>
     <Button  boxShadow='lg' color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiCommentDetail />}>
       Comentar

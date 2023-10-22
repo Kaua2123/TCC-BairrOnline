@@ -116,7 +116,7 @@ module.exports = {
             const denuncias = await knex('denuncias').select('denuncias.*', 'usuario.usu_nome', 'usuario.usu_img') // juntando duas tabelas
             .join('usuario', 'denuncias.usuario_usu_cod', 'usuario.usu_cod')  //pra pegar a img e o nome do usuario e exibir nos cards
             .orderBy('denuncias.den_like', 'desc')
-           
+
 
             return res.status(200).json(denuncias); //retorna as denuncias
         }
@@ -132,7 +132,7 @@ module.exports = {
 
             const denuncias = await knex('denuncias').select('denuncias.*', 'usuario.usu_nome', 'usuario.usu_img') // juntando duas tabelas
             .join('usuario', 'denuncias.usuario_usu_cod', 'usuario.usu_cod')
-            .where('denuncias.usuario_usu_cod', usu_cod); 
+            .where('denuncias.usuario_usu_cod', usu_cod);
 
             return res.status(200).json(denuncias); //retorna as denuncias
         }
@@ -202,7 +202,7 @@ module.exports = {
             }
 
             const dataExclusao = new Date().toISOString();
-             
+
             for (const denuncia of denuncias) {
                 await knex('denuncias_excluidas').insert({
                   den_cod: denuncia.den_cod,
@@ -226,7 +226,7 @@ module.exports = {
         }
     },
 
-  
+
 
     async reverterDenunciaExcluida(req, res) { // reversão de denuncias
         try {
@@ -238,7 +238,7 @@ module.exports = {
                 return res.status(400).json({ error: 'Não há denuncias excluidas para reverter.' });
             }
 
-            
+
             await knex('denuncias').insert({ //inserindo de novo na tabela de denúncias os dados da denuncia que foi excluida
                 den_cod: denunciaExcluida.den_cod,
                 den_nome: denunciaExcluida.den_nome,
@@ -286,18 +286,32 @@ module.exports = {
 
     async curtirDenuncia(req, res) {
         try {
-            
-            const {cod} = req.params;
-
-            await knex('denuncias').where('den_cod', cod).increment('den_like', 1);
-
-            return res.status(200).json({ msg: 'Denúncia curtida com sucesso.'})
-        } 
-        catch (error) {
-            return res.status(500).json({ error: error.message });
+          const { usu_cod } = req.usuario;
+          const { cod } = req.params;
+      
+          const denuncia = await knex('denuncias').where('den_cod', cod).first();
+      
+          if (!denuncia) {
+            return res.status(404).json({ error: 'Denúncia não encontrada.' });
+          }
+      
+          const { den_like, den_like_users } = denuncia;
+      
+          if (den_like_users && den_like_users.includes(usu_cod)) {
+            return res.status(400).json({ error: 'Você já curtiu esta denúncia.' });
+          }
+      
+          // Adicione o usuário atual à matriz JSON den_like_users
+          await knex('denuncias').where('den_cod', cod).update({
+            den_like: den_like + 1,
+            den_like_users: knex.raw('JSON_ARRAY_APPEND(den_like_users, "$", ?)', [usu_cod]),
+          });
+      
+          return res.status(200).json({ msg: 'Ação de curtir concluída com sucesso.' });
+        } catch (error) {
+          return res.status(500).json({ error: error.message });
         }
-    },
-    
+      },
 
     async updatePrazoDenuncia(req, res) { // pras instituições. poderão dar um prazo de resoluçao pras denuncias
         try {
