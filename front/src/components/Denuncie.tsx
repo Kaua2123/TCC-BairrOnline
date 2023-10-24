@@ -247,7 +247,7 @@ const Denuncie = () => {
   return (
     <ChakraProvider >
 
-          <HStack w='full' h='100vh' bgColor='#f8f8ff'>
+          <HStack w='full' h='120vh' bgColor='#f8f8ff'>
 
             <Flex w='full' h='full' alignItems='center' justifyContent='center'>
               <VStack >  
@@ -336,7 +336,7 @@ const Denuncie = () => {
                   </Select>
                 </InputGroup>
                   
-                <IconButton aria-label='imagem' mt={10} boxShadow='lg' icon={<BsImage/>} bgColor='#338bb0' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' onClick={openImageUploadModal}>Adicionar imagem</IconButton>
+                <IconButton aria-label='imagem' mt={4}  boxShadow='lg' icon={<BsImage/>} bgColor='#338bb0' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white' onClick={openImageUploadModal}>Adicionar imagem</IconButton>
                 <Modal isOpen={isImageUploadModalOpen} onClose={closeImageUploadModal}>
                     <ModalOverlay />
                     <ModalContent>
