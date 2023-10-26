@@ -158,8 +158,7 @@ const Ver = () => {
               </Flex>
 
       <Flex flexDirection='column' >
-                <FormLabel mt='30px' whiteSpace='nowrap' fontSize={{ base: '12px', md: '14px', lg: '18px' }} font
-Family='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
+                <FormLabel mt='30px' whiteSpace='nowrap' fontSize={{ base: '12px', md: '14px', lg: '18px' }} fontFamily='BreeSerif-Regular' fontWeight='normal' >Problema específico</FormLabel>
                 <InputGroup>
                   <InputLeftElement>
                     {isMediumScreen && <SiOpenstreetmap size='20px' />}
