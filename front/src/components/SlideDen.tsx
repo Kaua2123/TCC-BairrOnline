@@ -19,6 +19,7 @@ import axios from 'axios';
 //chakra
 import { Box, Wrap, WrapItem } from '@chakra-ui/react'
 import { useMediaQuery } from "@chakra-ui/react";
+import CardTarefaGrande from "./CardTarefaGrande";
 
 
 
@@ -131,6 +132,40 @@ export const SlideDenExcluida = ({ denunciasExcluidas }) => {
                       imagem={denunciaExcluida.den_img}
                       dataExclusao={denunciaExcluida.den_data_exclusao}
                       denCod={denunciaExcluida.den_cod}
+                    />
+                  </SwiperSlide>
+                </Box>
+              ))}
+            </Wrap>
+          </Swiper>
+        </Box>
+      );
+
+}
+
+export const SlideDenAcompanhamento = ({ acompanhamentos }) => {
+
+  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+
+
+      return (
+        <Box h='auto' mt='20px' p={1} bg='#F2F2F2' boxShadow='lg' w={{base: 'full', md: '90vw'}}>
+          <Swiper
+            
+            className="swiper-container"
+            style={{ padding: "20px" }}
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={50}
+            slidesPerView={4}
+            navigation
+            pagination={{ clickable: true }}
+          >
+            <Wrap>
+              {acompanhamentos.map((acompanhamento, index) => (
+                <Box key={index}>
+                  <SwiperSlide className="swiper-slide" key={acompanhamento.aco_num}>
+                    <CardTarefaGrande
+                      nome={acompanhamento.den_nome}
                     />
                   </SwiperSlide>
                 </Box>
