@@ -2,7 +2,7 @@ import { Card, CardBody,Text, CardFooter, CardHeader, Box, Button } from "@chakr
 import { useState } from "react";
 
 
-const CardTarefaGrande = ({nome}) => {
+const CardTarefaGrande = ({nome, subtarefa}) => {
     const [acompanhamentos, setAcompanhamentos] = useState([]);
   
   
@@ -18,7 +18,7 @@ const CardTarefaGrande = ({nome}) => {
             </CardHeader>
             <CardBody>
                 <Box>
-                    <Text> Subtarefas 1</Text>
+                    <Text> Subtarefas 1: {subtarefa}</Text>
                     <Text> Subtarefas 2</Text>
                     <Text> Subtarefas 3</Text>
 

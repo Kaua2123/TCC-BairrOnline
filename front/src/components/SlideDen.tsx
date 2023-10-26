@@ -1,5 +1,5 @@
 
-import CardDen, { CardDenUsu } from "./CardDen";
+import CardDen, { CardDenSimples, CardDenUsu } from "./CardDen";
 import CardDenExcluida from "./CardDenExcluida";
 
 
@@ -166,6 +166,45 @@ export const SlideDenAcompanhamento = ({ acompanhamentos }) => {
                   <SwiperSlide className="swiper-slide" key={acompanhamento.aco_num}>
                     <CardTarefaGrande
                       nome={acompanhamento.den_nome}
+                      subtarefa={acompanhamento.aco_subtarefa}
+                    />
+                  </SwiperSlide>
+                </Box>
+              ))}
+            </Wrap>
+          </Swiper>
+        </Box>
+      );
+
+}
+
+export const SlideDenSimples = ({ denuncias }) => {
+
+  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+  const slidesPerView = isSmallerThan768 ? 1 : 5;
+
+      return (
+        <Box h="auto" bg='white'  boxShadow="lg" w={{base: '80vw', md: 'full'}}>
+          <Swiper
+            
+            className="swiper-container"
+            style={{ padding: "20px" }}
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={50}
+            slidesPerView={slidesPerView}
+            navigation
+            pagination={{ clickable: true }}
+          >
+            <Wrap>
+              {denuncias.map((denuncia, index) => (
+                <Box key={index}>
+                  <SwiperSlide className="swiper-slide" key={denuncia.den_cod}>
+                    <CardDenSimples
+                      nome={denuncia.den_nome}
+                      descricao={denuncia.den_desc}
+                      bairro={denuncia.den_bairro}
+                      imagem={denuncia.den_img}
+                      denCod={denuncia.den_cod}
                     />
                   </SwiperSlide>
                 </Box>

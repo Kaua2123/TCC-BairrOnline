@@ -41,7 +41,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { SlideDenExcluida } from "../components/SlideDen";
+import { SlideDenExcluida, SlideDenSimples } from "../components/SlideDen";
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
@@ -332,7 +332,7 @@ const MinhasDen = () => {
         <Center>
           <Text color="#338bb0" fontSize='35px' fontFamily='BreeSerif-Regular'>Acompanhar Denúncias</Text>
         </Center>
-        <Box>ACOMPNHAR DENUNCIAS SERA AQUI</Box>
+        <Box><SlideDenSimples denuncias={denuncias}/></Box>
       </Box>
 
       <Footer />

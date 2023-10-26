@@ -651,3 +651,225 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
     );
 
 }
+
+export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
+
+ 
+
+
+
+
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [editando, setEditando] = useState(false);
+    const [img, setImg] = useState<any>('');
+    const [tituloEditado, setTituloEditado] = useState(nome);
+    const [descricaoEditada, setDescricaoEditada] = useState(descricao);
+    const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false);
+    const [imagemUrl, setImagemUrl] = useState('');
+    const cancelRef = React.useRef();
+    const toast = useToast();
+    const { colorMode } = useColorMode();
+
+
+    async function deleteDenuncia(denCod) {
+
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+        }
+
+
+        await axios.delete(`http://localhost:3344/deleteDenuncia/${denCod}`)
+            .then(response => {
+                closeAlertDialog();
+
+                if (response) {
+                    toast({
+                        title: 'Denúncia deletada',
+                        status: 'success',
+                        duration: 4000,
+                        isClosable: true
+                    })
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            })
+
+
+    };
+
+    async function updateDenuncia(denCod) {
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+        }
+
+        await axios.put(`http://localhost:3344/updateDenuncia/${denCod}`, {
+            den_nome: tituloEditado,
+            den_desc: descricaoEditada
+        })
+            .then(response => {
+                if (response.status === 201) {
+                    toast({
+                        title: 'Dados da denúncia atualizados',
+                        status: 'success',
+                        duration: 4000,
+                        isClosable: true
+                    });
+                }
+                setEditando(false);
+                onClose();
+            })
+            .catch(error => {
+                console.error(error);
+                if (error) {
+                    toast({
+                        title: 'Ocorreu um erro ao atualizar os dados da denúncia. Tente novamente',
+                        status: 'error',
+                        duration: 4000,
+                        isClosable: true
+                    });
+                }
+            })
+
+    }
+
+
+
+    const openAlertDialog = () => {
+        setIsAlertDialogOpen(true);
+    };
+
+    const closeAlertDialog = () => {
+        setIsAlertDialogOpen(false);
+    };
+
+
+    const openImageUploadModal = () => {
+        setImageUploadModalOpen(true);
+    }
+
+    const closeImageUploadModal = () => {
+        setImageUploadModalOpen(false);
+    }
+
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+        setSelectedImage(file);
+    }
+
+    const uploadImage = async () => {
+
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`;
+        }
+
+        if (!selectedImage) {
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('selectedImage', selectedImage);
+
+        try {
+
+            const response = await axios.post(
+                `http://localhost:3344/uparImagem/${denCod}`,
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                    params: {
+                        den_cod: denCod,
+                    },
+                }
+            );
+
+
+
+            setImagemUrl(response.data);
+
+            if (response) {
+                toast({
+                    title: 'Imagem enviada',
+                    description: 'Sua imagem foi enviada e será exibida na denúncia.',
+                    status: 'success',
+                    duration: 4000,
+                    isClosable: true
+                })
+            }
+
+            closeImageUploadModal();
+        } catch (error) {
+            console.error(error);
+            toast({
+                title: 'Erro',
+                description: 'A imagem não pôde ser enviada. Verifique e tente novamente.',
+                status: 'error',
+                duration: 4000,
+                isClosable: true
+            })
+        }
+    };
+
+    const caracteresMaxDescricao = 24;
+    const caracteresMaxTitulo = 20;
+
+    const cortaTextoDescricao = (text) => {
+        if (text.length > caracteresMaxDescricao) {
+            return text.slice(0, caracteresMaxDescricao) + '...';
+        }
+        return text;
+    }
+
+    const cortaTextoTitulo = (text) => {
+        if (text.length > caracteresMaxTitulo) {
+            return text.slice(0, caracteresMaxTitulo) + '...';
+        }
+        return text;
+    }
+
+
+    return (
+
+
+
+
+        <Card maxW='sm' w={{ base: '', md: '17vw' }} maxH='lg' h={{ base: '23em', md: '20em' }} onClick={onOpen} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+            <CardBody>
+
+                {imagem ? (
+                    <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
+                ) : (
+                    <Image src={semImgDen} boxSize={{ base: '90px', md: '140px', lg: '200px' }} align='center'></Image>
+                )}
+
+
+
+
+                <Stack mt='6' spacing='3'>
+                    <Heading size={{ base: 'xs', md: 'xs', lg: 'md' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
+                    <Heading size='xs' textTransform='uppercase' color='gray'>status: puxar do banco</Heading>
+                </Stack>
+
+            </CardBody>
+            <Divider />
+
+
+
+
+
+
+
+        </Card>
+
+
+
+    );
+
+}
