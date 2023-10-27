@@ -134,23 +134,26 @@ module.exports = {
             const {cod} = req.params;
 
             const { usu_nome } = req.body;
-            const { usu_cep } = req.body;
             const { usu_email } = req.body;
-            const { usu_senha } = req.body;
 
-            const senhaCriptog = await bcrypt.hash(usu_senha, 10);
 
             await knex('usuario').update({
                 usu_nome,
-                usu_cep,
                 usu_email,
-                usu_senha: senhaCriptog,
             }).where('usu_cod', cod);
 
             return res.status(200).json({msg: 'Dados atualizados.'})
 
         } 
         catch (error) {
+            return res.status(400).json({error: error.message});
+        }
+    },
+
+    async updateSenha(req, res) {
+        try {
+            
+        } catch (error) {
             return res.status(400).json({error: error.message});
         }
     },

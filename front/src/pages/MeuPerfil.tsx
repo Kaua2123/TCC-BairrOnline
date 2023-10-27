@@ -55,7 +55,7 @@ const MeuPerfil = () => {
 
         const decodificaToken: any = jwtDecode(token);
 
-        if (nomeUsu === "" || cepUsu === "" || emailUsu === "" || senhaUsu === "") {//lógica de validação dos campos pra n mandar nada vazio
+        if (nomeUsu === "" || emailUsu === "") {//lógica de validação dos campos pra n mandar nada vazio
             toast({
                 title: 'Preencha todos os campos.',
                 status: 'error',
@@ -69,9 +69,7 @@ const MeuPerfil = () => {
 
         await axios.put(`http://localhost:3344/updateUsuarios/${decodificaToken.usu_cod}`, {
             usu_nome: nomeUsu,
-            usu_cep: cepUsu,
             usu_email: emailUsu,
-            usu_senha: senhaUsu
         })
             .then((response) => {
                 console.log('sucesso', response);
@@ -216,7 +214,7 @@ const MeuPerfil = () => {
                             )}
                         </ModalBody>
                         <ModalFooter>
-                            <Button colorScheme="blue" mr={3} onClick={uploadImage}>
+                            <Button bgColor='#338bb0' color='white' boxShadow='lg' _hover={{background: 'white', color: '#338bb0'}} mr={3} onClick={uploadImage}>
                                 Enviar Imagem
                             </Button>
                             <Button variant="ghost" onClick={closeImageUploadModal}>
@@ -228,16 +226,16 @@ const MeuPerfil = () => {
             </Box>
 
             <Box boxShadow='lg' pb={10}  borderRadius='12px'>
-                <VStack w='full' justify='center' h='70vh' mt={26}  p={7} borderRadius='2xl' boxShadow='lg'>
+                <VStack w='full' justify='center' h='75vh' mt={26}  p={7} borderRadius='2xl' boxShadow='lg'>
                     <Text fontSize='35px'>Altere seus dados aqui</Text>
                     {usuarios.map((usuario, index) => (
-                        <HStack key={index}>
-                            <Grid gap={20} templateColumns='1fr 1fr'>
+                        <Box key={index}>
+                           
 
                                 {alterando ? (
-                                    <>
+                                    <Box boxShadow='lg' p={6} borderRadius='20px'>
                                         <VStack alignItems='flex-start'>
-                                            <Text>Nome completo</Text>
+                                            <Text>Nome de usuário:</Text>
 
                                             <Input value={nomeUsu} onChange={(e) => {
                                                 setNomeUsu(e.target.value)
@@ -246,12 +244,6 @@ const MeuPerfil = () => {
 
                                         </VStack>
 
-                                        <VStack alignItems='flex-start'>
-                                            <Text>CEP</Text>
-                                            <Input value={cepUsu} onChange={(e) => {
-                                                setCepUsu(e.target.value)
-                                            }} />
-                                        </VStack>
 
                                         <VStack alignItems='flex-start'>
                                             <Text>Email</Text>
@@ -260,36 +252,38 @@ const MeuPerfil = () => {
                                             }} />
                                         </VStack>
 
-                                        <VStack alignItems='flex-start'>
+                                        {/* <VStack alignItems='flex-start'>
                                             <Text>Senha</Text>
                                             <Input value={senhaUsu} onChange={(e) => {
                                                 setSenhaUsu(e.target.value);
                                             }} />
-                                        </VStack>
-                                    </>
+                                        </VStack> */}
+                                    </Box>
                                 ) : (
-                                    <>
+                                    <Box boxShadow='lg' p={6} borderRadius='20px'>
                                     <VStack alignItems='flex-start'>
-                                        <Text>Nome completo</Text>
-                                        <Text>{usuario.usu_nome}</Text>
+                                        <HStack>
+                                            <Text>Nome de usuário: </Text>
+                                            <Text><b>{usuario.usu_nome}</b></Text>
+                                        </HStack>
+                                     
 
                                     </VStack>
 
                                     <VStack alignItems='flex-start'>
-                                        <Text>CEP</Text>
-                                        <Text>{usuario.usu_tipo === 'denunciante' ? usuario.usu_cep : usuario.usu_cnpj}</Text>
+                                        <HStack>
+                                            <Text>Email: </Text>
+                                            <Text><b>{usuario.usu_email}</b></Text>
+                                        </HStack>
+                                    
                                     </VStack>
 
-                                    <VStack alignItems='flex-start'>
-                                        <Text>Email</Text>
-                                        <Text>{usuario.usu_email}</Text>
-                                    </VStack>
-
-                                    <VStack alignItems='flex-start'>
-                                        <Text>Senha</Text>
+                                    {/* <VStack alignItems='flex-start'>
+                                        <HStack>
+                                        <Text>Senha: </Text>
                                         <Box display="flex" alignItems="center" >
-                                        <Text>{mostrarSenha ? usuario.usu_senha : "••••••••"}</Text>
-                                        {!mostrarSenha && (
+                                        <Text><b>{mostrarSenha ? usuario.usu_senha : "••••••••"}</b></Text>
+                                        {!mostrarSenha && ( 
                                             <IconButton
                                             icon={mostrarSenha ? <FaEyeSlash /> : <FaEye />}
                                             onClick={() => {setMostrarSenha(true)}}
@@ -308,13 +302,14 @@ const MeuPerfil = () => {
                                          />
                                        )}
                                     </Box>
-                                    </VStack>
-                                </>
+                                    </HStack>
+                                    </VStack> */}
+                                </Box>
                     )}
 
 
-                            </Grid>
-                        </HStack>
+
+                        </Box>
                     ))}
 
                     {alterando ? (

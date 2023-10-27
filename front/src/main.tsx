@@ -18,6 +18,7 @@ import SaibaMais from './pages/saibaMais.tsx';
 import Deslogado from './pages/Deslogado.tsx';
 import RotasPrivadas from './components/RotasPrivadas.tsx';
 import DenDetalhadas from './pages/DenDetalhadas.tsx';
+import EsqueciSenha from './pages/EsqueciSenha.tsx';
 import { Tarefas } from './pages/Tarefas.tsx';
 import MeuPerfil from './pages/MeuPerfil.tsx';
 
@@ -116,6 +117,10 @@ const router = createBrowserRouter([
       </RotasPrivadas>
     )
   },
+  {
+    path: "/EsqueciSenha",
+    element: <EsqueciSenha/>
+  }
   
 ]);
 

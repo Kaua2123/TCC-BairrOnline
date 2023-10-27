@@ -151,11 +151,11 @@ const Login = () => {
            
                 </FormControl>
 
-                <Stack spacing={4} direction='row' align='start' justify='space-between'> 
+                <Stack spacing={4} direction='column' align='start' justify='space-between'> 
 
                   
                   <Link to='/Cadastro' ><Text color='#338bb0'>Ainda não tem uma conta? Cadastre-se!</Text></Link>
-
+                  <Link to='/EsqueciSenha' ><Text color='#338bb0'>Esqueci minha senha</Text></Link>
                   
                 </Stack>
 
