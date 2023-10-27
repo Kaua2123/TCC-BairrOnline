@@ -11,21 +11,16 @@ module.exports = {
         }   
     },
 
-    async criarComentario(req, res){
+    async criarComent(req, res){
         try {
             const { com_conteudo } = req.body;
-            const { com_data } = req.body;
-            const { com_editado_por } = req.body;
-            const { com_editado_em } = req.body;
             const { usuario_usu_cod } = req.body;
             const { denuncias_den_cod } = req.body;
 
             await knex('comentarios').insert({
 
                 com_conteudo,
-                com_data,
-                com_editado_por,
-                com_editado_em,
+                com_data: new Date().toISOString(),
                 usuario_usu_cod,
                 denuncias_den_cod,
     

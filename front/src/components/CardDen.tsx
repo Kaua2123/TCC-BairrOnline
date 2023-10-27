@@ -35,6 +35,8 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
     const [isModalRepOpen, setIsModalRepOpen] = useState();
     const [repMotivo, setRepMotivo] = useState('');
     const [repStatus, setRepStatus] = useState("pendente");
+    const [comCont, setComCont] = useState();
+    
 
     const toast = useToast();
 
@@ -110,6 +112,65 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
     }
 
 
+ 
+
+  const enviaCom = async () => {
+    if (!comCont.trim()) {
+      toast({
+        title: 'Error',
+        description: "O campo não pode estar vazio",
+        status: 'error',
+        duration: 4000,
+        isClosable: true
+      });
+      return;
+    }
+
+    const token = localStorage.getItem('token');
+    if(!token){
+      toast({
+        title: 'Usuário não autenticado',
+        description: 'Logue para realizar comentários.',
+        status: 'error',
+        duration: 4000,
+        isClosable: true
+      })
+      return;
+    }
+
+    const decodificaToken: any = await jwtDecode(token);
+
+ 
+    await axios.post(`http://localhost:3344/criarComent`, {
+        com_conteudo: comCont,
+        com_data: new Date(),
+        usuario_usu_cod: decodificaToken.usu_cod,
+        denuncias_den_cod: denCod
+      }).then((response) => {
+        console.log('Comentário enviado');
+        console.log(response.data);
+
+        toast({
+            title: 'Comentário enviado.',
+            status: 'success',
+            duration: 3000,
+            isClosable: true
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+        toast({
+            title: 'Erro ao enviar comentário.',
+            status: 'error',
+            duration: 3000,
+            isClosable: true
+          });
+      }) 
+
+
+      
+  };
+
 
 
     return (
@@ -174,14 +235,12 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
                             </ModalHeader>
                             <ModalCloseButton />
                             <ModalBody>
-                                <CommentList comments={comments} />
-                                <CommentForm onCommentSubmit={handleCommentSubmit} />
-
+                                <Input placeholder="comenta aq" onChange={(e) => setComCont(e.target.value)} ></Input>
                             </ModalBody>
 
                             <ModalFooter>
 
-
+                                <Button onClick={enviaCom}>Enviar comentario</Button>
                             </ModalFooter>
                         </ModalContent>
                     </Modal>

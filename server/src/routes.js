@@ -45,7 +45,7 @@ routes.get("/denunciasReportadas", controllersReportar.denunciasReportadas);
 
 //comentarios
 routes.get("/", controllersComen.raiz);
-routes.post("/criarComent", controllersComen.criarComentario);
+routes.post("/criarComent", controllersComen.criarComent);
 routes.delete("/deleteComent", controllersComen.deleteComentario);
 routes.put("updateComent", controllersComen.updateComentario);
 routes.get("/buscarComentario", controllersComen.buscarComentario);
