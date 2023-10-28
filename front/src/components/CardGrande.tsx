@@ -31,8 +31,9 @@ const CardGrande = ({denuncia}) => {
 
   const [comments, setComments] = useState([]);
   const [denCod, setDenCod] = useState('');
-  const [acoProgresso, setAcoProgresso] = useState('');
   const [acoData, setAcoData] = useState('');
+  const [acoEstado, setAcoEstado] = useState('pendente');
+  const [acoMensagem, setAcoMensagem] = useState('');
   const [usuCod, setUsuCod] = useState('');
   const [usuTipo, setUsuTipo] = useState('');
   const [notMensagem, setNotMensagem] = useState('');
@@ -64,7 +65,8 @@ const CardGrande = ({denuncia}) => {
     axios.post('http://localhost:3344/criarAcompanhamento', {
       denuncias_den_cod: denuncia.den_cod,
       aco_data: new Date(),
-      aco_progresso: acoProgresso,
+      aco_estado: acoEstado,
+      aco_mensagem: acoMensagem,
       usuario_usu_cod: decodificaToken.usu_cod,
     })
       .then((response) => {
@@ -302,7 +304,7 @@ const CardGrande = ({denuncia}) => {
               <Heading fontSize='1xl'>Diga algo para o denunciante</Heading>
 
                 <Input mt={3} type='text' onChange={(e) => {
-                  setNotMensagem(e.target.value);
+                  setAcoMensagem(e.target.value);
                 }}/>
 
 

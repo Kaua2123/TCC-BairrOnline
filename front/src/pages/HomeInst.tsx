@@ -12,7 +12,7 @@ import tarefasInst from "../img/tarefasInst.png";
 
 
 //chakra
-import {Box, ChakraProvider, Flex, Image, extendTheme, Text, Card, CardBody, CardFooter, Stack } from '@chakra-ui/react'
+import {Box, ChakraProvider, Flex, Image, extendTheme, Text, Card, CardBody, CardFooter, Stack, Heading, HStack } from '@chakra-ui/react'
 
 //componentes
 import Footer from '../components/Footer';
@@ -85,33 +85,35 @@ const HomeInst = () => {
   
   <ChakraProvider theme={theme}>
     <HeaderInst/>
-    <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
-    <Flex align='center'>
+
       <Box bg='white' borderRadius='4px' h='auto' w='100%'>
-        
-        <Text p='100px' fontSize='64px' color='#338bb0' fontFamily='BreeSerif-Regular'>Olá, Instituição!</Text>
+      <HStack w={{base: '', md: 'full'}} h='100vh'>
+          
+          <Flex w='full' h='full' display={{base: 'none', md: 'flex'}} id='denuncie'>
 
-        <Flex justifyContent='space-between'>
-          <Flex direction='column' mt='-200px'>
-            <Image src={sectionOlaInst} boxSize='50em' ></Image>
+          <Flex flexDirection='column' alignItems='center'>
+            <Text mt={14} fontFamily='BreeSerif-Regular' fontWeight='normal' color='#338bb0' fontSize='45px'>Olá, instituição!</Text>
+            <Image src={sectionOlaInst} boxSize='40em'/>
           </Flex>
 
-          <Flex direction='column' mr='140px' mt='50px'>
-            <Box>
-            <Text fontSize='44px' color='#338BB0'   fontFamily='BreeSerif-Regular' whiteSpace='nowrap' align='center'>Seção do Usuário</Text>
-            </Box>  
-            <Box mt='70px'>
-            <Text fontSize='30px' whiteSpace='nowrap'>Veja as <b> reclamações </b> <br /> dos denunciantes<br /></Text>
-            </Box>
           </Flex>
-        </Flex>
 
-        <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
+
+          <Flex w='full' h='full' alignItems='center' justifyContent='center'>
+            <Stack w='full' maxW='md' spacing={4} p={{base: '18', md: '6'}}>
+            <Heading fontSize={{base: '32px', md: '35px'}} color='#338bb0' fontFamily='BreeSerif-Regular' fontWeight='normal'>Seção do Usuário</Heading>
+            <Text fontSize={{base: '20px', md: '25px'}}  whiteSpace='nowrap'>Proponha <b>soluções</b> para as <br/><b>reclamações</b> dos denunciantes</Text>
+          
+            </Stack>
+          </Flex>
+       
+          </HStack>
+
 
           <Flex justifyContent='space-between'> 
 
-          <Flex direction='column'> 
-          <Image src={tarefasInst} boxSize='44em'></Image>
+          <Flex direction='column' mt={20}> 
+          <Image src={tarefasInst} boxSize='38em'></Image>
             
           </Flex>
 
@@ -145,12 +147,6 @@ const HomeInst = () => {
     
         </Flex>
       </Box>
-      
-    </Flex>
-    <Box h='50px' bg='#F2F2F2' boxShadow='lg'></Box>
-
-
-
 
 
      <Footer/>
