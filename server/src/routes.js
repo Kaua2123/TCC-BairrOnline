@@ -23,6 +23,7 @@ routes.get("/getUsuarioLogado", autentica, controllersUsu.getUsuarioLogado);
 routes.get("/getInstituicoes", controllersUsu.getInstituicoes);
 routes.post("/imgPerfil/:cod", autentica, controllersUsu.imgPerfil);
 routes.get("/retornaImgPerfil/:filename", controllersUsu.retornaImgPerfil);
+routes.post("/emailRecuperarSenha", controllersUsu.emailRecuperarSenha);
 
 //denuncia
 //chamando o middleware "autentica" nas rotas protegidas, que so usuarios podem acessar

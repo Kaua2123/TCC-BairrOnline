@@ -21,6 +21,7 @@ import DenDetalhadas from './pages/DenDetalhadas.tsx';
 import EsqueciSenha from './pages/EsqueciSenha.tsx';
 import { Tarefas } from './pages/Tarefas.tsx';
 import MeuPerfil from './pages/MeuPerfil.tsx';
+import RedefinirSenha from './pages/RedefinirSenha.tsx';
 
 
 const router = createBrowserRouter([
@@ -120,6 +121,10 @@ const router = createBrowserRouter([
   {
     path: "/EsqueciSenha",
     element: <EsqueciSenha/>
+  },
+  {
+    path: "/RedefinirSenha",
+    element: <RedefinirSenha/>
   }
   
 ]);

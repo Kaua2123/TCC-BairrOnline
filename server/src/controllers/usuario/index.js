@@ -6,6 +6,7 @@ const uniqid = require('uniqid');
 const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
+const nodemailer = require('nodemailer');
 
 const storage = multer.diskStorage({ 
     destination: './imgsPerfil',
@@ -15,7 +16,15 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage }); 
+
+const transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: 'bairronline21@gmail.com', 
+    pass: 'bairronline123', 
+  },
+});
 
 
 
@@ -147,6 +156,36 @@ module.exports = {
         } 
         catch (error) {
             return res.status(400).json({error: error.message});
+        }
+    }, 
+
+    async emailRecuperarSenha(req, res) {
+        try {
+            const { usu_email } = req.body;
+
+            const usuario = await knex('usuario').where('usu_email', usu_email).first();
+            if (!usuario) {
+            return res.status(404).json({ error: 'Usuário não encontrado.' });
+            }
+
+            
+            const token = jwt.sign({ usu_email: usu_email }, process.env.CHAVE_JWT, { expiresIn: '1h' });
+
+            const resetarSenhaLink = `http://127.0.0.1:5173/RedefinirSenha?token=${token}`;
+        //  const resetarSenhaLink = `http://localhost:5173/RedefinirSenha?token=${token}`;
+            
+             const mailOptions = {
+                from: 'bairronline21@gmail.com',
+                to: usu_email,
+                subject: 'Recuperação de Senha',
+                text: `Clique no link a seguir para redefinir sua senha: ${resetarSenhaLink}`,
+            };
+
+            await transporter.sendMail(mailOptions);
+            
+            return res.status(200).json({ message: 'Um email de recuperação de senha foi enviado.' });
+        } catch (error) {   
+            return res.status(500).json({ error: error.message });
         }
     },
 

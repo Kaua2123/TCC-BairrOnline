@@ -1,4 +1,3 @@
-
 import { Box, ChakraProvider, Image, Text, Stack, VStack, Input, Flex, HStack, Button, Grid, useToast, Modal, ModalOverlay, ModalFooter, ModalContent, ModalCloseButton, ModalHeader, ModalBody, IconButton, FormControl, FormLabel, Center, InputGroup, InputLeftElement, } from "@chakra-ui/react"
 import Header, { HeaderADM, HeaderInst, HeaderUsu } from "../components/Header"
 import imgAvatar from '../img/avatar.png';
@@ -11,35 +10,9 @@ import { AiOutlineUser } from "react-icons/ai";
 
 
 
-const EsqueciSenha = () => {
+const RedefinirSenha = () => {
 
-    const [usuEmail, setUsuEmail] = useState();
-    const toast = useToast();
-
-    const enviarEmail = () => {
-        axios.post('http://localhost:3344/emailRecuperarSenha', {
-            usu_email: usuEmail,
-        })
-            .then(response => {
-                console.log(response.data); 
-                toast({
-                    title: 'Email enviado.',
-                    status: 'success',
-                    duration: 4000,
-                    isClosable: true,
-                })
-            })
-            .catch(error => {
-                console.error('Erro ao enviar o email:', error);
-                toast({
-                    title: 'Falha ao enviar o email.',
-                    status: 'error',
-                    duration: 4000,
-                    isClosable: true,
-                })
-            });
-    };
-
+    const [usuSenha, setUsuSenha] = useState();
 
     return (
         <ChakraProvider>
@@ -54,16 +27,16 @@ const EsqueciSenha = () => {
                             <InputLeftElement>
                             <AiOutlineUser />
                             </InputLeftElement>
-                            <Input placeholder='Digite seu email' borderColor='black' required value={usuEmail} onChange={(e) => {
-                            setUsuEmail(e.target.value);
+                            <Input placeholder='Digite seu email' borderColor='black' required value={usuSenha} onChange={(e) => {
+                            setUsuSenha(e.target.value);
 
                             }} />
                         </InputGroup>
 
                     </FormControl>
 
-                    <Button bgColor='#338bb0' onClick={enviarEmail} color='white' boxShadow='lg' _hover={{background: 'white', color: '#338bb0'}}>Enviar código</Button>
-                    <Text>Enviaremos um código para seu email.</Text>
+                    <Button bgColor='#338bb0' color='white' boxShadow='lg' _hover={{background: 'white', color: '#338bb0'}}>Enviar código</Button>
+                    <Text>Digite sua nova senha aqui</Text>
                 </Stack>
                
             </Flex>
@@ -73,4 +46,4 @@ const EsqueciSenha = () => {
     )
 }
 
-export default EsqueciSenha;
+export default RedefinirSenha;
