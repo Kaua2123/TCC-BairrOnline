@@ -186,6 +186,7 @@ module.exports = {
 
     async emailRecuperarSenha(req, res) {
         try {
+
             const { usu_email } = req.body;
 
             const usuario = await knex('usuario').where('usu_email', usu_email).first();
@@ -196,7 +197,7 @@ module.exports = {
             
             const token = jwt.sign({ usu_email: usu_email }, process.env.CHAVE_JWT, { expiresIn: '1h' });
 
-            // const resetarSenhaLink = `http://127.0.0.1:5173/RedefinirSenha?token=${token}`;
+        // const resetarSenhaLink = `http://127.0.0.1:5173/RedefinirSenha?token=${token}`;
          const resetarSenhaLink = `http://localhost:5173/RedefinirSenha?token=${token}`;
             
              const mailOptions = {
