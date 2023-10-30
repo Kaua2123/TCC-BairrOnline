@@ -7,12 +7,56 @@ import { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { AiOutlineUser } from "react-icons/ai";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 
 const RedefinirSenha = () => {
 
     const [usuSenha, setUsuSenha] = useState();
+    const toast = useToast;
+
+    const { cod } = useParams(); 
+    
+    const updateSenha = async () => {
+
+            const searchParams = new URLSearchParams(location.search);
+            const token = searchParams.get('token');    
+
+            if (usuSenha === " ") {
+                toast({
+                    title: 'Digite sua senha.',
+                    status: 'error',
+                    duration: 4000,
+                    isClosable: true
+                });
+                return;
+            }
+
+            await axios.put(`http://localhost:3344/redefinirSenha/${cod}`, {
+            usu_senha: usuSenha,
+        })
+        .then((response) => {
+            console.log('sucesso', response);
+            toast({
+                title: 'Senha atualizada.',
+                status: 'success',
+                duration: 3000,
+                isClosable: true
+            })
+        })
+        .catch((error) => {
+            console.log('erro', error)
+            toast({
+                title: 'Erro',
+                status: 'error',
+                duration: 3000,
+                isClosable: true
+            })
+        } )
+         
+    }
+
 
     return (
         <ChakraProvider>
@@ -27,7 +71,7 @@ const RedefinirSenha = () => {
                             <InputLeftElement>
                             <AiOutlineUser />
                             </InputLeftElement>
-                            <Input placeholder='Digite seu email' borderColor='black' required value={usuSenha} onChange={(e) => {
+                            <Input  borderColor='black' required value={usuSenha} onChange={(e) => {
                             setUsuSenha(e.target.value);
 
                             }} />
@@ -35,7 +79,7 @@ const RedefinirSenha = () => {
 
                     </FormControl>
 
-                    <Button bgColor='#338bb0' color='white' boxShadow='lg' _hover={{background: 'white', color: '#338bb0'}}>Enviar código</Button>
+                    <Button bgColor='#338bb0' onClick={updateSenha} color='white' boxShadow='lg' _hover={{background: 'white', color: '#338bb0'}}>Alterar senha</Button>
                     <Text>Digite sua nova senha aqui</Text>
                 </Stack>
                

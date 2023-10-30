@@ -17,10 +17,16 @@ const EsqueciSenha = () => {
     const toast = useToast();
 
     const enviarEmail = () => {
+        
         axios.post('http://localhost:3344/emailRecuperarSenha', {
             usu_email: usuEmail,
         })
             .then(response => {
+
+                const token = response.data.token;
+                localStorage.setItem('token', token);
+                axios.defaults.headers.common['Authorization'] = `${token}`;
+                
                 console.log(response.data); 
                 toast({
                     title: 'Email enviado.',

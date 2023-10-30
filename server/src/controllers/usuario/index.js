@@ -216,9 +216,19 @@ module.exports = {
         }
     },
 
-    async updateSenha(req, res) {
+    async redefinirSenha(req, res) {
         try {
-            
+
+            const {cod} = req.params;
+
+            const { usu_senha } = req.body;
+
+
+            await knex('usuario').update({
+                usu_senha,
+            }).where('usu_cod', cod);
+
+            return res.status(200).json({msg: 'senha atualizada.'})
         } catch (error) {
             return res.status(400).json({error: error.message});
         }
