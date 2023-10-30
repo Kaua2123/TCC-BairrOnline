@@ -14,32 +14,6 @@ import { AiOutlineUser } from "react-icons/ai";
 const EsqueciSenha = () => {
 
     const [usuEmail, setUsuEmail] = useState();
-    const toast = useToast();
-
-    const enviarEmail = () => {
-        axios.post('http://localhost:3344/emailRecuperarSenha', {
-            usu_email: usuEmail,
-        })
-            .then(response => {
-                console.log(response.data); 
-                toast({
-                    title: 'Email enviado.',
-                    status: 'success',
-                    duration: 4000,
-                    isClosable: true,
-                })
-            })
-            .catch(error => {
-                console.error('Erro ao enviar o email:', error);
-                toast({
-                    title: 'Falha ao enviar o email.',
-                    status: 'error',
-                    duration: 4000,
-                    isClosable: true,
-                })
-            });
-    };
-
 
     return (
         <ChakraProvider>
@@ -62,7 +36,7 @@ const EsqueciSenha = () => {
 
                     </FormControl>
 
-                    <Button bgColor='#338bb0' onClick={enviarEmail} color='white' boxShadow='lg' _hover={{background: 'white', color: '#338bb0'}}>Enviar código</Button>
+                    <Button bgColor='#338bb0' color='white' boxShadow='lg' _hover={{background: 'white', color: '#338bb0'}}>Enviar código</Button>
                     <Text>Enviaremos um código para seu email.</Text>
                 </Stack>
                

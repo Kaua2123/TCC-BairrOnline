@@ -7,6 +7,38 @@ const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
 const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
+const OAuth2 = google.auth.OAuth2;
+
+const oauth2Client = new google.auth.OAuth2(
+    process.env.CLIENT_ID,
+    process.env.CLIENT_SECRET,
+    process.env.REDIRECT_URI
+);
+
+// pra criar o q envia o email do oauth2
+const criarTransporte = async () => {
+    oauth2Client.setCredentials({
+        refresh_token: process.env.REFRESH_TOKEN
+    });
+
+    const accessToken = await oauth2Client.getAccessToken();
+
+    const transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            type: 'OAuth2',
+            user: process.env.EMAIL_USER,
+            clientId: process.env.CLIENT_ID,
+            clientSecret: process.env.CLIENT_SECRET,
+            refreshToken: process.env.REFRESH_TOKEN,
+            accessToken: accessToken.token
+        }
+    });
+
+    return transporter;
+};
+
 
 const storage = multer.diskStorage({ 
     destination: './imgsPerfil',
@@ -18,13 +50,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage }); 
 
-const transporter = nodemailer.createTransport({
-  service: 'Gmail',
-  auth: {
-    user: 'bairronline21@gmail.com', 
-    pass: 'bairronline123', 
-  },
-});
 
 
 
@@ -171,16 +196,17 @@ module.exports = {
             
             const token = jwt.sign({ usu_email: usu_email }, process.env.CHAVE_JWT, { expiresIn: '1h' });
 
-            const resetarSenhaLink = `http://127.0.0.1:5173/RedefinirSenha?token=${token}`;
-        //  const resetarSenhaLink = `http://localhost:5173/RedefinirSenha?token=${token}`;
+            // const resetarSenhaLink = `http://127.0.0.1:5173/RedefinirSenha?token=${token}`;
+         const resetarSenhaLink = `http://localhost:5173/RedefinirSenha?token=${token}`;
             
              const mailOptions = {
-                from: 'bairronline21@gmail.com',
+                from: process.env.EMAIL_USER,
                 to: usu_email,
                 subject: 'Recuperação de Senha',
                 text: `Clique no link a seguir para redefinir sua senha: ${resetarSenhaLink}`,
             };
 
+            const transporter = await criarTransporte();
             await transporter.sendMail(mailOptions);
             
             return res.status(200).json({ message: 'Um email de recuperação de senha foi enviado.' });
