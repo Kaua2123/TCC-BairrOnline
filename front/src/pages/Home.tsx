@@ -194,7 +194,7 @@ const Home = () => {
               boxSize={{ base: "400px", md: "420px", lg: "480px" }}
             />
           </Center>
-          <Text color="white" display={{base: 'flex', md: 'none'}} mr={4} textDecoration="underline" fontFamily="BreeSerif-Regular" whiteSpace="nowrap" fontSize={{ base: "25px" }} justifyContent='center'>Seu portal de denúncias</Text>
+          <Text color="white" display={{base: 'flex', md: 'none'}} mr={4}  fontFamily="BreeSerif-Regular" whiteSpace="nowrap" fontSize={{ base: "35px" }} justifyContent='center'>Seu portal de denúncias</Text>
         </GridItem>
 
         {/* container com os textos na direita */}
@@ -229,7 +229,7 @@ const Home = () => {
       <Box w="100%" bgColor='gray.200' h='full' borderRadius='4px'>
 
         {temDenuncia ? (
-          <HStack w='full' h='60vh'>
+          <HStack w='full' h={{base: '100vh', md: '60vh'}}>
             <Flex w='full' h='full' display={{ base: 'none', md: 'flex' }} alignItems='center' justifyContent='center' >
 
               <VStack>
@@ -240,9 +240,9 @@ const Home = () => {
             </Flex>
 
 
-            <Flex w='full' h='full' mr={5} alignItems='center' justifyContent='center'>
+            <Flex w='full' h='full'  mr={5} alignItems='center' justifyContent='center'>
               <VStack>
-                <Text color='#338bb0' display={{base: 'flex', md: 'none'}} fontSize='35px' fontFamily='BreeSerif-Regular'>Denúncia mais curtida</Text>
+                <Text color='#338bb0' display={{base: 'flex', md: 'none'}} fontSize='30px' fontFamily='BreeSerif-Regular'>Denúncia mais curtida</Text>
               <CardGrande denuncia={denuncias[0]} />
               </VStack>
            

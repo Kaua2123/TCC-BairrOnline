@@ -223,7 +223,7 @@ const CardGrande = ({denuncia}) => {
     return(
         <ChakraProvider>
                                                                 {/* w={{base: '535px', md: '653px', lg: '802px'}} */}
-        <Card boxShadow='lg'  mt='50px' bgColor='white' border='1px solid #A9A9A9'   w={{base: '', md:'650px'}}> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
+        <Card boxShadow='lg'  mt='50px' bgColor='white' border='1px solid #A9A9A9' h={{base: '', md: '53vh'}}  w={{base: '', md:'45vw'}}> {/* border='1px solid #A9A9A9' _hover={{boxShadow: 'dark-lg', transition: '0.1s', cursor: 'pointer'}}> */}
   <CardHeader>
     <Flex>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
@@ -280,12 +280,12 @@ const CardGrande = ({denuncia}) => {
     }}
   >
     <VStack>
-    <Button  boxShadow='lg' color='white' onClick={curtirDenuncia}  bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiSolidLike />}>
+    <Button position={{md: 'relative'}} top={{base: '-8', md: ''}} boxShadow='lg' color='white' onClick={curtirDenuncia}  bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiSolidLike />}>
     {denuncia.den_like}
     </Button>
 
     </VStack>
-    <Button  boxShadow='lg' color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiCommentDetail />}>
+    <Button position={{md: 'relative'}} top={{base: '-8', md: ''}}  boxShadow='lg' color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<BiCommentDetail />}>
       Comentar
     </Button>
 

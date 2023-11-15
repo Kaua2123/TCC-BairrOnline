@@ -175,13 +175,13 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
 
     return (
 
-        <Card maxW='sm' w={{ base: '280px', md: '265px', lg: '250px' }} maxH='lg' h={{ base: '20em', md: '23em', lg: '29em' }} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+        <Card w={{base: '60vw', md: '17vw'}}  bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align={{base: 'center', md: 'normal'}} border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
 
                 {imagem ? (
                     <Image src={`http://localhost:3344/retornaImagem/${imagem}`} borderRadius='lg' boxSize='200px' />
                 ) : (
-                    <Image src={semImgDen} boxSize={{ base: '90px', md: '140px', lg: '200px' }} align='center'></Image>
+                    <Image src={semImgDen} align='center'></Image>
                 )}
 
                 <Stack mt='6' spacing='3'>
