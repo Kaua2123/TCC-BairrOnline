@@ -37,7 +37,7 @@ const Header = () => {
 
 
   return(
-      <Flex w='100%'  bg='#322F2F' boxShadow='lg' position={"sticky"} top={0} zIndex={2}>
+      <Flex  w={{base: '100%', md: '100%'}}  bg='#322F2F' boxShadow='lg' >
 
           <Center>
           <Menu>

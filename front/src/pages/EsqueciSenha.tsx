@@ -25,7 +25,6 @@ const EsqueciSenha = () => {
 
                 const token = response.data.token;
                 localStorage.setItem('token', token);
-                axios.defaults.headers.common['Authorization'] = `${token}`;
                 
                 console.log(response.data); 
                 toast({

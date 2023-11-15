@@ -175,10 +175,10 @@ const Home = () => {
         <GridItem colSpan={{ base: 1, md: 1, lg: 1 }}>
 
           <Container centerContent mt={{ base: '55px', md: '90px', lg: '120px' }}>
-            <Text color="white" textDecoration="underline" fontFamily="BreeSerif-Regular" whiteSpace="nowrap" fontSize={{ base: "15px", md: "24px", lg: "35px" }}>
+            <Text color="white" display={{base: 'none', md: 'flex'}} textDecoration="underline" fontFamily="BreeSerif-Regular" whiteSpace="nowrap" fontSize={{ base: "15px", md: "24px", lg: "35px" }}>
               Com problemas no bairro?
             </Text>
-            <Text textAlign="center" color="white" fontFamily="BreeSerif-Regular" fontSize={{ base: "13px", md: "15px", lg: "18px" }} fontWeight="normal">
+            <Text textAlign="center" display={{base: 'none', md: 'flex'}}  color="white" fontFamily="BreeSerif-Regular" fontSize={{ base: "13px", md: "15px", lg: "18px" }} fontWeight="normal">
               Relate suas denúncias aqui, e tenha o retorno das instituições responsáveis pela resolução dos problemas
             </Text>
           </Container>
@@ -194,6 +194,7 @@ const Home = () => {
               boxSize={{ base: "400px", md: "420px", lg: "480px" }}
             />
           </Center>
+          <Text color="white" display={{base: 'flex', md: 'none'}} mr={4} textDecoration="underline" fontFamily="BreeSerif-Regular" whiteSpace="nowrap" fontSize={{ base: "25px" }} justifyContent='center'>Seu portal de denúncias</Text>
         </GridItem>
 
         {/* container com os textos na direita */}
@@ -205,6 +206,7 @@ const Home = () => {
               fontFamily="BreeSerif-Regular"
               whiteSpace="nowrap"
               fontSize={{ base: "15px", md: "25px", lg: "35px" }}
+              display={{base: 'none', md: 'flex'}} 
             >
               Veja outras denúncias
             </Text>
@@ -214,6 +216,7 @@ const Home = () => {
               fontFamily="BreeSerif-Regular"
               fontSize={{ base: "13px", md: "15px", lg: "18px" }}
               fontWeight="normal"
+              display={{base: 'none', md: 'flex'}} 
             >
               Se mantenha informado quanto aos problemas de seu bairro ou de outros bairros de Volta Redonda
             </Text>
@@ -238,22 +241,16 @@ const Home = () => {
 
 
             <Flex w='full' h='full' mr={5} alignItems='center' justifyContent='center'>
-
-
-              {/*       
-{denuncias.map((denuncia, index) => (
-<CardGrande denuncia={denuncia}/>
-))}
-*/}
-
+              <VStack>
+                <Text color='#338bb0' display={{base: 'flex', md: 'none'}} fontSize='35px' fontFamily='BreeSerif-Regular'>Denúncia mais curtida</Text>
               <CardGrande denuncia={denuncias[0]} />
-
-
+              </VStack>
+           
             </Flex>
           </HStack>
         ) : (
           <VStack w='full' h='60vh'>
-            <Flex w='full' h='full' display={{ base: 'none', md: 'flex' }} alignItems='center' justifyContent='center'>
+            <Flex w={{base: '90vw', md: 'full'}} h={{base: 'full', md: 'full'}} display={{ base: 'flex', md: 'flex' }} alignItems='center' justifyContent='center'>
               <Box borderRadius='12px' bgColor='white' p={10} boxShadow='lg'>
                 <Text color='#338bb0' fontSize='40px' fontFamily='BreeSerif-Regular'>Nenhuma denúncia em alta encontrada...</Text>
                 <Text fontSize='20px'>Continue a denunciar!</Text>
@@ -268,14 +265,16 @@ const Home = () => {
           <SlideDen denuncias={denuncias} />
         ) : (
           <>
-            <Box bgColor='white' boxShadow='lg'>
-              <Flex justify='center'>
+          <Center>
+            <Box bgColor='white' boxShadow='lg' borderRadius='12px' justifyContent={{base: 'center'}} w={{base: '90vw', md: 'full'}}>
+              <Flex  justify='center' >
                 <Image src={denunciaNotFound}></Image> {/*img temporaria */}
               </Flex>
               <Flex justify='center'>
                 <Text fontSize='35px' fontFamily='BreeSerif-Regular' fontWeight='normal' p={8} color='#338bb0' mt='-50px'>Parece que não há nenhuma denúncia em alta...</Text>
               </Flex>
             </Box>
+          </Center>
           </>
         )}
 
@@ -327,7 +326,7 @@ const Home = () => {
 
         ) : (
           <VStack w='full' h='60vh'>
-            <Flex w='full' h='full' display={{ base: 'none', md: 'flex' }} alignItems='center' justifyContent='center'>
+            <Flex w={{base: '90vw', md: 'full'}}  h={{base: 'full', md: 'full'}} display={{ base: 'flex', md: 'flex' }} alignItems='center' justifyContent='center'>
               <Box borderRadius='12px' bgColor='white' p={10} boxShadow='lg'>
                 <Text color='#338bb0' fontSize='40px' fontFamily='BreeSerif-Regular'>Nenhuma instituição cadastrada...</Text>
                 <Text fontSize='20px'>Continue a denunciar!</Text>
@@ -340,7 +339,7 @@ const Home = () => {
       {/* ------------E AQUI INSTITUIÇOES------------*/}
 
 
-      <Footer />
+      <Footer/>
     </ChakraProvider>
 
   );

@@ -10,7 +10,7 @@ const Footer = () => {
 
     return(
 
-            <Flex w='100%' bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} mt='14'>
+            <Flex  w={{base: '100%', md: '100%'}} bg={colorMode === 'light' ? '#322F2F' : 'gray.700'} mt='14'>
     
                 <Image src={Logo} boxSize='xs'></Image>
                 <Spacer/>
