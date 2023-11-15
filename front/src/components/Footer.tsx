@@ -29,8 +29,8 @@ const Footer = () => {
                     </VStack>
                 <Spacer/>
                 <Spacer/>
-                <VStack>
-                <Text fontSize='xl' display={{base: 'flex', md: 'none'}} fontFamily='BreeSerif-Regular' fontWeight='normal' color='white'>Nossas redes</Text>
+                <VStack alignItems='center' justifyContent='center'>
+                    <Text fontSize='xl' display={{base: 'flex', md: 'none'}} fontFamily='BreeSerif-Regular' fontWeight='normal'  color='white'>Nossas redes</Text>
                 <HStack>
                             <Container p='15px' borderRadius='50%' bg='blackAlpha.400' _hover={{background: 'blackAlpha.100'}} >
                                 <Link to='/'> <FaWhatsapp size='5vh' color='white' _hover={{color: 'blue'}}/> </Link> 

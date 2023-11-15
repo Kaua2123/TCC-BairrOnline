@@ -105,12 +105,13 @@ const Ver = () => {
 
 
 
-      <HStack w='full' h='80vh'>
+      <HStack w='full' h='45vh'>
         <Flex w='full' h='full'>
-          <VStack m={20} alignItems='flex-start'>
-            <Text color='#338bb0' fontSize='50px' fontFamily='BreeSerif-Regular'>Veja aqui as denúncias, apoie a comunidade.</Text>
-            <Text mt={5}>Você pode filtrá-las para um melhor manuseio e visualização.</Text>
-            <HStack>
+          <VStack m={20} alignItems={{base: 'center', md: 'flex-start'}} >
+            <Text color='#338bb0' fontSize={{md: '50px'}} display={{base: 'none', md: 'flex'}} fontFamily='BreeSerif-Regular'>Veja aqui as denúncias, apoie a comunidade.</Text>
+            <Text color='#338bb0' fontSize={{md: '30px'}} display={{base: 'flex', md: 'none'}} fontFamily='BreeSerif-Regular' mb={{base: '4', md: '0'}}>Ver denúncias</Text>
+            <Text mt={5} display={{base: 'none', md: 'flex'}}>Você pode filtrá-las para um melhor manuseio e visualização.</Text>
+            <HStack display={{base: 'none', md: 'flex'}}>
             <Flex flexDirection="column">
                 <FormLabel mt="30px" fontSize={{ base: '12px', md: '14px', lg: '18px' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>Pesquisa por nome</FormLabel>
                 <InputGroup>
@@ -246,6 +247,142 @@ const Ver = () => {
               </Flex>
             </HStack>
 
+{/* mobile, responsivo, sla */}
+            <VStack display={{base: 'flex', md: 'none'}}> 
+            <Flex mb={4}>
+                <FormLabel fontSize={{ base: '14px' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>Nome</FormLabel>
+                <InputGroup>
+                  <InputLeftElement pointerEvents='none'>
+                    {isMediumScreen && <FiSearch color="black" size="20px" />}
+                  </InputLeftElement>
+                  <Input
+                    value={termoPesquisa}
+                    onChange={(e) => setTermoPesquisa(e.target.value)}
+                    border='1px solid black'
+                    w={{ base: '140px', md: '180px', lg: '210px' }}
+                    _hover={{ border: '1px solid #A9A9A9 ' }}
+                    fontSize={{ base: '14px' }}
+                    type='text'
+                  />
+                </InputGroup>
+              </Flex>
+              <Flex mb={4}>
+                <FormLabel  fontSize={{ base: '14px' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>Bairro</FormLabel>
+
+                <InputGroup>
+                  <InputLeftElement>
+                    {isMediumScreen && <CiLocationOn color='black' size='20px'/>}
+                  </InputLeftElement>
+
+                  <Select
+  value={denBairro}
+  onChange={(e) => setDenBairro(e.target.value)}
+  border='1px solid black'
+  w={{ base: '140px', md: '180px', lg: '240px' }}
+  _hover={{ border: '1px solid #A9A9A9 ' }}
+  fontSize={{ base: '14px' }}
+  textAlign='center'
+  
+>
+  <option value=''></option>
+  {opcoesDeBairros.map((bairro) => (
+    <option key={bairro.value} value={bairro.value}>
+      {bairro.label}
+    </option>
+  ))}
+</Select>
+                </InputGroup>
+              </Flex>
+
+      <Flex mr={5}>
+                <FormLabel whiteSpace='nowrap'    fontSize={{ base: '14px' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>Problema</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    {isMediumScreen && <SiOpenstreetmap size='20px' />}
+                  </InputLeftElement>
+
+                  <Select
+                    value={denProblema}
+                    onChange={(e) => setDenProblema(e.target.value)}
+                    border='1px solid black'
+                    w={{ base: '140px', md: '180px', lg: '240px' }}
+                    _hover={{ border: '1px solid #A9A9A9	' }}
+                    fontSize={{ base: '14px' }}
+                    textAlign='center'>
+                    <option value=''></option>
+                    {opçoesDeProblemas.map((problema) => (
+                      <option key={problema.value} value={problema.value}>
+                        {problema.label}
+                      </option> // mapeando oa array e pegando cada opção como uma posição do array
+                    ))}
+                  </Select>
+                </InputGroup>
+
+              </Flex>
+  
+              
+
+              <Flex>
+                <Button
+                  type='submit'
+                  onClick={() => {
+                    // Filtrar as denúncias com base no termo de pesquisa
+                    
+                    if (termoPesquisa || denBairro || denProblema) {
+                      // Se algum filtro estiver ativo, define o estado do filtroAtivo como verdadeiro
+                      setCarregando(true);
+                      setFiltroAtivo(true);
+
+                      // Filtra as denúncias com base nos critérios de pesquisa
+                      setTimeout(() => {
+                        if (denunciasFiltradas.length === 0) {
+                          setMensagemNenhumaDen('Nenhuma denúncia encontrada');
+                        }
+                      }, 1000)
+                     
+                      
+
+                      setTimeout(() => {
+                        let mensagem = 'Denúncias encontradas para a pesquisa: ' // para exibir pro usuario oq ele pesquisou
+                        if (termoPesquisa) mensagem += ` "${termoPesquisa}"`;
+                        if (denBairro) mensagem += ` Bairro selecionado: "${denBairro}"`;
+                        if (denProblema) mensagem += ` Problema selecionado: "${denProblema}"`;
+  
+                        setMensagemPesquisa(mensagem);
+                      }, 1000)
+
+                      setTimeout(() => {
+
+                  
+                      const denunciasFiltradas = denuncias.filter((denuncia) => {
+                        const nomeInclui = denuncia.den_nome.toLowerCase().includes(termoPesquisa.toLowerCase());
+                        const bairroCorresponde = denuncia.den_bairro === denBairro || !denBairro;
+                        const problemaCorresponde = denuncia.den_problema === denProblema || !denProblema;
+
+                        return nomeInclui && bairroCorresponde && problemaCorresponde;
+                      });
+
+                      setDenunciasFiltradas(denunciasFiltradas);
+                      setCarregando(false);
+                    }, 1000)
+                    } else {
+                      // Se nenhum filtro estiver ativo, define o estado do filtroAtivo como falso
+                      setFiltroAtivo(false);
+                      setMensagemPesquisa(''); //limpando a mensagem da pesquisa
+                    }
+                  }}
+                  bgColor='#338BB0'
+                  color='white'
+                  _hover={{ color: '#338BB0', bgColor: 'white' }}
+                  mt={{ base: '35px', md: '38px', lg: '45px' }}
+                  boxShadow='lg'
+                >
+                  Aplicar
+                </Button>
+              </Flex>
+            </VStack>
+            
+
             
     
                 <Flex justifyContent='center'>
@@ -264,7 +401,7 @@ const Ver = () => {
       <VStack bgColor={'white'}>
             {/* Usar denuncias ou denunciasFiltradas com base no estado do filtroAtivo */}
  
-              <Grid templateColumns="repeat(2, 1fr)" gap={4} mt='-40' >
+              <Grid templateColumns="repeat(2, 1fr)" gap={4}  >
                 {filtroAtivo ? (
                   denunciasFiltradas.length === 0 ? (
  

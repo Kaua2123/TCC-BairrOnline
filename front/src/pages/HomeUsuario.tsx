@@ -279,10 +279,7 @@ const closeAlertDialog = () => {
                             </AlertDialogOverlay>
                         </AlertDialog>
 
-      {!isSmallerThan768 && (
-        <Footer/> 
-      )}
-        
+      <Footer/>
   
      </ChakraProvider>
 
