@@ -191,9 +191,9 @@ const MeuPerfil = () => {
                         </Box>
                     ))}
 
-                    <Text fontSize='35px'>Altere sua foto de perfil</Text>
-
-                    <Button ml={24} w='10vw' boxShadow='lg' bgColor='#338bb0' color='white' onClick={openImageUploadModal}>Alterar</Button>
+                    <Text display={{base: 'none', md: 'flex'}} fontSize={{base: '25px', md: '35px'}}>Altere sua foto de perfil</Text>
+ 
+                    <Button ml={{base: '0', md: '24'}} w={{base: '30vw', md: '10vw'}} boxShadow='lg' bgColor='#338bb0' color='white' onClick={openImageUploadModal}>Alterar foto</Button>
                 </HStack>
                 <Modal isOpen={isImageUploadModalOpen} onClose={closeImageUploadModal}>
                     <ModalOverlay />
@@ -227,7 +227,7 @@ const MeuPerfil = () => {
 
             <Box boxShadow='lg' pb={10}  borderRadius='12px'>
                 <VStack w='full' justify='center' h='75vh' mt={26}  p={7} borderRadius='2xl' boxShadow='lg'>
-                    <Text fontSize='35px'>Altere seus dados aqui</Text>
+                    <Text fontSize={{base: '25px', md: '35px'}}>Altere seus dados aqui</Text>
                     {usuarios.map((usuario, index) => (
                         <Box key={index}>
                            

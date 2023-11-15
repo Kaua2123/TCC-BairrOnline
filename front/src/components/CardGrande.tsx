@@ -290,7 +290,7 @@ const CardGrande = ({denuncia}) => {
     </Button>
 
     {usuTipo === 'instituicao' && (
-      <Button boxShadow='lg' onClick={onOpen} color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<FaHandshake />}>
+      <Button position={{md: 'relative'}} top={{base: '-8', md: ''}}   boxShadow='lg' onClick={onOpen} color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}} leftIcon={<FaHandshake />}>
       Assumir denuncia
     </Button>
     )}
