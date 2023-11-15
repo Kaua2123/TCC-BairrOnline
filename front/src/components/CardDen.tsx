@@ -480,7 +480,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
 
 
-        <Card maxW='sm' w={{ base: '280px', md: '265px', lg: '250px' }} maxH='lg' h={{ base: '23em', md: '23em', lg: '29em' }} onClick={onOpen} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+        <Card maxW='sm' w={{ base: '280px', md: '265px', lg: '250px' }} maxH='lg' h={{ base: '23em', md: '29em' }} onClick={onOpen} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
 
                 {imagem ? (
@@ -504,7 +504,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
             </CardBody>
             <Divider />
 
-            <CardFooter>
+            <CardFooter     display={{base: 'none', md: 'flex'}}>
                 <Button
                     w={{ base: '100%', md: '180px', lg: 'auto' }}
                     mb={{ base: '1rem', md: '0', lg: '0' }}
@@ -516,6 +516,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
                         : { background: 'gray.500', color: 'white' }}
                     textAlign='center'
                     onClick={onOpen}
+                
                 >
                     Gerenciar denúncia
                 </Button>
