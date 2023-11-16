@@ -218,11 +218,11 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
                     leftIcon={<BsChatSquareText />}
                     bgColor='#338BB0'
                     color='white'
-                    _hover={{ background: '#fff', color: '#338BB0' }}
                     fontWeight='normal'
                     w={{ base: '5px', md: '5px', lg: '150px' }}
                     fontSize={{ base: '11px', md: '12px', lg: '16px' }}
                     onClick={onOpen}
+                    _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}
                 >
                     Comentários
                     <Modal isOpen={isOpen} onClose={onClose} size="xl">

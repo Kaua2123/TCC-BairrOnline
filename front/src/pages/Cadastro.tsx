@@ -345,7 +345,7 @@ const Cadastro = () => {
 
                   
                 </Stack>
-                <Button bgColor="#338bb0" _hover={{color: '#338bb0', backgroundColor: 'white'}} color='white' onClick={cadastraUsuario} display={secaoAtual === 1 ? 'none' : 'block'} boxShadow='lg'>Cadastrar</Button>
+                <Button bgColor="#338bb0"                   _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} color='white' onClick={cadastraUsuario} display={secaoAtual === 1 ? 'none' : 'block'} boxShadow='lg'>Cadastrar</Button>
 
 
               <Link to='/Login'><Text color='blue.400'>Já possui uma conta? Clique para entrar</Text></Link>

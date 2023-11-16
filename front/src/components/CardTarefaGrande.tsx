@@ -1,7 +1,8 @@
-import { Card, CardBody,Text, CardFooter, CardHeader, Box, Button } from "@chakra-ui/react";
+import { Card, CardBody,Text, CardFooter, CardHeader, Box, Button, IconButton, HStack } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
 import axios from "axios";
+import { CheckIcon } from "@chakra-ui/icons";
 
 
 const CardTarefaGrande = ({nome, acoNum}) => {
@@ -43,12 +44,27 @@ const CardTarefaGrande = ({nome, acoNum}) => {
                 </Box>
             </CardHeader>
             <CardBody>
-                <Box>
-                <Text>Subtarefas:</Text>
+            <Box>
+          <Text>Subtarefas:</Text>
           {subtarefas.map((subtarefa) => (
-            <Text key={subtarefa.sub_cod}>{subtarefa.sub_texto}</Text>
+            <Box key={subtarefa.sub_cod}>
+                <HStack>
+              <Text>{subtarefa.sub_texto}</Text>
+              {subtarefa.sub_estado === 'andamento' && (
+                <IconButton
+                  aria-label="Marcar como concluída"
+                  icon={<CheckIcon />}
+                  ml='auto'     
+                  variant='outline'
+                  borderRadius='100%'
+                  mb={2}
+                  _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}
+                />
+              )}
+              </HStack>
+            </Box>
           ))}
-                </Box>
+        </Box>
             </CardBody>
 
             <CardFooter>    

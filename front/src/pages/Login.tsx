@@ -159,7 +159,7 @@ const Login = () => {
                   
                 </Stack>
 
-        <Button colorScheme='blue' onClick={logarUsuario}>Entrar</Button>
+        <Button bgColor="#338bb0" color='white' boxShadow='lg' _hover={{background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} onClick={logarUsuario}>Entrar</Button>
 
             </Stack>
              

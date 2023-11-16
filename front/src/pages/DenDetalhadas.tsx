@@ -217,17 +217,17 @@ const MinhasDen = () => {
             
             <HStack spacing={{base: '4', md: '8'}} mt={10} mr={{base: '10', md: '0'}} bgColor='#5271ff' p={{base: '3', md: '7'}} borderRadius='2xl' boxShadow='lg' >
               <Link smooth to={'/DenDetalhadas#pesquisa'}>
-                <IconButton boxShadow='dark-lg' bgColor='white'  boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<PiMagnifyingGlassBold size='40px' />}></IconButton >
+                <IconButton boxShadow='dark-lg' bgColor='white'  boxSize={{base: '60px', md: '80px'}} aria-label="xd"  _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}icon={<PiMagnifyingGlassBold size='40px' />}></IconButton >
               </Link>
 
 
               <Link smooth to={'/DenDetalhadas#excluidas'}>
-                <IconButton boxShadow='dark-lg' bgColor='white' boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<FaRegTrashAlt size='40px' />}></IconButton >
+                <IconButton boxShadow='dark-lg' bgColor='white' boxSize={{base: '60px', md: '80px'}} aria-label="xd"  _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} icon={<FaRegTrashAlt size='40px' />}></IconButton >
               </Link>
 
 
               <Link smooth to={'/DenDetalhadas#acompanhaDen'}>
-                <IconButton boxShadow='dark-lg' bgColor='white' boxSize={{base: '60px', md: '80px'}} aria-label="xd" _hover={{ color: '#338bb0' }} icon={<BsHourglass size='40px' />}></IconButton >
+                <IconButton boxShadow='dark-lg' bgColor='white' boxSize={{base: '60px', md: '80px'}} aria-label="xd"  _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} icon={<BsHourglass size='40px' />}></IconButton >
               </Link>
 
             </HStack>

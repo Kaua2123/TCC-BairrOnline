@@ -238,7 +238,7 @@ const Ver = () => {
                   }}
                   bgColor='#338BB0'
                   color='white'
-                  _hover={{ color: '#338BB0', bgColor: 'white' }}
+                  _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}
                   mt={{ base: '35px', md: '38px', lg: '45px' }}
                   boxShadow='lg'
                 >
