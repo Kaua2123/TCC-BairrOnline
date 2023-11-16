@@ -59,7 +59,7 @@ routes.get("/getEstadoAcompanhamento/:cod", controllersAcomp.getEstadoAcompanham
 
 //subtarefas
 routes.post("/criarSubtarefa", autentica, controllersSubtarefas.criarSubtarefa);
-routes.get("/getSubtarefa", autentica, controllersSubtarefas.getSubtarefa);
+routes.get("/getSubtarefa/:cod", autentica, controllersSubtarefas.getSubtarefa);
 routes.delete("deleteSubtarefa", controllersSubtarefas.deleteSubtarefa);
 
 //notificações

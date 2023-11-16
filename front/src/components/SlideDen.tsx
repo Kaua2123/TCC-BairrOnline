@@ -166,7 +166,7 @@ export const SlideDenAcompanhamento = ({ acompanhamentos }) => {
                   <SwiperSlide className="swiper-slide" key={acompanhamento.aco_num}>
                     <CardTarefaGrande
                       nome={acompanhamento.den_nome}
-                      subtarefa={acompanhamento.aco_subtarefa}
+                      acoNum={acompanhamento.aco_num}
                     />
                   </SwiperSlide>
                 </Box>

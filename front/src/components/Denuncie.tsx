@@ -76,7 +76,7 @@ const Denuncie = () => {
     setCarregando(true);
     setErro(false);
   
-    if (denNome === "" || denDesc === "" || denBairro === "" || !selectedImage) {
+    if (denNome === "" || denDesc === "" || denBairro === "" || !selectedImage || denProblema === "") {
       toast({
         title: 'Erro',
         description: "Verifique se todos os campos estão preenchidos e uma imagem foi selecionada.",

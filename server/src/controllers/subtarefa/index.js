@@ -29,17 +29,34 @@ module.exports = {
         }
     },
 
-    async getSubtarefa(req, res) { // para exibição das subtarefas no card tarefa e na pagina tarefas 
+    async getSubtarefa(req, res) {
+        try {
+          const { usu_cod } = req.usuario;
+          const { cod } = req.params; // Adicionando a obtenção do número do acompanhamento a partir dos parâmetros da solicitação
+      
+          const subtarefas = await knex('subtarefa')
+            .select('*')
+            .where('usuario_usu_cod', usu_cod)
+            .where('acompanhamento_aco_num', cod); // Filtrando com base no número do acompanhamento
+      
+          return res.status(200).json(subtarefas);
+        } catch (error) {
+          return res.status(400).json({ error: error.message });
+        }
+      },
+      
+
+    async getSubtarefaPorAcompanhamento(req, res) {
         try {
 
-            const {usu_cod} = req.usuario;
-
-            const subtarefas = await knex('subtarefa').select("*")
-            .where('usuario_usu_cod', usu_cod);
-
+            const { aco_num } = req.params;
+    
+            const subtarefas = await knex('subtarefa').select('*').where('acompanhamento_aco_num', aco_num);
+    
             return res.status(200).json(subtarefas);
-        }
-        catch (error) {
+
+
+        } catch (error) {
             return res.status(400).json({ error: error.message });
         }
     },

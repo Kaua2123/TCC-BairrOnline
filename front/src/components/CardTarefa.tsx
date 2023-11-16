@@ -85,7 +85,7 @@ const CardTarefa = ({acompanhamento}) => {
       axios.defaults.headers.common['Authorization'] = `${token}`;
     }
 
-    axios.get("http://localhost:3344/getSubtarefa")
+    axios.get(`http://localhost:3344/getSubtarefa/${acompanhamento.aco_num}`)
     .then((response) => {
       setSubtarefas(response.data);
     })
