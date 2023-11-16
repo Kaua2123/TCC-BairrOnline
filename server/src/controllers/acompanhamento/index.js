@@ -72,5 +72,27 @@ module.exports = {
         } catch (error) {
             return res.status(400).json({error: error.message});
         }
+    },
+
+    async getEstadoAcompanhamento(req, res) {
+        try {
+            const { cod } = req.params;
+
+            const acompanhamento = await knex('acompanhamento')
+            .select('aco_estado')
+            .where({ 'denuncias_den_cod': cod })
+            .orderBy('aco_data', 'desc')
+            .first(); 
+
+            if (!acompanhamento) {
+                return res.status(404).json({ error: 'impossível obter o estado do acompanhamento para esta denúncia.' });
+              }
+
+
+            return res.status(200).json({estado: acompanhamento.aco_estado})
+
+        } catch (error) {
+            return res.status(400).json({error: error.message});
+        }
     }
 }

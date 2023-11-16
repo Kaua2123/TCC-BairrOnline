@@ -728,6 +728,8 @@ export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false);
     const [imagemUrl, setImagemUrl] = useState('');
+    const [estadoAcompanhamento, setEstadoAcompanhamento] = useState([]);
+
     const cancelRef = React.useRef();
     const toast = useToast();
     const { colorMode } = useColorMode();
@@ -877,6 +879,21 @@ export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
         }
     };
 
+    const getAcompanhamentoEstado = async () => {
+        
+        await axios.get(`http://localhost:3344/getEstadoAcompanhamento/${denCod}`)
+        .then((response) => {
+            setEstadoAcompanhamento(response.data.estado);
+        })
+        .catch((error) => {
+            console.error(error);
+        })
+    };
+
+    useEffect(() => {
+        getAcompanhamentoEstado();
+    }, [denCod])
+
     const caracteresMaxDescricao = 24;
     const caracteresMaxTitulo = 20;
 
@@ -914,7 +931,7 @@ export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
 
                 <Stack mt='6' spacing='3'>
                     <Heading size={{ base: 'xs', md: 'xs', lg: 'md' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
-                    <Heading size='xs' textTransform='uppercase' color='gray'>status: puxar do banco</Heading>
+                    <Heading size='xs' textTransform='uppercase' color='gray'>status: {estadoAcompanhamento}</Heading>
                 </Stack>
 
             </CardBody>
