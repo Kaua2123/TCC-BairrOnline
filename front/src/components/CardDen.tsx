@@ -728,7 +728,7 @@ export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false);
     const [imagemUrl, setImagemUrl] = useState('');
-    const [estadoAcompanhamento, setEstadoAcompanhamento] = useState([]);
+    const [estadoAcompanhamento, setEstadoAcompanhamento] = useState('');
 
     const cancelRef = React.useRef();
     const toast = useToast();
@@ -883,7 +883,7 @@ export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
         
         await axios.get(`http://localhost:3344/getEstadoAcompanhamento/${denCod}`)
         .then((response) => {
-            setEstadoAcompanhamento(response.data.estado);
+            setEstadoAcompanhamento(response.data.estado || "");
         })
         .catch((error) => {
             console.error(error);
@@ -931,7 +931,7 @@ export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
 
                 <Stack mt='6' spacing='3'>
                     <Heading size={{ base: 'xs', md: 'xs', lg: 'md' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
-                    <Heading size='xs' textTransform='uppercase' color='gray'>status: {estadoAcompanhamento}</Heading>
+                    <Heading size='xs' textTransform='uppercase' color='gray'>status: {estadoAcompanhamento ? estadoAcompanhamento : 'Não assumida'}</Heading>
                 </Stack>
 
             </CardBody>
