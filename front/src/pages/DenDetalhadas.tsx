@@ -209,7 +209,7 @@ const MinhasDen = () => {
       <HStack w='full' h='80vh'>
         <Flex w='full' h='full'>
           <VStack m={{base: '14', md: '20'}} alignItems={{base: 'normal', md: 'flex-start'}}>
-            <Text color='#338bb0' fontSize={{base: '25px', md: '50px'}}  fontFamily='BreeSerif-Regular'>Reverta suas denúncias, <br/> faça a diferença.</Text>
+            <Text color='#338bb0' fontSize={{base: '25px', md: '50px'}}  fontFamily='BreeSerif-Regular'>Reverta a exclusão de suas denúncias, <br/> faça a diferença.</Text>
             {!mobile && (
               <Text mt={5}>Visualize o acompanhamento das suas denúncias e realize a reversão dos que foram excluídos. <br/> Seu bairro precisa de você.</Text>
             )}

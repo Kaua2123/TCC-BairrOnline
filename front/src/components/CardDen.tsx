@@ -49,6 +49,17 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
 
         const decodificaToken: any = jwtDecode(token);
 
+        if (!token) {
+            toast({
+                title: 'Erro ao reportar a denúncia. você está deslogado',
+                duration: 2000,
+                status: 'error',
+                isClosable: true
+            })
+
+            return;
+        }
+
         axios.post("http://localhost:3344/postReportar", {
             rep_motivo: repMotivo,
             rep_data: new Date().toISOString(),

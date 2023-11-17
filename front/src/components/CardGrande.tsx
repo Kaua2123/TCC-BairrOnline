@@ -280,17 +280,17 @@ const CardGrande = ({denuncia}) => {
     }}
   >
     <VStack>
-    <Button position={{md: 'relative'}} top={{base: '-8', md: ''}} boxShadow='lg' color='white' onClick={curtirDenuncia}  bgColor='#338bb0'  _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} leftIcon={<BiSolidLike />}>
+    <Button position={{base: 'relative', md: 'unset'}} boxShadow='lg' color='white' onClick={curtirDenuncia}  bgColor='#338bb0'  _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} leftIcon={<BiSolidLike />}>
     {denuncia.den_like}
     </Button>
 
     </VStack>
-    <Button position={{md: 'relative'}} top={{base: '-8', md: ''}}  boxShadow='lg' color='white' bgColor='#338bb0'  _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} leftIcon={<BiCommentDetail />}>
+    <Button position={{base: 'relative', md: 'unset'}} boxShadow='lg' color='white' bgColor='#338bb0'  _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} leftIcon={<BiCommentDetail />}>
       Comentar
     </Button>
 
     {usuTipo === 'instituicao' && (
-      <Button position={{md: 'relative'}} top={{base: '-8', md: ''}}   boxShadow='lg' onClick={onOpen} color='white' bgColor='#338bb0'    _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}leftIcon={<FaHandshake />}>
+      <Button position={{base: 'relative', md: 'unset'}}   boxShadow='lg' onClick={onOpen} color='white' bgColor='#338bb0'    _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}leftIcon={<FaHandshake />}>
       Assumir denuncia
     </Button>
     )}

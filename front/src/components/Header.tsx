@@ -109,6 +109,7 @@ export const HeaderUsu = () => {
   const [notNova, setNotNova] = useState(false);
   const [temNot, setTemNot] = useState(false);
   const [usuarios, setUsuarios] = useState([]);
+  const [secaoAtiva, setSecaoAtiva] = useState('');
   const toast = useToast();
   const {colorMode, toggleColorMode} = useColorMode();
 
@@ -210,39 +211,48 @@ useEffect(() => {
 
             <HStack spacing='10' justifyContent='center' alignItems='center' >
               <Button variant='link'
-              color='white'
+              color={secaoAtiva === 'denuncie' ? '#338bb0' : 'white'}
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
+              onClick={() => {
+                setSecaoAtiva('denuncie');
+              }}
               display={['none', 'none', 'flex', 'flex']}>
-
+              
                   <Link smooth to='/HomeUsuario#denuncieAqui'> Denuncie aqui</Link>
 
               </Button>
               <Button variant='link'
-              color='white'
+              color={secaoAtiva === 'verDen' ? '#338bb0' : 'white'}
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-
+              onClick={() => {
+                setSecaoAtiva('verDen');
+              } }
               display={['none', 'none', 'flex', 'flex']}>
                  <Link smooth to='/VerDenuncia'> Ver denúncias </Link>
               </Button>
               <Button variant='link'
-              color='white'
+              color={secaoAtiva === 'minhasDen' ? '#338bb0' : 'white'}
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-
+              onClick={() => {
+                setSecaoAtiva('minhasDen');
+              } }
               display={['none', 'none', 'flex', 'flex']}>
                  <Link smooth to='/HomeUsuario#minhasDen'> Minhas denúncias </Link>
               </Button>
               <Button variant='link'
-              color='white'
+              color={secaoAtiva === 'denDetalhadas' ? '#338bb0' : 'white'}
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-
+              onClick={() => {
+                setSecaoAtiva('denDetalhadas')
+              }}
               display={['none', 'none', 'flex', 'flex']}>
                  <Link smooth to='/DenDetalhadas'> Denúncias detalhadas </Link>
               </Button>
@@ -270,7 +280,7 @@ useEffect(() => {
       /> */}
                 <Popover>
                   <PopoverTrigger>
-                  <Button variant={'ghost'} _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} onClick={() => setTemNot(false)} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
+                  <Button variant={'ghost'}  _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}  onClick={() => setTemNot(false)} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
                   <AiOutlineBell   size='2.2em' />
                   {temNot && (
                     <Badge
@@ -371,6 +381,7 @@ export const HeaderInst = () => {
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
   const {colorMode, toggleColorMode} = useColorMode();
   const [usuarios, setUsuarios] = useState([]);
+  const [secaoAtiva, setSecaoAtiva] = useState('');
   const toast = useToast();
 
   const getUsuarios  = () => {
@@ -440,28 +451,24 @@ useEffect(() => {
           <Center>
             <HStack  spacing='10' justifyContent='center' alignItems='center' >
               <Button variant='link'
-              color='white'
+              color={secaoAtiva === 'verDen' ? '#338bb0' : 'white'}
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-
+              onClick={() => {
+                setSecaoAtiva('verDen');
+              } }
               display={['none', 'none', 'flex', 'flex']}>
                   <Link to='/VerDenuncia'>Ver denúncias </Link>
               </Button>
               <Button variant='link'
-              color='white'
+              color={secaoAtiva === 'tarefas' ? '#338bb0' : 'white'}
               _hover={{color: '#338BB0'}}
               fontFamily='BreeSerif-Regular'
               fontWeight='normal'
-
-              display={['none', 'none', 'flex', 'flex']}>
-                 <Link to=''>Denúncias avaliadas </Link>
-              </Button>
-              <Button variant='link'
-              color='white'
-              _hover={{color: '#338BB0'}}
-              fontFamily='BreeSerif-Regular'
-              fontWeight='normal'
+              onClick={() => {
+                setSecaoAtiva('tarefas');
+              } }
               display={['none', 'none', 'flex', 'flex']}>
                  <Link to='/Tarefas'>Tarefas</Link>
               </Button>
@@ -482,8 +489,8 @@ useEffect(() => {
 
                 <Popover>
                   <PopoverTrigger>
-                  <Button variant={'ghost'} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
-                  <AiOutlineBell  fill='white' size='2.6em' />
+                  <Button variant={'ghost'}  _hover={{ background: '#338bb0', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
+                  <AiOutlineBell   size='2.2em' />
                   </Button>
                   </PopoverTrigger>
                   <PopoverContent w={'max-content'} height={'400px'} overflowY={'auto'}>
@@ -519,6 +526,7 @@ useEffect(() => {
             colorScheme="whiteAlpha"
             borderRadius="full"
             onClick={aoClicarAvatar} // Chama a função quando o avatar é clicado
+            _hover={{ background: '#338bb0', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}
           >
             {usuarios.map((usuario, index) => (
           <Box key={index}>

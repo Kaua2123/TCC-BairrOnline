@@ -228,62 +228,21 @@ const Cadastro = () => {
 
          {secaoAtual === 1 && (
           <>
-          <FormLabel>Nome de Usuário</FormLabel>
-          <InputGroup>
-            <InputLeftElement>
-              <AiOutlineUser />
-            </InputLeftElement>
-            <Input placeholder='Digite seu nome' borderColor='black' required value={usuNome} onChange={(e) => {
-              setUsuNome(e.target.value);
+          <FormLabel>Sou: </FormLabel>
+                <InputGroup mb={1}>
+                  <Select
+                    value={usuTipo}
+                    onChange={(e) => setUsuTipo(e.target.value)}
+                    required
+                    borderColor='black'
+                  >
+                    <option value="denunciante">Denunciante</option>
+                    <option value="instituicao">Instituição</option>
+                  </Select>
 
-            }} />
-          </InputGroup>
+                </InputGroup>
 
-
-          <FormLabel>Telefone</FormLabel>
-          <InputGroup>
-            <InputLeftElement>
-              <BsTelephone />
-            </InputLeftElement>
-            <Input placeholder='Digite seu telefone' borderColor={telefoneValido ? 'green' : 'red'} required type='tel' value={usuTel} onChange={(e) => {
-              setUsuTel(e.target.value)
-              setTelefoneValido(true);
-            }}
-              onBlur={validarTelefone} />
-          </InputGroup>
-        
-
-          {/* <FormLabel>CEP</FormLabel>
-          <InputGroup>
-            <InputLeftElement>
-              <CiLocationOn />
-            </InputLeftElement>
-            <Input placeholder='Digite seu CEP' borderColor='black' required type='number' value={usuCep} onChange={(e) => {
-              setUsuCep(e.target.value)
-            }} />
-          </InputGroup> */}
-
-       
-
-          <FormLabel>CPF</FormLabel>
-          <InputGroup>
-            <InputLeftElement>
-              <AiOutlineIdcard />
-            </InputLeftElement>
-            <Input placeholder='Digite seu CPF' borderColor='black' required type='number' value={usuCPF} onChange={(e) => {
-              setUsuCPF(e.target.value)
-            }} />
-          </InputGroup>
-          <Spacer/>
-          
-
-          <IconButton aria-label='anterior' mt={3}  icon={<AiOutlineArrowRight/>} onClick={() => setSecaoAtual(secaoAtual + 1)} bgColor='#338bb0' color='white' _hover={{color: '#338bb0', backgroundColor: 'white'}} boxShadow='lg'>Próximo</IconButton>
-          </>
-         )}
-
-          {secaoAtual === 2 && (
-            <>
-            <FormLabel>Email</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <InputGroup>
                   <InputLeftElement>
                     <AiOutlineMail />
@@ -317,19 +276,66 @@ const Cadastro = () => {
                   </InputRightElement>
                 </InputGroup>
 
-                <FormLabel>Sou: </FormLabel>
-                <InputGroup >
-                  <Select
-                    value={usuTipo}
-                    onChange={(e) => setUsuTipo(e.target.value)}
-                    required
-                    borderColor='black'
-                  >
-                    <option value="denunciante">Denunciante</option>
-                    <option value="instituicao">Instituição</option>
-                  </Select>
 
-                </InputGroup>
+         
+
+          {/* <FormLabel>CEP</FormLabel>
+          <InputGroup>
+            <InputLeftElement>
+              <CiLocationOn />
+            </InputLeftElement>
+            <Input placeholder='Digite seu CEP' borderColor='black' required type='number' value={usuCep} onChange={(e) => {
+              setUsuCep(e.target.value)
+            }} />
+          </InputGroup> */}
+
+          <Spacer/>
+          
+
+          <IconButton aria-label='anterior' mt={3}  icon={<AiOutlineArrowRight/>} onClick={() => setSecaoAtual(secaoAtual + 1)} bgColor='#338bb0' color='white' _hover={{color: '#338bb0', backgroundColor: 'white'}} boxShadow='lg'>Próximo</IconButton>
+          </>
+         )}
+
+          {secaoAtual === 2 && (
+            <>
+
+<FormLabel>Nome de Usuário</FormLabel>
+          <InputGroup>
+            <InputLeftElement>
+              <AiOutlineUser />
+            </InputLeftElement>
+            <Input placeholder='Digite seu nome' borderColor='black' required value={usuNome} onChange={(e) => {
+              setUsuNome(e.target.value);
+
+            }} />
+          </InputGroup>
+
+
+          <FormLabel>Telefone</FormLabel>
+          <InputGroup>
+            <InputLeftElement>
+              <BsTelephone />
+            </InputLeftElement>
+            <Input placeholder='Digite seu telefone' borderColor={telefoneValido ? 'green' : 'red'} required type='tel' value={usuTel} onChange={(e) => {
+              setUsuTel(e.target.value)
+              setTelefoneValido(true);
+            }}
+              onBlur={validarTelefone} />
+          </InputGroup>
+        
+        
+       
+
+          <FormLabel>CPF</FormLabel>
+          <InputGroup>
+            <InputLeftElement>
+              <AiOutlineIdcard />
+            </InputLeftElement>
+            <Input placeholder='Digite seu CPF' borderColor='black' required type='number' value={usuCPF} onChange={(e) => {
+              setUsuCPF(e.target.value)
+            }} />
+          </InputGroup>
+                
                 <IconButton boxShadow='lg' aria-label='anterior' mt={3} icon={<AiOutlineArrowLeft/>} onClick={() => setSecaoAtual(secaoAtual - 1)}  color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}}  >Anterior</IconButton>
                 </>
           )}
