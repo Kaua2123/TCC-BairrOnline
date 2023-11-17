@@ -1,5 +1,5 @@
 import {
-    Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
+    Card, CardBody, CardHeader, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
     AlertDialogOverlay, Tag, TagLabel, Avatar, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, InputLeftElement, FormLabel, Center, Flex, useDisclosure, useColorMode, Select
 } from "@chakra-ui/react";
 
@@ -19,9 +19,8 @@ import { useEffect, useState } from 'react';
 import React from "react";
 import axios from "axios";
 
-//Componentes comentários
-import CommentForm from "./CommentForm";
-import CommentList from "./CommentList";
+//Exibir Comentários
+import CardCom from "./CardCom";
 
 //imgs
 import semImgDen from '../img/semImgDen.png';
@@ -83,17 +82,7 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
         setIsModalRepOpen(false);
       };
 
-    //Manipular Comentários
-    const [comments, setComments] = useState([]);
-
-    const handleCommentSubmit = (comment) => {
-        setComments(
-            [
-                ...comments, comment
-            ]
-        )
-    }
-
+ 
     const caracteresMaxDescricao = 24;
     const caracteresMaxTitulo = 20;
 
@@ -234,9 +223,14 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
                                 </Text>
                             </ModalHeader>
                             <ModalCloseButton />
-                            <ModalBody>
+                            <CardHeader>
                                 <Input placeholder="comenta aq" onChange={(e) => setComCont(e.target.value)} ></Input>
-                            </ModalBody>
+                            </CardHeader>
+                            <CardBody>
+                                <CardCom>
+
+                                </CardCom>
+                            </CardBody>
 
                             <ModalFooter>
 

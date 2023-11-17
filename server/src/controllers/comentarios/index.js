@@ -80,23 +80,11 @@ module.exports = {
 
     async buscarComentario(req, res) {
         try {
-          const { den_cod } = req.params; // obtém o código da denúncia dos parâmetros da URL
-      
-          // verifica se a denúncia com o código especificado existe
-          const denuncia = await knex('denuncias').where('den_cod', den_cod).first();
-          
-          if (!denuncia) {
-            return res.status(404).json({ error: 'Denúncia não encontrada.' });
-          }
-      
-          // buscar os comentários associados à denúncia específica
-          const comentarios = await knex('comentarios')
-            .where('denuncias_den_cod', den_cod)
-            .select('*');
-      
-          return res.status(200).json(comentarios);
+            const usuarios = await knex('usuario').select('*');
+
+            return res.status(200).json(usuarios)
         } catch (error) {
-          return res.status(400).json({ error: 'Erro ao buscar os comentários.' });
+            return res.status(400).json({error: error.message})
         }
     }
 }
