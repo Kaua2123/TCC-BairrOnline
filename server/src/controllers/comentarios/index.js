@@ -80,9 +80,9 @@ module.exports = {
 
     async buscarComentario(req, res) {
         try {
-            const usuarios = await knex('usuario').select('*');
+            const comentarios = await knex('comentarios').select('*');
 
-            return res.status(200).json(usuarios)
+            return res.status(200).json(comentarios)
         } catch (error) {
             return res.status(400).json({error: error.message})
         }
