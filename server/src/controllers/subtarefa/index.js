@@ -22,6 +22,15 @@ module.exports = {
                 usuario_usu_cod
             })
 
+            const totalSubtarefas = await knex('subtarefa')
+            .count('sub_cod as count')
+            .where('acompanhamento_aco_num', acompanhamento_aco_num)
+            .first();
+      
+            if (totalSubtarefas.count >= 3) {
+                return res.status(400).json({ error: 'Limite de subtarefas atingido para este acompanhamento.' });
+            }
+
             return res.status(200).json({ msg: 'subtarefa criada' })
         }
         catch (error) {
@@ -61,6 +70,22 @@ module.exports = {
         }
     },
 
+    async concluirSubtarefa(req, res) {
+        try {
+          const { cod } = req.params;
+          const { sub_estado } = req.body;
+
+          await knex('subtarefa').update({
+            sub_estado: 'concluida'
+          }).where('sub_cod', cod)
+        
+      
+          return res.status(200).json({ message: 'Subtarefa concluída com sucesso.' });
+        } catch (error) {
+          return res.status(500).json({ error: error.message });
+        }
+      },
+
     async deleteSubtarefa(req, res) { // para deletar as subtarefas
         try {
             const { cod } = req.params;
@@ -78,13 +103,6 @@ module.exports = {
         }
     },
 
-    async atualizarStatusSubtarefa(req, res){ //para atualizar o estado (em andamento, concluido) e prioridade
-        try {
-            
-        } 
-        catch (error) {
-            
-        }
-    }
+
 
 }

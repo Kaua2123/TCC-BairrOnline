@@ -825,7 +825,7 @@ export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
                         <ModalCloseButton />
                         <ModalBody>
                             <Box>
-                            <HStack>
+                            <HStack gap={10}>
                                 <Avatar w='80px' h='80px'/>
                                 <Text>Vai termt texto aq da instutica</Text>
                             </HStack>

@@ -7,13 +7,13 @@ const cors = require('cors');
 const app = express();
 
 
-const corsOptions = {
-    origin: 'http://localhost:5173', // tem q mexer nisso aq dependendo da url
-};
+// const corsOptions = {
+//     origin: 'http://localhost:5173', // tem q mexer nisso aq dependendo da url
+// };
 
 
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 

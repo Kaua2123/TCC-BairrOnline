@@ -280,7 +280,7 @@ useEffect(() => {
       /> */}
                 <Popover>
                   <PopoverTrigger>
-                  <Button variant={'ghost'}  _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}  onClick={() => setTemNot(false)} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
+                  <Button variant={'ghost'}   _hover={{ background: '#338bb0', color: 'white', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}  onClick={() => setTemNot(false)} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
                   <AiOutlineBell   size='2.2em' />
                   {temNot && (
                     <Badge
@@ -445,7 +445,7 @@ useEffect(() => {
           </Center>
 
 
-          <Link to='/'> <Image  src={Logo} alt='logo' boxSize='20' ></Image> </Link>
+          <Link to='/'> <Image  src={Logo} alt='logo' boxSize='20'   _hover={{transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} ></Image> </Link>
 
           <Spacer/>
           <Center>
@@ -489,7 +489,7 @@ useEffect(() => {
 
                 <Popover>
                   <PopoverTrigger>
-                  <Button variant={'ghost'}  _hover={{ background: '#338bb0', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
+                  <Button variant={'ghost'}  _hover={{ background: '#338bb0', color: 'white', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} size={'3em'} padding='4px' colorScheme="whiteAlpha" borderRadius={'full'} >
                   <AiOutlineBell   size='2.2em' />
                   </Button>
                   </PopoverTrigger>

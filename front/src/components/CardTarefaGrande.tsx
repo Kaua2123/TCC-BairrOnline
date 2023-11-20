@@ -1,4 +1,4 @@
-import { Card, CardBody,Text, CardFooter, CardHeader, Box, Button, IconButton, HStack } from "@chakra-ui/react";
+import { Card, CardBody,Text, CardFooter, CardHeader, Box, Button, IconButton, HStack, useToast } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
 import axios from "axios";
@@ -8,7 +8,10 @@ import { CheckIcon } from "@chakra-ui/icons";
 const CardTarefaGrande = ({nome, acoNum}) => {
     const [acompanhamentos, setAcompanhamentos] = useState([]);
     const [subtarefas, setSubtarefas] = useState([]);
-  
+    const [subCod, setSubCod] = useState([]);
+    const toast = useToast();
+
+
     const getSubtarefa = () => { //para exibição das subtarefas
 
         const token = localStorage.getItem('token') //pegando token do usuario logado para exibir somente as subtarefas dele
@@ -34,6 +37,27 @@ const CardTarefaGrande = ({nome, acoNum}) => {
         getSubtarefa();
       }, [])
 
+      const concluirSubtarefa = (sub_cod) => {
+        axios.put(`http://localhost:3344/concluirSubtarefa/${sub_cod}`)
+          .then((response) => {
+            toast({
+              title: 'Concluída',
+              duration: 2000,
+              status: 'success',
+              isClosable: true
+            })
+          })
+          .catch((error) => {
+            console.log('Erro ao concluir subtarefa.', error);
+            toast({
+              title: 'Erro ao concluir subtarefa.',
+              duration: 2000,
+              status: 'error',
+              isClosable: true
+            })
+          });
+      };
+    
     return (
         <Card bg='#338BB0' color='white' h='40vh' w='20vw'>
             <CardHeader>
@@ -49,9 +73,12 @@ const CardTarefaGrande = ({nome, acoNum}) => {
           {subtarefas.map((subtarefa) => (
             <Box key={subtarefa.sub_cod}>
                 <HStack>
-              <Text>{subtarefa.sub_texto}</Text>
+              <Text mb={2}>{subtarefa.sub_texto}</Text>
               {subtarefa.sub_estado === 'andamento' && (
                 <IconButton
+                  onClick={() => {
+                    concluirSubtarefa(subtarefa.sub_cod)
+                  }}
                   aria-label="Marcar como concluída"
                   icon={<CheckIcon />}
                   ml='auto'     
@@ -61,17 +88,14 @@ const CardTarefaGrande = ({nome, acoNum}) => {
                   _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}
                 />
               )}
+              {subtarefa.sub_estado === 'concluida' && (
+                <CheckIcon ml='auto' color='green.300'/>
+              )}
               </HStack>
             </Box>
           ))}
         </Box>
             </CardBody>
-
-            <CardFooter>    
-            <Box>
-              <Button color='green' bgColor='white'>Concluir</Button>
-            </Box>
-            </CardFooter>
         </Card>
     )
    

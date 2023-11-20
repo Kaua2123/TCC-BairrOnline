@@ -22,6 +22,7 @@ import { SlideDenAcompanhamento } from '../components/SlideDen';
 export const Tarefas = () => {
 
   const [acompanhamentos, setAcompanhamentos] = useState([]);
+ 
   const navigate = useNavigate();
 
   useEffect(() => {
