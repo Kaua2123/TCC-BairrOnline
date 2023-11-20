@@ -57,9 +57,46 @@ const CardTarefaGrande = ({nome, acoNum}) => {
             })
           });
       };
+      
+      const concluirAcompanhamento = () => {
+        // Verificar se todas as subtarefas foram concluídas
+        const todasConcluidas = subtarefas.every(subtarefa => subtarefa.sub_estado === 'concluida');
+      
+        if (todasConcluidas) {
+          // Todas as subtarefas estão concluídas, então pode concluir o acompanhamento
+          axios.put(`http://localhost:3344/concluirAcompanhamento/${acoNum}`)
+            .then((response) => {
+              toast({
+                title: 'Concluída',
+                description: 'Essa denúncia foi solucionada e será exibida para os usuários.',
+                duration: 2000,
+                status: 'success',
+                isClosable: true
+              })
+            })
+            .catch((error) => {
+              toast({
+                title: 'Erro ao concluir',
+                duration: 2000,
+                status: 'error',
+                isClosable: true
+              })
+            });
+        } else {
+          // Exibir uma mensagem informando que todas as subtarefas precisam ser concluídas primeiro
+          toast({
+            title: 'Subtarefas Pendentes',
+            description: 'Conclua todas as subtarefas antes de marcar o acompanhamento como concluído.',
+            duration: 2000,
+            status: 'warning',
+            isClosable: true
+          });
+        }
+      }
+      
     
     return (
-        <Card bg='#338BB0' color='white' h='40vh' w='20vw'>
+        <Card bg='#338BB0' color='white' h='45vh' w='20vw'>
             <CardHeader>
                 <Box bgColor='white' borderRadius='4px' p={2}> 
                     <Text color='#338bb0' justifyContent='center'>
@@ -73,7 +110,7 @@ const CardTarefaGrande = ({nome, acoNum}) => {
           {subtarefas.map((subtarefa) => (
             <Box key={subtarefa.sub_cod}>
                 <HStack>
-              <Text mb={2}>{subtarefa.sub_texto}</Text>
+              <Text mb={0}>{subtarefa.sub_texto}</Text>
               {subtarefa.sub_estado === 'andamento' && (
                 <IconButton
                   onClick={() => {
@@ -96,6 +133,10 @@ const CardTarefaGrande = ({nome, acoNum}) => {
           ))}
         </Box>
             </CardBody>
+
+            <CardFooter>
+              <Button onClick={concluirAcompanhamento}>Definir como concluído</Button>
+            </CardFooter>
         </Card>
     )
    

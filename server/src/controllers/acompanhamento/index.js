@@ -94,5 +94,21 @@ module.exports = {
         } catch (error) {
             return res.status(400).json({error: error.message});
         }
+    },
+
+    async concluirAcompanhamento(req, res) {
+        try {
+            const {cod} = req.params;
+
+            await knex('acompanhamento').update({
+                aco_estado: 'concluida'
+            }).where('aco_num', cod);
+
+            return res.status(200).json({ message: 'Acompanhamento/Denúncia concluída com sucesso.' });
+        } catch (error) {
+            return res.status(400).json({error: error.message});
+        }
     }
+
+    
 }

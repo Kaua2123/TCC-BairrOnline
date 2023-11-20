@@ -56,6 +56,7 @@ routes.get("/buscarComentario/:cod", controllersComen.buscarComentario);
 routes.post("/criarAcompanhamento", controllersAcomp.criarAcompanhamento);
 routes.get("/getAcompanhamento", autentica, controllersAcomp.getAcompanhamentos);
 routes.get("/getEstadoAcompanhamento/:cod", controllersAcomp.getEstadoAcompanhamento);
+routes.put("/concluirAcompanhamento/:cod", controllersAcomp.concluirAcompanhamento);
 
 //subtarefas
 routes.post("/criarSubtarefa", autentica, controllersSubtarefas.criarSubtarefa);
