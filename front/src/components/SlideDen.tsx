@@ -178,6 +178,41 @@ export const SlideDenAcompanhamento = ({ acompanhamentos }) => {
 
 }
 
+export const SlideDenAcompanhamentoConcluidos = ({ acompanhamentos }) => {
+
+  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+
+
+      return (
+        <Box h='auto' mt='20px' p={1} bg='#F2F2F2' boxShadow='lg' w={{base: 'full', md: '90vw'}}>
+          <Swiper
+            
+            className="swiper-container"
+            style={{ padding: "20px" }}
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={50}
+            slidesPerView={4}
+            navigation
+            pagination={{ clickable: true }}
+          >
+            <Wrap>
+              {acompanhamentos.map((acompanhamento, index) => (
+                <Box key={index}>
+                  <SwiperSlide className="swiper-slide" key={acompanhamento.aco_num}>
+                    <CardTarefaGrande
+                      nome={acompanhamento.den_nome}
+                      acoNum={acompanhamento.aco_num}
+                    />
+                  </SwiperSlide>
+                </Box>
+              ))}
+            </Wrap>
+          </Swiper>
+        </Box>
+      );
+
+}
+
 export const SlideDenSimples = ({ denuncias }) => {
 
   const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");

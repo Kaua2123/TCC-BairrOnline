@@ -16,7 +16,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import jwtDecode from "jwt-decode";
-import { SlideDenAcompanhamento } from '../components/SlideDen';
+import { SlideDenAcompanhamento, SlideDenAcompanhamentoConcluidos } from '../components/SlideDen';
 
 
 export const Tarefas = () => {
@@ -66,7 +66,7 @@ export const Tarefas = () => {
   return (
     <ChakraProvider>
       <HeaderInst />
-      <HStack w='full' h='100vh'>
+      <HStack w='full' h='64vh'>
         <Flex w='full' h='full'>
           <VStack m={20} alignItems='flex-start'>
             <Text color='#338bb0' fontSize='50px' fontFamily='BreeSerif-Regular' whiteSpace='nowrap'> Há trabalho a fazer, <br /> instituição.</Text>
@@ -86,9 +86,9 @@ export const Tarefas = () => {
 
         </Box>
         <Box>
-          <Center>
+     
             <Text color="#338bb0" fontSize='35px' fontFamily='BreeSerif-Regular'>Concluidas</Text>
-          </Center>
+            <SlideDenAcompanhamentoConcluidos acompanhamentos={acompanhamentos}/>
         </Box>
       </VStack>
       <Footer />
