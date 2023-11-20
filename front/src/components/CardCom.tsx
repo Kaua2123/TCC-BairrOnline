@@ -35,6 +35,7 @@ const CardCom = ({ denCod }) => {
       {comentarios.map((comentario) => (
         <Box key={comentario.com_id} gap={3} m={4}>
           <HStack>
+            {/* hstack pra alinhar na horizontal */}
           <Tag size='sm' colorScheme='blue' borderRadius='full' >
                     {/* {usuImg ? ( vai ter q dar um get no usuarios pra pegar esses atributos aq e mostrar o icone do usuario, msm coisa pro nome
                         <Avatar src={`http://localhost:3344/retornaImgPerfil/${usuImg}`} size='xs' name={usuNome} ml={-1} mr={2}> </Avatar>

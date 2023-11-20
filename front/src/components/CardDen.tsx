@@ -1,6 +1,6 @@
 import {
     Card, CardBody, CardHeader, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
-    AlertDialogOverlay, Tag, TagLabel, Avatar, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, InputLeftElement, FormLabel, Center, Flex, useDisclosure, useColorMode, Select
+    AlertDialogOverlay, Tag, TagLabel, Avatar, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, InputLeftElement, FormLabel, Center, Flex, useDisclosure, useColorMode, Select, HStack, Badge
 } from "@chakra-ui/react";
 
 import { Reportar } from "./Reportar";
@@ -920,7 +920,7 @@ export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
 
 
 
-        <Card maxW='sm' w={{ base: '', md: '17vw' }} maxH='lg' h={{ base: '23em', md: '20em' }} onClick={onOpen} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
+        <Card maxW='sm' w={{ base: '', md: '17vw' }} maxH='lg' h={{ base: '23em', md: '26em' }} onClick={onOpen} bgColor={colorMode === 'light' ? 'gray.100' : '#2D3748'} align='center' border='1px solid #A9A9A9' boxShadow='lg' _hover={{ boxShadow: 'dark-lg', cursor: 'pointer', transition: '0.1s' }}>
             <CardBody>
 
                 {imagem ? (
@@ -934,10 +934,48 @@ export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
 
                 <Stack mt='6' spacing='3'>
                     <Heading size={{ base: 'xs', md: 'xs', lg: 'md' }} fontFamily='BreeSerif-Regular' fontWeight='normal'>{cortaTextoTitulo(nome)}</Heading>
-                    <Heading size='xs' textTransform='uppercase' color='gray'>status: {estadoAcompanhamento ? estadoAcompanhamento : 'Não assumida'}</Heading>
+                    <HStack>
+                        <Heading size='xs' textTransform='uppercase' color='gray'>status: {estadoAcompanhamento ? estadoAcompanhamento : 'Não assumida'}</Heading>
+                        {estadoAcompanhamento === 'concluida' && (
+                    <Badge
+                        bg="green.500"
+                        borderRadius="full"
+                        w="10px"
+                        h="10px"
+                        ml={3}
+                    />
+                )}
+                {estadoAcompanhamento === 'em andamento' && (
+                    <Badge
+                        bg="blue.500"
+                        borderRadius="full"
+                        w="10px"
+                        h="10px"
+                        ml={3}
+                    />
+                )}
+                {(estadoAcompanhamento === 'pendente' || !estadoAcompanhamento) && (
+                    <Badge
+                        bg="red.500"
+                        borderRadius="full"
+                        w="10px"
+                        h="10px"
+                        ml={3}
+                    />
+                )}
+                    </HStack>
+                   
                 </Stack>
 
             </CardBody>
+            <CardFooter alignItems='flex-start'>
+
+                <Button boxShadow='lg' bgColor='#338bb0' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white'> 
+                    Mais detalhes
+                </Button>
+
+          
+            </CardFooter>
             <Divider />
 
 
