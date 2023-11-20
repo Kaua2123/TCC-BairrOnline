@@ -717,20 +717,7 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
 
 export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
 
- 
-
-
-
-
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [editando, setEditando] = useState(false);
-    const [img, setImg] = useState<any>('');
-    const [tituloEditado, setTituloEditado] = useState(nome);
-    const [descricaoEditada, setDescricaoEditada] = useState(descricao);
-    const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false);
-    const [imagemUrl, setImagemUrl] = useState('');
     const [estadoAcompanhamento, setEstadoAcompanhamento] = useState('');
 
     const cancelRef = React.useRef();
@@ -738,149 +725,7 @@ export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
     const { colorMode } = useColorMode();
 
 
-    async function deleteDenuncia(denCod) {
-
-        const token = localStorage.getItem('token');
-        if (token) {
-            axios.defaults.headers.common['Authorization'] = `${token}`;
-        }
-
-
-        await axios.delete(`http://localhost:3344/deleteDenuncia/${denCod}`)
-            .then(response => {
-                closeAlertDialog();
-
-                if (response) {
-                    toast({
-                        title: 'Denúncia deletada',
-                        status: 'success',
-                        duration: 4000,
-                        isClosable: true
-                    })
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            })
-
-
-    };
-
-    async function updateDenuncia(denCod) {
-        const token = localStorage.getItem('token');
-        if (token) {
-            axios.defaults.headers.common['Authorization'] = `${token}`;
-        }
-
-        await axios.put(`http://localhost:3344/updateDenuncia/${denCod}`, {
-            den_nome: tituloEditado,
-            den_desc: descricaoEditada
-        })
-            .then(response => {
-                if (response.status === 201) {
-                    toast({
-                        title: 'Dados da denúncia atualizados',
-                        status: 'success',
-                        duration: 4000,
-                        isClosable: true
-                    });
-                }
-                setEditando(false);
-                onClose();
-            })
-            .catch(error => {
-                console.error(error);
-                if (error) {
-                    toast({
-                        title: 'Ocorreu um erro ao atualizar os dados da denúncia. Tente novamente',
-                        status: 'error',
-                        duration: 4000,
-                        isClosable: true
-                    });
-                }
-            })
-
-    }
-
-
-
-    const openAlertDialog = () => {
-        setIsAlertDialogOpen(true);
-    };
-
-    const closeAlertDialog = () => {
-        setIsAlertDialogOpen(false);
-    };
-
-
-    const openImageUploadModal = () => {
-        setImageUploadModalOpen(true);
-    }
-
-    const closeImageUploadModal = () => {
-        setImageUploadModalOpen(false);
-    }
-
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0];
-        setSelectedImage(file);
-    }
-
-    const uploadImage = async () => {
-
-        const token = localStorage.getItem('token');
-        if (token) {
-            axios.defaults.headers.common['Authorization'] = `${token}`;
-        }
-
-        if (!selectedImage) {
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('selectedImage', selectedImage);
-
-        try {
-
-            const response = await axios.post(
-                `http://localhost:3344/uparImagem/${denCod}`,
-                formData,
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                    params: {
-                        den_cod: denCod,
-                    },
-                }
-            );
-
-
-
-            setImagemUrl(response.data);
-
-            if (response) {
-                toast({
-                    title: 'Imagem enviada',
-                    description: 'Sua imagem foi enviada e será exibida na denúncia.',
-                    status: 'success',
-                    duration: 4000,
-                    isClosable: true
-                })
-            }
-
-            closeImageUploadModal();
-        } catch (error) {
-            console.error(error);
-            toast({
-                title: 'Erro',
-                description: 'A imagem não pôde ser enviada. Verifique e tente novamente.',
-                status: 'error',
-                duration: 4000,
-                isClosable: true
-            })
-        }
-    };
+    
 
     const getAcompanhamentoEstado = async () => {
         
@@ -970,10 +815,37 @@ export const CardDenSimples = ({ nome, descricao, bairro, imagem, denCod }) => {
             </CardBody>
             <CardFooter alignItems='flex-start'>
 
-                <Button boxShadow='lg' bgColor='#338bb0' _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white'> 
+                <Button boxShadow='lg' bgColor='#338bb0' onClick={onOpen} _hover={{ background: '#fff', color: '#338BB0' }} mr={3} color='white'> 
                     Mais detalhes
                 </Button>
-
+                <Modal isOpen={isOpen} onClose={onClose} size='5xl'>
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader color='#338bb0'>Acompanhar denúncia</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                            <Box>
+                            <HStack>
+                                <Avatar w='80px' h='80px'/>
+                                <Text>Vai termt texto aq da instutica</Text>
+                            </HStack>
+                            <Text mt={6}>Nome instituiçao</Text>
+                            </Box>
+                            <Box>
+                                <HStack w='100vw' mt={10}>
+                                    <Box w='50vw'>
+                                        <Text>SUBTAREFAS a fazer</Text>
+                                    </Box>
+                                    <Box w='50vw'>
+                                        <Text>SUBTAREFAS concluídas</Text>
+                                    </Box>
+                                </HStack>
+                            </Box>
+                        </ModalBody>
+                        <ModalFooter>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
           
             </CardFooter>
             <Divider />
