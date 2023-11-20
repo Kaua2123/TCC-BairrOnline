@@ -50,7 +50,7 @@ routes.get("/", controllersComen.raiz);
 routes.post("/criarComent", controllersComen.criarComent);
 routes.delete("/deleteComent", controllersComen.deleteComentario);
 routes.put("updateComent", controllersComen.updateComentario);
-routes.get("/buscarComentario", controllersComen.buscarComentario);
+routes.get("/buscarComentario/:cod", controllersComen.buscarComentario);
 
 //acompanhamento
 routes.post("/criarAcompanhamento", controllersAcomp.criarAcompanhamento);

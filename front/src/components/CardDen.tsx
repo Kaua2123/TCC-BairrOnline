@@ -238,9 +238,7 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
                                 <Input placeholder="comenta aq" onChange={(e) => setComCont(e.target.value)} ></Input>
                             </CardHeader>
                             <CardBody>
-                                <CardCom>
-
-                                </CardCom>
+                                <CardCom denCod={denCod}/>
                             </CardBody>
 
                             <ModalFooter>

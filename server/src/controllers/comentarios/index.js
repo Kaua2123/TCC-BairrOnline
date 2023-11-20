@@ -80,7 +80,11 @@ module.exports = {
 
     async buscarComentario(req, res) {
         try {
-            const comentarios = await knex('comentarios').select('*');
+
+            const {cod} = req.params; //pegar o codigo da denuncia como parametro
+
+            const comentarios = await knex('comentarios').select('*').where('denuncias_den_cod', cod);
+            // só buscar baseado no codigo da denuncia e exibir com base nisso
 
             return res.status(200).json(comentarios)
         } catch (error) {
