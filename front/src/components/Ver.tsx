@@ -242,7 +242,7 @@ const Ver = () => {
                   mt={{ base: '35px', md: '38px', lg: '45px' }}
                   boxShadow='lg'
                 >
-                  Aplicar
+                  Filtrar
                 </Button>
               </Flex>
             </HStack>
