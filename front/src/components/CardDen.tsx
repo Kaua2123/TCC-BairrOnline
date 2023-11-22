@@ -1,5 +1,5 @@
 import {
-    Card, CardBody, CardHeader, Stack, Heading, Divider, CardFooter, Button, Image, Text, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
+    Card, CardBody, CardHeader, Stack, Heading, Divider, CardFooter, Button, Image, Text , Textarea, useDisclosure, Modal, ModalBody, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, AlertDialog,
     AlertDialogOverlay, Tag, TagLabel, Avatar, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Box, Input, Textarea, InputGroup, InputLeftElement, FormLabel, Center, Flex, useDisclosure, useColorMode, Select, HStack, Badge
 } from "@chakra-ui/react";
 
@@ -225,7 +225,7 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
                     _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}}
                 >
                     Comentários
-                    <Modal isOpen={isOpen} onClose={onClose} size="xl">
+                    <Modal isOpen={isOpen} onClose={onClose} size="5xl">
                         <ModalOverlay />
                         <ModalContent>
                             <ModalHeader>
@@ -235,16 +235,16 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
                             </ModalHeader>
                             <ModalCloseButton />
                             <CardHeader>
-                                <Input placeholder="comenta aq" onChange={(e) => setComCont(e.target.value)} ></Input>
+                                <Textarea 
+                                placeholder='Comenta algo ai' 
+                                borderRadius="md" p="2" fontSize="md"
+                                onChange={(e) => setComCont(e.target.value)} /><br></br>
+                                <Button onClick={enviaCom} marginLeft='4' marginTop='2.5'>Enviar comentário</Button>
                             </CardHeader>
                             <CardBody>
                                 <CardCom denCod={denCod}/>
                             </CardBody>
-
-                            <ModalFooter>
-
-                                <Button onClick={enviaCom}>Enviar comentario</Button>
-                            </ModalFooter>
+                            <ModalFooter></ModalFooter>
                         </ModalContent>
                     </Modal>
 
