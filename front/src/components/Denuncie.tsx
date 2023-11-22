@@ -356,8 +356,8 @@ const Denuncie = () => {
                             )}
                         </ModalBody>
                         <ModalFooter> 
-                            <Button boxShadow='lg' variant="ghost" onClick={closeImageUploadModal}>
-                                Cancelar
+                            <Button boxShadow='lg' bgColor="#338bb0" _hover={{ background: 'white', color: '#338bb0', transform: 'scale(1.1)',  transition: 'transform 0.3s ease'}} color='white' onClick={closeImageUploadModal}>
+                                Ok
                             </Button>
                         </ModalFooter>
                     </ModalContent>
