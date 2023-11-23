@@ -95,7 +95,7 @@ const CardDen = ({ nome, descricao, bairro, imagem, usuNome, usuImg, denCod }) =
 
  
     const caracteresMaxDescricao = 24;
-    const caracteresMaxTitulo = 20;
+    const caracteresMaxTitulo = 18;
 
     const cortaTextoDescricao = (text) => {
         if (text.length > caracteresMaxDescricao) {
@@ -460,8 +460,10 @@ export const CardDenUsu = ({ nome, descricao, data, bairro, imagem, denCod }) =>
         }
     };
 
+ 
     const caracteresMaxDescricao = 24;
-    const caracteresMaxTitulo = 20;
+    const caracteresMaxTitulo = 18;
+
 
     const cortaTextoDescricao = (text) => {
         if (text.length > caracteresMaxDescricao) {

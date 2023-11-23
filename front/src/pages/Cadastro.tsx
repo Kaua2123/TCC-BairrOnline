@@ -55,29 +55,32 @@ const Cadastro = () => {
 
   const handleClick = () => setShow(!show)
 
+  const formatarCPF = (cpf) => {
+    // Remove qualquer caractere não numérico
+    const numerosCPF = cpf.replace(/\D/g, '');
   
-  const validarCPF = (cpf) => {
+    // Aplica a formatação
+    const cpfFormatado = numerosCPF.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+  
+    return cpfFormatado;
+  };
 
+  const formatarTelefone = (telefone) => {
+    // Remove qualquer caractere não numérico
+    const numerosTelefone = telefone.replace(/\D/g, '');
   
-    let soma = 0;
-    for (let i = 0; i < 9; i++) {
-      soma += parseInt(usuCPF.charAt(i)) * (10 - i);
+    // Verifica se é um número de celular com DDD (11 dígitos)
+    if (numerosTelefone.length === 11) {
+      return numerosTelefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
     }
   
-    let resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) resto = 0;
-    if (resto !== parseInt(usuCPF.charAt(9))) return false;
-  
-    soma = 0;
-    for (let i = 0; i < 10; i++) {
-      soma += parseInt(usuCPF.charAt(i)) * (11 - i);
+    // Verifica se é um número de telefone fixo com DDD (10 dígitos)
+    if (numerosTelefone.length === 10) {
+      return numerosTelefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
     }
   
-    resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) resto = 0;
-    if (resto !== parseInt(usuCPF.charAt(10))) return false;
-  
-    return true;
+    // Caso contrário, retorna o número sem formatação
+    return numerosTelefone;
   };
 
 
@@ -93,6 +96,22 @@ const Cadastro = () => {
   
     setTelefoneValido(regexTelefone.test(usuTel));
   }
+
+  const handleChangeCPF = (e) => {
+    const novoValor = e.target.value;
+    const cpfFormatado = formatarCPF(novoValor);
+    setUsuCPF(cpfFormatado);
+  };
+
+  const handleChangeTelefone = (e) => {
+    const novoValor = e.target.value;
+    const telefoneFormatado = formatarTelefone(novoValor);
+    setUsuTel(telefoneFormatado);
+  };
+
+  
+
+
 
   const cadastraUsuario = async () => {
 
@@ -129,7 +148,7 @@ const Cadastro = () => {
 
     if (!telefoneValido) {
       toast({
-        title: "Digite seu telefone corretamente. Verifique se incluiu o DDD",
+        title: "Verifique o campo telefone novamente.",
         status: "error",
         duration: 4000,
         isClosable: false,
@@ -137,16 +156,6 @@ const Cadastro = () => {
       return;
     }
 
-    if (!validarCPF(usuCPF)) {
-    toast({
-      title: "CPF inválido, verifique e tente novamente.",
-      status: "error",
-      duration: 4000,
-      isClosable: false,
-    });
-    console.log('CPF inválido');
-    return;
-  }
 
 
 
@@ -316,11 +325,8 @@ const Cadastro = () => {
             <InputLeftElement>
               <BsTelephone />
             </InputLeftElement>
-            <Input placeholder='Digite seu telefone' borderColor={telefoneValido ? 'green' : 'red'} required type='tel' value={usuTel} onChange={(e) => {
-              setUsuTel(e.target.value)
-              setTelefoneValido(true);
-            }}
-              onBlur={validarTelefone} />
+            <Input placeholder='Digite seu telefone'  required type='tel' value={usuTel}
+              onBlur={validarTelefone}  maxLength={15} onChange={handleChangeTelefone} />
           </InputGroup>
         
         
@@ -331,9 +337,23 @@ const Cadastro = () => {
             <InputLeftElement>
               <AiOutlineIdcard />
             </InputLeftElement>
-            <Input placeholder='Digite seu CPF' borderColor='black' required type='number' value={usuCPF} onChange={(e) => {
-              setUsuCPF(e.target.value)
-            }} />
+            <input
+  style={{
+    padding: '0.5rem 2.4rem',
+    border: '1px solid black',
+    borderRadius: '0.25rem',
+    outline: 'none',
+    transition: 'border-color 0.2s',
+    width: '100%', // para ocupar a largura total do container
+  }}
+  placeholder='Digite seu CPF'
+  pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+  maxLength={14}
+  value={usuCPF}
+  onChange={handleChangeCPF}
+  onFocus={(e) => e.target.style.borderColor = '#338baf'}
+  onBlur={(e) => e.target.style.borderColor = 'black'}
+/>
           </InputGroup>
                 
                 <IconButton boxShadow='lg' aria-label='anterior' mt={3} icon={<AiOutlineArrowLeft/>} onClick={() => setSecaoAtual(secaoAtual - 1)}  color='white' bgColor='#338bb0' _hover={{color: '#338bb0', backgroundColor: 'white'}}  >Anterior</IconButton>
