@@ -90,12 +90,7 @@ const Cadastro = () => {
     setEmailValido(emailRegex.test(usuEmail));
   }
 
-  const validarTelefone = () => {
-    // regex pra validar com 10 digitos
-    const regexTelefone = /^\d{11}$/;
-  
-    setTelefoneValido(regexTelefone.test(usuTel));
-  }
+
 
   const handleChangeCPF = (e) => {
     const novoValor = e.target.value;
@@ -146,15 +141,6 @@ const Cadastro = () => {
       return;
     }
 
-    if (!telefoneValido) {
-      toast({
-        title: "Verifique o campo telefone novamente.",
-        status: "error",
-        duration: 4000,
-        isClosable: false,
-      })
-      return;
-    }
 
 
 
@@ -325,8 +311,8 @@ const Cadastro = () => {
             <InputLeftElement>
               <BsTelephone />
             </InputLeftElement>
-            <Input placeholder='Digite seu telefone'  required type='tel' value={usuTel}
-              onBlur={validarTelefone}  maxLength={15} onChange={handleChangeTelefone} />
+            <Input placeholder='Digite seu telefone' borderColor='black'  required type='tel' value={usuTel}
+ maxLength={15} onChange={handleChangeTelefone} />
           </InputGroup>
         
         
