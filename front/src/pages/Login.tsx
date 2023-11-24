@@ -77,7 +77,7 @@ const Login = () => {
         }
         else if(decodificaToken.usu_tipo === 'instituicao'){
           setTimeout(() => {
-            navigate('/HomeInst')
+            navigate('/')
           }, 1000)
         }
         else if(decodificaToken.usu_tipo === 'administrador'){

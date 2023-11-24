@@ -1,0 +1,14 @@
+CADSTRO USUÁRIO:
+
+email: usuario@gmail.com
+senha: usuario123
+nome: Cléber
+telefone: 24 99942-2324
+CPF: 123-992-234-23
+
+CADASTRO INSTITUIÇÃO:
+email: inst@gmail.com
+senha: inst123
+nome: AssociaçãoVR
+telefone: 24 99234-2230
+CPF: 193-812-244-13

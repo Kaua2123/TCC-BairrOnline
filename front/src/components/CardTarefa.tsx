@@ -112,27 +112,8 @@ const CardTarefa = ({acompanhamento}) => {
           <ModalCloseButton />
           <ModalBody>
             <Flex flexDirection="column">
-              <Text fontSize='28px' ml='300px' mt='-10px' color='#338BB0'><b>Resolução da denúncia</b></Text>
+              <Text fontSize='28px' ml='300px' mt='-10px' color='#338BB0'><b>Adição de subtarefas</b></Text>
               
-              <Stepper size='lg' index={activeStep}>
-                {steps.map((step, index) => (
-                  <Step key={index} onClick={() => setActiveStep(index)}>
-                    <StepIndicator>
-                      <StepStatus
-                        complete={<StepIcon />}
-
-                      />
-                    </StepIndicator>
-
-                    <Box flexShrink='0'>
-                      <StepTitle>{step.title}</StepTitle>
-                      <StepDescription>{step.description}</StepDescription>
-                    </Box>
-
-                    <StepSeparator />
-                  </Step>
-                ))}
-              </Stepper>
               <Flex justifyContent="space-between" mt="20px">
                 <Flex flexDirection="row">
                   <Box>
@@ -157,16 +138,7 @@ const CardTarefa = ({acompanhamento}) => {
                       </ul>
                         </Stack>
                       </Box>
-                    <Box ml="600px" mt="-130px">
-                      <Text fontSize="20px">
-                        <b>Mensagem para o denunciante</b>
-                      </Text>
-                      <Textarea borderColor="gray" />
-                      <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }}
-                      w="90px" h="45px " mt='10px'ml='300px'>
-                        Enviar
-                      </Button>
-                    </Box>
+                    
                   </Box>
                 </Flex>
               </Flex>

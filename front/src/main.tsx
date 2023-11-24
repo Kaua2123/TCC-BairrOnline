@@ -13,7 +13,6 @@ import Cadastro from './pages/Cadastro.tsx';
 import VerDenuncia from './pages/VerDenuncia.tsx';
 import Gerenciador from './pages/GerenciadorDen.tsx'
 import HomeUsuario from './pages/HomeUsuario.tsx';
-import HomeInst from './pages/HomeInst.tsx';
 import SaibaMais from './pages/saibaMais.tsx';
 import Deslogado from './pages/Deslogado.tsx';
 import RotasPrivadas from './components/RotasPrivadas.tsx';
@@ -80,14 +79,6 @@ const router = createBrowserRouter([
       <RotasPrivadas userType='administrador'>
       <HomeADM/>
     </RotasPrivadas>
-    ),
-  },
-  {
-    path:"/homeInst",
-    element: (
-      <RotasPrivadas userType='instituicao'>
-        <HomeInst/>
-      </RotasPrivadas>
     ),
   },
   {

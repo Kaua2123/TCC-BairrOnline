@@ -1,16 +1,62 @@
-import { Card, CardBody,Text, CardFooter, CardHeader, Box, Button, IconButton, HStack, useToast } from "@chakra-ui/react";
+import { Card, CardBody,Text, CardFooter, CardHeader, Box, Button, IconButton, HStack, useToast, useDisclosure, Flex, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stack } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
 import axios from "axios";
 import { CheckIcon } from "@chakra-ui/icons";
-
+import jwtDecode from "jwt-decode";
 
 const CardTarefaGrande = ({nome, acoNum}) => {
     const [acompanhamentos, setAcompanhamentos] = useState([]);
     const [subtarefas, setSubtarefas] = useState([]);
     const [subCod, setSubCod] = useState([]);
+    const [subtarefaTexto, setSubtarefaTexto] = useState("");
+    const [subtarefaPrioridade, setSubtarefaPrioridade] = useState("media");
+    const [subtarefaEstado, setSubtarefaEstado] = useState("andamento");
     const toast = useToast();
 
+    const {onOpen, isOpen, onClose} = useDisclosure();
+
+
+    const criarSubtarefa = async () => { //para criação de subtarefas kkkkkkk tmn3cc39109129119
+
+      const token = localStorage.getItem('token')
+      if (!token) {
+        console.log('não autenticado')
+        return;
+      }
+  
+      if (token) {
+        axios.defaults.headers.common['Authorization'] = `${token}`;
+      }
+  
+      const decodificaToken: any = jwtDecode(token);
+  
+        await axios.post('http://localhost:3344/criarSubtarefa', {
+            sub_data_inicio: new Date(),
+            sub_data_conclusao: new Date(),
+            sub_texto: subtarefaTexto,
+            sub_prioridade: subtarefaPrioridade,
+            sub_estado: subtarefaEstado,
+            acompanhamento_aco_num: acoNum,
+            usuario_usu_cod: decodificaToken.usu_cod
+        })
+        .then((response) => {
+          toast({
+            title: 'Subtarefa criada.',
+            duration: 3000,
+            status: 'success',
+            isClosable: true
+          })
+        })
+        .catch((error) => {
+          toast({
+            title: 'erro ao criar subtarefa.',
+            duration: 3000,
+            status: 'error',
+            isClosable: true
+          })
+        })
+    }
 
     const getSubtarefa = () => { //para exibição das subtarefas
 
@@ -94,6 +140,7 @@ const CardTarefaGrande = ({nome, acoNum}) => {
         }
       }
       
+      
     
     return (
         <Card bg='#338BB0' color='white' h='45vh' w='20vw'>
@@ -135,9 +182,55 @@ const CardTarefaGrande = ({nome, acoNum}) => {
             </CardBody>
 
             <CardFooter>
-              <Button onClick={concluirAcompanhamento}>Definir como concluído</Button>
+              <Button onClick={onOpen}>Mais detalhes</Button>
             </CardFooter>
+            <Modal size='5xl' isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader></ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Flex flexDirection="column">
+              <Text fontSize='28px' ml='300px' mt='-10px' color='#338BB0'><b>Adição de subtarefas</b></Text>
+              
+              <Flex justifyContent="space-between" mt="20px">
+                <Flex flexDirection="row">
+                  <Box>
+                    <Box mt="100px">
+                      <Text fontSize="20px">
+                        <b>Adicionar subtarefa</b>
+                      </Text>
+                      <Input type="text" w='150px' borderColor="gray" mt='10px' value={subtarefaTexto}
+                       onChange={(e) => setSubtarefaTexto(e.target.value)}/>
+                      <Stack></Stack>
+                      <Button bgColor="#338BB0" color="white" _hover={{ backgroundColor: "white", color: "#338BB0" }}
+                        mt='-67px' ml='160px' onClick={criarSubtarefa}>
+                        Adicionar
+                      </Button>
+                    </Box>
+                    <Box mt="20px" maxH="5px"> 
+                       <Stack >
+                       <ul className="subtarefas-list">
+                        {subtarefas.map((subtarefa, index) => (
+                          <li key={index}>Subtarefa {index + 1}: {subtarefa.sub_texto}</li>
+                        ))}
+                      </ul>
+                        </Stack>
+                      </Box>
+                    
+                  </Box>
+                </Flex>
+              </Flex>
+            </Flex>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={concluirAcompanhamento}>Concluir acompanhamento</Button>
+          </ModalFooter>
+        </ModalContent>
+
+      </Modal>
         </Card>
+        
     )
    
 }
